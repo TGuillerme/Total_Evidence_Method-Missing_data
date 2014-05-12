@@ -1,0 +1,106 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: TEM_draft.aux
+The style file: sysbio.bst
+Database file #1: References.bib
+You're missing a field name---line 39 of file References.bib
+ : @article{brusattesuperiority,
+ :                              2008,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 113 of file References.bib
+ : @article{dos 
+ :              reisthe2014,
+I'm skipping whatever remains of this entry
+You're missing a field name---line 263 of file References.bib
+ : @article{baabphylogenetic,
+ :                           2014,
+I'm skipping whatever remains of this entry
+You're missing a field name---line 743 of file References.bib
+ : @article{marivauxdjebelemur,
+ :                             2013,
+I'm skipping whatever remains of this entry
+You're missing a field name---line 812 of file References.bib
+ : @article{allmonspecies,
+ :                        2013,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1416 of file References.bib
+ : @article{de 
+ :             maiolinking2013,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1527 of file References.bib
+ : @article{dos 
+ :              reisphylogenomic2012,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 3084 of file References.bib
+ : @article{holtz 
+ :                jrdenticle1998,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 3486 of file References.bib
+ : @article{le 
+ :             loeuffa1998,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 4220 of file References.bib
+ : @article{james 
+ :                rohlfa1993,
+I'm skipping whatever remains of this entry
+You're missing a field name---line 4508 of file References.bib
+ : @article{siblyenergetics,
+ :                          2012,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 4850 of file References.bib
+ : @article{van 
+ :              voorhiesgenetic1999,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 4861 of file References.bib
+ : @article{van 
+ :              voorhiestesting2004,
+I'm skipping whatever remains of this entry
+Warning--missing school in chen2011
+Warning--can't use both author and editor fields in dobson1975triplets
+Warning--empty journal in heaththe2013
+Warning--can't use both author and editor fields in johnson1998
+Warning--can't use both author and editor fields in jc69
+Warning--can't use both author and editor fields in tavare1986
+Warning--empty chapter and pages in tavare1986
+You've used 51 entries,
+            2858 wiz_defined-function locations,
+            888 strings with 13600 characters,
+and the built_in function-call counts, 29980 in all, are:
+= -- 2505
+> -- 1497
+< -- 37
++ -- 513
+- -- 441
+* -- 2213
+:= -- 4757
+add.period$ -- 203
+call.type$ -- 51
+change.case$ -- 394
+chr.to.int$ -- 50
+cite$ -- 109
+duplicate$ -- 2173
+empty$ -- 2117
+format.name$ -- 602
+if$ -- 6102
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 481
+newline$ -- 215
+num.names$ -- 204
+pop$ -- 822
+preamble$ -- 1
+purify$ -- 351
+quote$ -- 0
+skip$ -- 741
+stack$ -- 0
+substring$ -- 1223
+swap$ -- 926
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 438
+warning$ -- 7
+while$ -- 187
+width$ -- 0
+write$ -- 614
+(There were 13 error messages)

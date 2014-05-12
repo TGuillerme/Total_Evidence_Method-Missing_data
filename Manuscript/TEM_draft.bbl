@@ -1,0 +1,306 @@
+\begin{thebibliography}{51}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+
+\bibitem[{Bapst(2013)}]{bapsta2013}
+Bapst, D.~W. 2013. A stochastic rate-calibrated method for time-scaling
+  phylogenies of fossil taxa. Methods in Ecology and Evolution 4.
+\bibAnnoteFile{bapsta2013}
+
+\bibitem[{Bogdanowicz et~al.(2012)Bogdanowicz, Giaro, and
+  Wróbel}]{Bogdanowicz2012}
+Bogdanowicz, D., K.~Giaro, and B.~Wróbel. 2012. Treecmp: Comparison of trees
+  in polynomial time. Evolutionary Bioinformatics 8:475--487 10.4137/EBO.S9657.
+\bibAnnoteFile{Bogdanowicz2012}
+
+\bibitem[{Chen(2011)}]{chen2011}
+Chen, W.-C. 2011. Overlapping Codon Model, Phylogenetic Clustering, and
+  Alternative Partial Expectation Conditional Maximization Algorithm. Ph.D.
+  thesis.
+\bibAnnoteFile{chen2011}
+
+\bibitem[{Cooper and Purvis(2009)}]{cooperwhat2009}
+Cooper, N. and A.~Purvis. 2009. What factors shape rates of phenotypic
+  evolution? a comparative study of cranial morphology of four mammalian
+  clades. Journal of evolutionary biology 22:1024--1035.
+\bibAnnoteFile{cooperwhat2009}
+
+\bibitem[{Critchlow et~al.(1996)Critchlow, Pearl, and Qian}]{critchlowthe1996}
+Critchlow, D.~E., D.~K. Pearl, and C.~Qian. 1996. The triples distance for
+  rooted bifurcating phylogenetic trees. Systematic Biology 45:323--334.
+\bibAnnoteFile{critchlowthe1996}
+
+\bibitem[{Dietl and Flessa(2011)}]{dietlconservation2011}
+Dietl, G. and K.~Flessa. 2011. Conservation paleobiology: putting the dead to
+  work. Trends in ecology \& evolution 26:30--37.
+\bibAnnoteFile{dietlconservation2011}
+
+\bibitem[{Dobson(1975)}]{dobson1975triplets}
+Dobson, A.~J. 1975. Comparing the shapes of trees Pages~95--100. Springer
+  Berlin Heidelberg.
+\bibAnnoteFile{dobson1975triplets}
+
+\bibitem[{Douady et~al.(2003)Douady, Delsuc, Boucher, Doolittle, and
+  Douzery}]{douadycomparison2003}
+Douady, C., F.~Delsuc, Y.~Boucher, W.~Doolittle, and E.~Douzery. 2003.
+  Comparison of bayesian and maximum likelihood bootstrap measures of
+  phylogenetic reliability. Molecular biology and evolution 20:248--254.
+\bibAnnoteFile{douadycomparison2003}
+
+\bibitem[{Drummond et~al.(2006)Drummond, Ho, Phillips, and
+  Rambaut}]{drummond2006ess}
+Drummond, A.~J., S.~Y. Ho, M.~J. Phillips, and A.~Rambaut. 2006. Relaxed
+  phylogenetics and dating with confidence. PLoS Biol 4:e88.
+\bibAnnoteFile{drummond2006ess}
+
+\bibitem[{Eernisse and Kluge(1993)}]{eernissetaxonomic1993}
+Eernisse, D. and A.~Kluge. 1993. Taxonomic congruence versus total evidence,
+  and amniote phylogeny inferred from fossils, molecules, and morphology.
+  Molecular biology and evolution 10:1170--1195.
+\bibAnnoteFile{eernissetaxonomic1993}
+
+\bibitem[{{FitzJohn}(2012)}]{fitzjohndiversitree2012}
+{FitzJohn}, R.~G. 2012. Diversitree : comparative phylogenetic analyses of
+  diversification in r. Methods in Ecology and Evolution 3.
+\bibAnnoteFile{fitzjohndiversitree2012}
+
+\bibitem[{Fritz et~al.(2013)Fritz, Schnitzler, Eronen, Hof, Katrin, and
+  Graham}]{fritzdiversity2013}
+Fritz, S., J.~Schnitzler, J.~Eronen, C.~Hof, B.~Katrin, and C.~Graham. 2013.
+  Diversity in time and space: wanted dead and alive. Trends in ecology \&
+  evolution .
+\bibAnnoteFile{fritzdiversity2013}
+
+\bibitem[{Hasegawa et~al.(1985)Hasegawa, Kishino, and Yano}]{HKY85}
+Hasegawa, M., H.~Kishino, and T.~A. Yano. 1985. Dating of the human ape
+  splitting by a molecular clock of mitochondrial-dna. Journal of Molecular
+  Evolution 22:160--174.
+\bibAnnoteFile{HKY85}
+
+\bibitem[{Heath et~al.(2013)Heath, Huelsenbeck, and Stadler}]{heaththe2013}
+Heath, T., J.~Huelsenbeck, and T.~Stadler. 2013. The fossilized {Birth-Death}
+  process: A coherent model of fossil calibration for divergence time
+  estimation .
+\bibAnnoteFile{heaththe2013}
+
+\bibitem[{Jackson and Erwin(2006)}]{jacksonwhat2006}
+Jackson, J. and D.~Erwin. 2006. What can we learn about ecology and evolution
+  from the fossil record? Trends in ecology \& evolution 21:322--328.
+\bibAnnoteFile{jacksonwhat2006}
+
+\bibitem[{Johnson and Soltis(1998)}]{johnson1998}
+Johnson, L. and D.~Soltis. 1998. Assessing Congruence: Empirical Examples from
+  Molecular Data chap.~11, Pages~297--348. Springer US.
+\bibAnnoteFile{johnson1998}
+
+\bibitem[{Jukes and Cantor(1969)}]{jc69}
+Jukes, T.~H. and C.~R. Cantor. 1969. Evolution of protein molecules vol. III
+  Pages~21--132. Academic Press.
+\bibAnnoteFile{jc69}
+
+\bibitem[{Lemmon et~al.(2009)Lemmon, Brown, Kathrin, and
+  Lemmon}]{lemmonthe2009}
+Lemmon, A., J.~Brown, S.~Kathrin, and E.~Lemmon. 2009. The effect of ambiguous
+  data on phylogenetic estimates obtained by maximum likelihood and bayesian
+  inference. Systematic biology 58:130--145.
+\bibAnnoteFile{lemmonthe2009}
+
+\bibitem[{Lewis(2001)}]{lewisa2001}
+Lewis, P. 2001. A likelihood approach to estimating phylogeny from discrete
+  morphological character data. Systematic biology 50:913--925.
+\bibAnnoteFile{lewisa2001}
+
+\bibitem[{Meredith et~al.(2011)Meredith, Janečka, Gatesy, Ryder, Fisher,
+  Teeling, Goodbla, Eizirik, Sim\~{a}o, Stadler, Rabosky, Honeycutt, Flynn,
+  Ingram, Steiner, Williams, Robinson, Angela, Westerman, Ayoub, Springer, and
+  Murphy}]{meredithimpacts2011}
+Meredith, R., J.~Janečka, J.~Gatesy, O.~Ryder, C.~Fisher, E.~Teeling,
+  A.~Goodbla, E.~Eizirik, T.~L. Sim\~{a}o, T.~Stadler, D.~Rabosky,
+  R.~Honeycutt, J.~Flynn, C.~Ingram, C.~Steiner, T.~Williams, T.~Robinson,
+  B.~Angela, M.~Westerman, N.~Ayoub, M.~Springer, and W.~Murphy. 2011. Impacts
+  of the cretaceous terrestrial revolution and {KPg} extinction on mammal
+  diversification. Science {(New} York, {N.Y.)} 334:521--524.
+\bibAnnoteFile{meredithimpacts2011}
+
+\bibitem[{Metcalf et~al.(2014)Metcalf, Prost, David, Dechaine, Anderson, Batra,
+  Ara\'{u}jo, Cooper, and Guralnick}]{metcalfintegrating2014}
+Metcalf, J., S.~Prost, N.~David, E.~Dechaine, C.~Anderson, P.~Batra,
+  M.~Ara\'{u}jo, A.~Cooper, and R.~Guralnick. 2014. Integrating multiple lines
+  of evidence into historical biogeography hypothesis testing: a bison bison
+  case study. Proceedings. Biological sciences / The Royal Society 281.
+\bibAnnoteFile{metcalfintegrating2014}
+
+\bibitem[{Novacek and Wheeler(1992)}]{novacek1992ext}
+Novacek, M.~J. and Q.~Wheeler. 1992. Extinction and phylogeny. Columbia
+  University Press.
+\bibAnnoteFile{novacek1992ext}
+
+\bibitem[{Paradis(2011)}]{paradistime-dependent2011}
+Paradis, E. 2011. Time-dependent speciation and extinction from phylogenies: a
+  least squares approach. Evolution; international journal of organic evolution
+  65:661--672.
+\bibAnnoteFile{paradistime-dependent2011}
+
+\bibitem[{Paradis et~al.(2004)Paradis, Claude, and Strimmer}]{paradisape:2004}
+Paradis, E., J.~Claude, and K.~Strimmer. 2004. {APE:} analyses of phylogenetics
+  and evolution in r language. Bioinformatics {(Oxford,} England) 20:289--290.
+\bibAnnoteFile{paradisape:2004}
+
+\bibitem[{Pyron(2011)}]{pyrondivergence2011}
+Pyron, R. 2011. Divergence time estimation using fossils as terminal taxa and
+  the origins of lissamphibia. Systematic biology 60:466--481.
+\bibAnnoteFile{pyrondivergence2011}
+
+\bibitem[{Quental and Marshall(2010)}]{quentaldiversity2010}
+Quental, T. and C.~Marshall. 2010. Diversity dynamics: molecular phylogenies
+  need the fossil record. Trends in ecology \& evolution 25:434--441.
+\bibAnnoteFile{quentaldiversity2010}
+
+\bibitem[{{R Core Team}(2014)}]{R302}
+{R Core Team}. 2014. R: A Language and Environment for Statistical Computing. R
+  Foundation for Statistical Computing Vienna, Austria.
+\bibAnnoteFile{R302}
+
+\bibitem[{Rambaut and Grassly(1997)}]{ranbaut1997seqgen}
+Rambaut, A. and N.~C. Grassly. 1997. Seq-gen: an application for the monte
+  carlo simulation of dna sequence evolution along phylogenetic trees. Comput
+  Appl Biosci 13:235--8.
+\bibAnnoteFile{ranbaut1997seqgen}
+
+\bibitem[{Raup(1993)}]{raup1993extinction}
+Raup, D. 1993. Extinction: Bad Genes Or Bad Luck? Oxford University Press.
+\bibAnnoteFile{raup1993extinction}
+
+\bibitem[{Robinson and Foulds(1981)}]{RF1981}
+Robinson, D.~F. and L.~R. Foulds. 1981. Comparison of phylogenetic trees.
+  Mathematical Biosciences 53:131--147.
+\bibAnnoteFile{RF1981}
+
+\bibitem[{Ronquist et~al.(2012{\natexlab{a}})Ronquist, Klopfstein, Vilhelmsen,
+  Schulmeister, Murray, and Rasnitsyn}]{ronquista2012}
+Ronquist, F., S.~Klopfstein, L.~Vilhelmsen, S.~Schulmeister, D.~Murray, and
+  A.~Rasnitsyn. 2012{\natexlab{a}}. A total-evidence approach to dating with
+  fossils, applied to the early radiation of the hymenoptera. Systematic
+  biology 61:973--999.
+\bibAnnoteFile{ronquista2012}
+
+\bibitem[{Ronquist et~al.(2012{\natexlab{b}})Ronquist, Teslenko, van~der Mark,
+  Ayres, Darling, Hohna, Larget, Liu, Suchard, and
+  Huelsenbeck}]{Ronquist2012mrbayes}
+Ronquist, F., M.~Teslenko, P.~van~der Mark, D.~L. Ayres, A.~Darling, S.~Hohna,
+  B.~Larget, L.~Liu, M.~A. Suchard, and J.~P. Huelsenbeck. 2012{\natexlab{b}}.
+  Mrbayes 3.2: efficient bayesian phylogenetic inference and model choice
+  across a large model space. Syst Biol 61:539--42.
+\bibAnnoteFile{Ronquist2012mrbayes}
+
+\bibitem[{Roure and Philippe(2011)}]{rouresite-specific2011}
+Roure, B. and H.~Philippe. 2011. Site-specific time heterogeneity of the
+  substitution process and its impact on phylogenetic inference. {BMC}
+  evolutionary biology 11.
+\bibAnnoteFile{rouresite-specific2011}
+
+\bibitem[{Rozen et~al.(2005)Rozen, Schneider, and Lenski}]{rozen2005}
+Rozen, D.~E., D.~Schneider, and R.~E. Lenski. 2005. Long-term experimental
+  evolution in escherichia coli. xiii. phylogenetic history of a balanced
+  polymorphism. J Mol Evol 61:171--80.
+\bibAnnoteFile{rozen2005}
+
+\bibitem[{Sansom and Wills(2013)}]{sansomfossilization2013}
+Sansom, R. and M.~Wills. 2013. Fossilization causes organisms to appear
+  erroneously primitive by distorting evolutionary trees. Scientific reports 3.
+\bibAnnoteFile{sansomfossilization2013}
+
+\bibitem[{Schrago et~al.(2013)Schrago, Mello, and
+  Soares}]{schragocombining2013}
+Schrago, C., B.~Mello, and A.~Soares. 2013. Combining fossil and molecular data
+  to date the diversification of new world primates. Journal of evolutionary
+  biology 26:2438--2446.
+\bibAnnoteFile{schragocombining2013}
+
+\bibitem[{Shoshani and Tassy(1996)}]{shoshani1996proboscidea}
+Shoshani, J. and P.~Tassy. 1996. The Proboscidea. Oxford University Press.
+\bibAnnoteFile{shoshani1996proboscidea}
+
+\bibitem[{Simpson(1945)}]{simpson1945}
+Simpson, G.~G. 1945. Tempo and mode in evolution. Trans N Y Acad Sci 8:45--60.
+\bibAnnoteFile{simpson1945}
+
+\bibitem[{Slater and Harmon(2013)}]{slaterunifying2013}
+Slater, G.~J. and L.~J. Harmon. 2013. Unifying fossils and phylogenies for
+  comparative analyses of diversification and trait evolution. Methods in
+  Ecology and Evolution 4.
+\bibAnnoteFile{slaterunifying2013}
+
+\bibitem[{Spencer and Wilberg(2013)}]{spencerefficacy2013}
+Spencer, M.~R. and E.~W. Wilberg. 2013. Efficacy or convenience? model-based
+  approaches to phylogeny estimation using morphological data. Cladistics 29.
+\bibAnnoteFile{spencerefficacy2013}
+
+\bibitem[{Stadler and Yang(2013)}]{stadlerdating2013}
+Stadler, T. and Z.~Yang. 2013. Dating phylogenies with sequentially sampled
+  tips. Systematic biology .
+\bibAnnoteFile{stadlerdating2013}
+
+\bibitem[{Stamatakis(2008)}]{stamatakisthe2008}
+Stamatakis, A. 2008. The {RAxML} 7.0. 4 manual. Department of Computer Science.
+  Ludwig-Maximilians-Universitäte München .
+\bibAnnoteFile{stamatakisthe2008}
+
+\bibitem[{Stamatakis et~al.(2008)Stamatakis, Hoover, and
+  Rougemont}]{stamatakisa2008}
+Stamatakis, A., P.~Hoover, and J.~Rougemont. 2008. A rapid bootstrap algorithm
+  for the {RAxML} web servers. Systematic biology 57:758--771.
+\bibAnnoteFile{stamatakisa2008}
+
+\bibitem[{Tavaré(1986)}]{tavare1986}
+Tavaré, S. 1986. Some Probabilistic and Statistical Problems in the Analysis
+  of DNA Sequences vol.~17 of \emph{Some Mathematical Questions in Biology}.
+  American Mathematical Society.
+\bibAnnoteFile{tavare1986}
+
+\bibitem[{Wiens(2006)}]{wiensmissing2006}
+Wiens, J. 2006. Missing data and the design of phylogenetic analyses. Journal
+  of biomedical informatics 39:34--42.
+\bibAnnoteFile{wiensmissing2006}
+
+\bibitem[{Wiens(2003)}]{wiensmissing2003}
+Wiens, J.~J. 2003. Missing data, incomplete taxa, and phylogenetic accuracy.
+  Systematic Biology 52.
+\bibAnnoteFile{wiensmissing2003}
+
+\bibitem[{Wiens and Moen(2008)}]{wiensmissing2008}
+Wiens, J.~J. and D.~S. Moen. 2008. Missing data and the accuracy of bayesian
+  phylogenetics. J Syst Evol 46:307--314.
+\bibAnnoteFile{wiensmissing2008}
+
+\bibitem[{with contributions~from Jochen~Einbeck and Wand(2013)}]{hdrcde}
+with contributions~from Jochen~Einbeck, R. J.~H. and M.~Wand. 2013. hdrcde:
+  Highest density regions and conditional density estimation. R package version
+  3.1.
+\bibAnnoteFile{hdrcde}
+
+\bibitem[{Yang(1996)}]{yangamong-site1996}
+Yang, Z. 1996. Among-site rate variation and its impact on phylogenetic
+  analyses. Trends in ecology \& evolution 11:367--372.
+\bibAnnoteFile{yangamong-site1996}
+
+\bibitem[{Young et~al.(2010)Young, Brusatte, Ruta, and
+  de~Andrade}]{youngthe2010}
+Young, M.~T., S.~L. Brusatte, M.~Ruta, and M.~B. de~Andrade. 2010. The
+  evolution of metriorhynchoidea (mesoeucrocodylia, thalattosuchia): an
+  integrated approach using geometric morphometrics, analysis of disparity, and
+  biomechanics. Zoological Journal of the Linnean Society 158.
+\bibAnnoteFile{youngthe2010}
+
+\bibitem[{Zuckerkandl and Pauling(1965)}]{zuckerkandl1965}
+Zuckerkandl, E. and L.~Pauling. 1965. Molecules as documents of evolutionary
+  history. Journal of Theoretical Biology 8:357--366.
+\bibAnnoteFile{zuckerkandl1965}
+
+\end{thebibliography}
