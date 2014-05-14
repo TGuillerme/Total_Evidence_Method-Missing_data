@@ -1,4 +1,4 @@
-\begin{thebibliography}{51}
+\begin{thebibliography}{52}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -35,6 +35,14 @@ Cooper, N. and A.~Purvis. 2009. What factors shape rates of phenotypic
 Critchlow, D.~E., D.~K. Pearl, and C.~Qian. 1996. The triples distance for
   rooted bifurcating phylogenetic trees. Systematic Biology 45:323--334.
 \bibAnnoteFile{critchlowthe1996}
+
+\bibitem[{Davalos et~al.(2014)Davalos, Velazco, Warsi, Smits, and
+  Simmons}]{davalosintegrating2014}
+Davalos, L.~M., P.~M. Velazco, O.~M. Warsi, P.~D. Smits, and N.~B. Simmons.
+  2014. Integrating incomplete fossils by isolating conflicting signal in
+  saturated and {Non-Independent} morphological characters. Systematic Biology
+  .
+\bibAnnoteFile{davalosintegrating2014}
 
 \bibitem[{Dietl and Flessa(2011)}]{dietlconservation2011}
 Dietl, G. and K.~Flessa. 2011. Conservation paleobiology: putting the dead to
@@ -83,6 +91,14 @@ Hasegawa, M., H.~Kishino, and T.~A. Yano. 1985. Dating of the human ape
   Evolution 22:160--174.
 \bibAnnoteFile{HKY85}
 
+\bibitem[{Healy et~al.(2014)Healy, Guillerme, Finlay, Kane, Kelly, Deirdre,
+  Kelly, Donohue, Jackson, and Cooper}]{healyecology2014}
+Healy, K., T.~Guillerme, S.~Finlay, A.~Kane, S.~Kelly, M.~Deirdre, D.~Kelly,
+  I.~Donohue, A.~Jackson, and N.~Cooper. 2014. Ecology and mode-of-life explain
+  lifespan variation in birds and mammals. Proceedings. Biological sciences /
+  The Royal Society 281.
+\bibAnnoteFile{healyecology2014}
+
 \bibitem[{Heath et~al.(2013)Heath, Huelsenbeck, and Stadler}]{heaththe2013}
 Heath, T., J.~Huelsenbeck, and T.~Stadler. 2013. The fossilized {Birth-Death}
   process: A coherent model of fossil calibration for divergence time
@@ -116,6 +132,14 @@ Lewis, P. 2001. A likelihood approach to estimating phylogeny from discrete
   morphological character data. Systematic biology 50:913--925.
 \bibAnnoteFile{lewisa2001}
 
+\bibitem[{Manos et~al.(2007)Manos, Soltis, Soltis, Manchester, Oh, Bell,
+  Dilcher, and Stone}]{manosphylogeny2007}
+Manos, P., P.~Soltis, D.~Soltis, S.~Manchester, S.~Oh, C.~Bell, D.~Dilcher, and
+  D.~Stone. 2007. Phylogeny of extant and fossil juglandaceae inferred from the
+  integration of molecular and morphological data sets. Systematic biology
+  56:412--430.
+\bibAnnoteFile{manosphylogeny2007}
+
 \bibitem[{Meredith et~al.(2011)Meredith, Janečka, Gatesy, Ryder, Fisher,
   Teeling, Goodbla, Eizirik, Sim\~{a}o, Stadler, Rabosky, Honeycutt, Flynn,
   Ingram, Steiner, Williams, Robinson, Angela, Westerman, Ayoub, Springer, and
@@ -127,14 +151,6 @@ Meredith, R., J.~Janečka, J.~Gatesy, O.~Ryder, C.~Fisher, E.~Teeling,
   of the cretaceous terrestrial revolution and {KPg} extinction on mammal
   diversification. Science {(New} York, {N.Y.)} 334:521--524.
 \bibAnnoteFile{meredithimpacts2011}
-
-\bibitem[{Metcalf et~al.(2014)Metcalf, Prost, David, Dechaine, Anderson, Batra,
-  Ara\'{u}jo, Cooper, and Guralnick}]{metcalfintegrating2014}
-Metcalf, J., S.~Prost, N.~David, E.~Dechaine, C.~Anderson, P.~Batra,
-  M.~Ara\'{u}jo, A.~Cooper, and R.~Guralnick. 2014. Integrating multiple lines
-  of evidence into historical biogeography hypothesis testing: a bison bison
-  case study. Proceedings. Biological sciences / The Royal Society 281.
-\bibAnnoteFile{metcalfintegrating2014}
 
 \bibitem[{Novacek and Wheeler(1992)}]{novacek1992ext}
 Novacek, M.~J. and Q.~Wheeler. 1992. Extinction and phylogeny. Columbia
@@ -151,6 +167,12 @@ Paradis, E. 2011. Time-dependent speciation and extinction from phylogenies: a
 Paradis, E., J.~Claude, and K.~Strimmer. 2004. {APE:} analyses of phylogenetics
   and evolution in r language. Bioinformatics {(Oxford,} England) 20:289--290.
 \bibAnnoteFile{paradisape:2004}
+
+\bibitem[{Pearman et~al.(2008)Pearman, Guisan, Broennimann, and
+  Randin}]{pearmanniche2008}
+Pearman, P., A.~Guisan, O.~Broennimann, and C.~Randin. 2008. Niche dynamics in
+  space and time. Trends in ecology \& evolution 23:149--158.
+\bibAnnoteFile{pearmanniche2008}
 
 \bibitem[{Pyron(2011)}]{pyrondivergence2011}
 Pyron, R. 2011. Divergence time estimation using fossils as terminal taxa and
@@ -223,10 +245,6 @@ Schrago, C., B.~Mello, and A.~Soares. 2013. Combining fossil and molecular data
   biology 26:2438--2446.
 \bibAnnoteFile{schragocombining2013}
 
-\bibitem[{Shoshani and Tassy(1996)}]{shoshani1996proboscidea}
-Shoshani, J. and P.~Tassy. 1996. The Proboscidea. Oxford University Press.
-\bibAnnoteFile{shoshani1996proboscidea}
-
 \bibitem[{Simpson(1945)}]{simpson1945}
 Simpson, G.~G. 1945. Tempo and mode in evolution. Trans N Y Acad Sci 8:45--60.
 \bibAnnoteFile{simpson1945}
@@ -289,14 +307,6 @@ with contributions~from Jochen~Einbeck, R. J.~H. and M.~Wand. 2013. hdrcde:
 Yang, Z. 1996. Among-site rate variation and its impact on phylogenetic
   analyses. Trends in ecology \& evolution 11:367--372.
 \bibAnnoteFile{yangamong-site1996}
-
-\bibitem[{Young et~al.(2010)Young, Brusatte, Ruta, and
-  de~Andrade}]{youngthe2010}
-Young, M.~T., S.~L. Brusatte, M.~Ruta, and M.~B. de~Andrade. 2010. The
-  evolution of metriorhynchoidea (mesoeucrocodylia, thalattosuchia): an
-  integrated approach using geometric morphometrics, analysis of disparity, and
-  biomechanics. Zoological Journal of the Linnean Society 158.
-\bibAnnoteFile{youngthe2010}
 
 \bibitem[{Zuckerkandl and Pauling(1965)}]{zuckerkandl1965}
 Zuckerkandl, E. and L.~Pauling. 1965. Molecules as documents of evolutionary

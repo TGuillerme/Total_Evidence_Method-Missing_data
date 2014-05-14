@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex TEM_draft"] 1399917115 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1399917116
-  "References.bib" 0 -1 0 ""
-  "TEM_draft.aux" 1399917115 10040 b01aa1a54aeead6d4b9dbb5685b83812 ""
+["bibtex TEM_draft"] 1400078277 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1400078805
+  "./sysbio.bst" 1399917632 30418 82df53f2e0c137d332673e7de8136054 ""
+  "References.bib" 1400075798 582401 72bd71ad4f468180b8cdb422f7558c03 ""
+  "TEM_draft.aux" 1400078804 10318 37672707e24e42357986452c3e9c9bd8 ""
   "TEM_draft.bcf" 0 -1 0 ""
-  "sysbio.bst" 0 -1 0 ""
   (generated)
   "TEM_draft.bbl"
   "TEM_draft.blg"
-["pdflatex"] 1399917115 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1399917116
+["pdflatex"] 1400078804 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1400078805
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/babel-english/english.ldf" 1367878877 6963 2e0cb3d93aa64508bdb0db58ae900d97 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/babel/babel.def" 1368743226 42950 b2c89311c96d7b70c24e1365a2fa51ee ""
@@ -80,10 +80,10 @@
   "Figures/TEM_Fig_TreeCmp3.pdf" 1396968777 986515 d2a965992d74237279b0e9970286afc1 ""
   "Figures/TEM_Fig_missingData.pdf" 1396951242 1072729 a8d122b2102082edf28bbad2549c1693 ""
   "Figures/TEM_Fig_outline.pdf" 1396949440 279308 49049db84bf60502f4db9f7d0c225434 ""
-  "TEM_draft.aux" 1399917115 10040 b01aa1a54aeead6d4b9dbb5685b83812 ""
-  "TEM_draft.bbl" 1398421690 13811 920ff9669c35e4eebcc35d84cf799fce "bibtex TEM_draft"
-  "TEM_draft.out" 1399917115 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "TEM_draft.tex" 1399917113 32943 010226e47bb34640d7eb789d4a41336c ""
+  "TEM_draft.aux" 1400078804 10318 37672707e24e42357986452c3e9c9bd8 ""
+  "TEM_draft.bbl" 1400078277 14227 5c9854ca5565c4fd7984e941e42c8938 "bibtex TEM_draft"
+  "TEM_draft.out" 1400078804 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "TEM_draft.tex" 1400078798 37146 fe2830970a77a83fb6c8957d4b8e7f0d ""
   (generated)
   "TEM_draft.out"
   "TEM_draft.aux"
