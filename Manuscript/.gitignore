@@ -1,16 +1,8 @@
-# LaTeX #
-#########
 *.aux
 *.bbl
 *.blg
-*.dvi
-*.fff
-*.lof
-*.lot
-*.out
-*.toc
-*.ttt
-*.aux
+*.fdb_latexmk
 *.log
-*.gz
-*.fdb*
+*.out
+*.synctex.gz
+*.tex
