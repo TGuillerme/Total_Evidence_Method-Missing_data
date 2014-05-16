@@ -194,7 +194,7 @@ We infered Bayesian phylogenetic trees from the "complete" matrix and from the m
 \label{step:compare_topo}
 We then compared the trees obtained from the matrices containing missing data to the ones obtained from the "complete" matrix to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on the topologies of the phylogenies we estimated.
 \end{enumerate}
-To measure the effect of missing data’s distribution, we repeated steps ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} with the exact same fixed parameters 50 times.
+To measure the effect of missing data distribution, we repeated steps ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} with the exact same fixed parameters 50 times. A list of all the terms used in this paper is available in table ~\ref{Tab_glossary}.
 
 
 \begin{figure}
@@ -209,6 +209,30 @@ We repeated step 1 to 4 50 times.}
 \label{Fig_Outline}
 \end{figure}
 
+\begin{table}[ht]
+\caption{Glossary}
+\centering
+\begin{tabular}{p{5cm} p{9cm}}
+\hline
+\hfill Term & Definition \\[0.5ex]
+\hline
+\hfill living taxa & taxa with both molecular and morphological data available \\[1.5ex]
+\hfill fossil taxa & taxa with only morphological data available \\[1.5ex]
+\hfill "complete" matrix & matrix with no missing data except for the molecular data for the fossil taxa \\[1.5ex]
+\hfill "missing-data" matrix & matrix with various amount of missing data \\[1.5ex]
+\hfill $M_{L}$ & missing living taxa in the morphological part of the matrix \\[1.5ex]
+\hfill $M_{F}$ & missing data for the fossil taxa in morphological part of the matrix \\[1.5ex]
+\hfill $M_{C}$ & missing morphological characters for both living and fossil taxa \\[1.5ex]
+\hfill "true" tree & tree used to simulate the matrix \\[1.5ex]
+\hfill "best" tree & best tree inferred from the matrix \\[1.5ex]
+\hfill "missing-data" tree & tree inferred from a matrix with missing data ($M_{L}$, $M_{F}$, $M_{C}$) \\[1.5ex]
+\hfill "horizontal" sub-matrix & sub-matrix with morphological and molecular characters for living taxa \\[1.5ex]
+\hfill "vertical" sub-matrix & sub-matrix with morphological data for both living and fossil taxa \\[1.5ex]
+\hfill "corner" sub-matrix & sub-matrix with morphological data for living taxa \\[1.5ex]
+\hfill "missing-data" sub-matrix & molecular part of the matrix for the fossil taxa (no data) \\
+\end{tabular}
+\label{Tab_glossary}
+\end{table}
 
 \subsection{Generating the matrix}
 First we randomly generated a "true" tree of 50 taxa in R v3.0.2 \citep{R302} using the package diversitree v0.9-6 \citep{fitzjohndiversitree2012}.
@@ -252,10 +276,16 @@ This parameter illustrates the number of available morphological characters for 
 \begin{figure}
 \centering
 \includegraphics[keepaspectratio=true]{Figures/TEM_Fig_missingData.pdf}
-\caption{Data removal protocol:
+\caption{Different parts of the matrix. %Title?
+A: Missing data parameters:
 Missing living - The proportion of living taxa with no morphological data ($M_{L}$);
 Missing fossil - The proportion of missing morphological data across all fossil taxa ($M_{F}$);
-Missing character - The proportion of missing morphological characters across all taxa (living and fossil) ($M_{C}$).}
+Missing character - The proportion of missing morphological characters across all taxa (living and fossil) ($M_{C}$).
+B: Different parts of the matrix:
+The "horizontal" sub-matrix (orange) contains molecular and morphological data for living taxa;
+The "vertical" sub-matrix (blue) contains morphological data for living and fossil taxa;
+The "corner" sub-matrix (orange and blue striped) contains morphological data for living taxa;
+The "missing-data" sub-matrix (grey) is the molecular part of the fossil taxa and contains no data.}
 \label{Fig_RemoveData}
 \end{figure}
 
@@ -267,11 +297,11 @@ Because some parameter combinations introduce a lot of missing (e.g. $M_L$=75\%,
 When this occurred we repeated the random deletion of characters until every species had at least 5\% data.
 
 \subsection{Building phylogenies}
-From the resulting matrices we generated two types of trees, the "best" tree that is infered from the "complete" matrix and the trees with missing data infered from the 125 matrices with various amounts of missing data.
+From the resulting matrices we generated two types of trees, the "best" tree that is inferred from the "complete" matrix and the "missing-data" trees inferred from the 125 matrices with various amounts of missing data.
 The "true" tree was used to generate the "complete" matrix and reflects the "true" evolutionary history in our simulations.
 The "best" tree, on the other hand, is the best tree we can build using the state-of-the-art phylogenetic methods.
 In real world situations, the "true" tree is never available to us because we cannot know the true evolutionnary history of a clade (except in very rare circumstances, e.g. \citet{rozen2005}).
-Therefore, here we focus on comparing the trees infered from the matrices with missing data to the "best" tree, rather than the "true" tree, as the "best" tree is generally what biologists have to work with.
+Therefore, here we focus on comparing the trees inferred from the matrices with missing data to the "best" tree, rather than the "true" tree, as the "best" tree is generally what biologists have to work with. %Maybe add a 'glossary' table with what do we call a best/true/missing tree?
 
 \subsubsection{Maximum Likelihood}
 The "best" tree and the "missing-data" trees were infered using RAxML v7.0.4 \citep{stamatakisthe2008}.
@@ -304,7 +334,7 @@ Even using these priors, it took 65 CPU years to build 50 sets of 125 Bayesian t
 
 \subsection{Comparing topologies}
 We compared the topology of the "missing-data" trees infered from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
-Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees infered from matrices with living and fossil species and molecular and morphological characters.
+Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees infered from matrices with living and fossil taxa and molecular and morphological characters.
 To compare the topology of the resulting trees, we used two metrics to assess number of conserved taxa and clades position using respectively the Triple \citep{dobson1975triplets} and the Robison-Fould \citep{RF1981} distance.
 We normalised the two metrics using the Normalised Tree Similarity index \citep{Bogdanowicz2012} to generalise our results for any n number of taxa. The two metrics and the index are detailed below.
 
@@ -350,34 +380,57 @@ when \textit{NTS}$<$0, the trees are more different than expected by chance (see
 $\newline$
 
 We compared the "missing-data" tree to the "True" and the "Best" tree for each chain.
-For the Maximum Likelihood trees we performed pairwise comparisons between the "True" and "Best" tree and \textit{Y} (where \textit{Y} is one of the 125 trees resulting from the 125 super matrices including various amount of missing data) for both the Robinson-Fould and the Triple metric.
-We calculated the metrics using the TreeCmp java script \citep{Bogdanowicz2012}.
+For the Maximum Likelihood trees we performed pairwise comparisons between the "True" and "Best" tree and the "missing-data" tree (where the "missing-data" tree is one of the 125 trees resulting from the 125 super matrices including various amount of missing data) for both the Robinson-Fould and the Triple metric.
+We calculated the difference between the trees using the metrics described above by using the TreeCmp java script \citep{Bogdanowicz2012}.
 For each metric, we normalized the value using the Normalised Tree Similarity scaled with the mean value of 1000 pairwise random tree comparison for the same metric and the same number of taxa \textit{n}=51 (see supplementaries). %link missing
-We rand the comparison for the 50 trees of each chain having the same combination of parameters values $M_L$, $M_F$ and $M_C$.
-We calculated the mode and the 50, 75 and 95 confidence intervals for each comparison of 50 trees using the hdrcde R package (v3.1 – \citet{hdrcde}).
-For the Bayesian trees, we used the exact same approach described above but instead of comparing the "True" or "Best" tree to the tree \textit{Y}, we compared 1000 trees from the "True" or "Best" tree posterior distribution to 1000 trees from the tree \textit{Y} posterior distribution resulting in 1000 pairwise comparison of the "True" or "Best" tree to the tree \textit{Y} for each 125 trees (see supplementaries - Fig. ~\ref{Fig_Compare}). %link missing
+We ran the comparison for every "missing-data" tree being one of the 125 combination of parameters values $M_L$, $M_F$ and $M_C$ in each chain resulting in 50 comparisons for every "missing-data" trees. 
+We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package (v3.1 – \citet{hdrcde}).
 
-\begin{figure}
+For the Bayesian trees, we had to transform the trees' posterior distribution to a single value in order to be able to compare it to the results of the Maximum Likelihood trees comparisons.
+Traditionally people use the 50\% consensus rule in order to summarise a Bayesian tree posterior distribution \citep[e.g.][]{Ronquist2012mrbayes}.
+However, when the Bayesian inference fails to recover a stable tree topology, the resulting consensus tree may contain many polytomies up to the maximum (resulting in a star tree, i.e. no resolution at all).
+Because one cannot compare trees with no resolution we didn't use the consensus tree but instead we used the mode of 1000 random pairwise comparisons within the Bayesian trees posterior distribution.
+In other words, we summarized the difference between two Bayesian tree posterior distributions using the mode of the distribution of 1000 random trees drawn from the first Bayesian trees posterior distribution to 1000 random trees drawn from the the second Bayesian trees posterior distribution.
+We used the mode to summarize the distributions because it reflects more accurately what a consensus tree represents (the topology the most represented in the posterior distribution).
+A matrix with a good phylogenetic signal will lead to a posterior trees distribution containing many identical topologies.
+Using a normalised tree similarity metric to compare the trees within such a posterior distribution will lead to a high value of tree similarity, reflecting reality.
+Alternatively, a matrix with a poor phylogenetic signal will lead to a posterior distribution containing many different topologies.
+Using a normalised tree similarity metric to compare the trees within such a posterior distribution will lead to a low value of tree similarity, reflecting reality. %Add something in the supplementaries or a figure... Don't know yet what.
+We compared the pairs of Bayesian tree posterior distributions in the same way as for the Maximum Likelihood trees ("True" and "Best" tree compared to the tree "missing-data" tree).
+This resulted in a distribution of one mode per chain for each "missing-data" trees (i.e. 50 modes) for which we calculated the mode and the 50\% and 95\% confidence intervals (see supplementaries - Fig. ~\ref{Fig_Compare}). %link missing
+
+\begin{figure} % Modify the figure
 \centering
-\includegraphics[keepaspectratio=true]{Figures/TEM_Fig_TreeCmp3.pdf}
+\includegraphics[keepaspectratio=true]{Figures/TEM_Fig_TreeCmp.pdf}
 \caption{Tree comparison protocol.
 From each of the 125 parameters combination ($M_L$, $M_F$ and $M_C$), we infered a tree in Baysian or Maximum likelihood framework.
 We then compared this tree with or without fossil/living taxa to the "best/true" tree.
-In the Bayesian framework, 1000 trees from the posterior ditribution where used for each comparison.}
+In the Bayesian framework, 1000 trees from the posterior distribution where used for each comparison.}
 \label{Fig_Compare}
 \end{figure}
 
-\subsection{Inference testing}
-How we tested the inference (vertical/horizontal/corner).
+\subsection{Effect of missing molecular characters for fossil taxa} %Awfull name.
+%How we tested the inference (vertical/horizontal/corner).
+To assess the effect of missing molecular characters for fossil taxa in a Bayesian framework, we reran the Bayesian tree inference on different sub-matrices with no missing data in the same way as described above.
+We split the "complete-matrix" in three sub-matrices with no missing data:
+\begin{enumerate}
+\item
+A first containing both molecular and morphological data for living taxa only (hereafter called the "horizontal" sub-matrix, Table ~\ref{Tab_glossary});
+\item
+A second one containing morphological data for both living and fossil taxa (hereafter called the "vertical" sub-matrix, Table ~\ref{Tab_glossary});
+\item
+A third one containing morphological data for living taxa only (hereafter called the "corner" sub-matrix, Table ~\ref{Tab_glossary});
+\end{enumerate}
+We then compared the resulting tree posterior distribution to itself (in the same way described above) to assess the ability to recover topology for each simulation when no missing data was involved in the phylogenetic inference process.
 
-\subsection{Empirical data}
+\subsection{Empirical data} %Still not done!
 We also compared the results obtained from simulated data by using \citet{ronquista2012} empirical data.
 The matrix contains 67 living species plus one outgroup and 45 fossil species of Hymenopteras with 5097 molecular characters and 354 morphological characters.
 From the 68 living species used in the matrix, only 66 had molecular data, we therefore treated these 66 taxa as "living" taxa and all the other 47 as "fossil" taxa.
 We treated the matrix in the exact same way as described in step 2 and 3 resulting in 125 matrices with various amount of missing data and the same number of Maximum Likelihood and Bayesian trees.
 We used the same settings as for the simulated data in the Maximum Likelihood framework.
 For the Bayesian inferences however, we didn’t used any priors except that we provided a starting tree with the topology of the 68 living species (topology with the highest posterior probability from non-clock analysis - \citet{ronquista2012}).
-Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock analysis since we were only interested in the topology of the infered tree and not the branch length.
+Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock analysis since we were only interested in the topology of the inferred tree and not the branch length.
 
 \section{Results}
 The ability of recovering the best topology in maximum likelihood method is function of the amount of data missing.
