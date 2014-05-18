@@ -308,6 +308,7 @@ The "best" tree and the "missing-data" trees were infered using RAxML v7.0.4 \ci
 We used the GTR + $\Gamma_4$ model (\citet{tavare1986} – default GTRGAMMA in RAxML v7.04) as a generalisation of the HKY + $\Gamma_4$ model \citep{HKY85} for the molecular data.
 The GTR model can be seen as a generalisation of the HKY model (the 2 parameters from the HKY model are implicitly included in the 6 from GTR model - \citet{stamatakisa2008}).
 We used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support. %Mk model seems implemented (i.e. Aprils’s slideshare http://www.slideshare.net/wrightaprilm/evolution2013). But how? Default method for standard data type (i.e. non DNA/AA). Trevor: swapping algorithm? salanin 2003
+%The GTRGAMMA implementation uses 4 discrete rate categories which represents an acceptable trade-off between speed and accuracy. (RAxML Manual)
 
 \subsubsection{Bayesian}
 The "best" tree and the "missing-data" trees were infered using MrBayes v3.2.2 \citep{Ronquist2012mrbayes}.
