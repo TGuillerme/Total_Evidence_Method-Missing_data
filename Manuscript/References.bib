@@ -5160,7 +5160,7 @@
 }
 
 @inbook{tavare1986,
-   author = {Tavaré, Simon},
+   author = {Tavar\'{e}, Simon},
    title = {Some Probabilistic and Statistical Problems in the Analysis of DNA Sequences},
    booktitle = {DNA Sequence Analysis},
    editor = {Miura, Robert M.},
@@ -5299,3 +5299,51 @@
   url={http://dx.doi.org/10.1098/rspb.2014.0298}
 }
 
+@article{Pagel22011994,
+	author = {Pagel, Mark}, 
+	title = {Detecting Correlated Evolution on Phylogenies: A General Method for the Comparative Analysis of Discrete Characters},
+	volume = {255}, 
+	number = {1342}, 
+	pages = {37-45}, 
+	year = {1994}, 
+	doi = {10.1098/rspb.1994.0006}, 
+	abstract ={I present a new statistical method for analysing the relationship between two discrete characters that are measured across a group of hierarchically evolved species or populations. The method assesses whether a pattern of association across the group is evidence for correlated evolutionary change in the two characters. The method takes into account information on the lengths of the branches of phylogenetic trees, develops estimates of the rates of change of the discrete characters, and tests the hypothesis of correlated evolution without relying upon reconstructions of the ancestral character states. A likelihood ratio test statistic is used to discriminate between two models that are fitted to the data: one allowing only for independent evolution of the two characters, the other allowing for correlated evolution. Tests of specific directional hypotheses can also be made. The method is illustrated with an application to the Hominoidea.}, 
+	URL = {http://rspb.royalsocietypublishing.org/content/255/1342/37.abstract}, 
+	eprint = {http://rspb.royalsocietypublishing.org/content/255/1342/37.full.pdf+html}, 
+	journal = {Proceedings of the Royal Society of London. Series B: Biological Sciences} 
+}
+
+@article{Stamatakis21012014,
+	author = {Stamatakis, Alexandros}, 
+	title = {RAxML Version 8: A tool for Phylogenetic Analysis and Post-Analysis of Large Phylogenies},
+	year = {2014}, 
+	doi = {10.1093/bioinformatics/btu033}, 
+	abstract ={Motivation: Phylogenies are increasingly used in all fields of medical and biological research. Moreover, because of the next generation sequencing revolution, datasets used for conducting phylogenetic analyses grow at an unprecedented pace. RAxML (Randomized Axelerated Maximum Likelihood) is a popular program for phylogenetic analyses of large datasets under maximum likelihood. Since the last RAxML paper in 2006, it has been continuously maintained and extended to accommodate the increasingly growing input datasets and to serve the needs of the user community.Results: I present some of the most notable new features and extensions of RAxML, such as, a substantial extension of substitution models and supported data types, the introduction of SSE3, AVX, and AVX2 vector intrinsics, techniques for reducing the memory requirements of the code and a plethora of operations for conducting post-analyses on sets of trees. In addition, an up-to-date, 50 page user manual covering all new RAxML options is available.Availability: The code is available under GNU GPL at https://github.com/stamatak/standard-RAxML.Contact: Alexandros.Stamatakis@h-its.org}, 
+	URL = {http://bioinformatics.oxfordjournals.org/content/early/2014/01/21/bioinformatics.btu033.abstract}, 
+	eprint = {http://bioinformatics.oxfordjournals.org/content/early/2014/01/21/bioinformatics.btu033.full.pdf+html}, 
+	journal = {Bioinformatics} 
+}
+
+@article{stamatakisa2008,
+  title={A rapid bootstrap algorithm for the {RAxML} Web servers.},
+  author={Stamatakis, Alexandros and Hoover, Paul and Rougemont, Jacques},
+  journal={Systematic biology},
+  volume={57},
+  number={5},
+  pages={758-771},
+  year={2008},
+  abstract={Despite recent advances achieved by application of high-performance computing methods and novel algorithmic techniques to maximum likelihood {(ML)-based} inference programs, the major computational bottleneck still consists in the computation of bootstrap support values. Conducting a probably insufficient number of 100 bootstrap {(BS)} analyses with current {ML} programs on large datasets-either with respect to the number of taxa or base pairs-can easily require a month of run time. Therefore, we have developed, implemented, and thoroughly tested rapid bootstrap heuristics in {RAxML} {(Randomized} Axelerated Maximum Likelihood) that are more than an order of magnitude faster than current algorithms. These new heuristics can contribute to resolving the computational bottleneck and improve current methodology in phylogenetic analyses. Computational experiments to assess the performance and relative accuracy of these heuristics were conducted on 22 diverse {DNA} and {AA} (amino acid), single gene as well as multigene, real-world alignments containing 125 up to 7764 sequences. The standard {BS} {(SBS)} and rapid {BS} {(RBS)} values drawn on the best-scoring {ML} tree are highly correlated and show almost identical average support values. The weighted {RF} {(Robinson-Foulds)} distance between {SBS-} and {RBS-based} consensus trees was smaller than 6\% in all cases (average 4\%). More importantly, {RBS} inferences are between 8 and 20 times faster (average 14.73) than {SBS} analyses with {RAxML} and between 18 and 495 times faster than {BS} analyses with competing programs, such as {PHYML} or {GARLI.} Moreover, this performance improvement increases with alignment size. Finally, we have set up two freely accessible Web servers for this significantly improved version of {RAxML} that provide access to the {200-CPU} cluster of the {Vital-IT} unit at the Swiss Institute of Bioinformatics and the {128-CPU} cluster of the {CIPRES} project at the San Diego Supercomputer Center. These Web servers offer the possibility to conduct large-scale phylogenetic inferences to a large part of the community that does not have access to, or the expertise to use, high-performance computing resources.},
+  doi={10.1080/10635150802429642},
+  url={http://dx.doi.org/10.1080/10635150802429642}
+}
+
+
+@article{salamin2003,
+   author = {Salamin, Nicolas and Chase, Mark W and Hodkinson, Trevor R and Savolainen, Vincent},
+   title = {Assessing internal support with large phylogenetic DNA matrices},
+   journal = {Molecular phylogenetics and evolution},
+   volume = {27},
+   number = {3},
+   pages = {528-539},
+   year = {2003}
+}

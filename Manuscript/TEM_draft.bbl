@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{54}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -157,6 +157,12 @@ Novacek, M.~J. and Q.~Wheeler. 1992. Extinction and phylogeny. Columbia
   University Press.
 \bibAnnoteFile{novacek1992ext}
 
+\bibitem[{Pagel(1994)}]{Pagel22011994}
+Pagel, M. 1994. Detecting correlated evolution on phylogenies: A general method
+  for the comparative analysis of discrete characters. Proceedings of the Royal
+  Society of London. Series B: Biological Sciences 255:37--45.
+\bibAnnoteFile{Pagel22011994}
+
 \bibitem[{Paradis(2011)}]{paradistime-dependent2011}
 Paradis, E. 2011. Time-dependent speciation and extinction from phylogenies: a
   least squares approach. Evolution; international journal of organic evolution
@@ -233,6 +239,13 @@ Rozen, D.~E., D.~Schneider, and R.~E. Lenski. 2005. Long-term experimental
   polymorphism. J Mol Evol 61:171--80.
 \bibAnnoteFile{rozen2005}
 
+\bibitem[{Salamin et~al.(2003)Salamin, Chase, Hodkinson, and
+  Savolainen}]{salamin2003}
+Salamin, N., M.~W. Chase, T.~R. Hodkinson, and V.~Savolainen. 2003. Assessing
+  internal support with large phylogenetic dna matrices. Molecular
+  phylogenetics and evolution 27:528--539.
+\bibAnnoteFile{salamin2003}
+
 \bibitem[{Sansom and Wills(2013)}]{sansomfossilization2013}
 Sansom, R. and M.~Wills. 2013. Fossilization causes organisms to appear
   erroneously primitive by distorting evolutionary trees. Scientific reports 3.
@@ -265,10 +278,10 @@ Stadler, T. and Z.~Yang. 2013. Dating phylogenies with sequentially sampled
   tips. Systematic biology .
 \bibAnnoteFile{stadlerdating2013}
 
-\bibitem[{Stamatakis(2008)}]{stamatakisthe2008}
-Stamatakis, A. 2008. The {RAxML} 7.0. 4 manual. Department of Computer Science.
-  Ludwig-Maximilians-Universitäte München .
-\bibAnnoteFile{stamatakisthe2008}
+\bibitem[{Stamatakis(2014)}]{Stamatakis21012014}
+Stamatakis, A. 2014. Raxml version 8: A tool for phylogenetic analysis and
+  post-analysis of large phylogenies. Bioinformatics .
+\bibAnnoteFile{Stamatakis21012014}
 
 \bibitem[{Stamatakis et~al.(2008)Stamatakis, Hoover, and
   Rougemont}]{stamatakisa2008}
@@ -276,10 +289,10 @@ Stamatakis, A., P.~Hoover, and J.~Rougemont. 2008. A rapid bootstrap algorithm
   for the {RAxML} web servers. Systematic biology 57:758--771.
 \bibAnnoteFile{stamatakisa2008}
 
-\bibitem[{Tavaré(1986)}]{tavare1986}
-Tavaré, S. 1986. Some Probabilistic and Statistical Problems in the Analysis
-  of DNA Sequences vol.~17 of \emph{Some Mathematical Questions in Biology}.
-  American Mathematical Society.
+\bibitem[{Tavar\'{e}(1986)}]{tavare1986}
+Tavar\'{e}, S. 1986. Some Probabilistic and Statistical Problems in the
+  Analysis of DNA Sequences vol.~17 of \emph{Some Mathematical Questions in
+  Biology}. American Mathematical Society.
 \bibAnnoteFile{tavare1986}
 
 \bibitem[{Wiens(2006)}]{wiensmissing2006}
