@@ -337,7 +337,7 @@ These priors biased the way the Bayesian process calculated the branch length by
 Even using these priors, it took 65 CPU years to build 50 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
 
 \subsection{Comparing topologies}
-We compared the topology of the "missing-data" trees infered from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
+We compared the topology of the "missing-data" trees inferred from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
 Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees infered from matrices with living and fossil taxa and molecular and morphological characters.
 To compare the topology of the resulting trees, we used two metrics to assess number of conserved taxa and clades position using respectively the Triple \citep{dobson1975triplets} and the Robison-Fould \citep{RF1981} distance.
 We normalised the two metrics using the Normalised Tree Similarity index \citep{Bogdanowicz2012} to generalise our results for any n number of taxa. The two metrics and the index are detailed below.
@@ -390,10 +390,16 @@ For each metric, we normalized the value using the Normalised Tree Similarity sc
 We ran the comparison for every "missing-data" tree being one of the 125 combination of parameters values $M_L$, $M_F$ and $M_C$ in each chain resulting in 50 comparisons for every "missing-data" trees. 
 We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package (v3.1 – \citet{hdrcde}).
 
-For the Bayesian trees, we had to transform the trees' posterior distribution to a single value in order to be able to compare it to the results of the Maximum Likelihood trees comparisons.
+For the Bayesian trees, we had to transform the trees posterior distribution to a single value in order to be able to compare it to the results of the Maximum Likelihood trees comparisons.
 Traditionally people use the 50\% consensus rule in order to summarise a Bayesian tree posterior distribution \citep[e.g.][]{Ronquist2012mrbayes}.
 However, when the Bayesian inference fails to recover a stable tree topology, the resulting consensus tree may contain many polytomies up to the maximum (resulting in a star tree, i.e. no resolution at all).
-Because one cannot compare trees with no resolution we didn't use the consensus tree but instead we used the mode of 1000 random pairwise comparisons within the Bayesian trees posterior distribution.
+Because one cannot compare trees with no resolution we didn't use the consensus tree but instead we used the mode of 1000 Random Pairwise Bayesian Tree Comparisons (RPBTC).
+The RPBTC allowed us to assess the difference between Bayesian trees posterior distribution by taking into account both the support value and the resolution of the consensus tree.
+The RPBTC gives a low score if comparing any Bayesian trees posterior distribution to a Bayesian trees posterior distribution with a low resolution and a low node support (if any), even if the same posterior distribution is compared to itself.
+Even though the RPBTC is dependent on 1000 random tree drawings, the output tree comparison score (i.e. the mode) is still significant not different between independent replicates (100 replicates of 1000 RPBTC each - see \hyperref[supplementaries]{supplementaries})
+%
+%
+%
 In other words, we summarized the difference between two Bayesian tree posterior distributions using the mode of the distribution of 1000 random trees drawn from the first Bayesian trees posterior distribution to 1000 random trees drawn from the the second Bayesian trees posterior distribution.
 We used the mode to summarize the distributions because it reflects more accurately what a consensus tree represents (the topology the most represented in the posterior distribution).
 A matrix with a good phylogenetic signal will lead to a posterior trees distribution containing many identical topologies.
@@ -437,10 +443,38 @@ Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock anal
 
 \section{Results}
 %Do the check for L00F00C00
+\subsection{Building the trees}
+Bayesian chains converged (SD< 0.01 and ESS >> 200 for each tree).
+\subsection{Comparing topologies}
+Did it worked? See sub-matrices
+\subsection{Effect of $M_L$}
+In ML and in Bayesian
+\subsection{Effect of $M_F$}
+In ML and in Bayesian
+\subsection{Effect of $M_C$}
+In ML and in Bayesian
+\subsection{Combined effect}
+In ML and in Bayesian
+
 The ability of recovering the best topology in maximum likelihood method is function of the amount of data missing.
 However, in Bayesian, topology is badly (if not at all) recovered independently of the amount of data missing.
 
 \section{Discussion}
+
+\subsection{Building the trees}
+Hard to simulate morpho characters but see Pagel, April Wright, etc...
+
+\subsection{Comparing topologies}
+Hard to compare Bayesian tree posterior distributions topologies but gives a good idea.
+
+\subsection{ML vs Bayesian}
+Missing data is not a problem as long as random. However, in TEM, n.fossils*n.molecular data is missing and not random.
+Non optimal criterion approach (i.e. Bayesian) worse because of the number of considered "less"-likely trees (flat maximum likelihood landscapes).
+However, ML still good performances and can be used to fix topology.
+
+\subsection{Effect of missing data}
+Parameter blabla seems to be influencing the topology the most.
+But in practice, $M_L$ is the only one realistically solvable. Go to museums!
 
 What about the "best" trees with fairly bad bootstrap support values in ML?
 This is probably due to the low number of characters used in the simulation.
@@ -589,6 +623,13 @@ One can then rescale \textit{RF.scaled} by using the maximal and minimal value f
 RF.scaled_{x,y} = \frac{RF_{x,y}-RF_{max}}{RF_{max}}
 \end{equation}
 This metric is more sensitive to taxa displacement than the Triplet distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and therefore a low value will show a good clade conservation between two trees and a high value will show a bad recovery of common clades.
+
+\subsection{Random Bayesian tree comparisons}
+We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
+We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
+We used an anova to test if there was no significant difference between the replicates so that the RBTC can be replicated.
+We applied this protocol on a poorly resolved tree, a resolved tree with low support value and a resolved tree with high support values.
+%Insert table with results here.
 
 \subsection{Codes}
 All codes are available at: $https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions$
