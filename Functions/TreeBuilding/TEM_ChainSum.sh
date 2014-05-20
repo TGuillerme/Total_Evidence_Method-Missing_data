@@ -8,12 +8,14 @@
 #<Chain Name> creates a folder named after the chain name to store the results
 ##########################
 #Create .treeset files with all the trees from two mb chains.
-#version: 0.4
+#version: 0.5
 #Update: Allows a burnin proportion value
 #Update: Error in the burnin is now fixed
 #Update: Name change and cleaning
+#Update: Name.run.t fixed
+#Update: BurnTree variable fixed
 #----
-#guillert(at)tcd.ie - 17/04/2014
+#guillert(at)tcd.ie - 19/05/2014
 ##########################
 
 
@@ -34,7 +36,7 @@ let "FirstTree += 6"
 mkdir ${name}_treesets
 
 #Create the .treeset file
-for f in *.run1.t
+for f in ${name}.run1.t
     do prefix=$(basename $f .run1.t)
 
     echo $prefix
@@ -43,7 +45,7 @@ for f in *.run1.t
     head -$header ${prefix}.run1.t > ${name}_treesets/${prefix}.treeset
 
     #Burnin
-    BurnTree=$'FirstTree'
+    BurnTree=$FirstTree
     length=$(grep '[&U]' $f | wc -l)
     let "length *= $burnin"
     let "length /= 100"
