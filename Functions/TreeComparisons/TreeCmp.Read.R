@@ -6,6 +6,7 @@
 #Update: improved input format
 #Update: output is now a 'TreeCmp' list class
 #Update: in FUN.TreeCmp.Read, read.table function as been wrapped in a try function.
+#To do: sep option seems to work only with '_'
 ##########################
 #SYNTAX :
 #<chain> the chain name to read in
