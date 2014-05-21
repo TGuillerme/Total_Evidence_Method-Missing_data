@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  20 MAY 2014 14:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  21 MAY 2014 12:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -664,14 +664,14 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
  [15] [16]
-<Figures/TEM_Fig_TreeCmp.pdf, id=414, 483.6971pt x 284.52798pt>
+<Figures/TEM_Fig_TreeCmp.pdf, id=416, 483.6971pt x 284.52798pt>
 File: Figures/TEM_Fig_TreeCmp.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig_TreeCmp.pdf>
-Package pdftex.def Info: Figures/TEM_Fig_TreeCmp.pdf used on input line 408.
+Package pdftex.def Info: Figures/TEM_Fig_TreeCmp.pdf used on input line 414.
 (pdftex.def)             Requested size: 483.69592pt x 284.52728pt.
 
-Overfull \hbox (13.9409pt too wide) in paragraph at lines 408--412
+Overfull \hbox (13.9409pt too wide) in paragraph at lines 414--418
  [][] 
  []
 
@@ -682,9 +682,10 @@ Missing character: There is no ô in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ô in font cmr12!
+ [19]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 444.
- [19] [20] [21] [22] (./TEM_draft.bbl
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 450.
+ [20] [21] [22] (./TEM_draft.bbl
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ≥ in font cmr12!
 
@@ -692,35 +693,35 @@ Missing character: There is no ≥ in font cmr12!
 Missing character: There is no ƒ in font cmr12!
 Missing character: There is no ç in font cmr12!
  [25] [26] [27]) [28]
-<Figures/TEM_Fig-AppendixCharacters.pdf, id=517, 505.89pt x 505.89pt>
+<Figures/TEM_Fig-AppendixCharacters.pdf, id=520, 505.89pt x 505.89pt>
 File: Figures/TEM_Fig-AppendixCharacters.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig-AppendixCharacters.pdf>
 Package pdftex.def Info: Figures/TEM_Fig-AppendixCharacters.pdf used on input l
-ine 532.
+ine 538.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 
-Overfull \hbox (36.13373pt too wide) in paragraph at lines 532--534
+Overfull \hbox (36.13373pt too wide) in paragraph at lines 538--540
  [][] 
  []
 
-[29] [30 <./Figures/TEM_Fig-AppendixCharacters.pdf>] [31] [32]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 625.
- [33] [34]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 625.
-
-(./TEM_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 625.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 625.
+[29] [30 <./Figures/TEM_Fig-AppendixCharacters.pdf>] [31] [32] [33]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 656.
+ [34]
+[35]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 656.
+ (./TEM_draft.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 656.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 656.
 Package rerunfilecheck Info: File `TEM_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 625.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 656.
  ) 
 Here is how much of TeX's memory you used:
- 9455 strings out of 493315
- 142648 string characters out of 6137904
- 244834 words of memory out of 5000000
- 12545 multiletter control sequences out of 15000+600000
+ 9458 strings out of 493315
+ 142685 string characters out of 6137904
+ 245936 words of memory out of 5000000
+ 12546 multiletter control sequences out of 15000+600000
  22987 words of font info for 90 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,12n,38p,921b,521s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -736,10 +737,10 @@ cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
 /texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on TEM_draft.pdf (34 pages, 1555358 bytes).
+Output written on TEM_draft.pdf (35 pages, 1557189 bytes).
 PDF statistics:
- 734 PDF objects out of 1000 (max. 8388607)
- 608 compressed objects within 7 object streams
- 121 named destinations out of 1000 (max. 500000)
+ 742 PDF objects out of 1000 (max. 8388607)
+ 615 compressed objects within 7 object streams
+ 123 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

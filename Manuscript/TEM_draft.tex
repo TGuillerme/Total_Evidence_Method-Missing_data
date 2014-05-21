@@ -396,7 +396,7 @@ However, when the Bayesian inference fails to recover a stable tree topology, th
 Because one cannot compare trees with no resolution we didn't use the consensus tree but instead we used the mode of 1000 Random Pairwise Bayesian Tree Comparisons (RPBTC).
 The RPBTC allowed us to assess the difference between Bayesian trees posterior distribution by taking into account both the support value and the resolution of the consensus tree.
 The RPBTC gives a low score if comparing any Bayesian trees posterior distribution to a Bayesian trees posterior distribution with a low resolution and a low node support (if any), even if the same posterior distribution is compared to itself.
-Even though the RPBTC is dependent on 1000 random tree drawings, the output tree comparison score (i.e. the mode) is still significant not different between independent replicates (100 replicates of 1000 RPBTC each - see \hyperref[supplementaries]{supplementaries})
+Even though the RPBTC is dependent on 1000 random tree drawings, the output tree comparison score (i.e. the mode) is still significant not different between independent replicates (100 replicates of 1000 RPBTC each - see \hyperref[supplementaries]{supplementaries}, table ~\ref{RPBTC_testing})
 %
 %
 %
@@ -628,8 +628,26 @@ This metric is more sensitive to taxa displacement than the Triplet distance \ci
 We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
 We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
 We used an anova to test if there was no significant difference between the replicates so that the RBTC can be replicated.
-We applied this protocol on a poorly resolved tree, a resolved tree with low support value and a resolved tree with high support values.
-%Insert table with results here.
+We applied this protocol on a poorly resolved tree (Low Score), a resolved tree with low support value (Medium Score) and a resolved tree with high support values (High Score).
+Results are available in table ~\ref{RPBTC_testing}.
+
+\begin{table}[ht]
+\caption{Anova results: difference between 100 replicates using the RPBTC method}
+\centering
+\begin{tabular}{rllrrrr}
+  \hline
+  Tree.Type & Used.metric & Replicates & Df & F.value & p.value \\ [0.5ex]
+  \hline
+  Low Score & RF & 100.00 &   1 & 0.07 & 0.79 \\ [0.5ex]
+  Low Score & Tr & 100.00 &   1 & 0.33 & 0.56 \\ [0.5ex]
+  Medium Score & RF & 100.00 &   1 & 1.07 & 0.30 \\ [0.5ex]
+  Medium Score & Tr & 100.00 &   1 & 0.00 & 0.96 \\ [0.5ex]
+  High Score & RF & 100.00 &   1 & 0.20 & 0.66 \\ [0.5ex]
+  High Score & Tr & 100.00 &   1 & 0.61 & 0.43 \\ [0.5ex]
+  \hline
+\end{tabular}
+\label{RPBTC_testing}
+\end{table}
 
 \subsection{Codes}
 All codes are available at: $https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions$
