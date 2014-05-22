@@ -181,16 +181,16 @@ We assess how changing the values of these three parameters affects the topology
 \section{Methods} %no material needed?
 To explore the effect of missing data on total evidence trees topologies we used the following protocol (note that we explain each step in detail below this general outline -Fig. ~\ref{Fig_Outline}):
 \begin{enumerate}
-\item{Generating the matrix}
+\item{Generating the matrix:} \\
 \label{step:generate_matrix}
-We built a randomly generated birth death tree (hereafter called the "best" tree, Table ~\ref{Tab_glossary}) to infer a matrix containing both molecular and morphological data for living and fossil taxa (hereafter called the "complete" matrix, Table ~\ref{Tab_glossary}).
-\item{Removing data}
+We built a randomly generated birth death tree (hereafter called the "true" tree, Table ~\ref{Tab_glossary}) to infer a matrix containing both molecular and morphological data for living and fossil taxa (hereafter called the "complete" matrix, Table ~\ref{Tab_glossary}).
+\item{Removing data:} \\
 \label{step:remove_data}
 We removed data from the "complete" matrix to simulate the effects of missing data by modifying three parameters (1) the proportion of missing living taxa ($M_{L}$), (2) the proportion of missing data in the fossil taxa ($M_{F}$) and (3) the proportion of missing morphological characters ($M_{C}$) (the resulting matrix is called hereafter the "missing-data" matrix, Table ~\ref{Tab_glossary}).
-\item{Building phylogenies}
+\item{Building phylogenies:} \\
 \label{step:build_phylo}
 We inferred Bayesian phylogenetic trees from the "complete" matrix and from the "missing-data" matrices resulting in respectively a tree generate from a matrix containing no missing data in the morphological part (hereafter called the "best" tree, Table ~\ref{Tab_glossary}) and trees inferred from matrices with missing data in their morphological part (hereafter called the "missing-data" trees, Table ~\ref{Tab_glossary}).
-\item{Comparing topologies}
+\item{Comparing topologies:} \\
 \label{step:compare_topo}
 We then compared the "best" tree to the "missing-data" trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on the topologies of the phylogenies we estimated.
 \end{enumerate}
@@ -205,7 +205,7 @@ To measure the effect of missing data distribution, we repeated steps ~\ref{step
 (2) We removed data fron the morphological partition of the "Complete" matrix resulting in 124 matrices with missing data.
 (3) We build Bayesian phylogenetic trees from each matrix.
 (4) We then compared the trees with missing data (from the matrices with missing data) to the tree with no missing data (hereafter, the "best" tree – infered from the "complete" matrix).
-We repeated step 1 to 4 50 times.}
+We repeated step 1 to 4 51 (3$\times $17) times.}
 \label{Fig_Outline}
 \end{figure}
 
@@ -226,6 +226,7 @@ We repeated step 1 to 4 50 times.}
 \hfill "true" tree & tree used to simulate the matrix \\[1.5ex]
 \hfill "best" tree & tree inferred from the "complete" matrix \\[1.5ex]
 \hfill "missing-data" tree & tree inferred the "missing-data" matrices \\[1.5ex]
+\hfill RPBTC & Random pairwise Bayesian tree comparison \\[1.5ex]
 \hfill "horizontal" sub-matrix & sub-matrix with morphological and molecular characters for living taxa \\[1.5ex]
 \hfill "vertical" sub-matrix & sub-matrix with morphological data for both living and fossil taxa \\[1.5ex]
 \hfill "corner" sub-matrix & sub-matrix with morphological data for living taxa \\[1.5ex]
@@ -243,18 +244,20 @@ The mean branch length of the tree was used to separate the outgroup from the re
 
 Next, we created a molecular and a morphological matrix from the "true" tree.
 The molecular matrix was infered from the "true" tree using the package phyclust v0.1-14 \citep{chen2011}.
-The matrix was made of 1000 characters sites for 51 taxa and generated using the seqgen algorithm \citep{ ranbaut1997seqgen}.
+The matrix was made of 1000 characters sites for 51 taxa and generated using the seqgen algorithm \citep{ranbaut1997seqgen}.
 We used the HKY model \citep{HKY85} with a random base frequencies and with the transition/transversion rate of 2 \citep{douadycomparison2003} as parameters for generating the matrix.
 The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \citep{yangamong-site1996}.
 We chose a low value of $\alpha$ to lower the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal.
 These parameters were selected to generate data with no special assumption about how the characters evolved as well as to reduce the computational time required if these parameters were estimated rather than defined (65 CPU years).
 
-We inferred the morphological matrix using the ape package v3.0-8 \citep{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa.
+We inferred the morphological matrix using the ape package v3.0-11 \citep{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa.
 We assigned the number of character states (either 2 or 3) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters.
 These probabilities were selected using the overall distribution of characters states extracted from 100 published empirical morphological matrices (See \hyperref[supplementaries]{supplementaries}).
 We then ran an independent discrete character simulation for each character using the "true" tree branch length and topology with the randomly selected number of states (2 or 3) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to an other \citep{Pagel22011994}.
 This method allows us to have only two parameters per character i.e. the number of states and the evolutionary rate.
-For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5. 
+For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5.
+We used a low evolution rate parameter (i.e. $\alpha$) in order to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \citep{wagner2000,davalosintegrating2014}.
+
 All the molecular information for fossil taxa was replaced by missing data ("?").
 Finally, we combined the morphological and molecular matrices obtained from the "true" tree.
 Hereafter we call this the "complete" matrix, i.e. the matrix with no missing data except for the molecular data of the fossil taxa.
@@ -334,13 +337,13 @@ and a transition/transversion ratio prior of 2 sampled from a strong beta distri
 
 We used these priors to speed up the Bayesian process.
 These priors biased the way the Bayesian process calculated the branch length by giving non-random starting points and boundaries for the parameters estimation process, however, we are focusing on the effect of missing data on the topology and not on the branch length.
-Even using these priors, it took 65 CPU years to build 50 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
+Even using these priors, it took 65 CPU years to build 51 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
 
 \subsection{Comparing topologies}
 We compared the topology of the "missing-data" trees inferred from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
 Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees infered from matrices with living and fossil taxa and molecular and morphological characters.
 To compare the topology of the resulting trees, we used two metrics to assess number of conserved taxa and clades position using respectively the Triple \citep{dobson1975triplets} and the Robison-Fould \citep{RF1981} distance.
-We normalised the two metrics using the Normalised Tree Similarity index \citep{Bogdanowicz2012} to generalise our results for any n number of taxa. The two metrics and the index are detailed below.
+We normalised the two metrics using the Normalised Tree Similarity index \citep{Bogdanowicz2012} to generalise our results for any \textit{n} number of taxa. The two metrics and the index are detailed below.
 
 \subsubsection{Triple distance ($T_{x,y}$) \citep{dobson1975triplets}}
 This metric measures the number of different subtrees of three clades between two given trees.
@@ -384,30 +387,43 @@ when \textit{NTS}$<$0, the trees are more different than expected by chance (see
 $\newline$
 
 We compared the "missing-data" tree to the "True" and the "Best" tree for each chain.
-For the Maximum Likelihood trees we performed pairwise comparisons between the "True" and "Best" tree and the "missing-data" tree (where the "missing-data" tree is one of the 125 trees resulting from the 125 super matrices including various amount of missing data) for both the Robinson-Fould and the Triple metric.
+For the Maximum Likelihood trees we performed pairwise comparisons between the "True" and "Best" tree and the "missing-data" tree (where the "missing-data" tree is one of the 125 trees resulting from the 125 super matrices including various amount of missing data, see Table ~\ref{Tab_glossary}) for both the Robinson-Fould and the Triple metric.
 We calculated the difference between the trees using the metrics described above by using the TreeCmp java script \citep{Bogdanowicz2012}.
 For each metric, we normalized the value using the Normalised Tree Similarity scaled with the mean value of 1000 pairwise random tree comparison for the same metric and the same number of taxa \textit{n}=51 (see \hyperref[supplementaries]{supplementaries}).
-We ran the comparison for every "missing-data" tree being one of the 125 combination of parameters values $M_L$, $M_F$ and $M_C$ in each chain resulting in 50 comparisons for every "missing-data" trees. 
+We ran the comparison for every "missing-data" tree being one of the 125 combination of parameters values $M_L$, $M_F$ and $M_C$ in each chain resulting in 51 comparisons for every "missing-data" trees. 
 We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package (v3.1 – \citet{hdrcde}).
 
-For the Bayesian trees, we had to transform the trees posterior distribution to a single value in order to be able to compare it to the results of the Maximum Likelihood trees comparisons.
-Traditionally people use the 50\% consensus rule in order to summarise a Bayesian tree posterior distribution \citep[e.g.][]{Ronquist2012mrbayes}.
-However, when the Bayesian inference fails to recover a stable tree topology, the resulting consensus tree may contain many polytomies up to the maximum (resulting in a star tree, i.e. no resolution at all).
-Because one cannot compare trees with no resolution we didn't use the consensus tree but instead we used the mode of 1000 Random Pairwise Bayesian Tree Comparisons (RPBTC).
-The RPBTC allowed us to assess the difference between Bayesian trees posterior distribution by taking into account both the support value and the resolution of the consensus tree.
-The RPBTC gives a low score if comparing any Bayesian trees posterior distribution to a Bayesian trees posterior distribution with a low resolution and a low node support (if any), even if the same posterior distribution is compared to itself.
-Even though the RPBTC is dependent on 1000 random tree drawings, the output tree comparison score (i.e. the mode) is still significant not different between independent replicates (100 replicates of 1000 RPBTC each - see \hyperref[supplementaries]{supplementaries}, table ~\ref{RPBTC_testing})
-%
-%
-%
-In other words, we summarized the difference between two Bayesian tree posterior distributions using the mode of the distribution of 1000 random trees drawn from the first Bayesian trees posterior distribution to 1000 random trees drawn from the the second Bayesian trees posterior distribution.
-We used the mode to summarize the distributions because it reflects more accurately what a consensus tree represents (the topology the most represented in the posterior distribution).
-A matrix with a good phylogenetic signal will lead to a posterior trees distribution containing many identical topologies.
-Using a normalised tree similarity metric to compare the trees within such a posterior distribution will lead to a high value of tree similarity, reflecting reality.
-Alternatively, a matrix with a poor phylogenetic signal will lead to a posterior distribution containing many different topologies.
-Using a normalised tree similarity metric to compare the trees within such a posterior distribution will lead to a low value of tree similarity, reflecting reality. %Add something in the supplementaries or a figure... Don't know yet what.
-We compared the pairs of Bayesian tree posterior distributions in the same way as for the Maximum Likelihood trees ("True" and "Best" tree compared to the tree "missing-data" tree).
-This resulted in a distribution of one mode per chain for each "missing-data" trees (i.e. 50 modes) for which we calculated the mode and the 50\% and 95\% confidence intervals (see \hyperref[supplementaries]{supplementaries} - Fig. ~\ref{Fig_Compare}).
+Bayesian tree inference allows to account for the statistical uncertainty of a phylogenetic tree by not using an optimal criterion (c.f. Maximum Likelihood) and gives a tree posterior distribution (c.f. the likeliest tree in ML).
+This method has the clear advantage of better dealing with error and uncertainty but is less practical for using the results (i.e. the phylogeny) for any further study (but see \citet{healyecology2014}).
+To avoid this problem, people traditionally use the a consensus tree build on a majority rule in order to summarise a Bayesian tree posterior distribution leading to a single tree containing both topological and branch length information as well as support information (i.e. posterior probabilities, e.g. \citet{Ronquist2012mrbayes}).
+However, using a Bayesian consensus tree has limitation especially if the resulting consensus tree is not well supported or resolved.
+Because the metrics used in this study are used to measure variation in topology between two trees (i.e. taxa placement or clade position), comparing two Bayesian consensus trees is not optimal in picking topological difference signal.
+For example, if one of the trees is not resolved at all (i.e. a star tree), comparing it to any other tree (even an other star tree) will not give useful results.
+Therefore we used the entire Bayesian trees posterior distribution in order to perform the tree comparisons (i.e. the "Best" Bayesian tree posterior distribution vs. the "missing-data" Bayesian tree posterior distribution).
+
+\subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
+We compared the distribution using a Random Pairwise Bayesian Tree Comparison (RPBTC) method.
+This method consists in comparing a series of randomly selected pairs of trees from two posterior distributions (on from each distribution) and use the mode to summarize the resulting distribution as a proxy of the difference between the two trees in a Bayesian framework.
+\begin{equation}
+RPBTC_{X,Y}=Mo(d_{m,n}(X_{i1},Y_{j1}),d_{m,n}(X_{i2},Y_{j2}),d_{m,n}(X_{i3},Y_{j3}), ... ,d_{m,n}(X_{ik},Y_{jk}))
+\end{equation}
+
+Where \textit{X} and \textit{Y} are two Bayesian tree posterior distribution;
+ $d_{m,n}$ is the pairwise difference for any metric \textit{m} and \textit{n} taxa between $X_{i}$ and $Y_{j}$ which are two single trees randomly sampled respectively from \textit{X} and \textit{Y}
+ and $Mo(d_{m,n}(X_{i1},Y_{j1}),d_{m,n}(X_{i2},Y_{j2}),d_{m,n}(X_{i3},Y_{j3}), ... ,d_{m,n}(X_{ik},Y_{jk}))$ is the mode of the pairwise difference repeated \textit{k} times.
+We used the mode to summarize the distributions because the value that is the most represented in the distribution reflects more accurately what a consensus tree represents (the topology the most represented in the posterior distribution).
+Also, the mode represents a value that is present in the distribution (which, depending on the metric, can be a series of discrete values) in contrast to the other distribution summary metrics, such as the mean or the median, which can take values that are not actually present in the distribution.
+For example, if comparing two posterior tree distribution, we obtain difference values of 10, 10, 10, 5, 5 and 1, using the mean (6.8) or the median (7.5) gives a values that actually doesn't exist
+
+In this study, we calculated RPBTC for both metrics (RF and Triple distance) for each pairs of Bayesian tree distributions (i.e. the "Best" Bayesian tree posterior distribution vs. the "missing-data" Bayesian tree posterior distribution) with 1000 random pairwise comparisons (\textit{k}).
+Because the RPBTC uses random pairwise comparisons, there is a chance of comparing always trees that have the biggest or the smallest difference between two distributions, either deflating or inflating the RPBTC difference value.
+However, using 1000 random pairwise comparisons makes the difference stable (i.e. if repeated independently, no difference is detected - see \hyperref[supplementaries]{supplementaries}).
+
+$\newline$
+
+We calculated the NTS for the "Best" Bayesian tree vs. "missing-data" Bayesian tree comparison for both RF and Triple metric using the mode of the RPBTC for each chain resulting in a distribution of 51 modes per comparison.
+We then compared the NTS of the Bayesian trees to the NTS of the ML trees for both metrics for each comparison.
+This resulted in a distribution of 51 NTS values for the Bayesian trees and 51 NTS values for the ML trees for each tree comparison for which we calculated the mode and the 50\% and 95\% confidence intervals (see \hyperref[supplementaries]{supplementaries} - Fig. ~\ref{Fig_Compare}).
 
 \begin{figure} % Modify the figure
 \centering
@@ -444,7 +460,7 @@ Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock anal
 \section{Results}
 %Do the check for L00F00C00
 \subsection{Building the trees}
-Bayesian chains converged (SD< 0.01 and ESS >> 200 for each tree).
+Bayesian chains converged (SD $<$ 0.01 and ESS $>>$ 200 for each tree).
 \subsection{Comparing topologies}
 Did it worked? See sub-matrices
 \subsection{Effect of $M_L$}
@@ -494,6 +510,7 @@ What about homoplasy in the morphological matrix?
 Here, we made the assumption that theoretically, morphological characters are randomly distributed on an organism however it seems clear that empirical morphological data does not act randomly
 If one states that morphological characters accumulate through time in the same way as the majority of the molecular characters (neutral theory, cite) then, homoplasic characters are expected to appear randomly through time.
 Therefore, homoplasy is expected to be more important (by chance) in bigger morphological matrices \citep{davalosintegrating2014}.
+After a certain amount of morphological characters, adding new ones adds homoplasy \citep{wagner2000}.
 
 \section{Conclusion}
 A Bayesian approach fails to recover accurate topology in a total evidence approach framework, whatever the amount of missing data.
@@ -524,7 +541,8 @@ This cluster was funded through grants from Science Foundation Ireland.
 \bibliographystyle{sysbio} %don't write the suffix
 \bibliography{References} %don't write the suffix
 
-\section{Supplementaries}\label{supplementaries}
+\section{Supplementaries}
+\label{supplementaries}
 \subsection{Morphological characters states}
 In order to obtain a realistic probabilistic value for of \textit{k} characters states for each simulated morphological character, we downloaded 100 random morphological characters (with more than 100 characters each) from TreeBASE database (http://treebase.org/) published between 1985 and 2013 and covering 19 taxomomic classess (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta).
 We selected a total of 22563 characters ranging from 2 to 10 states.
@@ -624,7 +642,13 @@ RF.scaled_{x,y} = \frac{RF_{x,y}-RF_{max}}{RF_{max}}
 \end{equation}
 This metric is more sensitive to taxa displacement than the Triplet distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and therefore a low value will show a good clade conservation between two trees and a high value will show a bad recovery of common clades.
 
-\subsection{Random Bayesian tree comparisons}
+\subsection{Tree comparisons}
+\subsubsection{Random tree comparison scaling}
+We used the comparison of 1000 random trees to obtain the mean comparison value $\bar{d}_{m,n}$\textit{(rand)} for the NTS metric.
+We randomly generated two sets of 1000 trees of \textit{n} taxa using the rmtree function of ape package (v3.0-11 \citet{paradisape:2004}) that generates a given number of random Yule trees.
+We calculated the $\bar{d}_{m,n}$\textit{(rand)} value using an approach similar to the RPCBTC (described below) by performing 1000 random pairwise comparisons using the TreeCmp java script \citep{Bogdanowicz2012}.
+
+\subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
 We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
 We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
 We used an anova to test if there was no significant difference between the replicates so that the RBTC can be replicated.
