@@ -17,7 +17,11 @@ Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",head
 #/ML/
 
 #Bayesian chains
-#/Bayesian/
+cd("../Data/Tree_Comparisons/TreeCmp_chains/Bayesian/")
+
+cd('../../../../Analysis/')
+
+
 
 #Plots
 
