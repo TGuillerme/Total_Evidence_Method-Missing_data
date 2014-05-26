@@ -13,7 +13,7 @@
 #<suffix> the file chain suffix (default =.Cmp)
 #<sep> the separator between the chain name and the constant part of the file name (default=_)
 #<header> whether the tables to read have a header or not (default=TRUE)
-#<header> whether to be verbose or not (default=FALSE) - useful for large data sets handling
+#<verbose> whether to be verbose or not (default=FALSE) - useful for large data sets handling
 ##########################
 #----
 #guillert(at)tcd.ie - 25/04/2014
