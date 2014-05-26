@@ -18,10 +18,9 @@ Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",head
 
 #Bayesian chains
 cd("../Data/Tree_Comparisons/TreeCmp_chains/Bayesian/")
-
+tmp<-TreeCmp.Read('MChain', verbose=TRUE)
+Bayesian_trees<-NTS(tmp, Random51)
 cd('../../../../Analysis/')
-
-
 
 #Plots
 
