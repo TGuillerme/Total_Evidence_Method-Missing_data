@@ -15,7 +15,7 @@
 ##########################
 #SYNTAX :
 #<data> an object of the class TreeCmp
-#<metric.number> the name of the metric of interest
+#<metric> the name of the metric of interest
 #<probs> a vector probabilities levels (default = c(95,75,50)).
 #<plot> whether to plot the results or not (default = TRUE).
 #<col> a colour for the ploting (default="black"). Is ignored if plot=FALSE.
