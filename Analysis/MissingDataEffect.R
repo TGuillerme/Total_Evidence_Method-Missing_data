@@ -111,26 +111,27 @@ legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 
-
+bptest()
+shapiro.test()
 #Checking for differences
 #MLiving
-TreeCmp.anova(Bayesian.ML, "R.F_Cluster")
-TreeCmp.anova(Bayesian.ML, "Triples")
+TreeCmp.anova(Bayesian.ML, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.ML, "Triples") #No diff
 #MFossil
-TreeCmp.anova(Bayesian.MF, "R.F_Cluster")
-TreeCmp.anova(Bayesian.MF, "Triples")
+TreeCmp.anova(Bayesian.MF, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.MF, "Triples") #No diff
 #MCharacter
-TreeCmp.anova(Bayesian.MC, "R.F_Cluster")
-TreeCmp.anova(Bayesian.MC, "Triples")
+TreeCmp.anova(Bayesian.MC, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.MC, "Triples") #No diff
 #MLiving:MFossil
-TreeCmp.anova(Bayesian.MLMF, "R.F_Cluster")
-TreeCmp.anova(Bayesian.MLMF, "Triples")
+TreeCmp.anova(Bayesian.MLMF, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.MLMF, "Triples") #No diff
 #MLiving:MCharacter
-TreeCmp.anova(Bayesian.MLMC, "R.F_Cluster")
-TreeCmp.anova(Bayesian.MLMC, "Triples")
+TreeCmp.anova(Bayesian.MLMC, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.MLMC, "Triples") #No diff
 #MFossil:MCharacter
-TreeCmp.anova(Bayesian.MCMF, "R.F_Cluster")
-TreeCmp.anova(Bayesian.MCMF, "Triples")
+TreeCmp.anova(Bayesian.MFMC, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.MFMC, "Triples") #No diff
 #MLiving:MFossil:MCharcacter
-TreeCmp.anova(Bayesian.MLMFC, "R.F_Cluster")
-TreeCmp.anova(Bayesian.MLMFC, "Triples")
+TreeCmp.anova(Bayesian.MLMFMC, "R.F_Cluster", plot=TRUE) #Diff
+TreeCmp.anova(Bayesian.MLMFMC, "Triples") #No diff
