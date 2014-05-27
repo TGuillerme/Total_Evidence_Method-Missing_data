@@ -3,7 +3,7 @@
 ##########################
 #Calculate the CI and the mode of a given metric using TreeCmp class objects
 #Function modified from sumBTC (guillert(at)tcd.ie - 19/02/2014)
-#v.1.0
+#v.1.1
 #Update: the three core functions have been isolated
 #Update: in FUN.hdr, allows to read data from similar tree comparison (NTS=1), setting $hdr and $alpha to NA and $mode to 1 if var(data) == 0
 #Update: in FUN.densityplot, allows to plot data from similar tree comparison (NTS=1), ignoring $hdr and $alpha and ploting only the mode (=1)
@@ -11,6 +11,7 @@
 #Update: colours are now accepted
 #Update: results can be plotted as lines
 #Update: allow to stack the plots with add=TRUE
+#Update: allow window scaling option (ylim)
 ##########################
 #SYNTAX :
 #<data> an object of the class TreeCmp
@@ -21,10 +22,11 @@
 #<lines> whether to plot the results as lines instead than as boxplots (default=FALSE). Is ignored if plot=FALSE.
 #<add> whether to add to the current plot (default=FALSE). Is ignored if plot=FALSE.
 #<shift> a numerical value between 0 and 0.6 for shifting the lines. Is ignored if plot=FALSE, lines=FALSE, add=FALSE.
+#<ylim> two numerical values to scale the y axis of the plot. If set to 'auto' (default), the window is automatically scaled with the minimum and the maximum value from the data.
 #<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'data'. Is ignored if plot=FALSE.
 ##########################
 #----
-#guillert(at)tcd.ie - 08/04/2014
+#guillert(at)tcd.ie - 27/05/2014
 ##########################
 #Requirements:
 #-R 3
@@ -32,7 +34,7 @@
 #-R TreeCmp objects
 ##########################
 
-TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, save.details=FALSE) {
+TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE) {
 
 #HEADER
 
@@ -119,6 +121,19 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
         } else {shift=0}
     } else {shift=0}
 
+    #ylim
+    options(warn=-1) #no warn
+    if(ylim != 'auto'){
+        if(class(ylim) == 'numeric'){
+            if(length(ylim) != 2){
+                stop('ylim must be a vector of two numerical values')
+            }
+        } else {
+            stop('ylim must be a vector of two numerical values')
+        }
+    }
+    options(warn=1)
+
     #save.details
     if(class(save.details) != 'logical'){
         stop('Save.details is not logical')
@@ -150,7 +165,7 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
     }
 
     #Density Plot function (from densityplot.R by Andrew Jackson - a.jackson@tcd.ie)
-    FUN.densityplot<-function (data, metric.column, data.rows, probs, hdr.results, border, lines, add, shift) {
+    FUN.densityplot<-function (data, metric.column, data.rows, probs, hdr.results, border, lines, add, shift, ylim) {
 
         #Transform dat into a column format
         dat<-matrix(NA, nrow=max(data.rows), ncol=data.length)
@@ -171,7 +186,14 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
 
         #Set up the plot
         if (add==FALSE) {
-            ylims<-c(min(dat, na.rm=TRUE) - 0.1*min(dat, na.rm=TRUE), max(dat, na.rm=TRUE) + 0.1*(max(dat, na.rm=TRUE)))
+
+            #Setting ylim if 'auto'
+            if(ylim == 'auto') {
+                ylims<-c(min(dat, na.rm=TRUE) - 0.1*min(dat, na.rm=TRUE), max(dat, na.rm=TRUE) + 0.1*(max(dat, na.rm=TRUE)))
+            } else {
+            #Fixed ylim
+                ylims<-ylim
+            }
             xspc<-0.5
             plot(1,1, xlab='', ylab=ylabels, main=paste('','', sep=''), xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n')
             axis(side = 1, at = 1:n, labels = (as.character(names(dat))), las=2, cex=0.75)
@@ -235,7 +257,7 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
 
     #Optional plot
     if (plot == TRUE) {
-        FUN.densityplot(data, metric.column, data.rows, probs, hdr.results, border, lines, add, shift)
+        FUN.densityplot(data, metric.column, data.rows, probs, hdr.results, border, lines, add, shift, ylim)
     }
 
     #Optional saving
