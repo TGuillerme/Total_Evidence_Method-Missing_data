@@ -7,6 +7,7 @@ source('../Functions/TreeComparisons/NTS.R')
 source('../Functions/TreeComparisons/TreeCmp.Plot.R')
 source('../Functions/TreeComparisons/TreeCmp.Read.R')
 source('../Functions/TreeComparisons/TreeCmp.Mode.R')
+source('../Functions/TreeComparisons/TreeCmp.anova.R')
 
 
 #Loading the Random tree comparisons
@@ -59,56 +60,53 @@ Bayesian.MLMFMC<-Bayesian_trees
 class(Bayesian.MLMFMC)<-class(Bayesian_trees)
 Bayesian.MLMFMC<-TreeCmp.Mode(Bayesian.MLMFMC, 1000, verbose=TRUE)
 
-
-#Transforming into lists of 51 modes.
-
-
-
 #Plots
 
 #Setting the metric
 metric="R.F_Cluster"
-#or "Triples"
+#metric="Triples"
+#fix ylim
+ylim=c(0,1)
 
 #MLiving
-TreeCmp.Plot( Bayesian.ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 #MFossil
-TreeCmp.Plot( Bayesian.MF , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MF , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 #MCharacter
-TreeCmp.Plot( Bayesian.MC, metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MC , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 #Mliving:MFossil
-TreeCmp.Plot( Bayesian.MLMF, metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MLMF , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 #Mliving:MCharacter
-TreeCmp.Plot( Bayesian.MLMC, metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MLMC , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 #MFossil:MCharacter
-TreeCmp.Plot( Bayesian.MFMC, metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MFMC , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
 #MLiving:MFossil:MCharcacter
-TreeCmp.Plot( Bayesian.MLMFMC, metric, probs=c(95, 50), col=palette()[1], lines=TRUE, add=FALSE, shift=0, save.details=FALSE)
-TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MLMFMC , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( <chain.ML> , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( <x> , <y> , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("grey"), cex=0.8)
 
@@ -116,9 +114,23 @@ legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), 
 
 #Checking for differences
 #MLiving
+TreeCmp.anova(Bayesian.ML, "R.F_Cluster")
+TreeCmp.anova(Bayesian.ML, "Triples")
 #MFossil
+TreeCmp.anova(Bayesian.MF, "R.F_Cluster")
+TreeCmp.anova(Bayesian.MF, "Triples")
 #MCharacter
+TreeCmp.anova(Bayesian.MC, "R.F_Cluster")
+TreeCmp.anova(Bayesian.MC, "Triples")
 #MLiving:MFossil
+TreeCmp.anova(Bayesian.MLMF, "R.F_Cluster")
+TreeCmp.anova(Bayesian.MLMF, "Triples")
 #MLiving:MCharacter
+TreeCmp.anova(Bayesian.MLMC, "R.F_Cluster")
+TreeCmp.anova(Bayesian.MLMC, "Triples")
 #MFossil:MCharacter
+TreeCmp.anova(Bayesian.MCMF, "R.F_Cluster")
+TreeCmp.anova(Bayesian.MCMF, "Triples")
 #MLiving:MFossil:MCharcacter
+TreeCmp.anova(Bayesian.MLMFC, "R.F_Cluster")
+TreeCmp.anova(Bayesian.MLMFC, "Triples")
