@@ -168,10 +168,6 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
     anova.data<-FUN.anova.data(data.table, length.TreeCmp, replicates.TreeCmp)
     parametric<-FUN.parametric(anova.data, save.test)
 
-    #DEBUG
-
-    parametric<-TRUE
-
     if(parametric == TRUE) {
         #Test is parametric
 
