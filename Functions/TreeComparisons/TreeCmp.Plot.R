@@ -5,8 +5,8 @@
 #Function modified from sumBTC (guillert(at)tcd.ie - 19/02/2014)
 #v.1.1
 #Update: the three core functions have been isolated
-#Update: in FUN.hdr, allows to read data from similar tree comparison (NTS=1), setting $hdr and $alpha to NA and $mode to 1 if var(data) == 0
-#Update: in FUN.densityplot, allows to plot data from similar tree comparison (NTS=1), ignoring $hdr and $alpha and ploting only the mode (=1)
+#Update: in FUN.hdr, allows to read TreeCmp from similar tree comparison (NTS=1), setting $hdr and $alpha to NA and $mode to 1 if var(TreeCmp) == 0
+#Update: in FUN.densityplot, allows to plot TreeCmp from similar tree comparison (NTS=1), ignoring $hdr and $alpha and ploting only the mode (=1)
 #Update: the number of probabilities level don't need to be 3 any more
 #Update: colours are now accepted
 #Update: results can be plotted as lines
@@ -14,7 +14,7 @@
 #Update: allow window scaling option (ylim)
 ##########################
 #SYNTAX :
-#<data> an object of the class TreeCmp
+#<TreeCmp> an object of the class TreeCmp
 #<metric> the name of the metric of interest
 #<probs> a vector probabilities levels (default = c(95,75,50)).
 #<plot> whether to plot the results or not (default = TRUE).
@@ -22,8 +22,8 @@
 #<lines> whether to plot the results as lines instead than as boxplots (default=FALSE). Is ignored if plot=FALSE.
 #<add> whether to add to the current plot (default=FALSE). Is ignored if plot=FALSE.
 #<shift> a numerical value between 0 and 0.6 for shifting the lines. Is ignored if plot=FALSE, lines=FALSE, add=FALSE.
-#<ylim> two numerical values to scale the y axis of the plot. If set to 'auto' (default), the window is automatically scaled with the minimum and the maximum value from the data.
-#<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'data'. Is ignored if plot=FALSE.
+#<ylim> two numerical values to scale the y axis of the plot. If set to 'auto' (default), the window is automatically scaled with the minimum and the maximum value from the TreeCmp.
+#<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'TreeCmp'. Is ignored if plot=FALSE.
 ##########################
 #----
 #guillert(at)tcd.ie - 27/05/2014
@@ -34,44 +34,44 @@
 #-R TreeCmp objects
 ##########################
 
-TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE) {
+TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE) {
 
 #HEADER
 
 #Loading the libraries
     require(hdrcde)
 
-#DATA INPUT
+#TreeCmp INPUT
 
-    #data
-    if(class(data) != 'TreeCmp') {
-        stop('The data must be a TreeCmp object')
+    #TreeCmp
+    if(class(TreeCmp) != 'TreeCmp') {
+        stop('TreeCmp is not a "TreeCmp" object')
     } else {
-        data.length<-length(data)
-        if(data.length == 0) {
-            stop('The provided TreeCmp object is empty')
+        TreeCmp.length<-length(TreeCmp)
+        if(TreeCmp.length == 0) {
+            stop('The provided "TreeCmp" object is empty')
         } else {
-            data.columns<-length(data[[1]])
-            if(data.columns == 0) {
-                stop('The provided TreeCmp object is empty')
+            TreeCmp.columns<-length(TreeCmp[[1]])
+            if(TreeCmp.columns == 0) {
+                stop('The provided "TreeCmp" object is empty')
             }
         }
     }
 
     #metric
     if(class(metric) != 'character') {
-        stop('Provided metric name is not found in the data')
+        stop('Provided metric name is not found in the "TreeCmp" object')
     } else {
         if(length(metric) != 1) {
             stop('Only one metric name can be provided')
         } else {
-            metric.column<-grep(metric, colnames(data[[1]]))
+            metric.column<-grep(metric, colnames(TreeCmp[[1]]))
             if(length(metric.column) == 0) {
-                stop('Provided metric name is not found in the data')
+                stop('Provided metric name is not found in the "TreeCmp" object')
             } else {
-                data.rows<-NULL
-                for (i in 1:data.length) {
-                    data.rows[i]<-length(data[[i]][,metric.column])
+                TreeCmp.rows<-NULL
+                for (i in 1:TreeCmp.length) {
+                    TreeCmp.rows[i]<-length(TreeCmp[[i]][,metric.column])
                 }
             }
         }
@@ -146,43 +146,43 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
 #FUNCTIONS
 
     #Calculates the hdr for each comparison set
-    FUN.hdr<-function(data, metric.column, probs) {
+    FUN.hdr<-function(TreeCmp, metric.column, probs) {
         hdr.results<-NULL
 
-        for (i in 1:length(data)) {
-            if(var(data[[i]][,metric.column]) == 0) {
+        for (i in 1:length(TreeCmp)) {
+            if(var(TreeCmp[[i]][,metric.column]) == 0) {
                 #If no variance, make the results equal to 1
                 hdr.results[[i]]<-list(hdr=NA,mode=1,alpha=NA)
             } else {
                 #Else calculate the normal hdr
-                hdr.results[[i]]<-hdr(data[[i]][,metric.column], probs, h = bw.nrd0(data[[i]][,metric.column])) 
+                hdr.results[[i]]<-hdr(TreeCmp[[i]][,metric.column], probs, h = bw.nrd0(TreeCmp[[i]][,metric.column])) 
             }
         }
 
-        names(hdr.results)<-names(data)
+        names(hdr.results)<-names(TreeCmp)
 
         return(hdr.results)
     }
 
     #Density Plot function (from densityplot.R by Andrew Jackson - a.jackson@tcd.ie)
-    FUN.densityplot<-function (data, metric.column, data.rows, probs, hdr.results, border, lines, add, shift, ylim) {
+    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim) {
 
         #Transform dat into a column format
-        dat<-matrix(NA, nrow=max(data.rows), ncol=data.length)
-        dat<-as.data.frame(dat)
-        for (i in 1:length(data)) {
-            #The number of rows in the data frame is equal to the maximum number of rows in the list. If the elements in the list don't have the same number of rows, NAs are added.
-            dat[,i]<-c(data[[i]][,metric.column], rep(NA,(max(data.rows)-length(data[[i]][,metric.column]))))
+        dat<-matrix(NA, nrow=max(TreeCmp.rows), ncol=TreeCmp.length)
+        dat<-as.TreeCmp.frame(dat)
+        for (i in 1:length(TreeCmp)) {
+            #The number of rows in the TreeCmp frame is equal to the maximum number of rows in the list. If the elements in the list don't have the same number of rows, NAs are added.
+            dat[,i]<-c(TreeCmp[[i]][,metric.column], rep(NA,(max(TreeCmp.rows)-length(TreeCmp[[i]][,metric.column]))))
         }
 
         #Renaming dat
-        names(dat)<-names(data)
+        names(dat)<-names(TreeCmp)
 
         #Set the column numbers
         n<-ncol(dat)
 
         #Set the y axis as the label name
-        ylabels<-colnames(data[[1]][metric.column])
+        ylabels<-colnames(TreeCmp[[1]][metric.column])
 
         #Set up the plot
         if (add==FALSE) {
@@ -202,7 +202,7 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
         clr = gray((9:1)/10)
         clrs <- rep(clr, 5)
 
-        #Plotting the data distribution
+        #Plotting the TreeCmp distribution
 
         #disable warnings if one hdr value = NA
         options(warn=-1)
@@ -235,34 +235,34 @@ TreeCmp.Plot<-function(data, metric, probs=c(95, 75, 50), plot=TRUE, col='black'
     }  
 
     #Saves the details for each comparison (graph and values)
-    FUN.details.save<-function(data, metric.column, probs) {
+    FUN.details.save<-function(TreeCmp, metric.column, probs) {
         #Compute hdr for one metric
         hdr.saving<-NULL
 
-        for (i in 1:length(data)) {
-            pdf(paste(names(data[i]), colnames(data[[1]][metric.column]), 'pdf', sep='.'))
-            hdr.saving[[i]]<-hdr.den(data[[i]][,metric.column], prob=probs, xlab=colnames(data[[1]][metric.column]), main=paste(names(data[i]), 'comparison',sep=' '))
+        for (i in 1:length(TreeCmp)) {
+            pdf(paste(names(TreeCmp[i]), colnames(TreeCmp[[1]][metric.column]), 'pdf', sep='.'))
+            hdr.saving[[i]]<-hdr.den(TreeCmp[[i]][,metric.column], prob=probs, xlab=colnames(TreeCmp[[1]][metric.column]), main=paste(names(TreeCmp[i]), 'comparison',sep=' '))
             dev.off()
-            cat(paste(names(data[i]), colnames(data[[1]][metric.column]), 'pdf', sep='.'), 'density plot saved', '\n')
+            cat(paste(names(TreeCmp[i]), colnames(TreeCmp[[1]][metric.column]), 'pdf', sep='.'), 'density plot saved', '\n')
         }
 
         #rename the list
-        names(hdr.saving)<-paste(names(data),colnames(data[[1]][metric.column]), sep='.')
+        names(hdr.saving)<-paste(names(TreeCmp),colnames(TreeCmp[[1]][metric.column]), sep='.')
     }
 
 #SUMMARIZE THE LIST
 
     #Calculate the hdr for each comparion
-    hdr.results<-FUN.hdr(data, metric.column, probs)
+    hdr.results<-FUN.hdr(TreeCmp, metric.column, probs)
 
     #Optional plot
     if (plot == TRUE) {
-        FUN.densityplot(data, metric.column, data.rows, probs, hdr.results, border, lines, add, shift, ylim)
+        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim)
     }
 
     #Optional saving
     if (save.details == TRUE) {
-        FUN.details.save(data, metric.column, probs)
+        FUN.details.save(TreeCmp, metric.column, probs)
     }
 
     #Output
