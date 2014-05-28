@@ -154,7 +154,7 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
                 cat("Test is non-parametric. \n")
             } else {
                 parametric<-TRUE
-                cat("Test is parametric. \n")               
+                cat("Test is parametric. \n")
             }
         }
 
@@ -178,6 +178,7 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
         #If there posthoc difference
         if(pvalue < 0.05){
             posthoc<-TukeyHSD(aov)
+            posthoc<-posthoc$factors
         }
 
     } else {
@@ -196,6 +197,9 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
             posthoc<-posthoc$dif.com
         }
 
+        #Transform the Kruskal-Wallis output for LaTeX output
+        anova<-data.frame("Kruskal-Wallis chi-squared"=anova[[1]][[1]], "df"=anova[[2]][[1]], "p-value"=anova[[3]])
+
     }
 
     #Plot (optional)
@@ -206,13 +210,13 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
 #OUTPUT
 
     if(LaTeX == TRUE){
-        TreeCmp.xtable<<-xtable(aov)
-        cat('LaTeX anova table available in : \n TreeCmp.xtable',"\n")
-
         if(pvalue < 0.05){
-            TreeCmp.xtables<<-list(anova=xtable(aov), posthoc=xtable(posthoc$factors))
-            cat('LaTeX anova table available in : \n TreeCmp.xtables$anova',"\n")
-            cat('LaTeX TukeyHSD table available in : \n TreeCmp.xtables$TuckeyHSD',"\n")
+            TreeCmp.xtables<<-list(group=xtable(anova), posthoc=xtable(posthoc))
+            cat('LaTeX group table available in : \n TreeCmp.xtables$group',"\n")
+            cat('LaTeX posthoc table available in : \n TreeCmp.xtables$posthoc',"\n")
+        } else {
+            TreeCmp.xtable<<-xtable(anova)
+            cat('LaTeX anova table available in : \n TreeCmp.xtable',"\n")
         }
     }
 
