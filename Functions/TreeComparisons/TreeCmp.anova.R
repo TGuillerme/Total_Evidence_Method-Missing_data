@@ -3,8 +3,9 @@
 ##########################
 #Performs an anova on a 'TreeCmp' object (parametric or non-parametric)
 #Performs a TukeyHSD if a posthoc difference is significant (parametric or non-parametric)
-#v.0.2
+#v.0.3
 #Update: automatic parametric/non-parametric test (and possibility to save the results)
+#Update: improved/corrected parametric test
 ##########################
 #SYNTAX :
 #<data> an object of the class 'TreeCmp'
@@ -14,19 +15,15 @@
 #<save.test> whether to save the details of the various parametric/non-parametric tests (default=FALSE)
 ##########################
 #----
-#guillert(at)tcd.ie - 27/05/2014
+#guillert(at)tcd.ie - 28/05/2014
 ##########################
 #Requirements:
 #-R 3
+#-R package 'pgirmess'
 #-R package 'xtable' [optional]
-#-R package 'pgirmess' DEVELOPEMENT VERSION ONLY
 ##########################
 
 TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALSE) {
-
-warning("Non-parametric test in development only!")
-
-#HEADER
 
 #DATA INPUT
 
@@ -79,7 +76,7 @@ warning("Non-parametric test in development only!")
 
 #FUNCTIONS
 
-    FUN.data.table<-function(TreeCmp, metric, replicates.TreeCmp){
+    FUN.data.table<-function(TreeCmp, metric, replicates.TreeCmp) {
         #makes a data frame of all the replicates for one metric for all the comparisons (length must be length.TreeCmp*replicates.TreeCmp)
         data.table<-NULL
         metric.number<-which(names(TreeCmp[[1]]) == metric)
@@ -111,55 +108,56 @@ warning("Non-parametric test in development only!")
 
     }
 
-    FUN.parametric<-function(anova.table, save.test){
+    FUN.parametric<-function(anova.table, save.test) {
         #Tests if the anova must be parametric or not
          
         #Test Normality
-        normality<-shapiro.test(anova.data[[2]])
-        p.normality<-normality[[2]]
+        if(length(anova.data[[2]]) > 5000){
+            #Sub-sample the list of values for shapiro test (if > 5000 values)
+            sub.sample<-sample(anova.data[[2]], 5000)
+            normality<-shapiro.test(sub.sample)
+            p.normality<-normality[[2]]
 
-        #IN DEVELOPEMENT {
+        } else {
 
-        #Error in shapiro.test(anova.data[[2]]) : 
-        #sample size must be between 3 and 5000
-
-        #} IN DEVELOPEMENT
-
-
+            normality<-shapiro.test(anova.data[[2]])
+            p.normality<-normality[[2]]
+        }
 
         #Test Homoscedasticity
         homoscedasticity<-bartlett.test(anova.data[[2]]~anova.data[[1]])
         p.homoscedasticity<-homoscedasticity[[3]]
 
         if(save.test == TRUE) {
-            save.test<<-list(normality=normality, homoscedasticity=homoscedasticity)
+            parametric.test<<-list(normality=normality, homoscedasticity=homoscedasticity) #Save out of the function for output
         }
 
         #Choosing parametric or non-parametric test
-        if(p.normality < 0.05){
-            normality<-FALSE
-        } else {
+        if(p.normality > 0.05){
             normality<-TRUE
-        }
-
-        if(p.homoscedasticity < 0.05){
-            homoscedasticity<-FALSE
         } else {
-            homoscedasticity<-TRUE
+            normality<-FALSE
         }
 
-        if(normality == TRUE) {
-            if(homoscedasticity == TRUE) {
-                parametric<-TRUE
-                cat("Test is parametric. \n")
-            } else {
+        if(p.homoscedasticity > 0.05){
+            homoscedasticity<-TRUE
+        } else {
+            homoscedasticity<-FALSE
+        }
+
+        if(normality == FALSE) {
+            parametric<-FALSE
+            cat("Test is non-parametric. \n")
+        } else {
+            if(homoscedasticity == FALSE) {
                 parametric<-FALSE
                 cat("Test is non-parametric. \n")
+            } else {
+                parametric<-TRUE
+                cat("Test is parametric. \n")               
             }
-        } else {
-            parametric<-FALSE
-            cat("Test is non-parametric.\n")
-        } 
+        }
+
         return(parametric)
     }
 
@@ -170,6 +168,9 @@ warning("Non-parametric test in development only!")
     anova.data<-FUN.anova.data(data.table, length.TreeCmp, replicates.TreeCmp)
     parametric<-FUN.parametric(anova.data, save.test)
 
+    #DEBUG
+
+    parametric<-TRUE
 
     if(parametric == TRUE) {
         #Test is parametric
@@ -191,31 +192,19 @@ warning("Non-parametric test in development only!")
         levels(anova.data$factors)<-c(seq(1:length(levels(anova.data$factors))))
         anova<-kruskal.test(values ~ factors, data=anova.data)
         pvalue<-anova[[3]]
+
         #If there posthoc difference
         if(pvalue < 0.05){
-
-            #IN DEVELOPEMENT {
-
             require(pgirmess)
             posthoc<-kruskalmc(values ~ factors, data=anova.data)
             posthoc<-posthoc$dif.com
-
-            #} IN DEVELOPEMENT
         }
 
     }
 
-
-
     #Plot (optional)
     if(plot == TRUE){
-        if(pvalue < 0.05) {
-            par( mfrow = c( 1, 2 ) )
-            plot(posthoc, las=2)
-            boxplot(data.table, ylab=metric, las=2, main="Data distribution")
-        } else {
-            boxplot(data.table, ylab=metric, las=2, main="Data distribution") 
-        }
+        boxplot(data.table, ylab=metric, las=2, main="Data distribution") 
     }
 
 #OUTPUT
@@ -239,9 +228,9 @@ warning("Non-parametric test in development only!")
         }
     } else {
          if(pvalue < 0.05){
-            output<-list(anova=anova, posthoc=posthoc, save.test=save.test)
+            output<-list(anova=anova, posthoc=posthoc, save.test=parametric.test)
         } else {
-            output<-list(anova=anova, save.test=save.test)
+            output<-list(anova=anova, save.test=parametric.test)
         }       
     }
     return(output)
