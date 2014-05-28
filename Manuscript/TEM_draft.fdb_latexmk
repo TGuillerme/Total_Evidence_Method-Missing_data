@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex TEM_draft"] 1401205734 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1401205783
+["bibtex TEM_draft"] 1401296099 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1401296100
   "./sysbio.bst" 1400080192 30418 82df53f2e0c137d332673e7de8136054 ""
-  "References.bib" 1400750036 588961 646f571c8070414e7f89cf3924ab495c ""
-  "TEM_draft.aux" 1401205783 12616 27dcac3a7d28f47c4d094c8e5e1481f0 ""
+  "References.bib" 1401292037 589239 1ca32ad785ec4912ab293a3991cc1793 ""
+  "TEM_draft.aux" 1401296100 12895 41af49b00aefd34de7742bda166d86eb ""
   "TEM_draft.bcf" 0 -1 0 ""
   (generated)
   "TEM_draft.bbl"
   "TEM_draft.blg"
-["pdflatex"] 1401205782 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1401205783
+["pdflatex"] 1401296100 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1401296100
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/babel-english/english.ldf" 1367878877 6963 2e0cb3d93aa64508bdb0db58ae900d97 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/babel/babel.def" 1368743226 42950 b2c89311c96d7b70c24e1365a2fa51ee ""
@@ -33,6 +33,7 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/base/fixltx2e.sty" 1254151887 13911 4b3a73865fcc0c61d65cc1505cdda4e5 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/base/ifthen.sty" 1254151887 5022 2ec7815b07dc68e65542e23a180bc839 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/base/latexsym.sty" 1254151887 2717 322ad1a37c6c9974574bf6f55cbc9d77 ""
+  "/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd" 1254151887 2109 c400bd6c901edc4a09e4d53fcffd3b3c ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/base/size12.clo" 1254151887 9053 a28d9b3c915d12545f3d5e7c4986be20 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/base/textcomp.sty" 1312312491 15509 394096bec6a284398e0b3ead6d33977e ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmr.fd" 1254151887 2070 a9b43c0e3cee84bb3927d80d70ee10ce ""
@@ -81,10 +82,10 @@
   "Figures/TEM_Fig_TreeCmp.pdf" 1400252149 975542 5b1c1ff533c09d9047773fe3f9a734ee ""
   "Figures/TEM_Fig_missingData.pdf" 1400253672 124170 7c3e46b2b04151626f13d453bf04e947 ""
   "Figures/TEM_Fig_outline.pdf" 1400253862 279424 405a51384b3f9147333ce950a1450beb ""
-  "TEM_draft.aux" 1401205783 12616 27dcac3a7d28f47c4d094c8e5e1481f0 ""
-  "TEM_draft.bbl" 1401205734 15010 69263201683f19705cf98ddf5e838f53 "bibtex TEM_draft"
-  "TEM_draft.out" 1401205782 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "TEM_draft.tex" 1401205781 54716 bea5c4ab1e7638a4543e24f288ff3580 ""
+  "TEM_draft.aux" 1401296100 12895 41af49b00aefd34de7742bda166d86eb ""
+  "TEM_draft.bbl" 1401296100 15216 f017b903efee93d4194670912300b556 "bibtex TEM_draft"
+  "TEM_draft.out" 1401296100 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "TEM_draft.tex" 1401296098 60871 b913c81613e825a58401e695e72142df ""
   (generated)
   "TEM_draft.out"
   "TEM_draft.aux"

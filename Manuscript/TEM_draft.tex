@@ -110,7 +110,13 @@ $^3$Somewhere else }\\
 %However, true new lines (i.e. in the pdf) are delimited by one or more empty lines.
 
 
-%Abstract
+%---------------------------------------------
+%
+%       ABSTRACT
+%
+%---------------------------------------------
+
+
 \subsubsection{Abstract}
 Living species represent less than 1\% of all species that have ever lived. Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as trends in species richness, biogeographical history or paleoecology.
 This fact has led to an increasing consensus among scientists that both fossil and living taxa must be included in macroevolutionary studies.
@@ -135,6 +141,14 @@ We find that using this integrative method modifies previous estimates of rates 
 \vspace{1.5in}
 
 \newpage 
+
+
+%---------------------------------------------
+%
+%       INTRODUCTION
+%
+%---------------------------------------------
+
 
 %Syst.Biol: We don't use a heading for the introduction. The nature of this section is implied by its position following the abstract and preceding the first major section heading.
 Living species represent less than 1\% of all species that have ever lived \citep{novacek1992ext,raup1993extinction}.
@@ -178,6 +192,14 @@ We assess how changing the values of these three parameters affects the topology
 
 %We found that… This as an implication for…
 
+
+%---------------------------------------------
+%
+%       METHODS
+%
+%---------------------------------------------
+
+
 \section{Methods} %no material needed?
 To explore the effect of missing data on total evidence trees topologies we used the following protocol (note that we explain each step in detail below this general outline -Fig. ~\ref{Fig_Outline}):
 \begin{enumerate}
@@ -194,7 +216,7 @@ We inferred Bayesian phylogenetic trees from the "complete" matrix and from the 
 \label{step:compare_topo}
 We then compared the "best" tree to the "missing-data" trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on the topologies of the phylogenies we estimated.
 \end{enumerate}
-To measure the effect of missing data distribution, we repeated steps ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} with the exact same fixed parameters 51 (3$\times$17) times. %that's because I had 3 cluster accounts available...
+To measure the effect of missing data distribution, we repeated steps ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} with the exact same fixed parameters 51 (3$\times$17) times. %that's because I had 3 cluster accounts available... If it's a too odd number, no worries, I'll just remove the last chain.
 A list of all the terms used in this paper is available in table ~\ref{Tab_glossary}.
 
 
@@ -236,6 +258,10 @@ We repeated step 1 to 4 51 (3$\times $17) times.}
 \label{Tab_glossary}
 \end{table}
 
+%---------------------------------------------
+%       Generating the matrix
+%---------------------------------------------
+
 \subsection{Generating the matrix}
 First we randomly generated a "true" tree of 50 taxa in R v3.0.2 \citep{R302} using the package diversitree v0.9-6 \citep{fitzjohndiversitree2012}.
 We generated the tree using a Birth Death process by sampling the values of the speciation events ($\lambda$) and extinction events ($\mu$) from a uniform distribution but maintaining $\lambda$ $>$ $\mu$ \citep{paradistime-dependent2011}.
@@ -262,6 +288,10 @@ We used a low evolution rate parameter (i.e. $\alpha$) in order to avoid homopla
 All the molecular information for fossil taxa was replaced by missing data ("?").
 Finally, we combined the morphological and molecular matrices obtained from the "true" tree.
 Hereafter we call this the "complete" matrix: the matrix with no missing data except for the molecular data of the fossil taxa.
+
+%---------------------------------------------
+%       Removing data
+%---------------------------------------------
 
 \subsection{Removing data}
 Once we obtained the "complete" matrix we modified it to get a set of matrices with missing data. %Ugly sentence
@@ -299,6 +329,10 @@ Note that $M_{L}$ is different to $M_{F}$ not only because of the region of the 
 We tested all parameters combinations resulting in 125 ($5^3$) matrices.
 Because some parameter combinations introduce a lot of missing (e.g. $M_L$=75\%, $M_F$=75\% and $M_C$=75\%), some matrices contained fossil taxa without any data at all.
 When this occurred we repeated the random deletion of characters until every taxa had at least 5\% data across the whole matrix.
+
+%---------------------------------------------
+%       Building phylogenies
+%---------------------------------------------
 
 \subsection{Building phylogenies}
 From the resulting matrices we generated two types of trees, the "best" tree that is inferred from the "complete" matrix and the "missing-data" trees inferred from the 125 matrices with various amounts of missing data.
@@ -341,9 +375,9 @@ We used these priors to speed up the Bayesian process.
 These priors biased the way the Bayesian process calculated the branch length by giving non-random starting points and boundaries for the parameters estimation process, however, in this study, we focused on the effect of missing data on the topology and not on the branch length.
 Even using these priors, it took 65 CPU years to build 51 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
 
-%
-%
-%
+%---------------------------------------------
+%       Comparing Topologies
+%---------------------------------------------
 
 \subsection{Comparing topologies}
 We compared the topology of the "missing-data" trees inferred from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
@@ -367,7 +401,7 @@ Where:
 \end{equation}
 And where \textit{n} is the number of taxa in both trees (modified from \citet{critchlowthe1996}).
 If $S_n$=0, the trees are the same (i.e. no taxa as been displaced). When $S_n$ = $\binom{n}{4}$, the trees are the most different possible (i.e. every taxa as been displaced).
-This metric therefore illustrates the amount of displaxed taxa but is less sensitive to the placement of individual taxa and to taxa of highly uncertain placement (e.g. fossil taxa) than the Robinson-Foulds distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and can therefore be used as a proxy to estimate the robustness of the tree to flying taxa (see \hyperref[supplementaries]{supplementaries}).
+This metric therefore illustrates the amount of displayed taxa but is less sensitive to the placement of individual taxa and to taxa of highly uncertain placement (e.g. fossil taxa) than the Robinson-Foulds distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and can therefore be used as a proxy to estimate the robustness of the tree to flying taxa (see \hyperref[supplementaries]{supplementaries}).
 
 \subsubsection{Robinson-Fould distance (\textit{RF}) \citep{RF1981}}
 This metric measures the number of shared clades among two trees and therefore illustrates the number of exactly conserved groups among the trees.
@@ -441,6 +475,30 @@ In the Bayesian framework, 1000 trees from the posterior distribution where used
 \label{Fig_Compare}
 \end{figure}
 
+\subsubsection{Statistical difference between tree topologies}
+To assess the difference between the tree topologies, whether they were inferred in a Bayesian or a ML framework, we performed a group comparison test for each set of configurations (e.g. effect of $M_L$ in Bayesian inference, combined effect of $M_F$ and $M_C$ in ML inference, etc...).
+We used the pairwise tree comparisons as factors (i.e. the "Best" tree vs. one of each of the 125 "missing-data" trees) and the values of the 51 replicates from the pairwise comparison as a response variable.
+The 51 replicates values were either the replicates of the 51 pairwise tree comparisons in ML or the modes of the 51 RPBTC posterior distributions in Bayesian.
+When we found a significant difference between the groups, we performed a pairwise comparison test to analyse which pairs of groups differ from the others.
+Depending on whether the data was normal with variance homoscedasticity or not (controlled by performing respectively a shapiro.test and a a bartlett.test in R\{stats\}), we used respectively parametric or non-parametric tests for the group comparison and the pairwise comparisons as suggested by \citet{ruxtontime2008} (Table ~\ref{Stats_test}). %link broken
+
+\begin{table}[ht]
+\caption{Statistical tests}
+\centering
+\begin{tabular}{lrll}
+  \hline
+   & test & statistics & code\{package\} \\ [0.5ex]
+  \hline
+  Groups comparisons & ANOVA & parametric & anova\{stats\} \\ [0.5ex]
+                     & Kruskal-Wallis & non-parametric & kruskal.test\{stats\} \\[0.5ex]
+  \hline
+  Pairwise comparisons & Tukey HSD & parametric & TukeyHSD\{stats\} \\ [0.5ex]
+                       & Nemenyi-Damico-Wolfe-Dunn & non-parametric & kruskalmc\{pgirmess\} \\ [0.5ex]
+  \hline
+\end{tabular}
+\end{table}
+\label{Stats_test}
+
 \subsection{Effect of missing molecular characters for fossil taxa} %Awfull name.
 To assess the effect of missing molecular characters for fossil taxa in a Bayesian framework, we split the "complete" matrix in sub-matrices containing no missing data at all:
 \begin{enumerate}
@@ -454,6 +512,10 @@ A third one containing morphological data for living taxa only (hereafter called
 We reran the Bayesian tree inference on the different sub-matrices with no missing data in the same way as described above.
 We then compared the resulting tree posterior distribution to itself (in the same way described above) to assess the ability to recover topology for each simulation when no missing data was involved in the phylogenetic inference process.
 
+%---------------------------------------------
+%       Empirical data - TO DO
+%---------------------------------------------
+
 \subsection{Empirical data} %Still not done!
 We also compared the results obtained from simulated data by using \citet{ronquista2012} empirical data.
 The matrix contains 67 living species plus one outgroup and 45 fossil species of Hymenopteras with 5097 molecular characters and 354 morphological characters.
@@ -463,23 +525,110 @@ We used the same settings as for the simulated data in the Maximum Likelihood fr
 For the Bayesian inferences however, we didn’t used any priors except that we provided a starting tree with the topology of the 68 living species (topology with the highest posterior probability from non-clock analysis - \citet{ronquista2012}).
 Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock analysis since we were only interested in the topology of the inferred tree and not the branch length.
 
+
+%---------------------------------------------
+%
+%       RESULTS
+%
+%---------------------------------------------
+
+
 \section{Results}
 %Do the check for L00F00C00
 \subsection{Building the trees}
 Bayesian chains converged (SD $<$ 0.01 and ESS $>>$ 200 for each tree).
+Good a quick convergence when using the sub-matrices especially for the "horizontal" sub-matrices.
+Good enough phylogenetic signal.
 \subsection{Comparing topologies}
 Did it worked? See sub-matrices
-\subsection{Effect of $M_L$}
-In ML and in Bayesian
-\subsection{Effect of $M_F$}
-In ML and in Bayesian
-\subsection{Effect of $M_C$}
-In ML and in Bayesian
-\subsection{Combined effect}
-In ML and in Bayesian
+
+\subsection{Effect of the missing data parameters}
+
+\subsubsection{Effect of $M_L$}
+In ML...
+
+Topological recovery was bad in Bayesian, the NTS score was only slightly above 0 which means that the mode of the RPBTC was only slightly different than expected by chance.
+However, it seems that there is a small difference depending on the metric used.
+For the Triple metric there is no significant effect of the $M_L$ parameter, in other words, if living taxa are removed, there is no effect on the placement of "flying" taxa.
+For the Robinson-Fould metric, there is a significant effect of the $M_L$ leading small decrease in topological recovery when $M_L$ increases.
+In other words, if living taxa are removed, clades are less conserved.
+However, in both cases, the effect of the parameter $M_L$ is still minimal compared to trees generated in a ML framework since the NTS score was only slightly higher than expected by chance.
+
+
+
+%Tables model...
+
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Wed May 28 17:54:17 2014
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & Kruskal.Wallis.chi.squared & df & p.value \\ 
+  \hline
+1 & 65.62 & 4.00 & 0.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+% latex table generated in R 3.0.2 by xtable 1.7-1 package
+% Wed May 28 17:54:17 2014
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrl}
+  \hline
+ & obs.dif & critical.dif & difference \\ 
+  \hline
+1-2 & 45.87 & 41.00 & TRUE \\ 
+  1-3 & 60.33 & 41.00 & TRUE \\ 
+  1-4 & 76.83 & 41.00 & TRUE \\ 
+  1-5 & 99.80 & 41.00 & TRUE \\ 
+  2-3 & 14.46 & 41.00 & FALSE \\ 
+  2-4 & 30.96 & 41.00 & FALSE \\ 
+  2-5 & 53.93 & 41.00 & TRUE \\ 
+  3-4 & 16.50 & 41.00 & FALSE \\ 
+  3-5 & 39.47 & 41.00 & FALSE \\ 
+  4-5 & 22.97 & 41.00 & FALSE \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+\subsubsection{Effect of $M_F$}
+In ML...
+
+Similarly than for the effect of $M_L$, Bayesian tree recovery was only slightly better than expected by chance.
+And in the same way as described above, there seems to be a small difference depending on the metric used.
+There is no significant effect of the $M_F$ parameter when using the Triplet metric but the effect is significant when using the Robinson-Fould metric.
+However, as mentioned previously the effect of the parameter $M_F$ is still minimal in a Bayesian framework.
+
+\subsubsection{Effect of $M_C$}
+In ML...
+
+The effect of $M_C$ in Bayesian framework is similar as the one described for $M_L$ and $M_F$: tree recovery is only slightly better than expected by chance and only the Robinson-Fould metric shows a significant effect of the $M_C$ parameter on tree recovery.
+\subsubsection{Combined effect}
+
+In ML...
+
+In Bayesian, same pattern as above.
+No particular effect of data combination, but more an effect of the overall amount of data.
+
+$\newline$
 
 The ability of recovering the best topology in maximum likelihood method is function of the amount of data missing.
 However, in Bayesian, topology is badly (if not at all) recovered independently of the amount of data missing.
+
+
+%---------------------------------------------
+%
+%       DISCUSSION
+%
+%---------------------------------------------
+
 
 \section{Discussion}
 
@@ -518,6 +667,17 @@ If one states that morphological characters accumulate through time in the same 
 Therefore, homoplasy is expected to be more important (by chance) in bigger morphological matrices \citep{davalosintegrating2014}.
 After a certain amount of morphological characters, adding new ones adds homoplasy \citep{wagner2000}.
 
+%Potential reviewers comments?
+%What about it when you vary the proportion of fossil taxa?
+
+
+%---------------------------------------------
+%
+%       CONCLUSION
+%
+%---------------------------------------------
+
+
 \section{Conclusion}
 A Bayesian approach fails to recover accurate topology in a total evidence approach framework, whatever the amount of missing data.
 We think this failure is due to the intrinsic structure of the Total Evidence matrices that includes a vast amount of not randomly distributed missing data (i.e. the molecular part of the matrix for the fossil taxa).
@@ -525,8 +685,15 @@ This missing data is equal to the number of fossil taxa $\times$ the number of m
 However, one can use a Maximum Likelihood approach to obtain the likeliest topology and to use this one as a fixed.
 
 
+%---------------------------------------------
+%
+%       ...
+%
+%---------------------------------------------
+
+
 \section{Acknowledgements}
-We would like to thank Trevor Hodkinson %Also Gavin Thomas, Emmanuel Douzery and Frédéric Delsuc if not authors.
+We would like to thank Trevor Hodkinson and Andrew Jackson %Also Gavin Thomas, Emmanuel Douzery and Frédéric Delsuc if not authors.
 for his useful comments on the simulation protocol and Paddy Doyle for the assistance on using the computer cluster.
 All calculations were performed on the Lonsdale cluster maintained by the Trinity Centre for High Performance Computing.
 This cluster was funded through grants from Science Foundation Ireland.
@@ -660,10 +827,10 @@ We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) me
 We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
 We used an anova to test if there was no significant difference between the replicates so that the RBTC can be replicated.
 We applied this protocol on a poorly resolved tree (Low Score), a resolved tree with low support value (Medium Score) and a resolved tree with high support values (High Score).
-Results are available in table ~\ref{RPBTC_testing}.
+Results are available in table ~\ref{RPBTC_testing}. %link broken
 
 \begin{table}[ht]
-\caption{Anova results: difference between 100 replicates using the RPBTC method}
+\caption{Group comparison results: difference between 100 replicates using the RPBTC method} %test with TreeCmp.anova
 \centering
 \begin{tabular}{rllrrrr}
   \hline

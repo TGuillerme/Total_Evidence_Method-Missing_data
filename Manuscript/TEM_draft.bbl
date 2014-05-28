@@ -1,4 +1,4 @@
-\begin{thebibliography}{55}
+\begin{thebibliography}{56}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -238,6 +238,11 @@ Rozen, D.~E., D.~Schneider, and R.~E. Lenski. 2005. Long-term experimental
   evolution in escherichia coli. xiii. phylogenetic history of a balanced
   polymorphism. J Mol Evol 61:171--80.
 \bibAnnoteFile{rozen2005}
+
+\bibitem[{Ruxton and Beauchamp(2008)}]{ruxtontime2008}
+Ruxton, G.~D. and G.~Beauchamp. 2008. Time for some a priori thinking about
+  post hoc testing. Behavioral Ecology 19.
+\bibAnnoteFile{ruxtontime2008}
 
 \bibitem[{Salamin et~al.(2003)Salamin, Chase, Hodkinson, and
   Savolainen}]{salamin2003}
