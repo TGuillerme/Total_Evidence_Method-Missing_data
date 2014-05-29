@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  28 MAY 2014 17:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  29 MAY 2014 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -676,12 +676,8 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 483.
-
-
-Package hyperref Warning: Suppressing empty link on input line 483.
-
-[18] [19 <./Figures/TEM_Fig_TreeCmp.pdf>]
-Overfull \hbox (27.48917pt too wide) in paragraph at lines 488--499
+ [18] [19 <./Figures/TEM_Fig_TreeCmp.pdf>]
+Overfull \hbox (27.48917pt too wide) in paragraph at lines 488--500
  [][] 
  []
 
@@ -698,40 +694,40 @@ Missing character: There is no ≥ in font cmr12!
 Missing character: There is no ƒ in font cmr12!
 Missing character: There is no ç in font cmr12!
  [28] [29] [30])
-[31] <Figures/TEM_Fig-AppendixCharacters.pdf, id=547, 505.89pt x 505.89pt>
+[31] <Figures/TEM_Fig-AppendixCharacters.pdf, id=549, 505.89pt x 505.89pt>
 File: Figures/TEM_Fig-AppendixCharacters.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig-AppendixCharacters.pdf>
 Package pdftex.def Info: Figures/TEM_Fig-AppendixCharacters.pdf used on input l
-ine 724.
+ine 831.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 
-Overfull \hbox (36.13373pt too wide) in paragraph at lines 724--726
+Overfull \hbox (36.13373pt too wide) in paragraph at lines 831--833
  [][] 
  []
 
 [32] [33 <./Figures/TEM_Fig-AppendixCharacters.pdf>]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 762.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 869.
  [34] [35] [36]
 
-Package hyperref Warning: Suppressing empty link on input line 825.
+Package hyperref Warning: Suppressing empty link on input line 932.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 849.
-[37] [38] [39]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 849.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 956.
+[37] [38] [39] [40] [41]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 956.
  (./TEM_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 849.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 849.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 956.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 956.
 Package rerunfilecheck Info: File `TEM_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 849.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 956.
  ) 
 Here is how much of TeX's memory you used:
- 9495 strings out of 493315
- 143284 string characters out of 6137904
- 248847 words of memory out of 5000000
- 12568 multiletter control sequences out of 15000+600000
+ 9503 strings out of 493315
+ 143381 string characters out of 6137904
+ 270272 words of memory out of 5000000
+ 12572 multiletter control sequences out of 15000+600000
  22987 words of font info for 90 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,12n,38p,921b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -747,10 +743,10 @@ cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
 /texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on TEM_draft.pdf (39 pages, 1566786 bytes).
+Output written on TEM_draft.pdf (41 pages, 1570474 bytes).
 PDF statistics:
- 784 PDF objects out of 1000 (max. 8388607)
- 653 compressed objects within 7 object streams
- 133 named destinations out of 1000 (max. 500000)
+ 795 PDF objects out of 1000 (max. 8388607)
+ 662 compressed objects within 7 object streams
+ 137 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
