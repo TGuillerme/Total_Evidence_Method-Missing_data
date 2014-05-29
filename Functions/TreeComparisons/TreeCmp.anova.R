@@ -3,19 +3,20 @@
 ##########################
 #Performs an anova on a 'TreeCmp' object (parametric or non-parametric)
 #Performs a TukeyHSD if a posthoc difference is significant (parametric or non-parametric)
-#v.0.3
+#v.0.4
 #Update: automatic parametric/non-parametric test (and possibility to save the results)
 #Update: improved/corrected parametric test
+#Update: non-parametric posthoc output improved
 ##########################
 #SYNTAX :
-#<data> an object of the class 'TreeCmp'
+#<TreeCmp> an object of the class 'TreeCmp'
 #<metric> the name of the metric of interest
 #<plot> whether to plot the distribution of the metric as a boxplot (default=FALSE)
 #<LaTeX> whether to output a LaTeX table (default=FALSE)
 #<save.test> whether to save the details of the various parametric/non-parametric tests (default=FALSE)
 ##########################
 #----
-#guillert(at)tcd.ie - 28/05/2014
+#guillert(at)tcd.ie - 29/05/2014
 ##########################
 #Requirements:
 #-R 3
@@ -185,9 +186,10 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
         #Test is non-parametric
 
         #Transform the factors into numerical levels
-        anova.data$factors<-as.factor(anova.data$factors)
-        levels(anova.data$factors)<-c(seq(1:length(levels(anova.data$factors))))
-        anova<-kruskal.test(values ~ factors, data=anova.data)
+        anova.data.fact<-anova.data
+        anova.data.fact$factors<-as.factor(anova.data.fact$factors)
+        levels(anova.data.fact$factors)<-c(seq(1:length(levels(anova.data.fact$factors))))
+        anova<-kruskal.test(values ~ factors, data=anova.data.fact)
         pvalue<-anova[[3]]
 
         #If there posthoc difference
