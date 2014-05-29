@@ -9,6 +9,7 @@ source('../Functions/TreeComparisons/TreeCmp.Read.R')
 source('../Functions/TreeComparisons/TreeCmp.Mode.R')
 source('../Functions/TreeComparisons/TreeCmp.anova.R')
 source('../Functions/TreeComparisons/TreeCmp.distribution.R')
+source('../Functions/TreeComparisons/TreeCmp.pairPlot.R')
 
 
 #Loading the Random tree comparisons
@@ -117,23 +118,32 @@ legend( <x> , <y> , c("Mode", "50% CI", "95% CI"), col="grey", lty=c(NA, 1, 2), 
 #Checking for differences
 #MLiving
 #Distribution check (visual)
-TreeCmp.anova(Bayesian.ML, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) #Diff
-TreeCmp.anova(Bayesian.ML, "Triples", plot=TRUE, LaTeX=TRUE) #No diff
+TreeCmp.anova(Bayesian.ML, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ;  TreeCmp.xtables$posthoc #Diff
+TreeCmp.anova(Bayesian.ML, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtable #No diff
 #MFossil
-TreeCmp.anova(Bayesian.MF, "R.F_Cluster", plot=TRUE) #Diff
-TreeCmp.anova(Bayesian.MF, "Triples", plot=TRUE) #No diff
+TreeCmp.anova(Bayesian.MF, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ;  TreeCmp.xtables$posthoc #Diff
+TreeCmp.anova(Bayesian.MF, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtable #No diff
 #MCharacter
-TreeCmp.anova(Bayesian.MC, "R.F_Cluster", plot=TRUE) #Diff
-TreeCmp.anova(Bayesian.MC, "Triples", plot=TRUE) #No diff
+TreeCmp.anova(Bayesian.MC, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ;  TreeCmp.xtables$posthoc #Diff
+TreeCmp.anova(Bayesian.MC, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtable #No diff
 #MLiving:MFossil
-TreeCmp.anova(Bayesian.MLMF, "R.F_Cluster", plot=TRUE) #Diff
-TreeCmp.anova(Bayesian.MLMF, "Triples", plot=TRUE) #No diff
+test<-TreeCmp.anova(Bayesian.MLMF, "R.F_Cluster") #Diff
+TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
+TreeCmp.anova(Bayesian.MLMF, "Triples") #No diff
 #MLiving:MCharacter
-TreeCmp.anova(Bayesian.MLMC, "R.F_Cluster", plot=TRUE) #Diff
-TreeCmp.anova(Bayesian.MLMC, "Triples", plot=TRUE) #No diff
+test<-TreeCmp.anova(Bayesian.MLMC, "R.F_Cluster") #Diff
+TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
+TreeCmp.anova(Bayesian.MLMC, "Triples") #No diff
 #MFossil:MCharacter
-TreeCmp.anova(Bayesian.MFMC, "R.F_Cluster", plot=TRUE) #Diff
-TreeCmp.anova(Bayesian.MFMC, "Triples", plot=TRUE) #No diff
+test<-TreeCmp.anova(Bayesian.MFMC, "R.F_Cluster") #Diff
+TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
+TreeCmp.anova(Bayesian.MFMC, "Triples") #No diff
 #MLiving:MFossil:MCharcacter
-TreeCmp.anova(Bayesian.MLMFMC, "R.F_Cluster", plot=TRUE) #Diff
-TreeCmp.anova(Bayesian.MLMFMC, "Triples", plot=TRUE) #No diff
+test<-TreeCmp.anova(Bayesian.MLMFMC, "R.F_Cluster") #Diff
+
+#Distribution (visual)
+TreeCmp.distribution(Bayesian.MLMFMC, "R.F_Cluster")
+#Heat map
+TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
+
+TreeCmp.anova(Bayesian.MLMFMC, "Triples") #No diff
