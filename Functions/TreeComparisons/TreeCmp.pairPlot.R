@@ -92,8 +92,8 @@ TreeCmp.pairPlot<-function(posthoc, parametric) {
             paste("max:",round(max(posthoc.scores, na.rm=TRUE), digit=3))
         ),
         pch=15, pt.cex=2, col=c(heat[1],heat[abs(n.parameters/2)],heat[n.parameters]))
-    title(main = "Significant pairwise differences")
+    title(main = "Significant posthoc pairwise differences")
     box()
-
+    
 #End
 }
