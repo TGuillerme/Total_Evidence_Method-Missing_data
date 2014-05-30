@@ -131,6 +131,7 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
 
         if(save.test == TRUE) {
             parametric.test<<-list(normality=normality, homoscedasticity=homoscedasticity) #Save out of the function for output
+            cat("Parametric test saved in 'parametric.test")
         }
 
         #Choosing parametric or non-parametric test
