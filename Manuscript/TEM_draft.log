@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  3 JUN 2014 16:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  3 JUN 2014 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -629,24 +629,24 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 File: Figures/TEM_Fig_outline-BW.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig_outline-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig_outline-BW.pdf used on input line 243.
+Package pdftex.def Info: Figures/TEM_Fig_outline-BW.pdf used on input line 239.
 
 (pdftex.def)             Requested size: 312.97952pt x 483.69592pt.
 
-Underfull \hbox (badness 2020) in paragraph at lines 271--271
+Underfull \hbox (badness 2020) in paragraph at lines 267--267
 []|\OT1/cmr/m/n/12 sub-matrix with mor-pho-log-i-cal and molec-u-lar
  []
 
 [7] [8 <./Figures/TEM_Fig_outline-BW.pdf>] [9] [10]
-<Figures/TEM_Fig_missingData-BW.pdf, id=276, 512.14938pt x 227.62239pt>
+<Figures/TEM_Fig_missingData-BW.pdf, id=280, 512.14938pt x 227.62239pt>
 File: Figures/TEM_Fig_missingData-BW.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig_missingData-BW.pdf>
 Package pdftex.def Info: Figures/TEM_Fig_missingData-BW.pdf used on input line 
-330.
+326.
 (pdftex.def)             Requested size: 512.14813pt x 227.62183pt.
 
-Overfull \hbox (42.39311pt too wide) in paragraph at lines 330--340
+Overfull \hbox (42.39311pt too wide) in paragraph at lines 326--336
  [][] 
  []
 
@@ -659,27 +659,27 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
  [16] [17]
-[18] <Figures/TEM_Fig_TreeCmp-BW.pdf, id=448, 483.6971pt x 284.52798pt>
+[18] <Figures/TEM_Fig_TreeCmp-BW.pdf, id=453, 483.6971pt x 284.52798pt>
 File: Figures/TEM_Fig_TreeCmp-BW.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig_TreeCmp-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig_TreeCmp-BW.pdf used on input line 488.
+Package pdftex.def Info: Figures/TEM_Fig_TreeCmp-BW.pdf used on input line 491.
 
 (pdftex.def)             Requested size: 483.69592pt x 284.52728pt.
 
-Overfull \hbox (13.9409pt too wide) in paragraph at lines 488--492
+Overfull \hbox (13.9409pt too wide) in paragraph at lines 491--495
  [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 501.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 504.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 501.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 504.
  [19] [20 <./Figures/TEM_Fig_TreeCmp-BW.pdf>]
-Overfull \hbox (27.48917pt too wide) in paragraph at lines 506--518
+Overfull \hbox (27.48917pt too wide) in paragraph at lines 509--521
  [][] 
  []
 
@@ -696,43 +696,43 @@ Missing character: There is no ≥ in font cmr12!
 Missing character: There is no ƒ in font cmr12!
 Missing character: There is no ç in font cmr12!
  [29] [30] [31])
-[32] <Figures/TEM_Fig-AppendixCharacters.pdf, id=572, 505.89pt x 505.89pt>
+[32] <Figures/TEM_Fig-AppendixCharacters.pdf, id=578, 505.89pt x 505.89pt>
 File: Figures/TEM_Fig-AppendixCharacters.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig-AppendixCharacters.pdf>
 Package pdftex.def Info: Figures/TEM_Fig-AppendixCharacters.pdf used on input l
-ine 846.
+ine 849.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 
-Overfull \hbox (36.13373pt too wide) in paragraph at lines 846--848
+Overfull \hbox (36.13373pt too wide) in paragraph at lines 849--851
  [][] 
  []
 
 [33] [34 <./Figures/TEM_Fig-AppendixCharacters.pdf>]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 884.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 887.
  [35] [36] [37]
 
-Package hyperref Warning: Suppressing empty link on input line 947.
+Package hyperref Warning: Suppressing empty link on input line 950.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 971.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 974.
 [38] [39] [40] [41] [42]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 971.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 974.
  (./TEM_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 971.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 971.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 974.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 974.
 Package rerunfilecheck Info: File `TEM_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 971.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 974.
  ) 
 Here is how much of TeX's memory you used:
  9505 strings out of 493315
  143451 string characters out of 6137904
- 270272 words of memory out of 5000000
+ 270328 words of memory out of 5000000
  12573 multiletter control sequences out of 15000+600000
  22987 words of font info for 90 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,12n,38p,921b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,38p,934b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -745,10 +745,10 @@ cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
 /texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on TEM_draft.pdf (42 pages, 725764 bytes).
+Output written on TEM_draft.pdf (42 pages, 725602 bytes).
 PDF statistics:
- 816 PDF objects out of 1000 (max. 8388607)
- 687 compressed objects within 7 object streams
+ 822 PDF objects out of 1000 (max. 8388607)
+ 691 compressed objects within 7 object streams
  138 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
