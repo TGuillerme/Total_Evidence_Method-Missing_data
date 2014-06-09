@@ -12,6 +12,7 @@
 #Update: results can be plotted as lines
 #Update: allow to stack the plots with add=TRUE
 #Update: allow window scaling option (ylim)
+#Update: typo in as.data.frame - fixed colour of single points
 ##########################
 #SYNTAX :
 #<TreeCmp> an object of the class TreeCmp
@@ -26,7 +27,7 @@
 #<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'TreeCmp'. Is ignored if plot=FALSE.
 ##########################
 #----
-#guillert(at)tcd.ie - 27/05/2014
+#guillert(at)tcd.ie - 09/06/2014
 ##########################
 #Requirements:
 #-R 3
@@ -169,7 +170,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
 
         #Transform dat into a column format
         dat<-matrix(NA, nrow=max(TreeCmp.rows), ncol=TreeCmp.length)
-        dat<-as.TreeCmp.frame(dat)
+        dat<-as.data.frame(dat)
         for (i in 1:length(TreeCmp)) {
             #The number of rows in the TreeCmp frame is equal to the maximum number of rows in the list. If the elements in the list don't have the same number of rows, NAs are added.
             dat[,i]<-c(TreeCmp[[i]][,metric.column], rep(NA,(max(TreeCmp.rows)-length(TreeCmp[[i]][,metric.column]))))
@@ -215,7 +216,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
             for (k in 1:length(probs)) {
                 if(is.na(temp$hdr)) {
                     #Ploting only the mode if hdr=NA
-                    points(j,temp$mode,pch=19)
+                    points(j,temp$mode,pch=19, col=border)
                 } else {
                     #Plot the probabilities distribution
                     temp2 <- temp$hdr[k, ]
