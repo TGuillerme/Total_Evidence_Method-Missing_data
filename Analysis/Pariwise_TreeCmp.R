@@ -1,5 +1,5 @@
 #Script for testing the Random Pairwise Bayesian Tree Comparisons (RPBTC)
-#cd('../PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+#setwd('../PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Loading the functions
 source('../Functions/TreeComparisons/NTS.R')
@@ -15,20 +15,20 @@ Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",head
 
 #Loading the treesets comparisons
 #Low score comparisons
-cd("../Data/Tree_Comparisons/RPBTC_testing/Low_score_treesets_100/")
+setwd("../Data/Tree_Comparisons/RPBTC_testing/Low_score_treesets_100/")
 tmp<-TreeCmp.Read('LowScore', verbose=TRUE)
 LowScore<-NTS(tmp, Random51)
-cd('../../../../Analysis/')
+setwd('../../../../Analysis/')
 #Medium score comparisons
-cd("../Data/Tree_Comparisons/RPBTC_testing/Medium_score_treesets_100/")
+setwd("../Data/Tree_Comparisons/RPBTC_testing/Medium_score_treesets_100/")
 tmp<-TreeCmp.Read('MediumScore', verbose=TRUE)
 MediumScore<-NTS(tmp, Random51)
-cd('../../../../Analysis/')
+setwd('../../../../Analysis/')
 #High score comparisons
-cd("../Data/Tree_Comparisons/RPBTC_testing/High_score_treesets_100/")
+setwd("../Data/Tree_Comparisons/RPBTC_testing/High_score_treesets_100/")
 tmp<-TreeCmp.Read('HighScore', verbose=TRUE)
 HighScore<-NTS(tmp, Random26)
-cd('../../../../Analysis/')
+setwd('../../../../Analysis/')
 
 #TreeCmp anova per metric and per score
 LS.RF<-TreeCmp.anova(LowScore, "R.F_Cluster")
