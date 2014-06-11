@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex TEM_draft"] 1401810972 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1401811031
+["bibtex TEM_draft"] 1402424456 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1402424457
   "./sysbio.bst" 1400080192 30418 82df53f2e0c137d332673e7de8136054 ""
   "References.bib" 1401292037 589239 1ca32ad785ec4912ab293a3991cc1793 ""
-  "TEM_draft.aux" 1401811030 14413 17b165bf97e2aa4fde2755e022b7ea0d ""
+  "TEM_draft.aux" 1402424457 17809 3d0d2adebabc4539cec27a16f7f6fab4 ""
   "TEM_draft.bcf" 0 -1 0 ""
   (generated)
   "TEM_draft.bbl"
   "TEM_draft.blg"
-["pdflatex"] 1401811030 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1401811031
+["pdflatex"] 1402424456 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1402424457
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/babel-english/english.ldf" 1367878877 6963 2e0cb3d93aa64508bdb0db58ae900d97 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/babel/babel.def" 1368743226 42950 b2c89311c96d7b70c24e1365a2fa51ee ""
@@ -78,14 +78,15 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/indentfirst.sty" 1254151720 1478 046fd21942e354e54b4d3bcea822de4b ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/verbatim.sty" 1312409015 7125 6b8323deb5c5c3a19b248762654143eb ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty" 1264379145 21932 e3a9cf32ee9b853b42be14c2f25b873c ""
+  "Figures/TEM_Fig-AppendixBootstraps.pdf" 1402423137 94521 8904764a7eb2c845194b9ae330694025 ""
   "Figures/TEM_Fig-AppendixCharacters.pdf" 1379411963 149364 685441d70c2290b492d6d3a5b5017bc9 ""
   "Figures/TEM_Fig_TreeCmp-BW.pdf" 1401801008 129784 943353fcfc618c3203216109d3bdc2c5 ""
   "Figures/TEM_Fig_missingData-BW.pdf" 1401801989 122904 46b17decf5de47fbc619ad7cc911058e ""
   "Figures/TEM_Fig_outline-BW.pdf" 1401792725 273506 959eb3f2ae89de5b3f99e73bd82e9118 ""
-  "TEM_draft.aux" 1401811030 14413 17b165bf97e2aa4fde2755e022b7ea0d ""
-  "TEM_draft.bbl" 1401810972 15216 f017b903efee93d4194670912300b556 "bibtex TEM_draft"
-  "TEM_draft.out" 1401811030 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "TEM_draft.tex" 1401811029 68007 95780d8720010479d6e4fb2a48d89a94 ""
+  "TEM_draft.aux" 1402424457 17809 3d0d2adebabc4539cec27a16f7f6fab4 ""
+  "TEM_draft.bbl" 1402424456 15216 f017b903efee93d4194670912300b556 "bibtex TEM_draft"
+  "TEM_draft.out" 1402424456 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "TEM_draft.tex" 1402424454 94738 bcfdeabaa7dcfcedc97e60a6d7fd19de ""
   (generated)
   "TEM_draft.out"
   "TEM_draft.aux"

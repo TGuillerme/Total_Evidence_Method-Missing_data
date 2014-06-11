@@ -89,6 +89,9 @@
 
 \begin{document}
 
+%For a colour version of the draft to a search>replace '-BW'>'' 
+
+
 %Runing head
 \begin{flushright}
 Version dated: \today
@@ -558,86 +561,184 @@ Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock anal
 \section{Results}
 %Do the check for L00F00C00
 \subsection{Building the trees}
-Bayesian chains converged (SD $<$ 0.01 and ESS $>>$ 200 for each tree).
-Good a quick convergence when using the sub-matrices especially for the "horizontal" sub-matrices.
+When generating the matrices using seqgen and rTraitDisc algorithms with low evolutionary rate parameter ($\alpha$=0.5) we successfully generated evolutionary histories.
+In Maximum Likelihood, support values ranged from 0 to 100 with a median of 38 ($1^st$ quartile = 14, $3^rd$ quartile = 72 - see \hyperref[supplementaries]{supplementaries}). % This is actually bad.
+Using Bayesian inference, all the chains converged with a significant effective sample size (ASSD $<$ 0.01 and ESS $>>$ 200 for each tree).
 Good enough phylogenetic signal.
 
-\subsection{Comparing topologies}
-Did it worked? See sub-matrices.
+%\subsection{Comparing topologies}
+%Did it worked? See sub-matrices part. TO DO
 
 \subsection{Effect of the missing data parameters}
 
-\subsubsection{Effect of $M_L$}
-In ML...(see Table ~\ref{Group_results})
+%10/06 - Missing 8 ML Chains
 
-Topological recovery was bad in Bayesian, the NTS score was only slightly above 0 which means that the mode of the RPBTC was only slightly different than expected by chance.
+\subsubsection{Effect of $M_L$}
+In Maximum Likelihood framework, the topological recovery quickly drops with the amount of missing data when using both metrics (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
+However, this negative effect of missing data seems to stabilize beyond 25\% of missing data (no significant difference for trees with respectively 25\%, 50\% and 75\% missing living taxa).
+With 10\% of missing living taxa, there is a different topological recovery depending on the used metric.
+The Robinson-Fould metric shows a lower Tree similarity metric than the Triples metric meaning that individual taxa position are generally more conserved (i.e. low number of flying taxa) but that the full clades are less conserved (see Table ~\ref{NTS_ML_results}).
+
+Howerver, topological recovery was bad in Bayesian, the tree similarity score was only slightly above 0 which means that the mode of the RPBTC was only slightly different than expected by chance (see Table ~\ref{NTS_Ba_results}).
 However, it seems that there is a small difference depending on the metric used.
 For the Triples metric there is no significant effect of the $M_L$ parameter, in other words, if living taxa are removed, there is no effect on the placement of "flying" taxa.
 For the Robinson-Fould metric, there is a significant effect of the $M_L$ leading small decrease in topological recovery when $M_L$ increases.
-In other words, if living taxa are removed, clades are less conserved (see Table ~\ref{ML_results}).
-However, in both cases, the effect of the parameter $M_L$ is still minimal compared to trees generated in a ML framework since the NTS score was only slightly higher than expected by chance (see Table ~\ref{Group_results}).
+In other words, if living taxa are removed, clades are less conserved (see Table ~\ref{Ba_RF-ML_results}).
+However, in both cases, the effect of the parameter $M_L$ is still minimal compared to trees generated in a ML framework since the NTS score was only slightly higher than expected by chance (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
 
 \subsubsection{Effect of $M_F$}
-In ML...(see Table ~\ref{Group_results})
+In Maximum Likelihood framework, the effect of missing data in the fossil record appeared to be constant and led to a constant decrease in topological recovery when the missing data increased (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
+The difference between the two metrics used is more important than for the $M_L$ parameter: clades are less conserved than individual taxa placement as the amount of missing data increases.
+Interestingly, 10\% or 25\% missing data for the $M_F$ parameter does not seems to affect the apparition of unstable taxa (Triples NTS modes of respectively 0.97 and 0.93 - Table ~\ref{NTS_ML_results}).
 
 Similarly than for the effect of $M_L$, Bayesian tree recovery was only slightly better than expected by chance.
 And in the same way as described above, there seems to be a small difference depending on the metric used.
-There is no significant effect of the $M_F$ parameter when using the Triplet metric but the effect is significant when using the Robinson-Fould metric (see Table ~\ref{ML_results}).
-However, as mentioned previously the effect of the parameter $M_F$ is still minimal in a Bayesian framework (see Table ~\ref{Group_results}).
+There is no significant effect of the $M_F$ parameter when using the Triplet metric but the effect is significant when using the Robinson-Fould metric (see Table ~\ref{Ba_RF-MF_results}).
+However, as mentioned previously the effect of the parameter $M_F$ is still minimal in a Bayesian framework (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
 
 \subsubsection{Effect of $M_C$}
-In ML...(see Table ~\ref{Group_results})
+The number of missing morphological characters ($M_C$), however, seems to be more affecting topological recovery than $M_L$ and $M_F$ (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
+The Robinson-Fould metric shows a rapid drop in tree recovery from 10\% of missing data (Robinson-Fould NTS mode $<$ to 0.5 from 10\% missing data - Table ~\ref{NTS_ML_results}).
+This decrease is however slowlier when using the Triples metric with still a good topological recovery at 10\%  (Triples NTS modes = 0.95 - Table ~\ref{NTS_ML_results}).
 
+The effect of $M_C$ in Bayesian framework is similar as the one described for $M_L$ and $M_F$: tree recovery is only slightly better than expected by chance and only the Robinson-Fould metric shows a significant effect of the $M_C$ parameter on tree recovery (see Table ~\ref{Ba_RF-ML_results} and ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
 
-The effect of $M_C$ in Bayesian framework is similar as the one described for $M_L$ and $M_F$: tree recovery is only slightly better than expected by chance and only the Robinson-Fould metric shows a significant effect of the $M_C$ parameter on tree recovery (see Table ~\ref{ML_results} and ~\ref{Group_results}).
-\subsubsection{Combined effect}
-
-In ML...(see Table ~\ref{Group_results})
-
-In Bayesian, same pattern as above.
-No particular effect of data combination, but more an effect of the overall amount of data (see Table ~\ref{Group_results}).
+%\subsubsection{Combined effect}
+%Need to do the heat plots
 
 $\newline$
 
-The ability of recovering the best topology in maximum likelihood method is function of the amount of data missing.
-However, in Bayesian, topology is badly (if not at all) recovered independently of the amount of data missing.
+%To sum up:
+The ability of recovering the "best" tree's topology in maximum likelihood method is function of the amount of data missing.
+The parameters $M_C$ and $M_L$ have more influence than $M_F$ on decrease in topological recovery.
+The decrease in clade conservation (low Robinson-Fould NTS score) is faster than the increase in flying taxa (low Triples NTS score).
+However, in Bayesian, topology is badly (if not at all) recovered disregarding the amount of data missing.
 
-%Add the global heat plot figures
+
+\begin{table}
+\caption{Tree similarity values per parameter in ML framework}
+\centering
+\begin{tabular}{rrlccccc}
+    \hline
+    Parameter & amount of    & metric & mode & 50\%CI &       & 95\%CI &       \\
+              & missing data &        &      & lower  & upper & lower  & upper \\
+    \hline
+    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
+              &              & Triples        & 1 & NA  & NA & NA  & NA \\
+              & 10\%         & Robinson-Fould & 0.671 & 0.569  & 0.789 & 0.468  & 1.036 \\ %how many digits?
+              &              & Triples        & 0.942 & 0.868  & 0.999 & 0.612  & 1.063 \\
+              & 25\%         & Robinson-Fould & 0.516 & 0.440  & 0.630 & 0.266  & 0.892 \\
+              &              & Triples        & 0.559 & 0.708  & 0.810 & 0.291  & 0.999 \\
+              & 50\%         & Robinson-Fould & 0.432 & 0.364  & 0.521 & 0.231  & 0.642 \\
+              &              & Triples        & 0.514 & 0.419  & 0.599 & 0.293  & 0.910 \\
+              & 75\%         & Robinson-Fould & 0.372 & 0.323  & 0.434 & 0.203  & 0.577 \\
+              &              & Triples        & 0.444 & 0.338  & 0.532 & 0.192  & 0.855 \\
+    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
+              &              & Triples        & 1 & NA  & NA & NA  & NA \\
+              & 10\%         & Robinson-Fould & 0.907 & 0.766  & 1.000 & 0.407  & 1.047 \\
+              &              & Triples        & 0.976 & 0.944  & 1.003 & 0.715  & 1.104 \\
+              & 25\%         & Robinson-Fould & 0.572 & 0.488  & 0.692 & 0.325  & 0.936 \\
+              &              & Triples        & 0.937 & 0.820  & 0.993 & 0.539  & 1.086 \\
+              & 50\%         & Robinson-Fould & 0.433 & 0.302  & 0.476 & 0.170  & 0.668 \\
+              &              & Triples        & 0.732 & 0.594  & 0.873 & 0.341  & 1.025 \\
+              & 75\%         & Robinson-Fould & 0.153 & 0.115  & 0.200 & 0.068  & 0.323 \\
+              &              & Triples        & 0.458 & 0.390  & 0.611 & 0.290  & 0.856 \\   
+    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
+              &              & Triples        & 1 & NA  & NA & NA  & NA \\
+              & 10\%         & Robinson-Fould & 0.473 & 0.384  & 0.835 & 0.356  & 0.958 \\
+              &              & Triples        & 0.959 & 0.869  & 1.026 & 0.572  & 1.067 \\
+              & 25\%         & Robinson-Fould & 0.454 & 0.357  & 0.630 & 0.242  & 0.916 \\
+              &              & Triples        & 0.907 & 0.751  & 0.997 & 0.446  & 1.070 \\
+              & 50\%         & Robinson-Fould & 0.424 & 0.375  & 0.466 & 0.249  & 0.828 \\
+              &              & Triples        & 0.683 & 0.571  & 0.822 & 0.277  & 1.008 \\
+              & 75\%         & Robinson-Fould & 0.230 & 0.177  & 0.302 & 0.108  & 0.567 \\
+              &              & Triples        & 0.451 & 0.373  & 0.572 & 0.224  & 0.791 \\
+    \hline
+\label{NTS_ML_results}
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Tree similarity values per parameter in Bayesian framework}
+\centering
+\begin{tabular}{rrlccccc}
+    \hline
+    Parameter & amount of    & mode & 50\%CI &       & 95\%CI & \\
+              & missing data &      & lower  & upper & lower  & upper \\
+    \hline
+    $M_L$     & 0\%          & Robinson-Fould & 0.056 & 0.035  & 0.063 & 0.031   & 0.076 \\ %how many digits?
+              &              & Triples        & 0.041 & 0.008  & 0.054 & -0.039  & 0.106 \\
+              & 10\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.028   & 0.061 \\
+              &              & Triples        & 0.033 & 0.003  & 0.049 & -0.049  & 0.117 \\
+              & 25\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.061 \\
+              &              & Triples        & 0.035 & 0.002  & 0.049 & -0.041  & 0.096 \\
+              & 50\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.056 \\
+              &              & Triples        & 0.028 & 0.003  & 0.052 & -0.038  & 0.092 \\
+              & 75\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.010   & 0.043 \\
+              &              & Triples        & -0.001 & -0.018 & 0.040 & -0.060 & 0.106 \\
+    $M_L$     & 0\%          & Robinson-Fould & 0.056 & 0.035  & 0.063 & 0.031   & 0.076 \\
+              &              & Triples        & 0.041 & 0.008  & 0.054 & -0.039  & 0.106 \\
+              & 10\%         & Robinson-Fould & 0.035 & 0.031  & 0.056 & 0.027   & 0.076 \\
+              &              & Triples        & 0.026 & 0.002  & 0.050 & -0.046  & 0.105 \\
+              & 25\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.0153  & 0.068 \\
+              &              & Triples        & 0.038 & 0.002  & 0.050 & -0.046  & 0.105 \\
+              & 50\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.058 \\
+              &              & Triples        & 0.014 & -0.011 & 0.039 & -0.038  & 0.124 \\
+              & 75\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.041 \\
+              &              & Triples        & 0.029 & 0.019  & 0.042 & -0.030  & 0.089 \\   
+    $M_L$     & 0\%          & Robinson-Fould & 0.056 & 0.035  & 0.063 & 0.031   & 0.076 \\
+              &              & Triples        & 0.041 & 0.008  & 0.054 & -0.039  & 0.106 \\
+              & 10\%         & Robinson-Fould & 0.056 & 0.035  & 0.059 & 0.0281  & 0.076 \\
+              &              & Triples        & 0.030 & 0.011  & 0.048 & -0.024  & 0.094 \\
+              & 25\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.023   & 0.076 \\
+              &              & Triples        & 0.020 & -0.001 & 0.037 & -0.060  & 0.109 \\
+              & 50\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.030   & 0.059 \\
+              &              & Triples        & 0.010 & -0.005 & 0.045 & -0.036  & 0.104 \\
+              & 75\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.011   & 0.043 \\
+              &              & Triples        & 0.024 & 0.001  & 0.042 & -0.037  & 0.104 \\
+    \hline
+\label{NTS_BA_results}
+\end{tabular}
+\end{table}
+
+
+
+
 \begin{table}
 \caption{Group difference per configuration set}
 \centering
-\begin{tabular}{rlrlccc}
+\begin{tabular}{rllcccc}
     \hline
     set & metric & framework & parametric & $stats^1$ & df & p.value \\
     \hline
-    $M_L$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-          &                & Bayesian & no & 65.62 & 4.00 & \textbf{0.00} \\
-          & Triples & ML & bla & bla & bla & bla \\
-          &         & Bayesian & no & 4.56 & 4.00 & 0.34 \\
-    $M_F$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-          &                & Bayesian & no & 85.61 & 4.00 & \textbf{0.00} \\
-          & Triples & ML & bla & bla & bla & bla \\
-          &         & Bayesian & no & 3.01 & 4.00 & 0.56 \\ 
-    $M_C$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-          &                & Bayesian & no & 64.23 & 4.00 & \textbf{0.00} \\
-          & Triples & ML & bla & bla & bla & bla \\
-          &         & Bayesian & no & 26.13 & 24.00 & 0.35 \\
-    $M_L+M_F$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-              &                & Bayesian & no & 317.97 & 24.00 & \textbf{0.00} \\
-              & Triples & ML & bla & bla & bla & bla \\
-              &         & Bayesian & no & 3.01 & 4.00 & 0.56 \\ 
-    $M_L+M_C$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-              &                & Bayesian & no & 290.10 & 24.00 & \textbf{0.00} \\
-              & Triples & ML & bla & bla & bla & bla \\
-              &         & Bayesian & no & 22.19 & 24.00 & 0.57 \\ 
-    $M_F+M_C$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-              &                & Bayesian & no & 385.96 & 24.00 & \textbf{0.00} \\
-              & Triples & ML & bla & bla & bla & bla \\
-              &         & Bayesian & no & 20.23 & 24.00 & 0.68 \\
-    $M_L+M_F+M_C$ & Robinson-Fould & ML & bla & bla & bla & bla \\
-                  &                & Bayesian & no & 1167.40 & 124.00 & \textbf{0.00} \\
-                  & Triples & ML & bla & bla & bla & bla \\
-                  &         & Bayesian & no & 115.86 & 124.00 & 0.69 \\ 
+    $M_L$         & Robinson-Fould & ML       & no & 151.438  & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.001278e-31
+                  &                & Bayesian & no & 65.62    & 4   & \textbf{0.00} \\ 
+                  & Triples        & ML       & no & 142.8329 & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains  - 6.983434e-30
+                  &                & Bayesian & no & 4.56     & 4   & 0.34          \\ 
+    $M_F$         & Robinson-Fould & ML       & no & 179.9238 & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 7.743067e-38
+                  &                & Bayesian & no & 85.61    & 4   & \textbf{0.00} \\
+                  & Triples        & ML       & no & 150.059  & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.977386e-31
+                  &                & Bayesian & no & 3.01     & 4   & 0.56          \\
+    $M_C$         & Robinson-Fould & ML       & no & 151.3818 & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.029428e-31
+                  &                & Bayesian & no & 64.23    & 4   & \textbf{0.00} \\
+                  & Triples        & ML       & no & 138.374  & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 6.290979e-29
+                  &                & Bayesian & no & 26.13    & 24  & 0.35          \\
+    $M_L+M_F$     & Robinson-Fould & ML       & no & 734.9213 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.104542e-139
+                  &                & Bayesian & no & 317.97   & 24  & \textbf{0.00} \\
+                  & Triples        & ML       & no & 531.5558 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 4.581065e-97
+                  &                & Bayesian & no & 3.01     & 24  & 0.56          \\
+    $M_L+M_C$     & Robinson-Fould & ML       & no & 542.3233 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 2.619808e-99
+                  &                & Bayesian & no & 290.10   & 24  & \textbf{0.00} \\
+                  & Triples        & ML       & no & 437.7413 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains -  1.28493e-77
+                  &                & Bayesian & no & 22.19    & 24  & 0.57          \\
+    $M_F+M_C$     & Robinson-Fould & ML       & no & 812.206  & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 5.463138e-156
+                  &                & Bayesian & no & 385.96   & 24  & \textbf{0.00} \\
+                  & Triples        & ML       & no & 528.9215 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.619383e-96
+                  &                & Bayesian & no & 20.23    & 24  & 0.68          \\ 
+    $M_L+M_F+M_C$ & Robinson-Fould & ML       & no & 3603.808 & 124 & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains -3.819574e-169
+                  &                & Bayesian & no & 1167.40  & 124 & \textbf{0.00} \\
+                  & Triples        & ML       & no & 2047.923 & 124 & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains 
+                  &                & Bayesian & no & 115.86   & 124 & 0.69          \\
     \hline
 \label{Group_results}
 \end{tabular}
@@ -646,7 +747,75 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
 \end{table}
 
 \begin{table}
-\caption{$M_L$ non-parametric pairwise difference for Robinson-Fould metric}
+\caption{$M_L$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
+\centering
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_L$00\% & $M_L$10\% & $M_L$25\% & $M_L$50\% & $M_L$75\% \\
+    \hline
+    $M_L$00\% & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_L$10\% & & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_L$25\% & & & - & FALSE  & \textbf{TRUE} \\
+    $M_L$50\% & & & & - & FALSE  \\
+    $M_L$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\ 
+  \hline
+  $M_L$00\%-$M_L$10\% & 56.53 & 37.66 & TRUE \\ 
+  $M_L$00\%-$M_L$25\% & 96.85 & 37.66 & TRUE \\ 
+  $M_L$00\%-$M_L$50\% & 127.03 & 37.66 & TRUE \\ 
+  $M_L$00\%-$M_L$75\% & 144.58 & 37.66 & TRUE \\ 
+  $M_L$10\%-$M_L$25\% & 40.31 & 37.66 & TRUE \\ 
+  $M_L$10\%-$M_L$50\% & 70.50 & 37.66 & TRUE \\ 
+  $M_L$10\%-$M_L$75\% & 88.05 & 37.66 & TRUE \\ 
+  $M_L$25\%-$M_L$50\% & 30.19 & 37.66 & FALSE \\ 
+  $M_L$25\%-$M_L$75\% & 47.73 & 37.66 & TRUE \\ 
+  $M_L$50\%-$M_L$75\% & 17.55 & 37.66 & FALSE \\ 
+   \hline
+\end{tabular}
+\label{ML_RF-ML_results}
+\end{table}
+
+
+\begin{table}
+\caption{$M_L$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
+\centering
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_L$00\% & $M_L$10\% & $M_L$25\% & $M_L$50\% & $M_L$75\% \\
+    \hline
+    $M_L$00\% & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_L$10\% & & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_L$25\% & & & - & FALSE  & FALSE \\
+    $M_L$50\% & & & & - & FALSE  \\
+    $M_L$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\ 
+  \hline
+  $M_L$00\%-$M_L$10\% & 57.98 & 37.66 & TRUE \\ 
+  $M_L$00\%-$M_L$25\% & 105.83 & 37.66 & TRUE \\ 
+  $M_L$00\%-$M_L$50\% & 120.86 & 37.66 & TRUE \\ 
+  $M_L$00\%-$M_L$75\% & 140.34 & 37.66 & TRUE \\ 
+  $M_L$10\%-$M_L$25\% & 47.85 & 37.66 & TRUE \\ 
+  $M_L$10\%-$M_L$50\% & 62.88 & 37.66 & TRUE \\ 
+  $M_L$10\%-$M_L$75\% & 82.36 & 37.66 & TRUE \\ 
+  $M_L$25\%-$M_L$50\% & 15.03 & 37.66 & FALSE \\ 
+  $M_L$25\%-$M_L$75\% & 34.51 & 37.66 & FALSE \\ 
+  $M_L$50\%-$M_L$75\% & 19.48 & 37.66 & FALSE \\ 
+   \hline
+\end{tabular}
+\label{ML_Tr-ML_results}
+\end{table}
+
+
+\begin{table}
+\caption{$M_L$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
 \centering
 \begin{tabular}{c|ccccc}
     \hline
@@ -675,7 +844,73 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
   $M_L$50\%-$M_L$75\% & 26.67 & 41.00 & FALSE \\ 
    \hline
 \end{tabular}
-\label{ML_results}
+\label{Ba_RF-ML_results}
+\end{table}
+
+\begin{table}
+\caption{$M_F$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
+\centering
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_F$00\% & $M_F$10\% & $M_F$25\% & $M_F$50\% & $M_F$75\% \\
+    \hline
+    $M_L$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_L$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_L$25\% & & & - & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_L$50\% & & & & - & \textbf{TRUE} \\
+    $M_L$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\ 
+  \hline
+  $M_F$00\%-$M_F$10\% & 59.27 & 37.66 & TRUE \\ 
+  $M_F$00\%-$M_F$25\% & 79.72 & 37.66 & TRUE \\ 
+  $M_F$00\%-$M_F$50\% & 120.70 & 37.66 & TRUE \\ 
+  $M_F$00\%-$M_F$75\% & 167.81 & 37.66 & TRUE \\ 
+  $M_F$10\%-$M_F$25\% & 20.45 & 37.66 & FALSE \\ 
+  $M_F$10\%-$M_F$50\% & 61.43 & 37.66 & TRUE \\ 
+  $M_F$10\%-$M_F$75\% & 108.55 & 37.66 & TRUE \\ 
+  $M_F$25\%-$M_F$50\% & 40.98 & 37.66 & TRUE \\ 
+  $M_F$25\%-$M_F$75\% & 88.09 & 37.66 & TRUE \\ 
+  $M_F$50\%-$M_F$75\% & 47.12 & 37.66 & TRUE \\ 
+   \hline
+\end{tabular}
+\label{ML_RF-MF_results}
+\end{table}
+
+\begin{table}
+\caption{$M_F$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
+\centering
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_F$00\% & $M_F$10\% & $M_F$25\% & $M_F$50\% & $M_F$75\% \\
+    \hline
+    $M_L$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_L$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_L$25\% & & & - & FALSE & \textbf{TRUE} \\
+    $M_L$50\% & & & & - & FALSE \\
+    $M_L$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\ 
+  \hline
+  $M_F$00\%-$M_F$10\% & 64.78 & 37.66 & TRUE \\ 
+  $M_F$00\%-$M_F$25\% & 89.09 & 37.66 & TRUE \\ 
+  $M_F$00\%-$M_F$50\% & 123.20 & 37.66 & TRUE \\ 
+  $M_F$00\%-$M_F$75\% & 150.43 & 37.66 & TRUE \\ 
+  $M_F$10\%-$M_F$25\% & 24.31 & 37.66 & FALSE \\ 
+  $M_F$10\%-$M_F$50\% & 58.42 & 37.66 & TRUE \\ 
+  $M_F$10\%-$M_F$75\% & 85.65 & 37.66 & TRUE \\ 
+  $M_F$25\%-$M_F$50\% & 34.10 & 37.66 & FALSE \\ 
+  $M_F$25\%-$M_F$75\% & 61.34 & 37.66 & TRUE \\ 
+  $M_F$50\%-$M_F$75\% & 27.23 & 37.66 & FALSE \\ 
+   \hline
+\end{tabular}
+\label{ML_Tr-MF_results}
 \end{table}
 
 \begin{table}
@@ -708,8 +943,76 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
   $M_F$50\%-$M_F$75\% & 34.00 & 41.00 & FALSE \\ 
    \hline
 \end{tabular}
-\label{MF_results}
+\label{Ba_RF-MF_results}
 \end{table}
+
+\begin{table}
+\caption{$M_C$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
+\centering
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_C$00\% & $M_C$10\% & $M_C$25\% & $M_C$50\% & $M_C$75\% \\
+    \hline
+    $M_C$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_C$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_C$25\% & & & - & FALSE & \textbf{TRUE} \\
+    $M_C$50\% & & & & - & \textbf{TRUE} \\
+    $M_C$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\ 
+  \hline
+  $M_C$00\%-$M_C$10\% & 67.99 & 37.66 & TRUE \\ 
+  $M_C$00\%-$M_C$25\% & 87.58 & 37.66 & TRUE \\ 
+  $M_C$00\%-$M_C$50\% & 116.16 & 37.66 & TRUE \\ 
+  $M_C$00\%-$M_C$75\% & 155.77 & 37.66 & TRUE \\ 
+  $M_C$10\%-$M_C$25\% & 19.59 & 37.66 & FALSE \\ 
+  $M_C$10\%-$M_C$50\% & 48.17 & 37.66 & TRUE \\ 
+  $M_C$10\%-$M_C$75\% & 87.78 & 37.66 & TRUE \\ 
+  $M_C$25\%-$M_C$50\% & 28.58 & 37.66 & FALSE \\ 
+  $M_C$25\%-$M_C$75\% & 68.19 & 37.66 & TRUE \\ 
+  $M_C$50\%-$M_C$75\% & 39.60 & 37.66 & TRUE \\ 
+   \hline
+\end{tabular}
+\label{ML_RF-MC_results}
+\end{table}
+
+
+\begin{table}
+\caption{$M_C$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
+\centering
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_C$00\% & $M_C$10\% & $M_C$25\% & $M_C$50\% & $M_C$75\% \\
+    \hline
+    $M_C$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_C$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_C$25\% & & & - & FALSE & \textbf{TRUE} \\
+    $M_C$50\% & & & & - & FALSE \\
+    $M_C$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\ 
+  \hline
+  $M_C$00\%-$M_C$10\% & 75.29 & 37.66 & TRUE \\ 
+  $M_C$00\%-$M_C$25\% & 88.58 & 37.66 & TRUE \\ 
+  $M_C$00\%-$M_C$50\% & 114.02 & 37.66 & TRUE \\ 
+  $M_C$00\%-$M_C$75\% & 149.60 & 37.66 & TRUE \\ 
+  $M_C$10\%-$M_C$25\% & 13.29 & 37.66 & FALSE \\ 
+  $M_C$10\%-$M_C$50\% & 38.73 & 37.66 & TRUE \\ 
+  $M_C$10\%-$M_C$75\% & 74.31 & 37.66 & TRUE \\ 
+  $M_C$25\%-$M_C$50\% & 25.44 & 37.66 & FALSE \\ 
+  $M_C$25\%-$M_C$75\% & 61.02 & 37.66 & TRUE \\ 
+  $M_C$50\%-$M_C$75\% & 35.58 & 37.66 & FALSE \\ 
+   \hline
+\end{tabular}
+\label{ML_Tr-MC_results}
+\end{table}
+
 
 \begin{table}
 \caption{$M_C$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
@@ -741,7 +1044,7 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
   $M_C$50\%-$M_C$75\% & 34.00 & 41.00 & FALSE \\ 
    \hline
 \end{tabular}
-\label{MC_results}
+\label{Ba_RF-MC_results}
 \end{table}
 
 %---------------------------------------------
@@ -788,6 +1091,20 @@ If one states that morphological characters accumulate through time in the same 
 Therefore, homoplasy is expected to be more important (by chance) in bigger morphological matrices \citep{davalosintegrating2014}.
 After a certain amount of morphological characters, adding new ones adds homoplasy \citep{wagner2000}.
 
+Difference between Robinson-Fould and Triples?
+Robison-Fould is a conservative tree topology metric, it is more sensible to single taxon displacement because it will count clades as similar only if they are composed of the same number of taxa with the same topologies.
+When getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees.
+On the other hand, the Triples method is measuring the position of each taxon towards to other reference taxa.
+It will penalise only trees where taxa get removed furthest from their original clade.
+Looking at our problematic (how does missing data influence topological recovery in trees containing both living and fossil taxa) we are more interested the placement of taxa (i.e. where does the fossil branch) than the exact conservation of clades.
+
+What's the crucial factor?
+Regarding the fact that we are more interested in taxa placement than in clade conservation (Triples vs. Robinson-Fould), the parameter that affects the more the decrease in topological recovery if the number of missing living taxa in the morphological part of the matrix ($M_L$).
+This makes sense since the living taxa are bearing both the information to build the tree backbone (the molecular data) and the information used for branching the fossil on this backbone (the morphological information).
+Therefore, we advocate that an effort should be made in collecting all the available morphological information for living taxa in order to properly run Total Evidence analysis. %yep, we need data from living taxa.
+
+
+
 %Potential reviewers comments?
 %What about it when you vary the proportion of fossil taxa?
 
@@ -804,7 +1121,10 @@ A Bayesian approach fails to recover accurate topology in a total evidence appro
 We think this failure is due to the intrinsic structure of the Total Evidence matrices that includes a vast amount of not randomly distributed missing data (i.e. the molecular part of the matrix for the fossil taxa).
 This missing data is equal to the number of fossil taxa $\times$ the number of molecular characters leading to a vast amount of likely trees to be sampled in the Bayesian mcmc tree building.
 However, one can use a Maximum Likelihood approach to obtain the likeliest topology and to use this one as a fixed.
+If so, an effort should be made on collecting morphological data from living taxa in order to efficiently improve the quality of the trees.
 
+%Perspectives:
+%What the effect of this missing molecular data on branch length estimation?
 
 %---------------------------------------------
 %
@@ -970,6 +1290,103 @@ Results are available in table ~\ref{RPBTC_testing}. %link broken
 
 \subsection{Codes}
 All codes are available at: $https://github.com/TGuillerme/Total\_Evidence\_Method-Missing\_data/tree/master/Functions$
+
+\subsection{Full results}
+
+\begin{table}
+\caption{Tree similarity values per parameter in ML framework}
+\centering
+\begin{tabular}{rrlccccc}
+    \hline
+    Parameter & amount of    & metric & mode & 50\%CI &       & 95\%CI &       \\
+              & missing data &        &      & lower  & upper & lower  & upper \\
+    \hline
+    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
+              &              & Triples        & 1 & NA  & NA & NA  & NA \\
+              & 10\%         & Robinson-Fould & 0.6714878 & 0.5692308  & 0.7894649 & 0.4689069  & 1.0361514 \\ %how many digits?
+              &              & Triples        & 0.9424133 & 0.8683742  & 0.9998559 & 0.6121399  & 1.0635250 \\
+              & 25\%         & Robinson-Fould & 0.5167595 & 0.4403147  & 0.6307692 & 0.2664429  & 0.8929104 \\
+              &              & Triples        & 0.5599494 & 0.7084874  & 0.8105781 & 0.2912950  & 0.9990703 \\
+              & 50\%         & Robinson-Fould & 0.4321852 & 0.3641026  & 0.5215627 & 0.2313246  & 0.6423846 \\
+              &              & Triples        & 0.5143009 & 0.4197127  & 0.5991498 & 0.2991432  & 0.9104526 \\
+              & 75\%         & Robinson-Fould & 0.3727090 & 0.3230769  & 0.4342249 & 0.2035474  & 0.5776286 \\
+              &              & Triples        & 0.4449563 & 0.3385128  & 0.5329149 & 0.1929395  & 0.8551570 \\
+    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
+              &              & Triples        & 1 & NA  & NA & NA  & NA \\
+              & 10\%         & Robinson-Fould & 0.9072419 & 0.7668415  & 1.0000000 & 0.4070844  & 1.0478010 \\
+              &              & Triples        & 0.9763617 & 0.9448100  & 1.0039460 & 0.7158118  & 1.1043330 \\
+              & 25\%         & Robinson-Fould & 0.5722382 & 0.4883560  & 0.6923077 & 0.3253239  & 0.9367467 \\
+              &              & Triples        & 0.9370152 & 0.8207407  & 0.9938846 & 0.5394443  & 1.0868073 \\
+              & 50\%         & Robinson-Fould & 0.4338159 & 0.3025641  & 0.4760777 & 0.1704016  & 0.6683220 \\
+              &              & Triples        & 0.7327464 & 0.5947211  & 0.8739630 & 0.3418679  & 1.0251540 \\
+              & 75\%         & Robinson-Fould & 0.1534487 & 0.1155128  & 0.2000000 & 0.0683485  & 0.3230769 \\
+              &              & Triples        & 0.4588292 & 0.3905631  & 0.6111484 & 0.2903676  & 0.8568274 \\   
+    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
+              &              & Triples        & 1 & NA  & NA & NA  & NA \\
+              & 10\%         & Robinson-Fould & 0.473285 & 0.3842965  & 0.8358974 & 0.3564753  & 0.9589744 \\
+              &              & Triples        & 0.9592557 & 0.8691580  & 1.026095 & 0.5720847  & 1.067524 \\
+              & 25\%         & Robinson-Fould & 0.4548038 & 0.3572132  & 0.6307692 & 0.2425339  & 0.9161212 \\
+              &              & Triples        & 0.9071925 & 0.7516934  & 0.9976224 & 0.4462168  & 1.0705291 \\
+              & 50\%         & Robinson-Fould & 0.4244263 & 0.3755493  & 0.4666667 & 0.2494927  & 0.8287312 \\
+              &              & Triples        & 0.6834366 & 0.5713927  & 0.8226139 & 0.2776690  & 1.0085944 \\
+              & 75\%         & Robinson-Fould & 0.2306888 & 0.1774508  & 0.3025641 & 0.1087764  & 0.5673541 \\
+              &              & Triples        & 0.4513642 & 0.3737397  & 0.5723858 & 0.2245224  & 0.7917946 \\
+    \hline
+\label{NTSML_full}
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Tree similarity values per parameter in Bayesian framework}
+\centering
+\begin{tabular}{rrlccccc}
+    \hline
+    Parameter & amount of    & mode & 50\%CI &       & 95\%CI & \\
+              & missing data &      & lower  & upper & lower  & upper \\
+    \hline
+    $M_L$     & 0\%          & Robinson-Fould & 0.05641026 & 0.03589744  & 0.06337695 & 0.03139209  & 0.07692308 \\ %how many digits?
+              &              & Triples        & 0.04104231 & 0.00830962  & 0.05441173 & -0.03933377  & 0.10690054 \\
+              & 10\%         & Robinson-Fould & 0.03584309 & 03584196  & 03589744 & 02825643  & 0.06175676 \\
+              &              & Triples        & 0.03399849 & 0.003196469  & 0.04981018 & -0.049913382  & 0.11784366 \\
+              & 25\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01536739  & 0.06123106 \\
+              &              & Triples        & 0.03510953 & 0.002113358  & 0.04939228 & -0.041202264  & 0.09699332 \\
+              & 50\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01538462  & 0.05641026 \\
+              &              & Triples        & 0.02849433 & 0.003263098  & 0.05298036 & -0.038344731  & 0.09250063 \\
+              & 75\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01069992  & 0.04338811 \\
+              &              & Triples        & -0.0001940566 & -0.01801301  & 0.04058783 & -0.06030922  & 0.10665934 \\
+    $M_L$     & 0\%          & Robinson-Fould & 0.05641026 & 0.03589744  & 0.06337695 & 0.03139209  & 0.07692308 \\
+              &              & Triples        & 0.04104231 & 0.008309622  & 0.05441173 & -0.039333778  & 0.10690054 \\
+              & 10\%         & Robinson-Fould & 0.03593712 & 0.03198256  & 0.05641026 & 0.02798864  & 0.07692308 \\
+              &              & Triples        & 0.02639309 & 0.002185408  & 0.05061314 & -0.046563042  & 0.10547052 \\
+              & 25\%         & Robinson-Fould & 0.03588134 & 0.03587629  & 0.03589744 & 0.01538462  & 0.0680884 \\
+              &              & Triples        & 0.03856296 & 0.002185408  & 0.05061314 & -0.046563042  & 0.10547052 \\
+              & 50\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01536289  & 0.05879269 \\
+              &              & Triples        & 0.01403716 & -0.01100608  & 0.03972324 & -0.03800324  & 0.12405207 \\
+              & 75\%         & Robinson-Fould & 0.03589206 & 0.03588825  & 0.03589744 & 0.01538462  & 0.0411843 \\
+              &              & Triples        & 0.02939363 & 0.01902351  & 0.04238907 & -0.03087905  & 0.08946917 \\   
+    $M_L$     & 0\%          & Robinson-Fould & 0.05641026 & 0.03589744  & 0.06337695 & 0.03139209  & 0.07692308 \\
+              &              & Triples        & 0.04104231 & 0.008309622  & 0.05441173 & -0.039333778  & 0.10690054 \\
+              & 10\%         & Robinson-Fould & 0.05637057 & 0.03589744  & 0.05927956 & 0.02813296  & 0.07692308 \\
+              &              & Triples        & 0.03008132 & 0.01176800  & 0.04847400 & -0.02451461  & 0.09453754 \\
+              & 25\%         & Robinson-Fould & 0.03593743 & 0.03589744  & 0.03596018 & 0.02330790  & 0.07692308 \\
+              &              & Triples        & 0.02010221 & -0.001145118  & 0.0377779 & -0.060183332  & 0.1098632 \\
+              & 50\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.03050289  & 0.05950426 \\
+              &              & Triples        & 0.01053959 & -0.005595947  & 0.04510444 & -0.036278820  & 0.10478805 \\
+              & 75\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01115983  & 0.04362927 \\
+              &              & Triples        & 0.02427778 & 0.0007405737  & 0.04260522 & -0.0373004106  & 0.1048756 \\
+\label{NTSBA_full}
+\end{tabular}
+\end{table}
+
+\subsection{Bootstraps distribution}
+
+\begin{figure}
+\centering
+\includegraphics[keepaspectratio=true]{Figures/TEM_Fig-AppendixBootstraps.pdf}
+\caption{Bootstraps distribution across the "best" trees.}                     % MISSING 8 CHAINS
+\label{Fig_AppendixBoostraps}
+\end{figure}
+
 
 %END
 \end{document}
