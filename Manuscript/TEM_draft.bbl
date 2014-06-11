@@ -1,4 +1,4 @@
-\begin{thebibliography}{56}
+\begin{thebibliography}{63}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -7,6 +7,12 @@
 \providecommand{\bibAnnote}[2]{%
   \begin{quotation}\noindent\textsc{Key:} #1\\
   \textsc{Annotation:}\ #2\end{quotation}}
+
+\bibitem[{Agapow and Purvis(2002)}]{agapowpower2002}
+Agapow, P. and A.~Purvis. 2002. Power of eight tree shape statistics to detect
+  nonrandom diversification: a comparison by simulation of two models of
+  cladogenesis. Systematic biology 51:866--872.
+\bibAnnoteFile{agapowpower2002}
 
 \bibitem[{Bapst(2013)}]{bapsta2013}
 Bapst, D.~W. 2013. A stochastic rate-calibrated method for time-scaling
@@ -120,6 +126,16 @@ Jukes, T.~H. and C.~R. Cantor. 1969. Evolution of protein molecules vol. III
   Pages~21--132. Academic Press.
 \bibAnnoteFile{jc69}
 
+\bibitem[{Kirkpatrick and Slatkin(1993)}]{kirkpatricksearching1993}
+Kirkpatrick, M. and M.~Slatkin. 1993. Searching for evolutionary patterns in
+  the shape of a phylogenetic tree. Evolution Pages~1171--1181.
+\bibAnnoteFile{kirkpatricksearching1993}
+
+\bibitem[{Lee et~al.(2013)Lee, Soubrier, and Edgecombe}]{leerates2013}
+Lee, M., J.~Soubrier, and G.~Edgecombe. 2013. Rates of phenotypic and genomic
+  evolution during the cambrian explosion. Current biology : {CB} .
+\bibAnnoteFile{leerates2013}
+
 \bibitem[{Lemmon et~al.(2009)Lemmon, Brown, Kathrin, and
   Lemmon}]{lemmonthe2009}
 Lemmon, A., J.~Brown, S.~Kathrin, and E.~Lemmon. 2009. The effect of ambiguous
@@ -152,10 +168,34 @@ Meredith, R., J.~Janečka, J.~Gatesy, O.~Ryder, C.~Fisher, E.~Teeling,
   diversification. Science {(New} York, {N.Y.)} 334:521--524.
 \bibAnnoteFile{meredithimpacts2011}
 
+\bibitem[{Ni et~al.(2013)Ni, Gebo, Dagosto, Meng, Tafforeau, Flynn, and
+  Beard}]{nithe2013}
+Ni, X., D.~Gebo, M.~Dagosto, J.~Meng, P.~Tafforeau, J.~Flynn, and K.~Beard.
+  2013. The oldest known primate skeleton and early haplorhine evolution.
+  Nature 498:60--64.
+\bibAnnoteFile{nithe2013}
+
 \bibitem[{Novacek and Wheeler(1992)}]{novacek1992ext}
 Novacek, M.~J. and Q.~Wheeler. 1992. Extinction and phylogeny. Columbia
   University Press.
 \bibAnnoteFile{novacek1992ext}
+
+\bibitem[{O'Leary et~al.(2013)O'Leary, Bloch, Flynn, Gaudin, Giallombardo,
+  Giannini, Goldberg, Kraatz, Luo, Meng, Ni, Novacek, Perini, Randall, Rougier,
+  Sargis, Silcox, Simmons, Spaulding, Velazco, Weksler, Wible, and
+  Cirranello}]{O'Leary08022013}
+O'Leary, M.~A., J.~I. Bloch, J.~J. Flynn, T.~J. Gaudin, A.~Giallombardo, N.~P.
+  Giannini, S.~L. Goldberg, B.~P. Kraatz, Z.-X. Luo, J.~Meng, X.~Ni, M.~J.
+  Novacek, F.~A. Perini, Z.~S. Randall, G.~W. Rougier, E.~J. Sargis, M.~T.
+  Silcox, N.~B. Simmons, M.~Spaulding, P.~M. Velazco, M.~Weksler, J.~R. Wible,
+  and A.~L. Cirranello. 2013. The placental mammal ancestor and the post–k-pg
+  radiation of placentals. Science 339:662--667.
+\bibAnnoteFile{O'Leary08022013}
+
+\bibitem[{O’Leary and Kaufman(2011)}]{morphobank}
+O’Leary, M.~A. and S.~Kaufman. 2011. Morphobank: phylophenomics in the
+  “cloud”. Cladistics 27:529--537.
+\bibAnnoteFile{morphobank}
 
 \bibitem[{Pagel(1994)}]{Pagel22011994}
 Pagel, M. 1994. Detecting correlated evolution on phylogenies: A general method
@@ -277,6 +317,15 @@ Slater, G.~J. and L.~J. Harmon. 2013. Unifying fossils and phylogenies for
 Spencer, M.~R. and E.~W. Wilberg. 2013. Efficacy or convenience? model-based
   approaches to phylogeny estimation using morphological data. Cladistics 29.
 \bibAnnoteFile{spencerefficacy2013}
+
+\bibitem[{Springer et~al.(2012)Springer, Meredith, Gatesy, Emerling, Park,
+  Rabosky, Stadler, Steiner, Ryder, Janečka, Fisher, and
+  Murphy}]{springermacroevolutionary2012}
+Springer, M., R.~Meredith, J.~Gatesy, C.~Emerling, J.~Park, D.~Rabosky,
+  T.~Stadler, C.~Steiner, O.~Ryder, J.~Janečka, C.~Fisher, and W.~Murphy.
+  2012. Macroevolutionary dynamics and historical biogeography of primate
+  diversification inferred from a species supermatrix. {PloS} one 7.
+\bibAnnoteFile{springermacroevolutionary2012}
 
 \bibitem[{Stadler and Yang(2013)}]{stadlerdating2013}
 Stadler, T. and Z.~Yang. 2013. Dating phylogenies with sequentially sampled

@@ -59,6 +59,11 @@ Repeated entry---line 5327 of file References.bib
  : @article{stamatakisa2008
  :                         ,
 I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 5388 of file References.bib
+ : 
+ : @article {morphobank,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--missing school in chen2011
 Warning--can't use both author and editor fields in dobson1975triplets
 Warning--empty journal in heaththe2013
@@ -66,45 +71,45 @@ Warning--can't use both author and editor fields in johnson1998
 Warning--can't use both author and editor fields in jc69
 Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
-You've used 56 entries,
+You've used 63 entries,
             2858 wiz_defined-function locations,
-            923 strings with 14552 characters,
-and the built_in function-call counts, 33337 in all, are:
-= -- 2781
-> -- 1693
-< -- 39
-+ -- 572
-- -- 501
-* -- 2474
-:= -- 5293
-add.period$ -- 223
-call.type$ -- 56
-change.case$ -- 440
-chr.to.int$ -- 55
-cite$ -- 119
-duplicate$ -- 2411
-empty$ -- 2340
-format.name$ -- 673
-if$ -- 6780
+            962 strings with 16374 characters,
+and the built_in function-call counts, 39376 in all, are:
+= -- 3221
+> -- 2180
+< -- 42
++ -- 736
+- -- 654
+* -- 2983
+:= -- 6239
+add.period$ -- 251
+call.type$ -- 63
+change.case$ -- 526
+chr.to.int$ -- 62
+cite$ -- 133
+duplicate$ -- 2814
+empty$ -- 2669
+format.name$ -- 853
+if$ -- 7975
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 535
-newline$ -- 235
-num.names$ -- 224
-pop$ -- 906
+missing$ -- 630
+newline$ -- 263
+num.names$ -- 252
+pop$ -- 1080
 preamble$ -- 1
-purify$ -- 391
+purify$ -- 470
 quote$ -- 0
-skip$ -- 807
+skip$ -- 920
 stack$ -- 0
-substring$ -- 1375
-swap$ -- 1032
+substring$ -- 1574
+swap$ -- 1230
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 486
+type$ -- 549
 warning$ -- 7
-while$ -- 208
+while$ -- 236
 width$ -- 0
-write$ -- 674
-(There were 14 error messages)
+write$ -- 757
+(There were 15 error messages)
