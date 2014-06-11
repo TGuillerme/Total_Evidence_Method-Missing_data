@@ -1,5 +1,5 @@
 #Script for testing the effect of missing data on tree topology.
-#cd('../PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+#setwd('../PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 
 #Loading the functions
@@ -22,10 +22,10 @@ Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",head
 #/TreeCmp_chains/
 
 #ML chains
-cd("../Data/Tree_Comparisons/TreeCmp_chains/ML/")
+setwd("../Data/Tree_Comparisons/TreeCmp_chains/ML/")
 tmp<-TreeCmp.Read('MChain', verbose=FALSE)
 ML_trees<-NTS(tmp, Random51)
-cd('../../../../Analysis/')
+setwd('../../../../Analysis/')
 
 #Isolating the ML treesets
 ML.ML<-ML_trees[c(1,26,51,76,101)]
@@ -50,10 +50,10 @@ ML.MLMFMC<-ML_trees
 class(ML.MLMFMC)<-class(ML_trees)
 
 #Bayesian chains
-cd("../Data/Tree_Comparisons/TreeCmp_chains/Bayesian/")
+setwd("../Data/Tree_Comparisons/TreeCmp_chains/Bayesian/")
 tmp<-TreeCmp.Read('MChain', verbose=TRUE)
 Bayesian_trees<-NTS(tmp, Random51)
-cd('../../../../Analysis/')
+setwd('../../../../Analysis/')
 
 #Isolating the Bayesian treesets + summarize each RPBTC by the mode  
 Bayesian.ML<-Bayesian_trees[c(1,26,51,76,101)]
@@ -88,7 +88,7 @@ Bayesian.MLMFMC<-TreeCmp.Mode(Bayesian.MLMFMC, 1000, verbose=TRUE)
 
 #Setting the metric
 metric="R.F_Cluster"
-#metric="Triples"
+metric="Triples"
 #colour figures palette("default")
 #BW figures  
 palette(c("black", "gray50"))
@@ -143,16 +143,16 @@ legend( 100 , 0.9 , c("Mode", "50% CI", "95% CI"), col="gray80", lty=c(NA, 1, 2)
 #Distribution check (visual)
 
 TreeCmp.distribution(ML.ML, "Triples")
-TreeCmp.anova(ML.ML, "R.F_Cluster", plot=TRUE)
-TreeCmp.anova(ML.ML, "Triples", plot=TRUE)
+TreeCmp.anova(ML.ML, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
+TreeCmp.anova(ML.ML, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
 #MFossil
 TreeCmp.distribution(ML.MF, "Triples")
-TreeCmp.anova(ML.MF, "R.F_Cluster", plot=TRUE)
-TreeCmp.anova(ML.MF, "Triples", plot=TRUE)
+TreeCmp.anova(ML.MF, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
+TreeCmp.anova(ML.MF, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
 #MCharacter
 TreeCmp.distribution(ML.MC, "Triples")
-TreeCmp.anova(ML.MC, "R.F_Cluster", plot=TRUE)
-TreeCmp.anova(ML.MC, "Triples", plot=TRUE)
+TreeCmp.anova(ML.MC, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
+TreeCmp.anova(ML.MC, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
 #MLiving:MFossil
 TreeCmp.distribution(ML.MLMF, "Triples")
 TreeCmp.anova(ML.MLMF, "R.F_Cluster", plot=TRUE)
