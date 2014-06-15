@@ -4,6 +4,7 @@
 *.doc
 *.docx
 *.pptx
+*.ppt
 
 # Compiled source #
 *.com
