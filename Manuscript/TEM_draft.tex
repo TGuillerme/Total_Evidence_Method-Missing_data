@@ -281,7 +281,12 @@ We also propose a new method for comparing Bayesian posterior tree distribution'
 
 
 \section{Methods} %no material needed?
+<<<<<<< HEAD
 To explore the effect of missing data in total evidence matrices on tree topology we used the following protocol (note that we explain each step in detail below this general outline -Fig. ~\ref{Fig_Outline}):
+=======
+% NC: Depends on the journal. See what Syst Biol asks for as section titles.
+To explore how missing data in the morphological sections of Total Evidence matrices influences tree topology, we used the following protocol (note that we explain each step in detail below this general outline; Fig.~\ref{Fig_Outline}). %NC: does Syst Biol use Fig. or Figure?
+>>>>>>> FETCH_HEAD
 \begin{enumerate}
 \item{Generating the matrix:} \label{step:generate_matrix} \\
 We randomly generated birth death tree (hereafter called the "true" tree, Table ~\ref{Tab_glossary}) to infer a matrix containing both molecular and morphological data for living and fossil taxa (hereafter called the "complete" matrix, Table ~\ref{Tab_glossary}).
@@ -292,21 +297,27 @@ We inferred Bayesian phylogenetic trees from the "complete" matrix and from the 
 \item{Comparing topologies:} \label{step:compare_topo} \\
 We then compared the "best" tree to the "missing-data" trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on the topologies of the phylogenies we estimated.
 \end{enumerate}
-To measure the effect of missing data distribution, we repeated steps ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} with the exact same fixed parameters 51 (3$\times$17) times. %that's because I had 3 cluster accounts available... If it's a too odd number, no worries, I'll just remove the last chain.
-A list of all the terms used in this paper is available in table ~\ref{Tab_glossary}.
+We repeated steps 1-4 50 times. %that's because I had 3 cluster accounts available... If it's a too odd number, no worries, I'll just remove the last chain.
+% NC: Yeah 51 is odd. Let's just use 50.
+A list of all the terms used in this paper is available in Table ~\ref{Tab_glossary}.
 
 
 \begin{figure}
 \centering
 \includegraphics[keepaspectratio=true]{Figures/TEM_Fig_outline-BW.pdf}
 \caption{Protocol outline.
-(1) We generated a random tree (the "true" tree) to infer a matrix with no missing data (the "complete" matrix).
-(2) We removed data from the morphological partition of the "complete" matrix resulting in 125 "missing-data" matrices.
-(3) We infer phylogenetic trees from each matrix in both ML and Bayesian framework.
-(4) We then compared the "missing-data" trees to the "best" tree.
-We repeated step ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} 51 (3$\times $17) times.}
+(1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
+(2) We removed data from the morphological part of the "complete" matrix resulting in 124 "missing-data" matrices.
+% NC: I thought we had 124 missing data matrices... I just worked this out - one of the "missing data" matrices is 0%,0%,0% so = complete matrix.
+(3) We built phylogenetic trees from each matrix using both Maximum Likelihood and Bayesian methods.
+(4) We compared the "missing-data" trees to the "best" tree.
+We repeated steps 1-4 50 times.}
 \label{Fig_Outline}
 \end{figure}
+
+% NC: One tiny edit to the figure. I think the ML then Bayesian story is nice, so maybe change that part of the figure so it's ML then Bayesian. Also let's show this figure to a couple of people to see if they get it.
+
+% NC: Not sure we need the glossary, but keep it for the thesis
 
 \begin{table}[ht]
 \caption{Glossary}
@@ -334,55 +345,39 @@ We repeated step ~\ref{step:generate_matrix} to ~\ref{step:compare_topo} 51 (3$\
 \label{Tab_glossary}
 \end{table}
 
-%---------------------------------------------
-%       Generating the matrix
-%---------------------------------------------
+% NC: Most of the below was fine but I've tried to condense it a bit as it's currently long even for Syst Biol. The key is to explain everything, but with minimal repetition.
 
 \subsection{Generating the matrix}
-First we randomly generated a "true" tree of 50 taxa in R v3.0.2 \citep{R302} using the package diversitree v0.9-6 \citep{fitzjohndiversitree2012}.
-We generated the tree using a Birth Death process by sampling the values of the speciation events ($\lambda$) and extinction events ($\mu$) from a uniform distribution but maintaining $\lambda$ $>$ $\mu$ \citep{paradistime-dependent2011}.
-We implemented a rejection sampling algorithm to select only random trees with 25 living and 25 fossil taxa. %Justification needed?
-We then added a taxa to the resulting Birth-Death tree as the outgroup of the tree.
-The mean branch length of the tree was used to separate the outgroup from the rest of the taxa and the branch length leading to the outgroup was set as the sum of the mean branch length and the longest root-to-tip length of the tree.
+First we randomly generated a "true" tree of 50 taxa in R v3.0.2 \citep{R302} using the package diversitree v0.9-6 \citep{fitzjohndiversitree2012}. We generated the tree using a birth death process by sampling speciation ($\lambda$) and extinction ($\mu$) rates from a uniform distribution but maintaining $\lambda$ $>$ $\mu$ \citep{paradistime-dependent2011}. We implemented a rejection sampling algorithm to select only trees with 25 living and 25 fossil taxa to ensure that we had enough taxa of each type for our missing data simulations to work. We then added an outgroup to the tree, using the mean branch length of the tree to separate the outgroup from the rest of the taxa, and with the branch length leading to the outgroup set as the sum of the mean branch length and the longest root-to-tip length of the tree.
 
-Next, we created a molecular and a morphological matrix from the "true" tree.
-The molecular matrix was inferred from the "true" tree using the package phyclust v0.1-14 \citep{chen2011}.
-The matrix was made of 1000 characters sites for 51 taxa and generated using the seqgen algorithm \citep{ranbaut1997seqgen}.
-We used the HKY model \citep{HKY85} with a random base frequencies and with the transition/transversion rate of 2 \citep{douadycomparison2003} as parameters for generating the matrix.
-The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \citep{yangamong-site1996}.
-We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal.
-These parameters were selected to generate data with no special assumption about how the characters evolved as well as to reduce the computational time required if these parameters were estimated rather than defined (total computational time $>$ 65 CPU years).
+Next, we generated a molecular and a morphological matrix from the "true" tree. The molecular matrix was inferred from the "true" tree using the R package phyclust v0.1-14 \citep{chen2011}. The matrix contained 1000 character sites for 51 taxa and was generated using the seqgen algorithm \citep{ranbaut1997seqgen} and using the HKY model \citep{HKY85} with random base frequencies and transition/transversion rate of 2 \citep{douadycomparison2003}. The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \citep{yangamong-site1996}. We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal.
+We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined (even with the parameters defined, total computational time was over 65 CPU years). All the molecular information for fossil taxa was replaced by missing data ("?").
 
-We inferred the morphological matrix using the ape package v3.0-11 \citep{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa.
-We assigned the number of character states (either 2 or 3) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters.
-These probabilities were selected using the overall distribution of characters states extracted from 100 published empirical morphological matrices (See \hyperref[supplementaries]{supplementaries}).
-We then ran an independent discrete character simulation for each character using the "true" tree branch length and topology with the randomly selected number of states (2 or 3) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to an other \citep{Pagel22011994}.
-This method allows us to have only two parameters per character: the number of states and the evolutionary rate.
-For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5.
-We used a low evolution rate parameter (i.e. $\alpha$) in order to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \citep{wagner2000,davalosintegrating2014}.
+We inferred the morphological matrix using the R package ape v3.0-11 \citep{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa. We assigned the number of character states (either two or three) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters.
+These probabilities were selected using the overall distribution of character states extracted from 100 published empirical morphological matrices (See \hyperref[supplementaries]{supplementaries}). We then ran an independent discrete character simulation for each character using the "true" tree with the character's randomly selected number of states (two or three) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to an other \citep{Pagel22011994}. This method allows us to have only two parameters for each character: the number of states and the evolutionary rate.
+For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5. We used low evolutionary rate parameters (i.e. $\alpha$) to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \citep{wagner2000,davalosintegrating2014}.
 
-All the molecular information for fossil taxa was replaced by missing data ("?").
-Finally, we combined the morphological and molecular matrices obtained from the "true" tree.
-Hereafter we call this the "complete" matrix: the matrix with no missing data except for the molecular data of the fossil taxa.
+Finally, we combined the morphological and molecular matrices obtained from the "true" tree. Hereafter we call this the "complete" matrix: the matrix with no missing data except for the molecular data of the fossil taxa.
 
 %---------------------------------------------
 %       Removing data
 %---------------------------------------------
 
 \subsection{Removing data}
-Once we obtained the "complete" matrix we modified it to get a set of matrices with missing data. %Ugly sentence
-We randomly replaced data with "?" in the morphological part of the matrices according to the following parameters (Fig. ~\ref{Fig_RemoveData}):
+We modified the "complete" matrix to get matrices with missing data by randomly replacing data with "?" in the morphological part of the matrices according to the following parameters (Fig. ~\ref{Fig_RemoveData}):
 
 \begin{enumerate}
+% NC: I'm not going to check but make sure the brief explanations of the parameters here are the same as in the intro and outline above. Also look at my justifications in the intro too. I think this may need a bit more justification as it's the main part of your simulations.
 \item{The proportion of living taxa with no morphological data ($M_{L}$): 0\%, 10\%, 25\%, 50\% or 75\%.}
-This parameter illustrates the number of living taxa that are present in the molecular part of the matrix but not in the morphological one.
-Because of the increasing facility to sequence DNA for living taxa, the number of living taxa with molecular data is highly superior the the number of taxa with molecular and morphological data.
+This parameter illustrates the number of living taxa that are present in the molecular part of the matrix but not in the morphological part.
+This reflects the fact that because of the increasing availability of DNA sequences for living taxa, detailed morphological data is scarce.
 \item{The proportion of missing morphological data across all fossil taxa ($M_{F}$): 0\%, 10\%, 25\%, 50\% or 75\%.}
 This parameter illustrates the quality of the fossil record. 
 \item{The proportion of missing morphological characters across all taxa (living and fossil - $M_{C}$): 0\%, 10\%, 25\%, 50\% or 75\%. }
 This parameter illustrates the number of available morphological characters for both living and fossil taxa.
 \end{enumerate}
 
+% NC: I'm not sure this figure is helpful really. Let's test it on some people.
 \begin{figure}
 \centering
 \includegraphics[keepaspectratio=true]{Figures/TEM_Fig_missingData-BW.pdf}
@@ -399,63 +394,42 @@ The "missing-data" sub-matrix (grey) is the molecular part of the fossil taxa an
 \label{Fig_RemoveData}
 \end{figure}
 
-In practice, each parameter represent a different way of removing data in the morphological part of the matrix: $M_{L}$ removes a proportion of rows from the living taxa; $M_{F}$ removes a proportion of cells from the fossil taxa; and $M_{C}$ removes a proportion of columns across both living and fossil taxa (see Fig. ~\ref{Fig_RemoveData}).
-Note that $M_{L}$ is different to $M_{F}$ not only because of the region of the matrix affected: for $M_{L}$, all the morphological data of a proportion of the living taxa is removed (i.e. removing rows), as for $M_{F}$, a proportion of data is removed across the whole of the morphological matrix for fossil taxa (i.e. removing cells).
+In practice, each parameter represents a different way of removing data from the matrix: $M_{L}$ removes rows from the living taxa; $M_{F}$ removes cells from the fossil taxa; and $M_{C}$ removes columns across both living and fossil taxa (see Fig. ~\ref{Fig_RemoveData}).Note that $M_{L}$ is different to $M_{F}$ not only because of the region of the matrix affected: for $M_{L}$, all the morphological data of a percentage of living taxa is removed, but for $M_{F}$, a percentage of the data is removed at random from across the whole of the morphological matrix for fossil taxa.
 
-We tested all parameters combinations resulting in 125 ($5^3$) matrices.
-Because some parameter combinations introduce a lot of missing (e.g. $M_L$=75\%, $M_F$=75\% and $M_C$=75\%), some matrices contained fossil taxa without any data at all.
-When this occurred we repeated the random deletion of characters until every taxa had at least 5\% data across the whole matrix.
+We tested all parameters combinations resulting in 125 ($5^3$) matrices. Note that one of these combinations has no missing data so is equivalent to the "complete" matrix, thus we have 124 "missing-data" matrices. Because some parameter combinations introduce a lot of missing data (e.g. $M_L$=75\%, $M_F$=75\% and $M_C$=75\%), some matrices contained fossil taxa without any data at all. When this occurred we repeated the random deletion of characters until every taxon had at least 5\% data across the whole matrix.
 
 %---------------------------------------------
 %       Building phylogenies
 %---------------------------------------------
 
 \subsection{Building phylogenies}
-From the resulting matrices we generated two types of trees, the "best" tree that is inferred from the "complete" matrix and the "missing-data" trees inferred from the 125 matrices with various amounts of missing data.
-The "true" tree was used to generate the "complete" matrix and reflects the "true" evolutionary history in our simulations.
-The "best" tree, on the other hand, is the best tree we can build using the state-of-the-art phylogenetic methods.
-In real world situations, the "true" tree is never available to us because we cannot know the true evolutionary history of a clade (except in very rare circumstances, e.g. \citet{rozen2005}).
-Therefore, here we focus on comparing the trees inferred from the matrices with missing data to the "best" tree, rather than the "true" tree, as the "best" tree is generally what biologists have to work with.
+From the resulting matrices we generated two types of trees, the "best" tree inferred from the "complete" matrix and the "missing-data" trees inferred from the 124 matrices with various amounts of missing data.The "true" tree was used to generate the "complete" matrix and reflects the "true" evolutionary history in our simulations. The "best" tree, on the other hand, is the best tree we can build using state-of-the-art phylogenetic methods. In real world situations, the "true" tree is never available to us because we cannot know the true evolutionary history of a clade (except in very rare circumstances, e.g. \citet{rozen2005}). Therefore, here we focus on comparing the trees inferred from the matrices with missing data to the "best" tree, rather than the "true" tree, as the "best" tree is generally what biologists have to work with.
 
 \subsubsection{Maximum Likelihood}
-The "best" tree and the "missing-data" trees were inferred using RAxML v8.0.20 \citep{Stamatakis21012014}.
-For the molecular data, we used the GTR + $\Gamma_4$ model (\citet{tavare1986}; default GTRGAMMA in RAxML v8.0.20; \citet{Stamatakis21012014}) as a generalisation of the HKY + $\Gamma_4$ model \citep{HKY85} for the molecular data.
-The GTR model can be seen as a generalisation of the HKY model (the 2 parameters from the HKY model are implicitly included in the 6 from GTR model - \citet{stamatakisa2008}).
-For the morphological data, we used the implemented Markov \textit{k} state model \citep{lewisa2001} which is a generalisation of the JC69 model \citep{jc69} with \textit{k} $\geq$ 2 assuming an equal state frequency and a unique overall substitution rate ($\mu$) following a gamma distribution of the rate variation with four distinct categories (M\textit{k} + $\Gamma_4$; -K MK option in RAxML v8.0.20; \citet{Stamatakis21012014}).
-We used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support. %The explanations of the algorithm part for the BS was proposed by Trevor
-The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists in pruning one sub-tree from the tree and subsequently reinserting it to al neighbouring branches \citep{stamatakisa2008}.
-Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated as being better than others (e.g. Nearest Neighbouring Interchange - NNI) in recovering good bootstrap values \citep{salamin2003}.
+The "best" tree and the "missing-data" trees were inferred using RAxML v8.0.20 \citep{Stamatakis21012014}. For the molecular data, we used the GTR + $\Gamma_4$ model (\citet{tavare1986}; default GTRGAMMA in RAxML v8.0.20; \citet{Stamatakis21012014}) as a generalization of the HKY + $\Gamma_4$ model \citep{HKY85} for the molecular data. The GTR model can be seen as a generalization of the HKY model (the two parameters from the HKY model are implicitly included in the six from GTR model - \citet{stamatakisa2008}). For the morphological data, we used the implemented Markov \textit{k} state model \citep{lewisa2001} which is a generalization of the JC69 model \citep{jc69} with \textit{k} $\geq$ 2 assuming an equal state frequency and a unique overall substitution rate ($\mu$) following a gamma distribution of the rate variation with four distinct categories (M\textit{k} + $\Gamma_4$; -K MK option in RAxML v8.0.20; \citet{Stamatakis21012014}). We used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support. %The explanations of the algorithm part for the BS was proposed by Trevor
+The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists of pruning one sub-tree from the tree and subsequently reinserting it to all neighboring branches \citep{stamatakisa2008}. Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated to be better than other methods (e.g. Nearest Neighboring Interchange - NNI) for recovering good bootstrap values \citep{salamin2003}.
 
 \subsubsection{Bayesian}
-The "best" tree and the "missing-data" trees were inferred using MrBayes v3.2.2 \citep{Ronquist2012mrbayes}.
-We partitioned the data to treat the molecular part as a non-codon DNA partition and the morphological part as a multi-state morphological partition.
-The molecular evolutionary history was inferred using the HKY model with a transition/transversion ratio of two \citep{douadycomparison2003} and a gamma distribution for the rate variation with four distinct categories (HKY + $\Gamma_4$).
-For the morphological data, we used the Markov \textit{k} state model \citep{lewisa2001}, with equal state frequency and a unique overall substitution rate ($\mu$) with four distinct rates categories (M\textit{k} + $\Gamma_4$).
-We chose these models to be consistent with the parameters used to generate the "complete" matrix.
+The "best" tree and the "missing-data" trees were inferred using MrBayes v3.2.2 \citep{Ronquist2012mrbayes}. We partitioned the data to treat the molecular part as a non-codon DNA partition and the morphological part as a multi-state morphological partition. The molecular evolutionary history was inferred using the HKY model with a transition/transversion ratio of two \citep{douadycomparison2003} and a gamma distribution for the rate variation with four distinct categories (HKY + $\Gamma_4$). For the morphological data, we used the Markov \textit{k} state model \citep{lewisa2001}, with equal state frequency and a unique overall substitution rate ($\mu$) with four distinct rates categories (M\textit{k} + $\Gamma_4$). We chose these models to be consistent with the parameters used to generate the "complete" matrix.
 
-Each Bayesian tree was estimated using two runs of four chains each for a maximum of 50$\times$$1^6$ generations.
-We used the average standard deviation of split frequencies (ASDS) as a proxy to estimate the convergence of the chains and used a stop rule when the ASDS went below 0.01 \citep{Ronquist2012mrbayes}.
-The effective sample size (ESS) was also checked on a random sub-sample of runs in each simulation to ensure that ESS $>>$ 200 \citep{drummond2006ess}.
-For each run, we removed 25\% of the iterations as burn-in.
-We used the following prior for each tree (see \hyperref[supplementaries]{supplementaries}):
+Each Bayesian tree was estimated using two runs of four chains each for a maximum of 50$\times$$1^6$ generations. We used the average standard deviation of split frequencies (ASDS) as a proxy to estimate the convergence of the chains and used a stop rule when the ASDS went below 0.01 \citep{Ronquist2012mrbayes}. The effective sample size (ESS) was also checked on a random sub-sample of runs in each simulation to ensure that ESS $>>$ 200 \citep{drummond2006ess}. For each run, we removed 25\% of the iterations as burn-in. We used the following priors for each tree (see \hyperref[supplementaries]{supplementaries}):
 \begin{enumerate}
-\item
-the "true" tree’s topology as a starting tree (with a starting value for each branch length of 1),
-\item
-an exponential prior on the shape of the gamma distribution of $\alpha$=0.5 for both partitions
-\item
-and a transition/transversion ratio prior of 2 sampled from a strong beta distribution ($\beta$(80,40)).
+\item the "true" tree’s topology as a starting tree (with a starting value for each branch length of 1),
+\item an exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5 for both partitions, and
+\item a transition/transversion ratio prior of two sampled from a strong beta distribution ($\beta$(80,40)).
 \end{enumerate}
 
-We used these prior to speed up the Bayesian process.
-These prior biased the way the Bayesian process calculated the branch length by giving non-random starting points and boundaries for the parameters estimation process, however, in this study, we focused on the effect of missing data on the topology and not on the branch length.
-Even using these prior, it took 65 CPU years to build 51 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
+We used these prior to speed up the Bayesian estimation process. These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation, however, here we are focusing on the effect of missing data on tree topology and not branch lengths. Even using these priors, it took 65 CPU years to build 50 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
+% NC: OK so the 65 CPU is for building trees not matrices? Or is it combined time? Or does both stage take 65 CPU years? Be clearer in the earlier sections
 
 %---------------------------------------------
 %       Comparing Topologies
 %---------------------------------------------
 
+% NC: I think this section is suffering a bit from "here is everything I know about tree comparison metrics" rather than explaining what is important for your analysis. You may be able to cut some more stuff out.
+
 \subsection{Comparing topologies}
+<<<<<<< HEAD
 We compared the topology of the "missing-data" trees inferred from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
 Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees inferred from Total Evidence type matrices.
 To compare the topology of the resulting trees, we used two metrics to assess number of conserved taxa and clades position using respectively the Triples \citep{dobson1975triplets} and the Robinson-Fould \citep{RF1981} distance.
@@ -469,6 +443,15 @@ Where $I_{ijk}$ is equal to 0 if the the two triplets (\textit{ijk}) are the sam
 For any rooted binary tree there are only three possible combinations per triplets: ((\textit{j},\textit{k}),\textit{i});, ((\textit{i},\textit{k}),\textit{j}); and ((\textit{i},\textit{j}),\textit{k}); \citep{johnson1998}.
 If the trees used are not fully binary, a fourth triplet combination is possible: (\textit{i},\textit{j},\textit{k});.
 One can calculate $S_n$, the triplet distance between two trees as:
+=======
+We compared the topology of the "missing-data" trees to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$ on tree topology. We used the Triples \citep{dobson1975triplets} metric to assess the number of conserved taxa across trees, and the Robinson-Fould \citep{RF1981} distance to identify conserved clade positions. We then used Normalized Tree Similarity index \citep{Bogdanowicz2012} to generalize our results for any \textit{n} number of taxa. These metrics are described in detail below.
+% NC: I moved this around a bit to make it clearer what metric fits where. Remember we need American spellings.
+% Also I thought it was triplets distance? Good idea to check...
+
+\subsubsection{Triples distance}
+% NC: I've tried to remove the word displaced here, as displaced suggests that you have one correct placement and then are comparing it to other trees. But the general meaning is that the placements differ between trees.
+Triples distance ($T_{x,y}$; \citealp{dobson1975triplets}) measures the number of sub-trees made up of three taxa (triplets) that differ between two given trees. Each triplet can be written as $I_{ijk}$=(\textit{ijk}). Where $I_{ijk}$ is equal to zero if the the two triplets (\textit{ijk}) are the same in the two trees otherwise $I_{ijk}$ is equal to one. For any rooted binary tree there are only three possible combinations for each triplet: ((\textit{j},\textit{k}),\textit{i});, ((\textit{i},\textit{k}),\textit{j}); and ((\textit{i},\textit{j}),\textit{k}); \citep{johnson1998}. If the trees used are not fully binary, a fourth triplet combination is possible: (\textit{i},\textit{j},\textit{k}). We can calculate the triplet distance between two trees, $S_n$, as:
+>>>>>>> FETCH_HEAD
 \begin{equation}
 S_n = \sum_{ijk} I_{ijk}
 \end{equation}
@@ -476,138 +459,135 @@ Where:
 \begin{equation}
 \sum_{ijk} = \binom{n}{4} = \frac{n!}{4!(n-4)!}
 \end{equation}
-And where \textit{n} is the number of taxa in both trees (modified from \citet{critchlowthe1996}).
-If $S_n$=0, the trees are the same (i.e. no taxa as been displaced).
-When $S_n$ = $\binom{n}{4}$, the trees are the most different possible (i.e. every taxa as been displaced).
-This metric therefore illustrates the amount of displayed taxa.
-It is less sensitive to the placement of individual taxa and to taxa of highly uncertain placement (e.g. fossil taxa) than the Robinson-Foulds metric \citep{critchlowthe1996,johnson1998,wiensmissing2003}.
-Therefore we used this metric as a proxy to estimate the robustness of the tree to flying taxa (see \hyperref[supplementaries]{supplementaries}).
+And where \textit{n} is the total number of taxa in both trees (modified from \citet{critchlowthe1996}). If $S_n$ = 0, the trees are identical; when $S_n$ = $\binom{n}{4}$, the trees are as different as possible (i.e. every taxon has a different placement in the two trees).Triples distance is less sensitive to the placement of individual taxa and to taxa with highly uncertain placement (e.g. fossil taxa) than the Robinson-Foulds metric \citep{critchlowthe1996,johnson1998,wiensmissing2003}.
+% NC: Not sure you need this bit
+% Therefore we used this metric as a proxy to estimate the robustness of the tree to flying taxa (see \hyperref[supplementaries]{supplementaries}).
 
-\subsubsection{Robinson-Fould distance (\textit{RF}) \citep{RF1981}}
-This metric measures the number of shared clades among two trees and therefore illustrates the number of exactly conserved groups among the trees.
-The Robinson-Fould distance (also called path difference) between two trees reflects the distance between the distributions of the tips among clades in the two trees \citep{RF1981} and can be expressed as following:
+\subsubsection{Robinson-Foulds distance} % NC: Is it Robinson Fould or Robinson Fould*s*?
+Robinson-Foulds distance (\textit{RF}; \citealp{RF1981}), or "path difference"
+% NC: path difference or *distance*?
+, measures the number of shared clades across two trees. The metric reflects the distance between the distributions of tips among clades in the two trees \citep{RF1981} and can be expressed as following:
 \begin{equation}
 RF_{x,y} = N_{x} + N_{y} - 2C_{x,y}
 \end{equation}
-Where $C_{x,y}$ is the number of clades in common in the two trees.
-The minimal value of \textit{C} is 1 if the two trees have the same \textit{n} taxa; the maximal value in \textit{C=n-2}.
-This metric is more sensitive to taxa displacement than the Triples metric (i.e. if one taxa gets out of a clade, then the clades are no longer considered as similar - \citet{critchlowthe1996,johnson1998,wiensmissing2003}).
-Therefore a low value will show a good clade conservation between two trees and a high value will show a bad recovery of common clades (see \hyperref[supplementaries]{supplementaries}).
+Where $C_{x,y}$ is the number of clades in common in the two trees. \textit{C} % NC: Why italics? Why not $C$?
+is one if the two trees have the same \textit{n} taxa; the maximal value is \textit{C = n-2}. % NC: again why italics for these bits? 
+%NC: I don't get this. Explain more clearly. also is it important?
+This metric is more sensitive to taxon displacement than Triples distance (i.e. if one taxon moves out of a clade, then the clades are no longer considered similar; \citet{critchlowthe1996,johnson1998,wiensmissing2003}). Therefore a low value indicates that clades are similar across the two trees, whereas a high value indicates that there are few common clades (see \hyperref[supplementaries]{supplementaries}). %NC: See supp for what purpose exactly?
 
-\subsubsection{Normalised Tree Similarity \textit{NTS} \citep{Bogdanowicz2012}}
-For any tree with \textit{n} taxa compared using a tree distance metric \textit{m}, $NTS_m$ represents the similarity score between the two trees given the expected distance between two random Yule trees with \textit{n} taxa.
-Let $\bar{d}_{m,n}$\textit{(rand)} be the average distance between two random Yule trees with \textit{n} taxa and $d_{m,n}$\textit{(x,y)} the distance between the two trees \textit{x} and \textit{y} containing each \textit{n} taxa, then:
+\subsubsection{Normalized Tree Similarity}
+For any tree with \textit{n} taxa compared using a tree distance metric \textit{m}, Normalized Tree Similarity, $NTS_m$ (\citealp{Bogdanowicz2012}), represents the similarity score for the two trees given the expected distance between two random Yule trees with \textit{n} taxa. If $\bar{d}_{m,n}$\textit{(rand)} is the average distance between two random Yule trees with \textit{n} taxa and $d_{m,n}$\textit{(x,y)} the distance between the two trees \textit{x} and \textit{y} containing each \textit{n} taxa, then:
 \begin{equation}
 NTS_{m,n}(x,y)=\frac{\bar{d}_{m,n}(rand) - d_{m,n}(x,y)} {\bar{d}_{m,n}(rand)}
 \end{equation}
-\textit{NTS} ranges from 1 to -$\infty$.
-For any \textit{m},\textit{n} when \textit{NTS}=1, the trees are the same;
-when \textit{NTS}=0 the trees are not more different than expected by chance;
-when \textit{NTS}$<$0, the trees are more different than expected by chance (see \hyperref[supplementaries]{supplementaries}).
+\textit{NTS} ranges from one to -$\infty$.
+For any $m,n$, when \textit{NTS} = 1, the trees are identical, when \textit{NTS} = 0 the trees are no more different than expected by chance, and when \textit{NTS} $<$ 0, the trees are more different than expected by chance (see \hyperref[supplementaries]{supplementaries}).\\
+% NC: You seem to be using italics almost at random here. Why???
+% NC: What is "chance" here?
+% NC: Why do we need to see the supp mat?
 
-$\newline$
+\subsubsection{Tree comparisons}
+For the Maximum Likelihood trees we performed pairwise comparisons between the "best" tree and each "missing-data" tree (see Table ~\ref{Tab_glossary}) using both the Triples and Robinson-Fould metrics % NC: be consistent in the order. Triples then RF.
+with the TreeCmp java script \citep{Bogdanowicz2012}. For each metric, we then normalized the value using the Normalized Tree Similarity scaled by the mean value of 1000 pairwise random tree comparisons for the metric in question and \textit{n} = 51 taxa (see \hyperref[supplementaries]{supplementaries}). % NC: Why italic? What does the supp mat show?
+We compared each "missing-data" tree  with the "best" tree for each of our 50 simulation runs
+% NC: Chains are a MCMC thing. You mean 50 simulations not chains.
+resulting in 50 comparisons for each "missing-data" tree. We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v3.1 \citep{hdrcde}. %NC: But this is a Bayesian thing right? I think we need to check what you *actually* did here...
 
-We compared the "missing-data" tree to the "Best" tree for each chain.
-For the Maximum Likelihood trees we performed pairwise comparisons between the "Best" tree and the "missing-data" tree (see Table ~\ref{Tab_glossary}) for both the Robinson-Fould and the Triples metric.
-We calculated the difference between the trees using the metrics described above by using the TreeCmp java script \citep{Bogdanowicz2012}.
-For each metric, we normalized the value using the Normalised Tree Similarity scaled with the mean value of 1000 pairwise random tree comparisons for the same metric and the same number of taxa \textit{n}=51 (see \hyperref[supplementaries]{supplementaries}).
-We ran the comparison for every "missing-data" tree in each chain resulting in 51 comparisons for every "missing-data" trees. 
-We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package (v3.1 – \citet{hdrcde}).
+%Bayesian tree inference allows to account for the statistical uncertainty of a phylogenetic tree by not using an optimal criterion (c.f. Maximum Likelihood) and gives a tree posterior distribution (c.f. the likeliest tree in ML). This method has the clear advantage of better dealing with error and uncertainty but it's output (a distribution rather than a single tree) is less practical to use for any further study (but see \citet{healyecology2014}). %Awwwwww yiis! 
 
-Bayesian tree inference allows to account for the statistical uncertainty of a phylogenetic tree by not using an optimal criterion (c.f. Maximum Likelihood) and gives a tree posterior distribution (c.f. the likeliest tree in ML).
-This method has the clear advantage of better dealing with error and uncertainty but it's output (a distribution rather than a single tree) is less practical to use for any further study (but see \citet{healyecology2014}). %Awwwwww yiis!
-To avoid this problem, people traditionally use the a consensus tree build on a majority rule in order to summarise a Bayesian tree posterior distribution.
-This results into a single tree containing both topological and branch length information as well as support information (i.e. posterior probabilities, e.g. \citet{Ronquist2012mrbayes}).
-However, using a Bayesian consensus tree has limitation especially if the resulting consensus tree is not well supported or resolved.
-Because the metrics used in this study are used to measure variation in topology between two trees (i.e. taxa placement or clade position), comparing two Bayesian consensus trees is not optimal in picking topological difference signal.
-For example, if one of the trees is not resolved at all (i.e. a star tree), comparing it to any other tree (even an other star tree) will not give useful results.
-Therefore we used the entire Bayesian trees posterior distribution in order to perform the tree comparisons (i.e. the "Best" Bayesian tree posterior distribution vs. the "missing-data" Bayesian tree posterior distribution).
+% NC: Sorry awwww no. This is all irrelevant. Everyone knows what a Bayesian phylogeny is, and all the reader needs to know is how you compared trees. They don't need all this waffle. 
 
-\subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
-We compared the Bayesian posterior distribution using a Random Pairwise Bayesian Tree Comparison (RPBTC) method.
-This method consists in comparing a series of randomly selected pairs of trees from two posterior distributions (on from each distribution) and use the mode to summarize the resulting distribution as a proxy of the difference between the two trees in a Bayesian framework.
-\begin{equation}
-RPBTC_{X,Y}=Mo[(]d_{m,n}(X_{i1},Y_{j1}),d_{m,n}(X_{i2},Y_{j2}),d_{m,n}(X_{i3},Y_{j3}), ... ,d_{m,n}(X_{ik},Y_{jk})]
-\end{equation}
+%To avoid this problem, people traditionally use the a consensus tree build on a majority rule in order to summarise a Bayesian tree posterior distribution.
+%This results into a single tree containing both topological and branch length information as well as support information (i.e. posterior probabilities, e.g. \citet{Ronquist2012mrbayes}).
+%However, using a Bayesian consensus tree has limitation especially if the resulting consensus tree is not well supported or resolved.
+%Because the metrics used in this study are used to measure variation in topology between two trees (i.e. taxa placement or clade position), comparing two Bayesian consensus trees is not optimal in picking topological difference signal.
+%For example, if one of the trees is not resolved at all (i.e. a star tree), comparing it to any other tree (even an other star tree) will not give useful results.
+%Therefore we used the entire Bayesian trees posterior distribution in order to perform the tree comparisons (i.e. the "Best" Bayesian tree posterior distribution vs. the "missing-data" Bayesian tree posterior distribution).
 
-Where \textit{X} and \textit{Y} are two Bayesian tree posterior distributions;
- $d_{m,n}$ is the pairwise difference for any metric \textit{m} and \textit{n} taxa between $X_{i}$ and $Y_{j}$ which are two single trees randomly sampled respectively from \textit{X} and \textit{Y};
- $Mo$ is the mode and
- $Mo[(d_{m,n}(X_{i1},Y_{j1}),d_{m,n}(X_{i2},Y_{j2}),d_{m,n}(X_{i3},Y_{j3}), ... ,d_{m,n}(X_{ik},Y_{jk})]$ is the mode of the pairwise difference repeated \textit{k} times.
+% NC: OK this whole section is far too long. I'm not sure how much is really needed. Surely all you did was randomly select pairs from two distributions and then take the mode? Check that what I've written below is correct.
 
-We used the mode to summarize the distributions because it is the value that is the most represented in the distribution and reflects what a consensus tree represents (the topology the most represented in the posterior distribution).
-Also, the mode is a value present in the distribution (which, depending on the metric, can be a series of discrete values) in contrast to the other distribution summary metrics, such as the mean or the median, which can take values that are not actually present in the distribution.
-For example, if comparing two posterior tree distribution, we obtain difference values of 10, 10, 10, 5, 5 and 1, using the mean (6.8) or the median (7.5) gives a values that actually doesn't exist. %Useful?
+Comparing Bayesian trees was slightly harder as each analysis produced a posterior distribution of trees to compare, rather than a single tree as in Maximum Likelihood. Therefore, for each "missing-data" posterior distribution of trees we randomly selected one tree from the "missing-data" tree posterior distribution and one tree from the "best" tree posterior distribution and compared these trees using Triples distance and Robinson-Fould's distance as above. We repeated this 1000 times and then used the modal values for the metrics to summarize the difference between the two tree posterior distributions. For each metric, we then normalized the value using the Normalized Tree Similarity as described above. We used this protocol to compare each "missing-data" tree posterior distribution  with the "best" tree posterior distribution for each of our 50 simulation runs resulting in 50 comparisons for each "missing-data" tree. We then calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v3.1 \citep{hdrcde}. %NC: But this is a Bayesian thing right? I think we need to check what you *actually* did here...
 
-In this study, we calculated RPBTC for both metrics (Robinson-Fould and Triples distance) for each pairs of Bayesian tree distributions (i.e. the "Best" Bayesian tree posterior distribution vs. the "missing-data" Bayesian tree posterior distribution) with 1000 random pairwise comparisons (\textit{k}).
-Because the RPBTC uses random pairwise comparisons, there is a chance of comparing always trees that have the biggest or the smallest difference between two distributions, either deflating or inflating the RPBTC difference value.
-However, using 1000 random pairwise comparisons makes the difference stable (i.e. if repeated independently, no difference is detected - see \hyperref[supplementaries]{supplementaries}).
+Finally we tested for significant differences among types of "missing-data" trees using ???
+% NC: The whole of the next section can be summarised in just a few lines like this!
 
-$\newline$
+%\begin{equation}
+%RPBTC_{X,Y}=Mo[(]d_{m,n}(X_{i1},Y_{j1}),d_{m,n}(X_{i2},Y_{j2}),d_{m,n}(X_{i3},Y_{j3}), ... ,d_{m,n}(X_{ik},Y_{jk})]
+%\end{equation}
 
-We calculated the NTS for the "Best" Bayesian tree vs. "missing-data" Bayesian tree comparison for both Robinson-Fould and Triples metric using the mode of the RPBTC for each chain resulting in a distribution of 51 modes per comparison.
-We then compared the NTS of the Bayesian trees to the NTS of the ML trees for both metrics for each comparison.
-This resulted in a distribution of 51 NTS values for the Bayesian trees and 51 NTS values for the ML trees for each tree comparison for which we calculated the mode and the 50\% and 95\% confidence intervals (see \hyperref[supplementaries]{supplementaries} - Fig. ~\ref{Fig_Compare}).
+%Where \textit{X} and \textit{Y} are two Bayesian tree posterior distributions;
+ %$d_{m,n}$ is the pairwise difference for any metric \textit{m} and \textit{n} taxa between $X_{i}$ and $Y_{j}$ which are two single trees randomly sampled respectively from \textit{X} and \textit{Y};
+ %$Mo$ is the mode and
+ %$Mo[(d_{m,n}(X_{i1},Y_{j1}),d_{m,n}(X_{i2},Y_{j2}),d_{m,n}(X_{i3},Y_{j3}), ... ,d_{m,n}(X_{ik},Y_{jk})]$ is the mode of the pairwise difference repeated \textit{k} times.
 
-\begin{figure} % Modify the figure
-\centering
-\includegraphics[keepaspectratio=true]{Figures/TEM_Fig_TreeCmp-BW.pdf}
-\caption{Tree comparison protocol.
-From each of the 125 parameters combination ($M_L$, $M_F$ and $M_C$), we inferred a tree in Baysian or Maximum likelihood framework.
-We then compared this tree with or without fossil/living taxa to the "best" tree.
-In the Bayesian framework, 1000 trees from the posterior distribution where used for each comparison.}
-\label{Fig_Compare}
-\end{figure}
+%We used the mode to summarize the distributions because it is the value that is the most represented in the distribution and reflects what a consensus tree represents (the topology the most represented in the posterior distribution). Also, the mode is a value present in the distribution (which, depending on the metric, can be a series of discrete values) in contrast to the other distribution summary metrics, such as the mean or the median, which can take values that are not actually present in the distribution. For example, if comparing two posterior tree distribution, we obtain difference values of 10, 10, 10, 5, 5 and 1, using the mean (6.8) or the median (7.5) gives a values that actually doesn't exist. %Useful?
 
-\subsubsection{Statistical difference between tree topologies} %note that in the end, I only have non-parametric tests, the parametric explanation part can go to the supplementaries
-To assess the difference between the tree topologies, whether they were inferred in a Bayesian or a ML framework, we performed a group comparison test for each set of configurations (e.g. effect of $M_L$ in Bayesian inference, combined effect of $M_F$ and $M_C$ in ML inference, etc...).
-We used the pairwise tree comparisons as factors (i.e. the "Best" tree vs. one of each of the 125 "missing-data" trees) and the values of the 51 replicates from the pairwise comparison as a response variable.
-The 51 replicates values were either the replicates of the 51 pairwise tree comparisons in ML or the modes of the 51 RPBTC posterior distributions in Bayesian.
-When we found a significant difference between the groups, we performed a pairwise comparison test to analyse which pairs of groups differ from the others.
-Depending on whether the data was normal with variance homoscedasticity or not (controlled by performing respectively a shapiro.test and a a bartlett.test in R\{stats\}), we used respectively parametric or non-parametric tests for the group comparison and the pairwise comparisons as suggested by \citet{ruxtontime2008} (Table ~\ref{Stats_test}). %link broken
+%In this study, we calculated RPBTC for both metrics (Robinson-Fould and Triples distance) for each pairs of Bayesian tree distributions (i.e. the "Best" Bayesian tree posterior distribution vs. the "missing-data" Bayesian tree posterior distribution) with 1000 random pairwise comparisons (\textit{k}).
 
-\begin{table}[ht]
-\caption{Statistical tests}
-\centering
-\begin{tabular}{lrll}
-  \hline
-   & test & statistics & code\{package\} \\ [0.5ex]
-  \hline
-  Groups comparisons & ANOVA & parametric & anova\{stats\} \\ [0.5ex]
-                     & Kruskal-Wallis & non-parametric & kruskal.test\{stats\} \\[0.5ex]
-  \hline
-  Pairwise comparisons & Tukey HSD & parametric & TukeyHSD\{stats\} \\ [0.5ex]
-                       & Nemenyi-Damico-Wolfe-Dunn & non-parametric & kruskalmc\{pgirmess\} \\ [0.5ex]
-  \hline
-\end{tabular}
-\label{Stats_test}
-\end{table}
+%Because the RPBTC uses random pairwise comparisons, there is a chance of comparing always trees that have the biggest or the smallest difference between two distributions, either deflating or inflating the RPBTC difference value. However, using 1000 random pairwise comparisons makes the difference stable (i.e. if repeated independently, no difference is detected - see \hyperref[supplementaries]{supplementaries}).
 
-\subsection{Effect of missing molecular characters for fossil taxa} %Awfull name.
-To assess the effect of missing molecular characters for fossil taxa in a Bayesian framework, we split the "complete" matrix in sub-matrices containing no missing data at all (see Fig. ~\ref{Fig_RemoveData}):
+%We calculated the NTS for the "Best" Bayesian tree vs. "missing-data" Bayesian tree comparison for both Robinson-Fould and Triples metric using the mode of the RPBTC for each chain resulting in a distribution of 51 modes per comparison. We then compared the NTS of the Bayesian trees to the NTS of the ML trees for both metrics for each comparison.This resulted in a distribution of 51 NTS values for the Bayesian trees and 51 NTS values for the ML trees for each tree comparison for which we calculated the mode and the 50\% and 95\% confidence intervals (see \hyperref[supplementaries]{supplementaries} - Fig. ~\ref{Fig_Compare}).
+
+% NC: I don't think this figure helps at all
+%\begin{figure} % Modify the figure
+%\centering
+%\includegraphics[keepaspectratio=true]{Figures/TEM_Fig_TreeCmp-BW.pdf}
+%\caption{Tree comparison protocol.
+%From each of the 125 parameters combination ($M_L$, $M_F$ and $M_C$), we inferred a tree in Baysian or Maximum likelihood framework. We then compared this tree with or without fossil/living taxa to the "best" tree.In the Bayesian framework, 1000 trees from the posterior distribution where used for each comparison.}
+%\label{Fig_Compare}
+%\end{figure}
+
+%\subsubsection{Statistical difference between tree topologies} %note that in the end, I only have non-parametric tests, the parametric explanation part can go to the supplementaries
+%To assess the difference between the tree topologies, whether they were inferred in a Bayesian or a ML framework, we performed a group comparison test for each set of configurations (e.g. effect of $M_L$ in Bayesian inference, combined effect of $M_F$ and $M_C$ in ML inference, etc...). We used the pairwise tree comparisons as factors (i.e. the "Best" tree vs. one of each of the 125 "missing-data" trees) and the values of the 51 replicates from the pairwise comparison as a response variable. The 51 replicates values were either the replicates of the 51 pairwise tree comparisons in ML or the modes of the 51 RPBTC posterior distributions in Bayesian. When we found a significant difference between the groups, we performed a pairwise comparison test to analyse which pairs of groups differ from the others. Depending on whether the data was normal with variance homoscedasticity or not (controlled by performing respectively a shapiro.test and a a bartlett.test in R\{stats\}), we used respectively parametric or non-parametric tests for the group comparison and the pairwise comparisons as suggested by \citet{ruxtontime2008} (Table ~\ref{Stats_test}). %link broken
+
+%\begin{table}[ht]
+%\caption{Statistical tests}
+%\centering
+%\begin{tabular}{lrll}
+%  \hline
+%   & test & statistics & code\{package\} \\ [0.5ex]
+%  \hline
+%  Groups comparisons & ANOVA & parametric & anova\{stats\} \\ [0.5ex]%
+%                     & Kruskal-Wallis & non-parametric & kruskal.test\{%stats\} \\[0.5ex]
+%  \hline
+ % Pairwise comparisons & Tukey HSD & parametric & TukeyHSD\{stats\} \\ [0.5ex]
+  %                     & Nemenyi-Damico-Wolfe-Dunn & non-parametric & kruskalmc\{pgirmess\} \\ [0.5ex]
+ % \hline
+%\end{tabular}
+%\label{Stats_test}
+%\end{table}
+
+\subsection{Effect of missing molecular characters for fossil taxa} %Awful name.
+% NC: Yeah!
+% NC: OK you need to explain WHY we are doing this. What is this analysis designed to test. I think you said this was incomplete so I won't fix it I'll let you have a go first.
+To assess the ability to recover topology for each simulation when no missing data was involved in the phylogenetic inference process, we split the "complete" matrix into three sub-matrices containing no missing data (see Fig. ~\ref{Fig_RemoveData}):
 \begin{enumerate}
 \item
-A first containing both molecular and morphological data for living taxa only (hereafter called the "horizontal" sub-matrix, Table ~\ref{Tab_glossary});
+A sub-matrix containing both molecular and morphological data for living taxa only (hereafter called the "horizontal" sub-matrix, Table ~\ref{Tab_glossary});
+%NC: Do you think the sub-matrix names are useful here? We won't use this as much as the "best" tree etc. So maybe just write it out each time? Also I don't like the names horizontal, vertical and corner - they don't really describe what is going on. Better something like - complete living, complete morphology, morphology living? 
 \item
-A second one containing morphological data for both living and fossil taxa (hereafter called the "vertical" sub-matrix, Table ~\ref{Tab_glossary});
+A sub-matrix containing morphological data for both living and fossil taxa (hereafter called the "vertical" sub-matrix, Table ~\ref{Tab_glossary});
 \item
-A third one containing morphological data for living taxa only (hereafter called the "corner" sub-matrix, Table ~\ref{Tab_glossary});
+A sub-matrix containing morphological data for living taxa only (hereafter called the "corner" sub-matrix, Table ~\ref{Tab_glossary});
 \end{enumerate}
-We reran the Bayesian tree inference on the different sub-matrices with no missing data in the same way as described above.
-We then compared the resulting tree posterior distribution to itself (in the same way described above) to assess the ability to recover topology for each simulation when no missing data was involved in the phylogenetic inference process.
+We reran the Maximum Likelihood
+%NC: Should we check ML trees too???
+and Bayesian tree inference and topology comparisons on the three sub-matrices in the same way as described above.
+
 
 %---------------------------------------------
 %       Empirical data - TO DO
 %---------------------------------------------
 
 \subsection{Empirical data} %Still not done!
-We also compared the results obtained from simulated data by using \citet{ronquista2012} empirical data.
-The matrix contains 67 living species plus one outgroup and 45 fossil species of Hymenopteras with 5097 molecular characters and 354 morphological characters.
-From the 68 living species used in the matrix, only 66 had molecular data, we therefore treated these 66 taxa as "living" taxa and all the other 47 as "fossil" taxa.
-We treated the matrix in the exact same way as described in step 2 and 3 resulting in 125 matrices with various amount of missing data and the same number of Maximum Likelihood and Bayesian trees.
-We used the same settings as for the simulated data in the Maximum Likelihood framework.
-For the Bayesian inferences however, we didn’t used any priors except that we provided a starting tree with the topology of the 68 living species (topology with the highest posterior probability from non-clock analysis - \citet{ronquista2012}).
-Contrary to \citet{ronquista2012} analysis, we didn’t performed any clock analysis since we were only interested in the topology of the inferred tree and not the branch length.
+Finally, to % NC: explain WHY we would want to do this
+
+We also compared the results obtained from simulated data to results from  empirical data in \citet{ronquista2012}. The matrix (this would be the "complete" matrix using our terminology) contains 67 living species plus one outgroup and 45 fossil species of Hymenoptera with 5097 molecular characters and 354 morphological characters.
+Because only 66 of the 68 living species in the matrix had molecular data, we treated these 66 taxa as "living" taxa and the remaining 47 as "fossil" taxa. 
+
+We removed data from the "complete" matrix in the same way as described in steps 2 and 3 above, resulting in 124 matrices with various amount of missing data. We used the same settings as described above to infer Maximum Likelihood trees, but for the Bayesian inferences we did not use any priors except the starting tree. This consisted of the topology of the 68 living species with the highest posterior probability from non-clock analysis performed in \citet{ronquista2012}. Note that we did not perform any of the clock analyses described in \citet{ronquista2012} because we were only interested in the topology of the inferred trees and not the branch lengths.
+
+% NC: Is there a step missing here? What did you do (or what will you do) with these trees? Will you compare them to each other? How will you compare them to the simulations?
 
 
 %---------------------------------------------
