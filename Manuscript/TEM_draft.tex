@@ -79,17 +79,6 @@
 \renewcommand{\tableofcontents}{}
 
 \bibpunct{(}{)}{;}{a}{}{,}  % this is a citation format command for natbib
-% We don't use a special title page; the author information is entered like any other text.
-% FOOTNOTES: We don't allow them in the manuscript, except in tables. Don't include any footnotes in the text.
-%IMPORTANT:
-%Note on display in the text file: sentences or sub-parts of sentences (e.g. enumerations) are delimited by a newline for clarity.
-%However, true new lines (i.e. in the pdf) are delimited by one or more empty lines.
-%We don't use a heading for the introduction. The nature of this section is implied by its position following the abstract and preceding the first major section heading.
-
-% NC: You should delete this extraneous info from the Syst Biol template to tidy everything up a bit
-
-
-
 
 
 \begin{document}
@@ -102,7 +91,7 @@
 Version dated: \today
 \end{flushright}
 \bigskip
-\noindent RH: Missing data and topology in total evidence matrices %RH = Running Head
+\noindent RH: Missing data and topology in Total Evidence matrices %RH = Running Head
 
 \bigskip
 \medskip
@@ -110,10 +99,10 @@ Version dated: \today
 
 %Title
 \noindent{\Large \bf Effect of missing data in matrices containing living and fossil taxa on topological accuracy}
-%Alternative punchier title: "Bayesian total evidence methods fail to recover correct topologies from matrices containing both living and fossil taxa"
-%Alternative punchier title: "Maximum Likelihood outperforms Bayesian methods for inferring topology from total evidence matrices containing both living and fossil taxa"
+%Alternative punchier title: "Bayesian Total Evidence methods fail to recover correct topologies from matrices containing both living and fossil taxa"
+%Alternative punchier title: "Maximum Likelihood outperforms Bayesian methods for inferring topology from Total Evidence matrices containing both living and fossil taxa"
 
-% NC: Not sure about any of these. I actually think I prefer your talk title. So something like: The effects of missing data on the ability of total evidence approaches to recover correct tree topologies. No rush to decide. But needs total evidence in there somewhere.
+% NC: Not sure about any of these. I actually think I prefer your talk title. So something like: The effects of missing data on the ability of Total Evidence approaches to recover correct tree topologies. No rush to decide. But needs Total Evidence in there somewhere.
 \bigskip
 
 %Authors
@@ -133,11 +122,11 @@ $^3$Somewhere else }\\
 % NC: I'm not going to give this much work as it'll change before we submit anyway. Note though that and abstract must NOT just repeat stuff in the intro. Needs rephrasing at the very least.
 Living species represent less than 1\% of all species that have ever lived. % NC: I was chatting to Andy Purvis about this the other day and he said lots of palaeo folk hate that stat. So let's not start the abstract with it!
 Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as trends in species richness, biogeographical history or paleoecology.
-This fact has led to an increasing consensus among scientists that both fossil and living taxa must be included in macroevolutionary studies.
-One approach, the total evidence approach, uses molecular data from living taxa and morphological data from both living and fossil taxa to infer phylogenies with both fossil and living taxa at the tips.
-Although the total evidence approach seems very promising, it requires a lot of data and is therefore likely to suffer from missing data issues which may affect its ability to infer correct phylogenies.
+This fact has led to an increasing consensus among scientists that both living and fossil taxa must be included in macroevolutionary studies.
+One approach, the Total Evidence approach, uses molecular data from living taxa and morphological data from both living and fossil taxa to infer phylogenies with both living and fossil taxa at the tips.
+Although the Total Evidence approach seems very promising, it requires a lot of data and is therefore likely to suffer from missing data issues which may affect its ability to infer correct phylogenies.
 
-In this study we assess the effect of missing data on tree topologies inferred from total evidence matrices.
+In this study we assess the effect of missing data on tree topologies inferred from Total Evidence matrices.
 Using simulations we investigate three major factors that directly affect the completeness of the morphological part of the matrix:
 (1) the proportion of living taxa with no morphological data,
 (2) the amount of missing data in the fossil record, and
@@ -146,11 +135,11 @@ We find that, in a Bayesian framework, difficulties in recovering a stable topol
 In a Maximum Likelihood framework, however, topology is not directly affected by missing data \textit{per se}, but by the number of morphological characters shared among the taxa.
 Therefore, the two main drivers of incorrect topologies are the overall number of morphological characters and the number of living species with no morphological data.
 
-Our results suggest that, in order to use total evidence approaches, one should reduce the missing data in the morphological part of the matrix for living species and use a Maximum Likelihood framework to fix the topology prior to the overall Bayesian phylogenetic inference process.
+Our results suggest that, in order to use Total Evidence approaches, one should reduce the missing data in the morphological part of the matrix for living species and use a Maximum Likelihood framework to fix the topology prior to the overall Bayesian phylogenetic inference process.
 %More results!
 \end{abstract}
 
-\noindent (Keywords: missing data, total evidence, Bayesian, Maximum Likelihood, topology)\\
+\noindent (Keywords: missing data, Total Evidence, Bayesian, Maximum Likelihood, topology)\\
 
 \vspace{1.5in}
 
@@ -159,24 +148,40 @@ Our results suggest that, in order to use total evidence approaches, one should 
 \section{Introduction}
 
 Although most species that have ever lived are now extinct % NC: This avoids giving the dodgy stat of 1%
- \citep{novacek1992ext,raup1993extinction}, the majority of macroevolutionary studies focus solely on living species (e.g., \citealp{meredithimpacts2011}). %or is citing of your own papers in the too "douchebagy" for the second sentence?
+    \citep{novacek1992ext,raup1993extinction}, the majority of macroevolutionary studies focus solely on living species \citep[e.g.][]{meredithimpacts2011,jetzthe2012}. %or is citing of your own papers in the too "douchebagy" for the second sentence?
 % NC: Yeah be careful with self citing. Fine if it's a good fit, but it's totally not here!!! A better citation would be a big biodiversity study, e.g. the bird phylogeny paper.
-Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as the timing of diversification events \citep[e.g.][]{pyrondivergence2011}, relationships among lineages \citep[e.g.][]{manosphylogeny2007} or niche occupancy \citep[e.g.][]{pearmanniche2008}. This has led to increasing consensus among scientists that fossil taxa must be included in macroevolutionary studies \citep{jacksonwhat2006,quentaldiversity2010,dietlconservation2011,slaterunifying2013,fritzdiversity2013}. However, to do this we need to be able to place living and fossil taxa into the same phylogenies; a task that remains difficult despite recent methodological developments (e.g. \citealp{pyrondivergence2011,ronquista2012,schragocombining2013}). %Not a nice sentence
+Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as the timing of diversification events \citep[e.g.][]{pyrondivergence2011}, relationships among lineages \citep[e.g.][]{manosphylogeny2007} or niche occupancy \citep[e.g.][]{pearmanniche2008}.
+This has led to increasing consensus among scientists that fossil taxa must be included in macroevolutionary studies \citep{jacksonwhat2006,quentaldiversity2010,dietlconservation2011,slaterunifying2013,fritzdiversity2013}.
+However, to do this we need to be able to place living and fossil taxa into the same phylogenies; a task that remains difficult despite recent methodological developments (e.g. \citealp{pyrondivergence2011,ronquista2012,schragocombining2013}). %Not a nice sentence
 
-Up to now, three main approaches have been used to place both living and fossil taxa % NC: BE consistent. Either living and fossil, or fossil and living.
-into phylogenies. These approaches differ mainly in whether they treat fossil taxa as tips or as nodes in the phylogeny, and in which part of the available fossil data is used (i.e. the age of the fossil only or both its age and morphology). % NC: Not sure about bit in brackets
-Classical cladistic methods use matrices containing morphological data from both living and fossil taxa and treat each taxon as a tip in the phylogeny. Relationships among the taxa are then inferred using optimality criteria such as maximum parsimony \citep{simpson1945}. This approach is commonly used by paleontologists but it ignores the additional molecular data available from living species and does not allow use of probabilistic methods for dealing with phylogenetic uncertainty (but see \citealp{spencerefficacy2013}). Neontologists, on the other hand, more commonly use probabilistic approaches (e.g. Maximum Likelihood or Bayesian methods) based on matrices containing only molecular data from living species. Because fossil taxa do not usually have available DNA, fossils are used as nodes rather than tips in these phylogenies and their occurrence dates % NC: Need to check the exact phrase needed here. Is it range of occurrence? Occurrence dates? etc.
+Up to now, three main approaches have been used to place both living and fossil taxa % NC: BE consistent. Either living and fossil, or fossil and living. - TG: Let's make it living and fossil then.
+    into phylogenies.
+These approaches differ mainly in whether they treat fossil taxa as tips or as nodes in the phylogeny, and in which part of the available fossil data is used (i.e. the age of the fossil only or both its age and morphology). % NC: Not sure about bit in brackets - TG: it's the idea of fossil occurence (age) only when node and fossil occurence + topology when tip.
+Classical cladistic methods use matrices containing morphological data from both living and fossil taxa and treat each taxon as a tip in the phylogeny.
+Relationships among the taxa are then inferred using optimality criteria such as maximum parsimony \citep{simpson1945}.
+This approach is commonly used by paleontologists but it ignores the additional molecular data available from living species and does not allow use of probabilistic methods for dealing with phylogenetic uncertainty (but see \citealp{spencerefficacy2013}).
+Neontologists, on the other hand, more commonly use probabilistic approaches (e.g. Maximum Likelihood or Bayesian methods) based on matrices containing only molecular data from living species.
+Because fossil taxa do not usually have available DNA, fossils are used as nodes rather than tips in these phylogenies and their occurrence age % NC: Need to check the exact phrase needed here. Is it range of occurrence? Occurrence dates? etc. - TG: in paleo jargon we have FAD (first apparition datum) and FOD (first occurrence datum). FAD is always hypothetical (we can't really exactly know when the taxa appeared) and FOD is always subjective (it depends when the fossil was found, maybe next year someone will find another one in older layers). So for the dating, because it's relaxed clock, people use FOD (and also probably because they don't care since it doesn't make a huge difference I guess).
  are used to time calibrate phylogenies \citep{zuckerkandl1965}.
 There have been great improvements in the theory and application of these two approaches \citep[e.g.][]{bapsta2013,stadlerdating2013,heaththe2013} as well as much debate about the "best" approach to use \citep[e.g.][]{spencerefficacy2013}.
 However neither approach uses all the available data.
 
 A final approach, known as the Total Evidence method, uses matrices containing molecular data from living taxa and morphological data from both living and fossil taxa. %There might be a philosophico-semantic distinction to do here. Is TEM a method or an approach? I'll say that it is an approach because it's more like an idea (put every thing together) than a way to do (how to put everything together). It makes more sense to me compared to a real method e.g. a probabilistic method such as ML where the method states precisely how to do stuff.
 % NC: Tricky. Don't think it's too important though. 
-% NC: I do think Total Evidence needs capital letters though, like ML and Bayesian
-This approach treats every taxon as a tip in the phylogeny, uses the occurrence age of the fossils to time calibrate the phylogeny, and allows the use of probabilistic methods for estimating phylogenetic uncertainty \citep{eernissetaxonomic1993}. Total Evidence methods have been successfully applied to empirical data \citep{pyrondivergence2011,ronquista2012,schragocombining2013}, and are becoming an increasingly popular way of adding fossil taxa to phylogenies. However, although the Total Evidence approach seems very promising, there is one big drawback in using this approach: it requires a lot of data. In particular it requires morphological data from both living and fossil taxa, both of which are known to be scarce. % NC: Really? I know fossil data is known to be scarce, but living data? I think people would be surprised. And they are surprised. We were surprised! Needs a citation either way.
+% NC: I do think Total Evidence needs capital letters though, like ML and Bayesian - TG: fixed
+This approach treats every taxon as a tip in the phylogeny, uses the occurrence age of the fossils to time calibrate the phylogeny, and allows the use of probabilistic methods for estimating phylogenetic uncertainty \citep{eernissetaxonomic1993}.
+Total Evidence methods have been successfully applied to empirical data \citep{pyrondivergence2011,ronquista2012,schragocombining2013}, and are becoming an increasingly popular way of adding fossil taxa to phylogenies.
+However, although the Total Evidence approach seems very promising, there is one big drawback in using this approach: it requires a lot of data.
+%In particular it requires morphological data from both living and fossil taxa, both of which are known to be scarce. % NC: Really? I know fossil data is known to be scarce, but living data? I think people would be surprised. And they are surprised. We were surprised! Needs a citation either way.
+%TG: how about this:
+The morphological data for living taxa is rarely collected when molecular data is available (e.g. \citealp{O'Leary08022013} vs. \citealp{meredithimpacts2011}), and for fossil taxa, the scarcity of the fossil record only allow to collect the data available (for example, in vertebrates, the solidest parts of the skeleton \citeal{sansomfossilization2013}).
 Therefore Total Evidence matrices are likely to contain a lot of missing data that may affect the method's ability to infer correct topologies, branch lengths and support values \citep{salamin2003}. % Trevor: Missing data also influences support values that trend to decrease
 
-% NC: You need to take a bit of time to learn about singular and plural grammar in English. It's something you always do wrong. e.g. The Total Evidence method *uses* this and *its* parameters are as follows. Versus: Total Evidence methods *use* this and *their* parameters are as follows. Sive and I won't be around to correct your English forever.
+% NC: You need to take a bit of time to learn about singular and plural grammar in English. It's something you always do wrong. e.g. The Total Evidence method *uses* this and *its* parameters are as follows. Versus: Total Evidence methods *use* this and *their* parameters are as follows. Sive and I won't be around to correct your English forever. - TG: my French demons are back!
+
+
+%Paused here - 15/063
+
 
 The effect of missing data on phylogenetic inferences has been widely studied \citep{wiensmissing2003,wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011,sansomfossilization2013}.
 Missing molecular data has been seen by some authors as an issue because it can decrease phylogenetic signal (i.e. % define phylogenetic signal here) 
@@ -400,7 +405,7 @@ Even using these prior, it took 65 CPU years to build 51 sets of 125 Bayesian tr
 
 \subsection{Comparing topologies}
 We compared the topology of the "missing-data" trees inferred from the matrices with missing data to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$.
-Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees inferred from total evidence type matrices.
+Note that we only investigate differences in topology and not in branch length because the aim of this study is to look at the effect of missing data on the topology of trees inferred from Total Evidence type matrices.
 To compare the topology of the resulting trees, we used two metrics to assess number of conserved taxa and clades position using respectively the Triples \citep{dobson1975triplets} and the Robinson-Fould \citep{RF1981} distance.
 We normalised the two metrics using the Normalised Tree Similarity index \citep{Bogdanowicz2012} to generalise our results for any \textit{n} number of taxa.
 The three metrics are detailed below.
@@ -567,7 +572,7 @@ When generating the matrices using seqgen \citep{ranbaut1997seqgen} and rTraitDi
 In Maximum Likelihood, support values ranged from 0 to 100 with a median of 38 ($1^st$ quartile = 14, $3^rd$ quartile = 72 - see \hyperref[supplementaries]{supplementaries}). % This is actually bad.
 The distribution of the phylogenetic signal across the different chains provided us a good spread of evolutionary scenarios: from well resolved phylogenies to poorly resolved ones.
 This allows us to test our simulations in a theoretical as well as practical framework (i.e. phylogenies with low support values are rarely published but are still common in early stages of projects). %REF??? - That's kind of my way to turn these bad results into something usable: even if some of our simulations are not realistic, it shows the effect of missing data in any scenario possible, not only in realistic cases.
-Also, one can advocate that this low topological resolution is actively due to the amount of missing data in the total evidence matrices since the sub-matrices (no missing data) analysis recovers way higher support value  . %This is something that I will had with the whole submatrices story. Basically, when you have all the fossil/molecular data missing, it's harder to build the tree, both in ML and in Bayesian. When you run the analysis without missing data, then it works way better (i.e. our REAL control test: can we simulate matrices in the first place).
+Also, one can advocate that this low topological resolution is actively due to the amount of missing data in the Total Evidence matrices since the sub-matrices (no missing data) analysis recovers way higher support value  . %This is something that I will had with the whole submatrices story. Basically, when you have all the fossil/molecular data missing, it's harder to build the tree, both in ML and in Bayesian. When you run the analysis without missing data, then it works way better (i.e. our REAL control test: can we simulate matrices in the first place).
 Using Bayesian inference, all the chains converged with a significant effective sample size by using 2 parallel runs of 4 chains each (ASSD $<$ 0.01 and ESS $>>$ 200 for inference).
 
 %\subsection{Comparing topologies}
@@ -1112,18 +1117,18 @@ The introduction of our Random Pairwise Bayesian Tree Comparison methods allows 
 Even though this method is subject to randomness and might artificially increase or decrease the score of the studied metric, simulations showed that when a sufficient amount of random comparisons is performed, this method doesn't seem to be subject to randomness (e.g. 1000 random pairwise comparisons - see ~\ref{supplementaries}).
 
 \subsection{Maximum Likelihood versus Bayesian}
-The main results of our analysis shows that Bayesian inference fails to recover any Topology in a total evidence method framework (Fig. ~\ref{Fig_Results}).
+The main results of our analysis shows that Bayesian inference fails to recover any Topology in a Total Evidence method framework (Fig. ~\ref{Fig_Results}).
 This results is surprising regarding the behaviour of Maximum Likelihood inference (Fig. ~\ref{Fig_Results}) as well as the Bayesian inferences performed on empirical data \citep{ronquista2012,schragocombining2013}.
 However, it is important to note that this effect was not mentioned in the aforementioned empirical tests because both studies used a Bayesian approach with fixed topology \citep{ronquista2012,schragocombining2013}.
 
-In our case, we suspect that this inability of Bayesian methods to recover topology is due to the intrinsic structure of a total evidence matrix (Fig ~\ref{Fig_RemoveData}).
+In our case, we suspect that this inability of Bayesian methods to recover topology is due to the intrinsic structure of a Total Evidence matrix (Fig ~\ref{Fig_RemoveData}).
 In fact, as previously studies have shown, missing data doesn't seem to be a major drawback as long as the missing data is randomly distributed ~\citep[e.g.][]{wiensmissing2003,rouresite-specific2011,sansomfossilization2013}.
-However, in total evidence matrices, the majority of the missing data is not randomly distributed but concentrated in the molecular part of the matrix for the fossil taxa (i.e. the missing-data sub-matrix, Fig ~\ref{Fig_RemoveData}).
+However, in Total Evidence matrices, the majority of the missing data is not randomly distributed but concentrated in the molecular part of the matrix for the fossil taxa (i.e. the missing-data sub-matrix, Fig ~\ref{Fig_RemoveData}).
 This leads to high decrease of topological recovery when using non optimal criterion approach (i.e. Bayesian inference) because of the high variance in the near-likeliest solutions sampled in the Bayesian posterior distribution.
 In opposition, when applying optimal criterion approach (i.e. Maximum Likelihood), it is still possible to sample the likeliest tree. %probably need to develop that way more, especially with actually analysing the likelihood landscape.
 
 \subsection{Effect of missing data}
-The three parameters we selected in this study account for three potential pitfalls in collecting the data for total evidence analysis:
+The three parameters we selected in this study account for three potential pitfalls in collecting the data for Total Evidence analysis:
 $M_L$ represents the living taxa for which there is no available morphological data,
 $M_F$ represents the quality of the fossil record,
 and $M_C$ represents the general coding effort and the overall of morphological data available.
@@ -1154,8 +1159,8 @@ Therefore, we advocate the importance of coding morphological characters for the
 
 
 \section{Conclusion}
-A Bayesian approach fails to recover accurate topology in a total evidence approach framework, whatever the amount of missing data.
-We think this failure is due to the intrinsic structure of the total evidence matrices that includes a vast amount of non randomly distributed missing data (i.e. the molecular part of the matrix for the fossil taxa).
+A Bayesian approach fails to recover accurate topology in a Total Evidence approach framework, whatever the amount of missing data.
+We think this failure is due to the intrinsic structure of the Total Evidence matrices that includes a vast amount of non randomly distributed missing data (i.e. the molecular part of the matrix for the fossil taxa).
 This missing data is equal to the number of fossil taxa $\times$ the number of molecular characters leading to a vast amount of trees to be sampled in Bayesian posterior distribution.
 However, one can use a Maximum Likelihood approach to fix the likeliest topology.
 If so, an effort should be made prior to the phylogenetic analysis on collecting as much morphological data as their is available from living taxa in order to efficiently improve the quality of the trees.

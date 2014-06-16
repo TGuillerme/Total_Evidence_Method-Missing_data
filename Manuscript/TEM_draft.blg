@@ -73,37 +73,37 @@ Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
 You've used 63 entries,
             2858 wiz_defined-function locations,
-            962 strings with 16374 characters,
-and the built_in function-call counts, 39376 in all, are:
-= -- 3221
-> -- 2180
-< -- 42
-+ -- 736
-- -- 654
-* -- 2983
-:= -- 6239
+            964 strings with 16346 characters,
+and the built_in function-call counts, 39522 in all, are:
+= -- 3224
+> -- 2207
+< -- 41
++ -- 747
+- -- 663
+* -- 3000
+:= -- 6264
 add.period$ -- 251
 call.type$ -- 63
-change.case$ -- 526
+change.case$ -- 529
 chr.to.int$ -- 62
 cite$ -- 133
-duplicate$ -- 2814
-empty$ -- 2669
-format.name$ -- 853
-if$ -- 7975
+duplicate$ -- 2823
+empty$ -- 2670
+format.name$ -- 860
+if$ -- 7999
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 630
+missing$ -- 633
 newline$ -- 263
 num.names$ -- 252
-pop$ -- 1080
+pop$ -- 1086
 preamble$ -- 1
-purify$ -- 470
+purify$ -- 473
 quote$ -- 0
-skip$ -- 920
+skip$ -- 918
 stack$ -- 0
-substring$ -- 1574
-swap$ -- 1230
+substring$ -- 1570
+swap$ -- 1235
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0

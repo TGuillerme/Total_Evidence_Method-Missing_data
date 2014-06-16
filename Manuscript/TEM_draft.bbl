@@ -31,12 +31,6 @@ Chen, W.-C. 2011. Overlapping Codon Model, Phylogenetic Clustering, and
   thesis.
 \bibAnnoteFile{chen2011}
 
-\bibitem[{Cooper and Purvis(2009)}]{cooperwhat2009}
-Cooper, N. and A.~Purvis. 2009. What factors shape rates of phenotypic
-  evolution? a comparative study of cranial morphology of four mammalian
-  clades. Journal of evolutionary biology 22:1024--1035.
-\bibAnnoteFile{cooperwhat2009}
-
 \bibitem[{Critchlow et~al.(1996)Critchlow, Pearl, and Qian}]{critchlowthe1996}
 Critchlow, D.~E., D.~K. Pearl, and C.~Qian. 1996. The triples distance for
   rooted bifurcating phylogenetic trees. Systematic Biology 45:323--334.
@@ -115,6 +109,12 @@ Heath, T., J.~Huelsenbeck, and T.~Stadler. 2013. The fossilized {Birth-Death}
 Jackson, J. and D.~Erwin. 2006. What can we learn about ecology and evolution
   from the fossil record? Trends in ecology \& evolution 21:322--328.
 \bibAnnoteFile{jacksonwhat2006}
+
+\bibitem[{Jetz et~al.(2012)Jetz, Thomas, Joy, Hartmann, and
+  Mooers}]{jetzthe2012}
+Jetz, W., G.~Thomas, J.~Joy, K.~Hartmann, and A.~Mooers. 2012. The global
+  diversity of birds in space and time. Nature 491:444--448.
+\bibAnnoteFile{jetzthe2012}
 
 \bibitem[{Johnson and Soltis(1998)}]{johnson1998}
 Johnson, L. and D.~Soltis. 1998. Assessing Congruence: Empirical Examples from
