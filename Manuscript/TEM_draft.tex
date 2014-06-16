@@ -599,6 +599,7 @@ We removed data from the "complete" matrix in the same way as described in steps
 
 \section{Results}
 
+<<<<<<< HEAD
 \subsection{Building the trees}
 When generating the matrices using seqgen \citep{ranbaut1997seqgen} and rTraitDisc \citep{paradisape:2004} algorithms with low evolutionary rate parameter ($\alpha$=0.5) we successfully generated evolutionary histories.
 In Maximum Likelihood, support values ranged from 0 to 100 with a median of 38 ($1^st$ quartile = 14, $3^rd$ quartile = 72 - see \hyperref[supplementaries]{supplementaries}). % This is actually bad.
@@ -606,39 +607,53 @@ The distribution of the phylogenetic signal across the different chains provided
 This allows us to test our simulations in a theoretical as well as practical framework (i.e. phylogenies with low support values are rarely published but are still common in early stages of projects). %REF??? - That's kind of my way to turn these bad results into something usable: even if some of our simulations are not realistic, it shows the effect of missing data in any scenario possible, not only in realistic cases.
 Also, one can advocate that this low topological resolution is actively due to the amount of missing data in the Total Evidence matrices since the sub-matrices (no missing data) analysis recovers way higher support value  . %This is something that I will had with the whole submatrices story. Basically, when you have all the fossil/molecular data missing, it's harder to build the tree, both in ML and in Bayesian. When you run the analysis without missing data, then it works way better (i.e. our REAL control test: can we simulate matrices in the first place).
 Using Bayesian inference, all the chains converged with a significant effective sample size by using 2 parallel runs of 4 chains each (ASSD $<$ 0.01 and ESS $>>$ 200 for inference).
+=======
+% NC: OK it's worth thinking about what you really need to include here. Remember the results are about the answers to your question. Not necessarily everything you did. This section can be really short, and probably should be quite short.
+
+% NC: I may have misunderstood but I don't think you need this section at all, or the comparing topologies section you have planned. Just the actual results surely...
+
+%\subsection{Building the trees}
+%When generating the matrices using seqgen \citep{ranbaut1997seqgen} and rTraitDisc \citep{paradisape:2004} algorithms with low evolutionary rate parameter ($\alpha$ = 0.5) we successfully generated evolutionary histories.
+%In Maximum Likelihood, support values ranged from 0 to 100 with a median of 38 ($1^st$ quartile = 14, $3^rd$ quartile = 72 - see \hyperref[supplementaries]{supplementaries}). % This is actually bad.
+%The distribution of the phylogenetic signal across the different chains provided us a good spread of evolutionary scenarios: from well resolved phylogenies to poorly resolved ones.
+%This allows us to test our simulations in a theoretical as well as practical framework (i.e. phylogenies with low support values are rarely published but are still common in early stages of projects). %REF??? - That's kind of my way to turn these bad results into something usable: even if some of our simulations are not realistic, it shows the effect of missing data in any scenario possible, not only in realistic cases.
+%Also, one can advocate that this low topological resolution is actively due to the amount of missing data in the total evidence matrices since the sub-matrices (no missing data) analysis recovers way higher support value  . %This is something that I will had with the whole submatrices story. Basically, when you have all the fossil/molecular data missing, it's harder to build the tree, both in ML and in Bayesian. When you run the analysis without missing data, then it works way better (i.e. our REAL control test: can we simulate matrices in the first place).
+%Using Bayesian inference, all the chains converged with a significant effective sample size by using 2 parallel runs of 4 chains each (ASSD $<$ 0.01 and ESS $>>$ 200 for inference).
+>>>>>>> 41566ab9d6aa39dffe0b914f9c64ead3415a726b
 
 %\subsection{Comparing topologies}
 %Did it worked? See sub-matrices part. TO DO
 
-\subsection{Effect of the missing data parameters}
+%\subsection{Effect of the missing data parameters}
+% NC: Probably don't need a subheading here
 
 %10/06 - Missing 8 ML Chains
 \begin{figure} 
 \centering
 \includegraphics[keepaspectratio=true]{Figures/TEM_Fig-results-BW.pdf}
 \caption{Effect of missing data on Tree similarity.
-$M_L$ is the amount of missing living taxa with morphological data,
-$M_F$ is the amount of missing data in the fossil record,
-$M_C$ is the amount of missing morphological characters.
-The first row represent the Normalised Tree Similarity index using the Robinson-Fould metric;
-the second row represent the Normalised Tree Similarity index using the Triples metric.}
+$M_L$ is the percentage of living taxa with no morphological data,
+$M_F$ is the percentage of missing data in the fossil record,
+$M_C$ is the percentage of missing morphological characters.
+The first row represent the Normalized Tree Similarity index using the Robinson-Foulds metric;
+the second row represent the Normalized Tree Similarity index using the Triples metric.}
 \label{Fig_Results}
 \end{figure}
 
+%NC: OK from this point on you start referring to "Tree Similarity Index". This is not mentioned in the methods. What is it? You need to explain in the methods please.
 
-\subsubsection{Effect of $M_L$}
-In Maximum Likelihood framework, the topological recovery (reflected by the tree similarity) quickly drops with the increasing amount of missing data when using both metrics (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
-However, this negative effect of missing data is stabilized beyond 25\% of missing data (no significant difference for trees with respectively 25\%, 50\% and 75\% missing living taxa).
-With 10\% of missing living taxa, there is a different topological recovery depending on the used metric.
-The Robinson-Fould metric shows a lower Tree similarity index than the Triples metric meaning that individual taxa position are generally more conserved (i.e. low number of flying taxa) but that the full clades are less conserved (see Table ~\ref{NTS_ML_results}).
+%NC: I'm not sure you need to separate these three parameters out. Aren't you repeating yourself a lot? Rewrite this with them all in together. You can talk about general patterns and then specific, interesting patterns. I've corrected the first one a bit to help out.
+\subsection{Effect of $M_L$}
+In our Maximum Likelihood analyses, topological recovery (i.e. tree similarity) decreased as the percentage of missing data increased, using both the Triples and Robinson-Foulds metrics (see Table ~\ref{Group_results} - Fig.~\ref{Fig_Results}). However, topological recovery was not significantly different for trees with 25\%, 50\% and 75\% missing morphological data for living taxa (Fig 1b???), % is this what you meant? And indicate the particular panel of the figure it refers to
+suggesting that although tree topology is sensitive to this missing data, once it is greater than 25\% it makes little difference. Overall, the Robinson-Foulds metric shows lower tree similarities than the Triples metric. This indicates that the positions of individual taxa are generally more conserved than the membership of entire clades (see Table ~\ref{NTS_ML_results}).
 
-However, topological recovery was bad in Bayesian, regardless the amount of missing data.
-The tree similarity index was only slightly above 0 which means that the mode of the RPBTC was only slightly different than expected by chance (see Table ~\ref{NTS_Ba_results}).
-Even if the topological recovery is really low, we detected an effect of missing data on the topology depending on the used metric.
-For the Triples metric there is no significant effect of the $M_L$ parameter, in other words, if living taxa are removed, there is no effect on the placement of "flying" taxa.
-For the Robinson-Fould metric, there is a significant effect of the $M_L$ leading small decrease in topological recovery when $M_L$ increases (see Table ~\ref{Ba_RF-ML_results}).
-However, in both cases, the effect of the parameter $M_L$ is still minimal compared to trees generated in a ML framework since the tree similarity index was only slightly higher than expected by chance (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
+Topological recovery was poor in our Bayesian analyses, regardless of the amount of missing data (Figures???), although topological recovery did decrease slightly as missing data increased. Overall, tree similarity index was only slightly above zero which means that trees are only slightly more similar than we would expect if we compared two completely random trees (see Table ~\ref{NTS_Ba_results}). 
+%For the Triples metric there is no significant effect of the $M_L$ parameter, in other words, if living taxa are removed, there is no effect on the placement of "flying" taxa.
+%For the Robinson-Fould metric, there is a significant effect of the $M_L$ leading small decrease in topological recovery when $M_L$ increases (see Table ~\ref{Ba_RF-ML_results}).
 
+%NC: A shorter verison of this encompassing all three parameters will work here.
+
+%NC: Combine with section above
 \subsubsection{Effect of $M_F$}
 In Maximum Likelihood framework, the effect of missing data in the fossil record appeared to be constant and led to a constant decrease in topological recovery when the missing data increased (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
 The difference between the two metrics used is more important than for the $M_L$ parameter: clades are less conserved than individual taxa placement as the amount of missing data increases.
@@ -649,6 +664,7 @@ In the same way as described above, there seems to be a small difference dependi
 There is no significant effect of the $M_F$ parameter when using the Triplet metric but the effect is significant when using the Robinson-Fould metric (see Table ~\ref{Ba_RF-MF_results}).
 However, as mentioned previously the effect of the parameter $M_F$ is still minimal in a Bayesian framework (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
 
+%NC: Combine with section above
 \subsubsection{Effect of $M_C$}
 The number of missing morphological characters ($M_C$), however, seems to be more affecting topological recovery than $M_L$ and $M_F$ (see Table ~\ref{Group_results} - Fig. ~\ref{Fig_Results}).
 The Robinson-Fould metric shows a rapid drop in tree recovery from 10\% of missing data (Robinson-Fould NTS mode $<$ to 0.5 from 10\% missing data - Table ~\ref{NTS_ML_results}).
@@ -661,14 +677,24 @@ The effect of $M_C$ in Bayesian framework is similar as the one described for $M
 
 $\newline$
 
+%NC: This will be part of the section above. If it's short you may not need to sum up!
 %To sum up:
-The ability of recovering the "best" tree's topology in Maximum Likelihood method is function of the amount of data missing.
-The parameters $M_C$ and $M_L$ have more influence than $M_F$ on decrease in topological recovery.
-The decrease in clade conservation (low Robinson-Fould NTS score) is faster than the increase in flying taxa (low Triples NTS score).
-In Bayesian framework, topology is badly (if not at all) recovered disregarding the amount of data missing.
+%The ability of recovering the "best" tree's topology in Maximum Likelihood method is function of the amount of data missing.
+%The parameters $M_C$ and $M_L$ have more influence than $M_F$ on decrease in topological recovery.
+%The decrease in clade conservation (low Robinson-Fould NTS score) is faster than the increase in flying taxa (low Triples NTS score).
+%In Bayesian framework, topology is badly (if not at all) recovered disregarding the amount of data missing.
 
+% NC: You will need two sections here with subheadings - one for the sensitivity analyses you did with the submatrices, and one for the empirical results.
+
+
+% NC: I would make these tables wider - so have a column for Triples, and one for RF, rather than a column for metric. same with Bayesian vs ML, why not have a set of columns instead? It'll take up less space and be easier to read I think...
+
+% NC: You should do what I have done on the thesis template and have these tables as separate files rather than having them in the document.
+
+% NC: we need to sit down and look at these tables. I don't like the current format.
 
 \begin{table} % What about making this table in a longevity-results style? with every thing combined (30 columns)?
+% NC: That might be too many columns!
 \caption{Tree similarity values per parameter in ML framework}
 \centering
 \begin{tabular}{rrlccccc}
@@ -868,7 +894,7 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
 
 
 \begin{table}
-\caption{$M_L$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
+\caption{$M_L$ non-parametric pairwise difference for Robinson-Foulds metric in Bayesian framework}
 \centering
 \begin{tabular}{c|ccccc}
     \hline
@@ -901,7 +927,7 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
 \end{table}
 
 \begin{table}
-\caption{$M_F$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
+\caption{$M_F$ non-parametric pairwise difference for Robinson-Foulds metric in ML framework} %10/06 - Missing 8 ML Chains
 \centering
 \begin{tabular}{c|ccccc}
     \hline
@@ -1106,17 +1132,18 @@ $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric 
 %
 %---------------------------------------------
 
-
 \section{Discussion}
+
+% NC: Discussions usually begin with a paragraph that sums up the results. Then you can move on to discussing caveats, problems, extentions etc. You also need to show how your work fits in with the wider literature. So I think you need to re-write this completely with that in mind. Do the same as we did for the introduction - write a line for each paragraph. This reads like you jumped in without thinking clearly about the structure. It probably doesn't need to have all the same subheadings either.
 
 \subsection{Building the trees}
 Simulating evolutionary history matrices still remains a big drawback in theoretical phylogenetics. %Hahahaha.... feck.
-The size of our simulated matrices was at least two orders orders of magnitude lower than usual matrices, both for the molecular part \citep[e.g.][]{springermacroevolutionary2012} and the morphological part \citep[e.g.][]{nithe2013}.
+The size of our simulated matrices was at least two orders orders of magnitude lower than usual matrices, both for the molecular part \citep[e.g.][]{springermacroevolutionary2012} and the morphological part \citep[e.g.][]{nithe2013}. % NC: Caveats later on
 This configuration probably lead to globally low phylogenetic signal as well as the intrinsic difficulties to simulated characters with phylogenetic signal.
 Even though molecular characters evolution (and therefore simulation) only depends of a small number of parameters (i.e. the base frequencies and the substitution matrix), simulating molecular matrix with a strong evolutionary signal is still complicated when generating unrealistically small matrices.
 For morphological characters, the underlying pattern of their evolution are often more complex and ruled by more parameters than molecular characters (i.e the number of character states, the states frequencies, the substitution matrix and the statistical model used) \citep{Pagel22011994,wagner2000,lewisa2001}.
 
-Also morphological characters studies involve many potential statistical pitfalls (e.g. independent characters violation, rate variation - \citet{davalosintegrating2014}) and especially (i) incongruence with molecular signal and (ii) homoplasy. %REF probably April as something about it
+Also morphological characters studies involve many potential statistical pitfalls (e.g. independent characters violation, rate variation - \citet{davalosintegrating2014}) and especially (i) incongruence with molecular signal and (ii) homoplasy. %REF probably April has something about it
 \begin{enumerate}
 \item{First, morphological data can display a different signal than molecular data, especially in small matrices. %REF
 This might lead to a controversial phylogenetic signal in the overall matrix and lower down the support values.
@@ -1130,11 +1157,11 @@ After a reaching a critical amount of morphological characters, adding new ones 
 Our simulation parameters both decrease the phylogenetic signal (difficulty to simulate morphological characters and size of the matrix) as well as it increases it (reduction of homoplasy in the morphological part of the matrix).
 Therefore, these drawbacks seems to have only a minor impact on the main results of this study: the incapacity of recovering any topology in Bayesian inference.
 
-\subsection{Comparing topologies}
+\subsection{Comparing topologies} % NC: Is any of this really relevant to the central questions of the paper? I don't think so... Maybe some of this could go in the methods where you chose these metrics. But it may not even be needed there.
 Comparing topologies is a crucial question in phylogenetics but has always been hard to normalise because of the vast amount of different metrics used as proxies for different aspects of tree similarity/dissimilarity \citep{agapowpower2002}.
 Because our global framework is to study how to include efficiently fossils into phylogenies, we chose metrics reflecting the most interesting aspect of this global question: where do individual taxa (i.e. the fossils) branch in the tree.
-The Robinson-Fould \citep{RF1981} and the Triples \citep{critchlowthe1996} metrics are more sensible to taxa and clade placement than other tree comparison metrics \citep[e.g.][Imbalance metric]{kirkpatricksearching1993} and where therefore favoured.
-Also by using the Normalised Tree Similarity index \citep{Bogdanowicz2012} we emphasize the aspect of "good" phylogenetic signal \textit{versus} random phylogenetic signal because it normalised the values of the metric by correcting for the expected value when comparing random trees (NTS = 0).
+The Robinson-Foulds \citep{RF1981} and the Triples \citep{critchlowthe1996} metrics are more sensible to taxa and clade placement than other tree comparison metrics \citep[e.g.][Imbalance metric]{kirkpatricksearching1993} and where therefore favored.
+Also by using the Normalized Tree Similarity index \citep{Bogdanowicz2012} we emphasize the aspect of "good" phylogenetic signal \textit{versus} random phylogenetic signal because it normalized the values of the metric by correcting for the expected value when comparing random trees (NTS = 0).
 
 The Robinson-Fould metric is a conservative tree topology metric, it is more sensible to single taxon displacement because it will count clades as similar only if they are composed of the same number of taxa with the same topologies \citep{RF1981}.
 When getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees.
@@ -1208,10 +1235,10 @@ If so, an effort should be made prior to the phylogenetic analysis on collecting
 
 
 \section{Acknowledgements}
-We would like to thank Trevor Hodkinson and Andrew Jackson %Also Gavin Thomas, Emmanuel Douzery and Frédéric Delsuc if not authors.
-for his useful comments on the simulation protocol and Paddy Doyle for the assistance on using the computer cluster.
-All calculations were performed on the Lonsdale cluster maintained by the Trinity Centre for High Performance Computing.
-This cluster was funded through grants from Science Foundation Ireland.
+% NC: Try and keep these short and to the point
+Thanks to Trevor Hodkinson and Andrew Jackson %Also Gavin Thomas, Emmanuel Douzery and Frédéric Delsuc if not authors. %NC: Also members of MacroJC
+for useful comments on our simulation protocol and Paddy Doyle for  assistance with the computer cluster. Simulations used the Lonsdale cluster maintained by the Trinity Centre for High Performance Computing and funded through grants from Science Foundation Ireland. % NC: Is this what you're supposed to cite for the cluster? Check.
+This work was funded by a European Commission CORDIS Seventh Framework Programme (FP7) Marie Curie CIG grant (proposal number: 321696).
 
 %BIBLIOGRAPHY
  % The \cite command functions as follows:
@@ -1230,6 +1257,8 @@ This cluster was funded through grants from Science Foundation Ireland.
 \bibliography{References} %don't write the suffix
 
 \section{Supplementaries}
+% NC: What do they call this in Syst Biol? Supplemental Materials is more usual...
+% NC: You probably want to give these numbers so you can refer people to supp mat section 1, section 2 etc. etc.
 \label{supplementaries}
 \subsection{Morphological characters states}
 In order to obtain a realistic probabilistic value for of \textit{k} characters states for each simulated morphological character, we downloaded 100 random morphological characters (with more than 100 characters each) from TreeBASE database (http://treebase.org/) published between 1985 and 2013 and covering 19 taxomomic classess (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta).
@@ -1340,7 +1369,7 @@ We calculated the $\bar{d}_{m,n}$\textit{(rand)} value using an approach similar
 \subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
 We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
 We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
-We used an anova to test if there was no significant difference between the replicates so that the RBTC can be replicated.
+We used an ANOVA to test if there was no significant difference between the replicates so that the RBTC can be replicated.
 We applied this protocol on a poorly resolved tree (Low Score), a resolved tree with low support value (Medium Score) and a resolved tree with high support values (High Score).
 Results are available in table ~\ref{RPBTC_testing}. %link broken
 
