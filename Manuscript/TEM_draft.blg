@@ -3,65 +3,9 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: TEM_draft.aux
 The style file: sysbio.bst
 Database file #1: References.bib
-You're missing a field name---line 39 of file References.bib
- : @article{brusattesuperiority,
- :                              2008,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 113 of file References.bib
- : @article{dos 
- :              reisthe2014,
-I'm skipping whatever remains of this entry
-You're missing a field name---line 263 of file References.bib
- : @article{baabphylogenetic,
- :                           2014,
-I'm skipping whatever remains of this entry
-You're missing a field name---line 743 of file References.bib
- : @article{marivauxdjebelemur,
- :                             2013,
-I'm skipping whatever remains of this entry
-You're missing a field name---line 812 of file References.bib
- : @article{allmonspecies,
- :                        2013,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1416 of file References.bib
- : @article{de 
- :             maiolinking2013,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1527 of file References.bib
- : @article{dos 
- :              reisphylogenomic2012,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 3084 of file References.bib
- : @article{holtz 
- :                jrdenticle1998,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 3486 of file References.bib
- : @article{le 
- :             loeuffa1998,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 4220 of file References.bib
- : @article{james 
- :                rohlfa1993,
-I'm skipping whatever remains of this entry
-You're missing a field name---line 4508 of file References.bib
- : @article{siblyenergetics,
- :                          2012,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 4850 of file References.bib
- : @article{van 
- :              voorhiesgenetic1999,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 4861 of file References.bib
- : @article{van 
- :              voorhiestesting2004,
-I'm skipping whatever remains of this entry
-Repeated entry---line 5327 of file References.bib
- : @article{stamatakisa2008
- :                         ,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 5388 of file References.bib
- : 
- : @article {morphobank,
+I was expecting a `,' or a `}'---line 165 of file References.bib
+ :   
+ :   journal={arXiv}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--missing school in chen2011
@@ -73,43 +17,43 @@ Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
 You've used 61 entries,
             2858 wiz_defined-function locations,
-            953 strings with 15898 characters,
-and the built_in function-call counts, 38088 in all, are:
-= -- 3119
+            949 strings with 15845 characters,
+and the built_in function-call counts, 38225 in all, are:
+= -- 3134
 > -- 2091
 < -- 40
 + -- 709
 - -- 627
-* -- 2883
-:= -- 6030
+* -- 2896
+:= -- 6044
 add.period$ -- 243
 call.type$ -- 61
 change.case$ -- 507
 chr.to.int$ -- 60
 cite$ -- 129
-duplicate$ -- 2721
-empty$ -- 2594
+duplicate$ -- 2726
+empty$ -- 2609
 format.name$ -- 816
-if$ -- 7719
+if$ -- 7752
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 609
+missing$ -- 611
 newline$ -- 255
 num.names$ -- 244
-pop$ -- 1042
+pop$ -- 1041
 preamble$ -- 1
 purify$ -- 453
 quote$ -- 0
 skip$ -- 890
 stack$ -- 0
-substring$ -- 1548
-swap$ -- 1190
+substring$ -- 1581
+swap$ -- 1196
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 531
 warning$ -- 7
-while$ -- 230
+while$ -- 231
 width$ -- 0
-write$ -- 733
-(There were 15 error messages)
+write$ -- 734
+(There was 1 error message)

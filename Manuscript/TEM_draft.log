@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  17 JUN 2014 16:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  17 JUN 2014 17:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -735,20 +735,12 @@ Missing character: There is no ™ in font pplr9o!
 Missing character: There is no Ã in font pplr9o!
 Missing character: There is no ³ in font pplr9o!
  [29] [30] [31]
-Missing character: There is no Ä in font pplr9o!
-Missing character: There is no  in font pplr9o!
 Missing character: There is no â in font pplr9o!
 Missing character: There is no € in font pplr9o!
 Missing character: There is no “ in font pplr9o!
 Missing character: There is no â in font pplr9o!
 Missing character: There is no € in font pplr9o!
 Missing character: There is no ™ in font pplr9o!
-Missing character: There is no â in font pplr9o!
-Missing character: There is no € in font pplr9o!
-Missing character: There is no œ in font pplr9o!
-Missing character: There is no â in font pplr9o!
-Missing character: There is no € in font pplr9o!
-Missing character: There is no  in font pplr9o!
  [32] [33]
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no  in font pplr9o!
@@ -823,7 +815,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 866.
 Here is how much of TeX's memory you used:
  9222 strings out of 493315
  140396 string characters out of 6137904
- 325382 words of memory out of 5000000
+ 325384 words of memory out of 5000000
  12179 multiletter control sequences out of 15000+600000
  62495 words of font info for 172 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -841,7 +833,7 @@ ype1/public/fpl/fplrij8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/ur
 w/palatino/uplb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palat
 ino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palatino/upl
 ri8a.pfb>
-Output written on TEM_draft.pdf (59 pages, 867804 bytes).
+Output written on TEM_draft.pdf (59 pages, 867925 bytes).
 PDF statistics:
  1048 PDF objects out of 1200 (max. 8388607)
  882 compressed objects within 9 object streams
