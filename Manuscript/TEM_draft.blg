@@ -71,45 +71,45 @@ Warning--can't use both author and editor fields in johnson1998
 Warning--can't use both author and editor fields in jc69
 Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
-You've used 63 entries,
+You've used 61 entries,
             2858 wiz_defined-function locations,
-            964 strings with 16346 characters,
-and the built_in function-call counts, 39522 in all, are:
-= -- 3224
-> -- 2207
-< -- 41
-+ -- 747
-- -- 663
-* -- 3000
-:= -- 6264
-add.period$ -- 251
-call.type$ -- 63
-change.case$ -- 529
-chr.to.int$ -- 62
-cite$ -- 133
-duplicate$ -- 2823
-empty$ -- 2670
-format.name$ -- 860
-if$ -- 7999
+            953 strings with 15898 characters,
+and the built_in function-call counts, 38088 in all, are:
+= -- 3119
+> -- 2091
+< -- 40
++ -- 709
+- -- 627
+* -- 2883
+:= -- 6030
+add.period$ -- 243
+call.type$ -- 61
+change.case$ -- 507
+chr.to.int$ -- 60
+cite$ -- 129
+duplicate$ -- 2721
+empty$ -- 2594
+format.name$ -- 816
+if$ -- 7719
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 633
-newline$ -- 263
-num.names$ -- 252
-pop$ -- 1086
+missing$ -- 609
+newline$ -- 255
+num.names$ -- 244
+pop$ -- 1042
 preamble$ -- 1
-purify$ -- 473
+purify$ -- 453
 quote$ -- 0
-skip$ -- 918
+skip$ -- 890
 stack$ -- 0
-substring$ -- 1570
-swap$ -- 1235
+substring$ -- 1548
+swap$ -- 1190
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 549
+type$ -- 531
 warning$ -- 7
-while$ -- 236
+while$ -- 230
 width$ -- 0
-write$ -- 757
+write$ -- 733
 (There were 15 error messages)

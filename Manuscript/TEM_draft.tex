@@ -1,20 +1,12 @@
-%HEADER
-\documentclass[12pt,letterpaper]{article}
+ \documentclass[12pt,letterpaper]{article}
 
 %packages
+% NC: Just to flag here how I'll comment on LaTeX files. I'll use % and then NC. Of course in git diff it'll all show up as an addition.
+% NC: You could add all the packages etc to a template .sty file to save writing it all up here. Rich's ms.sty that I provided on DropBox is a good example - TG: couldn't find that one...
+
 \usepackage{fixltx2e}
 \usepackage{textcomp}
 \usepackage{fullpage}
-\usepackage{amsfonts}
-\usepackage{verbatim}
-\usepackage[english]{babel}
-\usepackage{pifont}
-\usepackage{color}
-\usepackage{setspace}
-\usepackage{lscape}
-\usepackage{indentfirst}
-\usepackage[normalem]{ulem}
-\usepackage{booktabs}
 %\usepackage{nag}
 \usepackage{natbib}
 %\usepackage{bibtex}
@@ -38,6 +30,11 @@
 \usepackage{amsthm}
 \usepackage{amstext} % Add and remove packages as necessary for your manuscript.
 
+% NC: Added by NC
+\usepackage{enumerate}
+\usepackage[osf]{mathpazo} % palatino is a nicer font! 
+\pagenumbering{arabic} % Page numbers
+
 %Pagination style and stuff
 \linespread{1.66} % All text should be double-spaced with occasional exceptions for tables. 
 \raggedright
@@ -45,7 +42,7 @@
 
 \setcounter{secnumdepth}{0} % Our sections are not numbered and our papers do not have Tables of Contents. We don't present a list of figures or list of tables, either. Any common font is fine. (A common sans-serif font should be used on figures, but figures should be separate from the LaTeX document.)
 
-\pagestyle{empty}
+%\pagestyle{empty}
 
 \renewcommand{\section}[1]{%
 \bigskip
@@ -72,17 +69,7 @@
 \renewcommand{\tableofcontents}{}
 
 \bibpunct{(}{)}{;}{a}{}{,}  % this is a citation format command for natbib
-<<<<<<< HEAD
-=======
-% We don't use a special title page; the author information is entered like any other text.
-% FOOTNOTES: We don't allow them in the manuscript, except in tables. Don't include any footnotes in the text.
-%IMPORTANT:
-%Note on display in the text file: sentences or sub-parts of sentences (e.g. enumerations) are delimited by a newline for clarity.
-%However, true new lines (i.e. in the pdf) are delimited by one or more empty lines.
-%We don't use a heading for the introduction. The nature of this section is implied by its position following the abstract and preceding the first major section heading.
 
-
->>>>>>> parent of 936e93d... Merge pull request #1 from nhcooper123/master
 
 %---------------------------------------------
 %
@@ -93,9 +80,9 @@
 \begin{document}
 
 %For a colour version of the draft to a search>replace '-BW'>'' 
+%\modulolinenumbers[1]     % Line numbering on every line
 
-
-%Runing head
+%Running head
 \begin{flushright}
 Version dated: \today
 \end{flushright}
@@ -108,29 +95,29 @@ Version dated: \today
 
 %Title
 \noindent{\Large \bf Effect of missing data in matrices containing living and fossil taxa on topological accuracy}
-<<<<<<< HEAD
 %Alternative punchier title: "Bayesian Total Evidence methods fail to recover correct topologies from matrices containing both living and fossil taxa"
 %Alternative punchier title: "Maximum Likelihood outperforms Bayesian methods for inferring topology from Total Evidence matrices containing both living and fossil taxa"
-
 % NC: Not sure about any of these. I actually think I prefer your talk title. So something like: The effects of missing data on the ability of Total Evidence approaches to recover correct tree topologies. No rush to decide. But needs Total Evidence in there somewhere.
-=======
-%Alternative punch title: "Bayesian method fails to infer topology using matrices containing both living and fossil taxa"
-%Alternative punch title: "Maximum Likelihood outperforms Bayesian for inferring topology from matrices containing both living and fossil taxa"
->>>>>>> parent of 936e93d... Merge pull request #1 from nhcooper123/master
+
 \bigskip
 
 %Authors
 \noindent {\normalsize \sc Thomas Guillerme$^1$$^,$$^2$, other authors $^3$, and Natalie Cooper$^1$$^,$$^2$}\\
 \noindent {\small \it 
-$^1$School of Natural Sciences, Trinity College Dublin, Dublin 2, Republic of Ireland;\\
-$^2$Trinity Centre for Biodiversity Research, Trinity College Dublin, Dublin 2, Republic of Ireland;\\
+$^1$School of Natural Sciences, Trinity College Dublin, Dublin 2, Ireland;\\
+$^2$Trinity Centre for Biodiversity Research, Trinity College Dublin, Dublin 2, Ireland;\\
 $^3$Somewhere else }\\
 \end{center}
 \medskip
-\noindent{\bf Corresponding author:} Thomas Guillerme, School of Natural Sciences, Trinity College Dublin, Dublin 2, Republic of Ireland; E-mail: guillert@tcd.ie.\\
+\noindent{\bf Corresponding author:} Thomas Guillerme, School of Natural Sciences, Trinity College Dublin, Dublin 2, Ireland; E-mail: guillert@tcd.ie; Fax: +353 1 6778094; Tel: +353 1 896 2571.\\
 \vspace{1in}
 
-<<<<<<< HEAD
+%---------------------------------------------
+%
+%       ABSTRACT
+%
+%---------------------------------------------
+
 \newpage
 \begin{abstract}
 % NC: I'm not going to give this much work as it'll change before we submit anyway. Note though that and abstract must NOT just repeat stuff in the intro. Needs rephrasing at the very least.
@@ -139,26 +126,11 @@ Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns
 This fact has led to an increasing consensus among scientists that both living and fossil taxa must be included in macroevolutionary studies.
 One approach, the Total Evidence approach, uses molecular data from living taxa and morphological data from both living and fossil taxa to infer phylogenies with both living and fossil taxa at the tips.
 Although the Total Evidence approach seems very promising, it requires a lot of data and is therefore likely to suffer from missing data issues which may affect its ability to infer correct phylogenies.
-=======
-
-%---------------------------------------------
-%
-%       ABSTRACT
-%
-%---------------------------------------------
-
-
-\subsubsection{Abstract}
-Living species represent less than 1\% of all species that have ever lived. Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as trends in species richness, biogeographical history or paleoecology.
-This fact has led to an increasing consensus among scientists that both fossil and living taxa must be included in macroevolutionary studies.
-One approach, the total evidence approach, uses molecular data from living taxa and morphological data from both living and fossil taxa to infer phylogenies with both fossil and living taxa at the tips.
-Although the total evidence approach seems very promising, it requires a lot of data and is therefore likely to suffer from missing data issues which may affect its ability to infer correct phylogenies.
->>>>>>> parent of 936e93d... Merge pull request #1 from nhcooper123/master
 
 In this study we assess the effect of missing data on tree topologies inferred from Total Evidence matrices.
 Using simulations we investigate three major factors that directly affect the completeness of the morphological part of the matrix:
 (1) the proportion of living taxa with no morphological data,
-(2) the amount of missing data in the fossil record and
+(2) the amount of missing data in the fossil record, and
 (3) the overall number of morphological characters in the matrix.
 We find that, in a Bayesian framework, difficulties in recovering a stable topology are mainly driven by the missing data in the molecular part of the matrix (for which fossil taxa have no data).
 In a Maximum Likelihood framework, however, topology is not directly affected by missing data \textit{per se}, but by the number of morphological characters shared among the taxa.
@@ -166,6 +138,7 @@ Therefore, the two main drivers of incorrect topologies are the overall number o
 
 Our results suggest that, in order to use Total Evidence approaches, one should reduce the missing data in the morphological part of the matrix for living species and use a Maximum Likelihood framework to fix the topology prior to the overall Bayesian phylogenetic inference process.
 %More results!
+\end{abstract}
 
 \noindent (Keywords: missing data, Total Evidence, Bayesian, Maximum Likelihood, topology)\\
 
@@ -173,8 +146,14 @@ Our results suggest that, in order to use Total Evidence approaches, one should 
 
 \newpage 
 
+%---------------------------------------------
+%
+%       INTRODUCTION
+%
+%---------------------------------------------
 
-<<<<<<< HEAD
+\section{Introduction}
+
 Although most species that have ever lived are now extinct % NC: This avoids giving the dodgy stat of 1%
     \citep{novacek1992ext,raup1993extinction}, the majority of macroevolutionary studies focus solely on living species \citep[e.g.][]{meredithimpacts2011,jetzthe2012}. %or is citing of your own papers in the too "douchebagy" for the second sentence?
 % NC: Yeah be careful with self citing. Fine if it's a good fit, but it's totally not here!!! A better citation would be a big biodiversity study, e.g. the bird phylogeny paper.
@@ -190,7 +169,7 @@ Relationships among the taxa are then inferred using optimality criteria such as
 This approach is commonly used by paleontologists but it ignores the additional molecular data available from living species and does not allow use of probabilistic methods for dealing with phylogenetic uncertainty (but see \citealp{spencerefficacy2013}).
 Neontologists, on the other hand, more commonly use probabilistic approaches (e.g. Maximum Likelihood or Bayesian methods) based on matrices containing only molecular data from living species.
 Because fossil taxa do not usually have available DNA, fossils are used as nodes rather than tips in these phylogenies and their occurrence age % NC: Need to check the exact phrase needed here. Is it range of occurrence? Occurrence dates? etc. - TG: in paleo jargon we have FAD (first apparition datum) and FOD (first occurrence datum). FAD is always hypothetical (we can't really exactly know when the taxa appeared) and FOD is always subjective (it depends when the fossil was found, maybe next year someone will find another one in older layers). So for the dating, because it's relaxed clock, people use FOD (and also probably because they don't care since it doesn't make a huge difference I guess).
- are used to time calibrate phylogenies \citep{zuckerkandl1965}.
+    are used to time calibrate phylogenies \citep{zuckerkandl1965}.
 There have been great improvements in the theory and application of these two approaches \citep[e.g.][]{bapsta2013,stadlerdating2013,heaththe2013} as well as much debate about the "best" approach to use \citep[e.g.][]{spencerefficacy2013}.
 However neither approach uses all the available data.
 
@@ -202,76 +181,53 @@ Total Evidence methods have been successfully applied to empirical data \citep{p
 However, although the Total Evidence approach seems very promising, there is one big drawback in using this approach: it requires a lot of data.
 %In particular it requires morphological data from both living and fossil taxa, both of which are known to be scarce. % NC: Really? I know fossil data is known to be scarce, but living data? I think people would be surprised. And they are surprised. We were surprised! Needs a citation either way.
 %TG: how about this:
-The morphological data for living taxa is rarely collected when molecular data is available (e.g. \citealp{O'Leary08022013} vs. \citealp{meredithimpacts2011}), and for fossil taxa, the scarcity of the fossil record only allow to collect the data available (for example, in vertebrates, the solidest parts of the skeleton \citeal{sansomfossilization2013}).
+The morphological data for living taxa is rarely collected when molecular data is available (e.g. \citet{O'Leary08022013} vs. \citet{meredithimpacts2011}), and for fossil taxa, the scarcity of the fossil record only allow to collect the data available (for example, in vertebrates, the solidest parts of the skeleton \citet{sansomfossilization2013}).
 Therefore Total Evidence matrices are likely to contain a lot of missing data that may affect the method's ability to infer correct topologies, branch lengths and support values \citep{salamin2003}. % Trevor: Missing data also influences support values that trend to decrease
 
 % NC: You need to take a bit of time to learn about singular and plural grammar in English. It's something you always do wrong. e.g. The Total Evidence method *uses* this and *its* parameters are as follows. Versus: Total Evidence methods *use* this and *their* parameters are as follows. Sive and I won't be around to correct your English forever. - TG: my French demons are back!
 
-
-%Paused here - 15/063
-
-=======
-%---------------------------------------------
-%
-%       INTRODUCTION
-%
-%---------------------------------------------
-
-
-Living species represent less than 1\% of all species that have ever lived \citep{novacek1992ext,raup1993extinction}.
-However, the majority of macroevolutionary studies focus solely on living species \citep{cooperwhat2009,meredithimpacts2011,healyecology2014}. %or is citing of your own papers in the too "douchebagy" for the second sentence?
-Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as timing of diversification events \citep[e.g.][]{pyrondivergence2011}, relationships among lineages \citep[e.g.][]{manosphylogeny2007} or niche occupancy \citep[e.g.][]{pearmanniche2008}.
-These factors have led to increasing consensus among scientists that fossil taxa must be included in macroevolutionary studies \citep{jacksonwhat2006,quentaldiversity2010,dietlconservation2011,slaterunifying2013,fritzdiversity2013}.
-However, to do this we need to be able to place living and fossil taxa into the same phylogenies which still remains complex despite an increasing number of significant efforts \citep{pyrondivergence2011,ronquista2012,schragocombining2013}. %Not a nice sentence
-
-Up to now, three main approaches have been used for combining fossil and living taxa data in phylogenies.
-These approaches differ mainly in whether they treat fossil taxa as tips or as nodes in the phylogeny and on which part of the available data of the fossil is used (i.e. the fossil occurrence age only or both the age and the morphology).
-Classical cladistic methods uses matrices containing morphological data from both fossil and living taxa and allows to treat each taxon as a tip in the phylogeny; the relation between the taxa can be inferred using optimal criteria such as the maximum parsimony criterion \citep{simpson1945}.
-This approach is commonly used by paleontologists but it ignores the additional molecular data available from living species and doesn't allow to use probabilistic methods to deal with inference uncertainty (but see \citet{spencerefficacy2013}.
-Neontologists, on the other hand, more commonly use probabilistic methods (e.g. Maximum Likelihood or Bayesian) based on matrices containing only molecular data from living species.
-Because fossil taxa do not usually have available DNA, fossils are used as nodes rather than tips in these analyses and only their occurrence age can be used to time calibrate phylogenies \citep{zuckerkandl1965}.
-There have been great improvements in the theory and application of these two approaches \citep[e.g.][]{bapsta2013,stadlerdating2013,heaththe2013} as well as much debate about the "best" approach to use \citep[e.g.][]{spencerefficacy2013}.
-However none of them is optimal and uses all the available data.
-
-A final approach, known as total evidence approach use matrices containing molecular data from living taxa and morphological data from both living and fossil taxa. %There might be a philosophico-semantic distinction to do here. Is TEM a method or an approach? I'll say that it is an approach because it's more like an idea (put every thing together) than a way to do (how to put everything together). It makes more sense to me compared to a real method e.g. a probabilistic method such as ML where the method states precisely how to do stuff.
-It allows to use probabilistic methods, to treat every taxon as a tip in the phylogeny and to use the occurrence age of the fossil to time calibrate the phylogeny \citep{eernissetaxonomic1993}.
-Here we focus on this total evidence approach because they have been recently successfully developed and applied to empirical data \citep{pyrondivergence2011,ronquista2012,schragocombining2013}.  %needs a better justification
-Although the total evidence approach seems very promising, there is one big drawback in using this approach: it requires a lot of data.
-In particular it requires morphological data form both living and fossil taxa, both of which are known to be scarce.
-Therefore total evidence approach is likely to suffer from having lots of missing data which may affect their ability to infer correct topology, branch length and support values \citep{salamin2003}. % Trevor: Missing data also influences support values that trend to decrease
->>>>>>> parent of 936e93d... Merge pull request #1 from nhcooper123/master
-
 The effect of missing data on phylogenetic inferences has been widely studied \citep{wiensmissing2003,wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011,sansomfossilization2013}.
-Missing molecular data has been seen by some authors as an issue because it can decrease the phylogenetic signal in some parts of the tree, especially when using large matrices \citep{lemmonthe2009}.
-However other authors do not see missing molecular data as a major issue because the phylogenetic signal, rather than by reducing the amount of missing data, is more likely to increase by having:
-(i) at least a "modest" number of highly covered genes (i.e. approximatively half of the genes - \citet{rouresite-specific2011});
-(ii) a higher number of taxa (especially slowly evolving taxa or taxa close to the outgroup - \citet{rouresite-specific2011}) and
-(iii) by choosing more adequate models of sequence evolution rather than by reducing the amount of missing data \citep{wiensmissing2006,wiensmissing2008,rouresite-specific2011}.
++Missing molecular data has been seen by some authors as an issue because it can decrease phylogenetic signal (i.e. % define phylogenetic signal here) 
+in some parts of the tree, especially when using large matrices \citep{lemmonthe2009}. However, this may not be a major issue because phylogenetic signal is easily increased by:
+(i) including a "modest" number of highly-covered % what do you mean by highly-covered?
+genes (i.e. approximatively half of the genes; \citealt{rouresite-specific2011});
+(ii) adding a greater number of taxa (especially slowly-evolving taxa or taxa close to the outgroup; \citealt{rouresite-specific2011}); and
+(iii) choosing more appropriate models of sequence evolution \citep{wiensmissing2006,wiensmissing2008,rouresite-specific2011}.
+Similarly, missing morphological data might be seen as either a major or minor issue for accurately inferring phylogenies depending on the study in question \citep{wiensmissing2003,sansomfossilization2013}.
+Because soft-tissue characters are rarely preserved in the fossil record, missing data is mainly found in these characters, and is therefore not randomly distributed which can lead to biased placement of fossil taxa in phylogenies \citep{sansomfossilization2013}.
+However, the phylogenetic signal is not related to the amount of missing data \textit{per se} but to the number of informative characters for each taxon, therefore missing data is less of an issue than the number of shared informative characters \citep{wiensmissing2003}.
+% NC: I'm a little dubious of what this paragraph is trying to get at in places. We should discuss at some point.
 
-Similarly, depending on the study, missing morphological data might be seen as either a major or minor issue for accurately inferring phylogenies depending on the study \citep{wiensmissing2003,sansomfossilization2013}.
-Because soft-tissues characters are rarely preserved in the fossil record, missing data is mainly found in soft tissues characters, and is therefore not randomly distributed, which can lead to biased placement of fossil taxa in phylogenies \citep{sansomfossilization2013}.
-However, the phylogenetic signal is not related to the level of missing data \textit{per se} but to the number of informative characters per taxa, therefore missing data is less an issue than the number of shared informative characters \citep{wiensmissing2003}.
-Although missing data as been shown to be no major problem separately in molecular and morphological matrices \citep{wiensmissing2003,wiensmissing2006,wiensmissing2008,rouresite-specific2011} it may become an issue when combined in a total evidence type matrices.
-Because the nature of total evidence matrices, combining both molecular and morphological information for both living and fossil taxa, a big part of the matrix contains only missing data - the molecular data for fossil taxa.
-Until now, no attempt has been made to study the impact of this issue on phylogenetic inference and especially on topological recovery.
+Although missing data does not appear be a major problem in molecular and morphological matrices separately \citep{wiensmissing2003,wiensmissing2006,wiensmissing2008,rouresite-specific2011}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil species. This may be particularly problematic as fossil taxa (generally) do not have molecular data, resulting in a large section of missing data. Until now, no attempt has been made to study the impact of this issue on phylogenetic inference from Total Evidence methods. 
 
-Here we assess the effect of missing data on tree topology inferred from total evidence matrices.
-The molecular part for living taxa of a total evidence matrix acts like a "classical" molecular matrix \citep{ronquista2012}.
-The effect of missing data on such matrices is well known \citep{wiensmissing2006,wiensmissing2008,rouresite-specific2011}, therefore, we only focus on the missing data issue in the morphological part of the matrix.
-Using simulations we investigate three major factors that directly affect the completeness of the morphological part of the matrix:
-(1) the proportion of living taxa with no morphological data,
-(2) the amount of missing data in the fossil taxa (i.e. the preservation quality of the fossil record) and
-(3) the overall number of morphological characters for both living and fossil taxa in the matrix.
-We assess how removing data from a total evidence type matrix by changing the values of these three parameters affects the topology of the inferred tree using Maximum Likelihood and Bayesian method.
+% NC: Somewhere here you need to flag that you're only looking at topologies and briefly explain why.
+
+Here we use simulations to assess the effect of missing data on tree topologies inferred from Total Evidence matrices. The molecular part of a Total Evidence matrix acts like a "classical" molecular matrix containing only the living taxa \citep{ronquista2012}. The effect of missing data on such matrices is well known \citep{wiensmissing2006,wiensmissing2008,rouresite-specific2011}, therefore, we focus only on missing data in the morphological part of the matrix. We investigate three major parameters that directly affect the completeness of the morphological part of the matrix:
+\begin{enumerate}
+\item the proportion of living taxa with no morphological data;
+\item the amount of missing data in the fossil taxa; and
+\item the overall number of morphological characters for both living and fossil taxa in the matrix.
+\end{enumerate}
+We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the topology of trees inferred using Maximum Likelihood and Bayesian methods. We chose these parameters because they reflect real-life biases in data availability. The advent of molecular phylogenetics means that morphological data for living species is rarely collected, and few people have the skills to identify characters needed for detailed phylogenetic analysis. Missing data in fossil taxa is very common due to preservation biases (citation?), and 
+% OK I'm not sure what the "real-life" reason for three is.
 %This paragraph is crap
+% NC: I think it's fine!
 
-We found that whatever the amount of missing data, total evidence matrices dramatically reduce the performance of Bayesian inference.
-However, when using a Maximum Likelihood approach, missing data decreases gradually the ability of recovering the right tree topology.
-We propose that this drastic difference between Bayesian and Maximum Likelihood methods is due to a flattening of the likelihood landscape because of the intrinsic amount of missing data in a total evidence matrix (i.e. the missing molecular data for the fossil taxa).
-This problem leads to an inability of Bayesian chains to pick up the sub and near optimal topologies leading to high variance in the posterior tree distribution and really low support in the consensus tree.
-These results should encourage authors in not using Bayesian inference to explore the topological landscape of their phylogeny.
-Instead, we suggest that authors should first find the Maximum Likelihood tree and use it's topology as a fix prior in their Bayesian inference.
-We also propose a new method for comparing Bayesian posterior tree distribution's topology available in a wonderful R package. %Or am I just dreaming a bit too much here?
+We find that when using a Maximum Likelihood approach, as missing data increases, the likelihood of recovering the correct tree topology decreases.
+However, even with no missing data, Total Evidence matrices dramatically reduce the performance of Bayesian methods for inferring tree topology.
+We propose that this drastic difference between Bayesian and Maximum Likelihood methods is due to a flattening of the likelihood landscape caused by the unavoidable amount of missing molecular data for fossil taxa in a Total Evidence matrix.
+We make suggestions for how best to deal with this issue when inferring phylogenies from Total Evidence matrices.
+% NC: You don't want to tell the whole story here. Just a results summary and a quick line of interpretation
+
+%This problem leads to an inability of Bayesian chains to pick up the sub and near optimal topologies leading to high variance in the posterior tree distribution and really low support in the consensus tree.
+%These results should encourage authors in not using Bayesian inference to explore the topological landscape of their phylogeny.
+%Instead, we suggest that authors should first find the Maximum Likelihood tree and use it's topology as a fix prior in their Bayesian inference.
+%We also propose a new method for comparing Bayesian posterior tree distribution's topology available in a wonderful R package. %Or am I just dreaming a bit too much here? 
+% NC: Dreaming a bit much I think. There's a discussion to be had here about whether it's really a *new* method and whether you really want to make an R package per se. We definitely want to share the code
+
+%-----------
+% NC: It might look like I've done a lot to this but actually I think it's nearly there. A good thing to take from this is that writing a paper is *hard*. It gets easier, but it's still a deeply involved process with lots of writing and re-writing. Introductions are particularly difficult because if you don't set the scene, it's hard to convince people to get on board for the rest of the paper. This is why I said there was no way this was being submitted by the end of June! Still a long way to go I'm afraid in terms of time and effort. But that doesn't mean you're not doing well, *every* project is like this. 2 years is about average from conception to sending out a manuscript, and you only started work on this last spring.
+%------------
 
 %---------------------------------------------
 %
@@ -280,22 +236,22 @@ We also propose a new method for comparing Bayesian posterior tree distribution'
 %---------------------------------------------
 
 
+ 
+\newpage
+
 \section{Methods} %no material needed?
-<<<<<<< HEAD
-To explore the effect of missing data in total evidence matrices on tree topology we used the following protocol (note that we explain each step in detail below this general outline -Fig. ~\ref{Fig_Outline}):
-=======
 % NC: Depends on the journal. See what Syst Biol asks for as section titles.
 To explore how missing data in the morphological sections of Total Evidence matrices influences tree topology, we used the following protocol (note that we explain each step in detail below this general outline; Fig.~\ref{Fig_Outline}). %NC: does Syst Biol use Fig. or Figure?
->>>>>>> FETCH_HEAD
 \begin{enumerate}
-\item{Generating the matrix:} \label{step:generate_matrix} \\
-We randomly generated birth death tree (hereafter called the "true" tree, Table ~\ref{Tab_glossary}) to infer a matrix containing both molecular and morphological data for living and fossil taxa (hereafter called the "complete" matrix, Table ~\ref{Tab_glossary}).
-\item{Removing data:} \label{step:remove_data} \\
-We removed data from the morphological part of the "complete" matrix to simulate the effects of missing data by modifying three parameters (1) the proportion of missing living taxa ($M_{L}$), (2) the proportion of missing data in the fossil taxa ($M_{F}$) and (3) the proportion of missing morphological characters ($M_{C}$) (the resulting matrices are called hereafter the "missing-data" matrix, Table ~\ref{Tab_glossary}).
-\item{Building phylogenies:} \label{step:build_phylo} \\
-We inferred Bayesian phylogenetic trees from the "complete" matrix and from the "missing-data" matrices resulting in respectively a tree generate from a matrix containing no missing data in the morphological part (hereafter called the "best" tree, Table ~\ref{Tab_glossary}) and trees inferred from matrices with missing data in their morphological part (hereafter called the "missing-data" trees, Table ~\ref{Tab_glossary}).
-\item{Comparing topologies:} \label{step:compare_topo} \\
-We then compared the "best" tree to the "missing-data" trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on the topologies of the phylogenies we estimated.
+\item{Generating the matrix} \label{step:generate_matrix} \\
+We randomly generated a birth-death tree (hereafter called the "true" tree; Table ~\ref{Tab_glossary}) and used it to infer a matrix containing both molecular and morphological data for living and fossil taxa (hereafter called the "complete" matrix; Table ~\ref{Tab_glossary}).
+\item{Removing data} \label{step:remove_data} \\
+We removed data from the morphological part of the "complete" matrix to simulate the effects of missing data by modifying three parameters (i) the proportion of missing living taxa ($M_{L}$), (ii) the proportion of missing data in the fossil taxa ($M_{F}$) and (iii) the proportion of missing morphological characters ($M_{C}$) % NC: make sure to use the same descriptions here and in the introduction 
+(the resulting matrices are called hereafter "missing-data" matrices; Table ~\ref{Tab_glossary}).
+\item{Building phylogenies} \label{step:build_phylo} \\
+We built phylogenetic trees from the "complete" matrix and from the "missing-data" matrices resulting in one tree generated from a matrix containing no missing data (hereafter called the "best" tree; Table ~\ref{Tab_glossary}) and multiple trees inferred from matrices with missing morphological data (hereafter called the "missing-data" trees; Table ~\ref{Tab_glossary}). Phylogenies were inferred via both Maximum Likelihood and Bayesian approaches.
+\item{Comparing topologies} \label{step:compare_topo} \\
+We compared the "best" tree to the "missing-data" trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$) and their interactions on the topologies of our phylogenies
 \end{enumerate}
 We repeated steps 1-4 50 times. %that's because I had 3 cluster accounts available... If it's a too odd number, no worries, I'll just remove the last chain.
 % NC: Yeah 51 is odd. Let's just use 50.
@@ -320,30 +276,16 @@ We repeated steps 1-4 50 times.}
 % NC: Not sure we need the glossary, but keep it for the thesis
 
 \begin{table}[ht]
-\caption{Glossary}
-\centering
-\begin{tabular}{p{5cm} p{9cm}}
-\hline
-\hfill Term & Definition \\[0.5ex]
-\hline
-\hfill living taxa & taxa with both molecular and morphological data available \\[1.5ex]
-\hfill fossil taxa & taxa with only morphological data available \\[1.5ex]
-\hfill "complete" matrix & matrix with no missing data except for the molecular part of the fossil taxa \\[1.5ex]
-\hfill "missing-data" matrix & matrix with various amount of missing data \\[1.5ex]
-\hfill $M_{L}$ & missing living taxa in the morphological part of the matrix \\[1.5ex]
-\hfill $M_{F}$ & missing data for the fossil taxa in morphological part of the matrix \\[1.5ex]
-\hfill $M_{C}$ & missing morphological characters for both living and fossil taxa \\[1.5ex]
-\hfill "true" tree & tree used to simulate the matrix \\[1.5ex]
-\hfill "best" tree & tree inferred from the "complete" matrix \\[1.5ex]
-\hfill "missing-data" tree & tree inferred the "missing-data" matrices \\[1.5ex]
-\hfill RPBTC & Random pairwise Bayesian tree comparison \\[1.5ex]
-\hfill "horizontal" sub-matrix & sub-matrix with morphological and molecular characters for living taxa \\[1.5ex]
-\hfill "vertical" sub-matrix & sub-matrix with morphological data for both living and fossil taxa \\[1.5ex]
-\hfill "corner" sub-matrix & sub-matrix with morphological data for living taxa \\[1.5ex]
-\hfill "missing-data" sub-matrix & molecular part of the matrix for the fossil taxa (no data) \\
-\end{tabular}
-\label{Tab_glossary}
+  \caption{Glossary}
+  \centering
+  \linespread{1.0}
+  \input{Tables/Glossary}
+  \label{Tab_glossary}
 \end{table}
+
+%---------------------------------------------
+%       Generating the matrix
+%---------------------------------------------
 
 % NC: Most of the below was fine but I've tried to condense it a bit as it's currently long even for Syst Biol. The key is to explain everything, but with minimal repetition.
 
@@ -443,7 +385,6 @@ Where $I_{ijk}$ is equal to 0 if the the two triplets (\textit{ijk}) are the sam
 For any rooted binary tree there are only three possible combinations per triplets: ((\textit{j},\textit{k}),\textit{i});, ((\textit{i},\textit{k}),\textit{j}); and ((\textit{i},\textit{j}),\textit{k}); \citep{johnson1998}.
 If the trees used are not fully binary, a fourth triplet combination is possible: (\textit{i},\textit{j},\textit{k});.
 One can calculate $S_n$, the triplet distance between two trees as:
-=======
 We compared the topology of the "missing-data" trees to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$ on tree topology. We used the Triples \citep{dobson1975triplets} metric to assess the number of conserved taxa across trees, and the Robinson-Fould \citep{RF1981} distance to identify conserved clade positions. We then used Normalized Tree Similarity index \citep{Bogdanowicz2012} to generalize our results for any \textit{n} number of taxa. These metrics are described in detail below.
 % NC: I moved this around a bit to make it clearer what metric fits where. Remember we need American spellings.
 % Also I thought it was triplets distance? Good idea to check...
@@ -451,7 +392,6 @@ We compared the topology of the "missing-data" trees to the "best" tree to measu
 \subsubsection{Triples distance}
 % NC: I've tried to remove the word displaced here, as displaced suggests that you have one correct placement and then are comparing it to other trees. But the general meaning is that the placements differ between trees.
 Triples distance ($T_{x,y}$; \citealp{dobson1975triplets}) measures the number of sub-trees made up of three taxa (triplets) that differ between two given trees. Each triplet can be written as $I_{ijk}$=(\textit{ijk}). Where $I_{ijk}$ is equal to zero if the the two triplets (\textit{ijk}) are the same in the two trees otherwise $I_{ijk}$ is equal to one. For any rooted binary tree there are only three possible combinations for each triplet: ((\textit{j},\textit{k}),\textit{i});, ((\textit{i},\textit{k}),\textit{j}); and ((\textit{i},\textit{j}),\textit{k}); \citep{johnson1998}. If the trees used are not fully binary, a fourth triplet combination is possible: (\textit{i},\textit{j},\textit{k}). We can calculate the triplet distance between two trees, $S_n$, as:
->>>>>>> FETCH_HEAD
 \begin{equation}
 S_n = \sum_{ijk} I_{ijk}
 \end{equation}
@@ -599,15 +539,6 @@ We removed data from the "complete" matrix in the same way as described in steps
 
 \section{Results}
 
-<<<<<<< HEAD
-\subsection{Building the trees}
-When generating the matrices using seqgen \citep{ranbaut1997seqgen} and rTraitDisc \citep{paradisape:2004} algorithms with low evolutionary rate parameter ($\alpha$=0.5) we successfully generated evolutionary histories.
-In Maximum Likelihood, support values ranged from 0 to 100 with a median of 38 ($1^st$ quartile = 14, $3^rd$ quartile = 72 - see \hyperref[supplementaries]{supplementaries}). % This is actually bad.
-The distribution of the phylogenetic signal across the different chains provided us a good spread of evolutionary scenarios: from well resolved phylogenies to poorly resolved ones.
-This allows us to test our simulations in a theoretical as well as practical framework (i.e. phylogenies with low support values are rarely published but are still common in early stages of projects). %REF??? - That's kind of my way to turn these bad results into something usable: even if some of our simulations are not realistic, it shows the effect of missing data in any scenario possible, not only in realistic cases.
-Also, one can advocate that this low topological resolution is actively due to the amount of missing data in the Total Evidence matrices since the sub-matrices (no missing data) analysis recovers way higher support value  . %This is something that I will had with the whole submatrices story. Basically, when you have all the fossil/molecular data missing, it's harder to build the tree, both in ML and in Bayesian. When you run the analysis without missing data, then it works way better (i.e. our REAL control test: can we simulate matrices in the first place).
-Using Bayesian inference, all the chains converged with a significant effective sample size by using 2 parallel runs of 4 chains each (ASSD $<$ 0.01 and ESS $>>$ 200 for inference).
-=======
 % NC: OK it's worth thinking about what you really need to include here. Remember the results are about the answers to your question. Not necessarily everything you did. This section can be really short, and probably should be quite short.
 
 % NC: I may have misunderstood but I don't think you need this section at all, or the comparing topologies section you have planned. Just the actual results surely...
@@ -619,7 +550,6 @@ Using Bayesian inference, all the chains converged with a significant effective 
 %This allows us to test our simulations in a theoretical as well as practical framework (i.e. phylogenies with low support values are rarely published but are still common in early stages of projects). %REF??? - That's kind of my way to turn these bad results into something usable: even if some of our simulations are not realistic, it shows the effect of missing data in any scenario possible, not only in realistic cases.
 %Also, one can advocate that this low topological resolution is actively due to the amount of missing data in the total evidence matrices since the sub-matrices (no missing data) analysis recovers way higher support value  . %This is something that I will had with the whole submatrices story. Basically, when you have all the fossil/molecular data missing, it's harder to build the tree, both in ML and in Bayesian. When you run the analysis without missing data, then it works way better (i.e. our REAL control test: can we simulate matrices in the first place).
 %Using Bayesian inference, all the chains converged with a significant effective sample size by using 2 parallel runs of 4 chains each (ASSD $<$ 0.01 and ESS $>>$ 200 for inference).
->>>>>>> 41566ab9d6aa39dffe0b914f9c64ead3415a726b
 
 %\subsection{Comparing topologies}
 %Did it worked? See sub-matrices part. TO DO
@@ -693,437 +623,106 @@ $\newline$
 
 % NC: we need to sit down and look at these tables. I don't like the current format.
 
-\begin{table} % What about making this table in a longevity-results style? with every thing combined (30 columns)?
+% About the tables:
+
+% What about making this table in a longevity-results style? with every thing combined (30 columns)?
 % NC: That might be too many columns!
-\caption{Tree similarity values per parameter in ML framework}
-\centering
-\begin{tabular}{rrlccccc}
-    \hline
-    Parameter & amount of    & metric & mode & 50\%CI &       & 95\%CI &       \\
-              & missing data &        &      & lower  & upper & lower  & upper \\
-    \hline
-    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
-              &              & Triples        & 1 & NA  & NA & NA  & NA \\
-              & 10\%         & Robinson-Fould & 0.671 & 0.569  & 0.789 & 0.468  & 1.036 \\ %how many digits?
-              &              & Triples        & 0.942 & 0.868  & 0.999 & 0.612  & 1.063 \\
-              & 25\%         & Robinson-Fould & 0.516 & 0.440  & 0.630 & 0.266  & 0.892 \\
-              &              & Triples        & 0.559 & 0.708  & 0.810 & 0.291  & 0.999 \\
-              & 50\%         & Robinson-Fould & 0.432 & 0.364  & 0.521 & 0.231  & 0.642 \\
-              &              & Triples        & 0.514 & 0.419  & 0.599 & 0.293  & 0.910 \\
-              & 75\%         & Robinson-Fould & 0.372 & 0.323  & 0.434 & 0.203  & 0.577 \\
-              &              & Triples        & 0.444 & 0.338  & 0.532 & 0.192  & 0.855 \\
-    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
-              &              & Triples        & 1 & NA  & NA & NA  & NA \\
-              & 10\%         & Robinson-Fould & 0.907 & 0.766  & 1.000 & 0.407  & 1.047 \\
-              &              & Triples        & 0.976 & 0.944  & 1.003 & 0.715  & 1.104 \\
-              & 25\%         & Robinson-Fould & 0.572 & 0.488  & 0.692 & 0.325  & 0.936 \\
-              &              & Triples        & 0.937 & 0.820  & 0.993 & 0.539  & 1.086 \\
-              & 50\%         & Robinson-Fould & 0.433 & 0.302  & 0.476 & 0.170  & 0.668 \\
-              &              & Triples        & 0.732 & 0.594  & 0.873 & 0.341  & 1.025 \\
-              & 75\%         & Robinson-Fould & 0.153 & 0.115  & 0.200 & 0.068  & 0.323 \\
-              &              & Triples        & 0.458 & 0.390  & 0.611 & 0.290  & 0.856 \\   
-    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
-              &              & Triples        & 1 & NA  & NA & NA  & NA \\
-              & 10\%         & Robinson-Fould & 0.473 & 0.384  & 0.835 & 0.356  & 0.958 \\
-              &              & Triples        & 0.959 & 0.869  & 1.026 & 0.572  & 1.067 \\
-              & 25\%         & Robinson-Fould & 0.454 & 0.357  & 0.630 & 0.242  & 0.916 \\
-              &              & Triples        & 0.907 & 0.751  & 0.997 & 0.446  & 1.070 \\
-              & 50\%         & Robinson-Fould & 0.424 & 0.375  & 0.466 & 0.249  & 0.828 \\
-              &              & Triples        & 0.683 & 0.571  & 0.822 & 0.277  & 1.008 \\
-              & 75\%         & Robinson-Fould & 0.230 & 0.177  & 0.302 & 0.108  & 0.567 \\
-              &              & Triples        & 0.451 & 0.373  & 0.572 & 0.224  & 0.791 \\
-    \hline
-\label{NTS_ML_results}
-\end{tabular}
-\end{table}
-
-\begin{table} % What about making this table in a longevity-results style? with every thing combined (30 columns)?
-\caption{Tree similarity values per parameter in Bayesian framework}
-\centering
-\begin{tabular}{rrlccccc}
-    \hline
-    Parameter & amount of    & mode & 50\%CI &       & 95\%CI & \\
-              & missing data &      & lower  & upper & lower  & upper \\
-    \hline
-    $M_L$     & 0\%          & Robinson-Fould & 0.056 & 0.035  & 0.063 & 0.031   & 0.076 \\ %how many digits?
-              &              & Triples        & 0.041 & 0.008  & 0.054 & -0.039  & 0.106 \\
-              & 10\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.028   & 0.061 \\
-              &              & Triples        & 0.033 & 0.003  & 0.049 & -0.049  & 0.117 \\
-              & 25\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.061 \\
-              &              & Triples        & 0.035 & 0.002  & 0.049 & -0.041  & 0.096 \\
-              & 50\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.056 \\
-              &              & Triples        & 0.028 & 0.003  & 0.052 & -0.038  & 0.092 \\
-              & 75\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.010   & 0.043 \\
-              &              & Triples        & -0.001 & -0.018 & 0.040 & -0.060 & 0.106 \\
-    $M_L$     & 0\%          & Robinson-Fould & 0.056 & 0.035  & 0.063 & 0.031   & 0.076 \\
-              &              & Triples        & 0.041 & 0.008  & 0.054 & -0.039  & 0.106 \\
-              & 10\%         & Robinson-Fould & 0.035 & 0.031  & 0.056 & 0.027   & 0.076 \\
-              &              & Triples        & 0.026 & 0.002  & 0.050 & -0.046  & 0.105 \\
-              & 25\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.0153  & 0.068 \\
-              &              & Triples        & 0.038 & 0.002  & 0.050 & -0.046  & 0.105 \\
-              & 50\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.058 \\
-              &              & Triples        & 0.014 & -0.011 & 0.039 & -0.038  & 0.124 \\
-              & 75\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.015   & 0.041 \\
-              &              & Triples        & 0.029 & 0.019  & 0.042 & -0.030  & 0.089 \\   
-    $M_L$     & 0\%          & Robinson-Fould & 0.056 & 0.035  & 0.063 & 0.031   & 0.076 \\
-              &              & Triples        & 0.041 & 0.008  & 0.054 & -0.039  & 0.106 \\
-              & 10\%         & Robinson-Fould & 0.056 & 0.035  & 0.059 & 0.0281  & 0.076 \\
-              &              & Triples        & 0.030 & 0.011  & 0.048 & -0.024  & 0.094 \\
-              & 25\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.023   & 0.076 \\
-              &              & Triples        & 0.020 & -0.001 & 0.037 & -0.060  & 0.109 \\
-              & 50\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.030   & 0.059 \\
-              &              & Triples        & 0.010 & -0.005 & 0.045 & -0.036  & 0.104 \\
-              & 75\%         & Robinson-Fould & 0.035 & 0.035  & 0.035 & 0.011   & 0.043 \\
-              &              & Triples        & 0.024 & 0.001  & 0.042 & -0.037  & 0.104 \\
-    \hline
-\label{NTS_BA_results}
-\end{tabular}
-\end{table}
-
-
-
 
 \begin{table}
-\caption{Group difference per configuration set}
-\centering
-\begin{tabular}{rllcccc}
-    \hline
-    set & metric & framework & parametric & $stats^1$ & df & p.value \\
-    \hline
-    $M_L$         & Robinson-Fould & ML       & no & 151.438  & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.001278e-31
-                  &                & Bayesian & no & 65.62    & 4   & \textbf{0.00} \\ 
-                  & Triples        & ML       & no & 142.8329 & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains  - 6.983434e-30
-                  &                & Bayesian & no & 4.56     & 4   & 0.34          \\ 
-    $M_F$         & Robinson-Fould & ML       & no & 179.9238 & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 7.743067e-38
-                  &                & Bayesian & no & 85.61    & 4   & \textbf{0.00} \\
-                  & Triples        & ML       & no & 150.059  & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.977386e-31
-                  &                & Bayesian & no & 3.01     & 4   & 0.56          \\
-    $M_C$         & Robinson-Fould & ML       & no & 151.3818 & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.029428e-31
-                  &                & Bayesian & no & 64.23    & 4   & \textbf{0.00} \\
-                  & Triples        & ML       & no & 138.374  & 4   & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 6.290979e-29
-                  &                & Bayesian & no & 26.13    & 24  & 0.35          \\
-    $M_L+M_F$     & Robinson-Fould & ML       & no & 734.9213 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.104542e-139
-                  &                & Bayesian & no & 317.97   & 24  & \textbf{0.00} \\
-                  & Triples        & ML       & no & 531.5558 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 4.581065e-97
-                  &                & Bayesian & no & 3.01     & 24  & 0.56          \\
-    $M_L+M_C$     & Robinson-Fould & ML       & no & 542.3233 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 2.619808e-99
-                  &                & Bayesian & no & 290.10   & 24  & \textbf{0.00} \\
-                  & Triples        & ML       & no & 437.7413 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains -  1.28493e-77
-                  &                & Bayesian & no & 22.19    & 24  & 0.57          \\
-    $M_F+M_C$     & Robinson-Fould & ML       & no & 812.206  & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 5.463138e-156
-                  &                & Bayesian & no & 385.96   & 24  & \textbf{0.00} \\
-                  & Triples        & ML       & no & 528.9215 & 24  & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains - 1.619383e-96
-                  &                & Bayesian & no & 20.23    & 24  & 0.68          \\ 
-    $M_L+M_F+M_C$ & Robinson-Fould & ML       & no & 3603.808 & 124 & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains -3.819574e-169
-                  &                & Bayesian & no & 1167.40  & 124 & \textbf{0.00} \\
-                  & Triples        & ML       & no & 2047.923 & 124 & \textbf{0.00} \\ %10/06 - Missing 8 ML Chains 
-                  &                & Bayesian & no & 115.86   & 124 & 0.69          \\
-    \hline
-\label{Group_results}
-\end{tabular}
-
-$^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric tests.
+  \centering
+  \linespread{1.0}
+  \caption{Tree similarity values per parameter in ML framework}
+  \input{Tables/NTS_ML_results}
+  \label{tab:NTS_ML_results}
 \end{table}
 
 \begin{table}
-\caption{$M_L$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_L$00\% & $M_L$10\% & $M_L$25\% & $M_L$50\% & $M_L$75\% \\
-    \hline
-    $M_L$00\% & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_L$10\% & & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$25\% & & & - & FALSE  & \textbf{TRUE} \\
-    $M_L$50\% & & & & - & FALSE  \\
-    $M_L$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_L$00\%-$M_L$10\% & 56.53 & 37.66 & TRUE \\ 
-  $M_L$00\%-$M_L$25\% & 96.85 & 37.66 & TRUE \\ 
-  $M_L$00\%-$M_L$50\% & 127.03 & 37.66 & TRUE \\ 
-  $M_L$00\%-$M_L$75\% & 144.58 & 37.66 & TRUE \\ 
-  $M_L$10\%-$M_L$25\% & 40.31 & 37.66 & TRUE \\ 
-  $M_L$10\%-$M_L$50\% & 70.50 & 37.66 & TRUE \\ 
-  $M_L$10\%-$M_L$75\% & 88.05 & 37.66 & TRUE \\ 
-  $M_L$25\%-$M_L$50\% & 30.19 & 37.66 & FALSE \\ 
-  $M_L$25\%-$M_L$75\% & 47.73 & 37.66 & TRUE \\ 
-  $M_L$50\%-$M_L$75\% & 17.55 & 37.66 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{ML_RF-ML_results}
-\end{table}
-
-
-\begin{table}
-\caption{$M_L$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_L$00\% & $M_L$10\% & $M_L$25\% & $M_L$50\% & $M_L$75\% \\
-    \hline
-    $M_L$00\% & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_L$10\% & & - & \textbf{TRUE}  & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$25\% & & & - & FALSE  & FALSE \\
-    $M_L$50\% & & & & - & FALSE  \\
-    $M_L$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_L$00\%-$M_L$10\% & 57.98 & 37.66 & TRUE \\ 
-  $M_L$00\%-$M_L$25\% & 105.83 & 37.66 & TRUE \\ 
-  $M_L$00\%-$M_L$50\% & 120.86 & 37.66 & TRUE \\ 
-  $M_L$00\%-$M_L$75\% & 140.34 & 37.66 & TRUE \\ 
-  $M_L$10\%-$M_L$25\% & 47.85 & 37.66 & TRUE \\ 
-  $M_L$10\%-$M_L$50\% & 62.88 & 37.66 & TRUE \\ 
-  $M_L$10\%-$M_L$75\% & 82.36 & 37.66 & TRUE \\ 
-  $M_L$25\%-$M_L$50\% & 15.03 & 37.66 & FALSE \\ 
-  $M_L$25\%-$M_L$75\% & 34.51 & 37.66 & FALSE \\ 
-  $M_L$50\%-$M_L$75\% & 19.48 & 37.66 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{ML_Tr-ML_results}
-\end{table}
-
-
-\begin{table}
-\caption{$M_L$ non-parametric pairwise difference for Robinson-Foulds metric in Bayesian framework}
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_L$00\% & $M_L$10\% & $M_L$25\% & $M_L$50\% & $M_L$75\% \\
-    \hline
-    $M_L$00\% & - & FALSE & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_L$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$25\% & & & - & FALSE & \textbf{TRUE} \\
-    $M_L$50\% & & & & - & FALSE \\
-    $M_L$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_L$00\%-$M_L$10\% & 17.05 & 41.00 & FALSE \\ 
-  $M_L$00\%-$M_L$25\% & 43.79 & 41.00 & TRUE \\ 
-  $M_L$00\%-$M_L$50\% & 77.32 & 41.00 & TRUE \\ 
-  $M_L$00\%-$M_L$75\% & 103.99 & 41.00 & TRUE \\ 
-  $M_L$10\%-$M_L$25\% & 26.75 & 41.00 & FALSE \\ 
-  $M_L$10\%-$M_L$50\% & 60.27 & 41.00 & TRUE \\ 
-  $M_L$10\%-$M_L$75\% & 86.94 & 41.00 & TRUE \\ 
-  $M_L$25\%-$M_L$50\% & 33.53 & 41.00 & FALSE \\ 
-  $M_L$25\%-$M_L$75\% & 60.20 & 41.00 & TRUE \\ 
-  $M_L$50\%-$M_L$75\% & 26.67 & 41.00 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{Ba_RF-ML_results}
+  \centering
+  \linespread{1.0}
+  \caption{Tree similarity values per parameter in Bayesian framework}
+  \input{Tables/NTS_BA_results}
+  \label{NTS_BA_results}
 \end{table}
 
 \begin{table}
-\caption{$M_F$ non-parametric pairwise difference for Robinson-Foulds metric in ML framework} %10/06 - Missing 8 ML Chains
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_F$00\% & $M_F$10\% & $M_F$25\% & $M_F$50\% & $M_F$75\% \\
-    \hline
-    $M_L$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_L$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$25\% & & & - & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$50\% & & & & - & \textbf{TRUE} \\
-    $M_L$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_F$00\%-$M_F$10\% & 59.27 & 37.66 & TRUE \\ 
-  $M_F$00\%-$M_F$25\% & 79.72 & 37.66 & TRUE \\ 
-  $M_F$00\%-$M_F$50\% & 120.70 & 37.66 & TRUE \\ 
-  $M_F$00\%-$M_F$75\% & 167.81 & 37.66 & TRUE \\ 
-  $M_F$10\%-$M_F$25\% & 20.45 & 37.66 & FALSE \\ 
-  $M_F$10\%-$M_F$50\% & 61.43 & 37.66 & TRUE \\ 
-  $M_F$10\%-$M_F$75\% & 108.55 & 37.66 & TRUE \\ 
-  $M_F$25\%-$M_F$50\% & 40.98 & 37.66 & TRUE \\ 
-  $M_F$25\%-$M_F$75\% & 88.09 & 37.66 & TRUE \\ 
-  $M_F$50\%-$M_F$75\% & 47.12 & 37.66 & TRUE \\ 
-   \hline
-\end{tabular}
-\label{ML_RF-MF_results}
+  \centering
+  \linespread{1.0}
+  \caption{Group difference per configuration set}
+  \input{Tables/Group_results}
+  \label{Group_results}
+  $^1$ F-value for parametric tests and Kruskal Wallis $chi^2$ for non parametric tests.
 \end{table}
 
 \begin{table}
-\caption{$M_F$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_F$00\% & $M_F$10\% & $M_F$25\% & $M_F$50\% & $M_F$75\% \\
-    \hline
-    $M_L$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_L$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$25\% & & & - & FALSE & \textbf{TRUE} \\
-    $M_L$50\% & & & & - & FALSE \\
-    $M_L$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_F$00\%-$M_F$10\% & 64.78 & 37.66 & TRUE \\ 
-  $M_F$00\%-$M_F$25\% & 89.09 & 37.66 & TRUE \\ 
-  $M_F$00\%-$M_F$50\% & 123.20 & 37.66 & TRUE \\ 
-  $M_F$00\%-$M_F$75\% & 150.43 & 37.66 & TRUE \\ 
-  $M_F$10\%-$M_F$25\% & 24.31 & 37.66 & FALSE \\ 
-  $M_F$10\%-$M_F$50\% & 58.42 & 37.66 & TRUE \\ 
-  $M_F$10\%-$M_F$75\% & 85.65 & 37.66 & TRUE \\ 
-  $M_F$25\%-$M_F$50\% & 34.10 & 37.66 & FALSE \\ 
-  $M_F$25\%-$M_F$75\% & 61.34 & 37.66 & TRUE \\ 
-  $M_F$50\%-$M_F$75\% & 27.23 & 37.66 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{ML_Tr-MF_results}
+  \centering
+  \linespread{1.0}
+  \caption{$M_L$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
+  \input{Tables/ML_RF-ML_results}
+  \label{ML_RF-ML_results}
 \end{table}
 
 \begin{table}
-\caption{$M_F$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_F$00\% & $M_F$10\% & $M_F$25\% & $M_F$50\% & $M_F$75\% \\
-    \hline
-    $M_L$00\% & - & FALSE & FALSE & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_L$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_L$25\% & & & - & FALSE & \textbf{TRUE} \\
-    $M_L$50\% & & & & - & FALSE \\
-    $M_L$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_F$00\%-$M_F$10\% & 16.03 & 41.00 & FALSE \\ 
-  $M_F$00\%-$M_F$25\% & 38.50 & 41.00 & FALSE \\ 
-  $M_F$00\%-$M_F$50\% & 61.52 & 41.00 & TRUE \\ 
-  $M_F$00\%-$M_F$75\% & 95.52 & 41.00 & TRUE \\ 
-  $M_F$10\%-$M_F$25\% & 22.47 & 41.00 & FALSE \\ 
-  $M_F$10\%-$M_F$50\% & 45.49 & 41.00 & TRUE \\ 
-  $M_F$10\%-$M_F$75\% & 79.49 & 41.00 & TRUE \\ 
-  $M_F$25\%-$M_F$50\% & 23.02 & 41.00 & FALSE \\ 
-  $M_F$25\%-$M_F$75\% & 57.02 & 41.00 & TRUE \\ 
-  $M_F$50\%-$M_F$75\% & 34.00 & 41.00 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{Ba_RF-MF_results}
+  \centering
+  \linespread{1.0}
+  \caption{$M_L$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
+  \input{Tables/ML_Tr-ML_results}
+  \label{ML_Tr-ML_results}
 \end{table}
 
 \begin{table}
-\caption{$M_C$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_C$00\% & $M_C$10\% & $M_C$25\% & $M_C$50\% & $M_C$75\% \\
-    \hline
-    $M_C$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_C$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_C$25\% & & & - & FALSE & \textbf{TRUE} \\
-    $M_C$50\% & & & & - & \textbf{TRUE} \\
-    $M_C$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_C$00\%-$M_C$10\% & 67.99 & 37.66 & TRUE \\ 
-  $M_C$00\%-$M_C$25\% & 87.58 & 37.66 & TRUE \\ 
-  $M_C$00\%-$M_C$50\% & 116.16 & 37.66 & TRUE \\ 
-  $M_C$00\%-$M_C$75\% & 155.77 & 37.66 & TRUE \\ 
-  $M_C$10\%-$M_C$25\% & 19.59 & 37.66 & FALSE \\ 
-  $M_C$10\%-$M_C$50\% & 48.17 & 37.66 & TRUE \\ 
-  $M_C$10\%-$M_C$75\% & 87.78 & 37.66 & TRUE \\ 
-  $M_C$25\%-$M_C$50\% & 28.58 & 37.66 & FALSE \\ 
-  $M_C$25\%-$M_C$75\% & 68.19 & 37.66 & TRUE \\ 
-  $M_C$50\%-$M_C$75\% & 39.60 & 37.66 & TRUE \\ 
-   \hline
-\end{tabular}
-\label{ML_RF-MC_results}
+  \centering
+  \linespread{1.0}
+  \caption{$M_L$ non-parametric pairwise difference for Robinson-Foulds metric in Bayesian framework}
+  \input{Tables/Ba_RF-ML_results}
+  \label{Ba_RF-ML_results}
 \end{table}
 
-
 \begin{table}
-\caption{$M_C$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_C$00\% & $M_C$10\% & $M_C$25\% & $M_C$50\% & $M_C$75\% \\
-    \hline
-    $M_C$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_C$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_C$25\% & & & - & FALSE & \textbf{TRUE} \\
-    $M_C$50\% & & & & - & FALSE \\
-    $M_C$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_C$00\%-$M_C$10\% & 75.29 & 37.66 & TRUE \\ 
-  $M_C$00\%-$M_C$25\% & 88.58 & 37.66 & TRUE \\ 
-  $M_C$00\%-$M_C$50\% & 114.02 & 37.66 & TRUE \\ 
-  $M_C$00\%-$M_C$75\% & 149.60 & 37.66 & TRUE \\ 
-  $M_C$10\%-$M_C$25\% & 13.29 & 37.66 & FALSE \\ 
-  $M_C$10\%-$M_C$50\% & 38.73 & 37.66 & TRUE \\ 
-  $M_C$10\%-$M_C$75\% & 74.31 & 37.66 & TRUE \\ 
-  $M_C$25\%-$M_C$50\% & 25.44 & 37.66 & FALSE \\ 
-  $M_C$25\%-$M_C$75\% & 61.02 & 37.66 & TRUE \\ 
-  $M_C$50\%-$M_C$75\% & 35.58 & 37.66 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{ML_Tr-MC_results}
+  \centering
+  \linespread{1.0}
+  \caption{$M_F$ non-parametric pairwise difference for Robinson-Foulds metric in ML framework} %10/06 - Missing 8 ML Chains
+  \input{Tables/ML_RF-MF_results}
+  \label{ML_RF-MF_results}
 \end{table}
 
+\begin{table}
+  \centering
+  \linespread{1.0}
+  \caption{$M_F$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
+  \input{Tables/ML_Tr-MF_results}
+  \label{ML_Tr-MF_results}
+\end{table}
 
 \begin{table}
-\caption{$M_C$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
-\centering
-\begin{tabular}{c|ccccc}
-    \hline
-              & $M_C$00\% & $M_C$10\% & $M_C$25\% & $M_C$50\% & $M_C$75\% \\
-    \hline
-    $M_C$00\% & - & FALSE & FALSE & \textbf{TRUE} & \textbf{TRUE}\\
-    $M_C$10\% & & - & FALSE & \textbf{TRUE} & \textbf{TRUE} \\
-    $M_C$25\% & & & - & FALSE & \textbf{TRUE} \\
-    $M_C$50\% & & & & - & FALSE \\
-    $M_C$75\% & & & & & - \\
-    \hline
-\end{tabular}
-\centering
-\begin{tabular}{rrrl}
- pairwise comparison & obs.dif & critical.dif & difference \\ 
-  \hline
-  $M_C$00\%-$M_C$10\% & 16.03 & 41.00 & FALSE \\ 
-  $M_C$00\%-$M_C$25\% & 38.50 & 41.00 & FALSE \\ 
-  $M_C$00\%-$M_C$50\% & 61.52 & 41.00 & TRUE \\ 
-  $M_C$00\%-$M_C$75\% & 95.52 & 41.00 & TRUE \\ 
-  $M_C$10\%-$M_C$25\% & 22.47 & 41.00 & FALSE \\ 
-  $M_C$10\%-$M_C$50\% & 45.49 & 41.00 & TRUE \\ 
-  $M_C$10\%-$M_C$75\% & 79.49 & 41.00 & TRUE \\ 
-  $M_C$25\%-$M_C$50\% & 23.02 & 41.00 & FALSE \\ 
-  $M_C$25\%-$M_C$75\% & 57.02 & 41.00 & TRUE \\ 
-  $M_C$50\%-$M_C$75\% & 34.00 & 41.00 & FALSE \\ 
-   \hline
-\end{tabular}
-\label{Ba_RF-MC_results}
+  \centering
+  \linespread{1.0}
+  \caption{$M_F$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
+  \input{Tables/Ba_RF-MF_results}
+  \label{Ba_RF-MF_results}
+\end{table}
+
+\begin{table}
+  \centering
+  \linespread{1.0}
+  \caption{$M_C$ non-parametric pairwise difference for Robinson-Fould metric in ML framework} %10/06 - Missing 8 ML Chains
+  \input{Tables/ML_RF-MC_results}
+  \label{ML_RF-MC_results}
+\end{table}
+
+\begin{table}
+  \centering
+  \linespread{1.0}
+  \caption{$M_C$ non-parametric pairwise difference for Triples metric in ML framework} %10/06 - Missing 8 ML Chains
+  \input{Tables/ML_Tr-MC_results}
+  \label{ML_Tr-MC_results}
+\end{table}
+
+\begin{table}
+  \centering
+  \linespread{1.0}
+  \caption{$M_C$ non-parametric pairwise difference for Robinson-Fould metric in Bayesian framework}
+  \input{Tables/Ba_RF-MC_results}
+  \label{Ba_RF-MC_results}
 \end{table}
 
 %---------------------------------------------
@@ -1256,240 +855,11 @@ This work was funded by a European Commission CORDIS Seventh Framework Programme
 \bibliographystyle{sysbio} %don't write the suffix
 \bibliography{References} %don't write the suffix
 
-\section{Supplementaries}
+\section{Supplementary Material}
 % NC: What do they call this in Syst Biol? Supplemental Materials is more usual...
 % NC: You probably want to give these numbers so you can refer people to supp mat section 1, section 2 etc. etc.
-\label{supplementaries}
-\subsection{Morphological characters states}
-In order to obtain a realistic probabilistic value for of \textit{k} characters states for each simulated morphological character, we downloaded 100 random morphological characters (with more than 100 characters each) from TreeBASE database (http://treebase.org/) published between 1985 and 2013 and covering 19 taxomomic classess (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta).
-We selected a total of 22563 characters ranging from 2 to 10 states.
-We calculated the proportion of characters with 2, 3, 4, 5, 6, 7, 8, 9 or 10 states.
-We then sampeled 22563 \textit{k} values between 2 and 10 with the same proportion of characters from the empirical data.
-We then used a simple t-test to check if our simulation was equal to the empirical data.
-In this study, we only simulated characters with 2 or 3 states because of the high proportion of ordered characters ecountered on characters with more than 3 states and the difficulties of simulate biologicaly sensible ordered characters.
-
-\begin{figure}
-\centering
-\includegraphics[keepaspectratio=true]{Figures/TEM_Fig-AppendixCharacters.pdf}
-\caption{Character states distribution in empirical matrices. %Title?
-Characters states number distribution extracted from 100 random morphological matrices downloaded from RreeBase.}
-\label{Fig_AppendixCharacters}
-\end{figure}
-
-\subsection{Tree Building Software settings}
-
-\subsubsection{Maximum Likelihood - RAxML v8.0.20 \citep{Stamatakis21012014}} \\
-Model: \\
-Molecular data: \\
-GTR + $\Gamma_4$ (-m GTRGAMMA) \\
-Morphological data: \\
-Mk + $\Gamma_4$ (-K MK) \\
-Support: \\
-Rapid Boostrap algorithm (LSR), 1000 replicates \\
-
-\subsubsection{Bayesian - MrBayes v3.0.2 \citep{Ronquist2012mrbayes}} \\
-Priors: \\
-Molecular data: \\
-rates distribution shape ($\alpha$) = 0.5 \\
-Transition/Transversion ratio = 2 ($\beta$(80,40)) \\
-Starting tree: "True" tree topology with each branch length = 1 \\
-Morphological data: \\
-rates distribution shape ($\alpha$) = 0.5 \\
-Models: \\
-Molecular data: HKY + $\Gamma_4$ \\
-Morphological data: Mk + $\Gamma_4$ \\
-MCMC: \\
-2 runs \\
-4 chains per run \\
-generations < 50$\times$$1^6$ \\
-sample frequency = 1050$\times$$1^3$ \\
-ASDS diagnosis frequency = 50$\times$$1^3$ \\
-ASDS $<$ 0.01 \\
-ESS $>>$ 200 \\
-Burnin = 25\%
-
-\subsection{Triplets metric details ($T_{x,y}$)}
-Each triplet can be written as $I_{ijk}$=(\textit{ijk})). Where $I_{ijk}$ is equal to 0 if the the two triplets (\textit{ijk}) are the same in the two trees otherwise $I_{ijk}$ is equal to 1.
-For any rooted tree there are only four possible combinations per triplets: ((\textit{j},\textit{k}),\textit{i});, ((\textit{i},\textit{k}),\textit{j}); and ((\textit{i},\textit{j}),\textit{k}); and (\textit{i},\textit{j},\textit{k}); \citep{johnson1998}.
-One can calculate $S_n$, the triplet distance between two trees as:
-\begin{equation}
-S_n = \sum_{ijk} I_{ijk}
-\end{equation}
-Where:
-\begin{equation}
-\sum_{ijk} = \binom{n}{4} = \frac{n!}{4!(n-4)!}
-\end{equation}
-And where n is the number of taxa in both trees (modified from \citet{critchlowthe1996}).
-When all triplets across the two trees are the same, $S_n$ is equal to 0 and when all the triplets are different $S_n$ is equal to $\binom{n}{4}$.
-Because the possible number of triplets per clade is a finite number, the probability of two random trees with the same n taxa to have the same triplet is:
-\begin{equation}
-P({I_{ijk}}=0) = \frac{1}{4}
-\end{equation}
-Therefore one can calculate the probability of two random trees having the same triplets: 
-\begin{equation}
-P({S_{n}}=0) = \sum_{ijk} P_{I_{ijk}=0}
-\end{equation}
-\begin{equation}
-P({S_{n}}=0) = \frac{n!}{4(3!(n-3)!}
-\end{equation}
-And in the same way:
-\begin{equation}
-P({S_{n}}=1) = \frac{3n!}{4(3!(n-3)!}
-\end{equation}
-
-\subsection{RF metric details}
-The RF distance (or path difference) between two trees reflects the distance between the distributions of the tips among clades in the two trees \citep{RF1981} and can be expressed as following:
-\begin{equation}
-RF_{x,y} = N_{x} + N_{y} - 2C_{x,y}
-\end{equation}
-Where $C_{x,y}$ is the number of clades in common in the two trees. 
-The minimal value of \textit{C} is equal to 1 if the two trees have the same n taxa;
-the maximal value in \textit{C}=\textit{n}-2.
-For a fully unresolved tree (star tree) \textit{N}=1 and for a fully resolved tree (binary tree) \textit{N}=\textit{n}-2.
-The minimal and maximal topological distance for \textit{n} taxa is:
-\begin{equation}
-RF_{min} = 1 + 1 - 2C_{x,y}
-\end{equation}
-And:
-\begin{equation}
-RF_{max} = 2(n-2)-2
-\end{equation}
-One can then rescale \textit{RF.scaled} by using the maximal and minimal value for any \textit{n} taxa:
-\begin{equation}
-RF.scaled_{x,y} = \frac{RF_{x,y}-RF_{max}}{RF_{max}}
-\end{equation}
-This metric is more sensitive to taxa displacement than the Triplet distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and therefore a low value will show a good clade conservation between two trees and a high value will show a bad recovery of common clades.
-
-\subsection{Tree comparisons}
-\subsubsection{Random tree comparison scaling}
-We used the comparison of 1000 random trees to obtain the mean comparison value $\bar{d}_{m,n}$\textit{(rand)} for the NTS metric.
-We randomly generated two sets of 1000 trees of \textit{n} taxa using the rmtree function of ape package (v3.0-11 \citet{paradisape:2004}) that generates a given number of random Yule trees.
-We calculated the $\bar{d}_{m,n}$\textit{(rand)} value using an approach similar to the RPCBTC (described below) by performing 1000 random pairwise comparisons using the TreeCmp java script \citep{Bogdanowicz2012}.
-
-\subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
-We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
-We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
-We used an ANOVA to test if there was no significant difference between the replicates so that the RBTC can be replicated.
-We applied this protocol on a poorly resolved tree (Low Score), a resolved tree with low support value (Medium Score) and a resolved tree with high support values (High Score).
-Results are available in table ~\ref{RPBTC_testing}. %link broken
-
-\begin{table}[ht]
-\caption{Group comparison results: difference between 100 replicates using the RPBTC method} %test with TreeCmp.anova
-\centering
-\begin{tabular}{rllrrrr}
-  \hline
-  Tree.Type & Used.metric & Replicates & Df & F.value & p.value \\ 
-  \hline
-  Low Score & RF & 100.00 & 99.00 & 0.74 & 0.98 \\ 
-  Low Score & Tr & 100.00 & 99.00 & 0.97 & 0.58 \\ 
-  Medium Score & RF & 100.00 & 99.00 & 0.64 & 1.00 \\ 
-  Medium Score & Tr & 100.00 & 99.00 & 0.45 & 1.00 \\ 
-  High Score & RF & 100.00 & 99.00 & 0.20 & 1.00 \\ 
-  High Score & Tr & 100.00 & 99.00 & 0.37 & 1.00 \\ 
-  \hline
-\end{tabular}
-\end{table}
-\label{RPBTC_testing}
-
-\subsection{Codes}
-All codes are available at: $https://github.com/TGuillerme/Total\_Evidence\_Method-Missing\_data/tree/master/Functions$
-The tree comparison results analysis can be repeated for more details at: $https://github.com/TGuillerme/Total\_Evidence\_Method-Missing\_data/tree/master/Analysis$ %fully running! Try it at home (5-10 minutes of data loading)!
-
-\subsection{Full results}
-
-\begin{table}
-\caption{Tree similarity values per parameter in ML framework}
-\centering
-\begin{tabular}{rrlccccc}
-    \hline
-    Parameter & amount of    & metric & mode & 50\%CI &       & 95\%CI &       \\
-              & missing data &        &      & lower  & upper & lower  & upper \\
-    \hline
-    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
-              &              & Triples        & 1 & NA  & NA & NA  & NA \\
-              & 10\%         & Robinson-Fould & 0.6714878 & 0.5692308  & 0.7894649 & 0.4689069  & 1.0361514 \\ %how many digits?
-              &              & Triples        & 0.9424133 & 0.8683742  & 0.9998559 & 0.6121399  & 1.0635250 \\
-              & 25\%         & Robinson-Fould & 0.5167595 & 0.4403147  & 0.6307692 & 0.2664429  & 0.8929104 \\
-              &              & Triples        & 0.5599494 & 0.7084874  & 0.8105781 & 0.2912950  & 0.9990703 \\
-              & 50\%         & Robinson-Fould & 0.4321852 & 0.3641026  & 0.5215627 & 0.2313246  & 0.6423846 \\
-              &              & Triples        & 0.5143009 & 0.4197127  & 0.5991498 & 0.2991432  & 0.9104526 \\
-              & 75\%         & Robinson-Fould & 0.3727090 & 0.3230769  & 0.4342249 & 0.2035474  & 0.5776286 \\
-              &              & Triples        & 0.4449563 & 0.3385128  & 0.5329149 & 0.1929395  & 0.8551570 \\
-    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
-              &              & Triples        & 1 & NA  & NA & NA  & NA \\
-              & 10\%         & Robinson-Fould & 0.9072419 & 0.7668415  & 1.0000000 & 0.4070844  & 1.0478010 \\
-              &              & Triples        & 0.9763617 & 0.9448100  & 1.0039460 & 0.7158118  & 1.1043330 \\
-              & 25\%         & Robinson-Fould & 0.5722382 & 0.4883560  & 0.6923077 & 0.3253239  & 0.9367467 \\
-              &              & Triples        & 0.9370152 & 0.8207407  & 0.9938846 & 0.5394443  & 1.0868073 \\
-              & 50\%         & Robinson-Fould & 0.4338159 & 0.3025641  & 0.4760777 & 0.1704016  & 0.6683220 \\
-              &              & Triples        & 0.7327464 & 0.5947211  & 0.8739630 & 0.3418679  & 1.0251540 \\
-              & 75\%         & Robinson-Fould & 0.1534487 & 0.1155128  & 0.2000000 & 0.0683485  & 0.3230769 \\
-              &              & Triples        & 0.4588292 & 0.3905631  & 0.6111484 & 0.2903676  & 0.8568274 \\   
-    $M_L$     & 0\%          & Robinson-Fould & 1 & NA  & NA & NA  & NA \\
-              &              & Triples        & 1 & NA  & NA & NA  & NA \\
-              & 10\%         & Robinson-Fould & 0.473285 & 0.3842965  & 0.8358974 & 0.3564753  & 0.9589744 \\
-              &              & Triples        & 0.9592557 & 0.8691580  & 1.026095 & 0.5720847  & 1.067524 \\
-              & 25\%         & Robinson-Fould & 0.4548038 & 0.3572132  & 0.6307692 & 0.2425339  & 0.9161212 \\
-              &              & Triples        & 0.9071925 & 0.7516934  & 0.9976224 & 0.4462168  & 1.0705291 \\
-              & 50\%         & Robinson-Fould & 0.4244263 & 0.3755493  & 0.4666667 & 0.2494927  & 0.8287312 \\
-              &              & Triples        & 0.6834366 & 0.5713927  & 0.8226139 & 0.2776690  & 1.0085944 \\
-              & 75\%         & Robinson-Fould & 0.2306888 & 0.1774508  & 0.3025641 & 0.1087764  & 0.5673541 \\
-              &              & Triples        & 0.4513642 & 0.3737397  & 0.5723858 & 0.2245224  & 0.7917946 \\
-    \hline
-\label{NTSML_full}
-\end{tabular}
-\end{table}
-
-\begin{table}
-\caption{Tree similarity values per parameter in Bayesian framework}
-\centering
-\begin{tabular}{rrlccccc}
-    \hline
-    Parameter & amount of    & mode & 50\%CI &       & 95\%CI & \\
-              & missing data &      & lower  & upper & lower  & upper \\
-    \hline
-    $M_L$     & 0\%          & Robinson-Fould & 0.05641026 & 0.03589744  & 0.06337695 & 0.03139209  & 0.07692308 \\ %how many digits?
-              &              & Triples        & 0.04104231 & 0.00830962  & 0.05441173 & -0.03933377  & 0.10690054 \\
-              & 10\%         & Robinson-Fould & 0.03584309 & 03584196  & 03589744 & 02825643  & 0.06175676 \\
-              &              & Triples        & 0.03399849 & 0.003196469  & 0.04981018 & -0.049913382  & 0.11784366 \\
-              & 25\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01536739  & 0.06123106 \\
-              &              & Triples        & 0.03510953 & 0.002113358  & 0.04939228 & -0.041202264  & 0.09699332 \\
-              & 50\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01538462  & 0.05641026 \\
-              &              & Triples        & 0.02849433 & 0.003263098  & 0.05298036 & -0.038344731  & 0.09250063 \\
-              & 75\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01069992  & 0.04338811 \\
-              &              & Triples        & -0.0001940566 & -0.01801301  & 0.04058783 & -0.06030922  & 0.10665934 \\
-    $M_L$     & 0\%          & Robinson-Fould & 0.05641026 & 0.03589744  & 0.06337695 & 0.03139209  & 0.07692308 \\
-              &              & Triples        & 0.04104231 & 0.008309622  & 0.05441173 & -0.039333778  & 0.10690054 \\
-              & 10\%         & Robinson-Fould & 0.03593712 & 0.03198256  & 0.05641026 & 0.02798864  & 0.07692308 \\
-              &              & Triples        & 0.02639309 & 0.002185408  & 0.05061314 & -0.046563042  & 0.10547052 \\
-              & 25\%         & Robinson-Fould & 0.03588134 & 0.03587629  & 0.03589744 & 0.01538462  & 0.0680884 \\
-              &              & Triples        & 0.03856296 & 0.002185408  & 0.05061314 & -0.046563042  & 0.10547052 \\
-              & 50\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01536289  & 0.05879269 \\
-              &              & Triples        & 0.01403716 & -0.01100608  & 0.03972324 & -0.03800324  & 0.12405207 \\
-              & 75\%         & Robinson-Fould & 0.03589206 & 0.03588825  & 0.03589744 & 0.01538462  & 0.0411843 \\
-              &              & Triples        & 0.02939363 & 0.01902351  & 0.04238907 & -0.03087905  & 0.08946917 \\   
-    $M_L$     & 0\%          & Robinson-Fould & 0.05641026 & 0.03589744  & 0.06337695 & 0.03139209  & 0.07692308 \\
-              &              & Triples        & 0.04104231 & 0.008309622  & 0.05441173 & -0.039333778  & 0.10690054 \\
-              & 10\%         & Robinson-Fould & 0.05637057 & 0.03589744  & 0.05927956 & 0.02813296  & 0.07692308 \\
-              &              & Triples        & 0.03008132 & 0.01176800  & 0.04847400 & -0.02451461  & 0.09453754 \\
-              & 25\%         & Robinson-Fould & 0.03593743 & 0.03589744  & 0.03596018 & 0.02330790  & 0.07692308 \\
-              &              & Triples        & 0.02010221 & -0.001145118  & 0.0377779 & -0.060183332  & 0.1098632 \\
-              & 50\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.03050289  & 0.05950426 \\
-              &              & Triples        & 0.01053959 & -0.005595947  & 0.04510444 & -0.036278820  & 0.10478805 \\
-              & 75\%         & Robinson-Fould & 0.03589744 & 0.03589744  & 0.03589744 & 0.01115983  & 0.04362927 \\
-              &              & Triples        & 0.02427778 & 0.0007405737  & 0.04260522 & -0.0373004106  & 0.1048756 \\
-\label{NTSBA_full}
-\end{tabular}
-\end{table}
-
-\subsection{Bootstraps distribution}
-
-\begin{figure}
-\centering
-\includegraphics[keepaspectratio=true]{Figures/TEM_Fig-AppendixBootstraps.pdf}
-\caption{Bootstraps distribution across the "best" trees.}                     % MISSING 8 CHAINS
-\label{Fig_AppendixBoostraps}
-\end{figure}
+    \input{SupplementaryMaterial/SupplementaryMaterial}
+    \label{SupplementaryMaterial}
 
 
 %END
