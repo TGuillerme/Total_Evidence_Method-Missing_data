@@ -1,0 +1,71 @@
+\subsection{Triplets metric details ($T_{x,y}$)}
+Each triplet can be written as $I_{ijk}$=(\textit{ijk})). Where $I_{ijk}$ is equal to 0 if the the two triplets (\textit{ijk}) are the same in the two trees otherwise $I_{ijk}$ is equal to 1.
+For any rooted tree there are only four possible combinations per triplets: ((\textit{j},\textit{k}),\textit{i});, ((\textit{i},\textit{k}),\textit{j}); and ((\textit{i},\textit{j}),\textit{k}); and (\textit{i},\textit{j},\textit{k}); \citep{johnson1998}.
+One can calculate $S_n$, the triplet distance between two trees as:
+\begin{equation}
+S_n = \sum_{ijk} I_{ijk}
+\end{equation}
+Where:
+\begin{equation}
+\sum_{ijk} = \binom{n}{4} = \frac{n!}{4!(n-4)!}
+\end{equation}
+And where n is the number of taxa in both trees (modified from \citet{critchlowthe1996}).
+When all triplets across the two trees are the same, $S_n$ is equal to 0 and when all the triplets are different $S_n$ is equal to $\binom{n}{4}$.
+Because the possible number of triplets per clade is a finite number, the probability of two random trees with the same n taxa to have the same triplet is:
+\begin{equation}
+P({I_{ijk}}=0) = \frac{1}{4}
+\end{equation}
+Therefore one can calculate the probability of two random trees having the same triplets: 
+\begin{equation}
+P({S_{n}}=0) = \sum_{ijk} P_{I_{ijk}=0}
+\end{equation}
+\begin{equation}
+P({S_{n}}=0) = \frac{n!}{4(3!(n-3)!}
+\end{equation}
+And in the same way:
+\begin{equation}
+P({S_{n}}=1) = \frac{3n!}{4(3!(n-3)!}
+\end{equation}
+
+\subsection{RF metric details}
+The RF distance (or path difference) between two trees reflects the distance between the distributions of the tips among clades in the two trees \citep{RF1981} and can be expressed as following:
+\begin{equation}
+RF_{x,y} = N_{x} + N_{y} - 2C_{x,y}
+\end{equation}
+Where $C_{x,y}$ is the number of clades in common in the two trees. 
+The minimal value of \textit{C} is equal to 1 if the two trees have the same n taxa;
+the maximal value in \textit{C}=\textit{n}-2.
+For a fully unresolved tree (star tree) \textit{N}=1 and for a fully resolved tree (binary tree) \textit{N}=\textit{n}-2.
+The minimal and maximal topological distance for \textit{n} taxa is:
+\begin{equation}
+RF_{min} = 1 + 1 - 2C_{x,y}
+\end{equation}
+And:
+\begin{equation}
+RF_{max} = 2(n-2)-2
+\end{equation}
+One can then rescale \textit{RF.scaled} by using the maximal and minimal value for any \textit{n} taxa:
+\begin{equation}
+RF.scaled_{x,y} = \frac{RF_{x,y}-RF_{max}}{RF_{max}}
+\end{equation}
+This metric is more sensitive to taxa displacement than the Triplet distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and therefore a low value will show a good clade conservation between two trees and a high value will show a bad recovery of common clades.
+
+\subsection{Tree comparisons}
+\subsubsection{Random tree comparison scaling}
+We used the comparison of 1000 random trees to obtain the mean comparison value $\bar{d}_{m,n}$\textit{(rand)} for the NTS metric.
+We randomly generated two sets of 1000 trees of \textit{n} taxa using the rmtree function of ape package (v3.0-11 \citet{paradisape:2004}) that generates a given number of random Yule trees.
+We calculated the $\bar{d}_{m,n}$\textit{(rand)} value using an approach similar to the RPCBTC (described below) by performing 1000 random pairwise comparisons using the TreeCmp java script \citep{Bogdanowicz2012}.
+
+\subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
+We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
+We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
+We used an ANOVA to test if there was no significant difference between the replicates so that the RBTC can be replicated.
+We applied this protocol on a poorly resolved tree (Low Score), a resolved tree with low support value (Medium Score) and a resolved tree with high support values (High Score).
+Results are available in table ~\ref{RPBTC_testing}. %link broken
+
+\begin{table}[ht]
+  \caption{Group comparison results: difference between 100 replicates using the RPBTC method} %test with TreeCmp.anova
+  \centering
+  \input{SupplementaryMaterial/Supp_Tables/RPBTC_testing}
+  \label{RPBTC_testing}
+\end{table}
