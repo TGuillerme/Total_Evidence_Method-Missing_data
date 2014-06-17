@@ -1,0 +1,27 @@
+\begin{tabular}{c|ccccc}
+    \hline
+              & $M_L$00\% & $M_L$10\% & $M_L$25\% & $M_L$50\% & $M_L$75\% \\
+    \hline
+    $M_L$00\% & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE}\\
+    $M_L$10\% & & - & \textbf{TRUE} & \textbf{TRUE} & \textbf{TRUE} \\
+    $M_L$25\% & & & - & FALSE & FALSE \\
+    $M_L$50\% & & & & - & FALSE \\
+    $M_L$75\% & & & & & - \\
+    \hline
+\end{tabular}
+\centering
+\begin{tabular}{rrrl}
+ pairwise comparison & obs.dif & critical.dif & difference \\
+  \hline
+  $M_L$00\%-$M_L$10\% & 57.98 & 37.66 & TRUE \\
+  $M_L$00\%-$M_L$25\% & 105.83 & 37.66 & TRUE \\
+  $M_L$00\%-$M_L$50\% & 120.86 & 37.66 & TRUE \\
+  $M_L$00\%-$M_L$75\% & 140.34 & 37.66 & TRUE \\
+  $M_L$10\%-$M_L$25\% & 47.85 & 37.66 & TRUE \\
+  $M_L$10\%-$M_L$50\% & 62.88 & 37.66 & TRUE \\
+  $M_L$10\%-$M_L$75\% & 82.36 & 37.66 & TRUE \\
+  $M_L$25\%-$M_L$50\% & 15.03 & 37.66 & FALSE \\
+  $M_L$25\%-$M_L$75\% & 34.51 & 37.66 & FALSE \\
+  $M_L$50\%-$M_L$75\% & 19.48 & 37.66 & FALSE \\
+   \hline
+\end{tabular}
