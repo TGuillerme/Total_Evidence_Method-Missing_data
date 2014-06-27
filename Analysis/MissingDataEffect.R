@@ -23,7 +23,7 @@ Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",head
 
 #ML chains
 setwd("../Data/Tree_Comparisons/TreeCmp_chains/ML/")
-tmp<-TreeCmp.Read('MChain', verbose=FALSE)
+tmp<-TreeCmp.Read('MChain', verbose=TRUE)
 ML_trees<-NTS(tmp, Random51)
 setwd('../../../../Analysis/')
 
@@ -136,6 +136,29 @@ TreeCmp.Plot( Bayesian.MLMFMC , metric, probs=c(95, 50), col=palette()[1], lines
 TreeCmp.Plot( ML.MLMFMC , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend( 100 , 1 , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
 legend( 100 , 0.9 , c("Mode", "50% CI", "95% CI"), col="gray80", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("gray80"), cex=0.8)
+
+
+#Publication style plot
+par(mfrow=c(2,3))
+palette(c("black", "gray50"))
+ylim=c(0,1)
+metric="Triples"
+TreeCmp.Plot( Bayesian.ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( ML.ML, metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+legend( 0.5 , 0.8 , c("Bayesian", "ML"), pch=21, col=c(palette()[1:2]), pt.bg=c(palette()[1:2]), cex=0.8)
+legend( 0.5 , 0.7 , c("Mode", "50% CI", "95% CI"), col="gray80", lty=c(NA, 1, 2), pch=c(21, NA, NA), pt.bg=c("gray80"), cex=0.8)
+TreeCmp.Plot( Bayesian.MF , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( ML.MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MC , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( ML.MC , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+metric="R.F_Cluster"
+TreeCmp.Plot( Bayesian.ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( ML.ML, metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MF , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( ML.MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bayesian.MC , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim)
+TreeCmp.Plot( ML.MC , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
 
 
 #Checking for difference - ML
