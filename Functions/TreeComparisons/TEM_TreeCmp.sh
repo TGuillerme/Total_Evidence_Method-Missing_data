@@ -1,5 +1,5 @@
 ##########################
-#Uses TreeCmp java script to compare the distributions of Bayesian trees
+#Uses TreeCmp java script to compare either single trees or treesets
 ##########################
 #SYNTAX: TEM_TreeCmp <reference.treeset> <input.treeset> <number of species> <number of random draws> <output> <method> <trees>
 #with:
@@ -8,22 +8,26 @@
 #<number of species> number of species per trees
 #<number of random draws> number of random draws for the comparison
 #<output> a chain name for the output
-#<method> must be either Bayesian or ML
+#<method> must be either Treesets or Singletrees
 #<trees> must be either nexus or newick
+#<rooted> must be either TRUE or FALSE
 ##########################
-#version: 0.6
+#version: 0.7
 #Update: improved output format
 #Update: correction on the random tree selection from the ref tree: if the ref tree is unique, no sample is performed any more.
 #Update: cleaning improved (remove the files from the concern chain only)
 #Update: temporary results are now stored in a temporary folder
-#Update: added a Bayesian/ML method input. If the method is ML, there is no random tree drawing.
+#Update: added a Treesets/Singletrees method input. If the method is Singletrees, there is no random tree drawing.
 #Update: trees can now be nexus or newick
+#Update: changed method arguments from Bayesian/ML to Treesets/Singletrees
+#Update: improved documentation within the function
+#Update: added a rooted/unrooted option
 #----
-#guillert(at)tcd.ie - 29/04/2014
+#guillert(at)tcd.ie - 27/06/2014
 ##########################
 #Requirements:
 #-R 3.x
-#-TreeCmp java script
+#-TreeCmp java script (Bogdanowicz et al 2012)
 #-http://www.la-press.com/treecmp-comparison-of-trees-in-polynomial-time-article-a3300
 #-TreeCmp folder to be installed at the level of the analysis
 ##########################
@@ -39,12 +43,14 @@ draws=$4
 output=$5
 method=$6
 trees=$7
+rooted=$8
 
 #Creates the settings file
-echo $method > TreeCmp_settings.tmp
-echo $trees >> TreeCmp_settings.tmp
+echo $method > TreeCmp_settings.tmp #which method to use
+echo $trees >> TreeCmp_settings.tmp #which tree format to use
+echo $rooted >> TreeCmp_settings.tmp #is the tree rooted
 
-#Creates the temporary output folder
+#Creates the temporary output folder to store the temporary results
 mkdir ${output}_tmp
 
 #TREES SETTING
@@ -55,27 +61,32 @@ then
     let "header += 5"
     head -$header $REFtreeset > ${output}_tmp/HEADER_${output}.Tree.tmp
 
-    #Make the random draws in both list of trees
+    #Counting the number of trees in the ref/input treesets
     REFntrees=$(grep 'TREE\|Tree\|tree' $REFtreeset | grep '=\[\|=[[:space:]]\[' | wc -l)
     INPntrees=$(grep 'TREE\|Tree\|tree' $INPtreeset | grep '=\[\|=[[:space:]]\[' | wc -l)
 else
     echo 'newick is fantastic' > /dev/null
+    #Counting the number of trees in the ref/input treesets
+    REFntrees=$(grep '(' $REFtreeset | wc -l)
+    INPntrees=$(grep '(' $INPtreeset | wc -l)
 fi
 
 #RANDOM DRAW LIST
 
 #Create the list of trees to sample. If the provided number of random draws is higher than the number of trees, the sample is done with replacement.
-if grep 'Bayesian' TreeCmp_settings.tmp > /dev/null
+if grep 'Treesets' TreeCmp_settings.tmp > /dev/null
 then
     echo "if($REFntrees < $draws) {
             REFrep=TRUE } else {
             REFrep=FALSE}
         if($INPntrees < $draws) {
             INPrep=TRUE } else {
-            INPrep=FALSE }    
+            INPrep=FALSE }
+        #Saves the list of trees to sample in the REF and INP files    
         write(sample(seq(1:$REFntrees), $draws, replace=REFrep), file='REFtreeset.sample', ncolumns=1)
         write(sample(seq(1:$INPntrees), $draws, replace=INPrep), file='INPtreeset.sample', ncolumns=1) " | R --no-save
 else
+    #If the method is set to Singletrees, only the first available tree is used from the REF/INP files
     draws=1
     echo "1" > REFtreeset.sample
     echo "1" > INPtreeset.sample
@@ -85,30 +96,39 @@ mv *.sample ${output}_tmp/
 
 #TREE COMPARISONS
 
-#Creates the files of single trees and compare them one to one
+#Setting the comparison metrics (if rooted/unrooted)
+if grep 'TRUE' TreeCmp_settings.tmp > /dev/null
+then
+    #Rooted metrics
+    metrics="mc rc ns tt" #Matching Cluster / Robinson-Foulds (base don cluster) / Nodal Split / Triples
+else
+    #Unrooted metrics
+    metrics="ms rf pd qt" #Matching Split / Robinson-Foulds / Path difference / Quartet 
+fi
 
+#Creates the files of single trees and compare them one to one
 if grep 'nexus' TreeCmp_settings.tmp > /dev/null
 then
 
     #Comparisons using nexus format
     for n in $(seq 1 $draws)
     do
-        #Creates the ref tree file for one draw
+        #Creates the ref tree file for one draw (containing only one tree selected from the *.sample file)
         cp ${output}_tmp/HEADER_${output}.Tree.tmp ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
         REFrand=$(sed -n ''"${n}"'p' ${output}_tmp/REFtreeset.sample)
         let "REFrand += $header"
         sed -n ''"$REFrand"'p' $REFtreeset >> ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
         echo 'end;' >> ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
 
-        #Creates the input tree file for one draw
+        #Creates the input tree file for one draw (containing only one tree selected from the *.sample file)
         cp ${output}_tmp/HEADER_${output}.Tree.tmp ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
         INPrand=$(sed -n ''"${n}"'p' ${output}_tmp/INPtreeset.sample)
         let "INPrand += $header"
         sed -n ''"$INPrand"'p' $INPtreeset >> ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
         echo 'end;' >> ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
 
-        #Make the comparison using the TreeCmp java script on all rooted metrics
-        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REFtreeset_tree${n}.Tree.tmp -d mc rc ns tt -i  ${output}_tmp/INPtreeset_tree${n}.Tree.tmp -o ${output}_tmp/${output}_draw${n}.Cmp.tmp
+        #Make the comparison using the TreeCmp java script on all metrics
+        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REFtreeset_tree${n}.Tree.tmp -d ${metrics} -i ${output}_tmp/INPtreeset_tree${n}.Tree.tmp -o ${output}_tmp/${output}_draw${n}.Cmp.tmp
     done
 
 else
@@ -124,8 +144,8 @@ else
         INPrand=$(sed -n ''"${n}"'p' ${output}_tmp/INPtreeset.sample)
         sed -n ''"$INPrand"'p' $INPtreeset >> ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
 
-        #Make the comparison using the TreeCmp java script on all rooted metrics
-        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REFtreeset_tree${n}.Tree.tmp -d mc rc ns tt -i  ${output}_tmp/INPtreeset_tree${n}.Tree.tmp -o ${output}_tmp/${output}_draw${n}.Cmp.tmp
+        #Make the comparison using the TreeCmp java script on all metrics
+        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REFtreeset_tree${n}.Tree.tmp -d ${metrics} -i ${output}_tmp/INPtreeset_tree${n}.Tree.tmp -o ${output}_tmp/${output}_draw${n}.Cmp.tmp
     done
 
 fi
