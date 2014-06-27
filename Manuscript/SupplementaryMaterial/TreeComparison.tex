@@ -59,6 +59,14 @@ RF.scaled_{x,y} = \frac{RF_{x,y}-RF_{max}}{RF_{max}}
 \end{equation}
 This metric is more sensitive to taxa displacement than the Triplet distance \citep{critchlowthe1996,johnson1998,wiensmissing2003} and therefore a low value will show a good clade conservation between two trees and a high value will show a bad recovery of common clades.
 
+\subsection{Normalised Tree Similarity}
+For any tree with \textit{n} taxa compared using a tree distance metric $m$, Normalized Tree Similarity, $NTS_m$ (\citealp{Bogdanowicz2012}), represents the similarity score for the two trees given the expected distance between two random Yule trees with $n$ taxa. If $\bar{d}_{m,n}$\textit{(rand)} is the average distance between two random Yule trees with $n$ taxa and $d_{m,n}$\textit{(x,y)} the distance between the two trees \textit{x} and \textit{y} containing each $n$ taxa, then:
+\begin{equation}
+NTS_{m,n}(x,y)=\frac{\bar{d}_{m,n}(rand) - d_{m,n}(x,y)} {\bar{d}_{m,n}(rand)}
+\end{equation}
+\textit{NTS} ranges from one to -$\infty$.
+For any $m,n$, when $NTS$ = 1, the trees are identical, when \textit{NTS} = 0 the trees are no more different than expected by chance, and when $NTS$ $<$ 0, the trees are more different than expected when comparing two random trees.
+
 \subsection{Tree comparisons}
 \subsubsection{Random tree comparison scaling}
 We used the comparison of 1000 random trees to obtain the mean comparison value $\bar{d}_{m,n}$\textit{(rand)} for the NTS metric.

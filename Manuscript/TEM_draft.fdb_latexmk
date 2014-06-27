@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex TEM_draft"] 1403089386 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1403089387
+["bibtex TEM_draft"] 1403186550 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1403186580
   "./sysbio.bst" 1400080192 30418 82df53f2e0c137d332673e7de8136054 ""
   "References.bib" 1403024132 59807 90ec216486c1a56063d4202b650cf2b9 ""
-  "TEM_draft.aux" 1403089387 19164 68550802b819c5d9b82f7bd84fd61f4b ""
+  "TEM_draft.aux" 1403186580 19159 e8ee382e2187f717d65013562044411a ""
   "TEM_draft.bcf" 0 -1 0 ""
   (generated)
   "TEM_draft.bbl"
   "TEM_draft.blg"
-["pdflatex"] 1403089386 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1403089387
+["pdflatex"] 1403186580 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1403186580
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty" 1303254447 8237 52810bdb4db2270e717422560a104aea ""
@@ -76,12 +76,12 @@
   "SupplementaryMaterial/Supp_Tables/NTSML_full.tex" 1403019310 3368 7f8fcc38092a327abb441a29676f202b ""
   "SupplementaryMaterial/Supp_Tables/RPBTC_testing.tex" 1403019175 453 553bb9757bb6036828eaa5f1d1236482 ""
   "SupplementaryMaterial/SupplementaryMaterial.tex" 1403020165 1292 71927c2ec477605f408c6cb114b0b521 ""
-  "SupplementaryMaterial/TreeBuilding.tex" 1403020141 2345 ab6ab2ff0d12c1ac7de36564afed135c ""
-  "SupplementaryMaterial/TreeComparison.tex" 1403020188 4468 ba88b4cd73f54eee0ccdf9aa3ed62a67 ""
-  "TEM_draft.aux" 1403089387 19164 68550802b819c5d9b82f7bd84fd61f4b ""
-  "TEM_draft.bbl" 1403089386 17086 0373ca3930a587d04b88ec0adacda1bc "bibtex TEM_draft"
-  "TEM_draft.out" 1403089387 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "TEM_draft.tex" 1403089377 82136 3994952cac48f972d918d48f36c08286 ""
+  "SupplementaryMaterial/TreeBuilding.tex" 1403098546 2389 743d0afa8eeca6c6d61a82b4d2be3f09 ""
+  "SupplementaryMaterial/TreeComparison.tex" 1403186577 6267 8e229436f7bd461a92eb10367aa735e7 ""
+  "TEM_draft.aux" 1403186580 19159 e8ee382e2187f717d65013562044411a ""
+  "TEM_draft.bbl" 1403186550 17086 0373ca3930a587d04b88ec0adacda1bc "bibtex TEM_draft"
+  "TEM_draft.out" 1403186580 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "TEM_draft.tex" 1403173635 82109 f1cffe1aedf3b76d181d2ff40a3fb7dc ""
   "Tables/Ba_RF-MC_results.tex" 1403017990 1016 794f4da51ec6e20bbd2bcfa96518b741 ""
   "Tables/Ba_RF-MF_results.tex" 1403017921 1032 cd355067f16f061b4c802d17e0d4346b ""
   "Tables/Ba_RF-ML_results.tex" 1403017877 1024 32970e9a4df17589aeafb94ed535962e ""
