@@ -2,24 +2,27 @@
 #Posterior ML Tree
 ##########################
 #Extracts the Maximum Likelihood tree out of MrBayes' posterior distribution.
-#v.0.1
+#v.0.2
+#Update: allows to save the ML score and the generation in a 'data.frame' object
 #TO DO: allow BEAST and PhyloBayes output files to be read as posterior
 ##########################
 #SYNTAX :
 #<chain> the prefix of the posterior distribution file (generally *.run*.p)
 #<software> the software generating the posterior files (default="MrBayes")
 #<output> the format for the output trees (either "nexus", "newick" or "none")
+#<save.score> logical, whether to save the generation number and the associated ML score in a 'data.frame' object
+#<verbose> logical, whether to be verbose or not
 ##########################
 #----
-#guillert(at)tcd.ie - 29/06/2014
+#guillert(at)tcd.ie - 01/07/2014
 ##########################
 #Requirements:
 #-R 3
-#- R package 'ape'
+#-R package 'ape'
 #-MrBayes *.p and *.t files
 ##########################
 
-PostML<-function(chain, software="MrBayes", output="none") {
+PostML<-function(chain, software="MrBayes", output="none", save.score=FALSE, verbose=FALSE) {
 
 #HEADER
 
@@ -42,6 +45,7 @@ PostML<-function(chain, software="MrBayes", output="none") {
         stop("Posterior distribution file not found")
     } else {
         all.posterior<-list.files(pattern=chain)
+        all.posterior<-grep(".t[:print:]", all.posterior, invert=TRUE, value=TRUE)
     }
 
     #MrBayes files configurations
@@ -84,20 +88,37 @@ PostML<-function(chain, software="MrBayes", output="none") {
         }
     }        
 
-    
+    #Save.score
+    if(class(save.score) != 'logical'){
+        stop("Save.score must be logical")
+    } else {
+        if(save.score == TRUE) {
+            cat("ML score are saved in 'PostML.score.txt'\n")
+        }
+    }
+
+    #Verbose
+    if(class(verbose) != 'logical'){
+        stop("Verbose must be logical")
+    }
 
 #FUNCTIONS
 
-    FUN.ML<-function(posterior.table, tree.file) {
-        ML.gen<-which(posterior.table[,2] == max(postrior.table[,2]))
-        ML.gen<-postrior.table[ML.gen,1]
+    FUN.ML<-function(posterior.table, tree.file, save.score) {
+        ML.score<-max(posterior.table[,2])
+        ML.gen<-which(posterior.table[,2] == ML.score)
+        ML.gen<-posterior.table[ML.gen,1]
         PostML.tree<-tree.file[[which(names(tree.file) == paste("gen", ML.gen, sep="."))]]
+        if(save.score == TRUE){
+            save.sc<<-c(ML.score, ML.gen)
+        }
         return(PostML.tree)
     }
 
 
 #EXTRACTING THE ML TREE
 
+    #Setting the output file (depending on the number of runs)
     if(n.runs == 1){
         PostML.trees<-NULL
     } else {
@@ -105,19 +126,27 @@ PostML<-function(chain, software="MrBayes", output="none") {
     }
 
     for (n in 1:n.runs) {
-        posterior.table<-read.table(postriors[n], header=TRUE, skip=1)
+        posterior.table<-read.table(posteriors[n], header=TRUE, skip=1)
         tree.file<-read.nexus(trees[n])
-        PostML.tree<-FUN.ML(postrior.table, tree.file)
+        if(verbose == TRUE){
+            cat(format(Sys.time(), '%H:%M:%S'), '-', chain, "run", n, "done.\n")
+        }
+        PostML.tree<-FUN.ML(posterior.table, tree.file, save.score)
         
         #Output
         PostML.trees[[n]]<-PostML.tree
+        if(save.score == TRUE){
+            saving<-data.frame(NA,NA,NA,NA)
+            saving[1,]<-c(chain, n, save.sc)
+            write.table(saving, file="PostML.score.txt", append=TRUE, row.names=FALSE, col.names=FALSE)
+        }
 
         #Save the tree if necessary
         if(output == "newick"){
-            write.tree(PostML.tree, file=paste(trees[n],"ML", sep="-"))
+            write.tree(PostML.tree, file=paste(strsplit(trees[n], ".t")[[1]],"ML", "tre", sep="."))
         }
         if(output == "nexus"){
-            write.nexus(PostML.tree, file=paste(trees[n],"ML", sep="-"))
+            write.nexus(PostML.tree, file=paste(strsplit(trees[n], ".t")[[1]],"ML", "nex", sep="."))
         }
     }
 
