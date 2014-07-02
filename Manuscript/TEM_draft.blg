@@ -8,6 +8,7 @@ I was expecting a `,' or a `}'---line 165 of file References.bib
  :   journal={arXiv}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "ruxtontime2008"
 Warning--missing school in chen2011
 Warning--can't use both author and editor fields in dobson1975triplets
 Warning--empty journal in heaththe2013
@@ -17,7 +18,7 @@ Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
 You've used 61 entries,
             2858 wiz_defined-function locations,
-            949 strings with 15845 characters,
+            950 strings with 15859 characters,
 and the built_in function-call counts, 38225 in all, are:
 = -- 3134
 > -- 2091
