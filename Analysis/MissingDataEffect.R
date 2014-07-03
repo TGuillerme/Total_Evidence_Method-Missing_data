@@ -1,5 +1,5 @@
 #Script for testing the effect of missing data on tree topology.
-#setwd('../PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+#setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 
 #Loading the functions
@@ -17,6 +17,7 @@ source('../Functions/TreeComparisons/as.TreeCmp.R')
 Random51<-read.table("../Data/Tree_Comparisons/Random_trees/51t_Random.Cmp",header=TRUE)
 Random26<-read.table("../Data/Tree_Comparisons/Random_trees/26t_Random.Cmp",header=TRUE)
 Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",header=TRUE)
+
 
 #Loading the treesets
 #/TreeCmp_chains/
@@ -49,6 +50,10 @@ class(ML.MFMC)<-class(ML_trees)
 ML.MLMFMC<-ML_trees
 class(ML.MLMFMC)<-class(ML_trees)
 
+
+#Bayesian run difference
+
+
 #Bayesian chains
 setwd("../Data/Tree_Comparisons/TreeCmp_chains/Bayesian/")
 tmp<-TreeCmp.Read('MChain', verbose=TRUE)
@@ -58,31 +63,33 @@ setwd('../../../../Analysis/')
 #Isolating the Bayesian treesets + summarize each RPBTC by the mode  
 Bayesian.ML<-Bayesian_trees[c(1,26,51,76,101)]
 class(Bayesian.ML)<-class(Bayesian_trees)
-Bayesian.ML<-TreeCmp.Mode(Bayesian.ML, 1000, verbose=TRUE)
+#Bayesian.ML<-TreeCmp.Mode(Bayesian.ML, 1000, verbose=TRUE)
 
 Bayesian.MF<-Bayesian_trees[c(1,6,11,16,21)]
 class(Bayesian.MF)<-class(Bayesian_trees)
-Bayesian.MF<-TreeCmp.Mode(Bayesian.MF, 1000, verbose=TRUE)
+#Bayesian.MF<-TreeCmp.Mode(Bayesian.MF, 1000, verbose=TRUE)
 
 Bayesian.MC<-Bayesian_trees[1:5]
 class(Bayesian.MC)<-class(Bayesian_trees)
-Bayesian.MC<-TreeCmp.Mode(Bayesian.MC, 1000, verbose=TRUE)
+#Bayesian.MC<-TreeCmp.Mode(Bayesian.MC, 1000, verbose=TRUE)
 
 Bayesian.MLMF<-Bayesian_trees[c(1,6,11,16,21, 26,31,36,41,46, 51,56,61,66,71, 76,81,86,91,96, 101,106,111,116,121)]
 class(Bayesian.MLMF)<-class(Bayesian_trees)
-Bayesian.MLMF<-TreeCmp.Mode(Bayesian.MLMF, 1000, verbose=TRUE)
+#Bayesian.MLMF<-TreeCmp.Mode(Bayesian.MLMF, 1000, verbose=TRUE)
 
 Bayesian.MLMC<-Bayesian_trees[c(1:5, 26:30, 51:55, 76:80, 101:105)]
 class(Bayesian.MLMC)<-class(Bayesian_trees)
-Bayesian.MLMC<-TreeCmp.Mode(Bayesian.MLMC, 1000, verbose=TRUE)
+#Bayesian.MLMC<-TreeCmp.Mode(Bayesian.MLMC, 1000, verbose=TRUE)
 
 Bayesian.MFMC<-Bayesian_trees[c(1:25)]
 class(Bayesian.MFMC)<-class(Bayesian_trees)
-Bayesian.MFMC<-TreeCmp.Mode(Bayesian.MFMC, 1000, verbose=TRUE)
+#Bayesian.MFMC<-TreeCmp.Mode(Bayesian.MFMC, 1000, verbose=TRUE)
 
 Bayesian.MLMFMC<-Bayesian_trees
 class(Bayesian.MLMFMC)<-class(Bayesian_trees)
-Bayesian.MLMFMC<-TreeCmp.Mode(Bayesian.MLMFMC, 1000, verbose=TRUE)
+#Bayesian.MLMFMC<-TreeCmp.Mode(Bayesian.MLMFMC, 1000, verbose=TRUE)
+
+
 
 #Plots
 
