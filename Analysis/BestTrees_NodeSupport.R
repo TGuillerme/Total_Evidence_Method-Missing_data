@@ -8,9 +8,9 @@ library(xtable)
 
 #Loading the trees
 setwd('../Data/Best_trees_ML')
-boostraps<-BS.read('MChain', plot=TRUE)
+bootstraps<-BS.read('MChain', plot=TRUE, use.tree.names=FALSE)
 setwd('../../Analysis/')
-sum.bs<-unlist(boostraps)
+sum.bs<-unlist(bootstraps)
 sum.bs<-sum.bs[-which(is.na(sum.bs))]
 
 #Ploting the bootstrap distribution
