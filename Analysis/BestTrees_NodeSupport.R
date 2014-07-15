@@ -52,6 +52,7 @@ mod.turnover<-lm(bootstrap~turnover, data=comp2)
 mod.net.div<-lm(bootstrap~net.div, data=comp2)
 
 #Color plot
+palette("default")
 plot(comp2$lambda, comp2$bootstrap, col=1, pch=16, xlim=c(0,1), ylim=c(0,80), xlab='parameters', ylab='Median bootstrap')
 points(comp2$mu, comp2$bootstrap, col=2, pch=16)
 points(comp2$turnover, comp2$bootstrap, col=3, pch=16)
