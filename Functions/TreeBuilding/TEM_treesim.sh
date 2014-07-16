@@ -138,6 +138,8 @@ do
     fi
     echo "Outgroup = $outgroup" >> ${Chain}${n}-Simulation.log
     echo "==========================" >> ${Chain}${n}-Simulation.log
+    echo "Number of CPU = $CPU" >> ${Chain}${n}-Simulation.log
+    echo "==========================" >> ${Chain}${n}-Simulation.log
 
     #Setting the replicates (if method=Both)
     if echo $Method | grep 'Both'
@@ -464,7 +466,7 @@ do
         #launch the MCMC
         echo "Bayesian trees building: START" >> ${Chain}${n}-Simulation.log
         date >> ${Chain}${n}-Simulation.log
-        
+
     else
         echo 'nothing' > /dev/null
     fi
