@@ -12,6 +12,7 @@
 ##########################
 #Simulating 125 phylip matrices with combined "fossil" and "living" taxa and insert gaps in the morphological part according to 3 parameters with 5 states each.
 #version: 4.5.1
+TEM_matsim_version="TEM_matsim.sh v4.5.1"
 #Update: The tree shape and the fossil/living distribution is fully randomized.
 #Update: Both parts of the complete matrix (morphological and molecular) are created independently from the same given "true" tree.
 #Update: The HKY model is used for the molecular matrix and a ARD for the morphological one.
@@ -58,26 +59,26 @@ Model=$4
 #Testing if input matrix is provided
 test=$LivingSp
 
-if [ "$test" -eq "$test" ] 2>/dev/null; then
+if [ "$test" -eq "$test" ] 2>/dev/null
+then
     Input='NOINPUT'
 else
     Input=$LivingSp
 fi
 
 #Writing the header
-echo $Input > test.tmp
-if grep "NOINPUT" test.tmp > /dev/null
+if echo $Input | grep "NOINPUT"
 then
     echo "No input" > /dev/null
 else 
     dat=$(date)
-    echo "##########################" > Simulation_@.log
-    echo "Input matrix: $Input" >> Simulation_@.log
-    echo "$dat" >> Simulation_@.log
+    echo "##########################" > Simulation.log
+    echo "Input matrix: $Input" >> Simulation.log
+    echo "$dat" >> Simulation.log
 fi
 
 #If input matrix is provided:
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input" Simulation.log
 then
 
     #Transforming the input matrix
@@ -99,11 +100,11 @@ then
     let "FossilSp -= $LivingSp"
 
     #Printing the parameters
-    echo "PARAMETERS:" >> Simulation_@.log
-    echo "Number of living species = $LivingSp" >> Simulation_@.log
-    echo "Number of fossil species = $FossilSp" >> Simulation_@.log
-    echo "Number of molecular characters = $MolecularChar" >> Simulation_@.log
-    echo "Number of morphological characters = $MorphologChar" >> Simulation_@.log
+    echo "PARAMETERS:" >> Simulation.log
+    echo "Number of living species = $LivingSp" >> Simulation.log
+    echo "Number of fossil species = $FossilSp" >> Simulation.log
+    echo "Number of molecular characters = $MolecularChar" >> Simulation.log
+    echo "Number of morphological characters = $MorphologChar" >> Simulation.log
 
     #Separating the species and the data
 
@@ -231,16 +232,16 @@ else
     dat=$(date)
 
     #Saving the parameters
-    echo "##########################" > Simulation_@.log
-    echo "Matrices generated using Matsim_v4.4" >> Simulation_@.log
-    echo "$dat" >> Simulation_@.log
-    echo "##########################" >> Simulation_@.log
+    echo "##########################" > Simulation.log
+    echo "Matrices generated using $TEM_matsim_version" >> Simulation.log
+    echo "$dat" >> Simulation.log
+    echo "##########################" >> Simulation.log
 
-    echo "PARAMETERS:" >> Simulation_@.log
-    echo "Number of living species = $LivingSp" >> Simulation_@.log
-    echo "Number of fossil species = $FossilSp" >> Simulation_@.log
-    echo "Number of molecular characters = $MolecularChar" >> Simulation_@.log
-    echo "Number of morphological characters = $MorphologChar" >> Simulation_@.log
+    echo "PARAMETERS:" >> Simulation.log
+    echo "Number of living species = $LivingSp" >> Simulation.log
+    echo "Number of fossil species = $FossilSp" >> Simulation.log
+    echo "Number of molecular characters = $MolecularChar" >> Simulation.log
+    echo "Number of morphological characters = $MorphologChar" >> Simulation.log
 
     #Generate the original (full) molecular and morphological matrices through R
     echo "
@@ -397,39 +398,36 @@ else
     #Printing the parameters
     Tpar=$(sed -n '1p' tree.param)
     rm tree.param
-    echo "==========================" >> Simulation_@.log
-    echo "Birth-Death parameters (lambda,mu)=$Tpar" >> Simulation_@.log
-    echo "$Model" > model.tmp
+    echo "==========================" >> Simulation.log
+    echo "Birth-Death parameters (lambda,mu)=$Tpar" >> Simulation.log
 
-    if grep "HKY" model.tmp > /dev/null
+    if echo $Model | grep "HKY"
 
     then
-        echo "Molecular data:" >> Simulation_@.log
-        echo "Chosen model = $Model" >> Simulation_@.log
-        echo "Nucleotide frequencies = $Nfreq" >> Simulation_@.log
-        echo "Molecular rates distribution (gamma) alpha = $DGamma" >> Simulation_@.log
+        echo "Molecular data:" >> Simulation.log
+        echo "Chosen model = $Model" >> Simulation.log
+        echo "Nucleotide frequencies = $Nfreq" >> Simulation.log
+        echo "Molecular rates distribution (gamma) alpha = $DGamma" >> Simulation.log
 
     else
-        echo "Molecular data:" >> Simulation_@.log
-        echo "Chosen model = $Model" >> Simulation_@.log
-        echo "Nucleotide frequencies (Dirichlet distribution) = $DirFreq" >> Simulation_@.log
-        echo "Rates (Dirichlet distribution) = $DirRates" >> Simulation_@.log
-        echo "Molecular rates distribution (gamma) alpha = $DGamma" >> Simulation_@.log
+        echo "Molecular data:" >> Simulation.log
+        echo "Chosen model = $Model" >> Simulation.log
+        echo "Nucleotide frequencies (Dirichlet distribution) = $DirFreq" >> Simulation.log
+        echo "Rates (Dirichlet distribution) = $DirRates" >> Simulation.log
+        echo "Molecular rates distribution (gamma) alpha = $DGamma" >> Simulation.log
 
     fi
 
-    rm model.tmp
+    echo "Morphological data:" >> Simulation.log
+    echo "Chosen model = Equal Rates" >> Simulation.log
+    echo "States frequencies = 2:0.85, 3:0.15" >> Simulation.log
+    echo "Morphological rates distribution (gamma) alpha = $MGamma" >> Simulation.log
+    echo "All rates are saved in the MorphoGammaRates.txt file" >> Simulation.log
+    echo "##########################" >> Simulation.log
 
-    echo "Morphological data:" >> Simulation_@.log
-    echo "Chosen model = Equal Rates" >> Simulation_@.log
-    echo "States frequencies = 2:0.85, 3:0.15" >> Simulation_@.log
-    echo "Morphological rates distribution (gamma) alpha = $MGamma" >> Simulation_@.log
-    echo "All rates are saved in the MorphoGammaRates.txt file" >> Simulation_@.log
-    echo "##########################" >> Simulation_@.log
-
-    echo "TIMER:" >> Simulation_@.log
-    echo "Matrices generations start:" >> Simulation_@.log
-    date >> Simulation_@.log
+    echo "TIMER:" >> Simulation.log
+    echo "Matrices generations start:" >> Simulation.log
+    date >> Simulation.log
 
     #Adding the outgroup
     let "TotalSp += 1"
@@ -559,7 +557,7 @@ done
 sed '1 s/|/ living_morpholog.phylip |/' NL10.t | sed '$ s/|/ > living_morpholog_NL10.phy/' > NL10.tmp
 
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     #Modify the temporary removing data script by replacing 5 nucleotides/? by only 1
@@ -619,7 +617,7 @@ done
 
 sed '1 s/|/ living_morpholog.phylip |/' NL25.t | sed '$ s/|/ > living_morpholog_NL25.phy/' > NL25.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     #Modify the temporary removing data script by replacing 5 nucleotides/? by only 1
@@ -679,7 +677,7 @@ done
 
 sed '1 s/|/ living_morpholog.phylip |/' NL50.t | sed '$ s/|/ > living_morpholog_NL50.phy/' > NL50.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     #Modify the temporary removing data script by replacing 5 nucleotides/? by only 1
@@ -738,7 +736,7 @@ done
 
 sed '1 s/|/ living_morpholog.phylip |/' NL75.t | sed '$ s/|/ > living_morpholog_NL75.phy/' > NL75.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     #Modify the temporary removing data script by replacing 5 nucleotides/? by only 1
@@ -804,7 +802,7 @@ let "FossilChar *=10"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF10/g' > NF10.R.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     #Modifying the row names to match with the input
@@ -826,7 +824,7 @@ R --no-save < NF10.R.tmp
 sed 's/"//g' fossil_morpholog_NF10.phy.tmp | sed '1d' > fossil_morpholog_NF10.phy
 
 #Accept/Reject algorithm: every fossil should have a least 5% data
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MorphologChar
@@ -856,7 +854,7 @@ let "FossilChar *=25"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF25/g' > NF25.R.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     echo 'Using the input matrix' > /dev/null
@@ -876,7 +874,7 @@ R --no-save < NF25.R.tmp
 sed 's/"//g' fossil_morpholog_NF25.phy.tmp | sed '1d' > fossil_morpholog_NF25.phy
 
 #Accept/Rejet
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MorphologChar
@@ -905,7 +903,7 @@ let "FossilChar *=50"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF50/g' > NF50.R.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 
 then
     echo 'Using the input matrix' > /dev/null
@@ -925,7 +923,7 @@ R --no-save < NF50.R.tmp
 sed 's/"//g' fossil_morpholog_NF50.phy.tmp | sed '1d' > fossil_morpholog_NF50.phy
 
 #Accept/Rejet
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MorphologChar
@@ -954,7 +952,7 @@ let "FossilChar *=75"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF75/g' > NF75.R.tmp
 
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 then
 
     echo 'Using the input matrix' > /dev/null
@@ -974,7 +972,7 @@ R --no-save < NF75.R.tmp
 sed 's/"//g' fossil_morpholog_NF75.phy.tmp | sed '1d' > fossil_morpholog_NF75.phy
 
 #Accept/Rejet
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 then
 
     Rejection=$MorphologChar
@@ -1054,7 +1052,7 @@ echo "write(sample(8:$MorphoChar, $MChar10), 'NC10.rand', ncolumns=$MorphologCha
 NC10=$(sed -n 'p' NC10.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MChar10
@@ -1067,7 +1065,7 @@ then
     let "LivingSp -=3"
     let "MChar10 -=8"
 
-    while grep "[0-9]" NC_rejection.test > /dev/null
+    while grep "[0-9]" NC_rejection.test
     do
         echo "write(sample(8:$MorphoChar, $MChar10), 'NC10.rand', ncolumns=$MorphologChar)" | R --no-save
         NC10=$(sed -n 'p' NC10.rand | sed 's/ /,/g')
@@ -1104,7 +1102,7 @@ echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologCha
 NC25=$(sed -n 'p' NC25.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MChar25
@@ -1117,7 +1115,7 @@ then
     let "LivingSp -=3"
     let "MChar25 -=8"
 
-    while grep "[0-9]" NC_rejection.test > /dev/null
+    while grep "[0-9]" NC_rejection.test
     do
         echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologChar)" | R --no-save
         NC25=$(sed -n 'p' NC25.rand | sed 's/ /,/g')
@@ -1154,7 +1152,7 @@ echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologCha
 NC50=$(sed -n 'p' NC50.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MChar50
@@ -1167,7 +1165,7 @@ then
     let "LivingSp -=3"
     let "MChar50 -=8"
 
-    while grep "[0-9]" NC_rejection.test > /dev/null
+    while grep "[0-9]" NC_rejection.test
     do
         echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologChar)" | R --no-save
         NC50=$(sed -n 'p' NC50.rand | sed 's/ /,/g')
@@ -1204,7 +1202,7 @@ echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologCha
 NC75=$(sed -n 'p' NC75.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation_@.log > /dev/null
+if grep "Matrices generated using "  Simulation.log
 
 then
     Rejection=$MChar75
@@ -1217,7 +1215,7 @@ then
     let "LivingSp -=3"
     let "MChar75 -=8"
 
-    while grep "[0-9]" NC_rejection.test > /dev/null
+    while grep "[0-9]" NC_rejection.test
     do
         echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologChar)" | R --no-save
         NC75=$(sed -n 'p' NC75.rand | sed 's/ /,/g')
@@ -1280,7 +1278,7 @@ do
     prefix=$(basename $f .phylip.tmp)
     echo saving ${prefix}
 
-    if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+    if grep "Input matrix: $Input"  Simulation.log
 
     #Renaming the taxa and adding a dummy morphological character (sed 's/$/0/g')
     then
@@ -1291,7 +1289,7 @@ do
 done
 
 #Proper Phylip format
-if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
+if grep "Input matrix: $Input"  Simulation.log
 then 
 
     #Add the dummy character
@@ -1378,9 +1376,9 @@ echo "M2 = Matrice number 2"
 echo "L10 = NL 10%"
 echo "F25 = NF 25%"
 echo "C50 = NC 50%"
-echo "Matrices generations end:" >> Simulation_@.log
-date >> Simulation_@.log
-echo "##########################" >> Simulation_@.log
+echo "Matrices generations end:" >> Simulation.log
+date >> Simulation.log
+echo "##########################" >> Simulation.log
 
 echo "OUTPUT FILE NAMES:
 Matrice Number _ NL+State Number NF+State number NC+State Number
@@ -1391,6 +1389,6 @@ L10 = NL 10%
 F25 = NF 25%
 C50 = NC 50%
 ==========================
-All the random numbers are stored in random.rar file" >> Simulation_@.log
+All the random numbers are stored in random.rar file" >> Simulation.log
 
 #end
