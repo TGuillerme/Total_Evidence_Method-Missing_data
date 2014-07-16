@@ -128,6 +128,7 @@ do
     #Setting the method(s)
     echo "##########################" >> ${Chain}${n}-Simulation.log
     echo "TREE BUILDING" >> ${Chain}${n}-Simulation.log
+    echo "Commands generated using $TEM_treesim_version"
     if echo $Method | grep 'Both'
     then
         echo "Both method have been chosen" >> ${Chain}${n}-Simulation.log
