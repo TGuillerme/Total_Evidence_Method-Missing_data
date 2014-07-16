@@ -11,7 +11,7 @@
 #<Evolutionary model> can be chosen between HKY or GTR as an evolutionary model to build the matrices. Is ignored if an input matrix is given.
 ##########################
 #Simulating 125 phylip matrices with combined "fossil" and "living" taxa and insert gaps in the morphological part according to 3 parameters with 5 states each.
-#version: 4.5 (former Matsim_v4.4)
+#version: 4.5.1
 #Update: The tree shape and the fossil/living distribution is fully randomized.
 #Update: Both parts of the complete matrix (morphological and molecular) are created independently from the same given "true" tree.
 #Update: The HKY model is used for the molecular matrix and a ARD for the morphological one.
@@ -19,27 +19,28 @@
 #Update: Possibility of using a GTR or HKY model for building the matrix.
 #Update: Possibility to put an input matrix and skip the matrix building step.
 #Update: Minimal amount of species deleted in NL parameter is always 1.
-#Update: Minimal data per tip is set to 5% on the fossils. If the matrix is generated, the random gapping process is reran for all the species if any fossil is <5% data, if the matrix is given in input, fossils with <5% data are pruned.
+#Update: Minimal data per tip is set to 5% on the fossils. If the matrix is generated, the random gaping process is reran for all the species if any fossil is <5% data, if the matrix is given in input, fossils with <5% data are pruned.
 #Update: A true outgroup is now generate with the True tree
 #Update: Characters (molecular and morphological) rates distribution is now fixed
 #Update: Morphological characters states frequencies is now fixed to 2 and 3 states only
 #Update: A fixed gamma distribution is now given to the morphological characters rates
 #Update: Morphological states changing rates are now all equal per character (changing model from ARD to ER)
 #Update: Morphological characters are now saved in a MorphologicalRates.txt file
-#Update: The NC gapping parameters states as been changed to 0, 10, 25, 50, 75 of deleted characters (instead of previous 0, 20, 40, 60, 80)
+#Update: The NC gaping parameters states as been changed to 0, 10, 25, 50, 75 of deleted characters (instead of previous 0, 20, 40, 60, 80)
 #Update: Does not allow invariant morphological characters in the morphological matrix
 #Update: Improvement in the input matrix reading 
 #Update: Code tidied up and cleaned
+#Update: matrix name changed from MM to Matrix
 #----
-#guillert(at)tcd.ie - 17/04/2014
+#guillert(at)tcd.ie - 16/07/2014
 ##########################
 #Requirements:
 #-seqConverter.pl
-#-R =< 3.0.1
+#-R 3
 #-R package "ape"
 #-R package "phyclust"
 #-R package "diversitree"
-#-R pachage "MCMCpack"
+#-R package "MCMCpack"
 ##-To install the R packages:
 ##echo "install.packages(c('ape','phyclust','diversitree','MCMCpack'))" | R --no-save
 ##########################
@@ -75,6 +76,7 @@ else
     echo "$dat" >> Simulation_@.log
 fi
 
+#If input matrix is provided:
 if grep "Input matrix: $Input"  Simulation_@.log > /dev/null
 then
 
@@ -995,39 +997,39 @@ fi
 #Pairwise combination of the sub NL (step 2.2) and NF (step 2.3) matrices
 
 #Combine outgroup + NL00 + NF00/10/25/50/75
-echo "$TotalSp $MorphologChar" > MM_L00F00.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L00F00.phyl ; cat living_morpholog_NL00.phy >> MM_L00F00.phyl ; cat fossil_morpholog_NF00.phy >> MM_L00F00.phyl
-echo "$TotalSp $MorphologChar" > MM_L00F10.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L00F10.phyl ; cat living_morpholog_NL00.phy >> MM_L00F10.phyl ; cat fossil_morpholog_NF10.phy >> MM_L00F10.phyl
-echo "$TotalSp $MorphologChar" > MM_L00F25.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L00F25.phyl ; cat living_morpholog_NL00.phy >> MM_L00F25.phyl ; cat fossil_morpholog_NF25.phy >> MM_L00F25.phyl
-echo "$TotalSp $MorphologChar" > MM_L00F50.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L00F50.phyl ; cat living_morpholog_NL00.phy >> MM_L00F50.phyl ; cat fossil_morpholog_NF50.phy >> MM_L00F50.phyl
-echo "$TotalSp $MorphologChar" > MM_L00F75.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L00F75.phyl ; cat living_morpholog_NL00.phy >> MM_L00F75.phyl ; cat fossil_morpholog_NF75.phy >> MM_L00F75.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L00F00.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L00F00.phyl ; cat living_morpholog_NL00.phy >> Matrix_L00F00.phyl ; cat fossil_morpholog_NF00.phy >> Matrix_L00F00.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L00F10.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L00F10.phyl ; cat living_morpholog_NL00.phy >> Matrix_L00F10.phyl ; cat fossil_morpholog_NF10.phy >> Matrix_L00F10.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L00F25.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L00F25.phyl ; cat living_morpholog_NL00.phy >> Matrix_L00F25.phyl ; cat fossil_morpholog_NF25.phy >> Matrix_L00F25.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L00F50.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L00F50.phyl ; cat living_morpholog_NL00.phy >> Matrix_L00F50.phyl ; cat fossil_morpholog_NF50.phy >> Matrix_L00F50.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L00F75.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L00F75.phyl ; cat living_morpholog_NL00.phy >> Matrix_L00F75.phyl ; cat fossil_morpholog_NF75.phy >> Matrix_L00F75.phyl
 
 #Combine outgroup + NL10 + NF00/10/25/50/75
-echo "$TotalSp $MorphologChar" > MM_L10F00.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L10F00.phyl ; cat living_morpholog_NL10.phy >> MM_L10F00.phyl ; cat fossil_morpholog_NF00.phy >> MM_L10F00.phyl
-echo "$TotalSp $MorphologChar" > MM_L10F10.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L10F10.phyl ; cat living_morpholog_NL10.phy >> MM_L10F10.phyl ; cat fossil_morpholog_NF10.phy >> MM_L10F10.phyl
-echo "$TotalSp $MorphologChar" > MM_L10F25.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L10F25.phyl ; cat living_morpholog_NL10.phy >> MM_L10F25.phyl ; cat fossil_morpholog_NF25.phy >> MM_L10F25.phyl
-echo "$TotalSp $MorphologChar" > MM_L10F50.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L10F50.phyl ; cat living_morpholog_NL10.phy >> MM_L10F50.phyl ; cat fossil_morpholog_NF50.phy >> MM_L10F50.phyl
-echo "$TotalSp $MorphologChar" > MM_L10F75.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L10F75.phyl ; cat living_morpholog_NL10.phy >> MM_L10F75.phyl ; cat fossil_morpholog_NF75.phy >> MM_L10F75.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L10F00.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L10F00.phyl ; cat living_morpholog_NL10.phy >> Matrix_L10F00.phyl ; cat fossil_morpholog_NF00.phy >> Matrix_L10F00.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L10F10.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L10F10.phyl ; cat living_morpholog_NL10.phy >> Matrix_L10F10.phyl ; cat fossil_morpholog_NF10.phy >> Matrix_L10F10.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L10F25.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L10F25.phyl ; cat living_morpholog_NL10.phy >> Matrix_L10F25.phyl ; cat fossil_morpholog_NF25.phy >> Matrix_L10F25.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L10F50.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L10F50.phyl ; cat living_morpholog_NL10.phy >> Matrix_L10F50.phyl ; cat fossil_morpholog_NF50.phy >> Matrix_L10F50.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L10F75.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L10F75.phyl ; cat living_morpholog_NL10.phy >> Matrix_L10F75.phyl ; cat fossil_morpholog_NF75.phy >> Matrix_L10F75.phyl
 
 #Combine outgroup + NL25 + NF00/10/25/50/75
-echo "$TotalSp $MorphologChar" > MM_L25F00.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L25F00.phyl ; cat living_morpholog_NL25.phy >> MM_L25F00.phyl ; cat fossil_morpholog_NF00.phy >> MM_L25F00.phyl
-echo "$TotalSp $MorphologChar" > MM_L25F10.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L25F10.phyl ; cat living_morpholog_NL25.phy >> MM_L25F10.phyl ; cat fossil_morpholog_NF10.phy >> MM_L25F10.phyl
-echo "$TotalSp $MorphologChar" > MM_L25F25.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L25F25.phyl ; cat living_morpholog_NL25.phy >> MM_L25F25.phyl ; cat fossil_morpholog_NF25.phy >> MM_L25F25.phyl
-echo "$TotalSp $MorphologChar" > MM_L25F50.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L25F50.phyl ; cat living_morpholog_NL25.phy >> MM_L25F50.phyl ; cat fossil_morpholog_NF50.phy >> MM_L25F50.phyl
-echo "$TotalSp $MorphologChar" > MM_L25F75.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L25F75.phyl ; cat living_morpholog_NL25.phy >> MM_L25F75.phyl ; cat fossil_morpholog_NF75.phy >> MM_L25F75.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L25F00.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L25F00.phyl ; cat living_morpholog_NL25.phy >> Matrix_L25F00.phyl ; cat fossil_morpholog_NF00.phy >> Matrix_L25F00.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L25F10.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L25F10.phyl ; cat living_morpholog_NL25.phy >> Matrix_L25F10.phyl ; cat fossil_morpholog_NF10.phy >> Matrix_L25F10.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L25F25.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L25F25.phyl ; cat living_morpholog_NL25.phy >> Matrix_L25F25.phyl ; cat fossil_morpholog_NF25.phy >> Matrix_L25F25.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L25F50.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L25F50.phyl ; cat living_morpholog_NL25.phy >> Matrix_L25F50.phyl ; cat fossil_morpholog_NF50.phy >> Matrix_L25F50.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L25F75.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L25F75.phyl ; cat living_morpholog_NL25.phy >> Matrix_L25F75.phyl ; cat fossil_morpholog_NF75.phy >> Matrix_L25F75.phyl
 
 #Combine outgroup + NL50 + NF00/10/25/50/75
-echo "$TotalSp $MorphologChar" > MM_L50F00.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L50F00.phyl ; cat living_morpholog_NL50.phy >> MM_L50F00.phyl ; cat fossil_morpholog_NF00.phy >> MM_L50F00.phyl
-echo "$TotalSp $MorphologChar" > MM_L50F10.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L50F10.phyl ; cat living_morpholog_NL50.phy >> MM_L50F10.phyl ; cat fossil_morpholog_NF10.phy >> MM_L50F10.phyl
-echo "$TotalSp $MorphologChar" > MM_L50F25.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L50F25.phyl ; cat living_morpholog_NL50.phy >> MM_L50F25.phyl ; cat fossil_morpholog_NF25.phy >> MM_L50F25.phyl
-echo "$TotalSp $MorphologChar" > MM_L50F50.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L50F50.phyl ; cat living_morpholog_NL50.phy >> MM_L50F50.phyl ; cat fossil_morpholog_NF50.phy >> MM_L50F50.phyl
-echo "$TotalSp $MorphologChar" > MM_L50F75.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L50F75.phyl ; cat living_morpholog_NL50.phy >> MM_L50F75.phyl ; cat fossil_morpholog_NF75.phy >> MM_L50F75.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L50F00.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L50F00.phyl ; cat living_morpholog_NL50.phy >> Matrix_L50F00.phyl ; cat fossil_morpholog_NF00.phy >> Matrix_L50F00.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L50F10.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L50F10.phyl ; cat living_morpholog_NL50.phy >> Matrix_L50F10.phyl ; cat fossil_morpholog_NF10.phy >> Matrix_L50F10.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L50F25.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L50F25.phyl ; cat living_morpholog_NL50.phy >> Matrix_L50F25.phyl ; cat fossil_morpholog_NF25.phy >> Matrix_L50F25.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L50F50.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L50F50.phyl ; cat living_morpholog_NL50.phy >> Matrix_L50F50.phyl ; cat fossil_morpholog_NF50.phy >> Matrix_L50F50.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L50F75.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L50F75.phyl ; cat living_morpholog_NL50.phy >> Matrix_L50F75.phyl ; cat fossil_morpholog_NF75.phy >> Matrix_L50F75.phyl
 
 #Combine outgroup + NL75 + NF00/10/25/50/75
-echo "$TotalSp $MorphologChar" > MM_L75F00.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L75F00.phyl ; cat living_morpholog_NL75.phy >> MM_L75F00.phyl ; cat fossil_morpholog_NF00.phy >> MM_L75F00.phyl
-echo "$TotalSp $MorphologChar" > MM_L75F10.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L75F10.phyl ; cat living_morpholog_NL75.phy >> MM_L75F10.phyl ; cat fossil_morpholog_NF10.phy >> MM_L75F10.phyl
-echo "$TotalSp $MorphologChar" > MM_L75F25.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L75F25.phyl ; cat living_morpholog_NL75.phy >> MM_L75F25.phyl ; cat fossil_morpholog_NF25.phy >> MM_L75F25.phyl
-echo "$TotalSp $MorphologChar" > MM_L75F50.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L75F50.phyl ; cat living_morpholog_NL75.phy >> MM_L75F50.phyl ; cat fossil_morpholog_NF50.phy >> MM_L75F50.phyl
-echo "$TotalSp $MorphologChar" > MM_L75F75.phyl ; cat outgroup_morpholog.phylip.tmp >> MM_L75F75.phyl ; cat living_morpholog_NL75.phy >> MM_L75F75.phyl ; cat fossil_morpholog_NF75.phy >> MM_L75F75.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L75F00.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L75F00.phyl ; cat living_morpholog_NL75.phy >> Matrix_L75F00.phyl ; cat fossil_morpholog_NF00.phy >> Matrix_L75F00.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L75F10.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L75F10.phyl ; cat living_morpholog_NL75.phy >> Matrix_L75F10.phyl ; cat fossil_morpholog_NF10.phy >> Matrix_L75F10.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L75F25.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L75F25.phyl ; cat living_morpholog_NL75.phy >> Matrix_L75F25.phyl ; cat fossil_morpholog_NF25.phy >> Matrix_L75F25.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L75F50.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L75F50.phyl ; cat living_morpholog_NL75.phy >> Matrix_L75F50.phyl ; cat fossil_morpholog_NF50.phy >> Matrix_L75F50.phyl
+echo "$TotalSp $MorphologChar" > Matrix_L75F75.phyl ; cat outgroup_morpholog.phylip.tmp >> Matrix_L75F75.phyl ; cat living_morpholog_NL75.phy >> Matrix_L75F75.phyl ; cat fossil_morpholog_NF75.phy >> Matrix_L75F75.phyl
 
 #Including the NC parameters to the combined NL+NF matrices (NC= number of overall morphological characters (number of columns in the matrix))
 
@@ -1058,7 +1060,7 @@ then
     Rejection=$MChar10
     let "Rejection *=5"
     let "Rejection /=100"
-    cut -c1-7,$NC10 MM_L00F75.phyl > C10_rejection.test
+    cut -c1-7,$NC10 Matrix_L00F75.phyl > C10_rejection.test
     let "MChar10 +=8"
     let "LivingSp +=3"
     cut -c8-$MChar10 C10_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1069,7 +1071,7 @@ then
     do
         echo "write(sample(8:$MorphoChar, $MChar10), 'NC10.rand', ncolumns=$MorphologChar)" | R --no-save
         NC10=$(sed -n 'p' NC10.rand | sed 's/ /,/g')
-        cut -c1-7,$NC10 MM_L00F75.phyl > C10_rejection.test
+        cut -c1-7,$NC10 Matrix_L00F75.phyl > C10_rejection.test
         let "MChar10 +=8"
         let "LivingSp +=3"
         cut -c8-$MChar10 C10_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1108,7 +1110,7 @@ then
     Rejection=$MChar25
     let "Rejection *=5"
     let "Rejection /=100"
-    cut -c1-7,$NC25 MM_L00F75.phyl > C25_rejection.test
+    cut -c1-7,$NC25 Matrix_L00F75.phyl > C25_rejection.test
     let "MChar25 +=8"
     let "LivingSp +=3"
     cut -c8-$MChar25 C25_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1119,7 +1121,7 @@ then
     do
         echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologChar)" | R --no-save
         NC25=$(sed -n 'p' NC25.rand | sed 's/ /,/g')
-        cut -c1-7,$NC25 MM_L00F75.phyl > C25_rejection.test
+        cut -c1-7,$NC25 Matrix_L00F75.phyl > C25_rejection.test
         let "MChar25 +=8"
         let "LivingSp +=3"
         cut -c8-$MChar25 C25_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1158,7 +1160,7 @@ then
     Rejection=$MChar50
     let "Rejection *=5"
     let "Rejection /=100"
-    cut -c1-7,$NC50 MM_L00F75.phyl > C50_rejection.test
+    cut -c1-7,$NC50 Matrix_L00F75.phyl > C50_rejection.test
     let "MChar50 +=8"
     let "LivingSp +=3"
     cut -c8-$MChar50 C50_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1169,7 +1171,7 @@ then
     do
         echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologChar)" | R --no-save
         NC50=$(sed -n 'p' NC50.rand | sed 's/ /,/g')
-        cut -c1-7,$NC50 MM_L00F75.phyl > C50_rejection.test
+        cut -c1-7,$NC50 Matrix_L00F75.phyl > C50_rejection.test
         let "MChar50 +=8"
         let "LivingSp +=3"
         cut -c8-$MChar50 C50_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1208,7 +1210,7 @@ then
     Rejection=$MChar75
     let "Rejection *=5"
     let "Rejection /=100"
-    cut -c1-7,$NC75 MM_L00F75.phyl > C75_rejection.test
+    cut -c1-7,$NC75 Matrix_L00F75.phyl > C75_rejection.test
     let "MChar75 +=8"
     let "LivingSp +=3"
     cut -c8-$MChar75 C75_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
@@ -1219,7 +1221,7 @@ then
     do
         echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologChar)" | R --no-save
         NC75=$(sed -n 'p' NC75.rand | sed 's/ /,/g')
-        cut -c1-7,$NC75 MM_L00F75.phyl > C75_rejection.test
+        cut -c1-7,$NC75 Matrix_L00F75.phyl > C75_rejection.test
         let "MChar75 +=8"
         let "LivingSp +=3"
         cut -c8-$MChar75 C75_rejection.test | sed -n ''"$LivingSp"',$p' | awk -F "[0-9]" '{print NF-1}' | awk '$1 < '"$Rejection"'' > NC_rejection.test
