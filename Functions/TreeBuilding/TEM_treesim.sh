@@ -419,7 +419,7 @@ do
         echo "" >> base-cmd.tmp
         echo "[MCMC settings]" >> base-cmd.tmp
         echo "startvals tau=Start_tree V=Start_tree ;" >> base-cmd.tmp
-        echo "mcmc nruns=${runs} Nchains=${chains} Replicates=${Generations} samplefreq=${sampling} printfreq=${printing} diagnfreq=${diagnosi} Stoprule=YES stopval=0.01 mcmcdiagn=YES file=<CHAIN>;" >> base-cmd.tmp
+        echo "mcmc nruns=${runs} Nchains=${chains} ngen=${Generations} samplefreq=${sampling} printfreq=${printing} diagnfreq=${diagnosi} Stoprule=YES stopval=0.01 mcmcdiagn=YES file=<CHAIN>;" >> base-cmd.tmp
         echo "sump Filename=<CHAIN> Relburnin=YES Burninfrac=0.25;" >> base-cmd.tmp
         echo "sumt Filename=<CHAIN> Relburnin=YES Burninfrac=0.25;" >> base-cmd.tmp
         echo "end;" >> base-cmd.tmp
