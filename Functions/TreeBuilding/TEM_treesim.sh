@@ -128,7 +128,7 @@ do
     #Setting the method(s)
     echo "##########################" >> ${Chain}${n}-Simulation.log
     echo "TREE BUILDING" >> ${Chain}${n}-Simulation.log
-    echo "Commands generated using $TEM_treesim_version"
+    echo "Commands generated using $TEM_treesim_version" >> ${Chain}${n}-Simulation.log
     if echo $Method | grep 'Both'
     then
         echo "Both method have been chosen" >> ${Chain}${n}-Simulation.log
@@ -463,10 +463,6 @@ do
         mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs
         mv *.cmd ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs/
         mv *.nex ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs/
-
-        #launch the MCMC
-        echo "Bayesian trees building: START" >> ${Chain}${n}-Simulation.log
-        date >> ${Chain}${n}-Simulation.log
 
     else
         echo 'nothing' > /dev/null
