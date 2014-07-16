@@ -2,46 +2,52 @@
 #Total Evidence Method simulations
 ##########################
 #SYNTAX:
-#sh TEM_treesim.sh [<Living Species> <Input Matrix>] <Molecular characters> <Morphological characters> <Evolutionary model> <Method> <Replicates> <Number of simulations> <Chain name> <Input>
+#sh TEM_treesim.sh [<Living Species> <Input Matrix>] <Molecular characters> <Morphological characters> <Evolutionary model> <Method> <Replicates> <Number of simulations> <Chain name> <CPU>
 #with:
 #<Living Species> being any entire number of living species to put into the matrices.
 #<Input matrix> an optional matrix in phylip format to split. The first species should be the outgroup.
 #<Molecular characters> being any entire number of molecular characters to put into the matrices.
 #<Morphological characters> being any entire number of morphological characters to put into the matrices. Is ignored if an input matrix is given.
 #<Evolutionary model> can be chosen between HKY or GTR as an evolutionary model to build the matrices.
-#<Method> can be chosen between ML or Bayesian.
-#<Replicates> being either a number of bootstraps (if method is ML) or any entire number of mega generations (10e6) (if method is Bayesian).
+#<Method> can be chosen between ML, Bayesian or Both
+#<Replicates> being either a number of bootstraps (if method is ML) or any entire number of mega generations (10e6) (if method is Bayesian). If method is set to both, replicates are set to default of 50.10e6 Bayesian generations and 1000 Bootstraps.
 #<Number of simulations> being any entire number of repetitions of the simulations.
 #<Chain name> being any string of characters used as the chain name.
+#<CPU> number of CPUs available
 ##########################
 #Simulate a Total Evidence Method with variation of three parameters:
-#-the number of morphologicaly coded "living" taxa (NL)
+#-the number of morphological coded "living" taxa (NL)
 #-the number of missing data for the "fossil" taxa (NF)
 #-the number of morphological data (NC)
-#version: 2.6.2
+#version: 3.0
+TEM_treesim_version="TEM_treesim v3.0"
 #Update: Use the full random TEM_matsim.sh script
 #Update: Only one outgroup is given in input
 #Update: Uses MrBayes
 #Update: Build a backbone for MrBayes input
-#Update: Evolutionary model for the matrices construction and bayesian method for the tree construction can be precised
+#Update: Evolutionary model for the matrices construction and Bayesian method for the tree construction
 #Update: Possibility to chose the method between ML, CON (Bayesian with backbone) or TEM (Bayesian Total Evidence)
 #Update: Optional Input file is accepted
 #Update: The same evolutionary model is used for building the matrix through Marsim and to run the trees
 #Update: Methods are now restricted to ML or Bayesian only
 #Update: On the multicore version, the number of runs is fixed a 2 and the number of chains is fixed at 4
-#Update: When using bayesian method, rates are fixed to Gamma distribution with a given alpha prior (normal distribution centered on the given mean with 5% sd) and 4 distinct gamma categories
-#Update: When using bayesian method, the True tree topology simulated by Matsim si given as a starting tree for the mcmc
+#Update: When using Bayesian method, rates are fixed to Gamma distribution with a given alpha prior (normal distribution centred on the given mean with 5% sd) and 4 distinct gamma categories
+#Update: When using Bayesian method, the True tree topology simulated by TEM_matsim.sh is given as a starting tree for the MCMC
 #Update: Code clean and tidied up
+#Update: Script only creates sh executable scripts for building the tree instead of running the trees
+#Update: Allow to specify the number of CPU
+#Update: Allow to use both Bayesian and ML methods
+#TO DO: allow input matrix
 #----
-#guillert(at)tcd.ie - 17/04/2014
+#guillert(at)tcd.ie - 16/07/2014
 ##########################
 #Requirements:
 #-Shell script TEM_matsim.sh
-#-R =< 3.0.1
+#-R 3
 #-R package "ape"
 #-R package "phyclust"
 #-R package "diversitree"
-#-R pachage "MCMCpack"
+#-R package "MCMCpack"
 #-seqConverter.pl
 #-raxmlHPC-PTHREADS-SSE3
 #-MrBayes 3.2.2
@@ -57,136 +63,115 @@ MolecularChar=$2
 MorphologChar=$3
 Model=$4
 Method=$5
-NGen=$6
+Replicates=$6
 Simulations=$7
 Chain=$8
+CPU=$9
 
-#Testing if input matrix is provided
-input=$LivingSp
-if [ "$input" -eq "$input" ] 2>/dev/null; then
-  Input='NOINPUT'
-else
-  Input=$LivingSp
-fi
-
-echo $Input > input.test
-if grep "NOINPUT" input.test > /dev/null
-then
-    FossilSp=$LivingSp
-    TotalSp=$LivingSp
-    let "TotalSp += $FossilSp"
-    let "TotalSp +=1"
-else 
-    TotalSp=$LivingSp
-fi
-rm input.test
 
 #Creating secondary inputs
+#Total number of characters
 TotalChar=$MolecularChar
 let "TotalChar += $MorphologChar"
-Nburn=$NGen
-let "Nburn *=10"
-let "Nburn *=25"
-let "Nburn /=100"
+
+#Total number of species
+TotalSp=LivingSp                            #Fix this variable !!!
+let "TotalSp += LivingSp"
+let "TotalSp += 1"
 
 #Initializing the loop
 for n in $(seq 1 $Simulations)
 do
     #Creates the output folder
-    mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}_run${n}
-    #Copy the Matsim script
-    sed 's/MM/C'"${n}"'/g' TEM_matsim.sh | sed 's/Simulation_@.log/Simulation_'"${n}"'.log/g' > ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}_run${n}/Matsim_${n}.sh
-    cp $Input ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}_run${n}/
-    cd ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}_run${n}
+    mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}
+    #Copy the TEM_matsim.sh script
+    sed 's/Matrix/'"${Chain}${n}"'/g' TEM_matsim.sh | sed 's/Simulation.log/'"${Chain}${n}"'-Simulation.log/g' > ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}/Matsim_${n}.sh
+    cd ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}
 
     #Step 2 - CREATING THE MATRICES
 
-    #Using the Matsim script to create the matrices
-    sh Matsim_${n}.sh $LivingSp $MolecularChar $MorphologChar $Model $Input
-    rm C${n}F.phylip
-    rm C${n}L.phylip
-    rm MatBas.phylip
-    FossilSp=$(sed -n '8p' Simulation_${n}.log | sed 's/Number of fossil species = //g')
+    #Using the TEM_matsim.sh script to create the matrices
+    sh Matsim_${n}.sh $LivingSp $MolecularChar $MorphologChar $Model
+
+    #Setting the number of fossil species and updating the total number of species
+    FossilSp=$(grep "umber of fossil species = " ${Chain}${n}-Simulation.log | sed 's/Number of fossil species = //g')
     TotalSp=$FossilSp
     let "TotalSp += $LivingSp"
+    let "TotalSp += 1"
 
-    #Setting the evolutionary model for MrBayes
-    if grep 'Chosen model = HKY'  Simulation_${n}.log > /dev/null
+    #Setting the number of morphological characters for the submatrices (i.e. for the C parameter)
+    MolChar1=$MolecularChar
+    let "MolChar1 += 1"
+    MorphoChar00=$MorphologChar
+    let "MorphoChar00 += $MolecularChar"
+    MorphoChar10=$MorphologChar
+    let "MorphoChar10 *= 90"
+    let "MorphoChar10 /= 100"
+    let "MorphoChar10 += $MolecularChar"
+    MorphoChar25=$MorphologChar
+    let "MorphoChar25 *= 75"
+    let "MorphoChar25 /= 100"
+    let "MorphoChar25 += $MolecularChar"
+    MorphoChar50=$MorphologChar
+    let "MorphoChar50 *= 50"
+    let "MorphoChar50 /= 100"
+    let "MorphoChar50 += $MolecularChar"
+    MorphoChar75=$MorphologChar
+    let "MorphoChar75 *= 25"
+    let "MorphoChar75 /= 100"
+    let "MorphoChar75 += $MolecularChar"
+
+    #Updating the log file
+    #Setting the outgroup
+    outgroup=$(sed -n '2p' ${Chain}${n}_L00F00C00.phylip | sed -n 's/\([A-z]*\)[[:space:]].*/\1/p') 
+
+    #Setting the method(s)
+    echo "##########################" >> ${Chain}${n}-Simulation.log
+    echo "TREE BUILDING" >> ${Chain}${n}-Simulation.log
+    if echo $Method | grep 'Both'
     then
-        nst=$'2'
+        echo "Both method have been chosen" >> ${Chain}${n}-Simulation.log
+        echo "Chosen method = Bayesian" >> ${Chain}${n}-Simulation.log
+        echo "Chosen method = ML" >> ${Chain}${n}-Simulation.log
     else
-        nst=$'6'
+        echo "Chosen method = $Method" >> ${Chain}${n}-Simulation.log
+    fi
+    echo "Outgroup = $outgroup" >> ${Chain}${n}-Simulation.log
+    echo "==========================" >> ${Chain}${n}-Simulation.log
+
+    #Setting the replicates (if method=Both)
+    if echo $Method | grep 'Both'
+    then
+        Generations=50000000
+        Bootstraps=1000
+    else
+        if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log 
+        then
+            Generations=${Replicates}000000
+        else
+            Bootstraps=$Replicates
+        fi
     fi
 
-    #Transforming into nexus format
-    for f in *.phylip
-    do
-        echo $f
-        seqConverter.pl -d${f} -ip -on -ri
-    done
-
-    #Adding header in the nexus file
-    if grep "Input matrix:"  Simulation_${n}.log > /dev/null
-
-    then
-        MolChar1=$MolecularChar
-        MorphoChar00=$MorphologChar
-        let "MorphoChar00 += $MolecularChar"
-        let "MorphoChar00 += 1"
-        MorphoChar10=$MorphologChar
-        let "MorphoChar10 *= 90"
-        let "MorphoChar10 /= 100"
-        let "MorphoChar10 += $MolecularChar"
-        let "MorphoChar10 += 1"
-        MorphoChar25=$MorphologChar
-        let "MorphoChar25 *= 75"
-        let "MorphoChar25 /= 100"
-        let "MorphoChar25 += $MolecularChar"
-        let "MorphoChar25 += 1"
-        MorphoChar50=$MorphologChar
-        let "MorphoChar50 *= 50"
-        let "MorphoChar50 /= 100"
-        let "MorphoChar50 += $MolecularChar"
-        let "MorphoChar50 += 1"
-        MorphoChar75=$MorphologChar
-        let "MorphoChar75 *= 25"
-        let "MorphoChar75 /= 100"
-        let "MorphoChar75 += $MolecularChar"
-        let "MorphoChar75 += 1"
-
-    else
-        MolChar1=$MolecularChar
-        let "MolChar1 += 1"
-        MorphoChar00=$MorphologChar
-        let "MorphoChar00 += $MolecularChar"
-        MorphoChar10=$MorphologChar
-        let "MorphoChar10 *= 90"
-        let "MorphoChar10 /= 100"
-        let "MorphoChar10 += $MolecularChar"
-        MorphoChar25=$MorphologChar
-        let "MorphoChar25 *= 75"
-        let "MorphoChar25 /= 100"
-        let "MorphoChar25 += $MolecularChar"
-        MorphoChar50=$MorphologChar
-        let "MorphoChar50 *= 50"
-        let "MorphoChar50 /= 100"
-        let "MorphoChar50 += $MolecularChar"
-        MorphoChar75=$MorphologChar
-        let "MorphoChar75 *= 25"
-        let "MorphoChar75 /= 100"
-        let "MorphoChar75 += $MolecularChar"
-    fi
-
+    #Modifying the matrices for MrBayes (into nexus)
 
     #Convert to nexus
-    if grep 'Chosen method = Bayesian' Simulation_${n}.log > /dev/null
+    if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log
     then
 
+        #Transforming into nexus format
+            for f in *.phylip
+            do
+                echo $f
+                seqConverter.pl -d${f} -ip -on -ri
+            done
+
+        #Correcting the nexus files datatype line into partitioned data (depending on seqConverter version?)
+
         #format datatype = protein
-        if grep 'format datatype = protein' C${n}_L00F00C00.nex > /dev/null
+        if grep 'format datatype = protein' ${Chain}${n}_L00F00C00.nex
 
         then
-            echo 'datatype = protein' > /dev/null
             for f in *C00.nex
             do
                 sed 's/format datatype = protein gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar00"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
@@ -216,13 +201,10 @@ do
             echo 'datatype = protein' > /dev/null
         fi
 
-
-
         #format datatype = nculeotide
-        if grep 'format datatype = nucleotide' C${n}_L00F00C00.nex > /dev/null
+        if grep 'format datatype = nucleotide' ${Chain}${n}_L00F00C00.nex
 
         then
-            echo 'datatype = nucleotide' > /dev/null
             for f in *C00.nex
             do
                 sed 's/format datatype = nucleotide gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar00"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
@@ -252,13 +234,10 @@ do
             echo 'datatype = nucleotide' > /dev/null
         fi
 
-
-
         #format datatype = DNA
-        if grep 'format datatype = DNA' C${n}_L00F00C00.nex > /dev/null
+        if grep 'format datatype = DNA' ${Chain}${n}_L00F00C00.nex
 
         then
-            echo 'datatype = DNA' > /dev/null
             for f in *C00.nex
             do
                 sed 's/format datatype = DNA gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar00"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
@@ -304,19 +283,8 @@ do
 
     #Step 3 - RUNNING THE TREES
 
-    #Setting the outgroup
-    sed -n '2p' C${n}_L00F00C00.phylip > out.tmp
-    sed -n 's/\([A-z]*\)[[:space:]].*/\1/p' out.tmp > outgroup.txt
-    rm *.tmp
-    outgroup=$(sed -n '1p' outgroup.txt)
-    echo "##########################" >> Simulation_${n}.log
-    echo "TREE BUILDING" >> Simulation_${n}.log
-    echo "Chosen method = $Method" >> Simulation_${n}.log
-    echo "Outgroup = $outgroup" >> Simulation_${n}.log
-    echo "==========================" >> Simulation_${n}.log
-
-    #Which method?
-    if grep 'Chosen method = ML' Simulation_${n}.log > /dev/null
+    #MAXIMUM LIKELIHOOD
+    if grep 'Chosen method = ML' ${Chain}${n}-Simulation.log
 
     then
         #Running ML trees with fast bootstraps
@@ -334,75 +302,54 @@ do
         echo "DNA, set1 = 1-$MolecularChar" > part75.set
         echo "MULTI, set2 = $MolChar1 - $MorphoChar75" >> part75.set
 
-        #Running the trees
-        echo "TIMER:" >> Simulation_${n}.log
-        echo "ML trees building: START" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
+        #Creating the tree building shell scripts
 
         for f in *C00.phylip
         do
             prefix=$(basename $f .phylip)
-            echo ${prefix}
-            raxmlHPC-PTHREADS-SSE3 -T 4 -f a -s $f -n ${prefix} -m GTRGAMMA -q part00.set -o $outgroup -x 12345 -# $NGen
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
+            echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part00.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
         done
-
-        echo "ML trees building: 20%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
 
         for f in *C10.phylip
         do
             prefix=$(basename $f .phylip)
-            echo ${prefix}
-            raxmlHPC-PTHREADS-SSE3 -T 4 -f a -s $f -n ${prefix} -m GTRGAMMA -q part10.set -o $outgroup -x 12345 -# $NGen
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
+            echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part10.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
         done
-
-        echo "ML trees building: 40%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
 
         for f in *C25.phylip
         do
             prefix=$(basename $f .phylip)
-            echo ${prefix}
-            raxmlHPC-PTHREADS-SSE3 -T 4 -f a -s $f -n ${prefix} -m GTRGAMMA -q part25.set -o $outgroup -x 12345 -# $NGen
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log ; done ;
-
-        echo "ML trees building: 60%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
+            echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part25.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
+        done
 
         for f in *C50.phylip
         do
             prefix=$(basename $f .phylip)
-            echo ${prefix}
-            raxmlHPC-PTHREADS-SSE3 -T 4 -f a -s $f -n ${prefix} -m GTRGAMMA -q part50.set -o $outgroup -x 12345 -# $NGen
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
+            echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part50.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
         done
-
-        echo "ML trees building: 80%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
 
         for f in *C75.phylip
         do
             prefix=$(basename $f .phylip)
-            echo ${prefix}
-            raxmlHPC-PTHREADS-SSE3 -T 4 -f a -s $f -n ${prefix} -m GTRGAMMA -q part75.set -o $outgroup -x 12345 -# $NGen
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
+            echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part75.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
         done
 
-        echo "ML trees building: 100%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-        
+        #Saving the scripts, partition sets and phylip matrices in a MLjobs folder
+        mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs
+        mv ML-*.sh ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs/
+        mv *.set ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs/
+        mv *.phylip ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs/
+
     else
-        #Running Bayesian trees with start tree
+        echo 'nothing' > /dev/null
+    fi
+
+    if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log
+    then 
+        #BAYESIAN METHOD
         echo 'Bayesian method'
 
-        #Starting tree
+        #Creating the starting tree
         echo "library(ape)
             Start.tree<-read.tree('True_tree.tre')
             Start.tree[[4]]<-rep(1, length(Start.tree[[4]]))
@@ -410,6 +357,7 @@ do
 
         StartTree=$(sed -n '1p' Start_tree.tre | sed 's/:1):0;/:1);/g')
 
+        #Adding the starting tree to the nexus files
         for f in *.nex
         do
             echo "Begin trees;
@@ -419,26 +367,33 @@ do
             echo "End;">> ${f}
         done
 
-        #Preparing the MrBayes priors
-        if grep 'Chosen model = HKY'  Simulation_${n}.log > /dev/null
+        #Preparing the MrBayes parameters
+
+        #Gamma priors (DNA/Morphological)
+        DGamma=$(grep "Molecular rates distribution" ${Chain}${n}-Simulation.log | sed 's/Molecular rates distribution (gamma) alpha = //g')
+        MGamma=$(grep "Morphological rates distribution" ${Chain}${n}-Simulation.log | sed 's/Morphological rates distribution (gamma) alpha = //g')
+       
+        #Model (HKY/GTR)
+        if grep 'Chosen model = HKY'  ${Chain}${n}-Simulation.log
         then
-            #Using HKY model
-            DGamma=$(grep "Molecular rates distribution" Simulation_${n}.log | sed 's/Molecular rates distribution (gamma) alpha = //g')
-            DGammaInf=$(echo "$DGamma*0.9" | bc -l)
-            DGammaSup=$(echo "$DGamma*1.1" | bc -l)
-
-            MGamma=$(grep "Morphological rates distribution" Simulation_${n}.log | sed 's/Morphological rates distribution (gamma) alpha = //g')
-            MGammaInf=$(echo "$MGamma*0.9" | bc -l)
-            MGammaSup=$(echo "$MGamma*1.1" | bc -l)
+            nst=$'2'
         else
-            #Using GTR model
-            DGamma=$(grep "Molecular rates distribution" Simulation_${n}.log | sed 's/Molecular rates distribution (gamma) alpha = //g')
-            DGammaInf=$(echo "$DGamma*0.9" | bc -l)
-            DGammaSup=$(echo "$DGamma*1.1" | bc -l)
+            nst=$'6'
+        fi
+       
+        #Sampling frequency
+        sampling=$(echo "$Generations * 0.0002" | bc | sed 's/\.[0-9]*//g') #5000 sampling
+        printing=$(echo "$Generations * 0.001" | bc | sed 's/\.[0-9]*//g') #1000 printing
+        diagnosi=$(echo "$Generations * 0.01" | bc | sed 's/\.[0-9]*//g') #100 diagnosis
 
-            MGamma=$(grep "Morphological rates distribution" Simulation_${n}.log | sed 's/Morphological rates distribution (gamma) alpha = //g')
-            MGammaInf=$(echo "$MGamma*0.9" | bc -l)
-            MGammaSup=$(echo "$MGamma*1.1" | bc -l)
+        #Runs/Chains
+        if echo $CPU | grep '1'
+        then
+            runs=1
+            chains=2
+        else
+            runs=2
+            chains=$(echo "$CPU / 2" | bc | sed 's/\.[0-9]*//g')
         fi
 
         #Creating the mrbayes.cmd template
@@ -461,9 +416,9 @@ do
         echo "" >> base-cmd.tmp
         echo "[MCMC settings]" >> base-cmd.tmp
         echo "startvals tau=Start_tree V=Start_tree ;" >> base-cmd.tmp
-        echo "mcmc nruns=2 Nchains=4 ngen=${NGen}000000 samplefreq=10000 printfreq=50000 diagnfreq=500000 Stoprule=YES stopval=0.01 mcmcdiagn=YES file=<CHAIN>;" >> base-cmd.tmp
-        echo "sump Filename=<CHAIN>;" >> base-cmd.tmp
-        echo "sumt Filename=<CHAIN> burnin=${Nburn}00000;" >> base-cmd.tmp
+        echo "mcmc nruns=${runs} Nchains=${chains} Replicates=${Generations} samplefreq=${sampling} printfreq=${printing} diagnfreq=${diagnosi} Stoprule=YES stopval=0.01 mcmcdiagn=YES file=<CHAIN>;" >> base-cmd.tmp
+        echo "sump Filename=<CHAIN> Relburnin=YES Burninfrac=0.25;" >> base-cmd.tmp
+        echo "sumt Filename=<CHAIN> Relburnin=YES Burninfrac=0.25;" >> base-cmd.tmp
         echo "end;" >> base-cmd.tmp
 
         #Giving the <CHAIN> and <NUMBER> arguments function of the input nexus file
@@ -497,103 +452,55 @@ do
             sed 's/<CHAIN>/'"${prefix}"'/g' base-cmd.tmp | sed 's/<NUMBER>/'"$MorphoChar75"'/g' > ${prefix}.cmd
         done
 
+        #Deleting the template and the start tree
+        rm base-cmd.tmp
+        rm Start_tree.tre
+
+        #Saving the command files and the nexus matrices in a Bayesianjobs folder
+        mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs
+        mv *.cmd ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs/
+        mv *.nex ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs/
+
         #launch the MCMC
-        echo "Bayesian trees building: START" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-
-        for f in *C00.cmd
-        do
-            mb $f
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
-        done
-
-        echo "Bayesian trees building: 20%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-
-        for f in *C10.cmd
-        do
-            mb $f
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
-        done
-
-        echo "Bayesian trees building: 40%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-
-        for f in *C25.cmd
-        do
-            mb $f
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
-        done
-
-        echo "Bayesian trees building: 60%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-
-        for f in *C50.cmd
-        do
-            mb $f
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
-        done
-
-        echo "Bayesian trees building: 80%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-
-        for f in *C75.cmd
-        do
-            mb $f
-            echo "$f completed" >> Simulation_${n}.log
-            date >> Simulation_${n}.log
-        done
-
-        echo "Bayesian trees building: 100%" >> Simulation_${n}.log
-        date >> Simulation_${n}.log
-
+        echo "Bayesian trees building: START" >> ${Chain}${n}-Simulation.log
+        date >> ${Chain}${n}-Simulation.log
+        
+    else
+        echo 'nothing' > /dev/null
     fi
 
     #Step 4 - CLEANING
 
-    #Matsim
-    tar cf Matrices_archives.tar *.phylip *.nex
-    rm *.phylip ; rm *.nex
-    cp Simulation_$n.log Simulation_$n.tmp
-    rm Simulation_$n.log
-    tar cf Log_archives.tar *.log
-    rm *.log
-    cp Simulation_$n.tmp Simulation_$n.log
-    rm Simulation_$n.tmp
-
-    #MrBayes
-    cp bayes_constraint.nex bayes_constraint.tmp
-    rm bayes_constraint.nex
-    cp bayes_constraint.tmp bayes_constraint.nex
-    rm bayes_constraint.tmp
-    tar cf MrBayesCmd_archives.tar *.cmd
-    rm *.cmd
-    tar cf ConsensusTrees_archives.tar *.con.tre
-    rm *.con.tre
-    tar cf Trees_archives.tar *.run1.t *.run2.t *.tstat
-    rm *.run1.t ; rm *.run2.t ; rm *.tstat
-    tar cf Param_archives.tar *.run1.p *.run2.p *.pstat
-    rm *.run1.p ; rm *.run2.p ; rm *.pstat
-    tar cf MrBayes_archives.tar *.ckp *.ckp~ *.lstat *.mcmc *.parts *.trprobs *.vstat
-    rm *.ckp ; rm *.ckp~ ; rm *.lstat ; rm *.mcmc ; rm *.parts ; rm *.trprobs ; rm *.vstat
- 
-    #RAxML
-    tar cf Runnings_archives.tar *_run*
-    rm *_run*
-    tar cf RAxML.tar RAxML_*
-    rm RAxML_*
-    tar ML_trees.tar RAxML_bipartitions.*
-    tar cf RAxML_archives.tar RAxML_*
-    rm RAxML_*
-
+    rm Matsim_${n}.sh
+    mv True_tree.tre ${Chain}${n}-True_tree.tre
+    mv randoms.tar ${Chain}${n}-randoms.tar
 
     #Closing the loop
     cd ..
     
 done
+
+echo "${n} Chains generated with ${Method} script files."
+echo "To run the trees, use:"
+echo ""
+if echo $Method | grep 'Both' > /dev/null
+then
+    echo "for simulations in $seq(1 ${n}) ; do for script in ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${simulations}_MLjobs/*.sh ; do sh $script ; done ; done"
+    echo ""
+    echo "for simulations in $seq(1 ${n}) ; dofor command in ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${simulations}_Bayesianjobs/*.cmd ; do mb $command ; done ; done"
+    echo ""
+else
+    if echo $Method | grep 'ML' > /dev/null
+    then
+        echo "for simulations in $seq(1 ${n}) ; do for script in ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${simulations}_MLjobs/*.sh ; do sh $script ; done ; done"
+        echo ""
+    else
+        echo "for simulations in $seq(1 ${n}) ; dofor command in ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${simulations}_Bayesianjobs/*.cmd ; do mb $command ; done ; done"
+        echo ""
+    fi
+fi
+echo "Or use TEM_tasker.sh script."
+
+
 
 #end
