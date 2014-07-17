@@ -212,6 +212,7 @@ else
 
     #Building a simulated matrix
     echo 'Building simulated matrix:'
+    echo "Initializing the Simulation.log file"
 
     #Combining the input values
     FossilSp=$LivingSp
