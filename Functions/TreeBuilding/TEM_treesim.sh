@@ -19,8 +19,8 @@
 #-the number of morphological coded "living" taxa (NL)
 #-the number of missing data for the "fossil" taxa (NF)
 #-the number of morphological data (NC)
-#version: 3.0
-TEM_treesim_version="TEM_treesim v3.0"
+#version: 3.1
+TEM_treesim_version="TEM_treesim v3.1"
 #Update: Use the full random TEM_matsim.sh script
 #Update: Only one outgroup is given in input
 #Update: Uses MrBayes
@@ -39,7 +39,7 @@ TEM_treesim_version="TEM_treesim v3.0"
 #Update: Allow to use both Bayesian and ML methods
 #TO DO: allow input matrix
 #----
-#guillert(at)tcd.ie - 16/07/2014
+#guillert(at)tcd.ie - 17/07/2014
 ##########################
 #Requirements:
 #-Shell script TEM_matsim.sh
@@ -79,9 +79,12 @@ TotalSp=LivingSp                            #Fix this variable !!!
 let "TotalSp += LivingSp"
 let "TotalSp += 1"
 
+echo "Generating the tree files using $Method method(s):"
 #Initializing the loop
 for n in $(seq 1 $Simulations)
 do
+    echo "Saving the first simulation in"
+    echo ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}
     #Creates the output folder
     mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}
     #Copy the TEM_matsim.sh script
@@ -129,7 +132,7 @@ do
     echo "##########################" >> ${Chain}${n}-Simulation.log
     echo "TREE BUILDING" >> ${Chain}${n}-Simulation.log
     echo "Commands generated using $TEM_treesim_version" >> ${Chain}${n}-Simulation.log
-    if echo $Method | grep 'Both'
+    if echo $Method | grep 'Both' > /dev/null
     then
         echo "Both method have been chosen" >> ${Chain}${n}-Simulation.log
         echo "Chosen method = Bayesian" >> ${Chain}${n}-Simulation.log
@@ -143,12 +146,12 @@ do
     echo "==========================" >> ${Chain}${n}-Simulation.log
 
     #Setting the replicates (if method=Both)
-    if echo $Method | grep 'Both'
+    if echo $Method | grep 'Both' > /dev/null
     then
         Generations=50000000
         Bootstraps=1000
     else
-        if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log 
+        if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log  > /dev/null
         then
             Generations=${Replicates}000000
         else
@@ -159,45 +162,54 @@ do
     #Modifying the matrices for MrBayes (into nexus)
 
     #Convert to nexus
-    if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log
+    if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log > /dev/null
     then
 
         #Transforming into nexus format
-            for f in *.phylip
-            do
-                echo $f
-                seqConverter.pl -d${f} -ip -on -ri
-            done
+        echo ""
+        echo "Creating the nexus files"
+        for f in *.phylip
+        do
+            seqConverter.pl -d${f} -ip -on -ri > /dev/null
+            printf .
+        done
+        echo ""
 
         #Correcting the nexus files datatype line into partitioned data (depending on seqConverter version?)
 
+        echo "Cheking nexus files"
         #format datatype = protein
-        if grep 'format datatype = protein' ${Chain}${n}_L00F00C00.nex
+        if grep 'format datatype = protein' ${Chain}${n}_L00F00C00.nex > /dev/null
 
         then
             for f in *C00.nex
             do
                 sed 's/format datatype = protein gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar00"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C10.nex
             do
                 sed 's/format datatype = protein gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar10"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C25.nex
             do
                 sed 's/format datatype = protein gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar25"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C50.nex
             do
                 sed 's/format datatype = protein gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar50"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C75.nex
             do
                 sed 's/format datatype = protein gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar75"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
         else 
@@ -205,32 +217,37 @@ do
         fi
 
         #format datatype = nculeotide
-        if grep 'format datatype = nucleotide' ${Chain}${n}_L00F00C00.nex
+        if grep 'format datatype = nucleotide' ${Chain}${n}_L00F00C00.nex >/dev/null
 
         then
             for f in *C00.nex
             do
                 sed 's/format datatype = nucleotide gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar00"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C10.nex
             do 
                 sed 's/format datatype = nucleotide gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar10"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C25.nex
             do
                 sed 's/format datatype = nucleotide gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar25"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C50.nex
             do
                 sed 's/format datatype = nucleotide gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar50"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C75.nex
             do
                 sed 's/format datatype = nucleotide gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar75"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
         else
@@ -238,32 +255,37 @@ do
         fi
 
         #format datatype = DNA
-        if grep 'format datatype = DNA' ${Chain}${n}_L00F00C00.nex
+        if grep 'format datatype = DNA' ${Chain}${n}_L00F00C00.nex >/dev/null
 
         then
             for f in *C00.nex
             do
                 sed 's/format datatype = DNA gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar00"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C10.nex
             do 
                 sed 's/format datatype = DNA gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar10"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C25.nex
             do
                 sed 's/format datatype = DNA gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar25"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C50.nex
             do
                 sed 's/format datatype = DNA gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar50"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
             for f in *C75.nex
             do
                 sed 's/format datatype = DNA gap = - missing = ?;/format datatype=mixed(DNA:1-'"$MolecularChar"',standard:'"$MolChar1"'-'"$MorphoChar75"') interleave=yes gap=- missing=?;/g' $f > ${f}.tmp
+                printf .
             done
 
         else
@@ -279,7 +301,7 @@ do
     for f in *.nex.tmp
     do
         prefix=$(basename $f .nex.tmp)
-        echo converting ${prefix}
+        printf .
         sed 's/\([a-z]\)\([a-z]\)\([0-9]\)\([0-9]\)\([0-9]\)[[:space:]]\([0-9]\)/\1\2\3\4\5\6	/g' $f > ${prefix}.nex
     done
     rm *.nex.tmp
@@ -287,11 +309,11 @@ do
     #Step 3 - RUNNING THE TREES
 
     #MAXIMUM LIKELIHOOD
-    if grep 'Chosen method = ML' ${Chain}${n}-Simulation.log
+    if grep 'Chosen method = ML' ${Chain}${n}-Simulation.log > /dev/null
 
     then
         #Running ML trees with fast bootstraps
-        echo 'ML method'
+        echo 'ML method' >/dev/null
 
         #Creating partition set
         echo "DNA, set1 = 1-$MolecularChar" > part00.set
@@ -307,37 +329,51 @@ do
 
         #Creating the tree building shell scripts
 
+        echo ""
+        echo "Creating the RAxML scripts"
+
         for f in *C00.phylip
         do
             prefix=$(basename $f .phylip)
             echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part00.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
+            printf .
         done
 
         for f in *C10.phylip
         do
             prefix=$(basename $f .phylip)
             echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part10.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
+            printf .
         done
 
         for f in *C25.phylip
         do
             prefix=$(basename $f .phylip)
             echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part25.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
+            printf .
         done
 
         for f in *C50.phylip
         do
             prefix=$(basename $f .phylip)
             echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part50.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
+            printf .
         done
 
         for f in *C75.phylip
         do
             prefix=$(basename $f .phylip)
             echo "raxmlHPC-PTHREADS-SSE3 -T ${CPU} -f a -s $f -n ${prefix} -m GTRGAMMA -q part75.set -o $outgroup -x 12345 -# $Bootstraps" > ML-${prefix}.sh
+            printf .
         done
 
         #Saving the scripts, partition sets and phylip matrices in a MLjobs folder
+
+        echo ""
+        echo "RAxML scripts saved in:"
+        echo "${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs"
+        echo ""
+
         mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs
         mv ML-*.sh ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs/
         mv *.set ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs/
@@ -347,16 +383,16 @@ do
         echo 'nothing' > /dev/null
     fi
 
-    if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log
+    if grep 'Chosen method = Bayesian' ${Chain}${n}-Simulation.log >/dev/null
     then 
         #BAYESIAN METHOD
-        echo 'Bayesian method'
+        echo 'Updating the nexus files for MrBayes' 
 
         #Creating the starting tree
         echo "library(ape)
             Start.tree<-read.tree('True_tree.tre')
             Start.tree[[4]]<-rep(1, length(Start.tree[[4]]))
-            write.tree(Start.tree, 'Start_tree.tre')" | R --no-save
+            write.tree(Start.tree, 'Start_tree.tre')" | R --no-save >/dev/null
 
         StartTree=$(sed -n '1p' Start_tree.tre | sed 's/:1):0;/:1);/g')
 
@@ -368,16 +404,20 @@ do
             echo "tree Start_tree = $StartTree
             ">> ${f}
             echo "End;">> ${f}
+            printf .
         done
 
         #Preparing the MrBayes parameters
+
+        echo ""
+        echo "Creating the MrBayes command files"
 
         #Gamma priors (DNA/Morphological)
         DGamma=$(grep "Molecular rates distribution" ${Chain}${n}-Simulation.log | sed 's/Molecular rates distribution (gamma) alpha = //g')
         MGamma=$(grep "Morphological rates distribution" ${Chain}${n}-Simulation.log | sed 's/Morphological rates distribution (gamma) alpha = //g')
        
         #Model (HKY/GTR)
-        if grep 'Chosen model = HKY'  ${Chain}${n}-Simulation.log
+        if grep 'Chosen model = HKY'  ${Chain}${n}-Simulation.log > /dev/null
         then
             nst=$'2'
         else
@@ -429,35 +469,45 @@ do
         do
             prefix=$(basename $f .nex)
             sed 's/<CHAIN>/'"${prefix}"'/g' base-cmd.tmp | sed 's/<NUMBER>/'"$MorphoChar00"'/g' > ${prefix}.cmd
+            printf .
         done
 
         for f in *C10.nex
         do
             prefix=$(basename $f .nex)
             sed 's/<CHAIN>/'"${prefix}"'/g' base-cmd.tmp | sed 's/<NUMBER>/'"$MorphoChar10"'/g' > ${prefix}.cmd
+            printf .
         done
 
         for f in *C25.nex
         do
             prefix=$(basename $f .nex)
             sed 's/<CHAIN>/'"${prefix}"'/g' base-cmd.tmp | sed 's/<NUMBER>/'"$MorphoChar25"'/g' > ${prefix}.cmd
+            printf .
         done
 
         for f in *C50.nex
         do
             prefix=$(basename $f .nex)
             sed 's/<CHAIN>/'"${prefix}"'/g' base-cmd.tmp | sed 's/<NUMBER>/'"$MorphoChar50"'/g' > ${prefix}.cmd
+            printf .
         done
 
         for f in *C75.nex
         do
             prefix=$(basename $f .nex)
             sed 's/<CHAIN>/'"${prefix}"'/g' base-cmd.tmp | sed 's/<NUMBER>/'"$MorphoChar75"'/g' > ${prefix}.cmd
+            printf .
         done
 
         #Deleting the template and the start tree
         rm base-cmd.tmp
         rm Start_tree.tre
+
+        echo ""
+        echo "MrBayes command files saved in:"
+        echo "${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_MLjobs"
+        echo ""
 
         #Saving the command files and the nexus matrices in a Bayesianjobs folder
         mkdir ${TotalSp}t_${TotalChar}c_${Model}_${Method}_${Chain}${n}_Bayesianjobs
