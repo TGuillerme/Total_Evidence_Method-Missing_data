@@ -1,3 +1,4 @@
+#!/bin/sh
 ##########################
 #Simulating 125 phylip files with variation in molecular and morphological data
 ##########################
@@ -11,8 +12,8 @@
 #<Evolutionary model> can be chosen between HKY or GTR as an evolutionary model to build the matrices. Is ignored if an input matrix is given.
 ##########################
 #Simulating 125 phylip matrices with combined "fossil" and "living" taxa and insert gaps in the morphological part according to 3 parameters with 5 states each.
-#version: 4.5.1
-TEM_matsim_version="TEM_matsim.sh v4.5.1"
+#version: 4.5.2
+TEM_matsim_version="TEM_matsim.sh v4.5.2"
 #Update: The tree shape and the fossil/living distribution is fully randomized.
 #Update: Both parts of the complete matrix (morphological and molecular) are created independently from the same given "true" tree.
 #Update: The HKY model is used for the molecular matrix and a ARD for the morphological one.
@@ -32,8 +33,9 @@ TEM_matsim_version="TEM_matsim.sh v4.5.1"
 #Update: Improvement in the input matrix reading 
 #Update: Code tidied up and cleaned
 #Update: matrix name changed from MM to Matrix
+#Update: making the script more silent to run
 #----
-#guillert(at)tcd.ie - 16/07/2014
+#guillert(at)tcd.ie - 17/07/2014
 ##########################
 #Requirements:
 #-seqConverter.pl
@@ -67,10 +69,11 @@ else
 fi
 
 #Writing the header
-if echo $Input | grep "NOINPUT"
+if echo $Input | grep NOINPUT >/dev/null
 then
-    echo "No input" > /dev/null
+    echo "No input" > Simulation.log
 else 
+    echo "Initializing the Simulation.log file"
     dat=$(date)
     echo "##########################" > Simulation.log
     echo "Input matrix: $Input" >> Simulation.log
@@ -78,14 +81,17 @@ else
 fi
 
 #If input matrix is provided:
-if grep "Input matrix: $Input" Simulation.log
+if grep "Input matrix: $Input" Simulation.log >/dev/null
 then
+
+    #WARNING: --- IN DEVELOPEMENT ----
+    #WARNING: method with an input matrix not properly tested
 
     #Transforming the input matrix
     echo 'Using the input matrix'
 
     #Creating the input attributes
-    seqConverter.pl -d${Input} -ope -ri > seqConverter.log
+    seqConverter.pl -d${Input} -ope -ri > seqConverter.log 
     sed -n '2p' seqConverter.log | sed 's/Converting file //g' | sed 's/.phylip \.\.\.//g' > matrix.name
     Inprefix=$(sed -n '1p' matrix.name)
     rm seqConverter.log
@@ -205,7 +211,7 @@ then
 else
 
     #Building a simulated matrix
-    echo 'Building simulated matrix'
+    echo 'Building simulated matrix:'
 
     #Combining the input values
     FossilSp=$LivingSp
@@ -216,20 +222,26 @@ else
 
     #Generating the parameters
     echo "
-        library(MCMCpack) ;
         Freq<-runif(4) ;
         write(Freq/sum(Freq), file='Nfreq.rand') ;
-        write(runif(1,0.1,0.5), file='Gamma.rand') ;
-        write(as.vector(rdirichlet(1, c(2,2,2,2,2,2))), file='DirRates.rand', ncolumns=6) ;
-        write(as.vector(rdirichlet(1, c(10,10,10,10))), file='DirFreq.rand')" | R --no-save
+        write(runif(1,0.1,0.5), file='Gamma.rand')" | R --no-save >/dev/null
 
     Nfreq=$(sed -n '1p' Nfreq.rand | sed 's/ /,/g')
     #Gamma=$(sed -n '1p' Gamma.rand) #Random Gamma is desactivated and fixed to 0.5
     DGamma=$'0.5'
     MGamma=$'0.5'
-    DirRates=$(sed -n '1p' DirRates.rand | sed 's/ /,/g')
-    DirFreq=$(sed -n '1p' DirFreq.rand | sed 's/ /,/g')
-    dat=$(date)
+    if echo $Model | grep GTR >/dev/null
+    then
+        echo "
+        library(MCMCpack) ;
+        write(as.vector(rdirichlet(1, c(2,2,2,2,2,2))), file='DirRates.rand', ncolumns=6) ;
+        write(as.vector(rdirichlet(1, c(10,10,10,10))), file='DirFreq.rand')" | R --no-save >/dev/null
+        DirRates=$(sed -n '1p' DirRates.rand | sed 's/ /,/g')
+        DirFreq=$(sed -n '1p' DirFreq.rand | sed 's/ /,/g')
+        dat=$(date)
+    else
+        dat=$(date)
+    fi
 
     #Saving the parameters
     echo "##########################" > Simulation.log
@@ -273,6 +285,7 @@ else
                 lambda<-runif(x)
                 mu<-runif(x,0,lambda)
                 return(cbind(lambda, mu))
+                message('.', appendLF=FALSE)
             }
 
             #Building the birth death tree.
@@ -285,6 +298,7 @@ else
                     pars<<-FUN.parameters()
                     trbd.tmp<<-tree.bd(pars, max.taxa= extant, include.extinct=TRUE)
                 }
+                message('.', appendLF=FALSE)
             }
 
             #Condition 2 is that the birth death process generates the number of extant species given in the input
@@ -294,6 +308,7 @@ else
                 while (length(grep('sp', trbd.tmp[[3]])) != extant) {
                     FUN.condition1(extant)
                 }
+                message('.', appendLF=FALSE)
             }
 
             #Condition 3 is that the birth death process generates at least the number of extinct species given in the input (- error)
@@ -303,6 +318,7 @@ else
                 while ((length(trbd.tmp[[3]])-extant) < extinct-extinct*error) {
                     FUN.condition2(extant)
                 }
+                message('.', appendLF=FALSE)
             }
 
             #When all the conditions are encountered, check if extinct=extant (+/- error), else randomly prune extinct species until extinct=extant (+/- error)
@@ -311,8 +327,10 @@ else
                 FUN.condition3(extant, extinct, error)
                 if (extinct-extinct*error <= (length(trbd.tmp[[3]])-extant) & (length(trbd.tmp[[3]])-extant) <= extinct+extinct*error) {
                     trbd<<-trbd.tmp
+                    message('.', appendLF=FALSE)
                 } else {
                     trbd<<-drop.tip(trbd.tmp, c(trbd.tmp[[3]][c(sample(grep('ex', trbd.tmp[[3]]), (length(grep('ex', trbd.tmp[[3]]))-extinct)))]))
+                    message('.', appendLF=FALSE)
                 }
             }
 
@@ -344,7 +362,9 @@ else
         }
 
         #R# Creating the 'True' input tree
+        message('Generating the true tree')
         tree<-trbd.ex($LivingSp, $FossilSp)
+        message('')
         trbd<-rtree($TotalSp)
         trbd[[1]]<-tree[[1]]
         trbd[[2]]<-tree[[3]]
@@ -381,19 +401,22 @@ else
         MGam<-rgamma(m,shape=$MGamma)
         write(MGam, file='MorphoGammaRates.txt', ncolumns=1)
 
+        message('Generating the morphological matrix')
         for(i in 1:m) {
             MatrixMorpho[,i]<- rTraitDisc(trbd, model='ER', k=sample(c(2:3), 1, replace=TRUE, prob=c(0.85,0.15)), rate=MGam[i])
             while (length(levels(as.factor(MatrixMorpho[,i]))) == 1) {
                 MatrixMorpho[,i] <-rTraitDisc(trbd, model='ER', k=sample(c(2:3), 1, replace=TRUE, prob=c(0.85,0.15)), rate=MGam[i])
             }
+            message('.', appendLF=FALSE)
         }
+        message('')
 
         #Save the table
         write.table(as.data.frame(MatrixMorpho), 'matrix_morpholog.tmp')
         " > matgen.R.tmp
 
     #Running
-    R --no-save < matgen.R.tmp
+    R --no-save < matgen.R.tmp >/dev/null
 
     #Printing the parameters
     Tpar=$(sed -n '1p' tree.param)
@@ -401,7 +424,7 @@ else
     echo "==========================" >> Simulation.log
     echo "Birth-Death parameters (lambda,mu)=$Tpar" >> Simulation.log
 
-    if echo $Model | grep "HKY"
+    if echo $Model | grep "HKY" >/dev/null
 
     then
         echo "Molecular data:" >> Simulation.log
@@ -511,12 +534,15 @@ fi
 
 #Building the 5 NL parameters on the living_morpholog matrix (NL= number of coded living species for morphological characters)
 
+echo "Removing data following the L parameter"
+
 #NL00 (remove nothing)
 cp living_morpholog.phylip living_morpholog_NL00.phy
 LivSp=$LivingSp
 
 #NL10 (remove 10% of the species)
 LivingSpNL=$LivingSp
+printf .
 
 #Preparing the temporary removing data script (NL*.sh)
 echo "LivingSpNL=\$'$LivingSpNL'" > NL10.s
@@ -537,14 +563,16 @@ echo "
     fi
 
     #Generating a list of random numbers without replacement in R
-    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL10.rand\", ncolumns=1)' | R --no-save
+    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL10.rand\", ncolumns=1)' | R --no-save >/dev/null
 
     #Extracting the random numbers from R and saving them as a shell argument
     for n in \$(seq 1 \$LivingSpNL)
     do
-        echo \"NL10\"
+        echo \"NL10\" >/dev/null
+        printf .
         let \"NL10_\${n}=\$(sed -n ''\"\${n}\"'p' NL10.rand)\"
-        echo \"NL10_\${n}=\\$'\$NL10_\${n}'\"
+        echo \"NL10_\${n}=\\$'\$NL10_\${n}'\" >/dev/null
+        printf .
     done" >> NL10.s
 
 
@@ -599,14 +627,16 @@ echo "
     fi
 
     #Generating a list of random numbers without replacement in R
-    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL25.rand\", ncolumns=1)' | R --no-save
+    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL25.rand\", ncolumns=1)' | R --no-save >/dev/null
 
     #Extracting the random numbers from R and saving them as a shell argument
     for n in \$(seq 1 \$LivingSpNL)
     do
-        echo \"NL25\"
+        echo \"NL25\" >/dev/null
+        printf .
         let \"NL25_\${n}=\$(sed -n ''\"\${n}\"'p' NL25.rand)\"
-        echo \"NL25_\${n}=\\$'\$NL25_\${n}'\"
+        echo \"NL25_\${n}=\\$'\$NL25_\${n}'\" >/dev/null
+        printf .
     done" >> NL25.s
 
 #Passing the arguments into 'sed' and replace the randomly selected character scores by '?\?\?\?\?'
@@ -659,14 +689,16 @@ echo "
     fi
 
     #Generating a list of random numbers without replacement in R
-    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL50.rand\", ncolumns=1)' | R --no-save
+    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL50.rand\", ncolumns=1)' | R --no-save >/dev/null
 
     #Extracting the random numbers from R and saving them as a shell argument
     for n in \$(seq 1 \$LivingSpNL)
     do
-        echo \"NL50\"
+        echo \"NL50\" >/dev/null
+        printf .
         let \"NL50_\${n}=\$(sed -n ''\"\${n}\"'p' NL50.rand)\"
-        echo \"NL50_\${n}=\\$'\$NL50_\${n}'\"
+        echo \"NL50_\${n}=\\$'\$NL50_\${n}'\" >/dev/null
+        printf .
     done" >> NL50.s
 
 #Passing the arguments into 'sed' and replace the randomly selected character scores by '?\?\?\?\?'
@@ -718,14 +750,16 @@ echo "
     fi
 
     #Generating a list of random numbers without replacement in R
-    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL75.rand\", ncolumns=1)' | R --no-save
+    echo 'write(sample(1:$LivSp, $LivingSpNL), \"NL75.rand\", ncolumns=1)' | R --no-save >/dev/null
 
     #Extracting the random numbers from R and saving them as a shell argument
     for n in \$(seq 1 \$LivingSpNL)
     do
-        echo \"NL75\"
+        echo \"NL75\" >/dev/null
+        printf .
         let \"NL75_\${n}=\$(sed -n ''\"\${n}\"'p' NL75.rand)\"
-        echo \"NL75_\${n}=\\$'\$NL75_\${n}'\"
+        echo \"NL75_\${n}=\\$'\$NL75_\${n}'\" >/dev/null
+        printf .
     done" >> NL75.s
 
 #Passing the arguments into 'sed' and replace the randomly selected character scores by '?\?\?\?\?'
@@ -759,39 +793,48 @@ rm NL75.t ; rm NL75.s ; rm NL75.tmp ; rm NL75.sh
 
 #Building the 5 NF parameters on the fossil_morpholog matrix (NF= number of missing data in the fossil matrix)
 
+echo ""
+echo "Removing data following the F parameter"
+
 #Preparing the R code
 echo "
     #R#Phylip file input
     Inp<-read.delim('fossil_morpholog.phylip',header=F)
     
-    #Rransforming the phylip file in a matrix
+    #R#Transforming the phylip file in a matrix
     m<-matrix(NA,nrow(Inp),length(noquote(strsplit(as.character(Inp[1,]), NULL)[[1]])))
     for (i in 1:nrow(Inp)){
         m[i,]<-noquote(strsplit(as.character(Inp[i,]), NULL)[[1]])
     }
+    message('.', appendLF=FALSE)
     
     #Introducing missing data
     M<-as.vector(m[,-c(1:7)])
     M[sample(1:length(M), @@@)]<-'?'
     Ma<-matrix(M,ncol=ncol(m[,-c(1:7)]),nrow=nrow(m))
     MA<-noquote(Ma)
+    message('.', appendLF=FALSE)
         
     #Transforming the matrix into a phylip file
     sp<-rep(NA, nrow(m))
     for (i in 1:nrow(m)){
         sp[i]<-paste(m[i,1],m[i,2],m[i,3],m[i,4],m[i,5],m[i,6], sep='')
     }
+    message('.', appendLF=FALSE)
     cha<-rep(NA, nrow(m))
     for (i in 1:nrow(m)){
         cha[i]<-paste(as.vector(Ma[i,]),sep='',collapse='')
     }
+    message('.', appendLF=FALSE)
     
     #Phylip output
-    write.table(data.frame(X25_100=cha,row.names=sp), file='fossil_morpholog_NF@.phy.tmp')" > NF@.R.tmp
+    write.table(data.frame(X25_100=cha,row.names=sp), file='fossil_morpholog_NF@.phy.tmp')
+    message('.', appendLF=FALSE)" > NF@.R.tmp
 
 
 #NF00 (remove nothing)
 cp fossil_morpholog.phylip fossil_morpholog_NF00.phy
+printf .
 
 #NF10 (remove 10% of the cells)
 
@@ -802,7 +845,7 @@ let "FossilChar *=10"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF10/g' > NF10.R.tmp
 
-if grep "Input matrix: $Input"  Simulation.log
+if grep "Input matrix: $Input"  Simulation.log >/dev/null
 
 then
     #Modifying the row names to match with the input
@@ -818,13 +861,13 @@ else
 fi
 
 #Running the R code
-R --no-save < NF10.R.tmp
+R --no-save < NF10.R.tmp >/dev/null
 
 #Correcting the file
 sed 's/"//g' fossil_morpholog_NF10.phy.tmp | sed '1d' > fossil_morpholog_NF10.phy
 
 #Accept/Reject algorithm: every fossil should have a least 5% data
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 
 then
     Rejection=$MorphologChar
@@ -854,7 +897,7 @@ let "FossilChar *=25"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF25/g' > NF25.R.tmp
 
-if grep "Input matrix: $Input"  Simulation.log
+if grep "Input matrix: $Input"  Simulation.log >/dev/null
 
 then
     echo 'Using the input matrix' > /dev/null
@@ -868,13 +911,13 @@ else
 fi
 
 #Runing
-R --no-save < NF25.R.tmp
+R --no-save < NF25.R.tmp >/dev/null
 
 #Correcting the file
 sed 's/"//g' fossil_morpholog_NF25.phy.tmp | sed '1d' > fossil_morpholog_NF25.phy
 
 #Accept/Rejet
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 
 then
     Rejection=$MorphologChar
@@ -903,7 +946,7 @@ let "FossilChar *=50"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF50/g' > NF50.R.tmp
 
-if grep "Input matrix: $Input"  Simulation.log
+if grep "Input matrix: $Input"  Simulation.log >/dev/null
 
 then
     echo 'Using the input matrix' > /dev/null
@@ -917,13 +960,13 @@ else
 fi
 
 #Runing
-R --no-save < NF50.R.tmp
+R --no-save < NF50.R.tmp >/dev/null
 
 #Correcting the file
 sed 's/"//g' fossil_morpholog_NF50.phy.tmp | sed '1d' > fossil_morpholog_NF50.phy
 
 #Accept/Rejet
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 
 then
     Rejection=$MorphologChar
@@ -952,7 +995,7 @@ let "FossilChar *=75"
 let "FossilChar /=100"
 sed 's/@@@/'"$FossilChar"'/g' NF@.R.tmp | sed 's/NF@/NF75/g' > NF75.R.tmp
 
-if grep "Input matrix: $Input"  Simulation.log
+if grep "Input matrix: $Input"  Simulation.log >/dev/null
 then
 
     echo 'Using the input matrix' > /dev/null
@@ -966,13 +1009,13 @@ else
 fi
 
 #Runing
-R --no-save < NF75.R.tmp
+R --no-save < NF75.R.tmp >/dev/null
 
 #Correcting the file
 sed 's/"//g' fossil_morpholog_NF75.phy.tmp | sed '1d' > fossil_morpholog_NF75.phy
 
 #Accept/Rejet
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 then
 
     Rejection=$MorphologChar
@@ -1031,6 +1074,9 @@ echo "$TotalSp $MorphologChar" > Matrix_L75F75.phyl ; cat outgroup_morpholog.phy
 
 #Including the NC parameters to the combined NL+NF matrices (NC= number of overall morphological characters (number of columns in the matrix))
 
+echo ""
+echo "Removing data following the C parameter"
+
 MorphoChar=$MorphologChar
 let "MorphoChar += 7"
 
@@ -1038,7 +1084,7 @@ let "MorphoChar += 7"
 for f in *.phyl
 do
     prefix=$(basename $f .phyl)
-    echo ${prefix}C00
+    printf .
     cp $f ${prefix}C00.phyli
 done
 
@@ -1048,11 +1094,11 @@ let "MChar10 *=90"
 let "MChar10 /=100"
 
 #Select the columns to remove
-echo "write(sample(8:$MorphoChar, $MChar10), 'NC10.rand', ncolumns=$MorphologChar)" | R --no-save
+echo "write(sample(8:$MorphoChar, $MChar10), 'NC10.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
 NC10=$(sed -n 'p' NC10.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 
 then
     Rejection=$MChar10
@@ -1088,7 +1134,7 @@ fi
 for f in *.phyl
 do
     prefix=$(basename $f .phyl)
-    echo ${prefix}C10
+    printf .
     cut -c1-7,$NC10 $f > ${prefix}C10.phyli
 done
 
@@ -1098,12 +1144,12 @@ let "MChar25 *=75"
 let "MChar25 /=100"
 
 #Select the columns to remove
-echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologChar)" | R --no-save
+echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
 NC25=$(sed -n 'p' NC25.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation.log
-
+if grep "Matrices generated using "  Simulation.log >/dev/null
+ 
 then
     Rejection=$MChar25
     let "Rejection *=5"
@@ -1117,7 +1163,7 @@ then
 
     while grep "[0-9]" NC_rejection.test
     do
-        echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologChar)" | R --no-save
+        echo "write(sample(8:$MorphoChar, $MChar25), 'NC25.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
         NC25=$(sed -n 'p' NC25.rand | sed 's/ /,/g')
         cut -c1-7,$NC25 Matrix_L00F75.phyl > C25_rejection.test
         let "MChar25 +=8"
@@ -1138,7 +1184,7 @@ fi
 for f in *.phyl
 do
     prefix=$(basename $f .phyl)
-    echo ${prefix}C25
+    printf .
     cut -c1-7,$NC25 $f > ${prefix}C25.phyli
 done
 
@@ -1148,11 +1194,11 @@ let "MChar50 *=50"
 let "MChar50 /=100"
 
 #Select the columns to remove
-echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologChar)" | R --no-save
+echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
 NC50=$(sed -n 'p' NC50.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 
 then
     Rejection=$MChar50
@@ -1167,7 +1213,7 @@ then
 
     while grep "[0-9]" NC_rejection.test
     do
-        echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologChar)" | R --no-save
+        echo "write(sample(8:$MorphoChar, $MChar50), 'NC50.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
         NC50=$(sed -n 'p' NC50.rand | sed 's/ /,/g')
         cut -c1-7,$NC50 Matrix_L00F75.phyl > C50_rejection.test
         let "MChar50 +=8"
@@ -1188,7 +1234,7 @@ fi
 for f in *.phyl
 do
     prefix=$(basename $f .phyl)
-    echo ${prefix}C50
+    printf .
     cut -c1-7,$NC50 $f > ${prefix}C50.phyli
 done
 
@@ -1198,11 +1244,11 @@ let "MChar75 *=25"
 let "MChar75 /=100"
 
 #Select the columns to remove
-echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologChar)" | R --no-save
+echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
 NC75=$(sed -n 'p' NC75.rand | sed 's/ /,/g')
 
 #Remove the columns with accept/reject
-if grep "Matrices generated using "  Simulation.log
+if grep "Matrices generated using "  Simulation.log >/dev/null
 
 then
     Rejection=$MChar75
@@ -1217,7 +1263,7 @@ then
 
     while grep "[0-9]" NC_rejection.test
     do
-        echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologChar)" | R --no-save
+        echo "write(sample(8:$MorphoChar, $MChar75), 'NC75.rand', ncolumns=$MorphologChar)" | R --no-save >/dev/null
         NC75=$(sed -n 'p' NC75.rand | sed 's/ /,/g')
         cut -c1-7,$NC75 Matrix_L00F75.phyl > C75_rejection.test
         let "MChar75 +=8"
@@ -1238,11 +1284,14 @@ fi
 for f in *.phyl
 do
     prefix=$(basename $f .phyl)
-    echo ${prefix}C75
+    printf .
     cut -c1-7,$NC75 $f > ${prefix}C75.phyli
 done
 
 #Step 3 - CREATING THE 125 FINAL MATRICES
+
+echo ""
+echo "Combining the matrices"
 
 #Combining the Morphological and the Molecular matrices
 
@@ -1250,17 +1299,20 @@ done
 echo "$TotalSp $MolecularChar" > MD.phy ; cat outgroup_molecular.phylip.tmp >> MD.phy ; cat living_molecular.phylip.tmp >> MD.phy ; cat fossil_molecular.phylip.tmp >> MD.phy
 
 #Combining DNA data to the morphological ones
+echo "Molecular data"
 for f in *.phyli
 do
     prefix=$(basename $f .phyli)
-    echo loading ${prefix}
+    printf .
     paste MD.phy $f > ${prefix}.phylip_tmp
 done
 
+echo ""
+echo "Morphological data"
 for f in *.phylip_tmp
 do
     prefix=$(basename $f .phylip_tmp)
-    echo combining ${prefix}
+    printf .
     sed 's/[[:space:]]......[[:space:]]//g' $f > ${prefix}.phylip.tmp
 done
 
@@ -1272,13 +1324,15 @@ rm living_morpholog.phylip.tmp
 rm outgroup_molecular.phylip.tmp
 rm outgroup_morpholog.phylip.tmp
 
+echo ""
+echo "Saving the matrices"
 #Removing extra characters
 for f in *.phylip.tmp
 do
     prefix=$(basename $f .phylip.tmp)
-    echo saving ${prefix}
+    printf .
 
-    if grep "Input matrix: $Input"  Simulation.log
+    if grep "Input matrix: $Input"  Simulation.log >/dev/null
 
     #Renaming the taxa and adding a dummy morphological character (sed 's/$/0/g')
     then
@@ -1289,7 +1343,7 @@ do
 done
 
 #Proper Phylip format
-if grep "Input matrix: $Input"  Simulation.log
+if grep "Input matrix: $Input"  Simulation.log >/dev/null
 then 
 
     #Add the dummy character
@@ -1351,44 +1405,25 @@ do
 done
 
 #Cleaning the folder (keep the randoms)
-echo "Saving random seeds"
+echo ""
+echo "Saving random values"
+tar cf randoms.tar *.rand MorphoGammaRates.txt
 echo "Cleaning temporary files"
 rm matrix_combined.phylip
 rm living_morpholog.phylip
 rm fossil_morpholog.phylip
-rm *.name
 rm *.tmp
 rm *.phy
-rm *.test
 rm *.phyl
 rm *.phyli
 rm *.phylip_tmp
-rm *.data
-rm *.subset
-tar cf randoms.tar *.rand MorphoGammaRates.txt
 rm MorphoGammaRates.txt
 rm *.rand
-echo "OUTPUT FILE NAMES:"
-echo "Matrice Number _ NL+State Number NF+State number NC+State Number"
-echo "example:"
-echo "M2_L10N25C50"
-echo "M2 = Matrice number 2"
-echo "L10 = NL 10%"
-echo "F25 = NF 25%"
-echo "C50 = NC 50%"
 echo "Matrices generations end:" >> Simulation.log
 date >> Simulation.log
 echo "##########################" >> Simulation.log
 
-echo "OUTPUT FILE NAMES:
-Matrice Number _ NL+State Number NF+State number NC+State Number
-==========================
-Example:
-M2_L10F25C50
-L10 = NL 10%
-F25 = NF 25%
-C50 = NC 50%
-==========================
-All the random numbers are stored in random.rar file" >> Simulation.log
+echo "Matrices successfully generated"
+echo "Use TEM_treesim.sh to generate the trees"
 
-#end
+#End
