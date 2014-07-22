@@ -36,6 +36,11 @@ for (f in 1:length(bootstraps)){
     boots[[f]]<-bootstraps[[f]][-which(is.na(bootstraps[[f]]))]
 }
 bs<-as.vector(unlist(lapply(boots, median)))
+#Selecting only the trees with a median bootstrap > 50
+length(which(bs > 50))
+boxplot(bootstraps[c(which(bs > 50))])
+
+
 
 #Extracting the BD parameters
 setwd('../Data/')
