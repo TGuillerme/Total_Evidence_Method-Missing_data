@@ -2,7 +2,8 @@
 #Bootstrap reading
 ##########################
 #Extracts the Bootstrap values of a list of trees
-#v.0.1
+#v.0.2
+#Update: added require(ape)
 #TO DO: pattern should be either a list/single tree out/in of R environment
 ##########################
 #SYNTAX :
@@ -19,6 +20,9 @@
 ##########################
 
 BS.read<-function(pattern, plot=TRUE, use.tree.names=TRUE){
+
+#REQUIREMENTS
+    require(ape)
 
 #DATA INPUT
     #pattern
