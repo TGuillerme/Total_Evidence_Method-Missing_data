@@ -387,6 +387,11 @@ The "best" tree and the "missing-data" trees were inferred using RAxML v8.0.20 \
 For the molecular data, we used the GTR + $\Gamma_4$ model (\citealt{tavare1986}; default GTRGAMMA in RAxML v8.0.20; \citealt{Stamatakis21012014}) as a generalization of the HKY + $\Gamma_4$ model \citep{HKY85} for the molecular data.
 The GTR model can be seen as a generalization of the HKY model (the two parameters from the HKY model are implicitly included in the six from GTR model - \citealt{stamatakisa2008}).
 For the morphological data, we used the implemented Markov \textit{k} state model \citep{lewisa2001} which is a generalization of the JC69 model \citep{jc69} with \textit{k} $\geq$ 2 assuming an equal state frequency and a unique overall substitution rate ($\mu$) following a gamma distribution of the rate variation with four distinct categories (M\textit{k} + $\Gamma_4$; -K MK option in RAxML v8.0.20; \citealt{Stamatakis21012014}).
+
+In order to measure the phylogenetic signal of our simulations, we first ran a fast bootstrap analysis with 500 replicates on the "complete" matrix.
+We removed all the simulations that had a median bootstrap support lower than 50 as a proxy for weak phylogenetic signal \citep{zanderminimal2004}.
+We repeated this selection until we obtained 50 sets of simulations (i.e. 50 "complete" and 50*124 "missing-data" matrices) that with a relative good phylogenetic signal (median bootstrap $>$ 50).
+
 We used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support. %The explanations of the algorithm part for the BS was proposed by Trevor
 The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists of pruning one sub-tree from the tree and subsequently reinserting it to all neighbouring branches \citep{stamatakisa2008}.
 Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated to be better than other methods (e.g. Nearest Neighbouring Interchange - NNI) for recovering good bootstrap values \citep{salamin2003}.

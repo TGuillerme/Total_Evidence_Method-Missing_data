@@ -1,4 +1,4 @@
-\begin{thebibliography}{61}
+\begin{thebibliography}{62}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -366,6 +366,12 @@ with contributions~from Jochen~Einbeck, R. J.~H. and M.~Wand. 2013. hdrcde:
 Yang, Z. 1996. Among-site rate variation and its impact on phylogenetic
   analyses. Trends in Ecology \& Evolution 11:367--372.
 \bibAnnoteFile{yangamong-site1996}
+
+\bibitem[{Zander(2004)}]{zanderminimal2004}
+Zander, R. 2004. Minimal values for reliability of bootstrap and jackknife
+  proportions, decay index, and bayesian posterior probability.
+  Phyloinformatics 2:1--13.
+\bibAnnoteFile{zanderminimal2004}
 
 \bibitem[{Zuckerkandl and Pauling(1965)}]{zuckerkandl1965}
 Zuckerkandl, E. and L.~Pauling. 1965. Molecules as documents of evolutionary
