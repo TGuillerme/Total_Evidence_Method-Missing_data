@@ -2,8 +2,9 @@
 #Bootstrap reading
 ##########################
 #Extracts the Bootstrap values of a list of trees
-#v.0.2
+#v.0.2.1
 #Update: added require(ape)
+#Update: Typo
 #TO DO: pattern should be either a list/single tree out/in of R environment
 ##########################
 #SYNTAX :
@@ -12,7 +13,7 @@
 #<tree.names> logical, whether to add the tree names in the plot or not (ignored if plot=FALSE)
 ##########################
 #----
-#guillert(at)tcd.ie - 14/07/2014
+#guillert(at)tcd.ie - 25/07/2014
 ##########################
 #Requirements:
 #-R 3
@@ -76,9 +77,9 @@ BS.read<-function(pattern, plot=TRUE, use.tree.names=TRUE){
     #Plot
     if(plot==TRUE) {
         if(use.tree.names==TRUE) {
-            boxplot(BS.list,las=2,ylab="Boostrap values")
+            boxplot(BS.list,las=2,ylab="Bootstrap values")
         } else {
-            boxplot(BS.list,las=1,ylab="Boostrap values", names=seq(1:length(BS.list)))
+            boxplot(BS.list,las=1,ylab="Bootstrap values", names=seq(1:length(BS.list)))
         }
     }
         
