@@ -8,18 +8,14 @@
 #<method> ML or Bayesian
 #<modules.list> a text file containing the list of modules to load before submitting the individual jobs
 #########################
-#version 2.0
-TEM_tasker_version="TEM_tasker v2.0"
+#version 2.1
+TEM_tasker_version="TEM_tasker v2.1"
 #Generates the job files for running the simulation on a cluster
 #Update: Now creates a series of 25 jobs to submit
 #Update: Updated to use mpirun on the new version of the cluster
-#
+#Update: typo in the chain variable
 #----
-#guillert(at)tcd.ie - 16/07/2014
-##########################
-#Requirements:
-#-raxmlHPC-PTHREADS-SSE3
-#-MrBayes 3.2.1
+#guillert(at)tcd.ie - 25/07/2014
 ##########################
 
 #Input values
@@ -50,15 +46,16 @@ do
         echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
         echo "" >> job.template
         cat ../$moduleslist >> job.template
-        echo "\n\n##########################" >> job.template
+        echo "" >> job.template
+        echo "##########################" >> job.template
         echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
-        echo "##########################\n" >> job.template    
+        echo "##########################" >> job.template    
         echo "cd ${folder}_Bayesianjobs" >> job.template
-        echo "mpirun -np $CPU mb ${Chain}${n}_L00<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${Chain}${n}_L10<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${Chain}${n}_L25<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${Chain}${n}_L50<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${Chain}${n}_L75<SUFFIX>.cmd ;" >> job.template   
+        echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job.template   
+        echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job.template   
+        echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job.template   
+        echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job.template   
+        echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job.template   
         echo "cd ../" >> job.template
         printf .
 
@@ -94,9 +91,9 @@ do
         echo "#SBATCH -J <JOBNAME>-ML" >> job.template
         echo "" >> job.template
         cat ../$moduleslist >> job.template
-        echo "\n\n##########################" >> job.template
+        echo "##########################" >> job.template
         echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
-        echo "##########################\n" >> job.template    
+        echo "##########################" >> job.template    
         echo "cd ${folder}_MLjobs" >> job.template
         printf .
 
@@ -123,7 +120,7 @@ do
         printf .
     fi
 
-    echo "\nJob files ready for ${Chain}${n} in ${method} framework."
+    echo "\nJob files ready for ${chain}${n} in ${method} framework."
     cd ..
 
 done
