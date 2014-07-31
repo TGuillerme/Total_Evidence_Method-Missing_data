@@ -1,18 +1,17 @@
 ##########################
 #Uses TreeCmp java script to compare either single trees or treesets
 ##########################
-#SYNTAX: TEM_TreeCmp <reference.treeset> <input.treeset> <number of species> <number of random draws> <output> <method> <trees>
+#SYNTAX: TEM_TreeCmp <reference tree> <input tree> <number of random draws> <output> <tree format> <rooted>
 #with:
-#<reference.treeset> a tree file with the reference trees 
-#<input.treeset> a tree file with the trees to compare to the reference tree
-#<number of species> number of species per trees
-#<number of random draws> number of random draws for the comparison
+#<reference tree> a tree file with the reference tree 
+#<input tree> a tree file or a chain name with the tree to compare to the reference tree
+#<number of random draws> number of random draws for the comparison (if 1, then method is singletrees, if >1 then method is Treesets)
 #<output> a chain name for the output
-#<method> must be either Treesets or Singletrees
 #<trees> must be either nexus or newick
 #<rooted> must be either TRUE or FALSE
 ##########################
-#version: 0.7
+#version: 1.0
+TEM_TreeCmp_version="TEM_TreeCmp.sh v1.0"
 #Update: improved output format
 #Update: correction on the random tree selection from the ref tree: if the ref tree is unique, no sample is performed any more.
 #Update: cleaning improved (remove the files from the concern chain only)
@@ -22,8 +21,14 @@
 #Update: changed method arguments from Bayesian/ML to Treesets/Singletrees
 #Update: improved documentation within the function
 #Update: added a rooted/unrooted option
+#Update: changed tree comparison architecture to rely more on Bogdanowicz's algorithm
+#Update: improved tree reading (nexus vs newick)
+#Update: number of species is now obsolete
+#Update: method and random draws are now the same option, if random draws is 1, then method is singletrees, if random draws is >1 then method is Treesets
+#Update: input tree now allows to use a chain name
+#
 #----
-#guillert(at)tcd.ie - 27/06/2014
+#guillert(at)tcd.ie - 31/07/2014
 ##########################
 #Requirements:
 #-R 3.x
@@ -32,140 +37,226 @@
 #-TreeCmp folder to be installed at the level of the analysis
 ##########################
 
-#!/bin/sh
 #INPUT
 
 #Input values
-REFtreeset=$1
-INPtreeset=$2
-species=$3
-draws=$4
-output=$5
-method=$6
-trees=$7
-rooted=$8
+REFtree=$1
+INPtree=$2
+draws=$3
+output=$4
+treeFormat=$5
+rooted=$6
 
 #Creates the settings file
-echo $method > TreeCmp_settings.tmp #which method to use
-echo $trees >> TreeCmp_settings.tmp #which tree format to use
-echo $rooted >> TreeCmp_settings.tmp #is the tree rooted
+echo "$(ls *$INPtree* | wc -l | sed 's/[[:space:]]//g') file(s)" > TreeCmp_settings.tmp #Is a input a chain
+echo "$draws draw(s)" >> TreeCmp_settings.tmp #which method to use
+echo "$treeFormat trees" >> TreeCmp_settings.tmp #which tree format to use
+echo "rooted=$rooted" >> TreeCmp_settings.tmp #is the tree rooted
 
 #Creates the temporary output folder to store the temporary results
 mkdir ${output}_tmp
 
 #TREES SETTING
-if grep 'nexus' TreeCmp_settings.tmp > /dev/null
-then
-    #Make the nexus file header
-    header=$species
-    let "header += 5"
-    head -$header $REFtreeset > ${output}_tmp/HEADER_${output}.Tree.tmp
 
-    #Counting the number of trees in the ref/input treesets
-    REFntrees=$(grep 'TREE\|Tree\|tree' $REFtreeset | grep '=\[\|=[[:space:]]\[' | wc -l)
-    INPntrees=$(grep 'TREE\|Tree\|tree' $INPtreeset | grep '=\[\|=[[:space:]]\[' | wc -l)
+if grep '1 draw(s)' TreeCmp_settings.tmp >/dev/null
+then
+    #Only one draw, comparison is in single tree method
+    #Is the input tree a chain?
+    if grep '1 file(s)' TreeCmp_settings.tmp >/dev/null
+    then
+        echo $INPtree > ${output}_tmp/treenames.list
+    else
+        echo "Combining trees from $INPtree chain"
+        if grep 'newick trees' TreeCmp_settings.tmp > /dev/null
+        then
+            #Combining the newick trees to a single INPUT tree file
+            for f in *$INPtree*
+            do
+                cat $f >> ${output}_tmp/INPtree.treeset
+                echo $f >> ${output}_tmp/treenames.list
+                printf .
+            done
+        else
+            #Combining the nexus trees to a single INPUT tree file
+            #Creates the list of trees
+            for f in *$INPtree*
+            do
+                echo $f >> ${output}_tmp/treenames.list
+            done
+            
+            #Print the first tree with the nexus header
+            firstTree=$(sed -n '1p' ${output}_tmp/treenames.list)
+            cat $firstTree | sed '$d' > ${output}_tmp/INPtree.treeset
+            printf .
+
+            #Print the following trees without the nexus header
+            sed '1d' ${output}_tmp/treenames.list > ${output}_tmp/treenames.list.tmp
+            treesleft=$(wc -l ${output}_tmp/treenames.list.tmp | sed 's/'"${output}"'_tmp\/treenames.list.tmp//g')
+            for n in $(seq 1 $treesleft)
+            do
+                nexustree=$(sed -n ''"${n}"'p' ${output}_tmp/treenames.list.tmp)
+                sed '$d' ${nexustree} | sed -n '$p'>> ${output}_tmp/INPtree.treeset
+                printf .
+            done
+            echo 'END;' >> ${output}_tmp/INPtree.treeset
+            rm ${output}_tmp/treenames.list.tmp
+        fi
+        INPtree=${output}_tmp/INPtree.treeset
+        echo "Done"
+    fi
 else
-    echo 'newick is fantastic' > /dev/null
-    #Counting the number of trees in the ref/input treesets
-    REFntrees=$(grep '(' $REFtreeset | wc -l)
-    INPntrees=$(grep '(' $INPtreeset | wc -l)
+    #Is the input tree a chain?
+    if grep '1 file(s)' TreeCmp_settings.tmp >/dev/null
+    then
+        echo $INPtree > ${output}_tmp/treenames.list
+
+        #Counting the number of trees available
+        if grep 'newick trees' TreeCmp_settings.tmp > /dev/null
+        then
+            #Number of newick trees per files
+            REFntrees=$(cat $REFtree | wc -l)
+            INPntrees=$(cat $INPtree | wc -l)
+        else
+            #Number of nexus trees per files
+            REFntrees=$(grep "[[:space:]]TREE[[:space:]]\|[[:space:]]Tree[[:space:]]\|[[:space:]]tree[[:space:]]" $REFtree | wc -l)
+            INPntrees=$(grep "[[:space:]]TREE[[:space:]]\|[[:space:]]Tree[[:space:]]\|[[:space:]]tree[[:space:]]" $INPtree | wc -l)
+        fi
+
+        #Creating the random draw list
+        echo "if($REFntrees < $draws) {
+                REFrep=TRUE } else {
+                REFrep=FALSE}
+            if($INPntrees < $draws) {
+                INPrep=TRUE } else {
+                INPrep=FALSE }
+            #Saves the list of trees to sample in the REF and INP files    
+            write(sample(seq(1:$REFntrees), $draws, replace=REFrep), file=\"${output}_tmp/REFtree.sample\", ncolumns=1)
+            write(sample(seq(1:$INPntrees), $draws, replace=INPrep), file=\"${output}_tmp/INPtree.sample\", ncolumns=1) " | R --no-save >/dev/null
+       
+    else
+        echo "A single tree file must be given if the number of draws is > 1."
+        echo "The single tree file can however contain multiple trees."
+        rm TreeCmp_settings.tmp
+        rm -R ${output}_tmp/
+        exit
+    fi
 fi
 
-#RANDOM DRAW LIST
-
-#Create the list of trees to sample. If the provided number of random draws is higher than the number of trees, the sample is done with replacement.
-if grep 'Treesets' TreeCmp_settings.tmp > /dev/null
-then
-    echo "if($REFntrees < $draws) {
-            REFrep=TRUE } else {
-            REFrep=FALSE}
-        if($INPntrees < $draws) {
-            INPrep=TRUE } else {
-            INPrep=FALSE }
-        #Saves the list of trees to sample in the REF and INP files    
-        write(sample(seq(1:$REFntrees), $draws, replace=REFrep), file='REFtreeset.sample', ncolumns=1)
-        write(sample(seq(1:$INPntrees), $draws, replace=INPrep), file='INPtreeset.sample', ncolumns=1) " | R --no-save
-else
-    #If the method is set to Singletrees, only the first available tree is used from the REF/INP files
-    draws=1
-    echo "1" > REFtreeset.sample
-    echo "1" > INPtreeset.sample
-fi
-
-mv *.sample ${output}_tmp/
-
-#TREE COMPARISONS
+#TREE COMPARISON
 
 #Setting the comparison metrics (if rooted/unrooted)
-if grep 'TRUE' TreeCmp_settings.tmp > /dev/null
+if grep 'rooted=TRUE' TreeCmp_settings.tmp > /dev/null
 then
     #Rooted metrics
-    metrics="mc rc ns tt" #Matching Cluster / Robinson-Foulds (base don cluster) / Nodal Split / Triples
+    metrics="mc rc ns tt" #Matching Cluster / Robinson-Foulds (based on cluster) / Nodal Split / Triples
 else
     #Unrooted metrics
     metrics="ms rf pd qt" #Matching Split / Robinson-Foulds / Path difference / Quartet 
 fi
 
-#Creates the files of single trees and compare them one to one
-if grep 'nexus' TreeCmp_settings.tmp > /dev/null
+
+if grep '1 draw(s)' TreeCmp_settings.tmp >/dev/null
 then
-
-    #Comparisons using nexus format
-    for n in $(seq 1 $draws)
-    do
-        #Creates the ref tree file for one draw (containing only one tree selected from the *.sample file)
-        cp ${output}_tmp/HEADER_${output}.Tree.tmp ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
-        REFrand=$(sed -n ''"${n}"'p' ${output}_tmp/REFtreeset.sample)
-        let "REFrand += $header"
-        sed -n ''"$REFrand"'p' $REFtreeset >> ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
-        echo 'end;' >> ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
-
-        #Creates the input tree file for one draw (containing only one tree selected from the *.sample file)
-        cp ${output}_tmp/HEADER_${output}.Tree.tmp ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
-        INPrand=$(sed -n ''"${n}"'p' ${output}_tmp/INPtreeset.sample)
-        let "INPrand += $header"
-        sed -n ''"$INPrand"'p' $INPtreeset >> ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
-        echo 'end;' >> ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
-
-        #Make the comparison using the TreeCmp java script on all metrics
-        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REFtreeset_tree${n}.Tree.tmp -d ${metrics} -i ${output}_tmp/INPtreeset_tree${n}.Tree.tmp -o ${output}_tmp/${output}_draw${n}.Cmp.tmp
-    done
-
+    #Only one draw, comparison is in single tree method
+    #Make the comparison using the TreeCmp java script on all metrics
+    java -jar TreeCmp/bin/TreeCmp.jar -r $REFtree -d ${metrics} -i $INPtree -o ${output}_tmp/${output}.Cmp.tmp > /dev/null
+    printf .
 else
-
-    #Comparisons using newick format
-    for n in $(seq 1 $draws)
+    #More than one draw, comparison is in treeset method
+    echo "Comparing the trees $draws times"
+    for n in $(seq -w 1 $draws)
     do
-        #Creates the ref tree file for one draw
-        REFrand=$(sed -n ''"${n}"'p' ${output}_tmp/REFtreeset.sample)
-        sed -n ''"$REFrand"'p' $REFtreeset > ${output}_tmp/REFtreeset_tree${n}.Tree.tmp
+        #Extracting the trees from the random draw list
+        i=$(sed -n ''"${n}p"'' ${output}_tmp/REFtree.sample)
+        j=$(sed -n ''"${n}p"'' ${output}_tmp/INPtree.sample)
+        if grep 'newick trees' TreeCmp_settings.tmp > /dev/null
+        then
+            #Newick trees
+            sed -n ''"${i}p"'' $REFtree > ${output}_tmp/REF.tre
+            sed -n ''"${j}p"'' $INPtree > ${output}_tmp/INP.tre
+        else
+            #Nexus trees
+            ENDheader=$(grep -n "[[:space:]]TREE[[:space:]]\|[[:space:]]Tree[[:space:]]\|[[:space:]]tree[[:space:]]" $REFtree | cut -f1 -d: | sed -n '1p')
+            let "ENDheader -= 1"
+            inexus=$i
+            jnexus=$j
+            let "inexus += $ENDheader"
+            let "jnexus += $ENDheader"
+            sed -n '1,'"$ENDheader"'p' $REFtree > ${output}_tmp/REF.tre
+            #echo ";" >> ${output}_tmp/REF.tre
+            sed -n ''"${inexus}p"'' $REFtree >> ${output}_tmp/REF.tre
+            echo "END;" >> ${output}_tmp/REF.tre
+            sed -n '1,'"$ENDheader"'p' $INPtree > ${output}_tmp/INP.tre
+            #echo ";" >> ${output}_tmp/INP.tre
+            sed -n ''"${jnexus}p"'' $INPtree >> ${output}_tmp/INP.tre
+            echo "END;" >> ${output}_tmp/INP.tre
+        fi
 
-        #Creates the input tree file for one draw
-        INPrand=$(sed -n ''"${n}"'p' ${output}_tmp/INPtreeset.sample)
-        sed -n ''"$INPrand"'p' $INPtreeset >> ${output}_tmp/INPtreeset_tree${n}.Tree.tmp
+        #Comparing the trees
+        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REF.tre -d ${metrics} -i ${output}_tmp/INP.tre -o ${output}_tmp/Cmp.${n}.tmp > /dev/null
+        printf .
 
-        #Make the comparison using the TreeCmp java script on all metrics
-        java -jar TreeCmp/bin/TreeCmp.jar -r ${output}_tmp/REFtreeset_tree${n}.Tree.tmp -d ${metrics} -i ${output}_tmp/INPtreeset_tree${n}.Tree.tmp -o ${output}_tmp/${output}_draw${n}.Cmp.tmp
     done
-
+    echo "Done"
 fi
 
+#BUILDING THE OUTPUT
+if grep '1 draw(s)' TreeCmp_settings.tmp >/dev/null
+then
+    echo "Renaming the output comparisons"
+    totalTrees=$(cat ${output}_tmp/treenames.list | wc -l)
 
-#SUMMARIZING THE COMPARISONS
+    #Testing if a Multi tree file was used
+    MultiTreeTest=$(cat ${output}_tmp/${output}.Cmp.tmp | wc -l)
+    let "MultiTreeTest -= 1"
+    #Creating the header
+    echo "Reference Tree\tTree name" > ${output}_tmp/header.tmp
 
-#Comparison header
-sed -n '1p' ${output}_tmp/${output}_draw1.Cmp.tmp | sed $'s/Tree/Ref.trees\t\Input.trees/g' > ${output}.Cmp
+    if  echo $totalTrees | grep $MultiTreeTest > /dev/null
+    then
+        #Creating the header using the treenames.list file
+        for n in $(seq 1 $totalTrees)
+        do
+            treename=$(sed -n ''"${n}"'p' ${output}_tmp/treenames.list)
+            echo "$REFtree\t$treename"  >> ${output}_tmp/header.tmp
+            printf .
+        done
+    else
+        #Creating a new header from scratch
+        for n in $(seq 1 $MultiTreeTest)
+        do
+            treename=$(sed -n '1p' ${output}_tmp/treenames.list)
+            echo "$REFtree\t$treename.${n}"  >> ${output}_tmp/header.tmp
+            printf .
+        done
+    fi
 
-#Add the values from each comparison
-for n in $(seq 1 $draws)
-do
-    REFrand=$(sed -n ''"${n}"'p'  ${output}_tmp/REFtreeset.sample)
-    INPrand=$(sed -n ''"${n}"'p'  ${output}_tmp/INPtreeset.sample)
-    sed -n '2p' ${output}_tmp/${output}_draw${n}.Cmp.tmp | sed 's/^./'"$REFrand"'@'"$INPrand"'/' | sed $'s/@/\t/' >> ${output}.Cmp
-done
+else
+    echo "Combining the output comparisons"
+    sed -n '1p' $(ls ${output}_tmp/Cmp.*.tmp | sed -n '1p') > ${output}_tmp/${output}.Cmp.tmp
 
-#Removing the temporary folder
-rm -R ${output}_tmp/
+    #Combining the output comparisons
+    for n in $(seq -w 1 $draws)
+    do
+        sed -n '2p' ${output}_tmp/Cmp.${n}.tmp >> ${output}_tmp/${output}.Cmp.tmp
+        printf .
+    done
+
+    #Creating the header using the randon draws list
+    #Creating the header
+    echo "Ref.tree draw\tInp.tree draw" > ${output}_tmp/header.tmp
+    paste ${output}_tmp/REFtree.sample ${output}_tmp/INPtree.sample >> ${output}_tmp/header.tmp
+fi
+
+#Pasting the header with the .Cmp.tmp file
+paste ${output}_tmp/header.tmp ${output}_tmp/${output}.Cmp.tmp > ${output}_tmp/${output}.Cmp.tmp2
+echo "write.table(read.table(\"${output}_tmp/${output}.Cmp.tmp2\", header=TRUE, sep='\t')[,-3], file=\"${output}_tmp/${output}.Cmp\", sep='\t', row.names=FALSE)" | R --no-save >/dev/null
+sed 's/"//g' ${output}_tmp/${output}.Cmp > ${output}.Cmp
+echo "Done"
+
+#CLEANING
 rm TreeCmp_settings.tmp
+rm -R ${output}_tmp/
+
 
 #end
