@@ -2,26 +2,30 @@
 #Total Evidence Method simulations tasks generator
 ##########################
 #SYNTAX:
-#sh TEM_tasker.sh <chain> <method> <moduleslist>
+#sh TEM_tasker.sh <chain> <method> <moduleslist> <split>
 #with:
 #<chain> the name of the chain to generate task files for
 #<method> ML or Bayesian
 #<modules.list> a text file containing the list of modules to load before submitting the individual jobs
+#<split> a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
 #########################
-#version 2.1
-TEM_tasker_version="TEM_tasker v2.1"
+#version 2.2
+TEM_tasker_version="TEM_tasker v2.2"
 #Generates the job files for running the simulation on a cluster
 #Update: Now creates a series of 25 jobs to submit
 #Update: Updated to use mpirun on the new version of the cluster
-#Update: typo in the chain variable
+#Update: Typo in the chain variable
+#Update: Added a split option
+#To do: fix this option for ML
 #----
-#guillert(at)tcd.ie - 25/07/2014
+#guillert(at)tcd.ie - 11/08/2014
 ##########################
 
 #Input values
 chain=$1
 method=$2
 moduleslist=$3
+split=$4
 
 #Initializing the loop
 for folder in *${chain}*
@@ -39,25 +43,144 @@ do
     then
 
         #Creating the job.template file
-        echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
-        echo "#SBATCH -n ${CPU}" >> job.template
-        echo "#SBATCH -t 4-00:00:00" >> job.template   #Future update? Being able to set the time
-        echo "#SBATCH -p compute" >> job.template
-        echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
-        echo "" >> job.template
-        cat ../$moduleslist >> job.template
-        echo "" >> job.template
-        echo "##########################" >> job.template
-        echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
-        echo "##########################" >> job.template    
-        echo "cd ${folder}_Bayesianjobs" >> job.template
-        echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job.template   
-        echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job.template   
-        echo "cd ../" >> job.template
-        printf .
+        if echo $split | grep '1' > ./dev/null
+        then
+            echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
+            echo "#SBATCH -n ${CPU}" >> job.template
+            echo "#SBATCH -t 4-00:00:00" >> job.template   #Future update? Being able to set the time
+            echo "#SBATCH -p compute" >> job.template
+            echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
+            echo "" >> job.template
+            cat ../$moduleslist >> job.template
+            echo "" >> job.template
+            echo "##########################" >> job.template
+            echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
+            echo "##########################" >> job.template    
+            echo "cd ${folder}_Bayesianjobs" >> job.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job.template   
+            echo "cd ../" >> job.template
+            printf .
+        fi
+
+        if echo $split | grep '2' > ./dev/null
+        then
+            echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
+            echo "#SBATCH -n ${CPU}" >> job.template
+            echo "#SBATCH -t 4-00:00:00" >> job.template   #Future update? Being able to set the time
+            echo "#SBATCH -p compute" >> job.template
+            echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
+            echo "" >> job.template
+            cat ../$moduleslist >> job.template
+            echo "" >> job.template
+            echo "##########################" >> job.template
+            echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
+            echo "##########################" >> job.template    
+            echo "cd ${folder}_Bayesianjobs" >> job.template
+            cp job.template > job1.template
+            mv job.template > job2.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job1.template
+            echo "cd ../" >> job1.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job2.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job2.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job2.template   
+            echo "cd ../" >> job2.template
+            printf .
+        fi
+
+        if echo $split | grep '3' > ./dev/null
+        then
+            echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
+            echo "#SBATCH -n ${CPU}" >> job.template
+            echo "#SBATCH -t 4-00:00:00" >> job.template   #Future update? Being able to set the time
+            echo "#SBATCH -p compute" >> job.template
+            echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
+            echo "" >> job.template
+            cat ../$moduleslist >> job.template
+            echo "" >> job.template
+            echo "##########################" >> job.template
+            echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
+            echo "##########################" >> job.template    
+            echo "cd ${folder}_Bayesianjobs" >> job.template
+            cp job.template > job1.template
+            cp job.template > job2.template
+            mv job.template > job3.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template 
+            echo "cd ../" >> job1.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job2.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job2.template
+            echo "cd ../" >> job2.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job3.template   
+            echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job3.template   
+            echo "cd ../" >> job3.template
+            printf .
+        fi
+
+        if echo $split | grep '4' > ./dev/null
+        then
+            echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
+            echo "#SBATCH -n ${CPU}" >> job.template
+            echo "#SBATCH -t 4-00:00:00" >> job.template   #Future update? Being able to set the time
+            echo "#SBATCH -p compute" >> job.template
+            echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
+            echo "" >> job.template
+            cat ../$moduleslist >> job.template
+            echo "" >> job.template
+            echo "##########################" >> job.template
+            echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
+            echo "##########################" >> job.template    
+            echo "cd ${folder}_Bayesianjobs" >> job.template
+            cp job.template > job1.template
+            cp job.template > job2.template
+            cp job.template > job3.template
+            mv job.template > job4.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template 
+            echo "cd ../" >> job1.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job2.template
+            echo "cd ../" >> job2.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job3.template
+            echo "cd ../" >> job3.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job4.template  
+            echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job4.template   
+            echo "cd ../" >> job4.template
+            printf .
+        fi
+
+        if echo $split | grep '5' > ./dev/null
+        then
+            echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
+            echo "#SBATCH -n ${CPU}" >> job.template
+            echo "#SBATCH -t 4-00:00:00" >> job.template   #Future update? Being able to set the time
+            echo "#SBATCH -p compute" >> job.template
+            echo "#SBATCH -J <JOBNAME>-Bayesian" >> job.template
+            echo "" >> job.template
+            cat ../$moduleslist >> job.template
+            echo "" >> job.template
+            echo "##########################" >> job.template
+            echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
+            echo "##########################" >> job.template    
+            echo "cd ${folder}_Bayesianjobs" >> job.template
+            cp job.template > job1.template
+            cp job.template > job2.template
+            cp job.template > job3.template
+            cp job.template > job4.template
+            mv job.template > job5.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template 
+            echo "cd ../" >> job1.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job2.template
+            echo "cd ../" >> job2.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L25<SUFFIX>.cmd ;" >> job3.template
+            echo "cd ../" >> job3.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L50<SUFFIX>.cmd ;" >> job4.template
+            echo "cd ../" >> job4.template
+            echo "mpirun -np $CPU mb ${chain}${n}_L75<SUFFIX>.cmd ;" >> job5.template   
+            echo "cd ../" >> job5.template
+            printf .
+        fi
 
         #Creating the list of chain suffix (*_L*F*C*.cmd)
         echo -e "F00C00\nF10C00\nF25C00\nF50C00\nF75C00" > suffix.list
@@ -72,8 +195,41 @@ do
         do
             SUFFIX=$(sed -n ''"$task"'p' suffix.list)
             JOBNAME=C${n}-T${task}
-            sed 's/<NTASK>/'"${task}"'/g' job.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}.job
-            printf .
+            if echo $split | grep '1' > ./dev/null
+            then
+                sed 's/<NTASK>/'"${task}"'/g' job.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}.job
+                printf .
+            fi
+            if echo $split | grep '2' > ./dev/null
+            then
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
+                printf .
+            fi 
+            if echo $split | grep '3' > ./dev/null
+            then
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_3.job
+                printf .
+            fi 
+            if echo $split | grep '4' > ./dev/null
+            then
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_3.job
+                sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_4.job
+                printf .
+            fi 
+            if echo $split | grep '5' > ./dev/null
+            then
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_3.job
+                sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_4.job
+                sed 's/<NTASK>/'"${task}"'/g' job5.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_5.job
+                printf .
+            fi                       
         done
 
         #Cleaning
