@@ -5,13 +5,14 @@
 #sh TEM_mbcontree.sh <folder> <chain>
 #with:
 #<folder> the name of the folder containing the *.run*.t, *.nex and the *.log files
+#<chain> the name of the chain
 #########################
-#version 0.1
-TEM_mbcontree_version="TEM_mbcontree v0.1"
+#version 0.2
+TEM_mbcontree_version="TEM_mbcontree v0.2"
 #Generates the consensus tree in a chain using the run*.t files
-#
+#Update: added syntax description
 #----
-#guillert(at)tcd.ie - 30/07/2014
+#guillert(at)tcd.ie - 06/08/2014
 ##########################
 #Requirements:
 #-MrBayes 3.2.1
