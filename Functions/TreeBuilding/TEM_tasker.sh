@@ -202,32 +202,32 @@ do
             fi
             if echo $split | grep '2' > ./dev/null
             then
-                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
-                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
                 printf .
             fi 
             if echo $split | grep '3' > ./dev/null
             then
-                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
-                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
-                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_3.job
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.3/g' > ${chain}${n}_${task}_3.job
                 printf .
             fi 
             if echo $split | grep '4' > ./dev/null
             then
-                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
-                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
-                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_3.job
-                sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_4.job
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.3/g' > ${chain}${n}_${task}_3.job
+                sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.4/g' > ${chain}${n}_${task}_4.job
                 printf .
             fi 
             if echo $split | grep '5' > ./dev/null
             then
-                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_1.job
-                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_2.job
-                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_3.job
-                sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_4.job
-                sed 's/<NTASK>/'"${task}"'/g' job5.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}_5.job
+                sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
+                sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
+                sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.3/g' > ${chain}${n}_${task}_3.job
+                sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.4/g' > ${chain}${n}_${task}_4.job
+                sed 's/<NTASK>/'"${task}"'/g' job5.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.5/g' > ${chain}${n}_${task}_5.job
                 printf .
             fi                       
         done
