@@ -36,7 +36,7 @@
 ##########################
 
 TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE) {
-
+warning("check if problem with bw.nrd0 in FUNhdr?")
 #HEADER
 
 #Loading the libraries
@@ -156,7 +156,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
                 hdr.results[[i]]<-list(hdr=NA,mode=1,alpha=NA)
             } else {
                 #Else calculate the normal hdr
-                hdr.results[[i]]<-hdr(TreeCmp[[i]][,metric.column], probs, h = bw.nrd0(TreeCmp[[i]][,metric.column])) 
+                hdr.results[[i]]<-hdr(TreeCmp[[i]][,metric.column], probs, h = bw.nrd0(TreeCmp[[i]][,metric.column]))  #problem with bw.nrd0?
             }
         }
 
