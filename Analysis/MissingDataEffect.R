@@ -3,28 +3,31 @@
 
 
 #Loading the functions
-source('../Functions/TreeComparisons/NTS.R')
-source('../Functions/TreeComparisons/TreeCmp.Plot.R')
-source('../Functions/TreeComparisons/TreeCmp.Read.R')
-source('../Functions/TreeComparisons/TreeCmp.Mode.R')
-source('../Functions/TreeComparisons/TreeCmp.anova.R')
-source('../Functions/TreeComparisons/TreeCmp.distribution.R')
-source('../Functions/TreeComparisons/TreeCmp.pairPlot.R')
-source('../Functions/TreeComparisons/as.TreeCmp.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data/Functions/TreeComparisons/NTS.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/TreeCmp.Plot.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/TreeCmp.Read.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/TreeCmp.Mode.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/TreeCmp.anova.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/TreeCmp.distribution.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/TreeCmp.pairPlot.R')
+source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeComparisons/as.TreeCmp.R')
 
 
 #Loading the Random tree comparisons
-Random51<-read.table("../Data/Tree_Comparisons/Random_trees/51t_Random.Cmp",header=TRUE)
-Random26<-read.table("../Data/Tree_Comparisons/Random_trees/26t_Random.Cmp",header=TRUE)
-Random25<-read.table("../Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",header=TRUE)
+Random51<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data//Data/Tree_Comparisons/Random_trees/51t_Random.Cmp",header=TRUE)
+Random26<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data//Data/Tree_Comparisons/Random_trees/26t_Random.Cmp",header=TRUE)
+Random25<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data//Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",header=TRUE)
 
 
 #Loading the treesets
 #/TreeCmp_chains/
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
+Bayes_trees<-NTS(tmp, Random51)
+
 
 #ML chains
 setwd("../Data/Tree_Comparisons/TreeCmp_chains/ML/")
-tmp<-TreeCmp.Read('MChain', verbose=TRUE)
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_trees<-NTS(tmp, Random51)
 setwd('../../../../Analysis/')
 
