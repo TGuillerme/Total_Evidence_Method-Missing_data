@@ -2,29 +2,32 @@
 #Building the tree sets for analysing the TEM simulation results
 ##########################
 #SYNTAX :
-#sh MB_ChainSum_v0.1.sh <Number of species> <Burnin> <Chain name>
-#<Number of species> the number of species per tree
+#sh TEM_ChainSum.sh <Chain name> <number of species> <burnin>
+#<Chain Name> the chain name of the treesets to combine
+#<Number of species> the number of species in the trees
 #<Burnin> the proportion of first trees to ignore as a burnin
-#<Chain Name> creates a folder named after the chain name to store the results
 ##########################
 #Create .treeset files with all the trees from two mb chains.
-#version: 0.5
+#version: 1.0
+TEM_ChainSum_version="TEM_ChainSum.sh v1.0"
 #Update: Allows a burnin proportion value
 #Update: Error in the burnin is now fixed
 #Update: Name change and cleaning
 #Update: Name.run.t fixed
 #Update: BurnTree variable fixed
 #----
-#guillert(at)tcd.ie - 19/05/2014
+#guillert(at)tcd.ie - 02/09/2014
 ##########################
 
 
 #Set the variables
+chain=$1
+nsp=$2
+burnin=$3
 
-nsp=$1
-burnin=$2
-name=$3
-    
+#Move to the folder
+cd *${chain}*
+
 header=$nsp
 let "header += 5"
 
@@ -33,16 +36,17 @@ let "FirstTree += 6"
 
 #Create the folder
 
-mkdir ${name}_treesets
+mkdir ${chain}_treesets
 
 #Create the .treeset file
-for f in ${name}.run1.t
+echo "Generating the treesets files for ${chain}"
+for f in ${chain}*.run1.t
     do prefix=$(basename $f .run1.t)
 
-    echo $prefix
+    #echo $prefix
 
     #print the header 
-    head -$header ${prefix}.run1.t > ${name}_treesets/${prefix}.treeset
+    head -$header ${prefix}.run1.t > ${chain}_treesets/${prefix}.treeset
 
     #Burnin
     BurnTree=$FirstTree
@@ -52,10 +56,13 @@ for f in ${name}.run1.t
     let "BurnTree += $length"
 
     #Add the two list of trees
-    sed -n ''"$BurnTree"',$p' ${prefix}.run1.t | sed '$d' >> ${name}_treesets/${prefix}.treeset
-
-    sed -n ''"$BurnTree"',$p' ${prefix}.run2.t >> ${name}_treesets/${prefix}.treeset
-
+    sed -n ''"$BurnTree"',$p' ${prefix}.run1.t | sed '$d' >> ${chain}_treesets/${prefix}.treeset
+    sed -n ''"$BurnTree"',$p' ${prefix}.run2.t >> ${chain}_treesets/${prefix}.treeset
+    printf .
 done
+echo "Done"
+echo ""
+
+mv ${chain}_treesets/ ../
 
 #end
