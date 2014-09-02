@@ -1,3 +1,4 @@
+#!/bin/sh
 ##########################
 #Total Evidence Method simulations tasks generator
 ##########################
@@ -9,16 +10,18 @@
 #<modules.list> a text file containing the list of modules to load before submitting the individual jobs
 #<split> a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
 #########################
-#version 2.2
-TEM_tasker_version="TEM_tasker v2.2"
+#version 2.2.2
+TEM_tasker_version="TEM_tasker v2.2.2"
 #Generates the job files for running the simulation on a cluster
 #Update: Now creates a series of 25 jobs to submit
 #Update: Updated to use mpirun on the new version of the cluster
 #Update: Typo in the chain variable
 #Update: Added a split option
+#Update: fixed bug with /dev/null
+#Update: fixed splitting bug
 #To do: fix this option for ML
 #----
-#guillert(at)tcd.ie - 11/08/2014
+#guillert(at)tcd.ie - 02/09/2014
 ##########################
 
 #Input values
@@ -32,7 +35,7 @@ for folder in *${chain}*
 do
     cd ${folder}
     #Extracting the chain number ($n in TEM_treesim)
-    n=$(echo ${folder} | sed 's/.*'"${chain}"'//g')
+    n=$(echo ${folder} | sed 's/.*'"${chain}"'//g' | sed 's/\///g' )
     #Setting the CPU variable from the log file
     CPU=$(grep 'Number of CPU =' ${chain}${n}-Simulation.log | sed 's/Number of CPU = //g')
 
@@ -43,7 +46,7 @@ do
     then
 
         #Creating the job.template file
-        if echo $split | grep '1' > ./dev/null
+        if echo $split | grep '1' > /dev/null
         then
             echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
             echo "#SBATCH -n ${CPU}" >> job.template
@@ -66,7 +69,7 @@ do
             printf .
         fi
 
-        if echo $split | grep '2' > ./dev/null
+        if echo $split | grep '2' > /dev/null
         then
             echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
             echo "#SBATCH -n ${CPU}" >> job.template
@@ -80,8 +83,8 @@ do
             echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
             echo "##########################" >> job.template    
             echo "cd ${folder}_Bayesianjobs" >> job.template
-            cp job.template > job1.template
-            mv job.template > job2.template
+            cp job.template job1.template
+            mv job.template job2.template
             echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template   
             echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job1.template
             echo "cd ../" >> job1.template
@@ -92,7 +95,7 @@ do
             printf .
         fi
 
-        if echo $split | grep '3' > ./dev/null
+        if echo $split | grep '3' > /dev/null
         then
             echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
             echo "#SBATCH -n ${CPU}" >> job.template
@@ -106,9 +109,9 @@ do
             echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
             echo "##########################" >> job.template    
             echo "cd ${folder}_Bayesianjobs" >> job.template
-            cp job.template > job1.template
-            cp job.template > job2.template
-            mv job.template > job3.template
+            cp job.template job1.template
+            cp job.template job2.template
+            mv job.template job3.template
             echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template 
             echo "cd ../" >> job1.template
             echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job2.template
@@ -120,7 +123,7 @@ do
             printf .
         fi
 
-        if echo $split | grep '4' > ./dev/null
+        if echo $split | grep '4' > /dev/null
         then
             echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
             echo "#SBATCH -n ${CPU}" >> job.template
@@ -134,10 +137,10 @@ do
             echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
             echo "##########################" >> job.template    
             echo "cd ${folder}_Bayesianjobs" >> job.template
-            cp job.template > job1.template
-            cp job.template > job2.template
-            cp job.template > job3.template
-            mv job.template > job4.template
+            cp job.template job1.template
+            cp job.template job2.template
+            cp job.template job3.template
+            mv job.template job4.template
             echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template 
             echo "cd ../" >> job1.template
             echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job2.template
@@ -150,7 +153,7 @@ do
             printf .
         fi
 
-        if echo $split | grep '5' > ./dev/null
+        if echo $split | grep '5' > /dev/null
         then
             echo '/#!/bin/sh' | sed 's/\/\#!/\#!/g' > job.template
             echo "#SBATCH -n ${CPU}" >> job.template
@@ -164,11 +167,11 @@ do
             echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
             echo "##########################" >> job.template    
             echo "cd ${folder}_Bayesianjobs" >> job.template
-            cp job.template > job1.template
-            cp job.template > job2.template
-            cp job.template > job3.template
-            cp job.template > job4.template
-            mv job.template > job5.template
+            cp job.template job1.template
+            cp job.template job2.template
+            cp job.template job3.template
+            cp job.template job4.template
+            mv job.template job5.template
             echo "mpirun -np $CPU mb ${chain}${n}_L00<SUFFIX>.cmd ;" >> job1.template 
             echo "cd ../" >> job1.template
             echo "mpirun -np $CPU mb ${chain}${n}_L10<SUFFIX>.cmd ;" >> job2.template
@@ -195,25 +198,25 @@ do
         do
             SUFFIX=$(sed -n ''"$task"'p' suffix.list)
             JOBNAME=C${n}-T${task}
-            if echo $split | grep '1' > ./dev/null
+            if echo $split | grep '1' > /dev/null
             then
                 sed 's/<NTASK>/'"${task}"'/g' job.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'/g' > ${chain}${n}_${task}.job
                 printf .
             fi
-            if echo $split | grep '2' > ./dev/null
+            if echo $split | grep '2' > /dev/null
             then
                 sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
                 sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
                 printf .
             fi 
-            if echo $split | grep '3' > ./dev/null
+            if echo $split | grep '3' > /dev/null
             then
                 sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
                 sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
                 sed 's/<NTASK>/'"${task}"'/g' job3.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.3/g' > ${chain}${n}_${task}_3.job
                 printf .
             fi 
-            if echo $split | grep '4' > ./dev/null
+            if echo $split | grep '4' > /dev/null
             then
                 sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
                 sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
@@ -221,7 +224,7 @@ do
                 sed 's/<NTASK>/'"${task}"'/g' job4.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.4/g' > ${chain}${n}_${task}_4.job
                 printf .
             fi 
-            if echo $split | grep '5' > ./dev/null
+            if echo $split | grep '5' > /dev/null
             then
                 sed 's/<NTASK>/'"${task}"'/g' job1.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.1/g' > ${chain}${n}_${task}_1.job
                 sed 's/<NTASK>/'"${task}"'/g' job2.template | sed 's/<SUFFIX>/'"${SUFFIX}"'/g' | sed 's/<JOBNAME>/'"${JOBNAME}"'.2/g' > ${chain}${n}_${task}_2.job
@@ -233,7 +236,7 @@ do
         done
 
         #Cleaning
-        rm job.template ; rm suffix.list
+        rm *.template ; rm suffix.list
         printf .
 
     #ML method
@@ -272,15 +275,15 @@ do
         done
 
         #Cleaning
-        rm job.template ; rm script.list
+        rm *.template ; rm script.list 
         printf .
     fi
-
-    echo "\nJob files ready for ${chain}${n} in ${method} framework."
+    echo ""
+    echo "Job files ready for ${chain}${n} in ${method} framework."
     cd ..
 
 done
 
 echo 'Next step:'
-echo "for f in *.job ; do echo $f ; sbatch $f ; done ;"
+echo 'for f in *.job ; do echo $f ; sbatch $f ; done ;'
 #End
