@@ -14,22 +14,18 @@ source('~/PhD/Projects/Total_Evidence_Method-Missing_data//Functions/TreeCompari
 
 
 #Loading the Random tree comparisons
-Random51<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data//Data/Tree_Comparisons/Random_trees/51t_Random.Cmp",header=TRUE)
-Random26<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data//Data/Tree_Comparisons/Random_trees/26t_Random.Cmp",header=TRUE)
-Random25<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data//Data/Tree_Comparisons/Random_trees/25t_Random.Cmp",header=TRUE)
+Random51<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data/Data/Tree_Comparisons/RandomTrees/51t_Random.Cmp",header=TRUE)
+Random26<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data/Data/Tree_Comparisons/RandomTrees/26t_Random.Cmp",header=TRUE)
+Random25<-read.table("~/PhD/Projects/Total_Evidence_Method-Missing_data/Data/Tree_Comparisons/RandomTrees/25t_Random.Cmp",header=TRUE)
 
 
 #Loading the treesets
-#/TreeCmp_chains/
-tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-Bayes_trees<-NTS(tmp, Random51)
-
 
 #ML chains
-setwd("../Data/Tree_Comparisons/TreeCmp_chains/ML/")
+setwd("~/PhD/Projects/Total_Evidence_Method-Missing_data/Data/Tree_Comparisons/ML/besttree")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_trees<-NTS(tmp, Random51)
-setwd('../../../../Analysis/')
+setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Isolating the ML treesets
 ML.ML<-ML_trees[c(1,26,51,76,101)]
@@ -58,10 +54,10 @@ class(ML.MLMFMC)<-class(ML_trees)
 
 
 #Bayesian chains
-setwd("../Data/Tree_Comparisons/TreeCmp_chains/Bayesian/")
-tmp<-TreeCmp.Read('MChain', verbose=TRUE)
+setwd("~/PhD/Projects/Total_Evidence_Method-Missing_data/Data/Tree_Comparisons/Bayesian/consensus")
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_trees<-NTS(tmp, Random51)
-setwd('../../../../Analysis/')
+setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Isolating the Bayesian treesets + summarize each RPBTC by the mode  
 Bayesian.ML<-Bayesian_trees[c(1,26,51,76,101)]
