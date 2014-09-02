@@ -1,3 +1,6 @@
+#TreeCmp files
+*.Cmp
+
 # Raw data and idiocy prevention#
 *.xlsx
 *.xls
