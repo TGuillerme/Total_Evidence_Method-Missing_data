@@ -3,7 +3,7 @@
 ##########################
 #Calculate the CI and the mode of a given metric using TreeCmp class objects
 #Function modified from sumBTC (guillert(at)tcd.ie - 19/02/2014)
-#v.1.1
+#v.1.2
 #Update: the three core functions have been isolated
 #Update: in FUN.hdr, allows to read TreeCmp from similar tree comparison (NTS=1), setting $hdr and $alpha to NA and $mode to 1 if var(TreeCmp) == 0
 #Update: in FUN.densityplot, allows to plot TreeCmp from similar tree comparison (NTS=1), ignoring $hdr and $alpha and ploting only the mode (=1)
@@ -13,6 +13,7 @@
 #Update: allow to stack the plots with add=TRUE
 #Update: allow window scaling option (ylim)
 #Update: typo in as.data.frame - fixed colour of single points
+#Update: allowed optional arguments to the plot function
 ##########################
 #SYNTAX :
 #<TreeCmp> an object of the class TreeCmp
@@ -25,9 +26,10 @@
 #<shift> a numerical value between 0 and 0.6 for shifting the lines. Is ignored if plot=FALSE, lines=FALSE, add=FALSE.
 #<ylim> two numerical values to scale the y axis of the plot. If set to 'auto' (default), the window is automatically scaled with the minimum and the maximum value from the TreeCmp.
 #<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'TreeCmp'. Is ignored if plot=FALSE.
+#<...> any optional arguments to be passed to plot()
 ##########################
 #----
-#guillert(at)tcd.ie - 09/06/2014
+#guillert(at)tcd.ie - 08/09/2014
 ##########################
 #Requirements:
 #-R 3
@@ -35,7 +37,7 @@
 #-R TreeCmp objects
 ##########################
 
-TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE) {
+TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE, ...) {
 warning("check if problem with bw.nrd0 in FUNhdr?")
 #HEADER
 
@@ -166,7 +168,7 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
     }
 
     #Density Plot function (from densityplot.R by Andrew Jackson - a.jackson@tcd.ie)
-    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim) {
+    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ...) {
 
         #Transform dat into a column format
         dat<-matrix(NA, nrow=max(TreeCmp.rows), ncol=TreeCmp.length)
@@ -196,7 +198,7 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
                 ylims<-ylim
             }
             xspc<-0.5
-            plot(1,1, xlab='', ylab=ylabels, main=paste('','', sep=''), xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n')
+            plot(1,1, xlab='', ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
             axis(side = 1, at = 1:n, labels = (as.character(names(dat))), las=2, cex=0.75)
         }
         #Set the colors (grayscale)
@@ -258,7 +260,7 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
 
     #Optional plot
     if (plot == TRUE) {
-        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim)
+        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ...)
     }
 
     #Optional saving
