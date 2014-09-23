@@ -392,7 +392,7 @@ In order to measure the phylogenetic signal of our simulations, we first ran a f
 We removed all the simulations that had a median bootstrap support lower than 50 as a proxy for weak phylogenetic signal \citep{zanderminimal2004}.
 We repeated this selection until we obtained 50 sets of simulations (i.e. 50 "complete" and 50*124 "missing-data" matrices) that with a relative good phylogenetic signal (median bootstrap $>$ 50).
 
-We used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support. %The explanations of the algorithm part for the BS was proposed by Trevor
+We used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support \citep{pattengale2010many}. %The explanations of the algorithm part for the BS was proposed by Trevor
 The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists of pruning one sub-tree from the tree and subsequently reinserting it to all neighbouring branches \citep{stamatakisa2008}.
 Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated to be better than other methods (e.g. Nearest Neighbouring Interchange - NNI) for recovering good bootstrap values \citep{salamin2003}.
 When using these parameters, it took 13 CPU years to build 50 sets of 125 bootstrapped Maximum Likelihood trees (8 core nodes 2.30GHz clock speed).
