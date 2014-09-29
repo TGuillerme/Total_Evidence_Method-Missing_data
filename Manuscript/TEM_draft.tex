@@ -89,14 +89,14 @@
 Version dated: \today
 \end{flushright}
 \bigskip
-\noindent RH: Missing data and topology in Total Evidence matrices %RH = Running Head
+\noindent RH: Missing data and topology in total evidence approach %RH = Running Head
 
 \bigskip
 \medskip
 \begin{center}
 
 %Title
-\noindent{\Large \bf Effect of missing data in matrices containing living and fossil taxa on topological accuracy}
+\noindent{\Large \bf Effect of missing data on correct topological recovery using a total evidence approach}
 %Alternative punchier title: "Bayesian Total Evidence methods fail to recover correct topologies from matrices containing both living and fossil taxa"
 %Alternative punchier title: "Maximum Likelihood outperforms Bayesian methods for inferring topology from Total Evidence matrices containing both living and fossil taxa"
 % NC: Not sure about any of these. I actually think I prefer your talk title. So something like: The effects of missing data on the ability of Total Evidence approaches to recover correct tree topologies. No rush to decide. But needs Total Evidence in there somewhere.
@@ -104,11 +104,11 @@ Version dated: \today
 \bigskip
 
 %Authors
-\noindent {\normalsize \sc Thomas Guillerme$^1$$^,$$^2$, other authors $^3$, and Natalie Cooper$^1$$^,$$^2$}\\
+% TG: For the authorship, we can always squeeze whoever wants to be in the paper between the two of us. However, following the rule "Should I be author? Yes if I can give a talk about the paper." I think that just leaves the two of us.
+\noindent {\normalsize \sc Thomas Guillerme$^1$$^,$$^2$, and Natalie Cooper$^1$$^,$$^2$}\\
 \noindent {\small \it 
 $^1$School of Natural Sciences, Trinity College Dublin, Dublin 2, Ireland;\\
-$^2$Trinity Centre for Biodiversity Research, Trinity College Dublin, Dublin 2, Ireland;\\
-$^3$Somewhere else }\\
+$^2$Trinity Centre for Biodiversity Research, Trinity College Dublin, Dublin 2, Ireland;}\\
 \end{center}
 \medskip
 \noindent{\bf Corresponding author:} Thomas Guillerme, School of Natural Sciences, Trinity College Dublin, Dublin 2, Ireland; E-mail: guillert@tcd.ie; Fax: +353 1 6778094; Tel: +353 1 896 2571.\\
@@ -189,15 +189,15 @@ Therefore Total Evidence matrices are likely to contain a lot of missing data th
 
 % NC: You need to take a bit of time to learn about singular and plural grammar in English. It's something you always do wrong. e.g. The Total Evidence method *uses* this and *its* parameters are as follows. Versus: Total Evidence methods *use* this and *their* parameters are as follows. Sive and I won't be around to correct your English forever. - TG: my French demons are back!
 
-The effect of missing data on phylogenetic inferences has been widely studied \citep{wiensmissing2003,wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011,sansomfossilization2013}.
+The effect of missing data on phylogenetic inferences has been widely studied \citep{wiensmissing2003,wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011,sansomfossilization2013,pattinsonphylogeny2014}.
 Missing molecular data has been seen by some authors as an issue because it can, in some part of the tree, decrease phylogenetic signal (i.e. the evolutionary information contained within the matrix allowing to infer topology and branch length)% NC: define phylogenetic signal here. 
     , especially when using large matrices \citep{lemmonthe2009}.
 However, this may not be a major issue because phylogenetic signal is easily increased by:
 (i) including a "modest" number of highly-covered genes (i.e. approximatively of the genes that are coded for most of the species; \citealt{rouresite-specific2011}) %NC: what do you mean by highly-covered?
 (ii) adding a greater number of taxa (especially slowly-evolving taxa or taxa close to the outgroup; \citealt{rouresite-specific2011}); and
 (iii) choosing more appropriate models of sequence evolution \citep{wiensmissing2006,wiensmissing2008,rouresite-specific2011}.
-Similarly, missing morphological data might be seen as either a major or minor issue for accurately inferring phylogenies depending on the study in question \citep{wiensmissing2003,sansomfossilization2013}.
-Because soft-tissue characters are rarely preserved in the fossil record, missing data is mainly found in these characters, and is therefore not randomly distributed which can lead to biased placement of fossil taxa in phylogenies \citep{sansomfossilization2013}.
+Similarly, missing morphological data might be seen as either a major or minor issue for accurately inferring phylogenies depending on the study in question \citep{wiensmissing2003,sansomfossilization2013,pattinsonphylogeny2014}.
+Because soft-tissue characters are rarely preserved in the fossil record, missing data is mainly found in these characters, and is therefore not randomly distributed which can lead to biased placement of fossil taxa in phylogenies (e.g. \citeauthor{sansomfossilization2013} \citeyear{sansomfossilization2013} but see \citeauthor{pattinsonphylogeny2014} \citeyear{pattinsonphylogeny2014}).
 However, the phylogenetic signal is not related to the amount of missing data \textit{per se} but to the number of informative characters for each taxon, therefore missing data is less of an issue than the number of shared informative characters \citep{wiensmissing2003}.
 % NC: I'm a little dubious of what this paragraph is trying to get at in places. We should discuss at some point. TG: my idea was to do the "literature-review" part of the intro: missing data is already widely studied (answer to the comment: "hun... We already knew that") but it has never been studied in TEM framework. And that's kind of the point we're getting toward with our work: we don't really care about the effect of missing data per se (i.e. what's the threshold were it starts fucking up the phylogeny) but more the fact that Bayesian fails.
 
@@ -883,7 +883,7 @@ If so, an effort should be made prior to the phylogenetic analysis on collecting
 
 \section{Acknowledgements}
 % NC: Try and keep these short and to the point
-Thanks to Frédéric Delsuc, Emmanuel Douzery, Trevor Hodkinson and Andrew Jackson and the members of the Macro Journal Club %Also Gavin Thomas if not authors - %TG : also Adam Kev and Sive or that's putting to many people, thinking about it, they helped at least as much as Andrew (not mentioning Trevor but that's more political)?
+Thanks to Fr\'{e}d\'{e}ric Delsuc, Emmanuel Douzery, Trevor Hodkinson and Andrew Jackson, Gavin Thomas, April Wright and the members of the Macro Journal Club %Also Gavin Thomas if not authors - %TG : also Adam Kev and Sive or that's putting to many people, thinking about it, they helped at least as much as Andrew (not mentioning Trevor but that's more political)?
 for useful comments on our simulation protocol. Thanks to Paddy Doyle, Graziano D'Innocenzo and Sean McGrath for assistance with the computer cluster. Simulations used the Lonsdale cluster maintained by the Trinity Centre for High Performance Computing and funded through grants from Science Foundation Ireland. % NC: Is this what you're supposed to cite for the cluster? Check. - TG: yep
 This work was funded by a European Commission CORDIS Seventh Framework Programme (FP7) Marie Curie CIG grant (proposal number: 321696).
 

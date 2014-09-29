@@ -1,4 +1,4 @@
-\begin{thebibliography}{62}
+\begin{thebibliography}{64}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -204,6 +204,20 @@ Paradis, E. 2011. Time-dependent speciation and extinction from phylogenies: a
 Paradis, E., J.~Claude, and K.~Strimmer. 2004. {APE:} analyses of phylogenetics
   and evolution in r language. Bioinformatics 20:289--290.
 \bibAnnoteFile{paradisape:2004}
+
+\bibitem[{Pattengale et~al.(2010)Pattengale, Alipour, Bininda-Emonds, Moret,
+  and Stamatakis}]{pattengale2010many}
+Pattengale, N.~D., M.~Alipour, O.~R. Bininda-Emonds, B.~M. Moret, and
+  A.~Stamatakis. 2010. How many bootstrap replicates are necessary? Journal of
+  Computational Biology 17:337--354.
+\bibAnnoteFile{pattengale2010many}
+
+\bibitem[{Pattinson et~al.(2014)Pattinson, Thompson, Piotrowski, and
+  Asher}]{pattinsonphylogeny2014}
+Pattinson, D.~J., R.~S. Thompson, A.~K. Piotrowski, and R.~J. Asher. 2014.
+  Phylogeny, paleontology, and primates: do incomplete fossils bias the tree of
+  life? Systematic biology .
+\bibAnnoteFile{pattinsonphylogeny2014}
 
 \bibitem[{Pearman et~al.(2008)Pearman, Guisan, Broennimann, and
   Randin}]{pearmanniche2008}

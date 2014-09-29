@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  29 JUL 2014 17:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  29 SEP 2014 14:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -598,42 +598,42 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 109.
 LaTeX Font Info:    Font shape `OT1/pplj/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 114.
+(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 113.
  [1
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/pplj/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 124.
+(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 123.
  [2] [3] [4]
 [5] [6] [7] [8] [9] (./Tables/Glossary.tex)
 
-LaTeX Warning: Float too large for page by 137.1929pt on input line 282.
+LaTeX Warning: Float too large for page by 137.1929pt on input line 281.
 
-<Figures/TEM_Fig_outline-BW.pdf, id=211, 312.9803pt x 483.6971pt>
+<Figures/TEM_Fig_outline-BW.pdf, id=217, 312.9803pt x 483.6971pt>
 File: Figures/TEM_Fig_outline-BW.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig_outline-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig_outline-BW.pdf used on input line 287.
+Package pdftex.def Info: Figures/TEM_Fig_outline-BW.pdf used on input line 286.
 
 (pdftex.def)             Requested size: 312.97952pt x 483.69592pt.
 
 
-LaTeX Warning: Float too large for page by 17.68622pt on input line 296.
+LaTeX Warning: Float too large for page by 17.68622pt on input line 295.
 
 [10] [11 <./Figures/TEM_Fig_outline-BW.pdf>]
 
 LaTeX Warning: Hyper reference `supplementaries' on page 12 undefined on input 
-line 322.
+line 321.
 
-[12] <Figures/TEM_Fig_missingData-BW.pdf, id=291, 512.14938pt x 227.62239pt>
+[12] <Figures/TEM_Fig_missingData-BW.pdf, id=297, 512.14938pt x 227.62239pt>
 File: Figures/TEM_Fig_missingData-BW.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig_missingData-BW.pdf>
 Package pdftex.def Info: Figures/TEM_Fig_missingData-BW.pdf used on input line 
-352.
+351.
 (pdftex.def)             Requested size: 512.14813pt x 227.62183pt.
 
-Overfull \hbox (42.39311pt too wide) in paragraph at lines 352--362
+Overfull \hbox (42.39311pt too wide) in paragraph at lines 351--361
  [][] 
  []
 
@@ -644,56 +644,56 @@ Missing character: There is no ô in font pplr9o!
  [17] [18] [19]
 
 Package natbib Warning: Citation `ruxtontime2008' on page 20 undefined on input
- line 490.
+ line 489.
 
-[20] <Figures/TEM_Fig-results-BW.pdf, id=461, 597.50829pt x 341.43358pt>
+[20] <Figures/TEM_Fig-results-BW.pdf, id=470, 597.50829pt x 341.43358pt>
 File: Figures/TEM_Fig-results-BW.pdf Graphic file (type pdf)
 
 <use Figures/TEM_Fig-results-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig-results-BW.pdf used on input line 609.
+Package pdftex.def Info: Figures/TEM_Fig-results-BW.pdf used on input line 608.
 
 (pdftex.def)             Requested size: 597.50682pt x 341.43274pt.
 
-Overfull \hbox (127.7518pt too wide) in paragraph at lines 609--615
+Overfull \hbox (127.7518pt too wide) in paragraph at lines 608--614
  [][] 
  []
 
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 15.0049pt on input line 623.
+(Font)              scaled to size 15.0049pt on input line 622.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 623.
+(Font)              scaled to size 10.42007pt on input line 622.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 15.0049pt on input line 623.
+(Font)              scaled to size 15.0049pt on input line 622.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 623.
+(Font)              scaled to size 10.42007pt on input line 622.
 
 LaTeX Warning: Reference `NTS_ML_results' on page 21 undefined on input line 62
-6.
+5.
 
 [21] [22 <./Figures/TEM_Fig-results-BW.pdf>]
 
 LaTeX Warning: Reference `NTS_Ba_results' on page 23 undefined on input line 62
-8.
+7.
 
 
 LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 63
-8.
+7.
+
+
+LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 64
+7.
 
 
 LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 64
 8.
-
-
-LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 64
-9.
 
 [23] (./Tables/NTS_ML_results.tex)
 
-LaTeX Warning: Float too large for page by 176.51117pt on input line 685.
+LaTeX Warning: Float too large for page by 176.51117pt on input line 684.
 
 (./Tables/NTS_BA_results.tex)
 
-LaTeX Warning: Float too large for page by 176.51117pt on input line 693.
+LaTeX Warning: Float too large for page by 176.51117pt on input line 692.
 
 (./Tables/Group_results.tex
 Overfull \hbox (2.27075pt too wide) in paragraph at lines 1--35
@@ -702,7 +702,7 @@ Overfull \hbox (2.27075pt too wide) in paragraph at lines 1--35
 
 )
 
-LaTeX Warning: Float too large for page by 142.393pt on input line 702.
+LaTeX Warning: Float too large for page by 142.393pt on input line 701.
 
 (./Tables/ML_RF-ML_results.tex) (./Tables/ML_Tr-ML_results.tex)
 (./Tables/Ba_RF-ML_results.tex) (./Tables/ML_RF-MF_results.tex)
@@ -711,18 +711,13 @@ LaTeX Warning: Float too large for page by 142.393pt on input line 702.
 (./Tables/Ba_RF-MC_results.tex) [24] [25] [26]
 
 LaTeX Warning: Reference `supplementaries' on page 27 undefined on input line 8
-23.
+22.
 
 [27]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ô in font pplr9o!
- [28]
-Missing character: There is no √ in font pplr9o!
-Missing character: There is no © in font pplr9o!
-Missing character: There is no √ in font pplr9o!
-Missing character: There is no © in font pplr9o!
- [29] (./TEM_draft.bbl
+ [28] [29] (./TEM_draft.bbl
 Missing character: There is no √ in font pplr9o!
 Missing character: There is no ≥ in font pplr9o!
  [30] [31] [32]
@@ -735,10 +730,10 @@ Missing character: There is no ô in font pplr9o!
  [33] [34]
 Missing character: There is no ƒ in font pplr9o!
 Missing character: There is no ç in font pplr9o!
- [35])
-(./SupplementaryMaterial/SupplementaryMaterial.tex [36]
+ [35] [36])
+(./SupplementaryMaterial/SupplementaryMaterial.tex
 (./SupplementaryMaterial/TreeBuilding.tex
-<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf, id=648, 505
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf, id=657, 505
 .89pt x 505.89pt>
 File: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf Graphic
  file (type pdf)
@@ -772,7 +767,7 @@ Overfull \hbox (163.70097pt too wide) in paragraph at lines 1--28
 LaTeX Warning: Float too large for page by 185.68123pt on input line 28.
 
 
-<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf, id=822, 505
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf, id=831, 505
 .89pt x 505.89pt>
 File: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf Graphic
  file (type pdf)
@@ -790,30 +785,30 @@ Overfull \hbox (36.13373pt too wide) in paragraph at lines 34--35
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 914.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
 [44] [45 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf>]
 [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60]
 [61]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 914.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
  (./TEM_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 914.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 914.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
 Package rerunfilecheck Info: File `TEM_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 914.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 913.
  ) 
 Here is how much of TeX's memory you used:
- 9227 strings out of 493315
- 140501 string characters out of 6137904
- 325410 words of memory out of 5000000
- 12183 multiletter control sequences out of 15000+600000
+ 9237 strings out of 493315
+ 140759 string characters out of 6137904
+ 325583 words of memory out of 5000000
+ 12189 multiletter control sequences out of 15000+600000
  62495 words of font info for 172 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,11n,38p,1199b,521s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,11n,38p,1199b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -827,10 +822,10 @@ ype1/public/fpl/fplrij8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/ur
 w/palatino/uplb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palat
 ino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palatino/upl
 ri8a.pfb>
-Output written on TEM_draft.pdf (61 pages, 868137 bytes).
+Output written on TEM_draft.pdf (61 pages, 868992 bytes).
 PDF statistics:
- 1055 PDF objects out of 1200 (max. 8388607)
- 887 compressed objects within 9 object streams
- 174 named destinations out of 1000 (max. 500000)
+ 1065 PDF objects out of 1200 (max. 8388607)
+ 897 compressed objects within 9 object streams
+ 176 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
