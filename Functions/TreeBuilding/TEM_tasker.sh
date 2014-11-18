@@ -10,8 +10,8 @@
 #<modules.list> a text file containing the list of modules to load before submitting the individual jobs
 #<split> a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
 #########################
-#version 2.2.2
-TEM_tasker_version="TEM_tasker v2.2.2"
+#version 2.2.3
+TEM_tasker_version="TEM_tasker v2.2.3"
 #Generates the job files for running the simulation on a cluster
 #Update: Now creates a series of 25 jobs to submit
 #Update: Updated to use mpirun on the new version of the cluster
@@ -19,9 +19,10 @@ TEM_tasker_version="TEM_tasker v2.2.2"
 #Update: Added a split option
 #Update: fixed bug with /dev/null
 #Update: fixed splitting bug
-#To do: fix this option for ML
+#Update: fixed typo in ML
+#To do: split option for ML
 #----
-#guillert(at)tcd.ie - 02/09/2014
+#guillert(at)tcd.ie - 18/11/2014
 ##########################
 
 #Input values
@@ -250,6 +251,7 @@ do
         echo "#SBATCH -J <JOBNAME>-ML" >> job.template
         echo "" >> job.template
         cat ../$moduleslist >> job.template
+        echo "" >> job.template
         echo "##########################" >> job.template
         echo "#TASK FILE <NTASK> - ${chain}${n}" >> job.template
         echo "##########################" >> job.template    
