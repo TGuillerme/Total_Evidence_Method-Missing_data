@@ -22,7 +22,7 @@ Random25<-read.table("../Data/Tree_Comparisons/RandomTrees/25t_Random.Cmp",heade
 #ML chains
 
 #Best trees
-setwd("../Data/Tree_Comparisons/ML/besttree")
+setwd("../Data/Tree_Comparisons/WithRFL/ML/besttree")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_besttrees<-NTS(tmp, Random51)
 setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
@@ -30,13 +30,13 @@ setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 #Bootstraps
 setwd("../Data/Tree_Comparisons/ML/bootstraps")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-ML_bootstraps<-NTS(tmp, Random51)
+ML_bootstraps<-NTS(tmp, Random51[-7])
 setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Bayesian chains
 
 #Consensus
-setwd("../Data/Tree_Comparisons/Bayesian/consensus")
+setwd("../Data/Tree_Comparisons/WithRFL/Bayesian/consensus")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_contrees<-NTS(tmp, Random51)
 setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
@@ -44,7 +44,7 @@ setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 #Treesets
 setwd("../Data/Tree_Comparisons/Bayesian/treesets")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-Bayesian_treesets<-NTS(tmp, Random51)
+Bayesian_treesets<-NTS(tmp, Random51[-7])
 setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Isolating the parameters per chains
@@ -59,13 +59,57 @@ par_MLMFMC<-c(1:125)
 #Plots
 
 #Setting the metric
-metric="R.F_Cluster"
+metric="RFL"
+#metric="R.F_Cluster"
 #metric="Triples"
 #colour figures palette("default")
 #BW figures  
 #palette(c("black", "gray50"))
 #fix ylim
 ylim=c(0,1)
+
+
+
+###################
+#Global trends plots
+###################
+op<-par(mfrow=c(3,1))
+par<-par_MLMFMC
+ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
+#ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
+#Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+
+#Setting the RF plot
+metric="R.F_Cluster"
+main="Global trend with RF"
+#ML plot
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+legend(1,0.8, c("ML", "Bayesian"), pch=19, col=palette()[1:2])
+
+#Setting the Triples plot
+metric="Triples"
+main="Global trend with Triples"
+#ML plot
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the RF plot
+metric="RFL"
+main="Global trend with RFL"
+#ML plot
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+par(op)
+
+
+
+
+###################
+#Parameters per metric in ML and Bayesian [single]
+###################
 
 #Parameters
 par<-par_ML
@@ -75,7 +119,7 @@ ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
 
-op<-par(mfrow=c(3,2))
+op<-par(mfrow=c(3,3))
 #Setting the ML plot
 metric="R.F_Cluster"
 par<-par_ML
@@ -85,6 +129,7 @@ Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
 TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+legend(1,0.8, c("ML", "Bayesian"), pch=19, col=palette()[1:2])
 
 #Setting the ML plot
 metric="Triples"
@@ -96,6 +141,15 @@ Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
+#Setting the ML plot
+metric="RFL"
+par<-par_ML
+main="Missing Living"
+ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
+Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
+#ML plot
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MF plot
 metric="R.F_Cluster"
@@ -117,6 +171,15 @@ Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
+#Setting the MF plot
+metric="RFL"
+par<-par_MF
+main="Missing Fossil"
+ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
+Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
+#ML plot
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MC plot
 metric="R.F_Cluster"
@@ -130,6 +193,16 @@ TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, a
 
 #Setting the MC plot
 metric="Triples"
+par<-par_MC
+main="Missing Character"
+ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
+Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
+#ML plot
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the MC plot
+metric="RFL"
 par<-par_MC
 main="Missing Character"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
@@ -241,14 +314,18 @@ Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #Distribution
 TreeCmp.distribution(ML_best, "Triples")
 TreeCmp.distribution(ML_best, "R.F_Cluster")
+TreeCmp.distribution(ML_best, "RFL")
 TreeCmp.distribution(Bay_con, "Triples")
 TreeCmp.distribution(Bay_con, "R.F_Cluster")
+TreeCmp.distribution(Bay_con, "RFL")
 
 #Difference
-TreeCmp.anova(ML_best, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
-TreeCmp.anova(ML_best, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
-TreeCmp.anova(Bay_con, "R.F_Cluster", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
-TreeCmp.anova(Bay_con, "Triples", plot=TRUE, LaTeX=TRUE) ; TreeCmp.xtables$posthoc
+TreeCmp.anova(ML_best, "R.F_Cluster", plot=TRUE, LaTeX=FALSE)
+TreeCmp.anova(ML_best, "Triples", plot=TRUE, LaTeX=FALSE)
+TreeCmp.anova(ML_best, "RFL", plot=TRUE, LaTeX=FALSE)
+TreeCmp.anova(Bay_con, "R.F_Cluster", plot=TRUE, LaTeX=FALSE)
+TreeCmp.anova(Bay_con, "Triples", plot=TRUE, LaTeX=FALSE)
+TreeCmp.anova(Bay_con, "RFL", plot=TRUE, LaTeX=FALSE)
 
 
 
@@ -271,9 +348,14 @@ TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
 test<-TreeCmp.anova(ML_best, "R.F_Cluster", plot=TRUE)
 TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
 
+test<-TreeCmp.anova(ML_best, "RFL", plot=TRUE)
+TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
+
 test<-TreeCmp.anova(Bay_con, "Triples", plot=TRUE)
 TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
 
 test<-TreeCmp.anova(Bay_con, "R.F_Cluster", plot=TRUE)
 TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
 
+test<-TreeCmp.anova(Bay_con, "RFL", plot=TRUE)
+TreeCmp.pairPlot(test$posthoc, parametric=FALSE)
