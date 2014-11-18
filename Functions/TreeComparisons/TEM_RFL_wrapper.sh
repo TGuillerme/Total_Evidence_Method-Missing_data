@@ -1,7 +1,7 @@
 ##########################
 #Wrapper for the RFL function for the Total Evidence missing data analysis
 ##########################
-#SYNTAX: TEM_RFL_wrapper <cmpz> <treez> <type>
+#SYNTAX: TEM_RFL_wrapper <cmpz> <treez> <method> <type>
 #With
 #<chain> the chain name
 #<cmpz> the path to the folder containing the .Cmp files
@@ -9,17 +9,16 @@
 #<method> either Bayesian or ML
 #<type> either single or treesets
 ##########################
-#version: 0.2
+#version: 1.0
 #Update: now allows for method and type
-TEM_RFL_wrapper_version="TEM_RFL_wrapper.sh v0.2"
+#Update: fixed also for the RFL command
+TEM_RFL_wrapper_version="TEM_RFL_wrapper.sh v1.0"
 #----
 #guillert(at)tcd.ie - 16/11/2014
 ##########################
 #Requirements:
 #-R 3
 #-ape package
-#-a "treecmps" folder containing the .Cmp files
-#-a "trees" folder containing the .run*.t files
 #-TEM_ChainSum.sh v1.0
 ##########################
 
@@ -31,6 +30,8 @@ type=$5
 
 #Copy the files in the current directory
 
+rm -R treecmps/
+rm -R trees/
 mkdir treecmps/
 mkdir trees/
 
@@ -54,16 +55,16 @@ else
     if echo $type | grep "single" > /dev/null
     then
         echo "Copying the tree files..."
-        cp $treez/RAxML_bestTree.$chain* trees/
+        cp $treez/RAxML_bestTree.$chain_* trees/
         echo "Done"
     else 
         echo "Copying the tree files..."
-        cp $treez/RAxML_bipartitions.$chain* trees/
+        cp $treez/RAxML_bipartitions.$chain_* trees/
         echo "Done"
     fi 
 fi
 
-echo "source('RFL.R') ; RFL('$chain', type='$type')" > R.task
+echo "source('RFL.R') ; RFL('$chain', method='$method', type='$type')" > R.task
 
 R --no-save < R.task > /dev/null
 
