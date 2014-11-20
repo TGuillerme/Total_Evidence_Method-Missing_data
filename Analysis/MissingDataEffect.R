@@ -42,9 +42,9 @@ Bayesian_contrees<-NTS(tmp, Random51)
 setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Treesets
-setwd("../Data/Tree_Comparisons/Bayesian/treesets")
+setwd("../Data/Tree_Comparisons/WithRFL/Bayesian/treesets")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-Bayesian_treesets<-NTS(tmp, Random51[-7])
+Bayesian_treesets<-NTS(tmp, Random51)
 setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Isolating the parameters per chains
@@ -71,7 +71,7 @@ ylim=c(0,1)
 
 
 ###################
-#Global trends plots
+#Global trends plots [single]
 ###################
 op<-par(mfrow=c(3,1))
 par<-par_MLMFMC
@@ -82,25 +82,60 @@ Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 
 #Setting the RF plot
 metric="R.F_Cluster"
-main="Global trend with RF"
+main="Global trend with RF [single]"
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend(1,0.8, c("ML", "Bayesian"), pch=19, col=palette()[1:2])
 
 #Setting the Triples plot
 metric="Triples"
-main="Global trend with Triples"
+main="Global trend with Triples [single]"
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the RF plot
 metric="RFL"
-main="Global trend with RFL"
+main="Global trend with RFL [single]"
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+par(op)
+
+
+###################
+#Global trends plots [treeset]
+###################
+op<-par(mfrow=c(3,1))
+par<-par_MLMFMC
+#ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+#Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+
+#Setting the RF plot
+metric="R.F_Cluster"
+main="Global trend with RF [treeset]"
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+legend(1,0.8, c("ML", "Bayesian"), pch=19, col=palette()[1:2])
+
+#Setting the Triples plot
+metric="Triples"
+main="Global trend with Triples [treeset]"
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the RF plot
+metric="RFL"
+main="Global trend with RFL [treeset]"
+#ML plot
+#TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, main=main, ylim=ylim)
 
 par(op)
 
@@ -113,7 +148,7 @@ par(op)
 
 #Parameters
 par<-par_ML
-main="Missing Living"
+main="Missing Living [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 #ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
@@ -123,183 +158,344 @@ op<-par(mfrow=c(3,3))
 #Setting the ML plot
 metric="R.F_Cluster"
 par<-par_ML
-main="Missing Living"
+main="Missing Living [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 legend(1,0.8, c("ML", "Bayesian"), pch=19, col=palette()[1:2])
 
 #Setting the ML plot
 metric="Triples"
 par<-par_ML
-main="Missing Living"
+main="Missing Living [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the ML plot
 metric="RFL"
 par<-par_ML
-main="Missing Living"
+main="Missing Living [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MF plot
 metric="R.F_Cluster"
 par<-par_MF
-main="Missing Fossil"
+main="Missing Fossil [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MF plot
 metric="Triples"
 par<-par_MF
-main="Missing Fossil"
+main="Missing Fossil [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MF plot
 metric="RFL"
 par<-par_MF
-main="Missing Fossil"
+main="Missing Fossil [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MC plot
 metric="R.F_Cluster"
 par<-par_MC
-main="Missing Character"
+main="Missing Character [single]" 
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MC plot
 metric="Triples"
 par<-par_MC
-main="Missing Character"
+main="Missing Character [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 #Setting the MC plot
 metric="RFL"
 par<-par_MC
-main="Missing Character"
+main="Missing Character [single]"
 ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
 Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
 #ML plot
-TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
-TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_best , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_con , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
 
 par(op)
 
+
 ###################
-#Fossil vs. Living plot in ML or Bayesian in RF/Triples [single]
+#Parameters per metric in ML and Bayesian [treeset]
 ###################
 
-op<-par(mfrow=c(2,2))
+#Parameters
+par<-par_ML
+main="Missing Living [treeset]"
+#ML_best<-ML_besttrees[par] ; class(ML_best)<-class(ML_besttrees)
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+#Bay_con<-Bayesian_contrees[par] ; class(Bay_con)<-class(Bayesian_contrees)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+
+op<-par(mfrow=c(3,3))
+#Setting the ML plot
+metric="R.F_Cluster"
+par<-par_ML
+main="Missing Living [treeset]"
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+legend(1,0.8, c("ML", "Bayesian"), pch=19, col=palette()[1:2])
+
+#Setting the ML plot
+metric="Triples"
+par<-par_ML
+main="Missing Living [treeset]"
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the ML plot
+metric="RFL"
+par<-par_ML
+main="Missing Living [treeset]"
+#ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+#TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, ylim=ylim, main=main)
+
+#Setting the MF plot
+metric="R.F_Cluster"
+par<-par_MF
+main="Missing Fossil [treeset]"
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the MF plot
+metric="Triples"
+par<-par_MF
+main="Missing Fossil [treeset]"
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the MF plot
+metric="RFL"
+par<-par_MF
+main="Missing Fossil [treeset]"
+#ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+#TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, ylim=ylim, main=main)
+
+#Setting the MC plot
+metric="R.F_Cluster"
+par<-par_MC
+main="Missing Character [treeset]"
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the MC plot
+metric="Triples"
+par<-par_MC
+main="Missing Character [treeset]"
+ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+
+#Setting the MC plot
+metric="RFL"
+par<-par_MC
+main="Missing Character [treeset]"
+#ML_boot<-ML_bootstraps[par] ; class(ML_boot)<-class(ML_bootstraps)
+Bay_set<-Bayesian_treesets[par] ; class(Bay_set)<-class(Bayesian_treesets)
+#ML plot
+#TreeCmp.Plot( ML_boot , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_set , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, ylim=ylim, main=main)
+
+par(op)
+
+
+
+
+###################
+#Fossil vs. Living vs. Character plot in ML or Bayesian in RF/Triples [single]
+###################
+
+op<-par(mfrow=c(2,3))
 #ML plots
 #Setting the ML plot in RF
 metric="R.F_Cluster"
-main="Missing data in ML (RF)"
+main="Missing data in ML (RF) [single]"
 ML_ML<-ML_besttrees[par_ML] ; class(ML_ML)<-class(ML_besttrees)
 ML_MF<-ML_besttrees[par_MF] ; class(ML_MF)<-class(ML_besttrees)
+ML_MC<-ML_besttrees[par_MC] ; class(ML_MC)<-class(ML_besttrees)
 #ML plot
 TreeCmp.Plot( ML_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
-legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+TreeCmp.Plot( ML_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
+legend(1, 0.4, c("Missing living", "Missing Fossil", "Missing Character"), col=palette()[1:3], pch=19)
+
 #Setting the ML plot in Triples
 metric="Triples"
-main="Missing data in ML (Triples)"
+main="Missing data in ML (Triples) [single]"
 #ML plot
 TreeCmp.Plot( ML_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
 #legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+
+#Setting the ML plot in RFL
+metric="RFL"
+main="Missing data in ML (RFL) [single]"
+#ML plot
+TreeCmp.Plot( ML_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( ML_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
+#legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+
 
 #ML plots
 #Setting the ML plot in RF
 metric="R.F_Cluster"
-main="Missing data in Bayesian (RF)"
+main="Missing data in Bayesian (RF) [single]"
 Bay_ML<-Bayesian_contrees[par_ML] ; class(Bay_ML)<-class(Bayesian_contrees)
 Bay_MF<-Bayesian_contrees[par_MF] ; class(Bay_MF)<-class(Bayesian_contrees)
+Bay_MC<-Bayesian_contrees[par_MC] ; class(Bay_MC)<-class(Bayesian_contrees)
+
 #ML plot
 TreeCmp.Plot( Bay_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( Bay_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bay_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
 #legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+
 #Setting the ML plot in Triples
 metric="Triples"
-main="Missing data in Bayesian (Triples)"
+main="Missing data in Bayesian (Triples) [single]"
 #ML plot
 TreeCmp.Plot( Bay_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( Bay_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bay_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
+
+#Setting the ML plot in RFL
+metric="RFL"
+main="Missing data in Bayesian (RFL) [single]"
+TreeCmp.Plot( Bay_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bay_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
 #legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
 
 par(op)
 
 ###################
-#Fossil vs. Living plot in ML or Bayesian in RF/Triples [treesets]
+#Fossil vs. Living vs. Character plot in ML or Bayesian in RF/Triples [treesets]
 ###################
 
-op<-par(mfrow=c(2,2))
+op<-par(mfrow=c(2,3))
 #ML plots
 #Setting the ML plot in RF
 metric="R.F_Cluster"
-main="Missing data in ML (RF)"
-ML_ML<-ML_bootstraps[par_ML] ; class(ML_ML)<-class(ML_besttrees)
-ML_MF<-ML_bootstraps[par_MF] ; class(ML_MF)<-class(ML_besttrees)
+main="Missing data in ML (RF) [treeset]"
+ML_ML<-ML_bootstraps[par_ML] ; class(ML_ML)<-class(ML_bootstraps)
+ML_MF<-ML_bootstraps[par_MF] ; class(ML_MF)<-class(ML_bootstraps)
+ML_MC<-ML_bootstraps[par_MC] ; class(ML_MC)<-class(ML_bootstraps)
 #ML plot
 TreeCmp.Plot( ML_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
-legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+TreeCmp.Plot( ML_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
+legend(1, 0.4, c("Missing living", "Missing Fossil", "Missing Character"), col=palette()[1:3], pch=19)
+
 #Setting the ML plot in Triples
 metric="Triples"
-main="Missing data in ML (Triples)"
+main="Missing data in ML (Triples) [treeset]"
 #ML plot
 TreeCmp.Plot( ML_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( ML_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( ML_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
 #legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+
+#Setting the ML plot in RFL
+metric="RFL"
+main="Missing data in ML (RFL) [treeset]"
+#ML plot
+plot(1)
+#TreeCmp.Plot( ML_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+#TreeCmp.Plot( ML_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+#TreeCmp.Plot( ML_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
+#legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+
 
 #ML plots
 #Setting the ML plot in RF
 metric="R.F_Cluster"
-main="Missing data in Bayesian (RF)"
-Bay_ML<-Bayesian_treesets[par_ML] ; class(Bay_ML)<-class(Bayesian_contrees)
-Bay_MF<-Bayesian_treesets[par_MF] ; class(Bay_MF)<-class(Bayesian_contrees)
+main="Missing data in Bayesian (RF) [treeset]"
+Bay_ML<-Bayesian_treesets[Bay_ML] ; class(Bay_ML)<-class(Bayesian_treesets)
+Bay_MF<-Bayesian_treesets[par_MF] ; class(Bay_MF)<-class(Bayesian_treesets)
+Bay_MC<-Bayesian_treesets[par_MC] ; class(Bay_MC)<-class(Bayesian_treesets)
+
 #ML plot
 TreeCmp.Plot( Bay_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( Bay_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bay_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
 #legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
+
 #Setting the ML plot in Triples
 metric="Triples"
-main="Missing data in Bayesian (Triples)"
+main="Missing data in Bayesian (Triples) [treeset]"
 #ML plot
 TreeCmp.Plot( Bay_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
 TreeCmp.Plot( Bay_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bay_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
+
+#Setting the ML plot in RFL
+metric="RFL"
+main="Missing data in Bayesian (RFL) [treeset]"
+TreeCmp.Plot( Bay_ML , metric, probs=c(95, 50), col=palette()[1], lines=TRUE, ylim=ylim, main=main)
+TreeCmp.Plot( Bay_MF , metric, probs=c(95, 50), col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=ylim, save.details=FALSE)
+TreeCmp.Plot( Bay_MC , metric, probs=c(95, 50), col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=ylim, save.details=FALSE)
 #legend(1, 0.4, c("Missing living", "Missing Fossil"), col=palette()[1:2], pch=19)
 
 par(op)
-
-
 
 
 #Checking for difference
