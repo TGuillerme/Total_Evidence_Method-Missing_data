@@ -340,8 +340,6 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
 #End
 }
 
-
-
 ##########################
 #Plot multiple TreeCmp plots
 ##########################
