@@ -3,7 +3,7 @@
 ##########################
 #Calculate the CI and the mode of a given metric using TreeCmp class objects
 #Function modified from sumBTC (guillert(at)tcd.ie - 19/02/2014)
-#v.1.2
+#v.2.0
 #Update: the three core functions have been isolated
 #Update: in FUN.hdr, allows to read TreeCmp from similar tree comparison (NTS=1), setting $hdr and $alpha to NA and $mode to 1 if var(TreeCmp) == 0
 #Update: in FUN.densityplot, allows to plot TreeCmp from similar tree comparison (NTS=1), ignoring $hdr and $alpha and ploting only the mode (=1)
@@ -14,6 +14,8 @@
 #Update: allow window scaling option (ylim)
 #Update: typo in as.data.frame - fixed colour of single points
 #Update: allowed optional arguments to the plot function
+#Update: changed the shift option to work also for single points
+#Update: is now more plastic for using the optional plot(...) arguments
 ##########################
 #SYNTAX :
 #<TreeCmp> an object of the class TreeCmp
@@ -25,11 +27,12 @@
 #<add> whether to add to the current plot (default=FALSE). Is ignored if plot=FALSE.
 #<shift> a numerical value between 0 and 0.6 for shifting the lines. Is ignored if plot=FALSE, lines=FALSE, add=FALSE.
 #<ylim> two numerical values to scale the y axis of the plot. If set to 'auto' (default), the window is automatically scaled with the minimum and the maximum value from the TreeCmp.
+#<xlab> and <ylab> the labels names, can be a user value or set to 'auto' (default). Can be ignored if NULL. Is ignored if plot=FALSE.
 #<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'TreeCmp'. Is ignored if plot=FALSE.
 #<...> any optional arguments to be passed to plot()
 ##########################
 #----
-#guillert(at)tcd.ie - 08/09/2014
+#guillert(at)tcd.ie - 23/11/2014
 ##########################
 #Requirements:
 #-R 3
@@ -37,14 +40,13 @@
 #-R TreeCmp objects
 ##########################
 
-TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE, ...) {
-warning("check if problem with bw.nrd0 in FUNhdr?")
+TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE, xlab='auto', ylab='auto', ...) {
 #HEADER
 
 #Loading the libraries
     require(hdrcde)
 
-#TreeCmp INPUT
+#SANITIZING
 
     #TreeCmp
     if(class(TreeCmp) != 'TreeCmp') {
@@ -135,6 +137,28 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
             stop('ylim must be a vector of two numerical values')
         }
     }
+
+    #xlab and ylab
+    if(plot==TRUE) {
+        if(is.null(xlab)) {
+            xlab<-NULL
+        } else {
+            if(xlab != 'auto') {
+                if(class(xlab) != 'character') {
+                    stop('xlab must be a character string')
+                }
+            }
+        }
+        if(is.null(ylab)) {
+            ylab<-NULL
+        } else {
+            if(ylab != 'auto') {
+                if(class(ylab) != 'character') {
+                    stop('xlab must be a character string')
+                }
+            }
+        }
+    }
     options(warn=1)
 
     #save.details
@@ -168,7 +192,7 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
     }
 
     #Density Plot function (from densityplot.R by Andrew Jackson - a.jackson@tcd.ie)
-    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ...) {
+    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ylab, xlab, ...) {
 
         #Transform dat into a column format
         dat<-matrix(NA, nrow=max(TreeCmp.rows), ncol=TreeCmp.length)
@@ -185,7 +209,28 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
         n<-ncol(dat)
 
         #Set the y axis as the label name
-        ylabels<-colnames(TreeCmp[[1]][metric.column])
+        options(warn=-1) #no warn
+        if(is.null(ylab)) {
+            ylabels=''
+        } else {
+            if(ylab == 'auto') {
+                ylabels<-colnames(TreeCmp[[1]][metric.column])
+            } else {
+                ylabels<-ylab
+            }
+        }
+
+        #Set the x axis name 
+        if(is.null(xlab)) {
+            xlabels=rep('',n)
+        } else {
+            if(xlab == 'auto') {
+                xlabels<-as.character(names(dat))
+            } else {
+                xlabels<-xlab
+            }
+        }
+        options(warn=1)
 
         #Set up the plot
         if (add==FALSE) {
@@ -198,9 +243,22 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
                 ylims<-ylim
             }
             xspc<-0.5
+            
+            #plotting the plot frame with the ylabels and xlabels
             plot(1,1, xlab='', ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
-            axis(side = 1, at = 1:n, labels = (as.character(names(dat))), las=2, cex=0.75)
+            if(is.null(xlab)){
+                axis(side = 1, at = 1:n, labels=xlabels, cex=0.75)
+            } else {
+                options(warn=-1) #no warn
+                if(xlab=='auto') {
+                    axis(side = 1, at = 1:n, labels=xlabels, las=2, cex=0.75)
+                } else {
+                    axis(side = 1, at = 1:n, labels=xlabels, las=1, cex=0.75)
+                }
+                options(warn=1)
+            }
         }
+
         #Set the colors (grayscale)
         clr = gray((9:1)/10)
         clrs <- rep(clr, 5)
@@ -218,8 +276,16 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
             for (k in 1:length(probs)) {
                 if(is.na(temp$hdr)) {
                     #Ploting only the mode if hdr=NA
-                    points(j,temp$mode,pch=19, col=border)
+                    if(lines==FALSE) {
+                        #Points with no shift
+                        points(j,temp$mode,pch=19, col=border)
+                    } else {
+                        #Points with shift
+                        points(j+shift,temp$mode,pch=19, col=border)
+                    }
+
                 } else {
+
                     #Plot the probabilities distribution
                     temp2 <- temp$hdr[k, ]
 
@@ -260,7 +326,7 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
 
     #Optional plot
     if (plot == TRUE) {
-        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ...)
+        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ylab, xlab, ...)
     }
 
     #Optional saving
@@ -272,4 +338,40 @@ warning("check if problem with bw.nrd0 in FUNhdr?")
     return(hdr.results)
 
 #End
+}
+
+
+
+##########################
+#Plot multiple TreeCmp plots
+##########################
+#v.0.1
+##########################
+#SYNTAX :
+#<data.list> a character list of the different datasets to plot
+#<parameters> a numerical list of parameters to select per dataset
+#<metrics> the list of metrics
+#<col> the colour palette matching the list
+#<...> any optional arguments to be passed to TreeCmp.Plot()
+##########################
+#----
+#guillert(at)tcd.ie - 23/11/2014
+##########################
+
+multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, ...) {
+
+    #Substracting the parameter of the data
+    sub.data<-function(data.set, parameter) {
+        sub.data<-data.set[parameter]
+        class(sub.data)<-class(data.set)
+        return(sub.data)
+    }
+
+    #Plotting the data
+    for(metric in 1:length(metrics)) {
+        TreeCmp.Plot(sub.data(get(data.list[1]), parameter), metrics[metric], lines=TRUE, col=col[1], ...)
+        for(data in 2:length(data.list)) {
+            TreeCmp.Plot(sub.data(get(data.list[data]), parameter), metrics[metric], col=col[data], lines=TRUE, add=TRUE, shift=as.numeric(paste(0,(data-1), sep=".")), ...)
+        }
+    }
 }
