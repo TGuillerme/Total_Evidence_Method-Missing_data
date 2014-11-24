@@ -374,7 +374,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
 ##########################
 #Plot multiple TreeCmp plots
 ##########################
-#v.0.1
+#v.0.2
 ##########################
 #SYNTAX :
 #<data.list> a character list of the different datasets to plot
@@ -404,6 +404,218 @@ multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, shift='auto', .
                 TreeCmp.Plot(sub.data(get(data.list[data]), parameter), metrics[metric], col=col[data], lines=TRUE, add=TRUE, shift=as.numeric(paste(0,(data-1), sep=".")), ...)
             } else {
                 TreeCmp.Plot(sub.data(get(data.list[data]), parameter), metrics[metric], col=col[data], lines=TRUE, add=TRUE, shift=shift, ...)
+            }
+        }
+    }
+}
+
+##########################
+#Plot the significance levels using the data input in the plot
+##########################
+#v.0.1
+##########################
+#SYNTAX :
+#<data.list> a character list of the different datasets to plot
+#<parameters> a numerical list of parameters to select per dataset
+#<metrics> the list of metrics
+#<col> the colour palette matching the list, can be default (a star) or a list of symbols or values
+#<pch> symbol for the significant comparison
+#<position> either 'above' or 'below' whether to plot the symbol above or below the data
+#<diff.type> either 'method' or 'parameter' whether the difference must be calculated on the method or the parameters.
+#<diff.matrix> the matrix containing the significant differences
+##########################
+#----
+#guillert(at)tcd.ie - 23/11/2014
+##########################
+
+signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, position, col, pch='default', shift='auto') {
+
+    debug=FALSE
+    if(debug==TRUE) {
+        data.list<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
+        metrics<-c("R.F_Cluster","Triples")
+        data<-1
+        metric<-1
+        parameter<-par_ML
+        col<-palette()
+        pch<-'default'
+        #pch<-c(1,2,3,4,5,6)
+        #pch<-c("0","10", "25", "50", "75")
+        #pch<-c("ML", "Ba", "BS", "Tr")
+        position<-'below'
+        probs<-c(95,50)
+        shift='auto'
+        diff.type<-'method'
+        multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2)
+    }
+
+
+#SANITIZING
+    options(warn=-1)
+    if(pch=='default') {
+        if(diff.type=='method') {
+            pch<-8
+        } else {
+            pch<-c(0,1,2,3,4,5,6)
+        }
+    }
+    options(warn=1)
+
+    if(class(pch) != 'numeric') {
+        if(class(pch) != 'character') {
+            stop('pch must be either "default" or a string of numerical or character values.')
+        }
+    }
+    pch.type<-class(pch)
+
+
+#FUNCTIONS
+    #Substracting the parameter of the data
+    sub.data<-function(data.set, parameter) {
+        sub.data<-data.set[parameter]
+        class(sub.data)<-class(data.set)
+        return(sub.data)
+    }
+
+    FUN.hdr<-function(TreeCmp, metric.column, probs) {
+        hdr.results<-NULL
+
+        for (i in 1:length(TreeCmp)) {
+            if(var(TreeCmp[[i]][,metric.column]) == 0) {
+                #If no variance, make the results equal to 1
+                hdr.results[[i]]<-list(hdr=NA,mode=1,alpha=NA)
+            } else {
+                #Else calculate the normal hdr
+                hdr.results[[i]]<-hdr(TreeCmp[[i]][,metric.column], probs, h = bw.nrd0(TreeCmp[[i]][,metric.column]))  #problem with bw.nrd0?
+            }
+        }
+
+        names(hdr.results)<-names(TreeCmp)
+
+        return(hdr.results)
+    }
+
+
+#ADDING THE SIGNIFICANCE LEVELS TO A PLOT
+
+    #Plotting the significant difference between the methods
+    if(diff.type == 'method') {
+        
+        #Looping through the different data lists (=the focus data, the distribution compared to the other)
+        for(data in 1:length(data.list)) {
+            #Setting the new colours (excluding the colour of the focus data)
+            new.col<-col[-data]
+            #Setting the pch (unique)
+            new.pch<-pch[1]
+
+            #Calculating the hdr results
+            hdr.results<-FUN.hdr(sub.data(get(data.list[data]), parameter), grep(metrics[metric], colnames(sub.data(get(data.list[data]), parameter)[[1]])), probs)
+            
+            #Looping through the different parameters combinations in data 
+            for(X in 1:length(sub.data(get(data.list[data]), parameter))) {
+
+                #Testing if their is variance in the data
+                if(length(hdr.results[[X]][[1]])==1) {
+                    #Use the raw values
+                    y.values<-sub.data(get(data.list[data]), parameter)[[X]][,metrics[metric]]
+                } else {
+                    #Use the 95%CI values
+                    if(any(is.na(hdr.results[[X]][[1]]))) {
+                        #remove NAs if necessary
+                        y.values<-unlist(hdr.results[[X]][1])[-which(is.na(unlist(hdr.results[[X]][1])))]
+                    } else {
+                        y.values<-unlist(hdr.results[[X]][1])
+                    }
+                }
+
+                #Setting the shifting value if necessary
+                if(shift=='auto') {
+                    shift=0.1
+                }
+
+                
+                #Looping though the remaining elements of the data list (not the focus data)
+                for (Y in 2:length(data.list)) {
+                    
+                    #Plotting the points
+                    if(position == 'below') {
+                        #Add the object below
+                        if(pch.type == 'character') {
+                            #Adding the text if pch is character
+                            text(X+(shift*data-shift), min(y.values)-(0.03*(Y-1)), as.character(new.pch), cex=0.5, col=new.col[Y-1])
+                        } else {
+                            #Adding the point if pch is numeric
+                            points(X+(shift*data-shift), min(y.values)-(0.03*(Y-1)), pch=new.pch, col=new.col[Y-1])
+                        }
+                    } else {
+                        #Add the object above
+                        if(pch.type == 'character') {
+                            #Adding the text if pch is character
+                            text(X+(shift*data-shift), max(y.values)+(0.03*(Y-1)), as.character(new.pch), cex=0.5, col=new.col[Y-1])
+                        } else {
+                            #Adding the point if pch is numeric
+                            points(X+(shift*data-shift), max(y.values)+(0.03*(Y-1)), pch=new.pch, col=new.col[Y-1])
+                        }
+                    }
+                }
+            }
+        }
+
+    } else {
+    #Plotting the significant difference between groups
+
+        #Looping through the different data lists (the focus data)
+        for(data in 1:length(data.list)) {
+            #Setting the colour (unique)
+            new.col<-col[1]
+            #Setting the new pch (excluding the one of the focus data)
+            new.pch<-pch[-data]
+
+            #Calculating the hdr results
+            hdr.results<-FUN.hdr(sub.data(get(data.list[data]), parameter), grep(metrics[metric], colnames(sub.data(get(data.list[data]), parameter)[[1]])), probs)
+            
+            #Looping through the different parameters combinations in data (focus parameter, the distribution compared to the other)
+            for(X in 1:length(sub.data(get(data.list[data]), parameter))) {      
+                #Testing if their is variance in the data
+                if(length(hdr.results[[X]][[1]])==1) {
+                    #Use the raw values
+                    y.values<-sub.data(get(data.list[data]), parameter)[[X]][,metrics[metric]]
+                } else {
+                    #Use the 95%CI values
+                    if(any(is.na(hdr.results[[X]][[1]]))) {
+                        #remove NAs if necessary
+                        y.values<-unlist(hdr.results[[X]][1])[-which(is.na(unlist(hdr.results[[X]][1])))]
+                    } else {
+                        y.values<-unlist(hdr.results[[X]][1])
+                    }
+                }
+                #Setting the shifting value if necessary
+                if(shift=='auto') {
+                    shift=0.1
+                }
+                #Looping though the remaining parameter combinations in data
+                for (Y in 2:length(sub.data(get(data.list[data]), parameter))) {
+                    #Plotting the points
+                    if(position == 'below') {
+                        #Add the object above
+                        if(pch.type == 'character') {
+                            #Adding the text if pch is character
+                            text(X+(shift*data-shift), min(y.values)-(0.03*(Y-1)), as.character(new.pch[Y-1]), cex=0.5, col=new.col)
+                        } else {
+                            #Adding the point if pch is numeric
+                            points(X+(shift*data-shift), min(y.values)-(0.03*(Y-1)), pch=new.pch[Y-1], col=new.col)
+                        }
+                    } else {
+                        #Add the object above
+                        if(pch.type == 'character') {
+                            #Adding the text if pch is character
+                            text(X+(shift*data-shift), max(y.values)+(0.03*(Y-1)), as.character(new.pch[Y-1]), cex=0.5, col=new.col)
+                        } else {
+                            #Adding the point if pch is numeric
+                            points(X+(shift*data-shift), max(y.values)+(0.03*(Y-1)), pch=new.pch[Y-1], col=new.col)
+                        }
+                    }
+                }
             }
         }
     }
