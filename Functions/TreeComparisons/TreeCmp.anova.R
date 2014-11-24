@@ -28,6 +28,16 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
 
 #DATA INPUT
 
+    #Debug
+    debug=FALSE
+    if(debug==TRUE) {
+        TreeCmp<-sub.data(ML_besttrees, par_MF)
+        metric="Triples"
+        plot=TRUE
+        LaTeX=FALSE
+        save.test=FALSE
+    }
+
     #TreeCmp
     if(class(TreeCmp) != 'TreeCmp') {
         stop('The input must be a "TreeCmp" class object')
@@ -128,6 +138,7 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
         #Test Homoscedasticity
         homoscedasticity<-bartlett.test(anova.data[[2]]~anova.data[[1]])
         p.homoscedasticity<-homoscedasticity[[3]]
+        #Homoscedasticity is always violated because the the best tree vs. no missing data tree as no variance in the consensus or ML tree.
 
         if(save.test == TRUE) {
             parametric.test<<-list(normality=normality, homoscedasticity=homoscedasticity) #Save out of the function for output
