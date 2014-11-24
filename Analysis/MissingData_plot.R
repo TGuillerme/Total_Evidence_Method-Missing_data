@@ -32,7 +32,7 @@ if(quick.load == FALSE) {
 #windows parameters
 #quartz(width = 8.3, height = 5.8) #A5 landscape
 quartz(width = 16.6, height = 11.6) #A4 landscape
-op<-par(mfrow=c(2,3), bty="l")
+op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
 #data parameters
@@ -81,4 +81,8 @@ signi.TreeCmp.plot( data.sets , par_MC, metrics[2], probs=c(95, 50), diff.type='
 
 #Back to default
 par(op)
+
+#global.TreeCmp.plot
+
+multi.TreeCmp.plot( data.sets , par_MLMFMC, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab="Robinson-Fould distance", las=2, xlab=NULL) 
 

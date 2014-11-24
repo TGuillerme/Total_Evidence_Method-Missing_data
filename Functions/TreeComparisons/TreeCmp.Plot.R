@@ -261,14 +261,14 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
             #plotting the plot frame with the ylabels and xlabels
             if(is.null(xlab)) {
                 if(is.null(ylab)) {
-                    plot(1,1, xlab='', ylab='', xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', yaxt='n')#, ...)
+                    plot(1,1, xlab='', ylab='', xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', yaxt='n', ...)
                     axis(side = 2, col.axis='white')
                 } else {
                     plot(1,1, xlab='', ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
                 }
             } else {
                 if(is.null(ylab)) {
-                    plot(1,1, xlab=xlab, ylab='', xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', yaxt='n')#, ...)
+                    plot(1,1, xlab=xlab, ylab='', xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', yaxt='n', ...)
                     axis(side = 2, col.axis='white')
                 } else {
                     plot(1,1, xlab=xlab, ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
@@ -618,5 +618,51 @@ signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, po
                 }
             }
         }
+    }
+}
+
+
+
+##########################
+#Plot the global data
+##########################
+#v.0.1
+##########################
+#SYNTAX :
+#<data.list> a character list of the different datasets to plot
+#<parameters> a numerical list of parameters to select per dataset
+#<metrics> the list of metrics
+#<col> the colour palette matching the list
+#<...> any optional arguments to be passed to TreeCmp.Plot()
+##########################
+#----
+#guillert(at)tcd.ie - 23/11/2014
+##########################
+
+global.TreeCmp.plot<-function(data.list, parameter, metrics, col, shift='auto', ...) {
+    #Graphic layout
+    nf <- layout(matrix(c(1,2),2, byrow=TRUE), c(1,4), c(4,1), FALSE)
+    
+    #Plot the TreeCmp results
+    par(mar=c(0,4,2,2))
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics, col=col, shift=shift, ...)
+    
+    #Add the legend bars
+    par(mar=c(2,4,0,2))
+    plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', xaxt='n', yaxt='n', bty='n')
+    #ML
+    col<-col[1:5]
+    for(i in 1:5) {
+        rect(xleft=(25*i-25), ybottom=2, xright=(25*i), ytop=3, col=col[i], broder=NULL, lty='blank')
+    }
+    #MF
+    col<-rep(col<col[1:5], 5)
+    for(i in 1:25) {
+        rect(xleft=(5*i-5), ybottom=1, xright=(5*i), ytop=2, col=col[i], broder=NULL, lty='blank')
+    }
+    #MC
+    col<-rep(col<-col[1:5], 25)
+    for(i in 1:125) {
+        rect(xleft=(1*i-1), ybottom=0, xright=(1*i), ytop=1, col=col[i], broder=NULL, lty='blank')
     }
 }
