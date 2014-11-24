@@ -3,7 +3,7 @@
 ##########################
 #Calculate the CI and the mode of a given metric using TreeCmp class objects
 #Function modified from sumBTC (guillert(at)tcd.ie - 19/02/2014)
-#v.2.0
+#v.2.1
 #Update: the three core functions have been isolated
 #Update: in FUN.hdr, allows to read TreeCmp from similar tree comparison (NTS=1), setting $hdr and $alpha to NA and $mode to 1 if var(TreeCmp) == 0
 #Update: in FUN.densityplot, allows to plot TreeCmp from similar tree comparison (NTS=1), ignoring $hdr and $alpha and ploting only the mode (=1)
@@ -28,11 +28,12 @@
 #<shift> a numerical value between 0 and 0.6 for shifting the lines. Is ignored if plot=FALSE, lines=FALSE, add=FALSE.
 #<ylim> two numerical values to scale the y axis of the plot. If set to 'auto' (default), the window is automatically scaled with the minimum and the maximum value from the TreeCmp.
 #<xlab> and <ylab> the labels names, can be a user value or set to 'auto' (default). Can be ignored if NULL. Is ignored if plot=FALSE.
+#<xaxis> the labels to be plotted on the x axis (default = NULL). Is ignored if xlab is set to 'auto'.
 #<save.details> whether to save the details of each comparison (default=FALSE). If TRUE, saves a density plot for each comparison. The chain name will be the one given in 'TreeCmp'. Is ignored if plot=FALSE.
 #<...> any optional arguments to be passed to plot()
 ##########################
 #----
-#guillert(at)tcd.ie - 23/11/2014
+#guillert(at)tcd.ie - 24/11/2014
 ##########################
 #Requirements:
 #-R 3
@@ -40,7 +41,7 @@
 #-R TreeCmp objects
 ##########################
 
-TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE, xlab='auto', ylab='auto', ...) {
+TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='black', lines=FALSE, add=FALSE, shift=0, ylim='auto', save.details=FALSE, xaxis='auto', ylab='auto', xlab=NULL, ...) {
 #HEADER
 
 #Loading the libraries
@@ -138,14 +139,14 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
         }
     }
 
-    #xlab and ylab
+    #xaxis, xlab and ylab
     if(plot==TRUE) {
-        if(is.null(xlab)) {
-            xlab<-NULL
+        if(is.null(xaxis)) {
+            xaxis<-NULL
         } else {
-            if(xlab != 'auto') {
-                if(class(xlab) != 'character') {
-                    stop('xlab must be a character string')
+            if(xaxis != 'auto') {
+                if(class(xaxis) != 'character') {
+                    stop('xaxis must be a character string')
                 }
             }
         }
@@ -154,7 +155,18 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
         } else {
             if(ylab != 'auto') {
                 if(class(ylab) != 'character') {
-                    stop('xlab must be a character string')
+                    stop('ylab must be a character string')
+                }
+            }
+        }
+        if(!is.null(xaxis)) {
+            if(xaxis == 'auto') {
+                xlab<-NULL
+            } else {
+                if(!is.null(xlab)) {
+                    if(class(xlab) != 'character') {
+                        stop('xlab must be a character string')
+                    }
                 }
             }
         }
@@ -192,7 +204,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
     }
 
     #Density Plot function (from densityplot.R by Andrew Jackson - a.jackson@tcd.ie)
-    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ylab, xlab, ...) {
+    FUN.densityplot<-function (TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ylab, xaxis, ...) {
 
         #Transform dat into a column format
         dat<-matrix(NA, nrow=max(TreeCmp.rows), ncol=TreeCmp.length)
@@ -220,14 +232,14 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
             }
         }
 
-        #Set the x axis name 
-        if(is.null(xlab)) {
+        #Set the x axis values 
+        if(is.null(xaxis)) {
             xlabels=rep('',n)
         } else {
-            if(xlab == 'auto') {
+            if(xaxis == 'auto') {
                 xlabels<-as.character(names(dat))
             } else {
-                xlabels<-xlab
+                xlabels<-xaxis
             }
         }
         options(warn=1)
@@ -236,27 +248,46 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
         if (add==FALSE) {
 
             #Setting ylim if 'auto'
+            options(warn=-1) #no warn
             if(ylim == 'auto') {
                 ylims<-c(min(dat, na.rm=TRUE) - 0.1*min(dat, na.rm=TRUE), max(dat, na.rm=TRUE) + 0.1*(max(dat, na.rm=TRUE)))
             } else {
             #Fixed ylim
                 ylims<-ylim
             }
+            options(warn=1)
             xspc<-0.5
             
             #plotting the plot frame with the ylabels and xlabels
-            plot(1,1, xlab='', ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
-            if(is.null(xlab)){
+            if(is.null(xlab)) {
+                if(is.null(ylab)) {
+                    plot(1,1, xlab='', ylab='', xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', yaxt='n')#, ...)
+                    axis(side = 2, col.axis='white')
+                } else {
+                    plot(1,1, xlab='', ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
+                }
+            } else {
+                if(is.null(ylab)) {
+                    plot(1,1, xlab=xlab, ylab='', xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', yaxt='n')#, ...)
+                    axis(side = 2, col.axis='white')
+                } else {
+                    plot(1,1, xlab=xlab, ylab=ylabels, xlim= c(1 - xspc, n + xspc), ylim=ylims, type='n', xaxt='n', ...)
+                }                
+            }
+
+            #Adding xlabels
+            if(is.null(xaxis)){
                 axis(side = 1, at = 1:n, labels=xlabels, cex=0.75)
             } else {
                 options(warn=-1) #no warn
-                if(xlab=='auto') {
+                if(xaxis=='auto') {
                     axis(side = 1, at = 1:n, labels=xlabels, las=2, cex=0.75)
                 } else {
                     axis(side = 1, at = 1:n, labels=xlabels, las=1, cex=0.75)
                 }
                 options(warn=1)
             }
+
         }
 
         #Set the colors (grayscale)
@@ -310,7 +341,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
 
         for (i in 1:length(TreeCmp)) {
             pdf(paste(names(TreeCmp[i]), colnames(TreeCmp[[1]][metric.column]), 'pdf', sep='.'))
-            hdr.saving[[i]]<-hdr.den(TreeCmp[[i]][,metric.column], prob=probs, xlab=colnames(TreeCmp[[1]][metric.column]), main=paste(names(TreeCmp[i]), 'comparison',sep=' '))
+            hdr.saving[[i]]<-hdr.den(TreeCmp[[i]][,metric.column], prob=probs, xaxis=colnames(TreeCmp[[1]][metric.column]), main=paste(names(TreeCmp[i]), 'comparison',sep=' '))
             dev.off()
             cat(paste(names(TreeCmp[i]), colnames(TreeCmp[[1]][metric.column]), 'pdf', sep='.'), 'density plot saved', '\n')
         }
@@ -326,7 +357,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
 
     #Optional plot
     if (plot == TRUE) {
-        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ylab, xlab, ...)
+        FUN.densityplot(TreeCmp, metric.column, TreeCmp.rows, probs, hdr.results, border, lines, add, shift, ylim, ylab, xaxis, ...)
     }
 
     #Optional saving
@@ -356,7 +387,7 @@ TreeCmp.Plot<-function(TreeCmp, metric, probs=c(95, 75, 50), plot=TRUE, col='bla
 #guillert(at)tcd.ie - 23/11/2014
 ##########################
 
-multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, ...) {
+multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, shift='auto', ...) {
 
     #Substracting the parameter of the data
     sub.data<-function(data.set, parameter) {
@@ -369,7 +400,11 @@ multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, ...) {
     for(metric in 1:length(metrics)) {
         TreeCmp.Plot(sub.data(get(data.list[1]), parameter), metrics[metric], lines=TRUE, col=col[1], ...)
         for(data in 2:length(data.list)) {
-            TreeCmp.Plot(sub.data(get(data.list[data]), parameter), metrics[metric], col=col[data], lines=TRUE, add=TRUE, shift=as.numeric(paste(0,(data-1), sep=".")), ...)
+            if(shift=='auto') {
+                TreeCmp.Plot(sub.data(get(data.list[data]), parameter), metrics[metric], col=col[data], lines=TRUE, add=TRUE, shift=as.numeric(paste(0,(data-1), sep=".")), ...)
+            } else {
+                TreeCmp.Plot(sub.data(get(data.list[data]), parameter), metrics[metric], col=col[data], lines=TRUE, add=TRUE, shift=shift, ...)
+            }
         }
     }
 }
