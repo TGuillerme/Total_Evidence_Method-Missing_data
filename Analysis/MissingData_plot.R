@@ -30,6 +30,7 @@ if(quick.load == FALSE) {
 #Plot main figures (individual parameters in RF and Triples)
 #####################
 #windows parameters
+quartz(width = 8.3, height = 5.8) #A5 landscape
 op<-par(mfrow=c(2,3), bty="l")
 ylim=c(0,1)
 
@@ -38,41 +39,27 @@ data.sets<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treese
 metrics<-c("R.F_Cluster","Triples")
 
 #2*3 plots
-multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=NULL, ylab="Robinson-Fould distance", las=2, main="Missing Living taxa") 
-multi.TreeCmp.plot( data.sets , par_MF, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=NULL, ylab=NULL, las=2, main="Missing data in the fossil record") 
-multi.TreeCmp.plot( data.sets , par_MC, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=NULL, ylab=NULL, las=2, main="Missing characters") 
+par(mar=c(1,5,5,0) + 0.1)
+multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2)
+par(mar=c(1,3,5,2) + 0.1)
+multi.TreeCmp.plot( data.sets , par_MF, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab=NULL, las=2)
+par(mar=c(1,1,5,4) + 0.1)
+multi.TreeCmp.plot( data.sets , par_MC, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab=NULL, las=2)
 
-xlabs<-c("0%", "10%", "25%", "50%", "75%")
-multi.TreeCmp.plot( data.sets , par_ML, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=xlabs, ylab="Triplets distance", las=2) 
-multi.TreeCmp.plot( data.sets , par_MF, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=xlabs, ylab=NULL, las=2) 
-multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=xlabs, ylab=NULL, las=2) 
+xaxis.labs<-c("0%", "10%", "25%", "50%", "75%")
+par(mar=c(5,5,1,0) + 0.1)
+multi.TreeCmp.plot( data.sets , par_ML, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab="Triplets distance", las=2, xlab="Missing living taxa") 
+par(mar=c(5,3,1,2) + 0.1)
+multi.TreeCmp.plot( data.sets , par_MF, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab=NULL, las=2, xlab="Missing data in the fossil record")
+par(mar=c(5,2,1,4) + 0.1)
+multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab=NULL, las=2, xlab="Missing characters") 
 
 #Back to default
 par(op)
 
 
 
-#####################
-#Plotting PDF
-#####################
-pdf('../Manuscript/Figures/Figure_global.pdf', width = 8.3, height = 5.85)
-op<-par(mfrow=c(2,3), bty="l")
-ylim=c(0,1)
 
-#data parameters
-data.sets<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
-metrics<-c("R.F_Cluster","Triples")
-
-#2*3 plots
-multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=NULL, ylab="Robinson-Fould distance", las=2, main="Missing Living taxa") 
-multi.TreeCmp.plot( data.sets , par_MF, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=NULL, ylab=NULL, las=2, main="Missing data in the fossil record") 
-multi.TreeCmp.plot( data.sets , par_MC, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=NULL, ylab=NULL, las=2, main="Missing characters") 
-
-xlabs<-c("0%", "10%", "25%", "50%", "75%")
-multi.TreeCmp.plot( data.sets , par_ML, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=xlabs, ylab="Triplets distance", las=2) 
-multi.TreeCmp.plot( data.sets , par_MF, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=xlabs, ylab=NULL, las=2) 
-multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xlab=xlabs, ylab=NULL, las=2) 
-
-dev.off()
-
-
+data.sets<-c("ML_besttrees", "Bayesian_contrees")
+metrics<-c("R.F_Cluster")
+multi.TreeCmp.plot( data.sets , par_MLMFMC, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2, shift=0.5)
