@@ -1,4 +1,4 @@
-\begin{thebibliography}{64}
+\begin{thebibliography}{63}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -112,11 +112,6 @@ Jetz, W., G.~Thomas, J.~Joy, K.~Hartmann, and A.~Mooers. 2012. The global
 Johnson, L.~A. and D.~E. Soltis. 1998. Assessing congruence: empirical examples
   from molecular data chap.~11, Pages~297--348. Springer US.
 \bibAnnoteFile{johnson1998}
-
-\bibitem[{Jukes and Cantor(1969)}]{jc69}
-Jukes, T.~H. and C.~R. Cantor. 1969. Evolution of protein molecules vol. III
-  Pages~21--132. Academic Press.
-\bibAnnoteFile{jc69}
 
 \bibitem[{Kirkpatrick and Slatkin(1993)}]{kirkpatricksearching1993}
 Kirkpatrick, M. and M.~Slatkin. 1993. Searching for evolutionary patterns in
@@ -284,6 +279,11 @@ Rozen, D.~E., D.~Schneider, and R.~E. Lenski. 2005. Long-term experimental
   polymorphism. Journal of Molecular Evolution 61:171--80.
 \bibAnnoteFile{rozen2005}
 
+\bibitem[{Ruxton and Beauchamp(2008)}]{ruxtontime2008}
+Ruxton, G.~D. and G.~Beauchamp. 2008. Time for some a priori thinking about
+  post hoc testing. Behavioral Ecology 19.
+\bibAnnoteFile{ruxtontime2008}
+
 \bibitem[{Salamin et~al.(2003)Salamin, Chase, Hodkinson, and
   Savolainen}]{salamin2003}
 Salamin, N., M.~W. Chase, T.~R. Hodkinson, and V.~Savolainen. 2003. Assessing
@@ -337,12 +337,6 @@ Stadler, T. and Z.~Yang. 2013. Dating phylogenies with sequentially sampled
 Stamatakis, A. 2014. {RAxML} version 8: a tool for phylogenetic analysis and
   post-analysis of large phylogenies. Bioinformatics .
 \bibAnnoteFile{Stamatakis21012014}
-
-\bibitem[{Stamatakis et~al.(2008)Stamatakis, Hoover, and
-  Rougemont}]{stamatakisa2008}
-Stamatakis, A., P.~Hoover, and J.~Rougemont. 2008. A rapid bootstrap algorithm
-  for the {RAxML} web servers. Systematic Biology 57:758--771.
-\bibAnnoteFile{stamatakisa2008}
 
 \bibitem[{Tavar\'{e}(1986)}]{tavare1986}
 Tavar\'{e}, S. 1986. Some probabilistic and statistical problems in the

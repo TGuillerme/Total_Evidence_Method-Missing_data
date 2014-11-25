@@ -178,7 +178,7 @@ We repeated steps 1 to 4 50 times.
 
 \begin{figure}
 \centering
-\includegraphics[keepaspectratio=true]{Figures/BW/TEM_Fig_outline-BW.pdf}
+    \includegraphics[keepaspectratio=true]{Figures/BW/TEM_Fig_outline-BW.pdf}
 \caption{Protocol outline.
 (1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
 (2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
@@ -292,76 +292,44 @@ For each of the 125 "missing-data" tree, we obtained Robinson-Foulds and Triplet
 
 \section{Results}
 
+
+\begin{figure} 
+\centering
+    \includegraphics[width=1\textwidth]{Figures/BW/Global-ML+consensus-RF+Tr-small.pdf}
+\caption{Trend of the effect of missing data on topological recovery on ML and consensus trees. The amount of missing data per parameter ($M_{L}$, $M_{F}$ and $M_{C}$) is represented along the x axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data. The topological recovery is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black and the Bayesian consensus trees in grey.}
+\label{Fig_Global-single}
+\end{figure}
+%Differences between the parameters and between the methods (ML vs BC)
+
+
+\begin{figure} 
+\centering
+    \includegraphics[width=1\textwidth]{Figures/BW/Global-Bootstrap+Treeset-RF+Tr-small.pdf}
+\caption{Trend of the effect of missing data on topological recovery on ML and consensus trees. The amount of missing data per parameter ($M_{L}$, $M_{F}$ and $M_{C}$) is represented along the x axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data. The topological recovery is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Bootstrap trees pairwise comparisons are represented in black and the Bayesian posterior trees distribution pairwise comparisons in grey.}
+\label{Fig_Global-treesets}
+\end{figure}
+%Differences between the parameters and between the methods (BS vs TS)
+
+
 \begin{figure} 
 \centering
     \includegraphics[width=1\textwidth]{Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf}
-\caption{Effect of missing data on topological recovery. The amount of missing data for each parameter is represented on the x axis. The topological recovery is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black, the Bayesian consensus trees in red, the bootstrap trees in green and the posterior tree distribution in blue.}
-\label{Fig_Results}
+\caption{Comparison between the effect of missing data and the tree inference method on topological recovery. The amount of missing data for each parameter is represented on the x axis. The topological recovery is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black, the Bayesian consensus trees in red, the bootstrap trees in green and the posterior tree distribution in blue.}
+\label{Fig_Parameter-Method}
 \end{figure}
+%Differences within the parameters, not between
 
 \subsection{Effect of the method on topological recovery}
--Bayesian significantly better than ML for clade conservation.
--Bayesian consensus trees plateaus around 0.8 topological recovery at worst whatever combination of missing data.
+-With RF Bayesian significantly better than ML for clade conservation.
 
+-With RF Bayesian consensus trees plateaus around 0.8 topological recovery at worst whatever combination of missing data.
+
+-With Tr however, ML is more performant but not significantly. When looking at uncertainty, both results tend to just overlap.
 
 \subsection{Effect of the missing data on topological recovery}
+-No big difference between the parameters individually
 
-
-\subsection{Effect of $M_L$}
-In our Maximum Likelihood analyses, topological recovery (i.e. tree similarity) decreased as the percentage of missing data increased, using both the Robinson-Foulds and Triplets metrics.
-However, topological recovery was not significantly different for trees with 25\%, 50\% and 75\% missing morphological data for living taxa (Fig 1b???), % is this what you meant? And indicate the particular panel of the figure it refers to
-suggesting that although tree topology is sensitive to this missing data, once it is greater than 25\% it makes little difference. Overall, the Robinson-Foulds metric shows lower tree similarities than the Triplets metric. This indicates that the positions of individual taxa are generally more conserved than the membership of entire clades.
-
-Topological recovery was poor in our Bayesian analyses, regardless of the amount of missing data (Figures???), although topological recovery did decrease slightly as missing data increased. Overall, tree similarity index was only slightly above zero which means that trees are only slightly more similar than we would expect if we compared two completely random trees. 
-%For the Triplets metric there is no significant effect of the $M_L$ parameter, in other words, if living taxa are removed, there is no effect on the placement of "flying" taxa.
-%For the Robinson-Foulds metric, there is a significant effect of the $M_L$ leading small decrease in topological recovery when $M_L$ increases (see Table ~\ref{Ba_RF-ML_results}).
-
-%NC: A shorter verison of this encompassing all three parameters will work here.
-
-%NC: Combine with section above
-\subsubsection{Effect of $M_F$}
-In Maximum Likelihood framework, the effect of missing data in the fossil record appeared to be constant and led to a constant decrease in topological recovery when the missing data increase.
-The difference between the two metrics used is more important than for the $M_L$ parameter: clades are less conserved than individual taxa placement as the amount of missing data increases.
-Interestingly, 10\% or 25\% missing data for the $M_F$ parameter does not seems to affect the apparition of unstable taxa .
-
-Similarly than for the effect of $M_L$, Bayesian tree recovery was only slightly better than expected by chance.
-In the same way as described above, there seems to be a small difference depending on the metric used.
-There is no significant effect of the $M_F$ parameter when using the Triplet metric but the effect is significant when using the Robinson-Foulds metric .
-However, as mentioned previously the effect of the parameter $M_F$ is still minimal in a Bayesian framework .
-
-%NC: Combine with section above
-\subsubsection{Effect of $M_C$}
-The number of missing morphological characters ($M_C$), however, seems to be more affecting topological recovery than $M_L$ and $M_F$ .
-The Robinson-Foulds metric shows a rapid drop in tree recovery from 10\% of missing data (Robinson-Foulds NTS mode $<$ to 0.5 from 10\% missing data .
-This decrease is however slower when using the Triplets metric with still a good topological recovery at 10\%  (Triplets NTS modes = 0.95 .
-
-The effect of $M_C$ in Bayesian framework is similar as the one described for $M_L$ and $M_F$: tree recovery is only slightly better than expected by chance and only the Robinson-Foulds metric shows a significant effect of the $M_C$ parameter on tree recovery.
-
-%\subsubsection{Combined effect}
-%Need to do the heat plots
-
-$\newline$
-
-%NC: This will be part of the section above. If it's short you may not need to sum up!
-%To sum up:
-%The ability of recovering the "best" tree's topology in Maximum Likelihood method is function of the amount of data missing.
-%The parameters $M_C$ and $M_L$ have more influence than $M_F$ on decrease in topological recovery.
-%The decrease in clade conservation (low Robinson-Foulds NTS score) is faster than the increase in flying taxa (low Triplets NTS score).
-%In Bayesian framework, topology is badly (if not at all) recovered disregarding the amount of data missing.
-
-% NC: You will need two sections here with subheadings - one for the sensitivity analyses you did with the submatrices, and one for the empirical results.
-
-
-% NC: I would make these tables wider - so have a column for Triplets, and one for RF, rather than a column for metric. same with Bayesian vs ML, why not have a set of columns instead? It'll take up less space and be easier to read I think...
-
-% NC: You should do what I have done on the thesis template and have these tables as separate files rather than having them in the document.
-
-% NC: we need to sit down and look at these tables. I don't like the current format.
-
-% About the tables:
-
-% What about making this table in a longevity-results style? with every thing combined (30 columns)?
-% NC: That might be too many columns!
+\subsection{Effect of the amount of missing data}
 
 %---------------------------------------------
 %

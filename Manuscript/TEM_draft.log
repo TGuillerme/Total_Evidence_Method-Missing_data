@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  29 SEP 2014 14:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  25 NOV 2014 17:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -133,10 +133,6 @@ Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
 )
-(/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip10
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
-)
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -218,6 +214,11 @@ Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count92
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen104
 \Fld@menulength=\count93
@@ -453,33 +454,33 @@ Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)
 (./TEM_draft.aux)
 \openout1 = `TEM_draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 82.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 63.
  (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Try loading font information for OT1+pplj on input line 82.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Try loading font information for OT1+pplj on input line 63.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1pplj.fd
 File: ot1pplj.fd 2004/09/06 font definitions for OT1/pplj.
 )
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 82.
+Package hyperref Info: Link coloring OFF on input line 63.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -489,9 +490,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count116
 )
-LaTeX Info: Redefining \ref on input line 82.
-LaTeX Info: Redefining \pageref on input line 82.
-LaTeX Info: Redefining \nameref on input line 82.
+LaTeX Info: Redefining \ref on input line 63.
+LaTeX Info: Redefining \pageref on input line 63.
+LaTeX Info: Redefining \nameref on input line 63.
 
 (./TEM_draft.out) (./TEM_draft.out)
 \@outlinefile=\write3
@@ -529,212 +530,174 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/pplj/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 99.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 107.
-
+(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 77.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 81.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 107
-.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 81.
+
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 107
-.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 81.
+
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 107
-.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 81.
+
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 107.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 81.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 107.
+(Font)              scaled to size 12.50409pt on input line 81.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 107.
+(Font)              scaled to size 9.37807pt on input line 81.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 107.
+(Font)              scaled to size 7.29405pt on input line 81.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 107.
+(Font)              scaled to size 12.50409pt on input line 81.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 107.
+(Font)              scaled to size 9.37807pt on input line 81.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 107.
+(Font)              scaled to size 7.29405pt on input line 81.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 107.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 81.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 107.
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 107
-.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 81.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 81.
+
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 109.
+(Font)              scaled to size 11.40997pt on input line 83.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 109.
+(Font)              scaled to size 8.33606pt on input line 83.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 109.
+(Font)              scaled to size 6.25204pt on input line 83.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 109.
+(Font)              scaled to size 11.40997pt on input line 83.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 109.
+(Font)              scaled to size 8.33606pt on input line 83.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 109.
+(Font)              scaled to size 6.25204pt on input line 83.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 109.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 109.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 83.
 LaTeX Font Info:    Font shape `OT1/pplj/bx/n' in size <12> not available
-(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 113.
+(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 87.
  [1
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/pplj/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 123.
+(Font)              Font shape `OT1/pplj/b/n' tried instead on input line 97.
  [2] [3] [4]
-[5] [6] [7] [8] [9] (./Tables/Glossary.tex)
+[5] [6] [7] [8]
+<Figures/BW/TEM_Fig_outline-BW.pdf, id=206, 312.9803pt x 483.6971pt>
+File: Figures/BW/TEM_Fig_outline-BW.pdf Graphic file (type pdf)
 
-LaTeX Warning: Float too large for page by 137.1929pt on input line 281.
-
-<Figures/TEM_Fig_outline-BW.pdf, id=217, 312.9803pt x 483.6971pt>
-File: Figures/TEM_Fig_outline-BW.pdf Graphic file (type pdf)
-
-<use Figures/TEM_Fig_outline-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig_outline-BW.pdf used on input line 286.
-
+<use Figures/BW/TEM_Fig_outline-BW.pdf>
+Package pdftex.def Info: Figures/BW/TEM_Fig_outline-BW.pdf used on input line 1
+81.
 (pdftex.def)             Requested size: 312.97952pt x 483.69592pt.
 
 
-LaTeX Warning: Float too large for page by 17.68622pt on input line 295.
+LaTeX Warning: Float too large for page by 17.68622pt on input line 189.
 
-[10] [11 <./Figures/TEM_Fig_outline-BW.pdf>]
+[9] [10 <./Figures/BW/TEM_Fig_outline-BW.pdf>]
 
-LaTeX Warning: Hyper reference `supplementaries' on page 12 undefined on input 
-line 321.
+LaTeX Warning: Hyper reference `supplementaries' on page 11 undefined on input 
+line 203.
 
-[12] <Figures/TEM_Fig_missingData-BW.pdf, id=297, 512.14938pt x 227.62239pt>
-File: Figures/TEM_Fig_missingData-BW.pdf Graphic file (type pdf)
-
-<use Figures/TEM_Fig_missingData-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig_missingData-BW.pdf used on input line 
-351.
-(pdftex.def)             Requested size: 512.14813pt x 227.62183pt.
-
-Overfull \hbox (42.39311pt too wide) in paragraph at lines 351--361
- [][] 
- []
-
-[13] [14 <./Figures/TEM_Fig_missingData-BW.pdf>] [15] [16]
+[11] [12] [13]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ô in font pplr9o!
- [17] [18] [19]
+ [14] [15] [16] [17]
+<Figures/BW/Global-ML+consensus-RF+Tr-small.pdf, id=393, 599.84097pt x 419.166p
+t>
+File: Figures/BW/Global-ML+consensus-RF+Tr-small.pdf Graphic file (type pdf)
+ <use Figures/BW/Global-ML+consensus-RF+Tr-small.pdf>
+Package pdftex.def Info: Figures/BW/Global-ML+consensus-RF+Tr-small.pdf used on
+ input line 298.
+(pdftex.def)             Requested size: 469.75502pt x 328.27213pt.
 
-Package natbib Warning: Citation `ruxtontime2008' on page 20 undefined on input
- line 489.
+<Figures/BW/Global-Bootstrap+Treeset-RF+Tr-small.pdf, id=394, 599.84097pt x 419
+.166pt>
+File: Figures/BW/Global-Bootstrap+Treeset-RF+Tr-small.pdf Graphic file (type pd
+f)
+ <use Figures/BW/Global-Bootstrap+Treeset-RF+Tr-small.pdf>
+Package pdftex.def Info: Figures/BW/Global-Bootstrap+Treeset-RF+Tr-small.pdf us
+ed on input line 306.
+(pdftex.def)             Requested size: 469.75502pt x 328.27213pt.
 
-[20] <Figures/TEM_Fig-results-BW.pdf, id=470, 597.50829pt x 341.43358pt>
-File: Figures/TEM_Fig-results-BW.pdf Graphic file (type pdf)
-
-<use Figures/TEM_Fig-results-BW.pdf>
-Package pdftex.def Info: Figures/TEM_Fig-results-BW.pdf used on input line 608.
-
-(pdftex.def)             Requested size: 597.50682pt x 341.43274pt.
-
-Overfull \hbox (127.7518pt too wide) in paragraph at lines 608--614
- [][] 
- []
-
+<Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf, id=395, 599.84097pt x 41
+9.166pt>
+File: Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf Graphic file (type p
+df)
+ <use Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf>
+Package pdftex.def Info: Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf u
+sed on input line 315.
+(pdftex.def)             Requested size: 469.75502pt x 328.27213pt.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 15.0049pt on input line 622.
+(Font)              scaled to size 15.0049pt on input line 332.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 622.
+(Font)              scaled to size 10.42007pt on input line 332.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 15.0049pt on input line 622.
+(Font)              scaled to size 15.0049pt on input line 332.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 622.
+(Font)              scaled to size 10.42007pt on input line 332.
+ [18]
+[19 <./Figures/BW/Global-ML+consensus-RF+Tr-small.pdf>] [20 <./Figures/BW/Globa
+l-Bootstrap+Treeset-RF+Tr-small.pdf>] [21 <./Figures/colour/Parameters-AllMetho
+ds-RF+Tr-small.pdf>] [22] [23] [24]
 
-LaTeX Warning: Reference `NTS_ML_results' on page 21 undefined on input line 62
-5.
+LaTeX Warning: Reference `supplementaries' on page 25 undefined on input line 4
+35.
 
-[21] [22 <./Figures/TEM_Fig-results-BW.pdf>]
+[25]
 
-LaTeX Warning: Reference `NTS_Ba_results' on page 23 undefined on input line 62
-7.
-
-
-LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 63
-7.
-
-
-LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 64
-7.
+LaTeX Warning: Reference `Fig_Results' on page 26 undefined on input line 438.
 
 
-LaTeX Warning: Reference `NTS_ML_results' on page 23 undefined on input line 64
-8.
+LaTeX Warning: Reference `Fig_Results' on page 26 undefined on input line 439.
 
-[23] (./Tables/NTS_ML_results.tex)
-
-LaTeX Warning: Float too large for page by 176.51117pt on input line 684.
-
-(./Tables/NTS_BA_results.tex)
-
-LaTeX Warning: Float too large for page by 176.51117pt on input line 692.
-
-(./Tables/Group_results.tex
-Overfull \hbox (2.27075pt too wide) in paragraph at lines 1--35
- [][] 
- []
-
-)
-
-LaTeX Warning: Float too large for page by 142.393pt on input line 701.
-
-(./Tables/ML_RF-ML_results.tex) (./Tables/ML_Tr-ML_results.tex)
-(./Tables/Ba_RF-ML_results.tex) (./Tables/ML_RF-MF_results.tex)
-(./Tables/ML_Tr-MF_results.tex) (./Tables/Ba_RF-MF_results.tex)
-(./Tables/ML_RF-MC_results.tex) (./Tables/ML_Tr-MC_results.tex)
-(./Tables/Ba_RF-MC_results.tex) [24] [25] [26]
-
-LaTeX Warning: Reference `supplementaries' on page 27 undefined on input line 8
-22.
-
-[27]
+[26]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ô in font pplr9o!
- [28] [29] (./TEM_draft.bbl
+ [27] (./TEM_draft.bbl [28]
 Missing character: There is no √ in font pplr9o!
 Missing character: There is no ≥ in font pplr9o!
- [30] [31] [32]
+ [29] [30]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ì in font pplr9o!
+ [31]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ô in font pplr9o!
- [33] [34]
+ [32] [33]
 Missing character: There is no ƒ in font pplr9o!
 Missing character: There is no ç in font pplr9o!
- [35] [36])
+ [34])
 (./SupplementaryMaterial/SupplementaryMaterial.tex
-(./SupplementaryMaterial/TreeBuilding.tex
-<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf, id=657, 505
-.89pt x 505.89pt>
+(./SupplementaryMaterial/TreeBuilding.tex [35]
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf, id=4579, 50
+5.89pt x 505.89pt>
 File: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf Graphic
  file (type pdf)
 
@@ -747,9 +710,9 @@ Overfull \hbox (36.13373pt too wide) in paragraph at lines 13--15
  [][] 
  []
 
-[37] [38 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf>]
-[39]) (./SupplementaryMaterial/TreeComparison.tex [40] [41] [42]
-(./SupplementaryMaterial/Supp_Tables/RPBTC_testing.tex)) [43]
+[36] [37 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf>]
+) (./SupplementaryMaterial/TreeComparison.tex [38] [39] [40] [41]
+(./SupplementaryMaterial/Supp_Tables/RPBTC_testing.tex)) [42]
 (./SupplementaryMaterial/Supp_Tables/NTSML_full.tex)
 Overfull \hbox (89.70897pt too wide) in paragraph at lines 1--21
  [][] 
@@ -767,8 +730,8 @@ Overfull \hbox (163.70097pt too wide) in paragraph at lines 1--28
 LaTeX Warning: Float too large for page by 185.68123pt on input line 28.
 
 
-<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf, id=831, 505
-.89pt x 505.89pt>
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf, id=4752, 50
+5.89pt x 505.89pt>
 File: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf Graphic
  file (type pdf)
 
@@ -782,50 +745,45 @@ Overfull \hbox (36.13373pt too wide) in paragraph at lines 34--35
  []
 
 )
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
-[44] [45 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf>]
-[46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60]
-[61]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 510.
+ [43] [44] [45] [46 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBoots
+traps.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 510.
  (./TEM_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 510.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 510.
 Package rerunfilecheck Info: File `TEM_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 913.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 510.
  ) 
 Here is how much of TeX's memory you used:
- 9237 strings out of 493315
- 140759 string characters out of 6137904
- 325583 words of memory out of 5000000
- 12189 multiletter control sequences out of 15000+600000
+ 9154 strings out of 493315
+ 139714 string characters out of 6137904
+ 244143 words of memory out of 5000000
+ 12176 multiletter control sequences out of 15000+600000
  62495 words of font info for 172 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,11n,38p,1199b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,8n,38p,1598b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
 live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
 ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/local/texlive/2013/t
-exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2013/texmf-dist
-/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
-ype1/public/fpl/fplrij8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/ur
-w/palatino/uplb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palat
-ino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/palatino/upl
-ri8a.pfb>
-Output written on TEM_draft.pdf (61 pages, 868992 bytes).
+e/2013/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2013/texmf-dist
+/fonts/type1/public/fpl/fplrij8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/
+type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/u
+rw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/pala
+tino/uplri8a.pfb>
+Output written on TEM_draft.pdf (46 pages, 1815502 bytes).
 PDF statistics:
- 1065 PDF objects out of 1200 (max. 8388607)
- 897 compressed objects within 9 object streams
- 176 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4910 PDF objects out of 5155 (max. 8388607)
+ 2811 compressed objects within 29 object streams
+ 145 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

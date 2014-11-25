@@ -8,53 +8,51 @@ I was expecting a `,' or a `}'---line 165 of file References.bib
  :   journal={arXiv}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "ruxtontime2008"
 Warning--missing school in chen2011
 Warning--can't use both author and editor fields in dobson1975triplets
 Warning--empty journal in heaththe2013
 Warning--can't use both author and editor fields in johnson1998
-Warning--can't use both author and editor fields in jc69
 Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
-You've used 64 entries,
+You've used 63 entries,
             2858 wiz_defined-function locations,
-            965 strings with 16539 characters,
-and the built_in function-call counts, 40027 in all, are:
-= -- 3283
-> -- 2191
-< -- 41
-+ -- 742
-- -- 657
-* -- 3032
-:= -- 6335
-add.period$ -- 255
-call.type$ -- 64
-change.case$ -- 532
-chr.to.int$ -- 63
-cite$ -- 135
-duplicate$ -- 2857
-empty$ -- 2731
-format.name$ -- 853
-if$ -- 8113
+            954 strings with 16367 characters,
+and the built_in function-call counts, 39233 in all, are:
+= -- 3217
+> -- 2160
+< -- 40
++ -- 730
+- -- 648
+* -- 2968
+:= -- 6226
+add.period$ -- 251
+call.type$ -- 63
+change.case$ -- 525
+chr.to.int$ -- 62
+cite$ -- 132
+duplicate$ -- 2805
+empty$ -- 2667
+format.name$ -- 841
+if$ -- 7940
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 640
-newline$ -- 267
-num.names$ -- 256
-pop$ -- 1090
+missing$ -- 628
+newline$ -- 263
+num.names$ -- 252
+pop$ -- 1066
 preamble$ -- 1
-purify$ -- 475
+purify$ -- 468
 quote$ -- 0
-skip$ -- 930
+skip$ -- 909
 stack$ -- 0
-substring$ -- 1651
-swap$ -- 1250
-text.length$ -- 3
+substring$ -- 1594
+swap$ -- 1221
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 558
-warning$ -- 7
-while$ -- 243
+type$ -- 552
+warning$ -- 6
+while$ -- 237
 width$ -- 0
-write$ -- 769
+write$ -- 756
 (There was 1 error message)
