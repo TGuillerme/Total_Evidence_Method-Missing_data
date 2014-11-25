@@ -412,12 +412,13 @@ multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, shift='auto', .
 ##########################
 #Plot the significance levels using the data input in the plot
 ##########################
-#v.0.1
+#v.0.2
+#Update: fixed metric input
 ##########################
 #SYNTAX :
 #<data.list> a character list of the different datasets to plot
 #<parameters> a numerical list of parameters to select per dataset
-#<metrics> the list of metrics
+#<metric> the metric of interest
 #<col> the colour palette matching the list, can be default (a star) or a list of symbols or values
 #<pch> symbol for the significant comparison
 #<position> either 'above' or 'below' whether to plot the symbol above or below the data
@@ -425,15 +426,16 @@ multi.TreeCmp.plot<-function(data.list, parameter, metrics, col, shift='auto', .
 #<diff.matrix> the matrix containing the significant differences
 ##########################
 #----
-#guillert(at)tcd.ie - 23/11/2014
+#guillert(at)tcd.ie - 25/11/2014
 ##########################
 
-signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, position, col, pch='default', shift='auto') {
+signi.TreeCmp.plot<-function(data.list, parameter, metric, probs, diff.type, position, col, pch='default', shift='auto') {
 
     debug=FALSE
     if(debug==TRUE) {
         data.list<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
         metrics<-c("R.F_Cluster","Triples")
+        metrics<-"R.F_Cluster"
         data<-1
         metric<-1
         parameter<-par_ML
@@ -509,7 +511,7 @@ signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, po
             new.pch<-pch[1]
 
             #Calculating the hdr results
-            hdr.results<-FUN.hdr(sub.data(get(data.list[data]), parameter), grep(metrics[metric], colnames(sub.data(get(data.list[data]), parameter)[[1]])), probs)
+            hdr.results<-FUN.hdr(sub.data(get(data.list[data]), parameter), grep(metric, colnames(sub.data(get(data.list[data]), parameter)[[1]])), probs)
             
             #Looping through the different parameters combinations in data 
             for(X in 1:length(sub.data(get(data.list[data]), parameter))) {
@@ -517,7 +519,7 @@ signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, po
                 #Testing if their is variance in the data
                 if(length(hdr.results[[X]][[1]])==1) {
                     #Use the raw values
-                    y.values<-sub.data(get(data.list[data]), parameter)[[X]][,metrics[metric]]
+                    y.values<-sub.data(get(data.list[data]), parameter)[[X]][,metric]
                 } else {
                     #Use the 95%CI values
                     if(any(is.na(hdr.results[[X]][[1]]))) {
@@ -572,14 +574,14 @@ signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, po
             new.pch<-pch[-data]
 
             #Calculating the hdr results
-            hdr.results<-FUN.hdr(sub.data(get(data.list[data]), parameter), grep(metrics[metric], colnames(sub.data(get(data.list[data]), parameter)[[1]])), probs)
+            hdr.results<-FUN.hdr(sub.data(get(data.list[data]), parameter), grep(metric, colnames(sub.data(get(data.list[data]), parameter)[[1]])), probs)
             
             #Looping through the different parameters combinations in data (focus parameter, the distribution compared to the other)
             for(X in 1:length(sub.data(get(data.list[data]), parameter))) {      
                 #Testing if their is variance in the data
                 if(length(hdr.results[[X]][[1]])==1) {
                     #Use the raw values
-                    y.values<-sub.data(get(data.list[data]), parameter)[[X]][,metrics[metric]]
+                    y.values<-sub.data(get(data.list[data]), parameter)[[X]][,metric]
                 } else {
                     #Use the 95%CI values
                     if(any(is.na(hdr.results[[X]][[1]]))) {
@@ -626,43 +628,85 @@ signi.TreeCmp.plot<-function(data.list, parameter, metrics, probs, diff.type, po
 ##########################
 #Plot the global data
 ##########################
-#v.0.1
+#v.0.2
+#Update: added fix colour gradient
+#Update: added double plot
 ##########################
 #SYNTAX :
 #<data.list> a character list of the different datasets to plot
 #<parameters> a numerical list of parameters to select per dataset
 #<metrics> the list of metrics
 #<col> the colour palette matching the list
+#<colgrad> the colour palette matching the 5 parameters combinations
+#<shift> shift parameter to be passed to TreeCmp.Plot()
+#<format> plot window size (A5 or A4)
 #<...> any optional arguments to be passed to TreeCmp.Plot()
 ##########################
 #----
-#guillert(at)tcd.ie - 23/11/2014
+#guillert(at)tcd.ie - 25/11/2014
 ##########################
 
-global.TreeCmp.plot<-function(data.list, parameter, metrics, col, shift='auto', ...) {
+global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('blue','red'), shift='auto', format='A5',...) {
     #Graphic layout
-    nf <- layout(matrix(c(1,2),2, byrow=TRUE), c(1,4), c(4,1), FALSE)
+    if(format == 'A5') {
+        quartz(width = 8.3, height = 5.8)
+    } else {
+        quartz(width = 16.6, height = 11.6)
+    }
+    nf <- layout(matrix(c(1,2,3,4),4, byrow=TRUE), widths=c(1,1), heights=c(4,1,4,1), FALSE)
+    #layout.show(nf)
     
+    #Colour settings
+    colfunc<-colorRampPalette(col.grad)
+    colgrad<-colfunc(5)
+
+    #FIRST PLOT
+
     #Plot the TreeCmp results
     par(mar=c(0,4,2,2))
-    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics, col=col, shift=shift, ...)
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[1], col=col, shift=shift, ylab="Robinson-Fould distance", ...)
     
     #Add the legend bars
     par(mar=c(2,4,0,2))
     plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', xaxt='n', yaxt='n', bty='n')
     #ML
-    col<-col[1:5]
+    col.new<-colgrad[1:5]
     for(i in 1:5) {
-        rect(xleft=(25*i-25), ybottom=2, xright=(25*i), ytop=3, col=col[i], broder=NULL, lty='blank')
+        rect(xleft=(25*i-25), ybottom=2, xright=(25*i), ytop=3, col=col.new[i], broder=NULL, lty='blank')
     }
     #MF
-    col<-rep(col<col[1:5], 5)
+    col.new<-rep(colgrad[1:5], 5)
     for(i in 1:25) {
-        rect(xleft=(5*i-5), ybottom=1, xright=(5*i), ytop=2, col=col[i], broder=NULL, lty='blank')
+        rect(xleft=(5*i-5), ybottom=1, xright=(5*i), ytop=2, col=col.new[i], broder=NULL, lty='blank')
     }
     #MC
-    col<-rep(col<-col[1:5], 25)
+    col.new<-rep(colgrad[1:5], 25)
     for(i in 1:125) {
-        rect(xleft=(1*i-1), ybottom=0, xright=(1*i), ytop=1, col=col[i], broder=NULL, lty='blank')
+        rect(xleft=(1*i-1), ybottom=0, xright=(1*i), ytop=1, col=col.new[i], broder=NULL, lty='blank')
+    }
+
+    #SECOND PLOT
+
+    #Plot the TreeCmp results
+    par(mar=c(0,4,2,2))
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[2], col=col, shift=shift, ylab="Triplets distance", ...)
+    
+    #Add the legend bars
+    par(mar=c(2,4,0,2))
+    plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', xaxt='n', yaxt='n', bty='n')
+    #ML
+    col.new<-colgrad[1:5]
+    for(i in 1:5) {
+        rect(xleft=(25*i-25), ybottom=2, xright=(25*i), ytop=3, col=col.new[i], broder=NULL, lty='blank')
+    }
+    #MF
+    col.new<-rep(colgrad[1:5], 5)
+    for(i in 1:25) {
+        rect(xleft=(5*i-5), ybottom=1, xright=(5*i), ytop=2, col=col.new[i], broder=NULL, lty='blank')
+    }
+    #MC
+    col.new<-rep(colgrad[1:5], 25)
+    for(i in 1:125) {
+        rect(xleft=(1*i-1), ybottom=0, xright=(1*i), ytop=1, col=col.new[i], broder=NULL, lty='blank')
     }
 }
