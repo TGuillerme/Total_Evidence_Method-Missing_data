@@ -30,8 +30,8 @@ if(quick.load == FALSE) {
 #Plot main figures (individual parameters in RF and Triples)
 #####################
 #windows parameters
-quartz(width = 8.3, height = 5.8) #A5 landscape
-#quartz(width = 16.6, height = 11.6) #A4 landscape
+#quartz(width = 8.3, height = 5.8) #A5 landscape
+quartz(width = 16.6, height = 11.6) #A4 landscape
 op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
@@ -42,7 +42,7 @@ metrics<-c("R.F_Cluster","Triples")
 #2*3 plots
 #Missing living RF
 par(mar=c(1,5,5,0) + 0.1)
-multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2)
+multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Foulds distance", las=2)
 #Missing fossil RF
 par(mar=c(1,3,5,2) + 0.1)
 multi.TreeCmp.plot( data.sets , par_MF, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab=NULL, las=2)
@@ -69,8 +69,8 @@ par(op)
 #Plot method differences figure
 #####################
 #windows parameters
-quartz(width = 8.3, height = 5.8) #A5 landscape
-#quartz(width = 16.6, height = 11.6) #A4 landscape
+#quartz(width = 8.3, height = 5.8) #A5 landscape
+quartz(width = 16.6, height = 11.6) #A4 landscape
 op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
@@ -81,7 +81,7 @@ metrics<-c("R.F_Cluster","Triples")
 #2*3 Plots
 #Missing living RF
 par(mar=c(1,5,5,0) + 0.1)
-multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2)
+multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Foulds distance", las=2)
 signi.TreeCmp.plot( data.sets , par_ML, metrics[1], probs=c(95, 50), diff.type='method', position='below', col=palette(), pch='default', shift='auto')
 
 #Missing fossil RF
@@ -118,8 +118,8 @@ par(op)
 #Plot parameter differences figure
 #####################
 #windows parameters
-quartz(width = 8.3, height = 5.8) #A5 landscape
-#quartz(width = 16.6, height = 11.6) #A4 landscape
+#quartz(width = 8.3, height = 5.8) #A5 landscape
+quartz(width = 16.6, height = 11.6) #A4 landscape
 op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
@@ -130,7 +130,7 @@ metrics<-c("R.F_Cluster","Triples")
 #2*3 plots
 #Missing living RF
 par(mar=c(1,5,5,0) + 0.1)
-multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2)
+multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Foulds distance", las=2)
 signi.TreeCmp.plot( data.sets , par_ML, metrics[1], probs=c(95, 50), diff.type='parameter', position='below', col=palette(), pch='default', shift='auto')
 #Missing fossil RF
 par(mar=c(1,3,5,2) + 0.1)
@@ -169,7 +169,7 @@ data.sets<-c("ML_besttrees","Bayesian_contrees")#,"ML_bootstraps","Bayesian_tree
 metrics<-c("R.F_Cluster","Triples")
 
 #Plot
-global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5') 
+global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5', col.grad=c("white", "black")) 
 
 
 #####################
@@ -183,4 +183,4 @@ data.sets<-c("ML_bootstraps","Bayesian_treesets")
 metrics<-c("R.F_Cluster","Triples")
 
 #Plot
-global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=palette()[3:4], las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5,  format='A5') 
+global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=palette()[3:4], las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5,  format='A4',col.grad=c("white", "black")) 

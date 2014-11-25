@@ -448,7 +448,7 @@ signi.TreeCmp.plot<-function(data.list, parameter, metric, probs, diff.type, pos
         probs<-c(95,50)
         shift='auto'
         diff.type<-'method'
-        multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Fould distance", las=2)
+        multi.TreeCmp.plot( data.sets , par_ML, metrics[1], col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, xlab=NULL, ylab="Robinson-Foulds distance", las=2)
     }
 
 
@@ -664,12 +664,15 @@ global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('bl
     #FIRST PLOT
 
     #Plot the TreeCmp results
-    par(mar=c(0,4,2,2))
-    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[1], col=col, shift=shift, ylab="Robinson-Fould distance", ...)
+    par(mar=c(0,4,2,2), bty="l")
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[1], col=col, shift=shift, ylab="Robinson-Foulds distance", ...)
     
     #Add the legend bars
     par(mar=c(2,4,0,2))
-    plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', xaxt='n', yaxt='n', bty='n')
+    plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', yaxt='n', bty='n', xaxt='n') #
+    text(-2, 2.5, "ML")
+    text(-2, 1.5, "MF")
+    text(-2, 0.5, "MC")
     #ML
     col.new<-colgrad[1:5]
     for(i in 1:5) {
@@ -686,15 +689,19 @@ global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('bl
         rect(xleft=(1*i-1), ybottom=0, xright=(1*i), ytop=1, col=col.new[i], broder=NULL, lty='blank')
     }
 
+
     #SECOND PLOT
 
     #Plot the TreeCmp results
-    par(mar=c(0,4,2,2))
+    par(mar=c(0,4,2,2), bty="l")
     multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[2], col=col, shift=shift, ylab="Triplets distance", ...)
 
         #Add the legend bars
     par(mar=c(2,4,0,2))
     plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', xaxt='n', yaxt='n', bty='n')
+    text(-2, 2.5, "ML")
+    text(-2, 1.5, "MF")
+    text(-2, 0.5, "MC")
     #ML
     col.new<-colgrad[1:5]
     for(i in 1:5) {
