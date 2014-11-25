@@ -169,7 +169,7 @@ data.sets<-c("ML_besttrees","Bayesian_contrees")#,"ML_bootstraps","Bayesian_tree
 metrics<-c("R.F_Cluster","Triples")
 
 #Plot
-global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=palette(), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5', col.grad=c("white", "black")) 
+global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=c('black', 'grey'), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5', col.grad=c("white", "black")) 
 
 
 #####################
@@ -183,4 +183,4 @@ data.sets<-c("ML_bootstraps","Bayesian_treesets")
 metrics<-c("R.F_Cluster","Triples")
 
 #Plot
-global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=palette()[3:4], las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5,  format='A4',col.grad=c("white", "black")) 
+global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=c('black', 'grey'), las=2, probs=c(95, 50), ylim=ylim, xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5', col.grad=c("white", "black")) 
