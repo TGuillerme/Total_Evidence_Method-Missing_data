@@ -35,8 +35,18 @@ i=1 ; j=1
 TreeCmp.distribution(sub.data(get(data.sets[i]), par_ML), metrics[j])
 
 #Difference
-parameter<-par_M
+parameter<-par_MLMFMC
 metric<-1
-data<-4
+data<-1
 tmp<-TreeCmp.anova(sub.data(get(data.sets[data]), parameter), metrics[metric], plot=TRUE)
 TreeCmp.pairPlot(tmp$posthoc, parametric=FALSE)
+
+
+tmp<-TreeCmp.anova(sub.data(get(data.sets[data]), parameter), metrics[metric], plot=TRUE)
+
+metric=1
+data=4
+parameter=par_MLMFMC
+tmp<-TreeCmp.anova(sub.data(get(data.sets[data]), parameter), metrics[metric], plot=TRUE)
+
+TreeCmp.pairPlot(tmp$posthoc, parametric=FALSE, binary=FALSE, col=c("blue", "red"), col.grad=c("white", "black"))

@@ -31,8 +31,10 @@ TreeCmp.anova<-function(TreeCmp, metric, plot=FALSE, LaTeX=FALSE, save.test=FALS
     #Debug
     debug=FALSE
     if(debug==TRUE) {
-        TreeCmp<-sub.data(ML_besttrees, par_MF)
-        metric="Triples"
+        data.sets<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
+        metrics<-c("R.F_Cluster","Triples")
+        TreeCmp<-sub.data(Bayesian_contrees, par_MLMFMC)
+        metric<-metrics[1]
         plot=TRUE
         LaTeX=FALSE
         save.test=FALSE
