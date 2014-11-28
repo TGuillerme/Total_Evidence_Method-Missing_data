@@ -12,7 +12,6 @@
 #<TreeCmp> an object of the class 'TreeCmp'
 #<metric> the name of the metric of interest
 #<parametric> whether the test should be parametric or not. If NULL, parametricity is tested each time (default=NULL).
-#<pair.ks> whether to compute pairwise ks.test (default = FALSE)
 #<plot> whether to plot the distribution of the metric as a boxplot (default=FALSE)
 #<LaTeX> whether to output a LaTeX table (default=FALSE)
 #<save.test> whether to save the details of the various parametric/non-parametric tests (default=FALSE)
@@ -26,7 +25,7 @@
 #-R package 'xtable' [optional]
 ##########################
 
-TreeCmp.anova<-function(TreeCmp, metric, parametric=NULL, pair.ks=FALSE, plot=FALSE, LaTeX=FALSE, save.test=FALSE) {
+TreeCmp.anova<-function(TreeCmp, metric, parametric=NULL, plot=FALSE, LaTeX=FALSE, save.test=FALSE) {
 
 #DATA INPUT
 
@@ -38,7 +37,6 @@ TreeCmp.anova<-function(TreeCmp, metric, parametric=NULL, pair.ks=FALSE, plot=FA
         TreeCmp<-sub.data(Bayesian_contrees, par_ML)
         metric<-metrics[1]
         parametric=FALSE
-        pair.ks=FALSE
         plot=TRUE
         LaTeX=FALSE
         save.test=FALSE
@@ -80,11 +78,6 @@ TreeCmp.anova<-function(TreeCmp, metric, parametric=NULL, pair.ks=FALSE, plot=FA
             stop('parametric is not logical')
         }        
         est.param<-FALSE
-    }
-
-    #plot
-    if(class(pair.ks) != 'logical'){
-        stop('pair.ks is not logical')
     }
 
     #plot
@@ -195,38 +188,6 @@ TreeCmp.anova<-function(TreeCmp, metric, parametric=NULL, pair.ks=FALSE, plot=FA
         return(parametric)
     }
 
-    FUN.ks.test<-function(data.table) {
-        for( i in 1:ncol(data.table)) {
-            options(warn=-1)
-            ks.pairwise.test<-apply(as.matrix(data.table[,-c(i-1)]), 2, ks.test, x=data.table, y=data.table[,i])
-            options(warn=1)
-        }
-
-mat<-matrix(rnorm(100), ncol=10, byrow=TRUE)
-bla<-list()
-for(i in 1:ncol(mat)) {
-    mat.tmp<-mat[,c(-i+1)]
-    j.tmp<-ncol(mat)-i
-    for(j in 1:j.tmp) {
-        for(x in 1:sum(seq(1:ncol(mat)))) { #the number of comparisons
-            options(warn=-1) #just removing the warnings
-            bla[[x]]<-ks.test(mat[,i], mat[,j+1])
-            options(warn=1)
-        }
-    }
-}
-
-bla<-list()
-for( i in 1:ncol(mat)) {
-    options(warn=-1)
-    bla[[i]]<-apply(as.matrix(mat[,-c(i-1)]), 2, ks.test, x=mat, y=mat[,i])
-    options(warn=1)
-}
-
-
-
-        ks.test.pvalues<-
-    }
 
 #CALCULATING THE DIFFERENCE BETWEEN THE TREE COMPARISONS
 
