@@ -20,7 +20,6 @@
 ##########################
 
 bhatt.coeff<-function(x,y, bw=bw.nrd0, ...) {
-
     #SANITIZING
     #x
     if(class(x) != 'numeric') {
@@ -89,36 +88,44 @@ bhatt.coeff<-function(x,y, bw=bw.nrd0, ...) {
 #Pairwise Bhattacharyya Coefficient
 ##########################
 #Calculates the pairwise Bhattacharyya Coefficient for n distributions
-#v.0.1
+#v.0.2
+#Update: allows to give another list Y to compare to the list X.
 ##########################
 #SYNTAX :
 #<X>    a list of vectors
+#<Y>    a list of vectors to be compared to X (default=NULL).
 #<bw>   can be either a fixed value of bins or a function to calculate the bandwidth of each bin (see ?bw.nrd). Default is bw.nrd0.
-#<diag> logical, whether to compute the Bhattacharyya Coefficient for the same distributions (=1). Default=FALSE.
+#<diag> logical, whether to compute the Bhattacharyya Coefficient for the same distributions (=1). Default=FALSE. Is ignored if Y is provided.
 #<...>  any optional arguments to be passed to the given bw function.
 ##########################c
 #----
-#guillert(at)tcd.ie - 28/11/2014
+#guillert(at)tcd.ie - 29/11/2014
 ##########################
 #Requirements:
 #-R 3
 ##########################
 
-pair.bhatt.coeff<-function(X, bw=bw.nrd0, diag=FALSE, ...) {
-    #DEBUG
-    debug=FALSE
-    if(debug == FALSE) {
-        tab.ex<-replicate(5, rnorm(1000))
-        X<-list(tab.ex[,1], tab.ex[,3], tab.ex[,3], tab.ex[,4], tab.ex[,5])
-        X<-list(rnorm(1000, 0), rnorm(985, 1), rnorm(1250,2), rnorm(800,3), rnorm(1000, 10))
-        diag=FALSE
-        bw=bw.nrd0
-    }
-
+pair.bhatt.coeff<-function(X, Y=NULL, bw=bw.nrd0, diag=FALSE, ...) {
     #SANITIZING
     #X
     if(class(X) != 'list') {
         stop("'X' must be a list of vectors.")
+    }
+
+    #Y
+    if(is.null(Y)) {
+        #square comparisons
+        square.comp<-TRUE
+    } else {
+        #list to list comparisons
+        square.comp<-FALSE
+        if(class(Y) != 'list') {
+            stop("'Y' must be a list of vectors.")
+        }
+        #X and Y must be the same length
+        if(length(X) != length(Y)) {
+            stop("'X' and 'Y' must be the same length.")
+        }
     }
 
     #diag
@@ -126,36 +133,57 @@ pair.bhatt.coeff<-function(X, bw=bw.nrd0, diag=FALSE, ...) {
         stop("'diag' must be logical.")
     }
 
-    #PAIRWISE COMPARISONS
-    #number of elements in the list
-    N<-length(X)
-
-    #Creating the empty matrix
-    mat<-matrix(NA, N, N)
-    #Adding row names if available in the matrix
-    colnames(mat) <- row.names(mat) <- names(X)
-    #Creating a vector of the empty cells
-    cells<-as.vector(mat)
-
-    #Selecting the lower triangle
-    sub<-lower.tri(mat, diag = diag)
-
-    #Bhatt.coeff function in a matrix
-    bhatt.coeff.mat<-function(x,y, sub, mat, bw, ...) {
-        if(sub[x,y]==TRUE) {
-            mat[x,y]<<-bhatt.coeff(X[[x]],X[[y]], bw, ...)
-        } else {
-            mat[x,y]<<-NA
-        }
+    #verbose
+    if(class(verbose) != 'logical') {
+        stop("'verbose' must be logical.")
     }
 
-    #Looping through rows and columns
-    for(x in 1:N) {
-        for(y in 1:N) {
-            bhatt.coeff.mat(x,y, sub, mat, bw, ...)
-        }
-    }
+    if(square.comp == TRUE) {
+        #PAIRWISE COMPARISONS (ONE TO ALL)
 
-    return(mat)
+        #number of elements in the list
+        N<-length(X)
+
+        #Creating the empty matrix
+        mat<-matrix(NA, N, N)
+        #Adding row names if available in the matrix
+        colnames(mat) <- row.names(mat) <- names(X)
+        #Creating a vector of the empty cells
+        cells<-as.vector(mat)
+
+        #Selecting the lower triangle
+        sub<-lower.tri(mat, diag = diag)
+
+        #Bhatt.coeff function in a matrix
+        bhatt.coeff.mat<-function(x,y, sub, mat, bw, ...) {
+            if(sub[x,y]==TRUE) {
+                mat[x,y]<<-bhatt.coeff(X[[x]],X[[y]], bw, ...)
+            } else {
+                mat[x,y]<<-NA
+            }
+        }
+
+        #Looping through rows and columns
+        for(x in 1:N) {
+            for(y in 1:N) {
+                bhatt.coeff.mat(x,y, sub, mat, bw, ...)
+            }
+        }
+
+        return(mat)
+    } else {
+        #LIST COMPARISONS (ONE TO ONE)
+
+        #number of elements in the list
+        N<-length(X)
+
+        #looping through the same elements of both lists
+        vec<-vector()
+        for (i in 1:N) {
+            vec[[i]]<-bhatt.coeff(X[[i]], Y[[i]], bw, ...)
+        }
+
+        return(vec)
+    }
 #End
 }
