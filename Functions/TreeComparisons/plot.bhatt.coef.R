@@ -168,7 +168,7 @@ plot.bhatt.coeff.dist<-function(list, col, ...) {
     
 
     #Plotting the distributions
-    plot(1,1, xlim=c(min(ext.coord$minx), max(ext.coord$maxx)), ylim=c(min(ext.coord$miny), max(ext.coord$maxy)), type='n')#, ...)
+    plot(1,1, xlim=c(min(ext.coord$minx), max(ext.coord$maxx)), ylim=c(min(ext.coord$miny), max(ext.coord$maxy)), type='n', ...)
     for (n in 1:length(density.list)){
         lines(density.list[[n]], col=col[n])
     }
