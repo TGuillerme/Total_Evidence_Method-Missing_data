@@ -65,11 +65,11 @@ load("../Data/R_data/pair.comp_within.Baytre.RF.Rda")
 load("../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
 
 #Visualising the results
-pairwise.comp_within<-c("pairwise.comp_within.MLbest.RF", "pairwise.comp_within.MLbest.Tr",
-                        "pairwise.comp_within.Baycon.RF", "pairwise.comp_within.Baycon.Tr",
-                        "pairwise.comp_within.MLboot.RF", "pairwise.comp_within.MLboot.Tr",
-                        "pairwise.comp_within.Baytre.RF", "pairwise.comp_within.Baytre.Tr")
-plot.bhatt.coeff(get(pairwise.comp_within[1]), col=c("red", "green"), col.grad=c("white", "black"))
+pairwise.comp_within<-c("pair.comp_within.MLbest.RF", "pair.comp_within.MLbest.Tr",
+                        "pair.comp_within.Baycon.RF", "pair.comp_within.Baycon.Tr",
+                        "pair.comp_within.MLboot.RF", "pair.comp_within.MLboot.Tr",
+                        "pair.comp_within.Baytre.RF", "pair.comp_within.Baytre.Tr")
+plot.bhatt.coeff(get(pairwise.comp_within[8]), col=c("red", "green"), col.grad=c("white", "black"))
 
 #----------------
 #Calculating the pairwise comparison without (effect of the method)
@@ -121,5 +121,6 @@ names(pair.comp_without.Tr)<-c("MLbest vs Baycon", "MLbest vs MLboot",
                                "Baycon vs Baytre", "MLboot vs Baytre")
 
 #Plot the distributions
-plot.bhatt.coeff.dist(pair.comp_without.RF, col=palette())
-plot.bhatt.coeff.dist(pair.comp_without.Tr, col=palette())
+op<-par(bty="l")
+plot.bhatt.coeff.dist(pair.comp_without.RF, col=palette(), xlab="Bhattacharyya Coefficient", ylab="Frequency")
+plot.bhatt.coeff.dist(pair.comp_without.Tr, col=palette(), xlab="Bhattacharyya Coefficient", ylab="Frequency")
