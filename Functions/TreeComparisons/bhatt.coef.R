@@ -88,7 +88,7 @@ bhatt.coeff<-function(x,y, bw=bw.nrd0, ...) {
 #Pairwise Bhattacharyya Coefficient
 ##########################
 #Calculates the pairwise Bhattacharyya Coefficient for n distributions
-#v.0.2
+#v.0.2.1
 #Update: allows to give another list Y to compare to the list X.
 ##########################
 #SYNTAX :
@@ -99,7 +99,7 @@ bhatt.coeff<-function(x,y, bw=bw.nrd0, ...) {
 #<...>  any optional arguments to be passed to the given bw function.
 ##########################c
 #----
-#guillert(at)tcd.ie - 29/11/2014
+#guillert(at)tcd.ie - 30/11/2014
 ##########################
 #Requirements:
 #-R 3
@@ -133,10 +133,6 @@ pair.bhatt.coeff<-function(X, Y=NULL, bw=bw.nrd0, diag=FALSE, ...) {
         stop("'diag' must be logical.")
     }
 
-    #verbose
-    if(class(verbose) != 'logical') {
-        stop("'verbose' must be logical.")
-    }
 
     if(square.comp == TRUE) {
         #PAIRWISE COMPARISONS (ONE TO ALL)
