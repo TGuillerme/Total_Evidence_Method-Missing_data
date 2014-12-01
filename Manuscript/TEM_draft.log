@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  30 NOV 2014 16:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.10)  1 DEC 2014 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,7 +606,7 @@ LaTeX Font Info:    Font shape `OT1/pplj/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/pplj/b/n' tried instead on input line 97.
  [2] [3] [4]
 [5] [6] [7] [8]
-<Figures/BW/TEM_Fig_outline-BW.pdf, id=206, 312.9803pt x 483.6971pt>
+<Figures/BW/TEM_Fig_outline-BW.pdf, id=210, 312.9803pt x 483.6971pt>
 File: Figures/BW/TEM_Fig_outline-BW.pdf Graphic file (type pdf)
 
 <use Figures/BW/TEM_Fig_outline-BW.pdf>
@@ -617,83 +617,57 @@ Package pdftex.def Info: Figures/BW/TEM_Fig_outline-BW.pdf used on input line 1
 
 LaTeX Warning: Float too large for page by 17.68622pt on input line 189.
 
-[9] [10 <./Figures/BW/TEM_Fig_outline-BW.pdf>]
-
-LaTeX Warning: Hyper reference `supplementaries' on page 11 undefined on input 
-line 203.
-
-[11] [12] [13]
+[9] [10 <./Figures/BW/TEM_Fig_outline-BW.pdf>] [11] [12] [13]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ô in font pplr9o!
- [14] [15] [16] [17]
-<Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf, id=393, 599.84097pt x 41
+ [14] [15]
+[16] [17]
+<Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf, id=403, 599.84097pt x 41
 9.166pt>
 File: Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf Graphic file (type p
 df)
  <use Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf>
 Package pdftex.def Info: Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf u
-sed on input line 297.
+sed on input line 308.
 (pdftex.def)             Requested size: 469.75502pt x 328.27213pt.
-
-<Figures/BW/Global-ML+consensus-RF+Tr-small.pdf, id=394, 599.84097pt x 419.166p
+ [18]
+[19 <./Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf>]
+<Figures/BW/Global-ML+consensus-RF+Tr-small.pdf, id=664, 599.84097pt x 419.166p
 t>
 File: Figures/BW/Global-ML+consensus-RF+Tr-small.pdf Graphic file (type pdf)
  <use Figures/BW/Global-ML+consensus-RF+Tr-small.pdf>
 Package pdftex.def Info: Figures/BW/Global-ML+consensus-RF+Tr-small.pdf used on
- input line 304.
+ input line 317.
 (pdftex.def)             Requested size: 469.75502pt x 328.27213pt.
 
-<Figures/colour/PairComp_within-Baycon-RF+Tr.pdf, id=395, 422.52354pt x 241.848
-56pt>
-File: Figures/colour/PairComp_within-Baycon-RF+Tr.pdf Graphic file (type pdf)
- <use Figures/colour/PairComp_within-Baycon-RF+Tr.pdf>
-Package pdftex.def Info: Figures/colour/PairComp_within-Baycon-RF+Tr.pdf used o
-n input line 312.
-(pdftex.def)             Requested size: 469.75502pt x 268.89421pt.
-
-<Figures/colour/PairComp_without-RF+Tr.pdf, id=396, 422.52354pt x 241.84856pt>
+<Figures/colour/PairComp_without-RF+Tr.pdf, id=670, 422.52354pt x 241.84856pt>
 File: Figures/colour/PairComp_without-RF+Tr.pdf Graphic file (type pdf)
 
 <use Figures/colour/PairComp_without-RF+Tr.pdf>
 Package pdftex.def Info: Figures/colour/PairComp_without-RF+Tr.pdf used on inpu
-t line 319.
+t line 328.
 (pdftex.def)             Requested size: 469.75502pt x 268.89421pt.
- [18] [19 <./Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf>] [20 <./Figu
-res/BW/Global-ML+consensus-RF+Tr-small.pdf>] [21 <./Figures/colour/PairComp_wit
-hin-Baycon-RF+Tr.pdf>] [22 <./Figures/colour/PairComp_without-RF+Tr.pdf>] [23] 
-[24]
-
-LaTeX Warning: Reference `supplementaries' on page 25 undefined on input line 3
-87.
-
-
-LaTeX Warning: Reference `Fig_Results' on page 25 undefined on input line 390.
-
-
-LaTeX Warning: Reference `Fig_Results' on page 25 undefined on input line 391.
-
-[25] [26]
-Missing character: There is no ‚ in font pplr9o!
-Missing character: There is no Ä in font pplr9o!
-Missing character: There is no ô in font pplr9o!
- [27] (./TEM_draft.bbl
+ [20] [21 <./Figures/BW/Global-ML+consensus-RF+Tr-small.pdf>] [22 <./Figures/co
+lour/PairComp_without-RF+Tr.pdf>]
+<Figures/colour/PairComp_within-Baycon-RF+Tr.pdf, id=2611, 422.52354pt x 241.84
+856pt>
+File: Figures/colour/PairComp_within-Baycon-RF+Tr.pdf Graphic file (type pdf)
+ <use Figures/colour/PairComp_within-Baycon-RF+Tr.pdf>
+Package pdftex.def Info: Figures/colour/PairComp_within-Baycon-RF+Tr.pdf used o
+n input line 339.
+(pdftex.def)             Requested size: 469.75502pt x 268.89421pt.
+ [23 <./Figures/colour/PairComp_within-Baycon-RF+Tr.pdf>] (./TEM_draft.bbl [24]
 Missing character: There is no √ in font pplr9o!
 Missing character: There is no ≥ in font pplr9o!
- [28] [29] [30]
+ [25] [26]
 Missing character: There is no ‚ in font pplr9o!
 Missing character: There is no Ä in font pplr9o!
 Missing character: There is no ì in font pplr9o!
-Missing character: There is no ‚ in font pplr9o!
-Missing character: There is no Ä in font pplr9o!
-Missing character: There is no ô in font pplr9o!
- [31] [32] [33]
-Missing character: There is no ƒ in font pplr9o!
-Missing character: There is no ç in font pplr9o!
- [34])
-(./SupplementaryMaterial/SupplementaryMaterial.tex
-(./SupplementaryMaterial/TreeBuilding.tex
-<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf, id=100493, 
+ [27]
+[28] [29] [30]) (./SupplementaryMaterial/SupplementaryMaterial.tex
+(./SupplementaryMaterial/TreeBuilding.tex [31]
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf, id=100449, 
 505.89pt x 505.89pt>
 File: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf Graphic
  file (type pdf)
@@ -707,8 +681,8 @@ Overfull \hbox (36.13373pt too wide) in paragraph at lines 13--15
  [][] 
  []
 
-[35] [36 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf>]
-[37]) (./SupplementaryMaterial/TreeComparison.tex
+[32] [33 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf>]
+) (./SupplementaryMaterial/TreeComparison.tex
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 15.0049pt on input line 3.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
@@ -717,63 +691,123 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 15.0049pt on input line 3.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 10.42007pt on input line 3.
- [38] [39] [40]
-(./SupplementaryMaterial/Supp_Tables/RPBTC_testing.tex)) [41]
-(./SupplementaryMaterial/Supp_Tables/NTSML_full.tex)
-Overfull \hbox (89.70897pt too wide) in paragraph at lines 1--21
- [][] 
- []
+ [34] [35] [36]) [37]
+(./SupplementaryMaterial/Supp_results.tex
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Global-Bootstrap+Treeset-R
+F+Tr-small.pdf, id=100616, 599.84097pt x 419.166pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Global-Bootstrap+Tree
+set-RF+Tr-small.pdf Graphic file (type pdf)
+
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Global-Bootstrap+Trees
+et-RF+Tr-small.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Gl
+obal-Bootstrap+Treeset-RF+Tr-small.pdf used on input line 5.
+(pdftex.def)             Requested size: 469.75502pt x 328.27213pt.
+
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytre-RF.
+pdf, id=100617, 505.89pt x 505.89pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytr
+e-RF.pdf Graphic file (type pdf)
+
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytre
+-RF.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Pa
+irComp_within-Baytre-RF.pdf used on input line 12.
+(pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
 
 
-LaTeX Warning: Float too large for page by 186.08122pt on input line 21.
-
-(./SupplementaryMaterial/Supp_Tables/NTSBA_full.tex)
-Overfull \hbox (163.70097pt too wide) in paragraph at lines 1--28
- [][] 
- []
+LaTeX Warning: Float too large for page by 3.75294pt on input line 15.
 
 
-LaTeX Warning: Float too large for page by 185.68123pt on input line 28.
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytre-Tr.
+pdf, id=100618, 505.89pt x 505.89pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytr
+e-Tr.pdf Graphic file (type pdf)
+
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytre
+-Tr.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Pa
+irComp_within-Baytre-Tr.pdf used on input line 19.
+(pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
 
 
-<SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf, id=100666, 
-505.89pt x 505.89pt>
-File: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf Graphic
- file (type pdf)
+LaTeX Warning: Float too large for page by 3.75294pt on input line 22.
 
-<use SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBootstraps.pdf>
-Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBoo
-tstraps.pdf used on input line 34.
-(pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 
-Overfull \hbox (36.13373pt too wide) in paragraph at lines 34--35
- [][] 
- []
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest-RF.
+pdf, id=100619, 505.89pt x 505.89pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbes
+t-RF.pdf Graphic file (type pdf)
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 462.
- [42] [43] [44] [45 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixBoots
-traps.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 462.
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest
+-RF.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Pa
+irComp_within-MLbest-RF.pdf used on input line 26.
+(pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
+
+
+LaTeX Warning: Float too large for page by 3.75294pt on input line 29.
+
+
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest-Tr.
+pdf, id=100620, 505.89pt x 505.89pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbes
+t-Tr.pdf Graphic file (type pdf)
+
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest
+-Tr.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Pa
+irComp_within-MLbest-Tr.pdf used on input line 33.
+(pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
+
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboot-RF.
+pdf, id=100621, 505.89pt x 505.89pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboo
+t-RF.pdf Graphic file (type pdf)
+
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboot
+-RF.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Pa
+irComp_within-MLboot-RF.pdf used on input line 40.
+(pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
+
+<SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboot-Tr.
+pdf, id=100622, 505.89pt x 505.89pt>
+File: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboo
+t-Tr.pdf Graphic file (type pdf)
+
+<use SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboot
+-Tr.pdf>
+Package pdftex.def Info: SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Pa
+irComp_within-MLboot-Tr.pdf used on input line 47.
+(pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
+))
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 459.
+ [38] [39 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Global-Bootstr
+ap+Treeset-RF+Tr-small.pdf>] [40 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-
+Appendix-PairComp_within-Baytre-RF.pdf>] [41 <./SupplementaryMaterial/Supp_Figu
+res/TEM_Fig-Appendix-PairComp_within-Baytre-Tr.pdf>] [42 <./SupplementaryMateri
+al/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest-RF.pdf>]
+[43 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbe
+st-Tr.pdf>] [44 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp
+_within-MLboot-RF.pdf>] [45 <./SupplementaryMaterial/Supp_Figures/TEM_Fig-Appen
+dix-PairComp_within-MLboot-Tr.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 459.
  (./TEM_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 462.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 462.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 459.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 459.
 Package rerunfilecheck Info: File `TEM_draft.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 462.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 459.
  ) 
 Here is how much of TeX's memory you used:
- 9160 strings out of 493315
- 139907 string characters out of 6137904
- 247521 words of memory out of 5000000
- 12181 multiletter control sequences out of 15000+600000
+ 9164 strings out of 493315
+ 141777 string characters out of 6137904
+ 234224 words of memory out of 5000000
+ 12192 multiletter control sequences out of 15000+600000
  62495 words of font info for 172 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,8n,38p,1598b,541s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,7n,38p,1598b,529s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -786,10 +820,10 @@ xmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2013/texmf-dist
 type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/u
 rw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/urw/pala
 tino/uplri8a.pfb>
-Output written on TEM_draft.pdf (45 pages, 15885718 bytes).
+Output written on TEM_draft.pdf (45 pages, 56833134 bytes).
 PDF statistics:
- 100824 PDF objects out of 114338 (max. 8388607)
- 50532 compressed objects within 506 object streams
- 145 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 399251 PDF objects out of 409690 (max. 8388607)
+ 198868 compressed objects within 1989 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

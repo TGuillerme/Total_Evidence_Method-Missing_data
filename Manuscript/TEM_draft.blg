@@ -14,45 +14,45 @@ Warning--empty journal in heaththe2013
 Warning--can't use both author and editor fields in johnson1998
 Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
-You've used 63 entries,
+You've used 58 entries,
             2858 wiz_defined-function locations,
-            954 strings with 16367 characters,
-and the built_in function-call counts, 39233 in all, are:
-= -- 3217
-> -- 2160
-< -- 40
-+ -- 730
-- -- 648
-* -- 2968
-:= -- 6226
-add.period$ -- 251
-call.type$ -- 63
-change.case$ -- 525
-chr.to.int$ -- 62
-cite$ -- 132
-duplicate$ -- 2805
-empty$ -- 2667
-format.name$ -- 841
-if$ -- 7940
+            930 strings with 15431 characters,
+and the built_in function-call counts, 35304 in all, are:
+= -- 2904
+> -- 1895
+< -- 38
++ -- 642
+- -- 567
+* -- 2645
+:= -- 5624
+add.period$ -- 231
+call.type$ -- 58
+change.case$ -- 473
+chr.to.int$ -- 57
+cite$ -- 122
+duplicate$ -- 2539
+empty$ -- 2430
+format.name$ -- 737
+if$ -- 7143
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 628
-newline$ -- 263
-num.names$ -- 252
-pop$ -- 1066
+missing$ -- 569
+newline$ -- 243
+num.names$ -- 232
+pop$ -- 959
 preamble$ -- 1
-purify$ -- 468
+purify$ -- 421
 quote$ -- 0
-skip$ -- 909
+skip$ -- 823
 stack$ -- 0
-substring$ -- 1594
-swap$ -- 1221
+substring$ -- 1429
+swap$ -- 1091
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 552
+type$ -- 507
 warning$ -- 6
-while$ -- 237
+while$ -- 217
 width$ -- 0
-write$ -- 756
+write$ -- 696
 (There was 1 error message)
