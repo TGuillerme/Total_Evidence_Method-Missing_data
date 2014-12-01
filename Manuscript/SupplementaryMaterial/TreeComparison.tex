@@ -73,16 +73,3 @@ We used the comparison of 1000 random trees to obtain the mean comparison value 
 We randomly generated two sets of 1000 trees of \textit{n} taxa using the rmtree function of ape package (v3.0-11 \citet{paradisape:2004}) that generates a given number of random Yule trees.
 We calculated the $\bar{d}_{m,n}$\textit{(rand)} value using an approach similar to the RPCBTC (described below) by performing 1000 random pairwise comparisons using the TreeCmp java script \citep{Bogdanowicz2012}.
 
-\subsubsection{Random Pairwise Bayesian Tree Comparison (RPBTC)}
-We assessed the power of the Random Pairwise Bayesian Tree Comparison (RPBTC) method by comparing 1000 random trees from a posterior distribution trees set to another 1000 random trees from the same posterior distribution trees set.
-We repeated this 100 times independently using the same posterior distribution trees set each time resulting in 100 replicates of the same posterior distribution trees set compared 1000 times.
-We used an ANOVA to test if there was no significant difference between the replicates so that the RBTC can be replicated.
-We applied this protocol on a poorly resolved tree (Low Score), a resolved tree with low support value (Medium Score) and a resolved tree with high support values (High Score).
-Results are available in table ~\ref{RPBTC_testing}. %link broken
-
-\begin{table}[ht]
-  \caption{Group comparison results: difference between 100 replicates using the RPBTC method} %test with TreeCmp.anova
-  \centering
-  \input{SupplementaryMaterial/Supp_Tables/RPBTC_testing}
-  \label{RPBTC_testing}
-\end{table}
