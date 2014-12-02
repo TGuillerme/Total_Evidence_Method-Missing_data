@@ -1,4 +1,4 @@
-\begin{thebibliography}{58}
+\begin{thebibliography}{66}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -12,6 +12,12 @@
 Bapst, D.~W. 2013. A stochastic rate-calibrated method for time-scaling
   phylogenies of fossil taxa. Methods in Ecology and Evolution 4.
 \bibAnnoteFile{bapsta2013}
+
+\bibitem[{Beck and Lee(2014)}]{beckancient2014}
+Beck, R.~M. and M.~S. Lee. 2014. Ancient dates or accelerated rates?
+  morphological clocks and the antiquity of placental mammals. Proceedings.
+  Biological sciences / The Royal Society 281.
+\bibAnnoteFile{beckancient2014}
 
 \bibitem[{Bhattacharyya(1943)}]{Bhattacharyya}
 Bhattacharyya, A. 1943. On a measure of divergence between two statistical
@@ -108,10 +114,20 @@ Jetz, W., G.~Thomas, J.~Joy, K.~Hartmann, and A.~Mooers. 2012. The global
   diversity of birds in space and time. Nature 491:444--448.
 \bibAnnoteFile{jetzthe2012}
 
-\bibitem[{Johnson and Soltis(1998)}]{johnson1998}
-Johnson, L.~A. and D.~E. Soltis. 1998. Assessing congruence: empirical examples
-  from molecular data chap.~11, Pages~297--348. Springer US.
-\bibAnnoteFile{johnson1998}
+\bibitem[{Kearney(2002)}]{kearneyfragmentary2002}
+Kearney, M. 2002. Fragmentary taxa, missing data, and ambiguity: mistaken
+  assumptions and conclusions. Systematic biology 51:369--381.
+\bibAnnoteFile{kearneyfragmentary2002}
+
+\bibitem[{Kuhner and Yamato(2014)}]{kuhnerpractical2014}
+Kuhner, M. and J.~Yamato. 2014. Practical performance of tree comparison
+  metrics .
+\bibAnnoteFile{kuhnerpractical2014}
+
+\bibitem[{Lee et~al.(2013)Lee, Soubrier, and Edgecombe}]{leerates2013}
+Lee, M., J.~Soubrier, and G.~Edgecombe. 2013. Rates of phenotypic and genomic
+  evolution during the cambrian explosion. Current Biology 23:1889 -- 1895.
+\bibAnnoteFile{leerates2013}
 
 \bibitem[{Lemmon et~al.(2009)Lemmon, Brown, Kathrin, and
   Lemmon}]{lemmonthe2009}
@@ -145,6 +161,13 @@ Meredith, R., J.~Jane\v{c}ka, J.~Gatesy, O.~Ryder, C.~Fisher, E.~Teeling,
   diversification. Science 334:521--524.
 \bibAnnoteFile{meredithimpacts2011}
 
+\bibitem[{Ni et~al.(2013)Ni, Gebo, Dagosto, Meng, Tafforeau, Flynn, and
+  Beard}]{nithe2013}
+Ni, X., D.~Gebo, M.~Dagosto, J.~Meng, P.~Tafforeau, J.~Flynn, and K.~Beard.
+  2013. The oldest known primate skeleton and early haplorhine evolution.
+  Nature 498:60--64.
+\bibAnnoteFile{nithe2013}
+
 \bibitem[{Novacek and Wheeler(1992)}]{novacek1992ext}
 Novacek, M.~J. and Q.~Wheeler. 1992. Extinction and phylogeny. Columbia
   University Press.
@@ -161,6 +184,11 @@ O'Leary, M.~A., J.~I. Bloch, J.~J. Flynn, T.~J. Gaudin, A.~Giallombardo, N.~P.
   and A.~L. Cirranello. 2013. The placental mammal ancestor and the post–k-pg
   radiation of placentals. Science 339:662--667.
 \bibAnnoteFile{O'Leary08022013}
+
+\bibitem[{O’Leary and Kaufman(2011)}]{morphobank}
+O’Leary, M.~A. and S.~Kaufman. 2011. Morphobank: phylophenomics in the
+  {"}cloud{"}. Cladistics 27:529--537.
+\bibAnnoteFile{morphobank}
 
 \bibitem[{Pagel(1994)}]{Pagel22011994}
 Pagel, M. 1994. Detecting correlated evolution on phylogenies: a general method
@@ -269,6 +297,11 @@ Sansom, R. and M.~Wills. 2013. Fossilization causes organisms to appear
   erroneously primitive by distorting evolutionary trees. Scientific Reports 3.
 \bibAnnoteFile{sansomfossilization2013}
 
+\bibitem[{Sansom(2014)}]{sansombias2014}
+Sansom, R.~S. 2014. Bias and sensitivity in the placement of fossil taxa
+  resulting from interpretations of missing data. Systematic Biology .
+\bibAnnoteFile{sansombias2014}
+
 \bibitem[{Schrago et~al.(2013)Schrago, Mello, and
   Soares}]{schragocombining2013}
 Schrago, C., B.~Mello, and A.~Soares. 2013. Combining fossil and molecular data
@@ -281,6 +314,12 @@ Simpson, G.~G. 1945. Tempo and mode in evolution. Transactions of the New York
   Academy of Sciences 8:45--60.
 \bibAnnoteFile{simpson1945}
 
+\bibitem[{Slater(2013)}]{slaterphylogenetic2013}
+Slater, G.~J. 2013. Phylogenetic evidence for a shift in the mode of mammalian
+  body size evolution at the {Cretaceous-Palaeogene} boundary. Methods in
+  Ecology and Evolution 4.
+\bibAnnoteFile{slaterphylogenetic2013}
+
 \bibitem[{Slater and Harmon(2013)}]{slaterunifying2013}
 Slater, G.~J. and L.~J. Harmon. 2013. Unifying fossils and phylogenies for
   comparative analyses of diversification and trait evolution. Methods in
@@ -291,6 +330,15 @@ Slater, G.~J. and L.~J. Harmon. 2013. Unifying fossils and phylogenies for
 Spencer, M.~R. and E.~W. Wilberg. 2013. Efficacy or convenience? model-based
   approaches to phylogeny estimation using morphological data. Cladistics 29.
 \bibAnnoteFile{spencerefficacy2013}
+
+\bibitem[{Springer et~al.(2012)Springer, Meredith, Gatesy, Emerling, Park,
+  Rabosky, Stadler, Steiner, Ryder, Janečka, Fisher, and
+  Murphy}]{springermacroevolutionary2012}
+Springer, M., R.~Meredith, J.~Gatesy, C.~Emerling, J.~Park, D.~Rabosky,
+  T.~Stadler, C.~Steiner, O.~Ryder, J.~Janečka, C.~Fisher, and W.~Murphy.
+  2012. Macroevolutionary dynamics and historical biogeography of primate
+  diversification inferred from a species supermatrix. PLOS ONE 7.
+\bibAnnoteFile{springermacroevolutionary2012}
 
 \bibitem[{Stadler and Yang(2013)}]{stadlerdating2013}
 Stadler, T. and Z.~Yang. 2013. Dating phylogenies with sequentially sampled
