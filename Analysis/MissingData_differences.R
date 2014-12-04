@@ -68,8 +68,30 @@ load("../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
 pairwise.comp_within<-c("pair.comp_within.MLbest.RF", "pair.comp_within.MLbest.Tr",
                         "pair.comp_within.Baycon.RF", "pair.comp_within.Baycon.Tr",
                         "pair.comp_within.MLboot.RF", "pair.comp_within.MLboot.Tr",
-                        "pair.comp_within.Baytre.RF", "pair.comp_within.Baytre.Tr")
+                        "pair.comp_within.MLboot.RF", "pair.comp_within.Baytre.Tr")
 plot.bhatt.coeff(get(pairwise.comp_within[8]), col=c("red", "green"), col.grad=c("white", "black"))
+
+#----------------
+#Plotting the distribution of coefficients per method and per metric
+#----------------
+#Plotting the coefficients distribution for RF
+Bhat.coeff.RF<-list(as.vector(pair.comp_within.MLbest.RF)[-which(is.na(as.vector(pair.comp_within.MLbest.RF)))],
+                    as.vector(pair.comp_within.Baycon.RF)[-which(is.na(as.vector(pair.comp_within.Baycon.RF)))],
+                    as.vector(pair.comp_within.MLboot.RF)[-which(is.na(as.vector(pair.comp_within.MLboot.RF)))],
+                    as.vector(pair.comp_within.Baytre.RF)[-which(is.na(as.vector(pair.comp_within.Baytre.RF)))])
+names(Bhat.coeff.RF)<-c("Maximum Likelihood - RF", "Bayesian consensus - RF", "Bootstraps - RF", "Bayesian posterior trees - RF")
+op<-par(bty="l")
+plot.bhatt.coeff.dist(Bhat.coeff.RF, col=palette(), xlab="Bhattacharyya Coefficient", ylab="Frequency")
+
+#Plotting the coefficients distribution for Tr
+Bhat.coeff.Tr<-list(as.vector(pair.comp_within.MLbest.Tr)[-which(is.na(as.vector(pair.comp_within.MLbest.Tr)))],
+                    as.vector(pair.comp_within.Baycon.Tr)[-which(is.na(as.vector(pair.comp_within.Baycon.Tr)))],
+                    as.vector(pair.comp_within.MLboot.Tr)[-which(is.na(as.vector(pair.comp_within.MLboot.Tr)))],
+                    as.vector(pair.comp_within.Baytre.Tr)[-which(is.na(as.vector(pair.comp_within.Baytre.Tr)))])
+names(Bhat.coeff.Tr)<-c("Maximum Likelihood - Tr", "Bayesian consensus - Tr", "Bootstraps - Tr", "Bayesian posterior trees - Tr")
+op<-par(bty="l")
+plot.bhatt.coeff.dist(Bhat.coeff.Tr, col=palette(), xlab="Bhattacharyya Coefficient", ylab="Frequency")
+
 
 #----------------
 #Calculating the pairwise comparison without (effect of the method)
