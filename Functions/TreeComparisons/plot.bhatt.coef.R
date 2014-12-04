@@ -123,14 +123,14 @@ plot.bhatt.coeff<-function(matrix, col=c("blue", "red"), col.grad=c("white", "bl
 #Plot distributions of a list of Bhattacharyya Coefficients
 ##########################
 #Plots a series of kernel density estimates of Bhattacharyya Coefficients
-#v.0.1
+#v.0.2
 ##########################
 #SYNTAX :
 #<list> a list of Bhattacharyya Coefficients
 #<...>  the name of the metric of interest
 ##########################
 #----
-#guillert(at)tcd.ie - 29/11/2014
+#guillert(at)tcd.ie - 04/12/2014
 ##########################
 #Requirements:
 #-R 3
@@ -144,11 +144,14 @@ plot.bhatt.coeff.dist<-function(list, col, ...) {
     if(class(list) != 'list') {
         stop('Provided list is not a list of Bhattacharyya Coefficients.')
     }
+    if(is.null(names(list))) {
+        warning("No list names available for plotting the legend.")
+    }
 
     #list
     if(class(col) != 'character') {
         stop('col must be a vector of characters.')
-    }    
+    } 
 
 #PLOT THE DISTRIBUTION
 
@@ -174,7 +177,7 @@ plot.bhatt.coeff.dist<-function(list, col, ...) {
     }
 
     #Adding the legend
-    legend(mean(ext.coord$maxx-abs(ext.coord$minx)), max(ext.coord$maxy), names(density.list), cex=0.8, lty=1, col=col[1:length(density.list)], bty="n")
+    legend(mean(ext.coord$maxx-abs(ext.coord$minx)), max(ext.coord$maxy), names(list), cex=0.8, lty=1, col=col[1:length(density.list)], bty="n")
 
 #End
 }
