@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex TEM_draft"] 1417611436 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1417611541
+["bibtex TEM_draft"] 1417698087 "TEM_draft.aux" "TEM_draft.bbl" "TEM_draft" 1417699398
   "./sysbio.bst" 1400080192 30418 82df53f2e0c137d332673e7de8136054 ""
   "References.bib" 1417537278 70229 72b4b832ca23efdea1b73cef244a0c69 ""
-  "TEM_draft.aux" 1417611540 16815 c2a14a0aacbe315bc41f79175bbb1472 ""
+  "TEM_draft.aux" 1417699395 26410 505d4820502468d19696281bee64085d ""
   "TEM_draft.bcf" 0 -1 0 ""
   (generated)
   "TEM_draft.bbl"
   "TEM_draft.blg"
-["pdflatex"] 1417611488 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1417611541
+["pdflatex"] 1417699189 "TEM_draft.tex" "TEM_draft.pdf" "TEM_draft" 1417699398
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty" 1303254447 8237 52810bdb4db2270e717422560a104aea ""
@@ -71,10 +71,23 @@
   "Figures/BW/TEM_Fig_outline-BW.pdf" 1416927588 276018 8152df0ec622fc3a7a4764ada1cf4b80 ""
   "Figures/colour/PairComp_within-Baycon-RF+Tr.pdf" 1417362269 17493529 3d8494027d4490f6f3451042e6718391 ""
   "Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf" 1416929309 382443 715cc7a6aeee54420c426cbcbce2652c ""
-  "TEM_draft.aux" 1417611540 16815 c2a14a0aacbe315bc41f79175bbb1472 ""
-  "TEM_draft.bbl" 1417611436 18504 6de4844bbf24ffeb541c46853be7331b "bibtex TEM_draft"
-  "TEM_draft.out" 1417611488 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "TEM_draft.tex" 1417611449 59953 6ed9b770d8787d105639c56f8fdf816c ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-Global-Bootstrap+Treeset-RF+Tr-small.pdf" 1416937469 541684 b3636a44a68075bb3e9e6f49c479b1e3 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_permeth.pdf" 1417694894 214530 b268ee08a22ae63edbba109db336a846 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytre-RF.pdf" 1417361209 9662866 0d9a614f18b9e707b4ddcd9bde2f8adf ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-Baytre-Tr.pdf" 1417361175 9630239 0e007df72b4fd119c7bd862eddee52a2 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest-RF.pdf" 1417361143 9674156 db3a80a001cae1203193601e2b8b02c9 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLbest-Tr.pdf" 1417361100 9656868 2909da8dc2680b2513633927f9d562e1 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboot-RF.pdf" 1417361068 9658985 590891b08afe02d3e61250648a7bd4a2 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-Appendix-PairComp_within-MLboot-Tr.pdf" 1417361031 11550013 315ad951a0345ea3924766d14f4fc308 ""
+  "SupplementaryMaterial/Supp_Figures/TEM_Fig-AppendixCharacters.pdf" 1379411963 149364 685441d70c2290b492d6d3a5b5017bc9 ""
+  "SupplementaryMaterial/Supp_results.tex" 1417695065 6432 fbf0cbf3531cca614d762fa2c11abd0a ""
+  "SupplementaryMaterial/SupplementaryMaterial.tex" 1417425943 677 5b03238a56c272acb4902d9e9e80daa6 ""
+  "SupplementaryMaterial/TreeBuilding.tex" 1417427179 2389 242c01241c77544f7d2ed6ab2c74b9fb ""
+  "SupplementaryMaterial/TreeComparison.tex" 1417699186 6506 96ee8d0f3f4fe7569ce2340ccf0c3c52 ""
+  "TEM_draft.aux" 1417699395 26410 505d4820502468d19696281bee64085d ""
+  "TEM_draft.bbl" 1417698087 18724 3dc2689d0a0772b313df889dccd956ab "bibtex TEM_draft"
+  "TEM_draft.out" 1417699189 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "TEM_draft.tex" 1417696399 61139 90121c0f76aa6f38db7dcfc4ab99a9c4 ""
   (generated)
   "TEM_draft.out"
   "TEM_draft.aux"

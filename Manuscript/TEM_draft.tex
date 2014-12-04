@@ -75,6 +75,7 @@ Version dated: \today
 \begin{center}
 
 \noindent{\Large \bf Effect of missing data on topological inference using a total evidence approach}
+%Or do we put results in the title: Bayesian analysis and increased sampling of living taxa improves topological inference when using a total evidence approach
 \bigskip
 
 %Authors
@@ -263,7 +264,7 @@ Also, to take into account the uncertainty of tree inference in both Maximum Lik
 
 For each of the 125 "missing-data" tree, we obtained Robinson-Foulds and Triplets distance distributions from either 50 or 50*1000 pairwise comparisons. We then calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v3.1 \citep{hdrcde}. %Finally we tested for significant differences among the different distributions of trees using non-parametric group and pairwise comparisons by using respectively Kruskal-Wallis and Nemenyi-Damico-Wolfe-Dunn test (CITE R PACKAGE)\citet{ruxtontime2008}.
 
-In order to investigate the effect of the parameters and/or the methods used in this simulations, we measured the similarity among the different distributions using the Bhattacharyya Coefficient \citep{Bhattacharyya}. The Bhattacharyya Coefficient is the probability of overlap between two distributions, ranging from 0 to 1 \citep{Bhattacharyya}. For each method (Maximym likelihood trees, Bayesian consensus trees, Bootstraps and Bayesian posterior trees) and metric (Robinson-Foulds and Triplets distance), we used this coefficient in two ways in order to:
+In order to investigate the effect of the parameters and/or the methods used in this simulations, we measured the similarity among the different distributions using the Bhattacharyya Coefficient \citep{Bhattacharyya}. The Bhattacharyya Coefficient is the probability of overlap between two distributions, ranging from 0 to 1 (\citealt{Bhattacharyya} - see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}). For each method (Maximym likelihood trees, Bayesian consensus trees, Bootstraps and Bayesian posterior trees) and metric (Robinson-Foulds and Triplets distance), we used this coefficient in two ways in order to:
 \begin{enumerate}
 \item assess the effect of the method on all parameters:
 
@@ -339,7 +340,7 @@ When looking at the pairwise Bhattacharyya Coefficients between all the paramete
 The results of our simulations are in adequacy with recent analysis on the effect of missing data in morphological matrices \citep{pattinsonphylogeny2014,wrightbayesian2014,sansombias2014}. Our results are showing that ability to recover the correct topology decreases with the amount of missing data, regardless the metric, the method or the parameters considered.
 %Results 1
 %   -However, parameters have different effect
-However, within a method and a metric, the parameters used to remove data have different effect on the ability to recover the correct topology.
+However, within a method and a metric, the parameters used to remove data have different effects on the ability to recover the correct topology.
 %Results 2
 %   -Additionally, methods and metrics are unequal
 Additionally, the effect of missing data on topological recovery varies with different methods to infer topology and different metrics to compare topologies.
@@ -350,14 +351,14 @@ Thus, we found that using the topologies of Bayesian consensus trees performed c
 %§2
 %Results 1 from litterature
 %   -Missing data per se is not a problem, problem is in the amount of overlap
-As proposed in numerous previous studies, when recovering topology, the amount of missing data \textit{per se} is not a problem as long as enough data overlaps in the matrix \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}. In fact, as shown previously, the amount of overlap in the matrix is more crucial than the amount of missing data \citep[e.g.][]{rouresite-specific2011}.
+As proposed in previousstudies, the amount of missing data is not a problem \textit{per se} as long as enough data overlaps in the matrix \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}. %In fact, as shown previously, the amount of overlap in the matrix is more crucial than the proportion of missing data \citep[e.g.][]{rouresite-specific2011}.
 %Proposed hypothesis for result 1
 %   -One can increase overlap by adding living taxa
-To improve topological recovery in a Total Evidence framework, one can efficiently increase the amount of overlapping data reducing the amount of missing data in each of our three parameters. In our simulations, the overlap in data is greatly reduced when different parameters are combined with a high amount of missing data (e.g. $M_{L}$=75\%, $M_{F}$=75\% and $M_{C}$=75\% - Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). In this scenario the overall number of missing characters $M_{C}$ affects the proportion of overlapping data by reducing the overall size of the matrix (Fig.~\ref{Fig_Results-global_perparam}). However it is important to note that in the pairwise Bhattacharyya Coefficient analysis, the area with the lowest probability of distribution overlap is led by comparing the trees with no missing data for the living taxa to the trees with 75\% missing data for the living data (Right lower corner in Fig.~\ref{Fig_Results-paircomp_within}).
+To improve topological recovery in a Total Evidence framework, one can efficiently increase the amount of overlapping data by reducing the amount of missing data in each of our three selected parameters. In our simulations, the overlap in data is greatly reduced when different parameters are combined with a high amount of missing data (e.g. $M_{L}$=75\%, $M_{F}$=75\% and $M_{C}$=75\% - Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). In this scenario the overall number of missing characters ($M_{C}$) affects the proportion of overlapping data by reducing the overall size of the matrix (Fig.~\ref{Fig_Results-global_perparam}). However it is important to note that in the pairwise Bhattacharyya Coefficient analysis, the area with the lowest probability of distributions overlap is led by comparing the trees with no missing data for the living taxa to the trees with 75\% missing data for the living data (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}).
 
 %§3
 %Discussing results 1
-Since each of our parameters are illustrating one potential sources of missing data in a morphological matrix (see \hyperref[Removing_data]{Methods}), we can propose different practical ways to reduce the amount of missing data:
+Each of our parameters illustrate one potential source of missing data in a morphological matrix (see \hyperref[Removing_data]{Methods}). We have suggestions for practical ways to reduce the missing data problem:
 %   -Which parameters does what?
 \begin{enumerate}
 \item{$M_{L}$ (non coded living taxa):}
@@ -365,7 +366,7 @@ The vast majority of known living species have specimens preserved in natural hi
 \item{$M_{F}$ (quality of the fossil record):}
 The amount of missing data in the fossil record solely depends on the preservation quality of the fossils and can not be actively improved. However, gaps in the matrix can be filled with the discoveries exceptional preserved fossil \citep[e.g.][]{nithe2013}. Fortunately, this parameter is the most difficult to improve but it also has the least influence on whether the simulations recover the correct topology (Fig.~\ref{Fig_Results-paircomp_within}).
 \item{$M_{C}$ (amount of coded characters):}
-The amount of time it takes to build a morphological matrix increases directly with the number of characters involved. Improvement in both decrease the time taken to build the matrix and to increase the number of characters can be done through vast collaborative data collection projects through web portals such as \textit{morphobank} \citep{morphobank}.
+The amount of time it takes to build a morphological matrix increases directly with the number of characters involved. Improvement in both decreasing the time taken to build the matrix and increasing the number of characters can be done through vast collaborative data collection projects through web portals such as \textit{morphobank} \citep{morphobank}.
 \end{enumerate}
 
 
@@ -383,25 +384,26 @@ When comparing this the probability of overlap between the methods, it is counte
 %Some sort of transition?
 
 %§5
+
 %Caveats: the metrics
 %   -RF is different and better than triplets.
 \label{metrics_discussion}
-Our results can be contrasted by looking at the normalised tree similarity when using the Robinson-Foulds or the Triplets distance. When using the second one, the confidence interval of our different parameters combinations per methods seems higher (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}) and the probability of overlap between the distribution of each parameter is high (Bhattacharyya Coefficient close to 1 - Fig.~\ref{Fig_Results-paircomp_within}-B). The contrast between the results of the two metrics can be explained by the actual nature of both metrics:
+As shown in Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}, our results can be contrasted by looking at the normalised tree similarity when using the Robinson-Foulds or the Triplets distance. For example, Fig.~\ref{Fig_Results-global_perparam} shows opposite results for both method when looking at the two different metrics. Globally, the normalised Triplets distance displays large confidence intervals than the normalised Robinson-Foulds distance and a higher probability of overlap between the distribution of each parameter (Bhattacharyya Coefficient close to 1 - Fig.~\ref{Fig_Results-paircomp_within}-B). The contrast between the results of the two metrics can be explained by the actual nature of both metrics (see \hyperref[SupplementaryMaterial]{Supplementary Material S2}):
 \begin{enumerate}
-\item{The Robinson-Foulds metric is a conservative tree topology metric, it is more sensible to single taxon displacement because it will count clades as similar only if they are composed of the same number of taxa with the same topologies \citep{RF1981}. When getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees. This metric illustrates therefore the conservation of clades among the compared trees (i.e. when the normalised Robinson-Foulds distance is close to 1, most of the clades in the two trees are identical).}
-\item{On the other hand, the Triplets method is measuring the position of each taxon towards two other reference taxa \citep{critchlowthe1996}. It will penalise only trees where taxa get removed furthest from their original clade. This metric illustrates therefore the amount of wildcard taxa \citep{kearneyfragmentary2002} between the to compared trees (i.e. when the score is closed to 1, view wildcard taxa are present in the tree).}
+\item{The Robinson-Foulds metric is a conservative metric, it is more sensible to single taxon displacement because it will count clades as similar only if they are composed of the same taxa with the same topologies \citep{RF1981}. When getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees. This metric illustrates therefore the conservation of clades among the compared trees (i.e. when the normalised Robinson-Foulds distance is close to 1, most of the clades in the two trees are identical).}
+\item{On the other hand, the Triplets method is measuring the position of each taxon towards two other reference taxa \citep{critchlowthe1996}. It will penalise only trees where taxa get removed furthest from their original position. This metric therefore illustrates the amount of wildcard taxa \citep{kearneyfragmentary2002} between the to compared trees (i.e. when the score is closed to 1, few wildcard taxa are present in the tree).}
 \end{enumerate}
-Therefore, in our study, both metrics are showing two different aspects of tree topology. Also, disregarding their fundamental differences in accounting for topological distance, \citet{kuhnerpractical2014} have recently proposed that the Ronbinson-Foulds distance greatly outperforms the Triples distance in signalling differences in topology.
-%Maybe also a note about the fact that in Triplets, there's more than one solution each simulation (i.e. wildcard taxa can fix in many places) so it increases highly the variance in the NTS. In RF, because the metric is more conservative (bounded between 0 and the number of nodes), the number of solutions is smaller and therefore the variance decreases.
+Therefore, in our study, both metrics are showing two different aspects of tree topology. For example, regarding the Bayesian consensus trees, completes clade are conserved most of the time (Fig.~\ref{Fig_Results-global_perparam}-top) but with increasing amount of missing data, wildcard taxa get more and more displaced (Fig.~\ref{Fig_Results-global_perparam}-bottom). Because we are comparing the Baysian consensus tree to a single tree topology, the probability of recovering the exact position of a wildcard taxa than in the "best" tree is really low and even reducing with the amount of missing data. Regarding this fundamental differences, the Robinson-Foulds metric performs better in showing a distance from the true topology than the Triplets distance \citep{kuhnerpractical2014}.
 
 %§6
 %Caveats: the simulations
 %   -Simulating morpho characters
-The size of our simulated matrices was at least two orders orders of magnitude lower than usual matrices, both for the molecular part \citep[e.g.][]{springermacroevolutionary2012} and the morphological part \citep[e.g.][]{nithe2013}. For morphological characters, the underlying pattern of their evolution are often more complex and ruled by more parameters than molecular characters (i.e the number of character states, the states frequencies, the substitution matrix and the statistical model used) \citep{Pagel22011994,wagner2000,lewisa2001}. Also morphological characters studies involve many potential statistical pitfalls (e.g. independent characters violation, rate variation - \citet{davalosintegrating2014}) and especially (i) incongruence with molecular signal and (ii) homoplasy \citep{wrightbayesian2014}.
+Another caveat of our analysis is the performance of our simulation protocol: in order to reduce the computational time ($~$150 CPU years) of our analysis, we had to simulate modest size matrices (1000 molecular data and 100 morphological data) that are two orders of magnitude lower than some matrices used in published analysis: both for the molecular part \citep[e.g.][]{springermacroevolutionary2012} and the morphological part \citep[e.g.][]{nithe2013}. %TG: note about NOT citing O'Leary here. 1-I don't like the paper ; 2-the Ni et al paper (primates) as a big morpho matrix too (1k  characters against 4k for O'Leary, same order of magnitude?) ; 3-We might want to limit the papers we're citing?
+Also, simulating morphological characters is more complex than molecular ones. The underlying pattern of their evolution are often more complex and ruled by more parameters than molecular characters (i.e the number of character states, the states frequencies, the substitution matrix and the statistical model used) \citep{Pagel22011994,wagner2000,lewisa2001}. Also morphological characters studies involve many potential statistical pitfalls (e.g. independent characters violation, rate variation - \citet{davalosintegrating2014}) and especially (i) incongruence with molecular signal and (ii) homoplasy \citep{wagner2000}.
 \begin{enumerate}
 \item{First, morphological data can display a different signal than molecular data, especially in small matrices. %REF
 This might lead to a controversial phylogenetic signal in the overall matrix and lower down the support values. However, regarding empirical data studies, most of the groups shows fairly congruent morphological and molecular phylogenetic signal \citep[e.g.][]{leerates2013}.}
-\item{Secondly, in this study, we made the assumption that theoretically, morphological characters are randomly distributed on an organism however it seems clear that empirical morphological data does not act randomly \citep{sansomfossilization2013}. However, following our simulation assumption of random character distributions, if they accumulate through time in the same way as the majority of the molecular characters then, homoplasic characters are expected to appear randomly through time \citep{davalosintegrating2014}. Therefore, homoplasy is expected to be more important (by chance) in bigger morphological matrices \citep{davalosintegrating2014}. After a reaching a critical amount of morphological characters, adding new ones increases homoplasy \citep{wagner2000}.}
+\item{Secondly, in this study, we made the assumption that theoretically, morphological characters are randomly distributed on an organism however it seems clear that empirical morphological data does not act randomly \citep{sansomfossilization2013,pattinsonphylogeny2014}. However, following our simulation assumption of random character distributions, if they accumulate through time in the same way as the majority of the molecular characters then, homoplasic characters are expected to appear randomly through time \citep{davalosintegrating2014}. Therefore, homoplasy is expected to be more important (by chance) in bigger morphological matrices \citep{davalosintegrating2014}. After reaching a critical amount of morphological characters, adding new ones increases homoplasy \citep{wagner2000}.}
 \end{enumerate}
 
 %§7
@@ -428,7 +430,7 @@ One way to address this issue would be to run a similar analysis using real data
 %   -TEM works with missing data
 %   -Use bayesian consensus
 %   -Go code living taxa
-Using Total Evidence matrices with missing data is not a problem for recovering the correct topology as long as enough morphological data is overlapping between the fossil and living taxa. In order to optimize good topological recovery, with propose to use the Bayesian consensus tree over the Maximum Likelihood tree or a subset of the Bayesian posterior trees distribution. Also, in order to improve the overlap in data in the morphological part of the matrix, we advice to use all the morphological characters available and to code them for a maximum of living taxa present in the matrix.
+Using Total Evidence matrices with missing data is not a problem for recovering the correct topology as long as enough morphological data is overlapping between the fossil and living taxa. In order to optimize good topological recovery, we propose to use the Bayesian consensus tree over the Maximum Likelihood tree or over a random subset of the Bayesian posterior trees distribution. Also, in order to improve the overlap in data in the morphological part of the matrix, we advice to use all the morphological characters available and to code them for a maximum of living taxa present in the matrix.
 
 
 %---------------------------------------------
@@ -461,11 +463,17 @@ Thanks to Paddy Doyle, Graziano D'Innocenzo and Sean McGrath for assistance with
 \bibliographystyle{sysbio}
 \bibliography{References}
 
-%Ignored for fast pdf building
-%\section{Supplementary Material}
+%---------------------------------------------
+%
+%       Supplementary, separated
+%
+%---------------------------------------------
 
-%    \input{SupplementaryMaterial/SupplementaryMaterial}
-%    \label{SupplementaryMaterial}
+%Ignore for fast pdf building
+\section{Supplementary Material}
+
+    \input{SupplementaryMaterial/SupplementaryMaterial}
+    \label{SupplementaryMaterial}
 
 %END
 \end{document}
