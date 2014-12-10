@@ -68,7 +68,7 @@ load("../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
 pairwise.comp_within<-c("pair.comp_within.MLbest.RF", "pair.comp_within.MLbest.Tr",
                         "pair.comp_within.Baycon.RF", "pair.comp_within.Baycon.Tr",
                         "pair.comp_within.MLboot.RF", "pair.comp_within.MLboot.Tr",
-                        "pair.comp_within.MLboot.RF", "pair.comp_within.Baytre.Tr")
+                        "pair.comp_within.Baytre.RF", "pair.comp_within.Baytre.Tr")
 plot.bhatt.coeff(get(pairwise.comp_within[8]), col=c("red", "green"), col.grad=c("white", "black"))
 
 #----------------
