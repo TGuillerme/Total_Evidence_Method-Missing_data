@@ -1,6 +1,13 @@
 #TreeCmp files
 *.Cmp
 
+#Draft figures folder
+Manuscript/Figures/all/.*
+
+#Rdata files (too big)
+*.Rda
+
+
 # Raw data and idiocy prevention#
 *.xlsx
 *.xls
@@ -33,7 +40,7 @@
 *.toc
 *.ttt
 *.fdb_latexmk
-*.pdf
+#*.pdf
 
 # beamer
 *.nav
@@ -54,6 +61,6 @@ Thumbs.db
 # \#*\#
 
 ignore/
+
 *.Rcheck/
-*.Rda
 
