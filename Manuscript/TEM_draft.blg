@@ -11,48 +11,49 @@ I'm skipping whatever remains of this entry
 Warning--missing school in chen2011
 Warning--can't use both author and editor fields in dobson1975triplets
 Warning--empty journal in heaththe2013
+Warning--can't use both author and editor fields in johnson1998
 Warning--empty journal in kuhnerpractical2014
 Warning--can't use both author and editor fields in tavare1986
 Warning--empty chapter and pages in tavare1986
-You've used 69 entries,
+You've used 70 entries,
             2858 wiz_defined-function locations,
-            979 strings with 17515 characters,
-and the built_in function-call counts, 41775 in all, are:
-= -- 3425
-> -- 2291
-< -- 42
-+ -- 775
-- -- 687
-* -- 3133
-:= -- 6695
-add.period$ -- 274
-call.type$ -- 69
-change.case$ -- 569
-chr.to.int$ -- 68
-cite$ -- 144
-duplicate$ -- 3010
-empty$ -- 2841
-format.name$ -- 884
-if$ -- 8417
+            987 strings with 17741 characters,
+and the built_in function-call counts, 42456 in all, are:
+= -- 3485
+> -- 2313
+< -- 44
++ -- 782
+- -- 693
+* -- 3183
+:= -- 6788
+add.period$ -- 278
+call.type$ -- 70
+change.case$ -- 575
+chr.to.int$ -- 69
+cite$ -- 147
+duplicate$ -- 3057
+empty$ -- 2898
+format.name$ -- 895
+if$ -- 8570
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 675
-newline$ -- 287
-num.names$ -- 276
-pop$ -- 1137
+missing$ -- 684
+newline$ -- 291
+num.names$ -- 280
+pop$ -- 1157
 preamble$ -- 1
-purify$ -- 505
+purify$ -- 511
 quote$ -- 0
-skip$ -- 960
+skip$ -- 986
 stack$ -- 0
-substring$ -- 1636
-swap$ -- 1277
-text.length$ -- 1
+substring$ -- 1675
+swap$ -- 1302
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 609
-warning$ -- 6
-while$ -- 254
+type$ -- 615
+warning$ -- 7
+while$ -- 259
 width$ -- 0
-write$ -- 824
+write$ -- 836
 (There was 1 error message)

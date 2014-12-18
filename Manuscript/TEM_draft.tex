@@ -156,7 +156,7 @@ We repeated the 4 steps 50 times to account for variation of our random paramete
 
 \begin{figure}
 \centering
-    \includegraphics[keepaspectratio=true]{Figures/BW/TEM_Fig_outline-BW.pdf}
+    \includegraphics[keepaspectratio=true]{Figures/In_main/Simulations_outline-BW.pdf}
 \caption{Protocol outline.
 (1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
 (2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
@@ -173,7 +173,7 @@ We repeated the 4 steps 50 times.}
 \subsection{Generating the matrix}
 First we randomly generated a "true" tree of 50 taxa in R v3.0.2 \citep{R302} using the package diversitree v0.9-6 \citep{fitzjohndiversitree2012}. We generated the tree using a birth death process by sampling speciation ($\lambda$) and extinction ($\mu$) rates from a uniform distribution but maintaining $\lambda$ $>$ $\mu$ \citep{paradistime-dependent2011}. We implemented a rejection sampling algorithm to select only trees with 25 living and 25 fossil taxa to ensure that we had enough taxa of each type for our missing data simulations to work. We then added an outgroup to the tree, using the mean branch length of the tree to separate the outgroup from the rest of the taxa, and with the branch length leading to the outgroup set as the sum of the mean branch length and the longest root-to-tip length of the tree.
 
-Next, we generated a molecular and a morphological matrix from the "true" tree. The molecular matrix was inferred from the "true" tree using the R package phyclust v0.1-14 \citep{chen2011}. The matrix contained 1000 character sites for 51 taxa and was generated using the seqgen algorithm \citep{ranbaut1997seqgen} and using the HKY model \citep{HKY85} with random base frequencies and transition/transversion rate of 2 \citep{douadycomparison2003}. The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \citep{yangamong-site1996}. We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal. We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, total computational time for the whole analysis was over 150 CPU years). All the molecular information for fossil taxa was replaced by missing data ("?").
+Next, we generated a molecular and a morphological matrix from the "true" tree. The molecular matrix was inferred from the "true" tree using the R package phyclust v0.1-14 \citep{chen2011}. The matrix contained 1000 character sites for 51 taxa and was generated using the seqgen algorithm \citep{ranbaut1997seqgen} and using the HKY model \citep{HKY85} with random base frequencies and transition/transversion rate of 2 \citep{douadycomparison2003}. The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \citep{yangamong-site1996}. We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal. We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, total computational time for the whole analysis was around 150 CPU years). All the molecular information for fossil taxa was replaced by missing data ("?").
 
 We inferred the morphological matrix using the R package ape v3.0-11 \citep{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa. We assigned the number of character states (either two or three) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters. These probabilities were selected using the overall distribution of character states extracted from 100 published empirical morphological matrices (See \hyperref[SupplementaryMaterial]{Supplementary Material Section 1}). We then ran an independent discrete character simulation for each character using the "true" tree with the character's randomly selected number of states (two or three) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to an other \citep{Pagel22011994}. This method allows us to have only two parameters for each character: the number of states and the evolutionary rate. For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5. We used low evolutionary rate parameters to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \citep{wagner2000,davalosintegrating2014,wrightbayesian2014}.
 
@@ -218,14 +218,14 @@ In order to measure the phylogenetic signal of our simulations, we first ran a f
 
 On these selected simulations, we used the fast bootstrap algorithm and performed 1000 bootstraps per tree inference to assess the topological support \citep{pattengale2010many}.
 %The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists of pruning one sub-tree from the tree and subsequently reinserting it to all neighbouring branches \citep{stamatakisa2008}. Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated to be better than other methods (e.g. Nearest Neighbouring Interchange - NNI) for recovering good bootstrap values \citep{salamin2003}. %TG: The explanations of the algorithm part for the BS was proposed by Trevor I think it's useless
-When using these parameters, it took $~$8 CPU years to build 50 sets of 125 bootstrapped Maximum Likelihood trees (8 core nodes 2.30GHz clock speed).
+When using these parameters, it took $~$8 CPU years to build 50 sets of 125 bootstrapped Maximum Likelihood trees (2.30GHz clock speed nodes).
 
 \subsubsection{Bayesian}
 The "best" tree and the "missing-data" trees were inferred using MrBayes v3.2.1 \citep{Ronquist2012mrbayes}. We partitioned the data to treat the molecular part as a non-codon DNA partition and the morphological part as a multi-state morphological partition. The molecular evolutionary history was inferred using the HKY model with a transition/transversion ratio of 2 \citep{douadycomparison2003} and a gamma distribution for the rate variation with four distinct categories (HKY + $\Gamma_4$). For the morphological data, we used the Markov \textit{k} state model \citep{lewisa2001}, with equal state frequency and a unique overall substitution rate ($\mu$) with four distinct rates categories (M\textit{k} + $\Gamma_4$). We chose these models to be consistent with the parameters used to generate the "complete" matrix.
 
 Each Bayesian tree was estimated using two runs of four chains each for a maximum of 50$\times$$1^6$ generations. We used the average standard deviation of split frequencies (ASDS) as a proxy to estimate the convergence of the chains and used a stop rule when the ASDS went below 0.01 \citep{Ronquist2012mrbayes}. The effective sample size (ESS) was also checked on a random sub-sample of runs in each simulation to ensure that ESS $>>$ 200 \citep{drummond2006ess}. For each run, we removed 25\% of the iterations as burn-in. We used the following priors for each tree (see \hyperref[SupplementaryMaterial]{Supplementary Material S1}): (i) the "true" tree’s topology as a starting tree (with a starting value for each branch length of 1), (ii) an exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5 for both partitions, and (iii) a transition/transversion ratio prior of two sampled from a strong beta distribution ($\beta$(80,40)).
 
-We used these prior to speed up the Bayesian estimation process. These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation, however, here we are focusing on the effect of missing data on tree topology and not branch lengths. Even using these priors, it took $~$140 CPU years to build 50 sets of 125 Bayesian trees (8 core nodes 2.30GHz clock speed).
+We used these prior to speed up the Bayesian estimation process. These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation, however, here we are focusing on the effect of missing data on tree topology and not branch lengths. Even using these priors, it took $~$140 CPU years to build 50 sets of 125 Bayesian trees (2.30GHz clock speed nodes).
 
 %---------------------------------------------
 %       Comparing Topologies
@@ -233,7 +233,6 @@ We used these prior to speed up the Bayesian estimation process. These priors bi
 
 \subsection{Comparing topologies}
 We compared the topology of the "missing-data" trees to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$ on tree topology. We used the Robinson-Foulds distance \citep{RF1981} to assess the amount conserved clade positions and the Triplets distance \citep{dobson1975triplets} to assess amount of wildcard taxa \citep{kearneyfragmentary2002}. We then used Normalized Tree Similarity index \citep{Bogdanowicz2012} to generalize our results for any \textit{n} number of taxa. These metrics are described in detail below.
-%ADD KHUNAR PAPER SOMEWHERE
 
 \subsubsection{Robinson-Foulds distance}
 Robinson-Foulds distance \citep{RF1981}, or "path difference", measures the number of shared clades across two trees. The metric reflects the distance between the distributions of tips among clades in the two trees (\citealt{RF1981} ; see \hyperref[SupplementaryMaterial]{Supplementary Material S2}). This metric is bounded between 1 when the two trees are identical and $n-2$ (for two trees with $n$ taxa) when there is not one single shared clade between both trees. This metric is sensitive to the exact clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swap of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating a bad tree similarity.
@@ -275,7 +274,7 @@ We performed a pairwise comparison per method and per metric for each combinatio
 
 \begin{figure} 
 \centering
-    \includegraphics[width=1\textwidth]{Figures/colour/Parameters-AllMethods-RF+Tr-small.pdf}
+    \includegraphics[width=1\textwidth]{Figures/In_main/AllMethods-RF+Tr-colour.pdf}
 \caption{Comparison between the effect of missing data and the tree inference method on topology. The amount of missing data for each parameter is represented on the x axis. The topology is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black, the Bayesian consensus trees in red, the bootstrap trees in green and the posterior tree distribution in blue.}
 \label{Fig_Results-permeth_perparam} %Differences within a subset of parameters and between methods
 \end{figure}
@@ -284,7 +283,7 @@ As expected form the literature, the amount of missing data in the morphological
 
 \begin{figure} 
 \centering
-    \includegraphics[width=1\textwidth]{Figures/BW/Global-ML+consensus-RF+Tr-small.pdf}
+    \includegraphics[width=1\textwidth]{Figures/In_main/ML+Baycon-AllParam-RF+Tr-BW.pdf}
 \caption{Trend of the effect of missing data on topology on the Maximum Likelihood and the Bayesian consensus trees. The amount of missing data per parameter ($M_{L}$, $M_{F}$ and $M_{C}$) is represented along the x axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data for each parameter. The topology is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black and the Bayesian consensus trees in grey.}
 \label{Fig_Results-global_perparam} %Differences between all the parameters and between two methods (ML vs BC)
 \end{figure}
@@ -295,7 +294,7 @@ When looking at the global trend of the Bayesian consensus trees for all the par
 
 \begin{figure} 
 \centering
-    \includegraphics[width=1\textwidth]{Figures/colour/PairComp_without-RF+Tr.pdf}
+    \includegraphics[width=1\textwidth]{Figures/In_main/BC-MethodComp-RF+Tr-colour.pdf}
 \caption{Distribution of the Bhattacharyya Coefficients between methods. Curves represents the kernel density estimations of the Bhattacharyya Coefficients between the four different methods. A. Results for the Normalised Robinson-Foulds distance. B. Results with the for Normalised Triplets distance. Pikes around the two different extremes values of the Bhattacharyya Coefficients show the two pairs of most dissimilar methods (Bayesian consensus vs. Bootstraps and Bayesian consensus vs. Bayesian posterior trees) for the Normalised Robinson-Foulds distance ; and the most similar methods (Bootstraps and Bayesian posterior trees) for the Normalised Triples methods.}
 \label{Fig_Results-paircomp_without} %Comparisons between methods, both in RF and Triplets.(method differences)
 \end{figure}
@@ -304,13 +303,13 @@ When looking at the comparisons between the methods using the Robinson-Foulds di
 
 \subsection{Effect of the missing data parameters on topology}
 
-%Hidden figure for 'fast' build
-%\begin{figure} 
-%\centering
-%    \includegraphics[width=1\textwidth]{Figures/colour/PairComp_within-Baycon-RF+Tr.pdf}
-%\caption{Pairwise Bhattacharyya Coefficients within the Bayesian consensus trees. The pairwise trees comparisons are represent on both axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data for each parameter. The matrix represents the values of pairwise Bhattacharyya Coefficients going from green (1) to red (0). A. Results for the Normalised Robinson-Foulds distance. B. Results with the for Normalised Triplets distance.}
+%Hide this figure for 'fast' build
+\begin{figure} 
+\centering
+    \includegraphics[width=1\textwidth]{Figures/In_main/PairwiseComp-Baycon-RF+Tr-colour.pdf}
+\caption{Pairwise Bhattacharyya Coefficients within the Bayesian consensus trees. The pairwise trees comparisons are represent on both axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data for each parameter. The matrix represents the values of pairwise Bhattacharyya Coefficients going from green (1) to red (0). A. Results for the Normalised Robinson-Foulds distance. B. Results with the for Normalised Triplets distance.}
 \label{Fig_Results-paircomp_within}
-%\end{figure} %Pairwise BC for the Bayesian consensus trees for RF and TR. (parameters differences)
+\end{figure} %Pairwise BC for the Bayesian consensus trees for RF and TR. (parameters differences)
 
 When looking at the pairwise Bhattacharyya Coefficients between all the parameters combinations for Bayesian consensus trees, the number of missing living taxa ($M_{L}$) results the lowest probabilities of overlap (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}-A). However, when looking at the Triplets distance, because of the high overlap in confidence intervals, there is no major region with low probability of overlap. One should note however that the bottom line of the matrix where the Bhattacharyya Coefficients are very low is due to comparing the distribution of the pairwise comparison of the best tree vs. the best tree, leading to a Normalised triplet score of 1 every time (with no variance, see Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). All the other pairwise comparisons are available in the supplementary materials (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
 
@@ -523,11 +522,11 @@ Thanks to Paddy Doyle, Graziano D'Innocenzo and Sean McGrath for assistance with
 %
 %---------------------------------------------
 
-%Ignore for 'fast' pdf building
-%\section{Supplementary Material}
+%Ignore this for 'fast' pdf building
+\section{Supplementary Material}
 
-%    \input{SupplementaryMaterial/SupplementaryMaterial}
-%    \label{SupplementaryMaterial}
+    \input{SupplementaryMaterial/SupplementaryMaterial}
+    \label{SupplementaryMaterial}
 
 %END
 \end{document}

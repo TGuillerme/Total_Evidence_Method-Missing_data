@@ -1,4 +1,4 @@
-\begin{thebibliography}{69}
+\begin{thebibliography}{70}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\selectlanguage}[1]{\relax}
 \providecommand{\bibAnnoteFile}[1]{%
@@ -118,6 +118,11 @@ Jackson, J. and D.~Erwin. 2006. What can we learn about ecology and evolution
 Jetz, W., G.~Thomas, J.~Joy, K.~Hartmann, and A.~Mooers. 2012. The global
   diversity of birds in space and time. Nature 491:444--448.
 \bibAnnoteFile{jetzthe2012}
+
+\bibitem[{Johnson and Soltis(1998)}]{johnson1998}
+Johnson, L.~A. and D.~E. Soltis. 1998. Assessing congruence: empirical examples
+  from molecular data chap.~11, Pages~297--348. Springer US.
+\bibAnnoteFile{johnson1998}
 
 \bibitem[{Kearney(2002)}]{kearneyfragmentary2002}
 Kearney, M. 2002. Fragmentary taxa, missing data, and ambiguity: mistaken
