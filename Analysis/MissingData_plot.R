@@ -30,8 +30,8 @@ if(quick.load == FALSE) {
 #Plot main figures (individual parameters in RF and Triples)
 #####################
 #windows parameters
-#quartz(width = 8.3, height = 5.8) #A5 landscape
-quartz(width = 16.6, height = 11.6) #A4 landscape
+quartz(width = 8.3, height = 5.8) #A5 landscape
+#quartz(width = 16.6, height = 11.6) #A4 landscape
 op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
@@ -69,8 +69,8 @@ par(op)
 #Plot method differences figure
 #####################
 #windows parameters
-#quartz(width = 8.3, height = 5.8) #A5 landscape
-quartz(width = 16.6, height = 11.6) #A4 landscape
+quartz(width = 8.3, height = 5.8) #A5 landscape
+#quartz(width = 16.6, height = 11.6) #A4 landscape
 op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
@@ -118,8 +118,8 @@ par(op)
 #Plot parameter differences figure
 #####################
 #windows parameters
-#quartz(width = 8.3, height = 5.8) #A5 landscape
-quartz(width = 16.6, height = 11.6) #A4 landscape
+quartz(width = 8.3, height = 5.8) #A5 landscape
+#quartz(width = 16.6, height = 11.6) #A4 landscape
 op<-par(mfrow=c(2,3), bty="l", oma=c(0,0,0,0))
 ylim=c(0,1)
 
