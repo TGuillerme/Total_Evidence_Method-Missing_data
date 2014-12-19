@@ -1,17 +1,9 @@
 #TreeCmp files
 *.Cmp
 
-#R data (too big)
+#R data
 *.Rda
 
-
-# Compiled source #
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
 
 # LaTeX #
 *.aux
@@ -26,22 +18,11 @@
 *.ttt
 *.fdb_latexmk
 
-# beamer
-*.nav
-*.snm
 
 # OS generated files #
 *.DS_Store
-ehthumbs.db
-Icon?
-Thumbs.db
+
 
 # R #
 *.Rhistory
 *.Rapp.history
-
-# *.\#*
-# \#*\#
-
-ignore/
-*.Rcheck/
