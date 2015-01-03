@@ -277,7 +277,7 @@ The Normalized Tree Similarity index, $NTS_m$ (\citealp{Bogdanowicz2012}) allows
 
 % NC: If I understand right, you use RF normalised and TD normalised. NOT RF, TD and NTS. So having these as three separate sections seems odd. Instead I'd write RF section, then explain that it is not comparable across trees with different numbers of taxa so you normalise it as suggested in Bogdanowicz's NTS method. Then describe TD and explain that you normalise it as discussed above for RF. NTS isn't really a metric, just a simple normalisation procedure.
 
-\subsubsection{Tree comparisons} % NC: Lost!!!!
+\subsubsection{Tree comparisons} % NC: OK I'm lost in this section! We should discuss then think about how to express this in an understandable fashion.
 \label{tree_comparisons}
 For the Maximum Likelihood and Bayesian consensus trees we performed pairwise comparisons between the "best" tree and each "missing-data" tree using both the Robinson-Foulds and Triplets metrics with the TreeCmp java script \citep{Bogdanowicz2012}. For each metric, we then normalized the value using the Normalized Tree Similarity scaled by the mean value of 1000 pairwise random tree comparisons for the metric in question and n = 51 taxa (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}). % TG: Maybe remove supplementary here
 % NC: Yeah probably. You could also fit this into the section above. Again NTS isn't really a metric in my opinion...
