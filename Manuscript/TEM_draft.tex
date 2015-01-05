@@ -279,15 +279,26 @@ The Normalized Tree Similarity index, $NTS_m$ (\citealp{Bogdanowicz2012}) allows
 
 \subsubsection{Tree comparisons} % NC: OK I'm lost in this section! We should discuss then think about how to express this in an understandable fashion.
 \label{tree_comparisons}
-For the Maximum Likelihood and Bayesian consensus trees we performed pairwise comparisons between the "best" tree and each "missing-data" tree using both the Robinson-Foulds and Triplets metrics with the TreeCmp java script \citep{Bogdanowicz2012}. For each metric, we then normalized the value using the Normalized Tree Similarity scaled by the mean value of 1000 pairwise random tree comparisons for the metric in question and n = 51 taxa (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}). % TG: Maybe remove supplementary here
+For the Maximum Likelihood and Bayesian consensus
+% NC: is this actually a maximum clade credibility tree
+trees we performed pairwise comparisons between the "best" tree and each "missing-data" tree using both the Robinson-Foulds and Triplets metrics with the TreeCmp java script \citep{Bogdanowicz2012}. For each metric, we then normalized the value using the Normalized Tree Similarity scaled by the mean value of 1000 pairwise random tree comparisons for the metric in question and n = 51 taxa (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}). % TG: Maybe remove supplementary here
 % NC: Yeah probably. You could also fit this into the section above. Again NTS isn't really a metric in my opinion...
 %We compared each "missing-data" tree with the "best" tree for each of our 50 simulation runs resulting in 50 comparisons for each "missing-data" tree. We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v3.1 \citep{hdrcde}. TG: explained later on
 
-To take into account the uncertainty of tree inference in both Maximum Likelihood and Bayesian trees, we ran 1000 random pairwise comparisons among the bootstrapped trees from the Maximum Likelihood analysis and the posterior tree distribution of the Bayesian analysis. In the same way that we compared a single "missing-data" tree to the "best" tree (whether the trees are Maximum Likelihood or Bayesian consensus): we randomly selected 1000 trees from the "missing-data" tree sets (either the Bootstrapped trees or the posterior tree distribution) and did a pairwise comparison with 1000 randomly selected trees from the "best" tree set.
+To take into account the uncertainty of tree inference in both Maximum Likelihood and Bayesian trees, % NC: instead of using the single ML or B MCC tree as above,
+we extracted 1000 random bootstrapped trees from the Maximum Likelihood analysis and 1000 from the posterior tree distribution of the Bayesian analysis. % for the best trees and then did the same for the 125 missing data trees (resulting in 125 x 1000 missing data trees). 
+For a given set of 1000 missing data trees, we sampled one missing data tree and one best tree at random and compared them using both the Robinson-Foulds and Triplets metrics as described above. We repeated this 1000 times for each set of missing data trees resulting in 125 x 1000 values for each metric. 
 
-For each of the 125 "missing-data" trees, we obtained Robinson-Foulds and Triplets distance distributions from either 50 or 50$\times$1000 pairwise comparisons. We then calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v. 3.1 \citep{hdrcde}. %Finally we tested for significant differences among the different distributions of trees using non-parametric group and pairwise comparisons by using respectively Kruskal-Wallis and Nemenyi-Damico-Wolfe-Dunn test (CITE R PACKAGE)\citet{ruxtontime2008}. TG: finally we didn't (Andrew's advice - see Battacharyya)
+We repeated all of the above for each of the 50 chains. We then calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v. 3.1 \citep{hdrcde}. %Finally we tested for significant differences among the different distributions of trees using non-parametric group and pairwise comparisons by using respectively Kruskal-Wallis and Nemenyi-Damico-Wolfe-Dunn test (CITE R PACKAGE)\citet{ruxtontime2008}. TG: finally we didn't (Andrew's advice - see Battacharyya)
 
-To investigate the effect of the parameters and/or the methods used in these simulations, we measured the similarity among the different distributions using the Bhattacharyya Coefficient \citep{Bhattacharyya}. The Bhattacharyya Coefficient is the probability of overlap between two distributions, ranging from 0 to 1 (\citealt{Bhattacharyya} - see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}). For each method (Maximym likelihood trees, Bayesian consensus trees, Bootstraps and Bayesian posterior trees) and metric (Robinson-Foulds and Triplets distance), we used this coefficient in two ways in order to:
+% NC: New subheading (summarising)
+
+% NC: Finally after doing all theses stupid comparisons and simulations we tested the effects of our missing data parameters (ML) on our ability to recover the correct topology. 
+To do this we measured the similarity among the different distributions % NC: OF WHAT!!! tree metrics for all of the analyses above
+using the Bhattacharyya Coefficient \citep{Bhattacharyya}. The Bhattacharyya Coefficient is the probability of overlap between two distributions, ranging from 0 to 1 (\citealt{Bhattacharyya} - see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2} % FOR WHAT!!!). 
+
+%For each method (Maximum Likelihood trees, Bayesian %MCC?
+%trees, Bootstraps and Bayesian posterior trees) and metric (Robinson-Foulds and Triplets distance), we used this coefficient in two ways in order to:
 \begin{enumerate}
 \item{Assess the effect of the method on all parameters:}
 
