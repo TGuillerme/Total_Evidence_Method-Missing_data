@@ -308,6 +308,7 @@ We performed a pairwise comparison of each parameter between each pair of method
 We performed a pairwise comparison per method and per metric for each combination of parameters. This resulted in 7875 pairwise comparisons per method and per metric (triangle of a 125$\times$125 matrix). We represented these results as a triangular matrix with the values of each pairwise comparison coloured according to the value of the Batthacharyya Coefficient (coloured in green when the distributions overlap completely and in red when they don't overlap at all- Fig.~\ref{Fig_Results-paircomp_within}).
 \end{enumerate}
 
+% Add in your three questions here?
 %---------------------------------------------
 %
 %       RESULTS
@@ -316,38 +317,46 @@ We performed a pairwise comparison per method and per metric for each combinatio
 
 \section{Results}
 
-\subsection{Effect of missing data on topology}
+% NC: Split into three sections to answer three questions
+
+%\subsection{The effects of missing data on tree topology}
 
 \begin{figure} 
 \centering
     \includegraphics[width=1\textwidth]{Figures/In_main/AllMethods-RF+Tr-colour.pdf}
-\caption{Comparison between the effect of missing data and the tree inference method on topology. The amount of missing data for each parameter is represented on the x axis. The topology is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black, the Bayesian consensus trees in red, the bootstrap trees in green and the posterior tree distribution in blue.}
+\caption{Comparison between the effect of missing data and the tree inference method on topological recovery. The amount of missing data for each parameter is represented on the x axis. The difference in topologies is represented on the y axis, using standardized Robinson-Foulds distance (upper row) and standardized Triplets distance (lower row). Points represent the modal value of each distribution; thick solid and thin dashed lines represents the 50\% and 95\% confidence intervals or the distributions respectively. Analyses using the Maximum Likelihood trees are represented in black, the Bayesian consensus %MCC?
+trees in red, the Maximum Likelihood bootstrap trees in green and the Bayesian posterior tree distribution in blue.}
 \label{Fig_Results-permeth_perparam} %Differences within a subset of parameters and between methods
 \end{figure}
 
-As expected form the literature, the amount of missing data in the morphological part of the total evidence matrix does decrease the ability to recover the right topology, regardless of the parameter, the method or the metric used \citep[e.g.][]{rouresite-specific2011,sansomfossilization2013,pattinsonphylogeny2014}. However each variable does not affect the topology in the same way (Fig.~\ref{Fig_Results-permeth_perparam}). Regarding the conservation of entire clades (i.e. the Ronbinson-Foulds distance), the Bayesian consensus trees outperform the other methods and the amount of missing data in the living taxa ($M_{L}$) decreases the most rapidly the clade conservation when using this method. However, when looking at the position of wildcard taxa (i.e. using the Triplets distance), the Maximum Likelihood outperforms the other methods but with wider distributions overlap (Fig.~\ref{Fig_Results-permeth_perparam}).
+% NC: Y axes should be standardised Robinson Foulds
+% NC: X-axes should have (Mc) etc in brackets after the names
+% NC: Also should probably have the X axes read : Missing character (Mc, %) and remove % from tick labels
+
+%NC: I would rewrite these figure labels as follows. I prefer the details of colours and things to be in brackets not in the text. Rewrite the others in a similar fashion.
+%NC: Remeber it's not topology, but topological recovery that you are measuring
+%The effects of increasing missing data on topological recovery using Maximum Likelihood trees (black), Bayesian consensus trees (red), Maximum Likelihood bootstrap trees (green) and Bayesian posterior tree distributions (blue). The percentage of missing data for each parameter (Mc, ML, MF) is shown on the x axis. Topological recovery was measured using two different tree comparison metrics: standardized Robinson-Foulds distance (upper row) and standardized Triplets distance (lower row). The graph shows the modal value (points), the 50\% and 95\% confidence intervals (thick solid lines) and the distributions (thin dashed lines), of the tree comparison metric for each missing data parameter and tree inference method. 
+
+As the amount of missing data in the morphological part of the total evidence matrix increases, our ability to recover the correct topology decreases, regardless of the missing data parameter ($M_{L}$, $M_{C}$ or $M_{F}$), the method of tree inference (Maximum Likelihood or Bayesian) or the tree comparison metric used (standardized Robinson Foulds or standardized Triplets distance). 
+% NC: Results are for YOUR results. compare it to others in the Discussion only
+% NC: I've rephrased below as it was getting confused between what is GOOD and BAD for topological recovery and the difference between the parameters and the methods. I've tried to clarify.
+% NC: Note that you need to be clear what the methods are outperforming...
+However, the different missing data parameters and tree inference methods do not affect the topology in the same way (Fig.~\ref{Fig_Results-permeth_perparam}). % And figure 3 too right?
+
+%Increasing the amount of missing data in the living taxa ($M_{L}$) has the worst effect on topological recovery, though only when using the standardized Robinson Foulds distance. Using the standardized Robinson Foulds distance, which represents clade conservation between trees, we get the best topological recovery using Bayesian consensus trees. However, using standardized Triplets distance, which represents the movement of wildcard taxa, Maximum Likelihood outperforms the other methods but with wider distributional overlap (Fig.~\ref{Fig_Results-permeth_perparam}). %NC: What distributions? Do you need to say that?
 
 \begin{figure} 
 \centering
     \includegraphics[width=1\textwidth]{Figures/In_main/ML+Baycon-AllParam-RF+Tr-BW.pdf}
-\caption{Trend of the effect of missing data on topology on the Maximum Likelihood and the Bayesian consensus trees. The amount of missing data per parameter ($M_{L}$, $M_{F}$ and $M_{C}$) is represented along the x axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data for each parameter. The topology is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black and the Bayesian consensus trees in grey.}
+\caption{Trend of the effect of missing data on topological recovery on the Maximum Likelihood and the Bayesian consensus trees. The amount of missing data per parameter ($M_{L}$, $M_{F}$ and $M_{C}$) is represented along the x axis. The colour gradient from white to black represents respectively, 0\%, 10\%, 25\%, 50\% and 75\% of missing data for each parameter. The topology is represented on the y axis, both using Robinson-Foulds distance (upper row) and Triplets distance (lower row). Points represent the modal value of each distribution ; thick solid and thin dashed lines represents respectively the 50\% and 95\% confidence intervals or the distributions. The Maximum Likelihood trees are represented in black and the Bayesian consensus trees in grey.}
 \label{Fig_Results-global_perparam} %Differences between all the parameters and between two methods (ML vs BC)
 \end{figure}
 
-When looking at the effect of all parameters combinations on the Bayesian consensus trees, this method outperforms Maximum Likelihood for the Ronbinson-Foulds distance and plateaus to a minimal modal tree similarity of 0.69 regardless the amount of missing data (Fig.~\ref{Fig_Results-global_perparam} - see also \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). However, regarding the Triplets distance, Bayesian consensus trees seems to perform poorly but with great confidence intervals overlaps (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). These larger confidence intervals are due to the lower ability of the Triplet method to highlight precise differences in topology \citep{kuhnerpractical2014}. Results for the global trend comparison between the uncertainty methods (Bootstrap and Bayesian posterior tree distribution) are available in the supplementary materials (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
+%When looking at the effect of all parameters combinations on the Bayesian consensus trees, this method outperforms Maximum Likelihood for the Robinson-Foulds distance and plateaus to a minimal modal tree similarity of 0.69 regardless the amount of missing data (Fig.~\ref{Fig_Results-global_perparam} - see also \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). However, regarding the Triplets distance, Bayesian consensus trees seems to perform poorly but with great confidence intervals overlaps (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). These larger confidence intervals are due to the lower ability of the Triplet method to highlight precise differences in topology \citep{kuhnerpractical2014}. Results for the global trend comparison between the uncertainty methods (Bootstrap and Bayesian posterior tree distribution) are available in the supplementary materials (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
+% NC: Move what you need of this to the sections below.
+% NC: Remember you're not testing the RF and TD, you're seeing that the loss of data affects clade conservation and wildcard taxa separately.
 
-\subsection{Effect of the method on topology}
-
-\begin{figure} 
-\centering
-    \includegraphics[width=1\textwidth]{Figures/In_main/BC-MethodComp-RF+Tr-colour.pdf}
-\caption{Distribution of the Bhattacharyya Coefficients between methods. Curves represents the kernel density estimations of the Bhattacharyya Coefficients between the four different methods. A. Results for the Normalised Robinson-Foulds distance. B. Results with the for Normalised Triplets distance. Pikes around the two different extremes values of the Bhattacharyya Coefficients show the two pairs of most dissimilar methods (Bayesian consensus vs. Bootstraps and Bayesian consensus vs. Bayesian posterior trees) for the Normalised Robinson-Foulds distance ; and the most similar methods (Bootstraps and Bayesian posterior trees) for the Normalised Triples methods.}
-\label{Fig_Results-paircomp_without} %Comparisons between methods, both in RF and Triplets.(method differences)
-\end{figure}
-
-When looking at the comparisons between the methods using the Robinson-Foulds distance, the Bayesian consensus trees have the least overlap with respectively the Bayesian posterior trees and the Bootstrap (Fig.~\ref{Fig_Results-paircomp_without}-A). When regarding at the Triplets distance, the two method that have the most distribution are the Bootstraps and the Bayesian posterior trees (Fig.~\ref{Fig_Results-paircomp_without}-B). These results are due to the difference in comparing topologies between Maximum Likelihood and Bayesian consensus trees and Bootstraps and Bayesian posterior trees: the two last ones are based on a random pairwise comparison of a sub-sample of 1000 trees. This is likely to add noise to the data.
-
-\subsection{Effect of the missing data parameters on topology}
+\subsection{Effects of the missing data parameters on topological recovery}
 
 %Hide this figure for 'fast' build
 %\begin{figure} 
@@ -357,13 +366,42 @@ When looking at the comparisons between the methods using the Robinson-Foulds di
 \label{Fig_Results-paircomp_within}
 %\end{figure} %Pairwise BC for the Bayesian consensus trees for RF and TR. (parameters differences)
 
-When looking at the pairwise Bhattacharyya Coefficients between all the parameters combinations for Bayesian consensus trees, the number of missing living taxa ($M_{L}$) results the lowest probabilities of overlap (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}-A). However, when looking at the Triplets distance, because of the high overlap in confidence intervals, there is no major region with low probability of overlap. One should note however that the bottom line of the matrix where the Bhattacharyya Coefficients are very low is due to comparing the distribution of the pairwise comparison of the "best" tree against the "missing-data" tree with no missing data ($M_{L}$=0\%, $M_{C}$=0\%, $M_{F}$=0\%) , leading to a normalised Triplets score of 1 every time (with no variance, see Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). The pairwise comparisons for the other methods (Maximum Likelihood, Bootstraps and Bayesian posterior trees) are available in the supplementary materials (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
+%Increasing the amount of missing data in the living taxa ($M_{L}$) has the worst effect on topological recovery, though only when using the standardized Robinson Foulds distance.
 
+%NC: I'd start by describing the pattern with reference to figs 2 and 3 and then the "significant" results
+
+When looking at the pairwise Bhattacharyya Coefficients between all the parameters combinations for Bayesian consensus trees, % NC: Instead just state the result. "We found that number of missing living taxa ($M_{L}$) results the lowest probabilities of overlap (table X)". In the same way as you wouldn't say "Using a linear regression we found that x ~ Y." You'd say "X and Y were significantly correlated (Table1)".
+%NC: Also what IS the result really? You find that ML overlaps less with the other parameters so it's significantly different in it's effect? And from the graph you can see it's worse? What does oerlap MEAN in terms of the answer to the question, i.e. how do the parameters affect topological recovery. 
+
+the number of missing living taxa ($M_{L}$) results the lowest probabilities of overlap (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}-A). However, when looking at the Triplets distance, because of the high overlap in confidence intervals, there is no major region with low probability of overlap. One should note however that the bottom line of the matrix where the Bhattacharyya Coefficients are very low is due to comparing the distribution of the pairwise comparison of the "best" tree against the "missing-data" tree with no missing data ($M_{L}$=0\%, $M_{C}$=0\%, $M_{F}$=0\%) , leading to a normalised Triplets score of 1 every time (with no variance, see Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). The pairwise comparisons for the other methods (Maximum Likelihood, Bootstraps and Bayesian posterior trees) are available in the supplementary materials (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
+
+\subsection{Effects of the tree inference method on topological recovery}
+
+%NC: I'd start by describing the pattern with reference to figs 2 and 3 and then the "significant" results
+
+%\begin{figure} 
+%\centering
+  %  \includegraphics[width=1\textwidth]{Figures/In_main/BC-MethodComp-RF+Tr-colour.pdf}
+%\caption{Distribution of the Bhattacharyya Coefficients between methods. Curves represents the kernel density estimations of the Bhattacharyya Coefficients between the four different methods. A. Results for the Normalised Robinson-Foulds distance. B. Results with the for Normalised Triplets distance. Pikes around the two different extremes values of the Bhattacharyya Coefficients show the two pairs of most dissimilar methods (Bayesian consensus vs. Bootstraps and Bayesian consensus vs. Bayesian posterior trees) for the Normalised Robinson-Foulds distance ; and the most similar methods (Bootstraps and Bayesian posterior trees) for the Normalised Triples methods.}
+%\label{Fig_Results-paircomp_without} %Comparisons between methods, both in RF and Triplets.(method differences)
+%\end{figure}
+
+%When looking at the comparisons between the methods 
+using the Robinson-Foulds distance, the Bayesian consensus trees have the least overlap with respectively the Bayesian posterior trees and the Bootstrap (Fig.~\ref{Fig_Results-paircomp_without}-A). Using the Triplets distance, the two methods that have the most distribution %NC: ???
+are the Bootstraps and the Bayesian posterior trees (Fig.~\ref{Fig_Results-paircomp_without}-B). These results are due to the difference in comparing topologies between Maximum Likelihood and Bayesian consensus trees and Bootstraps and Bayesian posterior trees: the latter two are based on a random pairwise comparison of a sub-sample of 1000 trees. This is likely to add noise to the data.
+
+\subsection{Interactions among missing data parameters and the tree inference method on topological recovery}
+
+%NC: Maybe don't need this section. See how it goes.
+
+% NC: Make sure you're consistent in how you refer to things ie Maximum Likelihood bootstrap trees, not Bootstraps
 %---------------------------------------------
 %
 %       DISCUSSION
 %
 %---------------------------------------------
+
+% NC: Quick comment. You find that Bayesian consensus trees are "best". BUT I think you need to be careful here with what you mean by "best". They are most likely to recover a more similar topology to the best tree than if you do the crazy tree comparison pairs. But that doesn't mean they're best, just that they perform best in your simulations. They are only best for that. If you want to advise people to use a method that best recovers topology as measured using RF or Triplets, then Bayesian consensus is best. BUT generally that is not what people want. Probably need to think some more about this.
 
 \section{Discussion}
 
@@ -415,10 +453,11 @@ When looking at the pairwise Bhattacharyya Coefficients between all the paramete
 %§1
 %Results: global
 %   -Missing data increase leads to decreases in recovering the correct topology
-The results of our simulations are in adequacy with recent analysis on the effect of missing data in morphological matrices \citep{pattinsonphylogeny2014,wrightbayesian2014,sansombias2014}. Our results are showing that the ability to recover the correct topology decreases with the increase of missing data, regardless the metric, the method or the parameters considered.
+%The results of our simulations are in adequacy with recent analysis on the effect of missing data in morphological matrices \citep{pattinsonphylogeny2014,wrightbayesian2014,sansombias2014}. 
+Our results show that our ability to recover the correct topology decreases with increasing missing data, regardless of the missing data parameter ($M_{L}$, $M_{C}$ or $M_{F}$), the method of tree inference (Maximum Likelihood or Bayesian) or the tree comparison metric used (standardized Robinson Foulds or standardized Triplets distance). 
 %Results 1
 %   -However, parameters have different effect
-However, within a method and a metric, the parameters used to remove data have different effects on the ability to recover the correct topology.
+However, within a tree inference method and a metric, the parameters used to remove data have different effects on the ability to recover the correct topology.
 %Results 2
 %   -Additionally, methods and metrics are unequal
 Additionally, the effect of missing data on topological recovery varies with different methods to infer topology and different metrics to compare topologies.
