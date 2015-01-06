@@ -146,3 +146,33 @@ names(pair.comp_without.Tr)<-c("MLbest vs Baycon", "MLbest vs MLboot",
 op<-par(bty="l")
 plot.bhatt.coeff.dist(pair.comp_without.RF, col=palette(), xlab="Bhattacharyya Coefficient", ylab="Frequency")
 plot.bhatt.coeff.dist(pair.comp_without.Tr, col=palette(), xlab="Bhattacharyya Coefficient", ylab="Frequency")
+
+#Summarizing these distributions in a table
+
+
+
+#Creating the methods table
+table.tmp<-data.frame("Maximum likelihood vs. Bayesian consensus - RF"=as.vector(summary(pair.comp_without.MLbest.Baycon.RF)),
+                      "Maximum likelihood vs. Bayesian consensus - Tr"=as.vector(summary(pair.comp_without.MLbest.Baycon.Tr)),
+                      "Maximum likelihood vs. Bootstraps - RF"=as.vector(summary(pair.comp_without.MLbest.MLboot.RF)),
+                      "Maximum likelihood vs. Bootstraps - Tr"=as.vector(summary(pair.comp_without.MLbest.MLboot.Tr)),
+                      "Maximum likelihood vs. Bayesian posterior trees - RF"=as.vector(summary(pair.comp_without.MLbest.Baytre.RF)),
+                      "Maximum likelihood vs. Bayesian posterior trees - Tr"=as.vector(summary(pair.comp_without.MLbest.Baytre.Tr)),
+                      "Bayesian consensus vs. Bootstraps - RF"=as.vector(summary(pair.comp_without.Baycon.MLboot.RF)),
+                      "Bayesian consensus vs. Bootstraps - Tr"=as.vector(summary(pair.comp_without.Baycon.MLboot.Tr)),
+                      "Bayesian consensus vs. Bayesian posterior trees - RF"=as.vector(summary(pair.comp_without.Baycon.Baytre.RF)),
+                      "Bayesian consensus vs. Bayesian posterior trees - Tr"=as.vector(summary(pair.comp_without.Baycon.Baytre.Tr)),
+                      "Boostraps vs. Bayesian posterior trees - RF"=as.vector(summary(pair.comp_without.MLboot.Baytre.RF)),
+                      "Boostraps vs. Bayesian posterior trees - Tr"=as.vector(summary(pair.comp_without.MLboot.Baytre.Tr))
+                      )
+
+methods.table<-matrix(NA, ncol=6, nrow=12)
+colnames(methods.table)<-names(summary(pair.comp_without.MLbest.Baycon.RF))
+rownames(methods.table)<-colnames(table.tmp)
+for (row in 1:12) {
+    methods.table[row,]<-table.tmp[,row]
+}
+
+#LaTeX
+library(xtable)
+xtable(methods.table)
