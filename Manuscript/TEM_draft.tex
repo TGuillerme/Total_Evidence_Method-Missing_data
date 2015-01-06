@@ -447,7 +447,6 @@ are the Bootstraps and the Bayesian posterior trees (Fig.~\ref{Fig_Results-pairc
 
 \section{Discussion}
 
-% NC: Discussions usually begin with a paragraph that sums up the results. Then you can move on to discussing caveats, problems, extensions etc. You also need to show how your work fits in with the wider literature. So I think you need to re-write this completely with that in mind. Do the same as we did for the introduction - write a line for each paragraph. This reads like you jumped in without thinking clearly about the structure. It probably doesn't need to have all the same subheadings either.
 % TG: Ok, from here, everything is new, I tried way more to write something proper following your "results-caveats-problems-extension" structure and I heavily based the structure of the paragraphs on the longevity paper + others (you might recognise you're style in the first paragraph if I did well). I left in comments the skeleton of the structure that I used to help me writing it.
 % TG: Also here's a note on my syntax notation for linking the paragraphs: "$"=end OR "^"=start of paragraph number 1. "a >..."=which finsih with the statement OR ">... b"=which follows with the statement b
 % TG: Here's the tree-style "plan" I was using (linked with the intro):
@@ -494,46 +493,46 @@ are the Bootstraps and the Bayesian posterior trees (Fig.~\ref{Fig_Results-pairc
 
 %§1
 %Results: global
-%   -Missing data increase leads to decreases in recovering the correct topology
-%The results of our simulations are in adequacy with recent analysis on the effect of missing data in morphological matrices \citep{pattinsonphylogeny2014,wrightbayesian2014,sansombias2014}. 
-Our results show that our ability to recover the correct topology decreases with increasing missing data, regardless of the missing data parameter ($M_{L}$, $M_{C}$ or $M_{F}$), the method of tree inference (Maximum Likelihood or Bayesian) or the tree comparison metric used (standardized Robinson Foulds or standardized Triplets distance). 
+%   -Missing data increase leads to decreases in recovering the correct topology 
+Our results show that the ability to recover the correct topology in a Total Evidence framework decreases with increasing missing data, regardless of how data were removed or the method of tree inference used. 
+% NC: Here I've removed the tree metrics as these are just different ways of measuring topology.
 %Results 1
 %   -However, parameters have different effect
-However, within a tree inference method and a metric, the parameters used to remove data have different effects on the ability to recover the correct topology.
+However, these factors affected topological recovery in different ways and to different extents. 
 %Results 2
 %   -Additionally, methods and metrics are unequal
-Additionally, the effect of missing data on topological recovery varies with different methods to infer topology and different metrics to compare topologies.
+% Additionally, the effect of missing data on topological recovery varies with different methods to infer topology and different metrics to compare topologies.
+% NC: This is implicit in the line above
 %Wrap up results
 %   -Thus, Baycon is better with loads of living 
-Thus, we found that using the topologies of Bayesian consensus trees performed consistently better than other methods for recovering the correct topology (Fig.~\ref{Fig_Results-global_perparam} and Fig.~\ref{Fig_Results-paircomp_within}) and that both the amount of available characters ($M_{C}$) and the amount of data for the living taxa ($M_{L}$) are crucial missing data parameters (Fig.~\ref{Fig_Results-paircomp_within}).
+% NC: Make sure it's parameters then tree building methods.
+Increasing the number of characters in the matrix without data ($M_{C}$) and the amount of missing morphological data in the matrix for living taxa ($M_{L}$) had worst effects on topological recovery (Fig.~\ref{Fig_Results-paircomp_within}). Additionally, using Bayesian consensus trees recovered the correct topology more consistently than using Maximum Likelihood trees or Bayesian posterior distributions of trees (Fig.~\ref{Fig_Results-global_perparam} and Fig.~\ref{Fig_Results-paircomp_within}).
+% NC: Probably needs another summing up line here. Or maybe not
 
-% $§1: What we found >...
-% ^§2: >... links with previous studies
+%NC: Make sure the order of the parameters is always the same L,F, C or whatever! THROUGHOUT the paper. Also correct RF and T to standardised OR normalised RF and T.
+
+% NC: Might want to add a couple of subheadings to match those in the results.
 
 %§2
 %Results 1 from litterature
 %   -Missing data per se is not a problem, problem is in the amount of overlap
-As proposed in previous studies, the amount of missing data is not a problem \textit{per se} as long as enough data overlaps in the matrix \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}. %In fact, as shown previously, the amount of overlap in the matrix is more crucial than the proportion of missing data \citep[e.g.][]{rouresite-specific2011}.
+As proposed in previous studies, our results show that the amount of missing data is not a problem \textit{per se} for Total Evidence methods, as long as enough data overlaps in the matrix \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}. % NC: What do you mean by data overlap here? That species have overlapping characters?
 %Proposed hypothesis for result 1
 %   -One can increase overlap by adding living taxa
-To improve the ability to recover the "correct" topology in a Total Evidence framework, one can efficiently increase the amount of overlapping data by reducing the amount of missing data in each of our three selected parameters. In our simulations, the overlap in data is greatly reduced when different parameters are combined with a high amount of missing data (e.g. $M_{L}$=75\%, $M_{F}$=75\% and $M_{C}$=75\% - Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). In this scenario the overall number of missing characters ($M_{C}$) affects the proportion of overlapping data by reducing the overall size of the matrix (Fig.~\ref{Fig_Results-global_perparam}). However it is important to note that in the pairwise Bhattacharyya Coefficient analysis, the area with the lowest probability of distributions overlap is led by comparing the trees with no missing data for the living taxa to the trees with 75\% missing data for the living data (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}).
+To improve the ability to recover the "correct" topology in a Total Evidence framework, one can efficiently increase the amount of overlapping data 
+% NC: Again what do you mean by overlapping data? And isn't this obvious???
+by reducing the missing data in each of our three missing data parameters ($M_{L}$, $M_{C}$ and $M_{F}$). In our simulations, the overlap in data is greatly reduced when all three missing data parameters have a lot of missing data (e.g. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%; Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). In this scenario, the overall number of missing characters ($M_{C}$) affects the proportion of overlapping data by reducing the overall size of the matrix (Fig.~\ref{Fig_Results-global_perparam}). % NC: What's the relevance of that sentence?
+However, the pairwise Bhattacharyya Coefficients show that the area with the lowest probability of distributional overlap is led by comparing the trees with no missing data for the living taxa to the trees with 75\% missing data for the living data (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}). %NC: I don't understand what you mean here
 
 % $§2: There is a different effect form each parameter >...
 % ^§3: >... because each parameter tells a different story.
 
 %§3
-%Discussing results 1
-This variable effect of the missing data parameters on the ability to recover the "correct" topology (Fig.~\ref{Fig_Results-paircomp_within}) can be explained by the way our parameters are illustrating the sources of missing data in empirical matrices: (1) non coded-living  taxa ($M_{L}$), (2) the quality of the fossil record ($M_{F}$) and (3) the amount of coded characters ($M_{C}$ - see \hyperref[Removing_data]{Methods}). We have suggestions for practical ways to reduce this missing data problem in empirical matrices:
-%   -Which parameters does what?
-\begin{enumerate}
-\item{$M_{L}$ (non coded living taxa):}
-The vast majority of known living species have specimens preserved in natural history museums. This is a significant resource and more research effort is needed to code morphological characters in these specimens.
-\item{$M_{F}$ (quality of the fossil record):}
-The amount of missing data in the fossil record solely depends on the preservation quality of the fossils and can not be actively improved. However, gaps in the matrix can be filled with the discoveries exceptional preserved fossil \citep[e.g.][]{nithe2013}. Fortunately, this parameter is the most difficult to improve but it also has the least influence on whether the simulations recover the "correct" topology (Fig.~\ref{Fig_Results-paircomp_within}).
-\item{$M_{C}$ (amount of coded characters):}
-The amount of time it takes to build a morphological matrix increases directly with the number of characters involved. Improvement in both decreasing the time taken to build the matrix and increasing the number of characters can be done through vast collaborative data collection projects through web portals such as \textit{morphobank} \citep{morphobank}.
-\end{enumerate}
-Fixing these three major issues can lead to a sensible increase in the ability to recover the "correct" topology.
+%Discussing results 1 % NC: This can join to the end of the previous paragraph
+This variable effect of our missing data parameters on the ability to recover the "correct" topology (Fig.~\ref{Fig_Results-paircomp_within}) can be explained by % the way our parameters are illustrating the sources of missing data in empirical matrices 
+% NC: No. This shows how our parameters relate to the real world and give real world solutions. Probably first want to explain any difference in effects agnostically - i.e. just as parameters with no biological context. So maybe: ..."can be explained by the different way data is removed using each of our three missing data parameters..." THEN move on to this:
+
+Our missing data parameters illustrate different sources of missing data in empirical matrices as follows: ($M_{L}$) the paucity of coded morphological characters for living taxa; ($M_{F}$) missing data for fossils (or parts of fossils) that have not been preserved in the fossil record; and ($M_{C}$) characters that have not been coded across living and fossil species, perhaps due to difficulties in coding or poor preservation of the feature in collections. Filling these gaps in empirical Total Evidence matrices should lead to a substantial increase in our ability to recover the "correct" topology. We can increase the number of living taxa with coded morphological characters by increasing research efforts in this area, and encouraging use of our vast natural history collections. Increasing data for fossil species is harder, since it depends on fossil preservation biases and new fossil discoveries. However, gaps in the matrix can be filled with future discoveries of exceptionally preserved fossils \citep[e.g.][]{nithe2013}. Fortunately, although this data is the most difficult to collect, it also has the least influence on whether our simulations recover the "correct" topology (Fig.~\ref{Fig_Results-paircomp_within}). Finally, although increasing the number of coded characters is relatively straightforward, the amount of time it takes to build a morphological matrix increases directly with the number of characters involved. One solution to this problem may be to engage with collaborative data collection projects through web portals such as \textit{morphobank} \citep{morphobank}, so that no one individual collects all the data.
 
 % $§3: This is how we can fix the parameters >...
 % ^§4: >... but the methods also influence a lot the ability to recover the right topology.
@@ -541,12 +540,14 @@ Fixing these three major issues can lead to a sensible increase in the ability t
 %§4
 %Result 2 from literature.
 %   -Probabilistic method always better (wright but see spencer) - Check McGuire[nope]/Sean[nope] literature for Bayesian vs. ML?
-Nonetheless, the variation in the ability to recover the "correct" topology does not only depend on the missing data in morphological part of the matrix but also heavily on the method used to infer the topology (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). Previous studies have shown some superiority on methods using simple probabilistic models such as the M\textit{k} model \citep{lewisa2001} over cladistic methods (\citealt{wrightbayesian2014} but see \citealt{spencerefficacy2013}). However, this is the first study, to our knowledge, that compares the performance of the M\textit{k} model \citep{lewisa2001} between Maximum Likelihood and Bayesian inference in a Total Evidence framework. %TG: I guess it's a good selling point: we ARE the first ones to do a sensitivity analysis in a TEM framework (as far as I know).
+Variation in our ability to recover the "correct" topology also depended heavily on the method used to infer the tree (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). Previous studies have shown some superiority of methods using simple probabilistic models such as the M\textit{k} model \citep{lewisa2001} over cladistic methods (\citealt{wrightbayesian2014}; but see \citealt{spencerefficacy2013}). However, this is the first study, to our knowledge, that compares the performance of the M\textit{k} model \citep{lewisa2001} using Maximum Likelihood and Bayesian methods in a Total Evidence framework. %TG: I guess it's a good selling point: we ARE the first ones to do a sensitivity analysis in a TEM framework (as far as I know).
 %Discussing results 2
 %   -Why is Baycon better than the others?
-When using the clade conservative Robinson-Foulds distance (see \citealt{kuhnerpractical2014} and \hyperref[metrics_discussion]{discussion below}), the Bayesian consensus trees greatly outperforms the Maximum Likelihood trees in the ability to recover the correct tree topology (Fig.~\ref{Fig_Results-global_perparam}). In fact, regardless of the amount of missing data, this method always displays the highest normalised Robinson-Foulds score (always $>$ 0.69 - see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). Also, when looking at the pairwise Bhattacharyya Coefficients within each method, the Bayesian consensus tree one display the highest probability of overlap between the results in any case (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
+When using the standardised Robinson-Foulds distance to measure topological similarity, the Bayesian consensus trees recover the "correct" topology more often than Maximum Likelihood trees (Fig.~\ref{Fig_Results-global_perparam}). In fact, regardless of the amount of missing data, Bayesian consensus trees always displays the highest normalised/standardised Robinson-Foulds score (always $>$ 0.69; see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). 
 %   -Why is Baycon so different than Baytre? Since Baycon is calculated from Baytre.
-When comparing this to the probability of overlap between the methods, it is counter intuitive to note that the Bayesian consensus tree shows the highest dissimilarity with the Bayesian posterior trees from which the Bayesian consensus tree is build (Fig.~\ref{Fig_Results-paircomp_within}-A). Note that it is also highly dissimilar to the Bootstraps. However that can be linked to the fact that both Bootstraps and Bayesian posterior trees are measured as 125*1000 random pairwise comparisons instead of just 125 tree comparisons for the Bayesian consensus trees. The fact that the 1000 pairwise trees to be compared for each of the 125 comparisons are chosen randomly, it can add noise to the results for these two methods (see \hyperref[tree_comparisons]{methods above}). Also, in the case of the lower performances of the Bayesian consensus trees when using the Triplets distance, one can note the high overlap of the confidence intervals (Fig. ~\ref{Fig_Results-permeth_perparam} and Fig. ~\ref{Fig_Results-paircomp_within}-B).
+We saw the poorest topological recovery using Maximum Likelihood bootstrap trees and Bayesian posterior distribution of trees (% NC: FIGURE???
+). This reflects the fact it is difficult to compare two distributions of trees, and each comparison between a set of missing data parameters and "best" tree in these cases involved 1000 random pairwise comparisons rather than just one. This will obviously add noise to the results for these two methods. Also, in the case of the lower performances of the Bayesian consensus trees when using the Triplets distance, one can note the high overlap of the confidence intervals (Fig. ~\ref{Fig_Results-permeth_perparam} and Fig. ~\ref{Fig_Results-paircomp_within}-B). % NC: Don't get the relevance of the last sentence/why it fits here. Can you expand?
+% NC: Probably want some  statement here about bayesian being better than ML, and if you want to fix a single topology in TE we recommend a bayesian consensus. If you want to account for tree uncertainty we recommend a bayesian posterior distribution. Our results dont suggest this is bad, but more suggest that we can't compare trees very well in this case.
 
 % $§4: Thus, baycon seems the best way to go >...
 % ^§5: >... but we have to take into account problems in our protocol.
@@ -554,6 +555,9 @@ When comparing this to the probability of overlap between the methods, it is cou
 %§5
 %Caveats: the metrics
 %   -RF is different and better than triplets.
+
+% NC: I think this can be condensed and slotted into the correct places above. So where you speak about the missing data parameters, mention differences in how they influence Rf and Triplets and why that might be. Then when you mention methods do the same.
+
 \label{metrics_discussion}
 This difference between the metrics can be explained by their respective ability to measure the differences between two trees \citep{kuhnerpractical2014}. As shown in Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}, the contrast between the results of the two metrics can be explained by the actual nature of both metrics (see \hyperref[SupplementaryMaterial]{Supplementary Material S2}):
 \begin{enumerate}
@@ -568,8 +572,10 @@ Therefore, in our study, both metrics are showing two different aspects of tree 
 %§6
 %Caveats: the simulations
 %   -Simulating morpho characters
-The variations in our results could also be explained by another methodological caveat: the performance of our simulation protocol. In order to reduce the computational time of our analysis ($~$150 CPU years), we had to run our sensitivity analysis on modest size matrices (1000 molecular data and 100 morphological data). This matrix size is two orders of magnitude lower than some matrices used in published analysis \citep[e.g.][]{springermacroevolutionary2012,nithe2013} but still ranges in the sizes of smaller matrices used in other ones \citep[e.g.][]{sallam2011craniodental,kellymolecular2014}. %TG: note about NOT citing O'Leary here. 1-I don't like the paper ; 2-the Ni et al paper (primates) as a big morpho matrix too (1k  characters against 4k for O'Leary, same order of magnitude?) ; 3-We might want to limit the papers we're citing? note about citing Sean's and your paper here: 1-is it okay (regarding last time warning of being extra careful when citing you're own work)?
-Also, simulating morphological characters is more complex than molecular ones. The underlying pattern of their evolution are often more complex and ruled by more parameters than molecular characters (i.e the number of character states, the states frequencies, the substitution matrix and the statistical model used) \citep{Pagel22011994,wagner2000,lewisa2001,wrightbayesian2014}. Morphological characters studies involve many potential statistical pitfalls (e.g. independent characters violation, rate variation - \citet{davalosintegrating2014}) and especially (i) incongruence with molecular signal and (ii) homoplasy \citep{wagner2000}.
+The variations in our results could also be explained by another methodological caveat: 
+% NC: What variations do you mean? Only an issue if it might bias results in one direction or another
+the performance of our simulation protocol. In order to reduce the computational time of our analysis ($~$150 CPU years), we ran our sensitivity analysis on modestly sized matrices of 1000 molecular characters and 100 morphological characters. These matrices are two orders of magnitude smaller than some matrices used in published analyses \citep[e.g.][]{springermacroevolutionary2012,nithe2013} but still ranges in the sizes of smaller matrices used in other ones \citep[e.g.][]{sallam2011craniodental,kellymolecular2014}. %TG: note about NOT citing O'Leary here. 1-I don't like the paper ; 2-the Ni et al paper (primates) as a big morpho matrix too (1k  characters against 4k for O'Leary, same order of magnitude?) ; 3-We might want to limit the papers we're citing? note about citing Sean's and your paper here: 1-is it okay (regarding last time warning of being extra careful when citing you're own work)?
+Also, simulating morphological characters is more complex than molecular ones. The underlying pattern of their evolution is often more complex and ruled by more parameters than molecular characters (i.e the number of character states, the states frequencies, the substitution matrix and the statistical model used) \citep{Pagel22011994,wagner2000,lewisa2001,wrightbayesian2014}. Morphological characters studies involve many potential statistical pitfalls (e.g. independent characters violation, rate variation - \citet{davalosintegrating2014}) and especially (i) incongruence with molecular signal and (ii) homoplasy \citep{wagner2000}.
 \begin{enumerate}
 \item{First, morphological data can display a different signal than molecular data, especially in small matrices \citep{wagner2000}. %REF
 This might lead to a controversial phylogenetic signal in the overall matrix and lower down the support values. However, regarding empirical data studies, most of the groups shows fairly congruent morphological and molecular phylogenetic signal \citep[e.g.][]{leerates2013}.}
@@ -581,8 +587,11 @@ This might lead to a controversial phylogenetic signal in the overall matrix and
 
 %§7
 %Further directions - is that necessary though?
+% NC: Cut for now, might want to put these ideas in the appropriate places above instead.
 %   -Using real data
-One way to address this issue would be to run a similar analysis using real data. The amount of studies using Total Evidence data type matrices is steadily increasing \citep[e.g.][]{ronquista2012,slaterphylogenetic2013,beckancient2014} and one could analysis these total evidence matrices in the same framework as this study. However, the true topology (obtained from a matrix with no missing data) is unlikely to be known. A second way to address this issue, and especially to incorporate the variation of signal in morphological character would be to simulate morphological characters at different rates \citep{wrightbayesian2014} or to apply patterns of missing data directly obtained from the fossil record \citep{pattinsonphylogeny2014}. Nevertheless, our simulation already show clear results of the effect of missing data on topology in a Total Evidence framework. Also, our results show how recovering the correct topology can be improved by using Bayesian consensus trees in combination with a maximum amount of characters and a of living taxa with morphological data.
+%One way to address this issue 
+% NC: Which issue???
+%would be to run a similar analysis using real data. The amount of studies using Total Evidence data type matrices is steadily increasing \citep[e.g.][]{ronquista2012,slaterphylogenetic2013,beckancient2014} and one could analysis these total evidence matrices in the same framework as this study. However, the true topology (obtained from a matrix with no missing data) is unlikely to be known. A second way to address this issue, and especially to incorporate the variation of signal in morphological character would be to simulate morphological characters at different rates \citep{wrightbayesian2014} or to apply patterns of missing data directly obtained from the fossil record \citep{pattinsonphylogeny2014}. Nevertheless, our simulation already show clear results of the effect of missing data on topology in a Total Evidence framework. Also, our results show how recovering the correct topology can be improved by using Bayesian consensus trees in combination with a maximum amount of characters and a of living taxa with morphological data.
 %   -Looking at branch length?
 
 % $§7: But despite the caveats above, missing data is not a big deal >...
@@ -591,9 +600,12 @@ One way to address this issue would be to run a similar analysis using real data
 %§8
 %Back to the importance of TEM - How we can use fossils (Intro-§2)
 %   -Data is not a major problem
-Despite the various caveats discussed above, we answered our main question on how does Total Evidence matrices perform in recovering topology with different methods and different amounts of missing data.
+%Despite the various caveats discussed above, we answered our main question on how does Total Evidence matrices perform in recovering topology with different methods and different amounts of missing data.
+% NC: For a concluding paragraph, don't start by reminding people of the caveats! End strongly and confidently
+% Also no need to restate the question - instead give the answer.
 %   -Good and promising method.
-Our results shows that this method performance decreases mainly with a reduction in the overlap of morphological data. In order to address this eventual problem, we propose to increase the data overlap by coding living species and to have a large morphological matrix. Also, our results shows disparity among methods and a clear superiority of the Bayesian consensus tree topology over the Maximum Likelihood one.
+%Our results shows that this method performance decreases mainly with a reduction in the overlap of morphological data. To address this problem, we propose to increase the data overlap by coding living species and to have a large morphological matrix. Also, our results shows disparity among methods and a clear superiority %NC: Not really 
+%of the Bayesian consensus tree topology over the Maximum Likelihood one.
 
 %---------------------------------------------
 %
@@ -609,8 +621,16 @@ Our results shows that this method performance decreases mainly with a reduction
 % part 2- This is how we can improve the data to use them in the best way possible (Conclusion-§1 & §8)
 %   -Use bayesian consensus
 %   -Go code living taxa
-Using Total Evidence matrices with missing data is not a problem for recovering the correct topology as long as enough morphological data is overlapping between the fossil and living taxa. In order to optimize good topological recovery, we propose to use the Bayesian consensus tree over the Maximum Likelihood tree or over a random subset of the Bayesian posterior trees distribution. Also, in order to improve the overlap in data in the morphological part of the matrix, we advice to use all the morphological characters available and to code them for a maximum of living taxa present in the matrix.
+Using Total Evidence matrices with missing data is not a problem for recovering the correct topology as long as enough morphological data is overlapping between the fossil and living taxa. %NC: Explain more clearly what you mean by overlap - of characters?
+Topological recovery is still best when there is less missing data, therefore we advise filling as many gaps in Total Evidence matrices as possible. Because this is difficult, if not impossible, for fossil data, we recommend coding as many
 
+
+using as many morphological characters as possible and to code them for a maximum of living taxa present in the matrix.
+
+
+we propose to use the Bayesian consensus tree over the Maximum Likelihood tree or over a random subset of the Bayesian posterior trees distribution. Also, in order to improve the overlap in data in the morphological part of the matrix, 
+
+% NC: Never write "in order to". Just "to" will do
 
 %---------------------------------------------
 %
@@ -618,12 +638,13 @@ Using Total Evidence matrices with missing data is not a problem for recovering 
 %
 %---------------------------------------------
 \section{Supplementary material}
-Supplementary material (code, analysis and full results) can be found in the Dryad data repository at http://dx.doi.org/10.5061/dryad.XXXX. %section and sentence format asked by Syst. Biol.
+Supplementary material (R code, analyses, supplementary methods and full results) can be found in the Dryad data repository at http://dx.doi.org/10.5061/dryad.XXXX. %section and sentence format asked by Syst. Biol.
 
 \section{Acknowledgements}
 Thanks to Fr\'{e}d\'{e}ric Delsuc, Emmanuel Douzery, Andrew Jackson, Gavin Thomas and April Wright. %TG : Not sure how many people we have to thank but it could also include Graham Slater, Nick Matzke and Trevor Hodkinson.
+ % NC: Might be nice to thank Trevor, and it won't add too many lines to thank them all. You can also just calle people A.Wright if you want to reduce word count.
 for useful comments on our simulation protocol.
-%Thanks to Sive Finlay, Kevin Healy and Adam Kane for comments on the manuscript. %TG: or helping writing sentences does not really count.
+%Thanks to Sive Finlay, Kevin Healy and Adam Kane for comments on the manuscript. %TG: or helping writing sentences does not really count. % NC: Depends how much they helped. I just used to thank the lab for that stuff
 Thanks to Paddy Doyle, Graziano D'Innocenzo and Sean McGrath for assistance with the computer cluster. Simulations used the Lonsdale cluster maintained by the Trinity Centre for High Performance Computing and funded through grants from Science Foundation Ireland. This work was funded by a European Commission CORDIS Seventh Framework Programme (FP7) Marie Curie CIG grant (proposal number: 321696).
 
 %cite cheat sheet
@@ -642,7 +663,7 @@ Thanks to Paddy Doyle, Graziano D'Innocenzo and Sean McGrath for assistance with
 \bibliographystyle{sysbio}
 \bibliography{References}
 %Needs to be cleaned a bit
-
+% NC: Yeah. Leave it til we send it to Gavin but it should be a priority. Almost all of them are wrong! 
 %---------------------------------------------
 %
 %       Supplementary, separated
