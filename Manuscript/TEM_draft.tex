@@ -348,56 +348,22 @@ for more details). Note that this procedure pools results from across all missin
 \label{Tab_Results-Difference_methods}
 \end{table}
 
-
-%Bleuah! Changing everything to stick to 5 parts as
-%Part 1: missing data decrease topology
-%Part 2: effect of ML
-%   -As missing data increase, topology decreases
-%   -This is different for the metrics
-%   -This is worst with that method
-%       (e.g. Distribution of RF values for the ML difference % missing data a substantial overlap with bla (BC=88, Fig bla))
-%Part 3: effect of MF 
-%Part 4: effect of MC
-%Part 5: combined effect
-
-%Part 1
-%increase in missing data leads to decrease in topological recovery no matter what
 As the amount of missing data in the morphological part of the Total Evidence matrix increases, our ability to recover the "best" tree's topology decreases, regardless of the missing data parameter ($M_{L}$, $M_{F}$ or $M_{C}$), the tree inference method (Maximum Likelihood or Bayesian) or the tree comparison metric used (Normalised Robinson-Foulds or Normalised Triplets distance). However, the different missing data parameters and tree inference methods do not affect the topology in the same way (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}).
 
-%Part 2
 \subsection{Individual effects of missing data parameters}
-%Individually, increase in missing data leads to decrease in topological recovery as well
 As the amount of missing data increases across all three parameters, our ability to recover the "best" tree's topology decreases (Fig.~\ref{Fig_Results-permeth_perparam}).
-%Differences between MaxLik and Baycon in RF
 The Normalised Robinson-Foulds distance is always substantially lower for the Maximum Likelihood %(minimum Normalised Robinson-Foulds distance for $M_{L}$, $M_{F}$ and $M_{C}$ of respectively @, @ and @) %minimum RF value for each parameter individually% TG: or useless (just Bhattacharrya)?
  trees than for the Bayesian consensus trees %(minimum Normalised Robinson-Foulds distance for $M_{L}$, $M_{F}$ and $M_{C}$ of respectively @, @ and @)  %minimum Tr value for each parameter individually% TG: or useless (just Bhattacharrya)?
-(median Bhattacharrya Coefficient = @, @, @ $M_{L}$, $M_{F}$ and $M_{C}$ respectively %BC value for each parameter individually between both methods RF
-; Fig.~\ref{Fig_Results-permeth_perparam}; \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
-%Differences between MaxLik and Baycon in Tr
-The Normalised Triplets distance is similar between the Maximum Likelihood trees and the Bayesian consensus trees for the $M_{L}$ parameter (Bhattacharrya Coefficient between both tree inference methods for $M_{L}$ = @ %BC value for ML between both methods
-- Fig.~\ref{Fig_Results-permeth_perparam} lower and see also \hyperref[SupplementaryMaterial]{Supplementary Material Section 3} for the table of values), however, for the two other parameters, $M_{F}$ and $M_{C}$, the Normalised Triplets distance is substantially higher for the Maximum Likelihood trees than for the Bayesian consensus trees (Bhattacharrya Coefficient between both tree inference methods for $M_{F}$ and $M_{C}$ of respectively @ and @  %BC value for each parameter individually between both methods Tr
-- Fig.~\ref{Fig_Results-permeth_perparam} lower and see also \hyperref[SupplementaryMaterial]{Supplementary Material Section 3} for the table of values).
+(median Bhattacharrya Coefficient = @, @, @ %BC value for each parameter individually between both methods RF
+$M_{L}$, $M_{F}$ and $M_{C}$ respectively; Fig.~\ref{Fig_Results-permeth_perparam}; \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). The Normalised Triplets distance is similar between the Maximum Likelihood trees and the Bayesian consensus trees for the $M_{L}$ parameter (median Bhattacharrya Coefficient = @ %BC value for ML between both methods
+; Fig.~\ref{Fig_Results-permeth_perparam}; \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}), however, for the two other parameters, $M_{F}$ and $M_{C}$, the Normalised Triplets distance is substantially higher for the Maximum Likelihood trees than for the Bayesian consensus trees (median Bhattacharrya Coefficient = @, @  %BC value for each parameter individually between both methods Tr
+$M_{F}$ and $M_{C}$ respectively; Fig.~\ref{Fig_Results-permeth_perparam}; \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
 
-%Part 3
 \subsection{Combined effect of missing data parameters}
-%Combined, increase in missing data leads to decrease in topological recovery as well
-As expected, our ability to recover the "best" tree topology is worst when each parameter contains the maximum amount of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%), and best when there is no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; Fig.~\ref{Fig_Results-global_perparam} and see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). 
+As expected, our ability to recover the "best" tree topology is worst when each parameter contains the maximum amount of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%), and best when there is no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; Fig.~\ref{Fig_Results-global_perparam}; \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). Figure ~\ref{Fig_Results-paircomp_within} shows the similarity of distributions of tree metrics in a triangular matrix with the values of each pairwise Bhattacharyya Coefficient coloured according to their values (green when the distributions overlap completely, Bhattacharyya Coefficient = 1, and red when they do not, Bhattacharyya Coefficient = 0; Fig.~\ref{Fig_Results-paircomp_within}). %CHANGE COLORS
 
-Figure @ shows the similarity of distributions of tree metrics in a triangular matrix with the values of each pairwise Bhattacharyya Coefficient coloured according to their values (green when the distributions overlap completely, Bhattacharyya Coefficient = 1, and red when they do not, Bhattacharyya Coefficient = 0; Fig.~\ref{Fig_Results-paircomp_within}). 
-
-%Differences between MaxLik and Baycon in RF
-%As described above, The Normalised Robinson-Foulds distance is higher for the Bayesian consensus trees topologies than for the Maximum Likelihood trees topologies with a median Normalised Robinson-Foulds distance for the Bayesian consensus trees and for the Maximum likelihood trees of respectively @ and @ % Median RF value for Baycon and MaxLik
-%(Fig.~\ref{Fig_Results-global_perparam} upper - see also \hyperref[SupplementaryMaterial]{Supplementary Material Section 3} for the table of values).
-%Differences between MaxLik and Baycon in Tr
-%The Normalised Triplets distance is lower for the Bayesian consensus trees topologies than for the Maximum Likelihood trees topologies with a median% Normalised Triplets distance for the Bayesian consensus trees and for the Maximum likelihood trees of respectively @ and @ % Median Tr value for Baycon and MaxLik
-%(Fig.~\ref{Fig_Results-global_perparam} lower - see also \hyperref[SupplementaryMaterial]{Supplementary Material Section 3} for the table of values).
-%Significance
-%However, the Normalised Robinson-Foulds distances are substantially less similar between the Bayesian Consensus trees and the Maximum Likelihood trees than the Normalised Triplets distances (Median Bhattacharrya Coefficient between both tree inference methods for the Normalised Robinson-Foulds distance and the Normalised Triplets distance is respectively 0.10 and 0.61 - Fig.~\ref{Fig_Results-global_perparam} and table~\ref{Tab_Results-Difference_methods}).
-
-%And now the combined effect of parameters in RF for the Baycon trees
-
-Using both Normalised Robinson-Foulds and Normalised Triplets distances from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (Fig.~\ref{Fig_Results-paircomp_within}). However, the Normalised Robinson-Foulds distance (median Bhattacharrya coefficient = ; Fig @ A) displays more dissimilarities than the Normalised Triplets distance (median Bhattacharrya coefficient = ; Fig @ B). %value for median BC from pairwise comp in Baycon-RF and Baycon-Tr
- Additionally, when using the Normalised Robinson-Foulds distance, once ML >= 50\%, there is no additional affect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure @ A). Likewise,  once MC >= 50\%, there is no additional affect of $M_{L}$ and $M_{F}$ (Figure @ A)
+Using both Normalised Robinson-Foulds and Normalised Triplets distances from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (Fig.~\ref{Fig_Results-paircomp_within}). However, the Normalised Robinson-Foulds distance (median Bhattacharrya coefficient = @ ; Fig.~\ref{Fig_Results-paircomp_within}-A) displays more dissimilarities than the Normalised Triplets distance (median Bhattacharrya coefficient = @; Fig.~\ref{Fig_Results-paircomp_within}-B). %value for median BC from pairwise comp in Baycon-RF and Baycon-Tr
+ Additionally, when using the Normalised Robinson-Foulds distance, once $M_{L}$ $\geq$  50\%, there is no additional affect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Fig.~\ref{Fig_Results-paircomp_within}-A). Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional affect of $M_{L}$ and $M_{F}$ (Fig.~\ref{Fig_Results-paircomp_within}-A).
 
 For all combinations of missing data parameters and tree comparison metrics, the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distributions perform very similarly (median Bhattacharrya Coefficient = 0.85 and 0.96, using Normalised Robinson-Foulds distance or Normalised Triplets distance respectively; see Table ~\ref{Tab_Results-Difference_methods}). However, these two methods perform worse than both the Maximum Likelihood and Bayesian consensus trees (median Bhattacharrya Coefficient = @ and @, using Normalised Robinson-Foulds distance or Normalised Triplets distance respectively; see Table ~\ref{Tab_Results-Difference_methods}; Fig.~\ref{Fig_Results-permeth_perparam} and \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}).
 
