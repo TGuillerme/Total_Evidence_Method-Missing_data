@@ -438,133 +438,87 @@ The combine of the missing data parameters ($M_{L}$, $M_{F}$ and $M_{C}$) reduce
 %---------------------------------------------
 
 % NC: Quick comment. You find that Bayesian consensus trees are "best". BUT I think you need to be careful here with what you mean by "best". They are most likely to recover a more similar topology to the best tree than if you do the crazy tree comparison pairs. But that doesn't mean they're best, just that they perform best in your simulations. They are only best for that. If you want to advise people to use a method that best recovers topology as measured using RF or Triplets, then Bayesian consensus is best. BUT generally that is not what people want. Probably need to think some more about this.
+% TG: a note about the "correct" topology regarding your comment just after the discussion header: should I replace "correct" by "best" since that's how we're calling the "best" tree anyway (all in quotes)
+
 
 \section{Discussion}
 
-% TG: Ok, from here, everything is new, I tried way more to write something proper following your "results-caveats-problems-extension" structure and I heavily based the structure of the paragraphs on the longevity paper + others (you might recognise you're style in the first paragraph if I did well). I left in comments the skeleton of the structure that I used to help me writing it.
-% TG: Also here's a note on my syntax notation for linking the paragraphs: "$"=end OR "^"=start of paragraph number 1. "a >..."=which finsih with the statement OR ">... b"=which follows with the statement b
-% TG: Here's the tree-style "plan" I was using (linked with the intro):
-% INTRO:
-% §1 We need fossils
-%   |
-%   \-> §2 How can we use them?
-%       |
-%       \-> §3 Total Evidence method of course!
-%           |
-%           \-> §4 But this method has a lot of missing data?
-%               |
-%               \-> §5 So what do we know about missing data from literature?
-%                   |
-%                   \-> §6 How will that effect TEM?
-%                      |
-%                      \-> §7 We use simulations to test!
-%                       
-% METHODS
-% RESULTS
-% DISCUSSION
-%       
-% §1 What do we found (Intro-§6)
-%   |
-%   \-> §2 How does that link to what we know (Intro-§5)
-%       |
-%       \-> §3 The effect of the parameters
-%       |
-%       \-> §4 The effect of the methods
-%       |
-%       \-> Caveats
-%           |
-%           \-> §5 The metrics
-%           |
-%           \-> §6 The simulations
-%           |
-%           \-> §7 How to fix them
-%           |
-%           \-> §8 How we can use fossils (Intro-§2)
-
-% CONCLUSION.
-% part 1- Fossils are important and can be used combined with living taxa (Intro-§1 & §2)
-% part 2- This is how we can improve the data to use them in the best way possible (Conclusion-§1 & §8)
-
-%§1
-%Results: global
-%   -Missing data increase leads to decreases in recovering the correct topology 
-Our results show that the ability to recover the correct topology in a Total Evidence framework decreases with increasing missing data, regardless of how data were removed or the method of tree inference used. 
-% NC: Here I've removed the tree metrics as these are just different ways of measuring topology.
-%Results 1
-%   -However, parameters have different effect
-However, these factors affected topological recovery in different ways and to different extents. 
-%Results 2
-%   -Additionally, methods and metrics are unequal
-% Additionally, the effect of missing data on topological recovery varies with different methods to infer topology and different metrics to compare topologies.
-% NC: This is implicit in the line above
-%Wrap up results
-%   -Thus, Baycon is better with loads of living 
-% NC: Make sure it's parameters then tree building methods.
-Increasing the number of characters in the matrix without data ($M_{C}$) and the amount of missing morphological data in the matrix for living taxa ($M_{L}$) had worst effects on topological recovery (Fig.~\ref{Fig_Results-paircomp_within}). Additionally, using Bayesian consensus trees recovered the correct topology more consistently than using Maximum Likelihood trees or Bayesian posterior distributions of trees (Fig.~\ref{Fig_Results-global_perparam} and Fig.~\ref{Fig_Results-paircomp_within}).
+Our results show that the ability to recover the correct topology in a Total Evidence framework decreases with increasing missing data, regardless of how data were removed or the method of tree inference used. However, these factors affected topological recovery in different ways and to different extents. 
+Decreasing the overall number of morphological characters in the matrix ($M_{C}$) and the amount of living taxa with morphological data ($M_{L}$) had worst effects on topological recovery (Fig.~\ref{Fig_Results-paircomp_within}). Additionally, using Bayesian consensus trees recovered the correct topology more consistently than using Maximum Likelihood trees or Bayesian posterior trees distributions (Fig.~\ref{Fig_Results-global_perparam} and Fig.~\ref{Fig_Results-paircomp_within}).
+% ----->
 % NC: Probably needs another summing up line here. Or maybe not
-
-%NC: Make sure the order of the parameters is always the same L,F, C or whatever! THROUGHOUT the paper. Also correct RF and T to standardised OR normalised RF and T.
-
+% <-----
+% NC: Make sure it's parameters then tree building methods. NC: Make sure the order of the parameters is always the same L,F, C or whatever! THROUGHOUT the paper. Also correct RF and T to standardised OR normalised RF and T.
 % NC: Might want to add a couple of subheadings to match those in the results.
+As proposed in previous studies, our results show that the amount of missing data is not a problem \textit{per se} for Total Evidence methods, as long as enough morphological characters overlaps for most taxa in the matrix \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}. % NC: What do you mean by data overlap here? That species have overlapping characters?
 
-%§2
-%Results 1 from litterature
-%   -Missing data per se is not a problem, problem is in the amount of overlap
-As proposed in previous studies, our results show that the amount of missing data is not a problem \textit{per se} for Total Evidence methods, as long as enough data overlaps in the matrix \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}. % NC: What do you mean by data overlap here? That species have overlapping characters?
-%Proposed hypothesis for result 1
-%   -One can increase overlap by adding living taxa
-To improve the ability to recover the "correct" topology in a Total Evidence framework, one can efficiently increase the amount of overlapping data 
-% NC: Again what do you mean by overlapping data? And isn't this obvious???
-by reducing the missing data in each of our three missing data parameters ($M_{L}$, $M_{C}$ and $M_{F}$). In our simulations, the overlap in data is greatly reduced when all three missing data parameters have a lot of missing data (e.g. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%; Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). In this scenario, the overall number of missing characters ($M_{C}$) affects the proportion of overlapping data by reducing the overall size of the matrix (Fig.~\ref{Fig_Results-global_perparam}). % NC: What's the relevance of that sentence?
-However, the pairwise Bhattacharyya Coefficients show that the area with the lowest probability of distributional overlap is led by comparing the trees with no missing data for the living taxa to the trees with 75\% missing data for the living data (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}). %NC: I don't understand what you mean here
+\subsection{Effect of missing living taxa ($M_{L}$)} %Or remove? Also below then
+%What is the parameter variation doing in our simulation
+When the number of living taxa with morphological data ($M_{L}$) decreases, entire rows of data are being removed from the living taxa part of the matrix. Because living taxa still have 10 times more molecular characters available, even if they have no morphological data, the relation between them will always be fairly well resolved (depending on the phylogenetic signal from the molecular part of the matrix) and thus, ignoring the fossils, the living taxa clades will be always well conserved. However, this missing data parameter influences a lot the placement of fossil taxa because a decrease of the $M_{L}$ parameter will reduce the overlapping data between the living and the fossil taxa.
 
-% $§2: There is a different effect form each parameter >...
-% ^§3: >... because each parameter tells a different story.
+%Methods
+%Part saying the difference between ML and Baycon
+When using the Normalised Robinson-Foulds distance to measure topological similarity, the Bayesian consensus trees recover the "correct" topology more often than Maximum Likelihood trees (Fig.~\ref{Fig_Results-global_perparam}). In fact, regardless of the amount of missing data, Bayesian consensus trees always displays the highest Normalised Robinson-Foulds score (always $>$ 0.69; see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3} for details). However, regarding the Normalised Triplets distance, the topological similarity with the "correct" topology decreases in the same way for both the Maximum Likelihood trees and the Bayesian consensus trees (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}).
+%Part saying the difference between BS and baytrees
+Regardless of the metric, the Maximum Likelihood boostrap trees and the Bayesian posterior trees distribution always performed poorlier in their ability to recover the "correct" topology, even when no morphological data was missing ($M_{L}$=0\% - Fig.~\ref{Fig_Results-permeth_perparam}). This reflects the fact it is difficult to compare two distributions of trees, and each comparison between a set of "missing data" tree and "best" tree in these cases involved 1000 random pairwise comparisons rather than just one. This will obviously add noise to the results for these two methods.
 
-%§3
-%Discussing results 1 % NC: This can join to the end of the previous paragraph
-This variable effect of our missing data parameters on the ability to recover the "correct" topology (Fig.~\ref{Fig_Results-paircomp_within}) can be explained by % the way our parameters are illustrating the sources of missing data in empirical matrices 
-% NC: No. This shows how our parameters relate to the real world and give real world solutions. Probably first want to explain any difference in effects agnostically - i.e. just as parameters with no biological context. So maybe: ..."can be explained by the different way data is removed using each of our three missing data parameters..." THEN move on to this:
+%Metrics
+%Part explaining the differences between the metrics
+This difference between the metrics is linked to what they measure and how they perform at doing it (see method %add link
+, \hyperref[SupplementaryMaterial]{Supplementary Material S2} and \citealt{kuhnerpractical2014} for details on the nature of both metrics). In the Bayesian consensus tree topology, the clade conservation (i.e. Noramlised Robinson-Foulds distance) stays always high but the placement of wildcard taxa (i.e. the Normalised Triplets distance) decreases way faster (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). This is due to the fact that both metrics are illustrating two different aspects of tree topology (i.e. clade conservation for the Normalised Robinson-Foulds distance and wildcard taxa position for the Normalised Triplets distance - see method %add link!
+and \hyperref[SupplementaryMaterial]{Supplementary Material S2} for details on both metrics). However, it is important to note that The Normalised Robinson-Foulds distance is more sensitive than the Normalised Triplets distance: when getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees. Also, \citet{kuhnerpractical2014} have recently demonstrated that the Robinson-Foulds distance outperforms the Triplets distance for measuring topological differences between trees. Thus, the Bayesian consensus tree's topology seems to be the less affected by removing morphological data for living taxa (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}).
 
+\subsection{Effect of missing data for fossil taxa ($M_{F}$)}
+%When the overall proportion of data for the fossil taxa ($M_{F}$) decreases, this reduces the probability of morphological characters for the fossil taxa to overlap with the ones for the living taxa and leads to displacement of certain taxa. However, it is important to note that even though the number of displaced wildcard taxa increases (i.e. decrease of Normalised Triplets distance), the conservation of the clades (i.e. Normalised Robinson-Foulds distance) is still relatively good (mode=% value
+%) when the proportion of missing data is high ($M_{F}$=75\%).
+
+%Methods
+%Decrease in clade conservation is smaller than for param ML in the Bayesian consensus tree for the clade conservation but higher than param ML for the displacement of wildcard taxa. This is due to the fact that the Bayesian consensus tree is a majority consensus rule and that when the fossils have less data, they kind of randomly branch all over the shop and therefore no majority consensus position (>50\% of the time) exists puting the fossil on a politomie at the base of a clade (clade conservation stays high but displacement of taxa increases). On the opposite in MaxLik, the topology is always dichotomous but the fossil can be missplaced in the wrong clade (with a low BS value) but is moving less. In other words, Bayesian consensus tree places the fossil with a higher confidence at a low taxonomic level (politomy) and the MaxLik places the fossil with a low confidence at a high taxomomic level (baldy supported dichotomies). We can argue that the first option (higher confidence at a low taxonomic level) is preferable (example the Darwinius debate).
+
+\subsection{Effect of missing character ($M_{C}$)}
+%When the overall number of morphological characters in the matrix ($M_{C}$) decreases
+
+%Story for MC: MC is expected to have an effect two times bigger than ML or MF, e.g. removing 10\% of MF removes 5\% of data (because it works only on the fossil part) and removing 10\% of MC actually removes 10\% of that.
+%Method
+%However the effect of removing characters has an effect of topology of the same order of magnitude than for ML and MF (FigRes 1): For RF, Bayesian consensus is better than ML and for Tr, MaxLik is better than Baycon and have the same drop at 50\% as for MF (different than for ML). 
+
+%In this scenario, the overall number of missing characters ($M_{C}$) affects the proportion of overlapping data by reducing the overall size of the matrix (Fig.~\ref{Fig_Results-global_perparam}). % NC: What's the relevance of that sentence?
+%However, the pairwise Bhattacharyya Coefficients show that the area with the lowest probability of distributional overlap is led by comparing the trees with no missing data for the living taxa to the trees with 75\% missing data for the living data (right lower corner in Fig.~\ref{Fig_Results-paircomp_within}). %NC: I don't understand what you mean here
+
+\subsection{Combined effect of missing data parameters ($M_{L}$, $M_{F}$ and $M_{C}$)} 
+%In our simulations, the overlap in data is greatly reduced when all three missing data parameters have a lot of missing data (e.g. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%; Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}).
+%When combining the effect, we 
+
+%Our solutions
 Our missing data parameters illustrate different sources of missing data in empirical matrices as follows: ($M_{L}$) the paucity of coded morphological characters for living taxa; ($M_{F}$) missing data for fossils (or parts of fossils) that have not been preserved in the fossil record; and ($M_{C}$) characters that have not been coded across living and fossil species, perhaps due to difficulties in coding or poor preservation of the feature in collections. Filling these gaps in empirical Total Evidence matrices should lead to a substantial increase in our ability to recover the "correct" topology. We can increase the number of living taxa with coded morphological characters by increasing research efforts in this area, and encouraging use of our vast natural history collections. Increasing data for fossil species is harder, since it depends on fossil preservation biases and new fossil discoveries. However, gaps in the matrix can be filled with future discoveries of exceptionally preserved fossils \citep[e.g.][]{nithe2013}. Fortunately, although this data is the most difficult to collect, it also has the least influence on whether our simulations recover the "correct" topology (Fig.~\ref{Fig_Results-paircomp_within}). Finally, although increasing the number of coded characters is relatively straightforward, the amount of time it takes to build a morphological matrix increases directly with the number of characters involved. One solution to this problem may be to engage with collaborative data collection projects through web portals such as \textit{morphobank} \citep{morphobank}, so that no one individual collects all the data.
 
-% $§3: This is how we can fix the parameters >...
-% ^§4: >... but the methods also influence a lot the ability to recover the right topology.
 
-%§4
-%Result 2 from literature.
-%   -Probabilistic method always better (wright but see spencer) - Check McGuire[nope]/Sean[nope] literature for Bayesian vs. ML?
+% ----->
+% TG: Put that part somewhere in the start with the discussion of ML vs Baycon in the effect of ML part?
+%-Probabilistic method always better (wright but see spencer) - Check McGuire[nope]/Sean[nope] literature for Bayesian vs. ML?
 Variation in our ability to recover the "correct" topology also depended heavily on the method used to infer the tree (Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}). Previous studies have shown some superiority of methods using simple probabilistic models such as the M\textit{k} model \citep{lewisa2001} over cladistic methods (\citealt{wrightbayesian2014}; but see \citealt{spencerefficacy2013}). However, this is the first study, to our knowledge, that compares the performance of the M\textit{k} model \citep{lewisa2001} using Maximum Likelihood and Bayesian methods in a Total Evidence framework. %TG: I guess it's a good selling point: we ARE the first ones to do a sensitivity analysis in a TEM framework (as far as I know).
+% <-----
+
 %Discussing results 2
-%   -Why is Baycon better than the others?
-When using the standardised Robinson-Foulds distance to measure topological similarity, the Bayesian consensus trees recover the "correct" topology more often than Maximum Likelihood trees (Fig.~\ref{Fig_Results-global_perparam}). In fact, regardless of the amount of missing data, Bayesian consensus trees always displays the highest normalised/standardised Robinson-Foulds score (always $>$ 0.69; see \hyperref[SupplementaryMaterial]{Supplementary Material Section 3}). 
 %   -Why is Baycon so different than Baytre? Since Baycon is calculated from Baytre.
-We saw the poorest topological recovery using Maximum Likelihood bootstrap trees and Bayesian posterior distribution of trees (% NC: FIGURE???
-). This reflects the fact it is difficult to compare two distributions of trees, and each comparison between a set of missing data parameters and "best" tree in these cases involved 1000 random pairwise comparisons rather than just one. This will obviously add noise to the results for these two methods. Also, in the case of the lower performances of the Bayesian consensus trees when using the Triplets distance, one can note the high overlap of the confidence intervals (Fig. ~\ref{Fig_Results-permeth_perparam} and Fig. ~\ref{Fig_Results-paircomp_within}-B). % NC: Don't get the relevance of the last sentence/why it fits here. Can you expand?
+Also, in the case of the lower performances of the Bayesian consensus trees when using the Triplets distance, one can note the high overlap of the confidence intervals (Fig. ~\ref{Fig_Results-permeth_perparam} and Fig. ~\ref{Fig_Results-paircomp_within}-B). % NC: Don't get the relevance of the last sentence/why it fits here. Can you expand?
 % NC: Probably want some  statement here about bayesian being better than ML, and if you want to fix a single topology in TE we recommend a bayesian consensus. If you want to account for tree uncertainty we recommend a bayesian posterior distribution. Our results dont suggest this is bad, but more suggest that we can't compare trees very well in this case.
 
 % $§4: Thus, baycon seems the best way to go >...
 % ^§5: >... but we have to take into account problems in our protocol.
 
-%§5
-%Caveats: the metrics
-%   -RF is different and better than triplets.
+%\label{metrics_discussion}
+%This difference between the metrics can be explained by their respective ability to measure the differences between two trees \citep{kuhnerpractical2014}. As shown in Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}, the contrast between the results of the two metrics can be explained by the actual nature of both metrics (see \hyperref[SupplementaryMaterial]{Supplementary Material S2}):
+%\begin{enumerate}
+%\item{The Robinson-Foulds metric is a conservative metric, which is more sensible to single taxon displacement because it will count clades as similar only if they are composed of the same taxa with the same topologies \citep{RF1981}. When getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees. This metric illustrates therefore the conservation of clades among the compared trees (i.e. when the normalised Robinson-Foulds distance is close to 1, most of the clades in the two trees are identical).}
+%\item{On the other hand, the Triplets method is measuring the position of each taxon towards two other reference taxa \citep{critchlowthe1996}. It will penalise only trees when taxa get removed furthest from their original position. This metric therefore illustrates the amount of wildcard taxa \citep{kearneyfragmentary2002} between the two compared trees (i.e. when the score is closed to 1, few wildcard taxa are present in the tree).}
+%\end{enumerate}
+%Therefore, in our study, both metrics are showing two different aspects of tree topology. For example, regarding the Bayesian consensus trees, completes clade are conserved most of the time (Fig.~\ref{Fig_Results-global_perparam}-top) but with an increasing amount of missing data, wildcard taxa get more and more displaced (Fig.~\ref{Fig_Results-global_perparam}-bottom). Because we are comparing the Baysian consensus tree to a single tree topology, the probability of recovering the exact position of a wildcard taxa than in the "best" tree is really low and even reducing with the amount of missing data. Regarding this fundamental differences, the Robinson-Foulds metric performs better in showing a distance from the true topology than the Triplets distance \citep{kuhnerpractical2014}. Therefore, the results for the Bayesian consensus trees can be preferred on the Maximum Likelihood trees because - when using the Robinson-Fould distance - they display a higher ability to recover the "correct" topology (Fig. ~\ref{Fig_Results-permeth_perparam}).
 
-% NC: I think this can be condensed and slotted into the correct places above. So where you speak about the missing data parameters, mention differences in how they influence Rf and Triplets and why that might be. Then when you mention methods do the same.
 
-\label{metrics_discussion}
-This difference between the metrics can be explained by their respective ability to measure the differences between two trees \citep{kuhnerpractical2014}. As shown in Fig.~\ref{Fig_Results-permeth_perparam} and Fig.~\ref{Fig_Results-global_perparam}, the contrast between the results of the two metrics can be explained by the actual nature of both metrics (see \hyperref[SupplementaryMaterial]{Supplementary Material S2}):
-\begin{enumerate}
-\item{The Robinson-Foulds metric is a conservative metric, which is more sensible to single taxon displacement because it will count clades as similar only if they are composed of the same taxa with the same topologies \citep{RF1981}. When getting closer to the root of the tree, displacement of single taxon makes the clades not being exactly identical any more even if the clade still contains all the other taxa in both trees. This metric illustrates therefore the conservation of clades among the compared trees (i.e. when the normalised Robinson-Foulds distance is close to 1, most of the clades in the two trees are identical).}
-\item{On the other hand, the Triplets method is measuring the position of each taxon towards two other reference taxa \citep{critchlowthe1996}. It will penalise only trees when taxa get removed furthest from their original position. This metric therefore illustrates the amount of wildcard taxa \citep{kearneyfragmentary2002} between the two compared trees (i.e. when the score is closed to 1, few wildcard taxa are present in the tree).}
-\end{enumerate}
-Therefore, in our study, both metrics are showing two different aspects of tree topology. For example, regarding the Bayesian consensus trees, completes clade are conserved most of the time (Fig.~\ref{Fig_Results-global_perparam}-top) but with an increasing amount of missing data, wildcard taxa get more and more displaced (Fig.~\ref{Fig_Results-global_perparam}-bottom). Because we are comparing the Baysian consensus tree to a single tree topology, the probability of recovering the exact position of a wildcard taxa than in the "best" tree is really low and even reducing with the amount of missing data. Regarding this fundamental differences, the Robinson-Foulds metric performs better in showing a distance from the true topology than the Triplets distance \citep{kuhnerpractical2014}. Therefore, the results for the Bayesian consensus trees can be preferred on the Maximum Likelihood trees because - when using the Robinson-Fould distance - they display a higher ability to recover the "correct" topology (Fig. ~\ref{Fig_Results-permeth_perparam}).
 
-% $§5: The difference in the methods is not important if you look at Kuhner >...
-% ^§6: >... but a final caveat is the way we simulate data.
 
-%§6
-%Caveats: the simulations
+%Opening/further work part - NC(meeting): Be less defensive (i.e. nothing seemed to have gone wrong THIS time).
 %   -Simulating morpho characters
 The variations in our results could also be explained by another methodological caveat: 
 % NC: What variations do you mean? Only an issue if it might bias results in one direction or another
