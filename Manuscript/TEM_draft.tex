@@ -182,14 +182,13 @@ We repeated these four steps 50 times.}
 \label{Fig_Outline}
 \end{figure}
 % NC: Can you centre these around the boxes? and make the comparing topologies arrow touch the two triangles? I'll show you what I mean. 
-% TG: I have different versions for the figure available (you can see them opening it with inkscape I think - else I'll show you).
 % NC: Also check the figure is in a format and of correct quality for Syst Biol.
 
 %---------------------------------------------
 %       1-Generating the matrix
 %---------------------------------------------
 
-\subsection{1-Generating the matrix} % NC: Can you number these subsections like they are in the steps above? % TG: 
+\subsection{1-Generating the matrix}
 First we randomly generated a "true" tree of 50 taxa in R v. 3.0.2 \citep{R302} using the package diversitree v. 0.9-6 \citep{fitzjohndiversitree2012}. We generated the tree using a birth death process by sampling speciation ($\lambda$) and extinction ($\mu$) rates from a uniform distribution but maintaining $\lambda$ $>$ $\mu$ \citep{paradistime-dependent2011}. We implemented a rejection sampling algorithm to select only trees with 25 living and 25 fossil taxa to ensure that we had enough taxa of each type for our missing data simulations to work. We then added an outgroup to the tree, using the mean branch length of the tree to separate the outgroup from the rest of the taxa, and with the branch length leading to the outgroup set as the sum of the mean branch length and the longest root-to-tip length of the tree.
 
 Next, we generated a molecular and a morphological matrix from the "true" tree. The molecular matrix was inferred from the "true" tree using the R package phyclust v. 0.1-14 \citep{chen2011}. The matrix contained 1000 character sites for 51 taxa and was generated using the seqgen algorithm \citep{ranbaut1997seqgen} and using the HKY model \citep{HKY85} with random base frequencies and transition/transversion rate of two \citep{douadycomparison2003}. The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \citep{yangamong-site1996}. We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal. We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, total computational time for the whole analysis was around 150 CPU years). All the molecular information for fossil taxa was replaced by missing data ("?").
@@ -209,7 +208,6 @@ We modified the "complete" matrix to get matrices with missing data by randomly 
 \begin{enumerate}
 \item{$M_{L}$, the proportion of living taxa with no morphological data: 0\%, 10\%, 25\%, 50\% or 75\%.}
 This parameter illustrates the number of living taxa that are present in the molecular part of the matrix but not in the morphological part. This reflects the fact that detailed morphological data for living species are scarce.
-% NC: Not sure you can really "blame" this on DNA data availability!
 \item{$M_{F}$, the proportion of missing data in the fossil taxa: 0\%, 10\%, 25\%, 50\% or 75\%.}
 This parameter illustrates the quality of the fossil record. 
 \item{$M_{C}$, the proportion of missing morphological characters for both living and fossil taxa: 0\%, 10\%, 25\%, 50\% or 75\%. }
@@ -228,16 +226,12 @@ We created matrices using all parameter combinations resulting in 125 ($5^3$) ma
 From the resulting matrices we generated two types of trees: the "best" tree inferred from the "complete" matrix and the "missing-data" trees inferred from the 125 matrices with various amounts of missing data. The "true" tree was used to generate the "complete" matrix and reflects the "true" evolutionary history in our simulations. The "best" tree, on the other hand, is the best tree we can build using state-of-the-art phylogenetic methods. In real world situations, the "true" tree is never available to us because we cannot know the true evolutionary history of a clade (except in very rare circumstances, e.g. \citealt{rozen2005}). Therefore, here we focus on comparing the trees inferred from the matrices with missing data to the "best" tree, rather than the "true" tree, as the "best" tree is generally what we have to work with.
 
 \subsubsection{Maximum Likelihood}
-The "best" tree and the "missing-data" trees were inferred using RAxML v. 8.0.20 \citep{Stamatakis21012014}. For the molecular data, we used the GTR + $\Gamma_4$ model (\citealt{tavare1986}; default GTRGAMMA in RAxML v. 8.0.20; \citealt{Stamatakis21012014}).% as a generalization of the HKY + $\Gamma_4$ model \citep{HKY85}.
-%The GTR model can be seen as a generalization of the HKY model (the two parameters from the HKY model are implicitly included in the six from GTR model - \citealt{stamatakisa2008}). - TG: Is that useful? 
-% NC: I think most people know that already.
-For the morphological data, we used the implemented Markov \textit{k} state model \citep{lewisa2001} %which is a generalization of the JC69 model \citep{jc69} with \textit{k} $\geq$ 2 - TG: same?
-% NC: Again leave it out
+The "best" tree and the "missing-data" trees were inferred using RAxML v. 8.0.20 \citep{Stamatakis21012014}. For the molecular data, we used the GTR + $\Gamma_4$ model (\citealt{tavare1986}; default GTRGAMMA in RAxML v. 8.0.20; \citealt{Stamatakis21012014}).% as a generalization of the HKY + $\Gamma_4$ model \citep{HKY85}. The GTR model can be seen as a generalization of the HKY model (the two parameters from the HKY model are implicitly included in the six from GTR model - \citealt{stamatakisa2008}).
+For the morphological data, we used the implemented Markov \textit{k} state model \citep{lewisa2001} %which is a generalization of the JC69 model \citep{jc69} with \textit{k} $\geq$ 2
  assuming an equal state frequency and a unique overall substitution rate ($\mu$) following a gamma distribution of the rate variation with four distinct categories (M\textit{k} + $\Gamma_4$; -K MK option in RAxML v. 8.0.20; \citealt{Stamatakis21012014}).
 
-To measure the phylogenetic signal of our simulations, we first ran a fast bootstrap analysis with 500 replicates on the "complete" matrix. We removed all the simulations with a median bootstrap support lower than 50 as a proxy for weak phylogenetic signal \citep{zanderminimal2004}. We repeated this selection until we obtained 50 sets of simulations (i.e. 50 "complete" and 50 x 125 "missing-data" matrices) with a relative good phylogenetic signal (median bootstrap $>$ 50). On these selected simulations, we used the fast bootstrap algorithm and performed 1000 bootstraps for each tree inference to assess topological support \citep{pattengale2010many}.
-%The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists of pruning one sub-tree from the tree and subsequently reinserting it to all neighbouring branches \citep{stamatakisa2008}. Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated to be better than other methods (e.g. Nearest Neighbouring Interchange - NNI) for recovering good bootstrap values \citep{salamin2003}. %TG: The explanations of the algorithm part for the BS was proposed by Trevor I think it's useless
-% NC: perhaps somewhere in brackets just mention it's LSR bootstrapping. No need for the rest I agree.
+To measure the phylogenetic signal of our simulations, we first ran a fast bootstrap analysis (Lazy Sub-tree Rearrangement) with 500 replicates on the "complete" matrix. We removed all the simulations with a median bootstrap support lower than 50 as a proxy for weak phylogenetic signal \citep{zanderminimal2004}. We repeated this selection until we obtained 50 sets of simulations (i.e. 50 "complete" and 50 x 125 "missing-data" matrices) with a relative good phylogenetic signal (median bootstrap $>$ 50). On these selected simulations, we used the fast bootstrap algorithm and performed 1000 bootstraps for each tree inference to assess topological support \citep{pattengale2010many}.
+%The bootstrap algorithm used in RAxML is the Lazy Sub-tree Rearrangement (LSR) which consists of pruning one sub-tree from the tree and subsequently reinserting it to all neighbouring branches \citep{stamatakisa2008}. Sub-tree Pruning and Reinserting methods (SPR) have been demonstrated to be better than other methods (e.g. Nearest Neighbouring Interchange - NNI) for recovering good bootstrap values \citep{salamin2003}.
 Using these parameters took \texttildelow 8 CPU years to build 50 sets of 125 bootstrapped Maximum Likelihood trees (2.30GHz clock speed nodes).
 
 \subsubsection{Bayesian}
@@ -260,14 +254,12 @@ The Robinson-Foulds distance \citep{RF1981}, or "path difference", measures the 
 \subsubsection{Triplets distance}
 The Triplets distance \citep{dobson1975triplets} measures the number of sub-trees made up of three taxa that differ between two trees (\citealt{critchlowthe1996}; see \hyperref[SupplementaryMaterial]{Supplementary Material S2} for calculation details). This metric measures the position of each taxon and clade in relation to its closest neighbours. It is bounded between 0 when the two trees are identical and $\binom{n}{4}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees. Therefore this metric sensitive to the conservation of wildcard taxa. We normalised this metric in the same way as for the Robinson-Foulds distance resulting in the Normalised Triplets distance.
 
-\subsubsection{Paired trees comparisons} % NC: OK I'm lost in this section! We should discuss then think about how to express this in an understandable fashion. TG: or no subheading at all? See next section as well.
+\subsubsection{Paired trees comparisons}
 \label{tree_comparisons}
-For the Maximum Likelihood and Bayesian consensus
-% NC: is this actually a maximum clade credibility tree - TG: better stick with consensus as described above?
-trees we performed pairwise comparisons between the "best" tree and each "missing-data" tree using both the Normalised Robinson-Foulds and Normalised Triplets metrics with the TreeCmp java script \citep{Bogdanowicz2012} resulting each time in 125 Normalised Robison-Foulds distances and 125 Normalised Triplets distance. %For each metric, we then normalized the value using the Normalized Tree Similarity scaled by the mean value of 1000 pairwise random tree comparisons for the metric in question and n = 51 taxa (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}). % TG: That is now described in the RF distance subsection just above
-%We compared each "missing-data" tree with the "best" tree for each of our 50 simulation runs resulting in 50 comparisons for each "missing-data" tree. We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v3.1 \citep{hdrcde}. TG: explained later on
+For the Maximum Likelihood and Bayesian consensus trees we performed pairwise comparisons between the "best" tree and each "missing-data" tree using both the Normalised Robinson-Foulds and Normalised Triplets metrics with the TreeCmp java script \citep{Bogdanowicz2012} resulting each time in 125 Normalised Robison-Foulds distances and 125 Normalised Triplets distance. %For each metric, we then normalized the value using the Normalized Tree Similarity scaled by the mean value of 1000 pairwise random tree comparisons for the metric in question and n = 51 taxa (see \hyperref[SupplementaryMaterial]{Supplementary Material Section 2}).
+%We compared each "missing-data" tree with the "best" tree for each of our 50 simulation runs resulting in 50 comparisons for each "missing-data" tree. We calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v3.1 \citep{hdrcde}.
 Also, to take into account the uncertainty of tree inference in both methods cited above, instead of using the single Maximum Likelihood and Bayesian consensus trees, we extracted 1000 random bootstrapped trees from the Maximum Likelihood analysis and 1000 from the posterior tree distribution of the Bayesian analysis for the "best" trees and then did the same for the 125 "missing data" trees (resulting in 1000 "best" trees and 125$\times$1000 "missing data" trees). 
-For a given set of 1000 "missing data" trees and the 1000 "best" trees, we sampled one "missing data" tree and one "best" tree at random and compared them using both the Normalised Robinson-Foulds and Normalised Triplets metrics as described above. We repeated this 1000 times for each set of "missing data" trees resulting in 125$\times$1000 values for each metric. We repeated all the paired trees comparisons described above for each of the 50 simulations. We then calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v. 3.1 \citep{hdrcde}. %Finally we tested for significant differences among the different distributions of trees using non-parametric group and pairwise comparisons by using respectively Kruskal-Wallis and Nemenyi-Damico-Wolfe-Dunn test (CITE R PACKAGE)\citet{ruxtontime2008}. TG: finally we didn't (Andrew's advice - see Battacharyya)
+For a given set of 1000 "missing data" trees and the 1000 "best" trees, we sampled one "missing data" tree and one "best" tree at random and compared them using both the Normalised Robinson-Foulds and Normalised Triplets metrics as described above. We repeated this 1000 times for each set of "missing data" trees resulting in 125$\times$1000 values for each metric. We repeated all the paired trees comparisons described above for each of the 50 simulations. We then calculated the mode and the 50\% and 95\% confidence intervals from the resulting distribution using the hdrcde R package v. 3.1 \citep{hdrcde}.
 
 \subsubsection{Summarizing the comparisons}
 Finally, we tested the effects of our missing data parameters ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on our ability to recover the correct topology in a Total Evidence framework. We also assessed the effect of our missing data parameters jointly with the effects of different tree inference and uncertainty methods (i.e. Maximum Likelihood, Bayesian consensus, Maximum Likelihood bootstrap trees and Bayesian posterior tree distribution).
@@ -283,8 +275,6 @@ Finally, for assessing the effect of the method on the ability to recover the "c
 
 %Questionish §
 We use the Bhattacharyya Coefficient in a similar way as a two-sided t-test to detect significant differences between the distributions of the normalised distance between the "best" tree and the "missing data" trees (for both metrics).
-%We also take into account the effect of the methods used. REPHRASE
-%This way we could investigate the effect of each our three missing data parameters and their interaction on the ability to recover the "correct" topology.
 
 %---------------------------------------------
 %
@@ -294,10 +284,7 @@ We use the Bhattacharyya Coefficient in a similar way as a two-sided t-test to d
 
 \section{Results}
 
-% NC: Split into three sections to answer three questions
 % TG: Ok I removed all the figures + table on top of the section in here and all the text down. We might to have a think of where to anchor the figures later on.
-
-%\subsection{The effects of missing data on tree topology}
 
 \begin{figure} 
 \centering
@@ -330,6 +317,7 @@ We use the Bhattacharyya Coefficient in a similar way as a two-sided t-test to d
 \label{Fig_Results-paircomp_within}
 %\end{figure} %Pairwise BC for the Bayesian consensus trees for RF and TR. (parameters differences)
 
+%Removed figure (table instead)
 %\begin{figure} 
 %\centering
   %  \includegraphics[width=1\textwidth]{Figures/In_main/BC-MethodComp-RF+Tr-colour.pdf}
@@ -337,6 +325,7 @@ We use the Bhattacharyya Coefficient in a similar way as a two-sided t-test to d
 %\label{Fig_Results-paircomp_without} %Comparisons between methods, both in RF and Triplets.(method differences)
 %\end{figure}
 
+% TG: Put this table in landscape!
 \begin{table}[ht]
 \caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised distance between the "best" tree and the "missing data".}
 \centering
