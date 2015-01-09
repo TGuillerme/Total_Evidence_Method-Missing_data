@@ -39,28 +39,28 @@ parameter<-par_MLMFMC
 #Calculating the pairwise comparisons within (effect of the parameters)
 #----------------
 
-#pair.comp_within.MLbest.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[1]), diag=TRUE)
+#pair.comp_within.MLbest.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.MLbest.RF, file="../Data/R_data/pair.comp_within.MLbest.RF.Rda")
 load("../Data/R_data/pair.comp_within.MLbest.RF.Rda")
-#pair.comp_within.MLbest.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[2]), diag=TRUE)
+#pair.comp_within.MLbest.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.MLbest.Tr, file="../Data/R_data/pair.comp_within.MLbest.Tr.Rda")
 load("../Data/R_data/pair.comp_within.MLbest.Tr.Rda")
-#pair.comp_within.Baycon.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[1]), diag=TRUE)
+#pair.comp_within.Baycon.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.Baycon.RF, file="../Data/R_data/pair.comp_within.Baycon.RF.Rda")
 load("../Data/R_data/pair.comp_within.Baycon.RF.Rda")
-#pair.comp_within.Baycon.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[2]), diag=TRUE)
+#pair.comp_within.Baycon.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.Baycon.Tr, file="../Data/R_data/pair.comp_within.Baycon.Tr.Rda")
 load("../Data/R_data/pair.comp_within.Baycon.Tr.Rda")
-#pair.comp_within.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[1]), diag=TRUE)
+#pair.comp_within.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.MLboot.RF, file="../Data/R_data/pair.comp_within.MLboot.RF.Rda")
 load("../Data/R_data/pair.comp_within.MLboot.RF.Rda")
-#pair.comp_within.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[2]), diag=TRUE)
+#pair.comp_within.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.MLboot.Tr, file="../Data/R_data/pair.comp_within.MLboot.Tr.Rda")
 load("../Data/R_data/pair.comp_within.MLboot.Tr.Rda")
-#pair.comp_within.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[1]), diag=TRUE)
+#pair.comp_within.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[4]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.Baytre.RF, file="../Data/R_data/pair.comp_within.Baytre.RF.Rda")
 load("../Data/R_data/pair.comp_within.Baytre.RF.Rda")
-#pair.comp_within.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[2]), diag=TRUE)
+#pair.comp_within.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[4]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.Baytre.Tr, file="../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
 load("../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
 
@@ -98,28 +98,28 @@ plot.bhatt.coeff.dist(Bhat.coeff.Tr, col=palette(), xlab="Bhattacharyya Coeffici
 #----------------
 
 #MLbest vs Baycon
-pair.comp_without.MLbest.Baycon.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[1]), sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[1]))
-pair.comp_without.MLbest.Baycon.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[2]), sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[2]))
+pair.comp_without.MLbest.Baycon.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[1]), sub.data(get(data.sets[2]), parameter, metric=metrics[1]))
+pair.comp_without.MLbest.Baycon.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[2]), sub.data(get(data.sets[2]), parameter, metric=metrics[2]))
 
 #MLbest vs MLboot
-pair.comp_without.MLbest.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[1]), sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[1]))
-pair.comp_without.MLbest.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[2]), sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[2]))
+pair.comp_without.MLbest.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[1]), sub.data(get(data.sets[3]), parameter, metric=metrics[1]))
+pair.comp_without.MLbest.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[2]), sub.data(get(data.sets[3]), parameter, metric=metrics[2]))
 
 #MLbest vs Baytre
-pair.comp_without.MLbest.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[1]), sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[1]))
-pair.comp_without.MLbest.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[2]), sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[2]))
+pair.comp_without.MLbest.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[1]), sub.data(get(data.sets[4]), parameter, metric=metrics[1]))
+pair.comp_without.MLbest.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[2]), sub.data(get(data.sets[4]), parameter, metric=metrics[2]))
 
 #Baycon vs MLboot
-pair.comp_without.Baycon.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[1]), sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[1]))
-pair.comp_without.Baycon.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[2]), sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[2]))
+pair.comp_without.Baycon.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[1]), sub.data(get(data.sets[3]), parameter, metric=metrics[1]))
+pair.comp_without.Baycon.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[2]), sub.data(get(data.sets[3]), parameter, metric=metrics[2]))
 
 #Baycon vs Baytre
-pair.comp_without.Baycon.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[1]), sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[1]))
-pair.comp_without.Baycon.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[2]), sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[2]))
+pair.comp_without.Baycon.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[1]), sub.data(get(data.sets[4]), parameter, metric=metrics[1]))
+pair.comp_without.Baycon.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[2]), sub.data(get(data.sets[4]), parameter, metric=metrics[2]))
 
 #MLboot vs Baytre
-pair.comp_without.MLboot.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[1]), sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[1]))
-pair.comp_without.MLboot.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[2]), sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[2]))
+pair.comp_without.MLboot.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[1]), sub.data(get(data.sets[4]), parameter, metric=metrics[1]))
+pair.comp_without.MLboot.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[2]), sub.data(get(data.sets[4]), parameter, metric=metrics[2]))
 
 #Store all this data as a list per metric
 pair.comp_without.RF<-list(pair.comp_without.MLbest.Baycon.RF,

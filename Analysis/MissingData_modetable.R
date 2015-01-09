@@ -27,14 +27,18 @@ if(quick.load == FALSE) {
 }
 
 #Storing the sub data sets
-boot.RF<-sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[1])
-boot.Tr<-sub.data(get(data.sets[3]), par_MLMFMC, metric=metrics[2])
-bayt.RF<-sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[1])
-bayt.Tr<-sub.data(get(data.sets[4]), par_MLMFMC, metric=metrics[2])
-ML.RF<-sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[1])
-ML.Tr<-sub.data(get(data.sets[1]), par_MLMFMC, metric=metrics[2])
-Bay.RF<-sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[1])
-Bay.Tr<-sub.data(get(data.sets[2]), par_MLMFMC, metric=metrics[2])
+library(hdrcde)
+data.sets<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
+metrics<-c("R.F_Cluster","Triples")
+par<-par_MLMFMC
+boot.RF<-sub.data(get(data.sets[3]), par, metric=metrics[1])
+boot.Tr<-sub.data(get(data.sets[3]), par, metric=metrics[2])
+bayt.RF<-sub.data(get(data.sets[4]), par, metric=metrics[1])
+bayt.Tr<-sub.data(get(data.sets[4]), par, metric=metrics[2])
+ML.RF<-sub.data(get(data.sets[1]), par, metric=metrics[1])
+ML.Tr<-sub.data(get(data.sets[1]), par, metric=metrics[2])
+Bay.RF<-sub.data(get(data.sets[2]), par, metric=metrics[1])
+Bay.Tr<-sub.data(get(data.sets[2]), par, metric=metrics[2])
 
 #Calculating the hdr
 ML.RF.hdr<-lapply(ML.RF[-1], hdr)
@@ -48,21 +52,21 @@ bayt.Tr.hdr<-lapply(bayt.Tr, hdr)
 
 #Extracting the modes
 mode.ML.RF<-vector()
-for(i in 1:124) {mode.ML.RF[[i]]<-ML.RF.hdr[[i]]$mode}
+for(i in 1:(length(par)-1)) {mode.ML.RF[[i]]<-ML.RF.hdr[[i]]$mode}
 mode.ML.Tr<-vector()
-for(i in 1:124) {mode.ML.Tr[[i]]<-ML.Tr.hdr[[i]]$mode}
+for(i in 1:(length(par)-1)) {mode.ML.Tr[[i]]<-ML.Tr.hdr[[i]]$mode}
 mode.Bay.RF<-vector()
-for(i in 1:124) {mode.Bay.RF[[i]]<-Bay.RF.hdr[[i]]$mode}
+for(i in 1:(length(par)-1)) {mode.Bay.RF[[i]]<-Bay.RF.hdr[[i]]$mode}
 mode.Bay.Tr<-vector()
-for(i in 1:124) {mode.Bay.Tr[[i]]<-Bay.Tr.hdr[[i]]$mode}
+for(i in 1:(length(par)-1)) {mode.Bay.Tr[[i]]<-Bay.Tr.hdr[[i]]$mode}
 mode.boot.RF<-vector()
-for(i in 1:125) {mode.boot.RF[[i]]<-boot.RF.hdr[[i]]$mode}
+for(i in 1:length(par)) {mode.boot.RF[[i]]<-boot.RF.hdr[[i]]$mode}
 mode.boot.Tr<-vector()
-for(i in 1:125) {mode.boot.Tr[[i]]<-boot.Tr.hdr[[i]]$mode}
+for(i in 1:length(par)) {mode.boot.Tr[[i]]<-boot.Tr.hdr[[i]]$mode}
 mode.bayt.RF<-vector()
-for(i in 1:125) {mode.bayt.RF[[i]]<-bayt.RF.hdr[[i]]$mode}
+for(i in 1:length(par)) {mode.bayt.RF[[i]]<-bayt.RF.hdr[[i]]$mode}
 mode.bayt.Tr<-vector()
-for(i in 1:125) {mode.bayt.Tr[[i]]<-bayt.Tr.hdr[[i]]$mode}
+for(i in 1:length(par)) {mode.bayt.Tr[[i]]<-bayt.Tr.hdr[[i]]$mode}
 
 #Creating the mode table
 table.tmp<-data.frame("Maximum likelihood-RF"=as.vector(summary(mode.ML.RF)), "Maximumlikelihood-Tr"=as.vector(summary(mode.ML.Tr)),
