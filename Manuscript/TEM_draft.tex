@@ -304,14 +304,6 @@ for more details). Note that this procedure pools results from across all missin
 \label{Fig_Results-paircomp_within}
 %\end{figure} %Pairwise BC for the Bayesian consensus trees for RF and TR. (parameters differences)
 
-%Removed figure (table instead)
-%\begin{figure} 
-%\centering
-  %  \includegraphics[width=1\textwidth]{Figures/In_main/BC-MethodComp-RF+Tr-colour.pdf}
-%\caption{Distribution of the Bhattacharyya Coefficients between methods. Curves represents the kernel density estimations of the Bhattacharyya Coefficients between the four different methods. A. Results for the Normalised Robinson-Foulds distance. B. Results with the for Normalised Triplets distance. Pikes around the two different extremes values of the Bhattacharyya Coefficients show the two pairs of most dissimilar methods (Bayesian consensus vs. Bootstraps and Bayesian consensus vs. Bayesian posterior trees) for the Normalised Robinson-Foulds distance ; and the most similar methods (Bootstraps and Bayesian posterior trees) for the Normalised Triples methods.}
-%\label{Fig_Results-paircomp_without} %Comparisons between methods, both in RF and Triplets.(method differences)
-%\end{figure}
-
 % TG: Put this table in landscape!
 \begin{table}[ht]
 \caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised distance between the "best" tree and the "missing data".}
@@ -393,8 +385,9 @@ It is also worth noting that across all our analyses, the topologies of the Maxi
 \subsection{Practical implications}
 Our missing data parameters illustrate different sources of missing data in empirical matrices as follows: ($M_{L}$) the paucity of coded morphological characters for living taxa; ($M_{F}$) the missing data for fossils (or parts of fossils) that have not been preserved in the fossil record; and ($M_{C}$) characters that have not been coded across living and fossil species, perhaps due to difficulties in coding or poor preservation of the feature in collections. Filling these gaps in empirical Total Evidence matrices should lead to a substantial increase in our ability to recover the "best" tree topology. We can increase the number of living taxa with coded morphological characters by increasing research efforts in this area, and encouraging use of our vast natural history collections. Increasing data for fossil species is harder, since it depends on fossil preservation biases and new fossil discoveries. However, gaps in the matrix can be filled with efforts in palaeontological field work that can potentially lead to future discoveries of exceptionally preserved fossils \citep[e.g.][]{nithe2013}. Fortunately, although this data is the most difficult to collect, it also has the least influence on whether our simulations recover the "best" tree topology (Fig.~\ref{Fig_Results-paircomp_within}). Finally, although increasing the number of coded characters is relatively straightforward, the amount of time it takes to build a morphological matrix increases directly with the number of characters involved. One solution to this problem may be to engage with collaborative data collection projects through web portals such as \textit{morphobank} \citep{morphobank}, so that no one individual collects all the data.
 
-% Another practical implication of our results regards the tree building methods. Bayesian = better if chooisng one tree as backbone. However, although posterior distributions perform poorly this is more an effect of the way we compare trees (see above). Thus we do not suggest discarding posterior distribution. They are useful for comparative analyses and stuff. 
-
+Another practical implication of our results regards the tree inference methods and their ability to recover the "best" tree topology with missing data in a Total Evidence framework. Because the Bayesian consensus tree consistently recovered topologies closer to the "best" tree topology than any other methods, we advice to choose this tree topology as a fixed topology for any further step in tree inference analysis such as Tip-dating \citep{BEASTmaster}. However, although the posterior distribution tree distribution performed poorly in recovering the "best" tree topology, this is more an effect of a caveat in our methods (sse discussion above). %add link
+Thus, we do not suggest discarding the Bayesian posterior tree distribution once the topology has been fixed since they can be useful for further comparative analysis \citep[e.g.][]{}. %Bayesian PCM cite
+    
 %---------------------------------------------
 %
 %       CONCLUSION
