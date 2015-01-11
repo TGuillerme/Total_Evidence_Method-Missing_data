@@ -69,7 +69,7 @@ pairwise.comp_within<-c("pair.comp_within.MLbest.RF", "pair.comp_within.MLbest.T
                         "pair.comp_within.Baycon.RF", "pair.comp_within.Baycon.Tr",
                         "pair.comp_within.MLboot.RF", "pair.comp_within.MLboot.Tr",
                         "pair.comp_within.Baytre.RF", "pair.comp_within.Baytre.Tr")
-plot.bhatt.coeff(get(pairwise.comp_within[3]), col=c("blue", "yellow"), col.grad=c("white", "black"))
+plot.bhatt.coeff(get(pairwise.comp_within[8]), col=c("blue", "orange"), col.grad=c("white", "black"))
 summary(as.vector(get(pairwise.comp_within[3]))[-which(is.na(as.vector(get(pairwise.comp_within[3]))))])
 
 #----------------
