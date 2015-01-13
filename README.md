@@ -39,12 +39,39 @@ For example, in our simulations:
 ```
 sh TEM_matsim.sh 25 1000 100 HKY
 ```
+This will generate a "True" tree, 125 phylip matrices with various amounts of missing data and save all the random values (birth-death, morphological rates, etc...).
 
 ####Building the phylogenies (`shell` - RAxML & MrBayes)
 (3) We built phylogenetic trees from each matrix using both Maximum Likelihood and Bayesian methods.
-See code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding).
+The two previous steps (1 & 2) and this one can be wrapped in the `TEM_treesim.sh` code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding). The syntax used is:
+
+`sh TEM_treesim.sh <Living Species> <Molecular characters> <Morphological characters> <Evolutionary model> <Method> <Replicates> <Number of simulations> <Chain name> <CPU>`
+
+with:
+* the first 4 arguments beeing indentical as above (passed to `TEM_matsim.sh`)
+* `<Method>` can be chosen between ML, Bayesian or Both
+* `<Replicates>` being either a number of bootstraps (if method is ML) or any entire number of mega generations (10e6) (if method is Bayesian). If method is set to both, replicates are set to default of 50.10e6 Bayesian generations and 1000 Bootstraps.
+* `<Number of simulations>` being any entire number of repetitions of the simulations.
+* `<Chain name>` being any string of characters used as the chain name.
+* `<CPU>` number of CPUs available
+
+For example, in our simulations:
 ```
-shell example (soon)
+sh TEM_matsim.sh 25 1000 100 HKY ML 1000 1 Dummy_chain_name 8
+```
+This will generate a "True" tree, 125 phylip matrices with various amounts of missing data and save all the random values (birth-death, morphological rates, etc...) and an additional 125 `RAxML` or `MrBayes` scripts. It is then possible to run the 125 `RAxML` or `MrBayes` scripts individually.
+
+To facilitate this operation, we created a script to generate task files to run on a computer cluster using the `TEM_tasker.sh` script available in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding). This is designed for 8 CPU. The syntax is:
+
+`sh TEM_treesim.sh <Chain names> <method> <modulelist> <split>`
+
+with:
+* `<chain>` the name of the chain to generate task files for
+* `<method>` ML or Bayesian
+* `<modules.list>` a text file containing the list of modules to load before submitting the individual jobs
+* `<split>` a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
+```
+sh TEM_tasker.sh Dummy_chain_name ML modules.list.txt 5
 ```
 
 ####Comparing the trees (`shell` & `R`)
