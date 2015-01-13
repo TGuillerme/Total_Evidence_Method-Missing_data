@@ -42,7 +42,7 @@ sh TEM_matsim.sh 25 1000 100 HKY
 This will generate a "True" tree, 125 phylip matrices with various amounts of missing data and save all the random values (birth-death, morphological rates, etc...).
 
 ####Building the phylogenies (`shell` - RAxML & MrBayes)
-(3) We built phylogenetic trees from each matrix using both Maximum Likelihood and Bayesian methods.
+* (3) We built phylogenetic trees from each matrix using both Maximum Likelihood and Bayesian methods.
 The two previous steps (1 & 2) and this one can be wrapped in the `TEM_treesim.sh` code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding). The syntax used is:
 
 `sh TEM_treesim.sh <Living Species> <Molecular characters> <Morphological characters> <Evolutionary model> <Method> <Replicates> <Number of simulations> <Chain name> <CPU>`
@@ -70,18 +70,33 @@ with:
 * `<method>` ML or Bayesian
 * `<modules.list>` a text file containing the list of modules to load before submitting the individual jobs
 * `<split>` a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
+
+For example, in our simulations:
 ```
 sh TEM_tasker.sh Dummy_chain_name ML modules.list.txt 5
 ```
 
 ####Comparing the trees (`shell` & `R`)
-(4) We compared the "missing-data" trees to the "best" tree.
+* (4) We compared the "missing-data" trees to the "best" tree.
+
+This operation is ran in two steps, the first one, using a `java` script to compare the trees and the second one using a `R` script to analyse the results. The code for both operations in available in the function folder, [tree comparisons section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
 
 #####TreeCmp wrapper
-See code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
+The first step is using the `TreeCmp.jar` script to compare the trees. We created a wrapping `shell` script to automate the task taht is available in the [TreeCmp-shell folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/TreeCmp-Shell). The `TEM_TreeCmp_wrapper.sh` script work as follow:
+
+`sh TEM_TreeCmp_wrapper.sh <list> <x> <method> <type>`
+
+with:
+* `<list>` the list of chains numbers
+* `<x>` the number of chains
+* `<method>` either Bayesian or ML
+* `<type>` either single or treeset
+
+For example, in our simulations:
 ```
-shell example (soon)
+sh TEM_TreeCmp_wrapper.sh Dummy_chain_name 1 ML single
 ```
+This operation will perform single tree comparisons between the `RAxML_besttree` with no missing data and the 125 `RAxML_besttree` trees (including the one with no missing data).
 
 #####R analysis
 See code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
