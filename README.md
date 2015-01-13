@@ -5,7 +5,7 @@ This repository contains all the code and data used in the manuscript.
 ###### Manuscript in prep.
 
 ## Manuscript
-The latest presubmition version of the manuscript can be obtained in [pdf here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Manuscript/TEM_draft.pdf) or built from the LaTeX file in [this folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Manuscript).
+The latest presubmition version of the manuscript can be obtained in [pdf here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Manuscript/TEM_draft.pdf) or built from the `LaTeX` file in [this folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Manuscript).
 
 ## Data
 The data is not yet uploaded online but will be available soon.
