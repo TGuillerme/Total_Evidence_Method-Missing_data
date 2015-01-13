@@ -30,10 +30,10 @@ Both operations can be performed using the `TEM_matsim.sh` code in the function 
 `sh TEM_mastsim.sh <Living Species> <Molecular characters> <Morphological characters> <Evolutionary model>`
 
 with:
-* `<Living Species>` being any entire number of living species to put into the matrices.
-* `<Molecular characters>` being any entire number of molecular characters to put into the matrices.
-* `<Morphological characters>` being any entire number of morphological characters to put into the matrices.
-* `<Evolutionary model>` can be chosen between HKY or GTR as an evolutionary model to build the matrices. Is ignored if an input matrix is given.
+  * `<Living Species>` being any entire number of living species to put into the matrices.
+  * `<Molecular characters>` being any entire number of molecular characters to put into the matrices.
+  * `<Morphological characters>` being any entire number of morphological characters to put into the matrices.
+  * `<Evolutionary model>` can be chosen between HKY or GTR as an evolutionary model to build the matrices. Is ignored if an input matrix is given.
 
 For example, in our simulations:
 ```
@@ -48,12 +48,12 @@ The two previous steps (1 & 2) and this one can be wrapped in the `TEM_treesim.s
 `sh TEM_treesim.sh <Living Species> <Molecular characters> <Morphological characters> <Evolutionary model> <Method> <Replicates> <Number of simulations> <Chain name> <CPU>`
 
 with:
-* the first 4 arguments beeing indentical as above (passed to `TEM_matsim.sh`)
-* `<Method>` can be chosen between ML, Bayesian or Both
-* `<Replicates>` being either a number of bootstraps (if method is ML) or any entire number of mega generations (10e6) (if method is Bayesian). If method is set to both, replicates are set to default of 50.10e6 Bayesian generations and 1000 Bootstraps.
-* `<Number of simulations>` being any entire number of repetitions of the simulations.
-* `<Chain name>` being any string of characters used as the chain name.
-* `<CPU>` number of CPUs available
+  * the first 4 arguments beeing indentical as above (passed to `TEM_matsim.sh`)
+  * `<Method>` can be chosen between ML, Bayesian or Both
+  * `<Replicates>` being either a number of bootstraps (if method is ML) or any entire number of mega generations (10e6) (if method is Bayesian). If method is set to both, replicates are set to default of 50.10e6 Bayesian generations and 1000 Bootstraps.
+  * `<Number of simulations>` being any entire number of repetitions of the simulations.
+  * `<Chain name>` being any string of characters used as the chain name.
+  * `<CPU>` number of CPUs available
 
 For example, in our simulations:
 ```
@@ -66,10 +66,10 @@ To facilitate this operation, we created a script to generate task files to run 
 `sh TEM_treesim.sh <Chain names> <method> <modulelist> <split>`
 
 with:
-* `<chain>` the name of the chain to generate task files for
-* `<method>` ML or Bayesian
-* `<modules.list>` a text file containing the list of modules to load before submitting the individual jobs
-* `<split>` a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
+  * `<chain>` the name of the chain to generate task files for
+  * `<method>` ML or Bayesian
+  * `<modules.list>` a text file containing the list of modules to load before submitting the individual jobs
+  * `<split>` a value between 1 and 5 for splitting the jobs (1=1 job: 5 tasks, 5=1 job: 1 task)
 
 For example, in our simulations:
 ```
@@ -87,10 +87,10 @@ The first step is using the `TreeCmp.jar` script to compare the trees. We create
 `sh TEM_TreeCmp_wrapper.sh <list> <x> <method> <type>`
 
 with:
-* `<list>` the list of chains numbers
-* `<x>` the number of chains
-* `<method>` either Bayesian or ML
-* `<type>` either single or treeset
+  * `<list>` the list of chains numbers
+  * `<x>` the number of chains
+  * `<method>` either Bayesian or ML
+  * `<type>` either single or treeset
 
 For example, in our simulations:
 ```
@@ -99,7 +99,16 @@ sh TEM_TreeCmp_wrapper.sh Dummy_chain_name 1 ML single
 This operation will perform single tree comparisons between the `RAxML_besttree` with no missing data and the 125 `RAxML_besttree` trees (including the one with no missing data).
 
 #####R analysis
-See code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
+Finally we ran a series of analysis presented in the final manuscript version using the various `R` scripts available in the [analysis folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Analysis).
+
+The first step is to load the various functions stored in the [tree comparisons folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/) in `R`.
 ```
-R example (soon)
+load("MissingData_fun.R")
 ```
+After that, various analysis can be run as follow:
+
+  * [Generating/loading the data](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_load.R)
+  * [Calculating the differences between methods or parameters](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_differences.R)
+  * [Visualising the effect of missing data](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_plot.R)
+  * [Summarizing the tree comparisons metrics](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_modetable.R)
+
