@@ -21,18 +21,23 @@ To be hosted online soon...
 ## Analysis
 This section contains details on the code used to run the analysis as detailed in the paper.
 ####Building the "complete" phylogenies and removing the data (`shell`)
-(1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
+* (1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
 
-See code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding).
-```
-shell example (soon)
-```
+* (2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
 
-(2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
+Both operations can be performed using the `TEM_matsim.sh` code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding). The syntax used is:
 
-See code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding).
+`sh TEM_mastsim.sh <Living Species> <Molecular characters> <Morphological characters> <Evolutionary model>`
+
+with:
+* `<Living Species>` being any entire number of living species to put into the matrices.
+* `<Molecular characters>` being any entire number of molecular characters to put into the matrices.
+* `<Morphological characters>` being any entire number of morphological characters to put into the matrices.
+* `<Evolutionary model>` can be chosen between HKY or GTR as an evolutionary model to build the matrices. Is ignored if an input matrix is given.
+
+For example, in our simulations:
 ```
-shell example (soon)
+sh TEM_matsim.sh 25 1000 100 HKY
 ```
 
 ####Building the phylogenies (`shell` - RAxML & MrBayes)
