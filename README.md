@@ -5,7 +5,13 @@ This repository contains all the code and data used in the manuscript.
 ###### Manuscript in prep.
 
 ## Manuscript
-The latest presubmition version of the manuscript can be obtained in [pdf here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Manuscript/TEM_draft.pdf) or built from the `LaTeX` file in [this folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Manuscript).
+The latest version of the manuscript is available in the Manuscript folder.
+
+To compile the paper:
+
+```
+make -C Manuscript
+```
 
 ## Data
 The data is not yet uploaded online but will be available soon.
@@ -17,9 +23,8 @@ To be hosted online soon...
 #####Tree comparisons
 To be hosted online soon...
 
-
 ## Analysis
-This section contains details on the code used to run the analysis as detailed in the paper.
+This folder contains details on the code used to run the analyses as detailed in the paper.
 ####Building the "complete" phylogenies and removing the data (`shell`)
 * (1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
 
@@ -48,7 +53,7 @@ The two previous steps (1 & 2) and this one can be wrapped in the `TEM_treesim.s
 `sh TEM_treesim.sh <Living Species> <Molecular characters> <Morphological characters> <Evolutionary model> <Method> <Replicates> <Number of simulations> <Chain name> <CPU>`
 
 with:
-  * the first 4 arguments beeing indentical as above (passed to `TEM_matsim.sh`)
+  * the first 4 arguments being identical as above (passed to `TEM_matsim.sh`)
   * `<Method>` can be chosen between ML, Bayesian or Both
   * `<Replicates>` being either a number of bootstraps (if method is ML) or any entire number of mega generations (10e6) (if method is Bayesian). If method is set to both, replicates are set to default of 50.10e6 Bayesian generations and 1000 Bootstraps.
   * `<Number of simulations>` being any entire number of repetitions of the simulations.
@@ -59,7 +64,7 @@ For example, in our simulations:
 ```
 sh TEM_matsim.sh 25 1000 100 HKY ML 1000 1 Dummy_chain_name 8
 ```
-This will generate a "True" tree, 125 phylip matrices with various amounts of missing data and save all the random values (birth-death, morphological rates, etc...) and an additional 125 `RAxML` or `MrBayes` scripts. It is then possible to run the 125 `RAxML` or `MrBayes` scripts individually.
+This will generate a "true" tree, 125 phylip matrices with various amounts of missing data and save all the random values (birth-death, morphological rates, etc...) and an additional 125 `RAxML` or `MrBayes` scripts. It is then possible to run the 125 `RAxML` or `MrBayes` scripts individually.
 
 To facilitate this operation, we created a script to generate task files to run on a computer cluster using the `TEM_tasker.sh` script available in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding). This is designed for 8 CPU. The syntax is:
 
@@ -79,10 +84,10 @@ sh TEM_tasker.sh Dummy_chain_name ML modules.list.txt 5
 ####Comparing the trees (`shell` & `R`)
 * (4) We compared the "missing-data" trees to the "best" tree.
 
-This operation is ran in two steps, the first one, using a `java` script to compare the trees and the second one using a `R` script to analyse the results. The code for both operations in available in the function folder, [tree comparisons section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
+This operation is run in two steps, the first one, using a `java` script to compare the trees and the second one using a `R` script to analyse the results. The code for both operations in available in the function folder, [tree comparisons section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
 
 #####TreeCmp wrapper
-The first step is using the `TreeCmp.jar` script to compare the trees. We created a wrapping `shell` script to automate the task taht is available in the [TreeCmp-shell folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/TreeCmp-Shell). The `TEM_TreeCmp_wrapper.sh` script work as follow:
+The first step is using the `TreeCmp.jar` script to compare the trees. We created a wrapping `shell` script to automate the task that is available in the [TreeCmp-shell folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/TreeCmp-Shell). The `TEM_TreeCmp_wrapper.sh` script work as follow:
 
 `sh TEM_TreeCmp_wrapper.sh <list> <x> <method> <type>`
 
@@ -99,13 +104,13 @@ sh TEM_TreeCmp_wrapper.sh Dummy_chain_name 1 ML single
 This operation will perform single tree comparisons between the `RAxML_besttree` with no missing data and the 125 `RAxML_besttree` trees (including the one with no missing data).
 
 #####R analysis
-Finally we ran a series of analysis presented in the final manuscript version using the various `R` scripts available in the [analysis folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Analysis).
+Finally we ran a series of analyses presented in the final manuscript version using the various `R` scripts available in the [analysis folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Analysis).
 
 The first step is to load the various functions stored in the [tree comparisons folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/) in `R`.
 ```
 load("MissingData_fun.R")
 ```
-After that, various analysis can be run as follow:
+After that, various analyses can be run as follow:
 
   * [Generating/loading the data](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_load.R)
   * [Calculating the differences between methods or parameters](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_differences.R)
