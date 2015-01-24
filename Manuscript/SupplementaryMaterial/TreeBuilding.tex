@@ -1,52 +1,62 @@
-\section{Supplementary material Section 1}
+%\section{Supplementary material 1 : Tree building}
 
-\subsection{Morphological characters states}
-In order to obtain a realistic probabilistic value for of \textit{k} characters states for each simulated morphological character, we downloaded 100 random morphological characters (with more than 100 characters each) from TreeBASE database (http://treebase.org/) published between 1985 and 2013 and covering 19 taxomomic classess (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta).
-We selected a total of 22563 characters ranging from 2 to 10 states.
-We calculated the proportion of characters with 2, 3, 4, 5, 6, 7, 8, 9 or 10 states.
-We then sampeled 22563 \textit{k} values between 2 and 10 with the same proportion of characters from the empirical data.
-We then used a simple t-test to check if our simulation was equal to the empirical data.
-In this study, we only simulated characters with 2 or 3 states because of the high proportion of ordered characters ecountered on characters with more than 3 states and the difficulties of simulate biologicaly sensible ordered characters.
+\subsection{Morphological character states}
+To obtain a realistic value for the probability of having \textit{k} characters states for each simulated morphological character, we randomly selected 100 morphological matrices, each with more than 100 characters each, from TreeBASE (http://treebase.org/). We only selected matrices published between 1985 and 2013 and covering 19 taxonomic classes (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta). This resulted in a total of 22563 characters that had between two and 10 character states. We then extracted the proportion of characters with each number of states (two to 10) to give us an empirical estimate of the average number of character states for each character, as shown in Figure \ref{Fig_AppendixCharacters}. Most characters have two or three states, therefore we only simulate characters with two or three states, and sample these in proportion to their occurrence in our empirical data ()% NC: Can we put the probabilities here, I know they are in the main text)
 
-\begin{figure}
+%We then sampled 22563 \textit{k} values between two and 10 with the same proportion of characters from the empirical data. We then used a simple t-test to check if our simulation was equal to the empirical data.
+% NC: I don't know why this t-test or these simulations were run...
+
+%In this study, we only simulated characters with 2 or 3 states because of the high proportion of ordered characters encountered on characters with more than 3 states and the difficulties of simulate biologicaly sensible ordered characters.
+
+\begin{figure}[h]
 \centering
 \includegraphics[keepaspectratio=true]{Figures/Supplementary/TEM_Fig-AppendixCharacters.pdf}
-\caption{Character states distribution in empirical matrices. %Title?
-Characters states number distribution extracted from 100 random morphological matrices downloaded from RreeBase.}
+\caption{The proportion of morphological characters with between two and 10 character states extracted from 100 randomly selected empirical matrices downloaded from TreeBASE.}
 \label{Fig_AppendixCharacters}
 \end{figure}
+% NC: Can you remove the title of this figure?
 
-
+\newpage
 \subsection{Tree Building Software settings}
 
-\subsubsection{Maximum Likelihood - RAxML v8.0.20 \citep{Stamatakis21012014}}
+For clarity we have provided the exact settings used in our tree building below.
 
-Model: \\
-Molecular data: \\
-GTR + $\Gamma_4$ (-m GTRGAMMA) \\
-Morphological data: \\
-Mk + $\Gamma_4$ (-K MK) \\
-Support: \\
-Rapid Boostrap algorithm (LSR), 1000 replicates \\
+\subsubsection{Maximum Likelihood: RAxML version 8.0.20 \citep{Stamatakis21012014}}
 
-\subsubsection{Bayesian - MrBayes v3.2.1 \citep{Ronquist2012mrbayes}}
+\begin{itemize}
+  \item Molecular data: GTR + $\Gamma_4$ (-m GTRGAMMA)
+  \item Morphological data: Mk + $\Gamma_4$ (-K MK)
+  \item Support: Rapid Boostrap algorithm (LSR), 1000 replicates
+\end{itemize}
 
-Priors: \\
-Molecular data: \\
-rates distribution shape ($\alpha$) = 0.5 \\
-Transition/Transversion ratio = 2 ($\beta$(80,40)) \\
-Starting tree: "True" tree topology with each branch length = 1 \\
-Morphological data: \\
-rates distribution shape ($\alpha$) = 0.5 \\
-Models: \\
-Molecular data: HKY + $\Gamma_4$ \\
-Morphological data: Mk + $\Gamma_4$ \\
-MCMC: \\
-2 runs \\
-4 chains per run \\
-generations < 50$\times$$1^6$ \\
-sample frequency = 1050$\times$$1^3$ \\
-ASDS diagnosis frequency = 50$\times$$1^3$ \\
-ASDS $<$ 0.01 \\
-ESS $>>$ 200 \\
-Burnin = 25\%
+\subsubsection{Bayesian: MrBayes version 3.2.1 \citep{Ronquist2012mrbayes}}
+
+\begin{itemize}
+  \item Priors
+  \begin{itemize}
+    \item Molecular data
+    \item Rates distribution shape ($\alpha$) = 0.5
+    \item Transition/Transversion ratio = 2 ($\beta$(80,40))
+    \item Starting tree: "True" tree topology with each branch length = 1
+  \end{itemize}
+  \item Morphological data
+  \begin{itemize}
+    \item rates distribution shape ($\alpha$) = 0.5
+  \end{itemize}
+  \item Models
+  \begin{itemize}
+    \item Molecular data: HKY + $\Gamma_4$
+    \item Morphological data: Mk + $\Gamma_4$
+  \end{itemize}
+  \item MCMC
+  \begin{itemize}
+    \item Two runs
+    \item Four chains per run
+    \item Generations < 50$\times$$1^6$
+    \item Sample frequency = 1050$\times$$1^3$
+    \item ASDS diagnosis frequency = 50$\times$$1^3$
+    \item ASDS $<$ 0.01
+    \item ESS $>>$ 200
+    \item Burnin = 25\%
+  \end{itemize}
+\end{itemize}
