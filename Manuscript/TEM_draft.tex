@@ -1,8 +1,6 @@
 %LaTeX template : http://systbio.org/files/SB_LaTeX_Template_txt_extension.txt
 %Author instructions: http://www.oxfordjournals.org/our_journals/sysbio/for_authors/ms_preparation.html
 
-%NC: Supp material - add the actual table and figures for each thing. Also BE CONSISTENT. Is it Section 1 or S1? I'd go with S1 (which stands for Supp Mat 1 not section 1 really.). Normally you also refer to supplemental tables and figures as Table S1 etc. to distinguish between those in the main text. Check how Syst Biol does it.
-
 \documentclass[12pt,letterpaper]{article}
 
 %Packages
@@ -103,10 +101,15 @@ Living species represent only a small proportion of all species that have ever l
 In this study we assess the effect of missing data on tree topologies inferred from Total Evidence matrices. Using simulations we investigate three major factors that directly affect the completeness of the morphological part of the matrix: (1) the proportion of living taxa with no morphological data, (2) the amount of missing data in the fossil record, and (3) the overall number of morphological characters in the matrix. 
 
 % NC: This needs changing to reflect what we decided to focus on, i.e. our recommendations. We don't want to lead with the methods thing. The two previous paragraphs are fine and just need tightening up a bit
-We find that, when using a clade conservative metric such as Robinson-Foulds distance, Bayesian consensus trees recovers the right topology better than Maximum Likelihood or than a subset of Bayesian posterior tree distributions and this regardless of the amount of missing data (minimal tree similarity of 0.69 in the worst scenario). Regarding the data, good topological recovery is not related to the amount of missing data \textit{per se} but to the amount of data overlap. The two factors that influences the most this data overlap are the parameters 1 (proportion of coded living taxa) and 3 (number of morphological characters).
+%We find that, when using a clade conservative metric such as Robinson-Foulds distance, Bayesian consensus trees recovers the right topology better than Maximum Likelihood or than a subset of Bayesian posterior tree distributions and this regardless of the amount of missing data (minimal tree similarity of 0.69 in the worst scenario). Regarding the data, good topological recovery is not related to the amount of missing data \textit{per se} but to the amount of data overlap. The two factors that influences the most this data overlap are the parameters 1 (proportion of coded living taxa) and 3 (number of morphological characters).
+
+We find that increasing the number of living taxa with morphological characters (1) and the overall amount of morphological data (3) have a greater impact on the ability to recover the "correct" topology than increasing the data completeness in the fossil record (2). Therefore, we suggest that sampling effort should be focusing on these two first aspects to increase the accuracy of topology in the Total Evidence framework. Additionally, we found that the Bayesian consensus tree consistently recovers topology that are closest to the "correct" topology than any other method. Therefore, we also suggest, after the data collection effort, that one should fix the tree topology using the Bayesian consensus tree topology for any further tree inference or macroevolutionary analysis.
+
+
+
 \end{abstract}
 
-\noindent (Keywords: missing data, Total Evidence, Bayesian, Maximum Likelihood, topology)\\
+\noindent (Keywords: missing data, Total Evidence, Bayesian, Maximum Likelihood, topology, fossil, living)\\
 
 \vspace{1.5in}
 
