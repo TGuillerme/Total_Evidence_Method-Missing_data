@@ -1,12 +1,7 @@
 %\section{Supplementary material 1 : Tree building}
 
 \subsection{Morphological character states}
-To obtain a realistic value for the probability of having \textit{k} characters states for each simulated morphological character, we randomly selected 100 morphological matrices, each with more than 100 characters each, from TreeBASE (http://treebase.org/). We only selected matrices published between 1985 and 2013 and covering 19 taxonomic classes (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta). This resulted in a total of 22563 characters that had between two and 10 character states. We then extracted the proportion of characters with each number of states (two to 10) to give us an empirical estimate of the average number of character states for each character, as shown in Figure \ref{Fig_AppendixCharacters}. Most characters have two or three states, therefore we only simulate characters with two or three states, and sample these in proportion to their occurrence in our empirical data ()% NC: Can we put the probabilities here, I know they are in the main text)
-
-%We then sampled 22563 \textit{k} values between two and 10 with the same proportion of characters from the empirical data. We then used a simple t-test to check if our simulation was equal to the empirical data.
-% NC: I don't know why this t-test or these simulations were run...
-
-%In this study, we only simulated characters with 2 or 3 states because of the high proportion of ordered characters encountered on characters with more than 3 states and the difficulties of simulate biologicaly sensible ordered characters.
+To obtain a realistic value for the probability of having \textit{k} characters states for each simulated morphological character, we randomly selected 100 morphological matrices, each with more than 100 characters each, from TreeBASE (\url{http://treebase.org/}). We only selected matrices published between 1985 and 2013 and covering 19 taxonomic classes (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta). This resulted in a total of 22563 characters that had between two and 10 character states. We then extracted the proportion of characters with each number of states (two to 10) to give us an empirical estimate of the average number of character states for each character, as shown in Figure \ref{Fig_AppendixCharacters}. Most characters have two or three states, therefore we only simulate characters with two or three states, and sample these in proportion to their occurrence in our empirical data (probability of 0.85 for two states characters and 0.15 for three state characters). The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R}.
 
 \begin{figure}
 \centering
@@ -14,7 +9,6 @@ To obtain a realistic value for the probability of having \textit{k} characters 
 \caption{The proportion of morphological characters with between two and 10 character states extracted from 100 randomly selected empirical matrices downloaded from TreeBASE.}
 \label{Fig_AppendixCharacters}
 \end{figure}
-% NC: Can you remove the title of this figure?
 
 \newpage
 \subsection{Tree Building Software settings}
@@ -32,14 +26,13 @@ For clarity we have provided the exact settings used in our tree building below.
 \subsubsection{Bayesian: MrBayes version 3.2.1 \citep{Ronquist2012mrbayes}}
 
 \begin{itemize}
-  \item Priors
+  \item Priors: Molecular data
   \begin{itemize}
-    \item Molecular data
     \item Rates distribution shape ($\alpha$) = 0.5
     \item Transition/Transversion ratio = 2 ($\beta$(80,40))
     \item Starting tree: "True" tree topology with each branch length = 1
   \end{itemize}
-  \item Morphological data
+  \item Priors: Morphological data
   \begin{itemize}
     \item rates distribution shape ($\alpha$) = 0.5
   \end{itemize}
@@ -52,9 +45,9 @@ For clarity we have provided the exact settings used in our tree building below.
   \begin{itemize}
     \item Two runs
     \item Four chains per run
-    \item Generations < 50$\times$$1^6$
-    \item Sample frequency = 1050$\times$$1^3$
-    \item ASDS diagnosis frequency = 50$\times$$1^3$
+    \item Generations $<$ 5$\times$$10^7$
+    \item Sample frequency = 1.05$\times$$10^4$
+    \item ASDS diagnosis frequency = 5$\times$$1^4$
     \item ASDS $<$ 0.01
     \item ESS $>>$ 200
     \item Burnin = 25\%
