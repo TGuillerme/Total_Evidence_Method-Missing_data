@@ -1,2 +1,0 @@
-To do:
-knitr file for the full analysis.
