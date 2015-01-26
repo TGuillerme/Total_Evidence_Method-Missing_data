@@ -1,22 +1,80 @@
+\documentclass[12pt,letterpaper]{article}
+
+%Packages
+\usepackage{pdflscape}
+\usepackage{fixltx2e}
+\usepackage{textcomp}
+\usepackage{fullpage}
+\usepackage{natbib}
+\usepackage{float}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{array}
+\usepackage[version=3]{mhchem}
+\usepackage{ifthen}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{enumerate}
+\usepackage[osf]{mathpazo}
+\usepackage{dcolumn}
+\usepackage{lineno}
+\pagenumbering{arabic}
+
+
+%Pagination style and stuff
+\linespread{2}
+\raggedright
+\setlength{\parindent}{0.5in}
+\setcounter{secnumdepth}{0} 
+\renewcommand{\section}[1]{%
+\bigskip
+\begin{center}
+\begin{Large}
+\normalfont\scshape #1
+\medskip
+\end{Large}
+\end{center}}
+\renewcommand{\subsection}[1]{%
+\bigskip
+\begin{center}
+\begin{large}
+\normalfont\itshape #1
+\end{large}
+\end{center}}
+\renewcommand{\subsubsection}[1]{%
+\vspace{2ex}
+\noindent
+\textit{#1.}---}
+\renewcommand{\tableofcontents}{}
+\bibpunct{(}{)}{;}{a}{}{,}
+
 \section{Code}
 All code for performing the analyses is available at: \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data}.
 
 \newpage
-\section{Supplementary Material 1: Tree Building}
+\section{Appendix 1: Tree Building}
   \input{SupplementaryMaterial/TreeBuilding}
   \label{Supp_TreeBuilding}
 
 \newpage
-\section{Supplementary Material 2: Tree Comparisons}
+\section{Appendix 2: Tree Comparisons}
   \input{SupplementaryMaterial/TreeComparison}
   \label{Supp_TreeComparison}
 
+\bibliographystyle{sysbio}
+\bibliography{Supp_Ref}
+
 \newpage
-\section{Supplementary Material 3: Additional Results}
+\section{Appendix 3: Additional Results}
   \input{SupplementaryMaterial/Supp_results}
   \label{Supp_results}
 
-%\newpage
-%\section{Supplementary References}
-%    \bibliographystyle{sysbio}
-%    \bibliography{SupplementaryMaterial/Supp_Ref}
+%END
+\end{document}
