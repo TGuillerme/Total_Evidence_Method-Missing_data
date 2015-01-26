@@ -117,3 +117,5 @@ After that, various analyses can be run as follow:
   * [Visualising the effect of missing data](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_plot.R)
   * [Summarizing the tree comparisons metrics](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_modetable.R)
 
+#####Supplementary analysis
+An additional analysis has been run in the online Appendix 1 to determine the frequency of character states per simulated morphological characters. The whole analysis can be run on UNIX based machines (LINUX/MAC) through the [following code](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R).
