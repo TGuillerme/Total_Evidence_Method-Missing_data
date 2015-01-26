@@ -1,40 +1,31 @@
-\documentclass[a4paper,11pt]{article}
-
+\documentclass[11pt]{letter}
+\usepackage[a4paper,left=2.5cm, right=2.5cm, top=1cm, bottom=1cm]{geometry}
 \usepackage[osf]{mathpazo}
-\usepackage{lastpage} 
-\pagenumbering{arabic}
-\linespread{1.66}
-
+\signature{Thomas Guillerme \\ Natalie Cooper}
+\address{Zoology building \\ Trinity College Dublin \\ Dublin 2, Ireland \\ \\ guillert@tcd.ie}
+\longindentation=0pt
 \begin{document}
 
-\begin{flushright}
-Version dated: \today
-\end{flushright}
+\begin{letter}{}
+\opening{Dear Editors,}
 
-\noindent{Dear Editors,}
+In recent years there has been growing interest in building phylogenies that contain both living and fossil taxa (e.g. Fritz et al. 2013 TREE; Heath et al. 2014 PNAS). Such phylogenies could revolutionize the way we think about macroevolutionary patterns and processes, and provide a more complete understanding of trends in biodiversity through time. Unfortunately building such trees has proved technically difficult. 
 
-%introducing paragraph
-A major challenge in macroevolution since the advent of the molecular clock is to accurately estimate relationships among species through time. Today, two main approaches exist to investigate this issue: the cladistics method, focusing on palaeontological data and probabilistic methods focusing on neontological data. Both approaches comes with their benefits but also with a major issue: they do not make use of all the available data (both molecular and morphological). A third emerging approach, the Total Evidence method, allows us to address this issue. This method is extremely promising since it allows us to study macroeveolutionary patterns and processes using all the available data. However, because of the amount of data involved, the Total Evidence method is likely to suffer from problems of missing data.
+One method, the Total Evidence method, allows us to use molecular and morphological data to build phylogenies with both living and fossil species as tips (Ronquist et al. 2012 Syst Biol). This method is extremely promising because it allows us to use all the available data. However, because of the amount of data involved, the Total Evidence method is likely to be affected by missing data.
 
-%What's our paper about
-Our paper, entitled "Effect of missing data on topological inference using a total evidence approach", which we submit for your consideration, is, to our knowledge, the first thorough analysis to address the effect of missing data on recovering tree topology in a Total Evidence framework. We ran extensive computational analyses ($>$ 1.5 CPU century) %or 150 CPU years?
-to provide insights into the effects of missing data in a Total Evidence framework. We test the effects of three missing data parameters (the number of living taxa with morphological data; the amount of missing data in the fossil record; and the overall number of morphological characters) on our ability to recover the "best" tree topology by using state-of-the-art methods in tree inference and tree comparisons.
+Our paper, entitled "Effects of missing data on topological inference using a Total Evidence approach", is to our knowledge, the first to thoroughly analyze the effects of missing data on tree topology in a Total Evidence framework. Using simulations ($>$ 150 CPU years worth), we find that the number of living taxa with morphological data and the overall number of morphological characters, are more important than the amount of missing data in the fossil record for recovering the "best" tree topology. Additionally, we show that Bayesian methods outperform Maximum Likelihood methods, regardless of the amount of missing data.
 
-%What did we find
-Our key findings are that two parameters: the number of living taxa with morphological data and the overall amount of morphological characters, are more important than the amount of missing data in the fossil record for recovering the "best" tree topology. Additionally, we found an effect of the tree inference method and we show that the Bayesian majority consensus tree always performs better than the Maximum Likelihood tree in recovering the "best" tree topology, regardless of the amount of missing data.
+Our results suggest that increasing the number of taxa with morphological data and the overall number of morphological characters will greatly improve the quality of Total Evidence tree topologies. This has major implications for clades where detailed morphological data collection from living species is rare. Additionally, we recommend using a Bayesian majority consensus tree when fixing tree topology for any additional analyses such as Tip-Dating (Ronquist et al. 2012 Syst Biol).
 
-%What we suggest
-Thus, we suggest that increasing the number of taxa with morphological data as well as the overall number of morphological characters is a sufficient strategy to highly improve the quality of Total Evidence tree topologies and that the problem of missing data in the fossil record is not a major issue when using this method. Additionally, we suggest that fixing the topology in tree inference analysis using a Bayesian majority consensus tree could be used as a solid base for any additional analyses such as Tip-Dating or further Phylogenetic Comparative Methods.
+We feel this paper will be of particular interest to the readers of Systematic Biology as many papers investigating methods for combining living and fossil taxa and the effects of missing data on such analyses (e.g. D\'{a}valos et al. 2014; Pattinson et al. in press, Pyron 2011, Ronquist et al. 2012) % Any more? Without going on to a second page?
+, have been recently published in the journal.
 
-We look forward to hearing from you soon.
-\newline
-\newline
-\noindent{Sincerely,}
-\newline
-\newline
-\noindent{Thomas Guillerme, on behalf of my co-author.}
-\newline
-\newline
+We look forward to hearing from you soon,
+
+\closing{Yours sincerely,}
+
 Suggested reviewers: Liliana D\'{a}valos; David Pattinson; Fredrik Ronquist; Nicolas Salamin; Tanja Stadler.
 
+\end{letter}
 \end{document}
+
