@@ -1,15 +1,10 @@
-
-% NC: Can you make the legends the same as the ones I already fixed in the main text please??? 
-
-
-% NC: Need a short paragraph here explaining that these are supplemental results for different tree building methods or whatever, just to explain why this exists!
 The following section contains the supplemental results of the effects of our missing data parameters and the different tree inference methods on the the ability to recover the "best" topology that are briefly discussed in the main body of the paper. For clarity, in the paper, we focused on the results of the effects of our missing data parameters on the Maximum Likelihood trees topology and the Bayesian consensus trees topology. The following additional results presented here give a greater insight into the effect of our missing data parameters on the Maximum Likelihood Bootstrapped trees topologies and the Bayesian posterior trees distribution topologies. Also we present here the pairwise comparisons between each parameters states for the Maximum Likelihood tree topology, the Maximum Likelihood Bootstrapped trees topologies and the Bayesian posterior trees distribution topologies.
 
 \begin{figure} 
 \centering
     \includegraphics[width=1\textwidth]{SupplementaryFigures/Boot+Bayt-AllParam-RF+Tr-BW.pdf}
     \caption{Effect of increasing missing data on topological recovery using Maximum Likelihood Bootstrap trees (black) and Bayesian posterior tree distribution (grey). The x axis shows the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Topological recovery was measured using two different tree comparison metrics: Normalised Robinson-Foulds distance (upper row) and Normalised Triplets distance (lower row). The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the tree comparison metric for each missing data parameter and tree inference method.} 
-\label{Fig_Supp_BootBayt_allparam} %Differences between all the parameters and between two methods (Boot vs Bayt)
+\label{Fig_Supp_BootBayt_allparam} 
 \end{figure}
 
 \begin{figure} 
@@ -19,7 +14,7 @@ The following section contains the supplemental results of the effects of our mi
     \includegraphics[width=1\textwidth]{SupplementaryFigures/PairwiseComp-ML-RF+Tr-colour.png} %bitmap version - 300 dpi RGB
     \caption{The effects of missing data on topological recovery using Maximum Likelihood trees. The x and the y axes both show show the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Topological recovery is represented by the probability of (A) Normalised Robinson-Foulds distance and (B) Normalised Triplets distance distributions overlapping with the "best" tree distribution, calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange.}
 \label{Fig_Supp_paircomp_ML}
-\end{figure} %Pairwise BC for the ML trees for RF and TR. (parameters differences)
+\end{figure} 
 
 \begin{figure} 
 \centering
@@ -28,7 +23,7 @@ The following section contains the supplemental results of the effects of our mi
     \includegraphics[width=1\textwidth]{SupplementaryFigures/PairwiseComp-Boot-RF+Tr-colour.png} %bitmap version - 300 dpi RGB
     \caption{The effects of missing data on topological recovery using Maximum Likelihood bootstrap trees. The x and the y axes both show show the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Topological recovery is represented by the probability of (A) Normalised Robinson-Foulds distance and (B) Normalised Triplets distance distributions overlapping with the "best" tree distribution, calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange.}
 \label{Fig_Supp_paircomp_Boot}
-\end{figure} %Pairwise BC for the ML bootstrap trees for RF and TR. (parameters differences)
+\end{figure} 
 
 \begin{figure} 
 \centering
@@ -37,7 +32,7 @@ The following section contains the supplemental results of the effects of our mi
     \includegraphics[width=1\textwidth]{SupplementaryFigures/PairwiseComp-Bayt-RF+Tr-colour.png} %bitmap version - 300 dpi RGB
     \caption{The effects of missing data on topological recovery using Bayesian posterior tree distribution. The x and the y axes both show show the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Topological recovery is represented by the probability of (A) Normalised Robinson-Foulds distance and (B) Normalised Triplets distance distributions overlapping with the "best" tree distribution, calculated using the Bhattacharyya Coefficient. TThe Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange.}
 \label{Fig_Supp_paircomp_Bayt}
-\end{figure} %Pairwise BC for the Bayesian posterior trees distribution for RF and TR. (parameters differences)
+\end{figure} 
 
 
 %Summary of metrics values for all parameters combinations

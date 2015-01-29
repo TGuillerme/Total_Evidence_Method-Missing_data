@@ -54,9 +54,6 @@ For any $m,n$, when $NTS$ = 1, the trees are identical, when \textit{NTS} = 0 th
 
 We used the NTS method to scale all the Robinson Foulds and Triplets distances calculated in our analyses, using the TreeCmp java script \citep{Bogdanowicz2012}.
 
-% NC: Not sure this bit is needed
-%We compared 1000 randomly generated trees to obtain the mean comparison value $\bar{d}_{m,n}$\textit{(rand)}. We randomly generated two sets of 1000 trees of \textit{n} taxa using the rmtree function of ape package (v3.0-11 \citet{paradisape:2004}) that generates a given number of random Yule trees. We calculated the $\bar{d}_{m,n}$\textit{(rand)} value using an approach similar to the RPCBTC (described below) by performing 1000 random pairwise comparisons using the TreeCmp java script \citep{Bogdanowicz2012}.
-
 \subsection{Bhattacharyya Coefficient}
 The Bhattacharyya Coefficient calculates the probability of overlap of two distributions \citep{Bhattacharyya}. When it is equal to zero, the probability of overlap of the distributions is also zero, and when it is equal to one, the two distributions are entirely overlapping. It forms an elegant and easy to compute continuous measurement of the probability of similarity between two distributions. The coefficient is calculated as the sum of the square root of the relative counts shared in \textit{n} bins among two distributions.
 \begin{equation}
