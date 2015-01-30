@@ -374,8 +374,8 @@ This work was funded by a European Commission CORDIS Seventh Framework Programme
  %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
  %   \citeyear{key} ==>>             1990
 
-\bibliographystyle{sysbio}
-\bibliography{References}
+\bibliographystyle{MainBody-LaTeXSuppFiles/sysbio}
+\bibliography{MainBody-LaTeXSuppFiles/References}
 
 
 %---------------------------------------------
@@ -478,7 +478,7 @@ We repeated these four steps 50 times.}
 \newpage
 \begin{figure}[!htbp]
 \centering
-    \includegraphics[keepaspectratio=true]{Figures/In_main/Simulations_outline-BW.pdf}
+    \includegraphics[keepaspectratio=true]{MainBody-LaTeXSuppFiles/Figures/In_main/Simulations_outline-BW.pdf}
 \caption{ }
 %(1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
 %(2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
@@ -491,7 +491,7 @@ We repeated these four steps 50 times.}
 \newpage
 \begin{figure}[!htbp]
 \centering
-    \includegraphics[width=0.5\textwidth]{Figures/In_main/Bhattacharyya_Coefficients1.pdf}
+    \includegraphics[width=0.5\textwidth]{MainBody-LaTeXSuppFiles/Figures/In_main/Bhattacharyya_Coefficients1.pdf}
 \caption{ }
 %\caption{Bhattacharyya Coefficient calculation outline. A, B and C are distribution of tree similarity (Normalised Robinson-Foulds or Normalised Triplets distances) for any combination of missing data parameters (e.g. $M_{L}$ = 10\%, $M_{F}$ = 50\%, $M_{C}$ = 75\%). The Bhattacharyya Coefficient (BC) is the overlap of the distribution of tree similarity between two combination of missing data parameters such as BC(A,B) is the probability of overlap between the distributions A and B.}
 %\label{Fig_Bhattacharyya_Coefficients} %Bhattacharyya coefficients calculation outline
@@ -500,7 +500,7 @@ We repeated these four steps 50 times.}
 \newpage
 \begin{figure}[!htbp]
 \centering
-    \includegraphics[width=1\textwidth]{Figures/In_main/Bhattacharyya_Coefficients2.pdf}
+    \includegraphics[width=1\textwidth]{MainBody-LaTeXSuppFiles/Figures/In_main/Bhattacharyya_Coefficients2.pdf}
 \caption{ }
 %\caption{Bhattacharyya Coefficient calculation outline. A and B are distribution of tree similarity (Normalised Robinson-Foulds or Normalised Triplets distances) for any combination of missing data parameters (e.g. $M_{L}$ = 10\%, $M_{F}$ = 50\%, $M_{C}$ = 75\%). \textbf{(x)} and \textbf{(y)} are two different tree inference methods (e.g. Maximum Likelihood or Bayesian). The Bhattacharyya Coefficient (BC) is the overlap of the distribution of tree similarity between two methods for the same combination of missing data parameters such as BC($A_{x}$,$A_{y}$) is the probability of overlap of the distribution A between the methods $x$ and $y$.}
 %\label{Fig_Bhattacharyya_Coefficients} %Bhattacharyya coefficients calculation outline
@@ -509,7 +509,7 @@ We repeated these four steps 50 times.}
 \newpage
 \begin{figure}[!htbp]
 \centering
-    \includegraphics[width=1\textwidth]{Figures/In_main/AllMethods-RF+Tr-colour.pdf}
+    \includegraphics[width=1\textwidth]{MainBody-LaTeXSuppFiles/Figures/In_main/AllMethods-RF+Tr-colour.pdf}
 \caption{ }
 %\caption{The effects of increasing missing data on topological recovery using Maximum Likelihood trees (black), Bayesian consensus trees (blue), Maximum Likelihood bootstrap trees (orange) and Bayesian posterior tree distributions (blue). The percentage of missing data for each parameter ($M_{L}$, $M_{F}$ and $M_{C}$) is shown on the x axis. Topological recovery was measured using two different tree comparison metrics: Normalised Robinson-Foulds distance (upper row) and Normalised Triplets distance (lower row). The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the tree comparison metric for each missing data parameter and tree inference method.}
 %\label{Fig_Results-permeth_perparam} %Differences within a subset of parameters and between methods
@@ -518,7 +518,7 @@ We repeated these four steps 50 times.}
 \newpage
 \begin{figure}[!htbp]
 \centering
-    \includegraphics[width=1\textwidth]{Figures/In_main/ML+Baycon-AllParam-RF+Tr-BW.pdf}
+    \includegraphics[width=1\textwidth]{MainBody-LaTeXSuppFiles/Figures/In_main/ML+Baycon-AllParam-RF+Tr-BW.pdf}
 \caption{ }
 %\caption{The effects of increasing missing data on topological recovery using Maximum Likelihood trees (black) and Bayesian consensus trees (grey). The x axis shows the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Topological recovery was measured using two different tree comparison metrics: Normalised Robinson-Foulds distance (upper row) and Normalised Triplets distance (lower row). The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the tree comparison metric for each missing data parameter and tree inference method.} 
 %\label{Fig_Results-global_perparam} %Differences between all the parameters and between two methods (ML vs BC)
@@ -529,7 +529,7 @@ We repeated these four steps 50 times.}
 \centering
      %Hide this figure for 'fast' build
 %    \includegraphics[width=1\textwidth]{Figures/In_main/PairwiseComp-Baycon-RF+Tr-colour.pdf}
-    \includegraphics[width=1\textwidth]{Figures/In_main/PairwiseComp-Baycon-RF+Tr-colour.png} %bitmap version - 300 dpi RGB
+    \includegraphics[width=1\textwidth]{MainBody-LaTeXSuppFiles/Figures/In_main/PairwiseComp-Baycon-RF+Tr-colour.png} %bitmap version - 300 dpi RGB
 \caption{ }
 %\caption{The effects of missing data on topological recovery using Bayesian consensus trees. Both axes show the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Topological recovery is represented by the probability of (A) Normalised Robinson-Foulds distance and (B) Normalised Triplets distance distributions overlapping with the "best" tree distribution, calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values indicating low probability of overlap are shown in blue, those indicating a high probability of overlap are shown in orange.}
 %\label{Fig_Results-paircomp_within}
