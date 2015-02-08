@@ -1,55 +1,17 @@
-
-% Please do not include colors or graphics in the text.
-%
-% Please do not create a heading level below \subsection. For 3rd level headings, use \paragraph{}.
-%
-% % % % % % % % % % % % % % % % % % % % % % %
-%
-% -- FIGURES AND TABLES
-%
-% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
-%
-% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
-% - Figures should be uploaded separately from your manuscript file. 
-% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
-% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
-% See http://www.plosone.org/static/figureGuidelines for PLOS figure guidelines.
-%
-% Tables should be cell-based and may not contain:
-% - tabs/spacing/line breaks within cells to alter layout or alignment
-% - vertically-merged cells (no tabular environments within tabular environments, do not use \multirow)
-% - colors, shading, or graphic objects
-% See http://www.plosone.org/static/figureGuidelines#tables for table guidelines.
-%
-% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
-%
-% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://www.plosone.org/static/latexGuidelines
-%
-% Please be sure to include all portions of an equation in the math environment.
-%
 \documentclass[10pt,letterpaper]{article}
 \usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
-% Use adjustwidth environment to exceed column width (see example table in text)
+
 \usepackage{changepage}
-% Use Unicode characters when possible
 \usepackage[utf8]{inputenc}
-% textcomp package and marvosym package for additional characters
 \usepackage{textcomp,marvosym}
-% fixltx2e package for \textsubscript
 \usepackage{fixltx2e}
-% amsmath and amssymb packages, useful for mathematical formulas and symbols
 \usepackage{amsmath,amssymb}
-% cite package, to clean up citations in the main text. Do not remove.
 \usepackage{cite}
-% Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref,hyperref}
-% line numbers
 \usepackage[right]{lineno}
-% ligatures disabled
 \usepackage{microtype}
 \DisableLigatures[f]{encoding = *, family = * }
-% rotating package for sideways tables
 \usepackage{rotating}
 \usepackage{setspace} 
 \doublespacing
@@ -60,19 +22,14 @@
 \textwidth 5.25in 
 \textheight 8.75in
 
-% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
-% Captions will be left justified
 \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
 
-% Use the PLoS provided BiBTeX style
 \bibliographystyle{plos2009}
 
-% Remove brackets from numbering in List of References
 \makeatletter
 \renewcommand{\@biblabel}[1]{\quad#1.}
 \makeatother
 
-% Leave date blank
 \date{}
 
 % Header and Footer with logo
@@ -87,13 +44,10 @@
 \fancyfootoffset[L]{2.25in}
 \lfoot{\sf PLOS}
 
-%% Include all macros below
-
 \newcommand{\lorem}{{\bf LOREM}}
 \newcommand{\ipsum}{{\bf IPSUM}}
 
 %% END MACROS SECTION
-
 
 \begin{document}
 \vspace*{0.35in}
@@ -104,7 +58,6 @@
 \textbf\newline{Effects of missing data on topological inference using a Total Evidence approach}
 }
 \newline
-% Insert Author names, affiliations and corresponding author email.
 \\
 Thomas Guillerme\textsuperscript{1,2,*},
 Natalie Cooper\textsuperscript{1,2}
@@ -115,7 +68,6 @@ Natalie Cooper\textsuperscript{1,2}
 \\
 * E-mail: Corresponding guillert@tcd.ie
 \end{flushleft}
-% Please keep the abstract below 300 words
 \section*{Abstract}
 To fully understand macroevolutionary patterns and processes, we need to include both extant and extinct species in our models. This requires phylogenetic trees with both living and fossil taxa at the tips. One way to infer such phylogenies is the Total Evidence approach which uses molecular data from living taxa and morphological data from living and fossil taxa.
 
@@ -189,7 +141,7 @@ First we randomly generated a "true" tree of 50 taxa in R v. 3.0.2 \cite{R302} u
 
 Next, we generated a molecular and a morphological matrix from the "true" tree. The molecular matrix was inferred from the "true" tree using the R package phyclust v. 0.1-14 \cite{chen2011}. The matrix contained 1000 character sites for 51 taxa and was generated using the seqgen algorithm \cite{ranbaut1997seqgen} and using the HKY model \cite{HKY85} with random base frequencies and transition/transversion rate of two \cite{douadycomparison2003}. The substitution rates were distributed following a gamma distribution with an alpha ($\alpha$) shape of 0.5 \cite{yangamong-site1996}. We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal. We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, total computational time for the whole analysis was around 150 CPU years). All the molecular information for fossil taxa was replaced by missing data ("?").
 
-We inferred the morphological matrix using the R package ape v. 3.0-11 \cite{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa. We assigned the number of character states (either two or three) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters. These probabilities were selected using the overall distribution of character states extracted from 100 published empirical morphological matrices (see Appendix S1 and Fig. S1). We then ran an independent discrete character simulation for each character using the "true" tree with the character's randomly selected number of states (two or three) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to another \cite{Pagel22011994}. This method allows us to have only two parameters for each character: the number of states and the evolutionary rate. For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5. We used low evolutionary rate parameters to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \cite{wagner2000,davalosintegrating2014,wrightbayesian2014}.
+We inferred the morphological matrix using the R package ape v. 3.0-11 \cite{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa. We assigned the number of character states (either two or three) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters. These probabilities were selected using the overall distribution of character states extracted from 100 published empirical morphological matrices (see ~\nameref{S1_Appendix1} and Fig. S1 within). We then ran an independent discrete character simulation for each character using the "true" tree with the character's randomly selected number of states (two or three) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to another \cite{Pagel22011994}. This method allows us to have only two parameters for each character: the number of states and the evolutionary rate. For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5. We used low evolutionary rate parameters to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \cite{wagner2000,davalosintegrating2014,wrightbayesian2014}.
 
 Finally, we combined the morphological and molecular matrices obtained from the "true" tree. Hereafter we call this the "complete" matrix, i.e. the matrix with no missing data except for the molecular data of the fossil taxa.
 %---------------------------------------------
@@ -228,7 +180,7 @@ To measure the support for each branch in our simulated phylogenies we first ran
 \paragraph*{Bayesian}
 The "best" tree and the "missing-data" trees were inferred using MrBayes v. 3.2.1 \cite{Ronquist2012mrbayes}. We partitioned the data to treat the molecular part as a non-codon DNA partition and the morphological part as a multi-state morphological partition. The molecular evolutionary history was inferred using the HKY model with a transition/transversion ratio of two \cite{douadycomparison2003} and a gamma distribution for the rate variation with four distinct categories (HKY + $\Gamma_4$). For the morphological data, we used the Markov \textit{k} state model \cite{lewisa2001}, with equal state frequency and a unique overall substitution rate ($\mu$) with four distinct rates categories (M\textit{k} + $\Gamma_4$). We chose these models to be consistent with the parameters used to generate the "complete" matrix.
 
-Each Bayesian tree was estimated using two runs of four chains each for a maximum of 5$\times$$10^7$ generations. We used the following priors for each tree: (i) the "true" tree’s topology as a starting tree (with a starting value for each branch length of one), (ii) an exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5 for both partitions, and (iii) a transition/transversion ratio prior of two sampled from a strong beta distribution ($\beta$(80,40)). We used these priors to speed up the Bayesian estimation process. These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation however, here we are focusing on the effect of missing data on tree topology and not branch lengths. Even using these priors, it took \texttildelow 140 CPU years to build 50 sets of 125 Bayesian trees (2.30GHz clock speed nodes). The detailed MrBayes parameters are available in the Appendix S1.
+Each Bayesian tree was estimated using two runs of four chains each for a maximum of 5$\times$$10^7$ generations. We used the following priors for each tree: (i) the "true" tree’s topology as a starting tree (with a starting value for each branch length of one), (ii) an exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5 for both partitions, and (iii) a transition/transversion ratio prior of two sampled from a strong beta distribution ($\beta$(80,40)). We used these priors to speed up the Bayesian estimation process. These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation however, here we are focusing on the effect of missing data on tree topology and not branch lengths. Even using these priors, it took \texttildelow 140 CPU years to build 50 sets of 125 Bayesian trees (2.30GHz clock speed nodes). The detailed MrBayes parameters are available in the ~\nameref{S1_Appendix1}.
 
 We used the average standard deviation of split frequencies (ASDS) as a proxy to estimate the convergence of the chains and used a stop rule when the ASDS went below 0.01 \cite{Ronquist2012mrbayes}. We also checked the effective sample size (ESS) on a random sub-sample of runs in each simulation to ensure that ESS $>>$ 200 \cite{drummond2006ess}. Finally we built a strict majority rule Bayesian consensus tree from the combined chains, excluding the 25\% first iterations as burn-in \cite{Ronquist2012mrbayes}.
 
@@ -240,10 +192,10 @@ We used the average standard deviation of split frequencies (ASDS) as a proxy to
 We compared the topology of the "missing-data" trees to the "best" tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $M_{C}$ on tree topology. We used the Robinson-Foulds distance \cite{RF1981} to assess the amount of conserved clade positions and the Triplets distance \cite{dobson1975triplets} to assess the amount of wildcard taxa (i.e. taxa that frequently change position in different trees \cite{kearneyfragmentary2002}). We used these two metrics because they illustrate two different aspects of tree topology (see Discussion) but also because their performance in measuring differences in topology is well described \cite{Kuhner04112014} and well implemented \cite{Bogdanowicz2012}. We normalised both metrics using methods described in \cite{Bogdanowicz2012} to generalize our results for any \textit{n} number of taxa. These metrics are described in detail below.
 
 \paragraph*{Robinson-Foulds distance}
-The Robinson-Foulds distance \cite{RF1981}, or "path difference", measures the number of shared clades across two trees. The metric reflects the distance between the distributions of tips among clades in the two trees \cite{RF1981} (see Appendix S2 for calculation details). This metric is bounded between one, when the two trees are identical, and $n-2$ (for two trees with $n$ taxa) when there is no shared clade in the two trees. This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity. We normalised this metric by dividing the Robinson-Foulds distance by the mean Robinson-Foulds distance from 1000 random tree comparisons \cite{Bogdanowicz2012}. This allows us to compare the metric for any number of taxa by scaling it with the expected value of the metric when comparing two random trees (see Appendix S2 for the calculation details). Therefore, when the Normalised Robinson-Foulds distance between two trees is equal to one, the trees are identical; if the distance is equal to zero, the trees are no more different than expected by chance; finally if the distance is less than zero, the trees are more different than expected by chance.
+The Robinson-Foulds distance \cite{RF1981}, or "path difference", measures the number of shared clades across two trees. The metric reflects the distance between the distributions of tips among clades in the two trees \cite{RF1981} (see ~\nameref{S2_Appendix2} for calculation details). This metric is bounded between one, when the two trees are identical, and $n-2$ (for two trees with $n$ taxa) when there is no shared clade in the two trees. This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity. We normalised this metric by dividing the Robinson-Foulds distance by the mean Robinson-Foulds distance from 1000 random tree comparisons \cite{Bogdanowicz2012}. This allows us to compare the metric for any number of taxa by scaling it with the expected value of the metric when comparing two random trees (see ~\nameref{S2_Appendix2} for the calculation details). Therefore, when the Normalised Robinson-Foulds distance between two trees is equal to one, the trees are identical; if the distance is equal to zero, the trees are no more different than expected by chance; finally if the distance is less than zero, the trees are more different than expected by chance.
 
 \paragraph*{Triplets distance}
-The Triplets distance \cite{dobson1975triplets} measures the number of sub-trees made up of three taxa that differ between two trees \cite{critchlowthe1996} (see Appendix S2 for calculation details). This metric measures the position of each taxon and clade in relation to its closest neighbours. It is bounded between zero when the two trees are identical and $\binom{n}{4}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees. Therefore this metric sensitive to the conservation of wildcard taxa. We normalised this metric in the same way as for the Robinson-Foulds distance resulting in the Normalised Triplets distance.
+The Triplets distance \cite{dobson1975triplets} measures the number of sub-trees made up of three taxa that differ between two trees \cite{critchlowthe1996} (see ~\nameref{S2_Appendix2} for calculation details). This metric measures the position of each taxon and clade in relation to its closest neighbours. It is bounded between zero when the two trees are identical and $\binom{n}{4}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees. Therefore this metric sensitive to the conservation of wildcard taxa. We normalised this metric in the same way as for the Robinson-Foulds distance resulting in the Normalised Triplets distance.
 
 \paragraph*{Paired tree comparisons}
 \label{tree_comparisons}
@@ -253,7 +205,7 @@ For a given set of 1000 "missing data" trees and the 1000 "best" trees, we sampl
 \subsection*{Testing the effects of the missing data parameters on topological recovery}
 Finally, we tested the effects of our missing data parameters ($M_{L}$, $M_{F}$, $M_{C}$ and their interactions) on our ability to recover the "best" tree topology in a Total Evidence framework. We also assessed the effect of our missing data parameters jointly with the effects of different tree inference and uncertainty methods (i.e. Maximum Likelihood, Bayesian consensus, Maximum Likelihood bootstrap trees and Bayesian posterior tree distribution).
 
-We measured similarities among the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets distance) using the Bhattacharyya Coefficient \cite{Bhattacharyya}. The Bhattacharyya Coefficient is the probability of overlap between two distributions \cite{Bhattacharyya} (see Appendix S2 for calculation details). Note that this is equivalent to performing a two-sided t-test, but we use the Bhattacharyya Coefficient here because we are comparing distributions not means. To assess the effect of our missing data parameters, we calculated the Bhattacharyya Coefficient between the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets distance) for each pairwise combination of missing data parameters ($M_{L}$, $M_{F}$, $M_{C}$) and parameter states (0\%, 10\%, 25\%, 50\%, 75\%), i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; $M_{L}$ = 10\%, $M_{F}$ = 0\%, $M_{C}$ = 0\% etc. (see Fig.~\ref{Fig_Bhattacharyya_Coefficients1} for more details). This resulted in 7875 pairwise comparisons (a triangular matrix with $3^5$$\times$$3^5$ cells). We performed this procedure separately for each tree inference and uncertainty method. When two combinations of missing data parameters have a similar ability to recover the "best" tree topology the Bhattacharyya Coefficient will be close to one. Conversely, if the two combinations of missing data parameters differ, the Bhattacharyya Coefficient will be close to zero.
+We measured similarities among the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets distance) using the Bhattacharyya Coefficient \cite{Bhattacharyya}. The Bhattacharyya Coefficient is the probability of overlap between two distributions \cite{Bhattacharyya} (see ~\nameref{S2_Appendix2} for calculation details). Note that this is equivalent to performing a two-sided t-test, but we use the Bhattacharyya Coefficient here because we are comparing distributions not means. To assess the effect of our missing data parameters, we calculated the Bhattacharyya Coefficient between the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets distance) for each pairwise combination of missing data parameters ($M_{L}$, $M_{F}$, $M_{C}$) and parameter states (0\%, 10\%, 25\%, 50\%, 75\%), i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; $M_{L}$ = 10\%, $M_{F}$ = 0\%, $M_{C}$ = 0\% etc. (see Fig.~\ref{Fig_Bhattacharyya_Coefficients1} for more details). This resulted in 7875 pairwise comparisons (a triangular matrix with $3^5$$\times$$3^5$ cells). We performed this procedure separately for each tree inference and uncertainty method. When two combinations of missing data parameters have a similar ability to recover the "best" tree topology the Bhattacharyya Coefficient will be close to one. Conversely, if the two combinations of missing data parameters differ, the Bhattacharyya Coefficient will be close to zero.
 
 \begin{figure}[h]
 \caption{{\bf Bhattacharyya Coefficient calculation outline 1.}
@@ -293,11 +245,11 @@ As the amount of missing data in the morphological part of the Total Evidence ma
 
 \subsection*{Individual effects of missing data parameters}
 As the amount of missing data increases across all three parameters, our ability to recover the "best" tree topology decreases (Fig.~\ref{Fig_Results-permeth_perparam}).
-The Normalised Robinson-Foulds distance is always lower for the Maximum Likelihood trees than for the Bayesian consensus trees (median Bhattacharrya Coefficient = 0.69, 0.48 and 0.66 for $M_{L}$, $M_{F}$ and $M_{C}$ respectively; Fig.~\ref{Fig_Results-permeth_perparam}; Tables S5, S6 and S7). 
-However, The Normalised Triplets distance is similar between the Maximum Likelihood trees and the Bayesian consensus trees for all the parameters ($M_{L}$, $M_{F}$ and $M_{C}$) (median Bhattacharrya Coefficient = 0.84, 0.75 and 0.80 for $M_{L}$, $M_{F}$ and $M_{C}$ respectively; Fig.~\ref{Fig_Results-permeth_perparam}; Tables S5, S6 and S7).
+The Normalised Robinson-Foulds distance is always lower for the Maximum Likelihood trees than for the Bayesian consensus trees (median Bhattacharrya Coefficient = 0.69, 0.48 and 0.66 for $M_{L}$, $M_{F}$ and $M_{C}$ respectively; Fig.~\ref{Fig_Results-permeth_perparam}; Tables S5, S6 and S7 in ~\nameref{S3_Appendix3}). 
+However, The Normalised Triplets distance is similar between the Maximum Likelihood trees and the Bayesian consensus trees for all the parameters ($M_{L}$, $M_{F}$ and $M_{C}$) (median Bhattacharrya Coefficient = 0.84, 0.75 and 0.80 for $M_{L}$, $M_{F}$ and $M_{C}$ respectively; Fig.~\ref{Fig_Results-permeth_perparam}; Tables S5, S6 and S7 in ~\nameref{S3_Appendix3}).
 
 \subsection*{Combined effect of missing data parameters}
-As expected, our ability to recover the "best" tree topology is worst when each parameter contains the maximum amount of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%), and best when there is no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; Fig.~\ref{Fig_Results-global_perparam}; Tables S2, S3 and S4). Figure ~\ref{Fig_Results-paircomp_within} shows the similarity of distributions of tree metrics in a triangular matrix with the values of each pairwise Bhattacharyya Coefficient coloured according to their values (orange when the distributions overlap completely, Bhattacharyya Coefficient = 1, and blue when they do not, Bhattacharyya Coefficient = 0; Fig.~\ref{Fig_Results-paircomp_within}). 
+As expected, our ability to recover the "best" tree topology is worst when each parameter contains the maximum amount of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%), and best when there is no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; Fig.~\ref{Fig_Results-global_perparam}; Tables S2, S3 and S4 in ~\nameref{S3_Appendix3}). Figure ~\ref{Fig_Results-paircomp_within} shows the similarity of distributions of tree metrics in a triangular matrix with the values of each pairwise Bhattacharyya Coefficient coloured according to their values (orange when the distributions overlap completely, Bhattacharyya Coefficient = 1, and blue when they do not, Bhattacharyya Coefficient = 0; Fig.~\ref{Fig_Results-paircomp_within}). 
 
 \begin{figure}[]
 \caption{{\bf The effects of missing data on topological recovery using Bayesian consensus trees.}
@@ -308,7 +260,7 @@ As expected, our ability to recover the "best" tree topology is worst when each 
 
 Using both Normalised Robinson-Foulds and Normalised Triplets distances from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (Fig.~\ref{Fig_Results-paircomp_within}). However, the Normalised Robinson-Foulds distance (median Bhattacharrya coefficient = 0.79; Fig.~\ref{Fig_Results-paircomp_within}A) displays more dissimilarities than the Normalised Triplets distance (median Bhattacharrya coefficient = 0.81; Fig.~\ref{Fig_Results-paircomp_within}B). Additionally, when using the Normalised Robinson-Foulds distance, once $M_{L}$ $\geq$ 50\%, there is no additional affect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Fig.~\ref{Fig_Results-paircomp_within}A). Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional affect of $M_{L}$ and $M_{F}$ (Fig.~\ref{Fig_Results-paircomp_within}A).
 
-For all combinations of missing data parameters and tree comparison metrics, the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distributions perform very similarly (median Bhattacharrya Coefficient = 0.85 and 0.98, using Normalised Robinson-Foulds distance or Normalised Triplets distance respectively; Table ~\ref{Tab_Results-Difference_methods}). However, these two methods perform worse than the Bayesian consensus trees using Normalised Robinson-Foulds distance (median Bhattacharrya Coefficient = 0 and 0.01, for the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distribution respectively; Table ~\ref{Tab_Results-Difference_methods}; Fig.~\ref{Fig_Results-permeth_perparam} and Fig. S2).
+For all combinations of missing data parameters and tree comparison metrics, the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distributions perform very similarly (median Bhattacharrya Coefficient = 0.85 and 0.98, using Normalised Robinson-Foulds distance or Normalised Triplets distance respectively; Table ~\ref{Tab_Results-Difference_methods}). However, these two methods perform worse than the Bayesian consensus trees using Normalised Robinson-Foulds distance (median Bhattacharrya Coefficient = 0 and 0.01, for the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distribution respectively; Table ~\ref{Tab_Results-Difference_methods}; Fig.~\ref{Fig_Results-permeth_perparam} and Fig. S2 in ~\nameref{S3_Appendix3}).
 
 \begin{table}[!ht]
 \begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
@@ -375,59 +327,23 @@ Missing data in Total Evidence matrices is not a problem for recovering the "bes
 \section*{Supporting Information}
 
 % Include only the SI item label in the subsection heading. Use the \nameref{label} command to cite SI items in the text.
-\subsection*{Supplementary informations}
+\subsection*{Supporting Information S1: Tree Inference}
 \label{S1_Appendix1}
-\noindent{\bf Appendix S1 Tree Inference.} Supplementary information on the Tree Inference methods.
+\noindent{\bf Supporting Information S1 Tree Inference.} Supplementary information on the Tree Inference methods. Contains Figure S1.
 
-\label{Figure S1}
-\noindent{\bf Figure S1 proportion of morphological characters states.}
-
+\subsection*{Supporting Information S2: Tree Comparisons}
 \label{S2_Appendix2}
-\noindent{\bf Appendix S2 Tree Comparisons.} Supplementary information on the Tree Comparison methods.
+\noindent{\bf Supporting Information S2 Tree Comparisons.} Supplementary information on the Tree Comparison methods.
 
-\label{S2_Appendix3}
-\noindent{\bf Appendix S3 Additional results.}.
-
-\label{Figure S2}
-\noindent{\bf Figure S2 Effect of increasing missing data on topological recovery using Maximum Likelihood Bootstrap trees (black) and Bayesian posterior tree distribution (grey).}
-
-\label{Figure S3}
-\noindent{\bf Figure S3 Effects of missing data on topological recovery using Maximum Likelihood trees.} 
-
-\label{Figure S4}
-\noindent{\bf Figure S4 Effects of missing data on topological recovery using Maximum Likelihood bootstrap trees.}
- 
-\label{Figure S5}
-\noindent{\bf Figure S5 Effects of missing data on topological recovery using Bayesian posterior tree distribution.}
-
-\label{Table S1}
-\noindent{\bf Table S1 Comparisons between the "best" tree and the "missing data" trees for each different tree inference method.}
-
-\label{Table S2}
-\noindent{\bf Table S2 Comparisons between the "best" tree and the "missing data" trees for each different tree inference method for the $M_{L}$ parameter.} 
-
-\label{Table S3}
-\noindent{\bf Table S3 Comparisons between the "best" tree and the "missing data" trees for each different tree inference method for the $M_{F}$ parameter.} 
-
-\label{Table S4}
-\noindent{\bf Table S4 Comparisons between the "best" tree and the "missing data" trees for each different tree inference method for the $M_{C}$ parameter.} 
-
-\label{Table S5}
-\noindent{\bf Table S5 Bhattacharyya Coefficients of the pairwise method comparisons for the $M_{L}$ parameter.} 
-
-\label{Table S6}
-\noindent{\bf Table S6 Bhattacharyya Coefficients of the pairwise method comparisons for the $M_{F}$ parameter..} Bhattacharyya 
-
-\label{Table S7}
-\noindent{\bf Table S7 Bhattacharyya Coefficients of the pairwise method comparisons for the $M_{C}$ parameter..} Bhattacharyya 
+\subsection*{Supporting Information S3: Additional results}
+\label{S3_Appendix3}
+\noindent{\bf Supporting Information S3 Additional results.}. Contains Figures S2, S3, S4 and S5 and Tables S1, S2, S3, S4 S5, S6 and S7.
 
 % Do NOT remove this, even if you are not including acknowledgments.
 \section*{Acknowledgments}
 Thanks to Gavin Thomas, Fr\'{e}d\'{e}ric Delsuc, Emmanuel Douzery, Trevor Hodkinson, Andrew Jackson, Nick Matzke, and April Wright for useful comments on our simulation protocol and manuscript. Thanks to Paddy Doyle, Graziano D'Innocenzo and Sean McGrath for assistance with the computer cluster. Simulations used the Lonsdale cluster maintained by the Trinity Centre for High Performance Computing and funded through grants from Science Foundation Ireland.
 %This work was funded by a European Commission CORDIS Seventh Framework Programme (FP7) Marie Curie CIG grant (proposal number: 321696).
 
-\section*{Author Contributions}
-Conceived and designed the experiments: TG NC. Ran the analysis: TG. Analyzed the data: TG. Wrote the paper: TG NC.
 
 \nolinenumbers
 
