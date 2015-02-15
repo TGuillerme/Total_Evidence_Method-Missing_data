@@ -2,7 +2,7 @@
 [Thomas Guillerme](http://tguillerme.github.io) and [Natalie Cooper](https://www.tcd.ie/Zoology/research/ncooper/nataliecooper.php).
 
 This repository contains all the code and data used in the manuscript.
-###### Manuscript in prep.
+###### Manuscript in review in PLOS ONE.
 
 ## Manuscript
 The latest version of the manuscript is available in the Manuscript folder.
