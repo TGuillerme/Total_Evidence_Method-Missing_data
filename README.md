@@ -14,14 +14,15 @@ make -C Manuscript
 ```
 
 ## Data
-The data is not yet uploaded online but will be available soon.
+All the data is available on [figshare](http://figshare.com/articles/Effect_of_missing_data_on_topological_inference_using_a_total_evidence_approach/1306861).
 
 #####True trees
-To be hosted online soon...
+The "True" trees are available in the `True_trees.zip` file.
 #####Missing data trees
-To be hosted online soon...
+The missing data trees are available in the `ML_trees.zip` and `ChainX_Bayesian.zip` files.
 #####Tree comparisons
-To be hosted online soon...
+The tree comparisons results are available in the `Tree_Comparisons.zip` file.
+
 
 ## Analysis
 This folder contains details on the code used to run the analyses as detailed in the paper.
