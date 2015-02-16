@@ -16,10 +16,10 @@
 #<bootstraps>        the number of bootstrap replicates (if 0, no bootstraps will be performed)
 #<template>          a template configuration file for GARLI to use (if 0, the configuration will be set to default: default GARLI.conf file with genthreshfortopoterm set to 5000 if bootstraps are called)
 ##########################
-#version: 0.1
-GARLI_setup_version="GARLi_setup.sh v0.1"
+#version: 0.1.1
+GARLI_setup_version="GARLi_setup.sh v0.1.1"
 #----
-#guillert(at)tcd.ie - 09/02/2014
+#guillert(at)tcd.ie - 16/02/2014
 ##########################
 #Requirements:
 ##########################
@@ -155,7 +155,7 @@ echo "" >> ${chain_name}-part.nex
 #Molecular data block
 echo "Begin characters;" >> ${chain_name}-part.nex
 echo "Link taxa = Taxa_Block;" >> ${chain_name}-part.nex
-echo "Dimensions = ${Mol_characters};" >> ${chain_name}-part.nex
+echo "Dimensions NCHAR = ${Mol_characters};" >> ${chain_name}-part.nex
 echo "Format Datatype = DNA;" >> ${chain_name}-part.nex
 echo "Matrix" >> ${chain_name}-part.nex
 cat Molecular_block.tmp >> ${chain_name}-part.nex
@@ -164,7 +164,7 @@ echo "" >> ${chain_name}-part.nex
 #Morphological data block
 echo "Begin characters;" >> ${chain_name}-part.nex
 echo "Link taxa = Taxa_Block;" >> ${chain_name}-part.nex
-echo "Dimensions = ${Morpho_characters};" >> ${chain_name}-part.nex
+echo "Dimensions NCHAR = ${Morpho_characters};" >> ${chain_name}-part.nex
 echo "Format Datatype = Standard missing = '?';" >> ${chain_name}-part.nex
 echo "Matrix" >> ${chain_name}-part.nex
 cat Morphological_block.tmp >> ${chain_name}-part.nex
