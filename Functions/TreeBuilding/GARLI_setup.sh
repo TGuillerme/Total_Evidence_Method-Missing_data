@@ -148,7 +148,7 @@ echo "" >> ${chain_name}-part.nex
 #Taxa block
 echo "Begin taxa;" >> ${chain_name}-part.nex
 echo "Title Taxa_Block;" >> ${chain_name}-part.nex
-echo "Dimension NTAX = ${n_taxa};" >> ${chain_name}-part.nex
+echo "Dimensions NTAX = ${n_taxa};" >> ${chain_name}-part.nex
 echo $taxlabel >> ${chain_name}-part.nex
 echo "End;" >> ${chain_name}-part.nex
 echo "" >> ${chain_name}-part.nex
