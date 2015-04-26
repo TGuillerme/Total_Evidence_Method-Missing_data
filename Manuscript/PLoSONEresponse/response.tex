@@ -4,6 +4,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[colorlinks = true, urlcolor = blue]{hyperref} %hyperlinks
 \usepackage[osf]{mathpazo}
+\usepackage{amsmath,amssymb}
 \signature{Thomas Guillerme \\ Natalie Cooper}
 \address{Zoology building \\ Trinity College Dublin \\ Dublin 2, Ireland \\ \\ guillert@tcd.ie}
 \longindentation=0pt
@@ -214,7 +215,7 @@ The matrix [...] was generated [...] using the HKY model with random base freque
 
 \textcolor{blue}{Do the simulations apply ascertainment biases as described by Lewis' Mkv (2001) model? It seems like they should... At minimum, the point should be discussed.}
 
-We are not entirely sure if the reviewers refers to a sampling bias or to the problem link to constant characters described in Lewis (2001) (acquisition bias). If the reviewers are referring to the second (acquisition bias), both phylogenetic inference software we used (RAxML and MrBayes) are correcting for the this bias (-K MK  see Supplementary information 1 for the full list of commands). Also, the effect of the acquisition bias is to inflate branch length which is an aspect of the phylogeny we didn't explored in this study (focusing on topology). See response below to the comment \color{blue}{\textit{The use of Mk rather than Mkv makes the study less relevant to real data analyses.}}.
+We are not entirely sure if the reviewers refers to a sampling bias or to the problem link to constant characters described in Lewis (2001) (acquisition bias). If the reviewers are referring to the second (acquisition bias), both phylogenetic inference software we used (RAxML and MrBayes) are correcting for the this bias (-K MK  see Supplementary information 1 for the full list of commands). Also, the effect of the acquisition bias is to inflate branch length which is an aspect of the phylogeny we didn't explored in this study (focusing on topology). See response below to the comment ``\textit{The use of Mk rather than Mkv makes the study less relevant to real data analyses.}".
 
 %-------------
 
@@ -238,7 +239,7 @@ In practice, each parameter represents a different way of removing data from the
 
 \textcolor{blue}{Header for 3. should be ``building phylogenetic estimates" or ``estimating phylogenies" because the previous section described how the phylogenies and character data were ``built."}
 
-We changed the Header 3 to ``estimating phylogenies". %change in manuscript
+We changed the Header 3 to ``Estimating phylogenies".
 
 %-------------
 
@@ -274,33 +275,88 @@ We would like to emphasize that in this study we focused on the effect of missin
 
 \textcolor{blue}{line 254: RF measures the difference between the number of clades and the twice number of shared clades across two trees. The statement that it ``measures the number of shared clades across two trees" should be revised.}
 
+We changed the following sentence:
 
+Lines 254 to 255 in the previously submitted manuscript:
 
-%check
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+The Robinson-Foulds distance, or ``path difference", measures the number of shared clades across two trees.
+\end{minipage}
+
+Lines @@@112 to @@@114 in the new manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+The Robinson-Foulds distance, or ``path difference", measures the difference between the number of clades and the twice number of shared clades across two trees.
+\end{minipage}
 
 %-------------
 
 \textcolor{blue}{line 258: RF is 0 (not 1) when the trees are identical. It's maximum (for 2 rooted binary trees) is 2(n-2) not n-2.}
 
-%check
+We changed the following sentence:
+
+Lines 257 to 259 in the previously submitted manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+This metric is bounded between one, when the two trees are identical, and $n-2$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
+\end{minipage}
+
+Lines @@@112 to @@@114 in the new manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+This metric is bounded between zero, when the two trees are identical, and $2(n-2)$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%
+%CHECK in Soltis!
+%%%%%%%%%%%%%%%%%
 
 %-------------
 
 \textcolor{blue}{The ``scaling" to produce the Normalized RF ``distance" is confusing. It is also inverting the sign of the distance, so it has become a measure of similarity.}
 
-%check
+We clarified the scaling method as follow:
+
+Lines 262 to 270 in the previously submitted manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+We normalised this metric by dividing the Robinson-Foulds distance by the mean Robinson-Foulds distance from 1000 random tree comparisons (Bogdanowicz et al. 2012). This allows us to compare the metric for any number of taxa by scaling it with the expected value of the metric when comparing two random trees (see Supporting Information S2: Tree Comparisons for the calculation details). Therefore, when the Normalised Robinson-Foulds distance between two trees is equal to one, the trees are identical; if the distance is equal to zero, the trees are no more different than expected by chance; finally if the distance is less than zero, the trees are more different than expected by chance.
+\end{minipage}
+
+Lines @@@112 to @@@114 in the new manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+We normalised this metric following Bogdanowicz \textit{et al.} (2012)'s Normalised Tree Similarity (NTS) method. This methods scales %not sure if scale here?
+any tree comparison metric using the mean distance between 1000 random trees (see Supporting Information S2: Tree Comparisons for the calculation details). This method is a generalisation of the topological accuracy method (Price \textit{et al.} 2010) allowing to compare topological differences between any tree with any tree comparison metric. In practice when the Normalised Robinson-Foulds distance between two trees is equal to one, the trees are identical; if the distance is equal to zero, the trees are no more different than expected by chance; finally if the distance is less than zero, the trees are more different than expected by chance.
+\end{minipage}
 
 %-------------
 
 \textcolor{blue}{line 275: why isn't the upper bound of the triples distance n choose 3 (instead of n choose 4). I think you got the formula from an unrooted quartet distance.}
 
-%check
+We changed the following sentence:
+
+Lines 274 to 275 in the previously submitted manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+It is bounded between zero when the two trees are identical and $\binom{n}{4}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees.
+\end{minipage}
+
+Lines @@@112 to @@@114 in the new manuscript:
+
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+It is bounded between zero when the two trees are identical and $\binom{n}{3}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees.
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%
+%CHEK in Soltis!
+%%%%%%%%%%%%%%%%%
 
 %-------------
 
 \textcolor{blue}{Using the BC stat may be similar in spirit to using a t-test, but it is not equivalent.}
 
-We clarified as follow:
+We clarified this point in the text as well as in the figures 2 and 3 captions (``equivalent" $->$ ``similar"):
 
 Lines 308 to 309 in the previously submitted manuscript:
 
@@ -318,21 +374,29 @@ Note that this is similar to performing a two-sided t-test for comparing two dis
 
 \textcolor{blue}{Figure 3: B is confusing. If both curves are probability distributions, then they both have to integrate to 1. So B(y) can't cover just a subset of the area covered by B(x).}
 
-%Fix probability distributions -> "just" distributions
+%I'm not sure how to fix that comment. The figure caption says (first sentence!) : "A and B are distributions of tree similarity metrics (Normalised Robinson-Foulds or Normalised Triplets distances) for any combination of missing data parameters (e.g. ML = 10%,MF = 50%, MC = 75%)." Should I make it super clear by writing : "A and B are distributions of tree similarity metrics (not probability distributions, or roller coasters plans)" ?
 
 %-------------
 
 \textcolor{blue}{``Combined effect of missing data parameters" section ANOVA or multiple regression are the appropriate analyses to tease apart multiple interacting factors. Here the authors opt to describe results without statistical tests, which is disappointing.}
 
-This comment links back to the reviewer's misconception of the term ``statistics" and suspicions. ANOVA or multiple regression analysis might the appropriate analyses in some cases but we believe it isn't here. %Not comparing means, non normal distributions. ANd non-parametric version (e.g. Kruskal Wallis) not approriate either.
+This comment links back to the reviewer's misconception of the term ``statistics" and suspicions. ANOVA or multiple regression analysis might the appropriate analyses in some cases but we believe it isn't here. In our analysis, we made the methodological choice to compare tree similarity distributions that are: not continuous distributions; bounded at 1; not always normal (both the distributions and the residuals) and sometimes multi-modal. Therefore, we choose not to use classical ``statistics" methods such as ANOVA or multiple regression because these methods could simply not be applied to our data set.
+%Not comparing means, non normal distributions. And non-parametric version (e.g. Kruskal Wallis) not approriate either.
 
 %-------------
 
-\textcolor{blue}{line 398: ``mMthods" -> ``Methods"}
+\textcolor{blue}{line 398: ``mMthods" $->$ ``Methods"}
 
 We fixed this typo.
 
 \textcolor{blue}{line 420: contra the statement here, a consensus collapsing to a polytomy will affect the RF distance (could go up or down, but it will change).}
+
+%To 
+
+This does not decrease the 420
+Normalised Robinson-Foulds distance, because clades are conserved, but decreases the 421
+Normalised Triplets distance because the fossils act as wildcard taxa. 422
+
 
 %Change to "affect less" or something like that.
 
@@ -349,7 +413,7 @@ We fixed this typo.
 
 \textcolor{blue}{The definition of the scaled RF implies that it is never positive (sinc the numerator cannot be positive and the denominator is positive).}
 
-%check
+%not in this paper
 
 %-------------
 
