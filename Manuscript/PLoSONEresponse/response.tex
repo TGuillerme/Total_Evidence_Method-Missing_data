@@ -16,9 +16,15 @@ RE: PLOS ONE Decision: PONE-D-15-05911 - [EMID:ffa50492e76c2059]
 
 Dear Dr Fontaneto
 
-Please find enclosed our resubmission of our manuscript @@@[title]. We include below details of how we have dealt with the reviewer's comments.
+Please find enclosed our resubmission of our manuscript ``Effects of missing data on topological inference using a Total Evidence approach". We include below details of how we have dealt with the reviewer's comments.
 
-We would however, like to draw your attention to a couple of points. Firstly, while we understand the difficulties of obtaining reviewers for papers, we were very disappointed to have the previous decision made based on just one review. As pointed out in your email, this reviewer responded immediately. We suspect they rushed their assessment because they make several comments about our paper that are completely incorrect, and would have been noticed in a thorough reading of the manuscript. For example, the reviewer says that our data are not available when we clearly state on @@@[page and lines] that all the data are deposited in figshare @@@[link]. We suspect that had a second reviewer been found the decision might have been different. %maybe recheck that
+We would however, like to draw your attention to a couple of points. Firstly, while we understand the difficulties of obtaining reviewers for papers, we were very disappointed to have the previous decision made based on just one review. As pointed out in your email, this reviewer responded immediately. We suspect they rushed their assessment because they make several comments about our paper that are completely incorrect, and would have been noticed in a thorough reading of the manuscript. 
+
+%For example, the reviewer says that our data are not available when we clearly state on @@@[page and lines] that all the data are deposited in figshare @@@[link]. We suspect that had a second reviewer been found the decision might have been different. % TG: ok, this part somehow was in the SystBiol manuscript as a header part of the supplementary (1 file with three appendices) and I forgot to included somewhere in the manuscript or the supplementary in last submission (3 files). See the "OnlineAppendices" file in the GitHub folder. However, references to the GitHub page is given in the 1 supplementary material, but I assume it's a bit weak... My bad.
+
+%We can maybe moan about the reviewer not reading carefully few things such as the comment on figure 3B "Figure 3: B is confusing. If both curves are probability distributions, then they both have to integrate to 1. So B(y) can't cover just a subset of the area covered by B(x)." where it seems he just didn't properly read the caption or about the Bhattacharya where he didn't read that we applied it because we're not comparing the means... But it's a bit weaker.
+
+%In general I feel actually bad for some comments (i.e. typos in the equations etc...) and will remember to check more thoroughly next time.
 
 Secondly, the reviewer clearly misunderstood the meaning of the term ``statistics". Statistics does not mean that p-values need to be used. In this case we could have applied t-tests, and given the reviewer the p-values they request, but this would only tell us that the means of the distributions are significantly different, not that the distributions differ. We chose instead to use the Bhattacharya coefficient, which admittedly is an unfamiliar statistic to many but we feel we made a lot of effort to explain how this metric works in the text (and this method was suggested to us by a professional statistician!). The reviewer however appears to have refused to engage with this and instead has fixated on the lack of p-values.
 
@@ -404,6 +410,8 @@ Normalised Triplets distance because the fossils act as wildcard taxa. 422
 
 \textcolor{blue}{-------------------------}
 
+%So for the part about the tree comparisons (RF and Triplets, I think we can just remove the whole thing since it's not especially useful...)
+
 \textcolor{blue}{Supplement 2:}
 \textcolor{blue}{more confusion about the min RF here. Also note that if you are counting the entire leaf set as a clade (e.g the star tree having N=1), then the number of clades in rooted binary tree is n-1 (not n-2). Equation 3 has an extra ``-2" As stated it implies that the max RF distance for n=3 is 0, when the correct answer is 2.}
 
@@ -419,19 +427,19 @@ Normalised Triplets distance because the fossils act as wildcard taxa. 422
 
 \textcolor{blue}{The decision to use Yule trees as the base line for the mean distance is not explained, and seems odd given that the true tree are not Yule trees. I'm not sure that it makes much difference, but it is odd.}
 
-%Because we follow Bogdanowicz and use the difference between random (NULL) trees to scale.
+We cited the reference (Bogdanowicz 2012) of the method.
 
 %-------------
 
 \textcolor{blue}{The NTS can only -infinity for distances that have the property that the mean distance between random Yule trees is 0. This is not true of either distance metric here. So the real range of values is (mean-max)/mean for both the RF and triples distance.}
 
-%check
+As clarified in the new manuscript (lines @@@), the NTS is a generalisation of the topological accuracy method (Price \textit{et al.} 2010 PLoS ONE) and is therefore not specialised for the RF or the Triples distance.
 
 %-------------
 
 \textcolor{blue}{Note that JavaScript is a language, so it a bit confusing to refer to a Java program as a ``Java script."}
 
-%fix
+We fixed this typo.
 
 %-------------
 
@@ -455,7 +463,7 @@ Normalised Triplets distance because the fossils act as wildcard taxa. 422
 
 \textcolor{blue}{Equations 13 and 14. It seems easier to just drop the summation sign here, and just define $a_i$ and $b_i$ to the right hand side of these equations.}
 
-%check
+We fixed this by removing the summation signs.
 
 %-------------
 
