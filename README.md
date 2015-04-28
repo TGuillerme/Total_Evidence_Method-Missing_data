@@ -1,8 +1,6 @@
 # Effect of missing data on topological inference using a total evidence approach
 [Thomas Guillerme](http://tguillerme.github.io) and [Natalie Cooper](https://http://nhcooper123.github.io/).
 
-Hello!!!
-
 This repository contains all the code and data used in the manuscript.
 ###### Manuscript in review in PLoS One.
 
