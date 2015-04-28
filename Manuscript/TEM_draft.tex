@@ -162,6 +162,17 @@ We inferred phylogenetic trees from the "complete" matrix and from the 125 "miss
 We compared the "best" tree to the "missing-data" trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $M_{C}$) and their interactions on the topologies of our phylogenies
 \end{enumerate}
 We repeated these four steps 50 times to account for variation in our random parameters in the simulations.
+\begin{figure}[!htbp]
+\centering
+    \includegraphics[keepaspectratio=true]{MainBody-LaTeXSuppFiles/Figures/In_main/Simulations_outline-BW.pdf}
+\caption{Simulation protocol.
+(1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
+(2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
+(3) We built phylogenetic trees from each matrix using both Maximum Likelihood and Bayesian methods.
+(4) We compared the "missing-data" trees to the "best" tree.
+We repeated these four steps 50 times.}
+\label{Fig_Outline}
+\end{figure}
 
 %---------------------------------------------
 %       1-Generating the matrix
