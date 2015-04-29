@@ -78,43 +78,41 @@ We apologise for the confusion here. We mentioned where our data was stored in t
 
 \textcolor{blue}{B-The bias in the analysis in favor of Bayesian methods makes the recommendation to use Bayesian methods less satisfying.}
 
-% Priors comment??? Move stuff up from below
+The reviewer is (I believe) referring to their comment below (number 13). We would like to emphasize that in this study we focused on the effect of missing data in the morphological part of the matrix on topology only and we are ignoring the branch length. The choice of the following priors (``exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5 for both partitions" (line 228) and the ``transition/transversion ratio prior of two sampled from a strong beta 229 distribution ($\beta$(80,40))" (line 229)) affected mainly the molecular part of the matrix that remains constant (gamma distribution and transition/transversion ratio) and were a minor part of the MCMC sampler (2.17\% of the moves of the MCMC sampler for the three priors combined). Therefore we are confident that the topology is minimally affected by the priors, allowing us to explore the effect of missing morphological data on topology as well as reducing our computational time to a realistic 1.4 CPU centuries. Note that the use of a starting tree that is not a prior and just ``the ``true" tree's 226 topology as a starting tree'' (line 226) is not a prior and was used to avoid the chains to be stuck in local optima.
 
-The reviewer is (I believe) referring to their comment below (number 13). We would like to emphasize that in this study we focused on the effect of missing data in the morphological part of the matrix on topology only. The choice of the following priors (``exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5 for both partitions" (line 228) and the ``transition/transversion ratio prior of two sampled from a strong beta 229 distribution ($\beta$(80,40))" (line 229)) affected mainly the molecular part of the matrix that remains constant (gamma distribution and transition/transversion ratio) and were a minor part of the MCMC sampler (2.17\% of move probability% check what you call it in paper
- for the three priors). 
+We clarified these points in the manuscript as follow:
 
-% Most of the effects will be branch length and we don't look at that
+Lines @@@112 to @@@114 in our revision:
 
-Therefore we are confident that the topology is minimally affected by the priors, allowing us to explore the effect of missing morphological data on topology as well as reducing our computational time to a realistic 1.5 CPU centuries.
-
-% Add something to text?
-
-
-%Our results did indeed biased us in favour of using a Bayesian approach to fix topology since our results clearly indicate that it is less likely to generate a wrong topology using a Bayesian approach (see Figure 4 and 5 and discussion line 472 to 496 in the first submission manuscript).
-% TG: or I'm not sure I understood that one.
-%-------------
-% add Mk = Mkv
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+Each Bayesian tree was estimated using two runs of four chains each for a maximum of 5$\times$$10^7$ generations. For each estimation, we used the ``true" tree's topology as a starting tree (with a starting value for each branch length of one). We also used two priors on the molecular part of the matrix: an exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5, and a transition/transversion ratio prior of two sampled from a strong beta distribution ($\beta$(80,40)); and one prior on the morphological part of the matrix (exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5). We used these priors to speed up the Bayesian estimation process. These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation however, here we are focusing on the effect of missing data on tree topology and not branch lengths. Even using these priors, it took $~$ 140 CPU years to build 50 sets of 125 Bayesian trees (2.30GHz clock speed nodes). The detailed MrBayes parameters are available in the Supporting Information S1.
+\end{minipage}
 
 \textcolor{blue}{C-The use of Mk rather than Mkv makes the study less relevant to real data analyses.}
 
-Throughout our paper, we referred the M\textit{k} model as being the one described in Lewis (2001) (an equal rate Q-matrix with \textit{k} character states). The Mkv model is identical to the Mk model (as described in Lewis 2001) however, in practice, it assumes that all characters are variable and that therefore, one should correct for acquisition bias that can induce branch length inflation. This is generally by adding an algorithm in the phylogenetic software to add ``dummy'' morphological characters. In some software (e.g. GARLI or BEAST), it is important to specify whether the morphological data should be corrected for acquisition bias or not (Mk or Mkv options). However, in RAxML and MrBayes, this bias is corrected automatically by addition of ``dummy'' characters. 
+Throughout our paper, we referred the M\textit{k} model \textit{sensu} Lewis 2001 (a Q-matrix with \textit{k} character states and an equal substitution rate $\mu$). The M\textit{kv} model is identical to the M\textit{k} model (as described in Lewis 2001) however, in practice, it assumes that all characters are variable and that therefore, one should correct for acquisition bias that can induce branch length inflation. This is generally done by using an algorithm in the phylogenetic software that adds ``dummy'' morphological characters. In some software (e.g. GARLI or BEAST), it is important to specify whether the morphological data should be corrected for acquisition bias or not (M\textit{k} or M\textit{kv} options). However, in RAxML and MrBayes, this bias is corrected automatically by addition of ``dummy'' characters and M\textit{k} just designate the evolutionary model used with $\mu$ $\geq$ 0 (e.g. Nylander \textit{et al.} 2004 - Systematic Biology). 
 
-The reviewer is of course correct in that real data rarely contain invariable morphological characters, because these don't contribute to phylogenetic signal. Our simulated data, on the other hand, will occasionally contain invariable characters merely because of missing data, therefore we made the decision to describe the model for morphological characters evolution as the M\textit{k} model (an equal rate Q-matrix with \textit{k} character states where the rate an be equal to 0). RAxML and MrBayes did however corrected for acquisition bias as implemented in their algorithm for treating morphological data.
+The reviewer is of course correct in that real data rarely contain invariable morphological characters, because these don't contribute to phylogenetic signal. Our simulated data, on the other hand, will occasionally contain invariable characters merely because of missing data, therefore we made the decision to describe the model for morphological characters evolution as the M\textit{k} evolutionary model ($\mu$ $\geq$ 0 rather than the M\textit{kv} model where $\mu$ $>$ 0). RAxML and MrBayes did however corrected for acquisition bias as implemented in their algorithm for treating morphological data.
 
-However, following the reviewer comment, we changed the designation of the model from M\textit{k} to M\textit{kv} to explicitly underline that we corrected for acquisition bias.
+However, following the reviewer comment, we changed the designation of the model from M\textit{k} to M\textit{kv} to implicitly underline that we corrected for acquisition bias. We also explicitly mentioned it in the revision in the following lines:
 
+Lines @@@112 to @@@114 in our revision:
 
-%The Mkv model assumes that all the characters are variable, whereas the Mk model is less constrained - some characters can be invariable and others variable. Thus the Mkv model is actually just a special case of the Mk model.
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+We used RAxML because it automatically corrects for acquisition bias \cite{lewisa2001}, it also is heavily used in the literature for Maximum Likelihood tree inference (e.g. \cite{rouresite-specific2011,Bogdanowicz2012,springermacroevolutionary2012,O'Leary08022013,kellymolecular2014}) and is one of the fastest methods available \cite{Stamatakis01102008}.
+\end{minipage}
 
-%The reviewer is of course correct in that real data rarely contain invariable morphological characters, because these don't contribute to phylogenetic signal. Our simulated data, on the other hand, will occasionally contain invariable characters merely because of missing data %
+Lines @@@112 to @@@114 in our revision:
 
-%However, this is not an issue because we implement opur analyses in RAxML and MrBayes. These programs implement the Mk do not distinguish between both models since the Mkv model is just a particular case of the Mk model and are not distinguished either in the original publication that we cite in the manuscript (Lewis 2001). We've changed the mentions of the M\textit{k} model to M\textit{kv} model throughout our revision.
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+Note that MrBayes automatically corrects for acquisition bias in the morphological data partition (Nylander \textit{et al.} 2004; Ronquist \textit{et al.} 2012).
+\end{minipage}
 
+% To Diego:
+%Here we use M\textit{k} model \textit{sensu} Lewis 2001 (designating a Q-matrix with \textit{k} character states and an equal substitution rate $\mu$). In real data, the rate $\mu$ is never equal to 0 and the model is therefore designated as the M\textit{kv} model (e.g. Wright \& Hillis 2014). However, in our simulations, this rate $\mu$ can sometimes be equal to 0 due to the missing data (i.e. it is possible that a character can display only one state when data is missing). The use of the M\textit{k} model with $\mu$ $\neq$ 0 (M\textit{kv} model) was really early pinpointed as including an acquisition bias because the use of non-invariant characters could inflate branch length (Lewis 2001, Nylander \textit{et al.} 2004). Therefore a correcting algorithm ($\neq$ model) was proposed to fix this problem by automatically generating a proportion of invariant characters for the tree inference process. In some software (e.g. GARLI or BEAST), the use of the correcting algorithm must be enforced by specifying whether the model is M\textit{kv} ($\mu$ $\neq$ 0, so one must correct for acquisition bias). However, the software we used (RAxML and MrBayes) do not allow options for deciding to correct for acquisition bias or not and do automatically use a correcting algorithm that adds ``dummy'' invariant characters (whether $\mu$ $>$ 0 (M\textit{kv}) or $\mu$ $\geq$ 0 (M\textit{k})).
 
-%Because we sampled the morphological characters rate from a gamma distribution with $\alpha$=0.5, some morphological characters had only a few state changes accross the matrix. When removing the data, there was a probability for these characters to be constant (e.g. if all the taxa in the matrix appart from one had a character state 0 for a given character and only one taxa had a state 1 for the same character, if that taxa had no data available for that character, then the character appeared to be constant in the matrix). 
+%Again, in our paper, we use the term M\textit{k} to describe the evolutionary model because some characters could be invariant ($\mu$ $>$ 0). However, we do understand that this is rather a semantic point (model $\neq$ algorithm) and we are confident that the description of the model and the software used in the paper will be enough for a careful reader to understand our protocol. We therefore changed the mentions of M\textit{k} to M\textit{kv} in the revision to make less careful readers understand that we were aware of acquisition bias when we chose our phylogenetic inference software.
 
-
-%Add note that we changed it along the text. RAxML and MrBayes are using default.
 %-------------
 
 \textcolor{blue}{D-Many of the equations are incorrect.}
@@ -193,9 +191,6 @@ The matrix [...] was generated [...] using the HKY model with random base freque
 \textcolor{blue}{8-Do the simulations apply ascertainment biases as described by Lewis' Mkv (2001) model? It seems like they should... At minimum, the point should be discussed.}
 
 See our response to comment C above.
-% NEED to fix!
-
-%We are not entirely sure if the reviewers refers to a sampling bias or to the problem link to constant characters described in Lewis (2001) (acquisition bias). If the reviewers are referring to the second (acquisition bias), both phylogenetic inference software we used (RAxML and MrBayes) are correcting for the this bias (-K MK  see Supplementary information 1 for the full list of commands). Also, the effect of the acquisition bias is to inflate branch length which is an aspect of the phylogeny we didn't explored in this study (focusing on topology). See response below to the comment ``\textit{The use of Mk rather than Mkv makes the study less relevant to real data analyses.}".
 
 %-------------
 
