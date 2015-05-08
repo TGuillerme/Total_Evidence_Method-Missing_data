@@ -4,6 +4,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[colorlinks = true, urlcolor = blue]{hyperref} %hyperlinks
 \usepackage[osf]{mathpazo}
+\usepackage{graphicx}
 \usepackage{amsmath,amssymb}
 \signature{Thomas Guillerme \\ Natalie Cooper}
 \address{Zoology building \\ Trinity College Dublin \\ Dublin 2, Ireland \\ \\ guillert@tcd.ie}
@@ -70,7 +71,15 @@ We apologise for the confusion here. We mentioned where our data was stored in t
 
 \textcolor{blue}{A-Unfortunately the data analysis performed is simply the calculation of a number of summary statistics about the overlap between the estimates returned for different simulation conditions. I suspect that if the authors take some time to do statistics (calculate some P-values, confidence intervals, or take a Bayesian perspective), they'll be able to make a statistical case for most of the points that they are trying to make. But I just don't think that a simulation comparison should be publishable without *some* statistical analysis (beyond the calculation of summaries).}
 
-% Talk to Andrew
+We feel that the reviewer has slightly misunderstood the statistics we applied in this paper. The purpose of ANOVAs or multiple regression (see suggestion from comment 20 below) is to compare differences in means across groups and test whether they are different from what one would expect according to a null model. In contrast, in our simulation approach, we essentially have access to a representative sample of the entire population distribution of tree topology comparisons. Therefore, we can simply ask whether these distributions are different when our missing data parameters varies by comparing them directly. One standard such approach to comparing distributions directly is to use the Bhattacharyya Coefficient. This number has direct interpretation in a probablistic sense and is simply the probability that the two distributions are the same. If the two distributions overlap completely then they have Bhattacharyya Coefficient and probability of being the same of 1. In the other extreme, if the two distributions are completely disjointed, then they have a Bhattacharyya Coefficient and hence probability of being the same of 0 (line 306 and 307 in the previously submitted manuscript). Thus, the Bhattacharyya Coefficient is a probability, comparable to, but not the same as, a p-value that could be calculated using frequentist approaches such as t-tests, ANOVAs or GLMs.
+
+Furthermore, as a direct comparison of two known distributions, using the the Bhattacharyya Coefficient comes with far fewer statistical assumptions than are required in ANOVAs, GLMs and their analogues. For example, the direct comparison approach using Bhattacharyya Coefficient is capable of comparing a multi-modal distributions whereas the assumption of normality required in a ANOVAs or GLMs thus using them would inviolate the robustness of the resultant p-value. There is an additional complication to using ANOVAs or GLMs in simulation type analyses arising from having access to very large sample sizes (e.g. 50000 data points for the Maximum Likelihood bootstraps trees and the Bayesian posterior distribution trees) that leads to p-values shrinking to zero and resulting in comparisons being almost certain to yield "statistically significant" differences in the mean (see the attached figure ; code for reproducibility is available \href{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Comparing_distribution_example.R}{here} ; https://goo.gl/4djNUf). We argue that in this situation, it is better to compare the entire distribution using Bhattacharyya Coefficient rather than simply the means. Additionally, because we are comparing topologies in this paper, we made the methodological choice to use the modal topology (i.e. the most represented topology) instead of the mean topology (i.e. a hypothetical ``middle'' topology).
+
+Finally, we would like to underline that we report our 50\% and 95\% confidence intervals in Figures 4 and 5 when showing the effect of the missing data parameters (calculation detailed lines 295-295) as well as the $1^st$ and $3^rd$ quartiles when comparing the methods in Table 1.
+
+\includegraphics[scale=0.8, keepaspectratio=true]{Comparing_distributions.pdf} \\
+\textit{Different results between the Bhattacharyya Coefficient showing that the distributions are really similar (0.999 overlap probability) and a frequentist approach (simple t-test) underlining a significant difference (p-value=0).}
+
 
 %We feel that the reviewer has slightly misunderstood the term ``statistics'' in this case. Firstly, p-values are useful in some cases but have several limitations especially when one compares distributions that are not normal (in this study, we compared the modal value of topological differences, making any test comparing the mean value useless) and can be biased towards small values (i.e. significant ones) when the sample sizes are big; (2) concerning the confidence intervals, we actually did systematically calculate them; ans (3) we are not convinced by a Bayesian approach for comparing distributions.
 
@@ -89,6 +98,8 @@ Each Bayesian tree was estimated using two runs of four chains each for a maximu
 \end{minipage}
 
 \textcolor{blue}{C-The use of Mk rather than Mkv makes the study less relevant to real data analyses.}
+
+%Underline the difference between evolutionary models (M\textit{k}, GTR, JC, HKY) and ``models'' that are methods (usually computer algorithms) used to build trees (such as M\textit{kv})
 
 Throughout our paper, we referred the M\textit{k} model \textit{sensu} Lewis 2001 (a Q-matrix with \textit{k} character states and an equal substitution rate $\mu$). The M\textit{kv} model is identical to the M\textit{k} model (as described in Lewis 2001) however, in practice, it assumes that all characters are variable and that therefore, one should correct for acquisition bias that can induce branch length inflation. This is generally done by using an algorithm in the phylogenetic software that adds ``dummy'' morphological characters. In some software (e.g. GARLI or BEAST), it is important to specify whether the morphological data should be corrected for acquisition bias or not (M\textit{k} or M\textit{kv} options). However, in RAxML and MrBayes, this bias is corrected automatically by addition of ``dummy'' characters and M\textit{k} just designate the evolutionary model used with $\mu$ $\geq$ 0 (e.g. Nylander \textit{et al.} 2004 - Systematic Biology). 
 
@@ -115,9 +126,9 @@ Note that MrBayes automatically corrects for acquisition bias in the morphologic
 
 %-------------
 
-\textcolor{blue}{D-Many of the equations are incorrect.}
+\textcolor{blue}{D-Many of the equations are incorrect.} %only two in the main body.
 
-See our detailed response below.
+We thank the reviewer to underline the two errors in the equations in the main body at lines 258 and 275, see our detailed response to the comments number 15 and 17 below. Also we recognise that the equations in our ``Supporting Information S2: Tree Comparisons'' are confusing and are actually unnecessary for the understanding of this paper. We therefore removed the details about the Robinson-Foulds and the Triplets distances from the ``Supporting Information S2: Tree Comparisons'' section.
 
 %-------------
 
@@ -290,10 +301,6 @@ Lines @@@112 to @@@114 in our revision:
 It is bounded between zero when the two trees are identical and $\binom{n}{3}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees.
 \end{minipage}
 
-%%%%%%%%%%%%%%%%%
-%CHEK in Soltis!
-%%%%%%%%%%%%%%%%%
-
 %-------------
 
 \textcolor{blue}{18-Using the BC stat may be similar in spirit to using a t-test, but it is not equivalent.}
@@ -322,20 +329,15 @@ We thank the reviewer for pointing out this error. We fixed the shape of the dis
 
 \textcolor{blue}{20-``Combined effect of missing data parameters" section ANOVA or multiple regression are the appropriate analyses to tease apart multiple interacting factors. Here the authors opt to describe results without statistical tests, which is disappointing.}
 
-This comment links back to the reviewer's slight misunderstanding of the statistics we applied in this paper. The purpose of ANOVA or multiple regression is to compare differences in means across groups and test whether they are different from what one would expect according to a null model. In contrast, in our simulation approach, we essentially have access to a representative sample of the entire population distribution of tree topology comparisons. Therefore, we can simply ask whether these distributions are different across XXX [AJ - treatment groups or whatever] by comparing them directly. One standard such approach to comparing distributions directly is to use the BHAttacadsdfasdf coefficient. This number has direct intepretation in a probablistic sense and is simply the probability that the two distributions are the same. If the two distirubions overlap completely then they have BHAVYY coefficient and probability of being the same of 1. In the other extreme, if the two distributions are completely disjointed, then they have a BHATTYV coefficient and hence probabilty of being the same of 0. Thus, the BHYVYVY is a probability, comparable to, but not the same as, a p-value that would from frequentist approaches such as t-tests, anova or glms. Furthermore, as a direct comparison of two known distributions, it is a very simple and test that comes with far fewer assumptions than are made in general linear models and their analogues. For example, the direct comparison approach using BYGYVHVHV is capable of comparing a multi-modal distributions whereas the assumption of normality required in a t-test or glm would inviolate the robustness of the resultant p-value. There is an additional complitation to using t-tests or glms in simulation type analyeses arising from having access to very large smaple sizes that leads to p-values shrinking to zero and resulting in comparisons being almost certain to yield "statistically significant" differences in the mean. We argue that in this situation, it is better to compare the entire distribution using BHCYCY rather than simply the means. [AJ - you could add a simple figure of two normal distributions with 10^4 samples in each that have very similar means. Do a t-test which will be significant, but BHVYVYVYV will be nearly 1.
-
-In our analysis, we made the methodological choice to compare tree similarity distributions that are: not continuous distributions; bounded at 1; not always normal (both the distributions and the residuals) and sometimes multi-modal. Therefore, we choose not to use classical ``statistics" methods such as ANOVA or multiple regression because these methods could simply not be applied to our data set.
-%Not comparing means, non normal distributions. And non-parametric version (e.g. Kruskal Wallis) not approriate either.
-
-% Talk to Andrew
+See our detailed response to comment A above.
 
 %-------------
 
 \textcolor{blue}{21-line 398: ``mMthods" $->$ ``Methods"}
 
-We fixed this typo.
+We thanks the reviewer for pointing out this typo and fixed it.
 
-\textcolor{blue}{line 420: contra the statement here, a consensus collapsing to a polytomy will affect the RF distance (could go up or down, but it will change).}
+\textcolor{blue}{22-line 420: contra the statement here, a consensus collapsing to a polytomy will affect the RF distance (could go up or down, but it will change).}
 
 %To 
 
@@ -353,56 +355,57 @@ Normalised Triplets distance because the fossils act as wildcard taxa. 422
 We recognise that this section in our supp mat may be confusing and is actually unnecessary for the understanding the paper. Therefore we have removed this section. % fix!!!
 
 \textcolor{blue}{Supplement 2:}
-\textcolor{blue}{22-more confusion about the min RF here. Also note that if you are counting the entire leaf set as a clade (e.g the star tree having N=1), then the number of clades in rooted binary tree is n-1 (not n-2). Equation 3 has an extra ``-2" As stated it implies that the max RF distance for n=3 is 0, when the correct answer is 2.}
+
+\textcolor{blue}{23-more confusion about the min RF here. Also note that if you are counting the entire leaf set as a clade (e.g the star tree having N=1), then the number of clades in rooted binary tree is n-1 (not n-2). Equation 3 has an extra ``-2" As stated it implies that the max RF distance for n=3 is 0, when the correct answer is 2.}
 
 %check
 
 %-------------
 
-\textcolor{blue}{23-The definition of the scaled RF implies that it is never positive (sinc the numerator cannot be positive and the denominator is positive).}
+\textcolor{blue}{24-The definition of the scaled RF implies that it is never positive (sinc the numerator cannot be positive and the denominator is positive).}
 
 %not in this paper
 
 %-------------
 
-\textcolor{blue}{24-The decision to use Yule trees as the base line for the mean distance is not explained, and seems odd given that the true tree are not Yule trees. I'm not sure that it makes much difference, but it is odd.}
+\textcolor{blue}{25-The decision to use Yule trees as the base line for the mean distance is not explained, and seems odd given that the true tree are not Yule trees. I'm not sure that it makes much difference, but it is odd.}
 
 We cited the reference (Bogdanowicz 2012) of the method.
 %explain in a bit more detail
 
 %-------------
 
-\textcolor{blue}{25-The NTS can only -infinity for distances that have the property that the mean distance between random Yule trees is 0. This is not true of either distance metric here. So the real range of values is (mean-max)/mean for both the RF and triples distance.}
+\textcolor{blue}{26-The NTS can only -infinity for distances that have the property that the mean distance between random Yule trees is 0. This is not true of either distance metric here. So the real range of values is (mean-max)/mean for both the RF and triples distance.}
 
 As clarified in our revision (lines @@@), the NTS is a generalisation of the topological accuracy method (Price \textit{et al.} 2010 PLoS ONE) and is therefore not specialised for the RF or the Triples distance.
 
 %-------------
 
-\textcolor{blue}{26-Note that JavaScript is a language, so it a bit confusing to refer to a Java program as a ``Java script."}
+\textcolor{blue}{27-Note that JavaScript is a language, so it a bit confusing to refer to a Java program as a ``Java script."}
 
 We fixed this typo.
 
 %-------------
 
-\textcolor{blue}{27-Equation (6) is not correct. You shouldn't set the summation sign as the left hand side of an equation because the notation has a standard definition. More importantly, the $\#$ of triples is the number of ways of drawing 3 (unordered) leaves from the leaf set. So it is n choose 3 not n choose 4.}
+\textcolor{blue}{28-Equation (6) is not correct. You shouldn't set the summation sign as the left hand side of an equation because the notation has a standard definition. More importantly, the $\#$ of triples is the number of ways of drawing 3 (unordered) leaves from the leaf set. So it is n choose 3 not n choose 4.}
 
 %check
 
 %-------------
 
-\textcolor{blue}{28-Equation (7) is true for a three-leaf tree with a polytomy occurring with probability = 1/4 and the other 3 trees being equiprobable. I don't think that is is true for any other weighting of trees for other numbers of taxa. It might be, but the authors must show this.}
+\textcolor{blue}{29-Equation (7) is true for a three-leaf tree with a polytomy occurring with probability = 1/4 and the other 3 trees being equiprobable. I don't think that is is true for any other weighting of trees for other numbers of taxa. It might be, but the authors must show this.}
 
 %check
 
 %-------------
 
-\textcolor{blue}{29-I don't think that equations 8, 9, or 10 are correct for any case other than the 3 taxon case (though I do note that the authors are using n choose 3 here).}
+\textcolor{blue}{30-I don't think that equations 8, 9, or 10 are correct for any case other than the 3 taxon case (though I do note that the authors are using n choose 3 here).}
 
 %check
 
 %-------------
 
-\textcolor{blue}{30-Equations 13 and 14. It seems easier to just drop the summation sign here, and just define $a_i$ and $b_i$ to the right hand side of these equations.}
+\textcolor{blue}{31-Equations 13 and 14. It seems easier to just drop the summation sign here, and just define $a_i$ and $b_i$ to the right hand side of these equations.}
 
 We fixed this by removing the summation signs.
 
