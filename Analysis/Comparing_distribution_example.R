@@ -1,23 +1,7 @@
 #This is a script to illustrate the difference between using a t-test and the Bhattacharyya Coefficient.
 
-#####################
-#Sourcing the Bhattacharyya Coefficient from GitHub
-#####################
-
-#Installing RCurl package
-install.packages("RCurl")
-
-#Source GitHub function
-source_github <- function(u) {
-  # load package
-  require(RCurl)
-  # read script lines from website and evaluate
-  script <- getURL(u, ssl.verifypeer = FALSE)
-  eval(parse(text = script))
-}  
-
 #Sourcing the Bhattacharyya Coefficient function (bhatt.coeff)
-source_github("https://raw.githubusercontent.com/TGuillerme/Total_Evidence_Method-Missing_data/master/Functions/TreeComparisons/bhatt.coef.R")
+source("http://tguillerme.github.io/R/bhatt.coef.R")
 
 #####################
 #Generating the two distributions
