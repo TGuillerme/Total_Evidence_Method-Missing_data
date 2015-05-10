@@ -110,7 +110,7 @@ However, following the reviewer comment, we changed the designation of the model
 Lines @@@112 to @@@114 in our revision:
 
 \hfill\begin{minipage}{\dimexpr\textwidth-1cm}
-We used RAxML because it automatically corrects for acquisition bias \cite{lewisa2001}, it also is heavily used in the literature for Maximum Likelihood tree inference (e.g. \cite{rouresite-specific2011,Bogdanowicz2012,springermacroevolutionary2012,O'Leary08022013,kellymolecular2014}) and is one of the fastest methods available \cite{Stamatakis01102008}.
+We used RAxML because it automatically corrects for acquisition bias (Lewis 2001), it also is heavily used in the literature for Maximum Likelihood tree inference (e.g. [...]) and is one of the fastest methods available (Stamatakis 2008).
 \end{minipage}
 
 Lines @@@112 to @@@114 in our revision:
@@ -231,9 +231,7 @@ Our simulations were designed to test the effects of missing data in as realisti
 
 \textcolor{blue}{12-Filtering the data sets for strong bootstrap support under the full data analysis surely introduces some bias in favor of the no-missing data analyses.}
 
-We implemented this step of keeping trees with a minimum total median bootstrap to make the topological comparisons more robust. If the no-missing data tree has low node support, it is likely that the changes in topology for the missing data trees are not linked to our focal question (the effect of removing characters, living taxa or fossils) but just to the fact that low supported nodes can be just random. We've added the following justification in our revision:
-
-% NC: expand on this a bit
+We implemented this step of keeping trees with a minimum total median bootstrap to make the topological comparisons more robust. If the no-missing data tree has low node support, it is likely that the changes in topology for the missing data trees are not linked to our focal question (the effect of removing characters, living taxa or fossils) but just to the low supported nodes. In fact, because we repeat the tree inference 125 times ($5^3$ parameters combinations), it is likely to have 125 different pseudo-random solution for the nodes with really low phylogentic support and that, therefore, the observed changes in topologies are just linked to the pseudo-random replication. Note however that we did not exculde this scenario from our protocol the trees selected with a median bootstrap $>$ 50 could well contain some unresolved nodes with a low bootstrap ($<$ 50). We've added the following justification in our revision:
 
 Lines @@@112 to @@@114 in our revision:
 
@@ -251,9 +249,7 @@ See our response to comment B above.
 
 \textcolor{blue}{14-line 254: RF measures the difference between the number of clades and the twice number of shared clades across two trees. The statement that it ``measures the number of shared clades across two trees" should be revised.}
 
-We changed the following sentence: % correct
-
-Lines @@@112 to @@@114 in our revision:
+We revised this statement lines @@@112 to @@@114 in our revision:
 
 \hfill\begin{minipage}{\dimexpr\textwidth-1cm}
 The Robinson-Foulds distance, or ``path difference", measures the difference between the number of clades and the twice number of shared clades across two trees.
@@ -271,17 +267,11 @@ Lines @@@112 to @@@114 in our revision:
 This metric is bounded between zero, when the two trees are identical, and $2(n-2)$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
 \end{minipage}
 
-%%%%%%%%%%%%%%%%%
-%CHECK in Soltis!
-%%%%%%%%%%%%%%%%%
-
 %-------------
 
 \textcolor{blue}{16-The ``scaling" to produce the Normalized RF ``distance" is confusing. It is also inverting the sign of the distance, so it has become a measure of similarity.}
 
-We agree that this is confusing and thank the reviewer for pointing this inconsistency out. We changed the mentions of ``Normalised Robinson-Foulds distance'' and ``Normalised Triplets distance'' to ``Normalised Robinson-Foulds metric'' and ``Normalised Triplets metric'' throughout the our revision. Additionally, we clarified the scaling method as follows:
-
-Lines @@@112 to @@@114 in our revision:
+We agree that this is confusing and thank the reviewer for pointing this inconsistency out. We changed the mentions of ``Normalised Robinson-Foulds distance'' and ``Normalised Triplets distance'' to ``Normalised Robinson-Foulds metric'' and ``Normalised Triplets metric'' throughout the our revision. Additionally, we clarified the scaling method as follows (lines @@@112 to @@@114 in our revision):
 
 \hfill\begin{minipage}{\dimexpr\textwidth-1cm}
 We normalised this metric following Bogdanowicz \textit{et al.} (2012)'s Normalised Tree Similarity (NTS) method. This methods scales %not sure if scale here?
@@ -293,9 +283,7 @@ any tree comparison metric using the mean distance between 1000 random trees (se
 
 \textcolor{blue}{17-line 275: why isn't the upper bound of the triples distance n choose 3 (instead of n choose 4). I think you got the formula from an unrooted quartet distance.}
 
-We changed the following sentence: % fix
-
-Lines @@@112 to @@@114 in our revision:
+We corrected this error lines @@@112 to @@@114 in our revision:
 
 \hfill\begin{minipage}{\dimexpr\textwidth-1cm}
 It is bounded between zero when the two trees are identical and $\binom{n}{3}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees.
@@ -339,70 +327,53 @@ We thanks the reviewer for pointing out this typo and fixed it.
 
 \textcolor{blue}{22-line 420: contra the statement here, a consensus collapsing to a polytomy will affect the RF distance (could go up or down, but it will change).}
 
-%To 
+We revised this statement at lines @@@ to @@@ in our revision
 
-This does not decrease the 420
-Normalised Robinson-Foulds distance, because clades are conserved, but decreases the 421
-Normalised Triplets distance because the fossils act as wildcard taxa. 422
-
-
-%Change to "affect less" or something like that.
+\hfill\begin{minipage}{\dimexpr\textwidth-1cm}
+In this case, the Normalised Robinson-Foulds metric will decreases when the fossil are present at a lower taxonomic level (i.e. separated with more nodes from the root) but affects the clade conservation less at higher taxonomic level (i.e. separated with less nodes from the root). On the opposite though, because the fossil in a high level clade has many chances to branch on different nodes within that clade, it will be more likely to act as a wildcard taxa and decrease the Normalised Triplets metric. Therefore, the $M_{F}$ parameter is likely to affect the Normalised Robinson-Foulds metric less than the Normalised Triplets metric for the Bayesian consensus trees.
+\end{minipage}
 
 %-------------
-
-%So for the part about the tree comparisons (RF and Triplets, I think we can just remove the whole thing since it's not especially useful...)
-
-We recognise that this section in our supp mat may be confusing and is actually unnecessary for the understanding the paper. Therefore we have removed this section. % fix!!!
-
 \textcolor{blue}{Supplement 2:}
 
 \textcolor{blue}{23-more confusion about the min RF here. Also note that if you are counting the entire leaf set as a clade (e.g the star tree having N=1), then the number of clades in rooted binary tree is n-1 (not n-2). Equation 3 has an extra ``-2" As stated it implies that the max RF distance for n=3 is 0, when the correct answer is 2.}
 
-%check
-
+See our response to the comment D above.
 %-------------
 
 \textcolor{blue}{24-The definition of the scaled RF implies that it is never positive (sinc the numerator cannot be positive and the denominator is positive).}
 
-%not in this paper
-
+See our response to the comment D above.
 %-------------
 
 \textcolor{blue}{25-The decision to use Yule trees as the base line for the mean distance is not explained, and seems odd given that the true tree are not Yule trees. I'm not sure that it makes much difference, but it is odd.}
 
-We cited the reference (Bogdanowicz 2012) of the method.
-%explain in a bit more detail
-
+We followed the protocol in the cited reference (Bogdanowicz 2012) where the normalisation of the metrics is done on the mean value of that metric when comparing to random trees. Using random Yule trees is the best way to generate purely random trees since they are not based on any evolutionary scenario and takes only one parameter which is the number of tips (e.g. as opposed to the Birth-Death tree that assumes more realistic evolutionary scenario and takes multiple parameters).
 %-------------
 
 \textcolor{blue}{26-The NTS can only -infinity for distances that have the property that the mean distance between random Yule trees is 0. This is not true of either distance metric here. So the real range of values is (mean-max)/mean for both the RF and triples distance.}
 
 As clarified in our revision (lines @@@), the NTS is a generalisation of the topological accuracy method (Price \textit{et al.} 2010 PLoS ONE) and is therefore not specialised for the RF or the Triples distance.
-
 %-------------
 
 \textcolor{blue}{27-Note that JavaScript is a language, so it a bit confusing to refer to a Java program as a ``Java script."}
 
 We fixed this typo.
-
 %-------------
 
 \textcolor{blue}{28-Equation (6) is not correct. You shouldn't set the summation sign as the left hand side of an equation because the notation has a standard definition. More importantly, the $\#$ of triples is the number of ways of drawing 3 (unordered) leaves from the leaf set. So it is n choose 3 not n choose 4.}
 
-%check
-
+See our response to the comment D above.
 %-------------
 
 \textcolor{blue}{29-Equation (7) is true for a three-leaf tree with a polytomy occurring with probability = 1/4 and the other 3 trees being equiprobable. I don't think that is is true for any other weighting of trees for other numbers of taxa. It might be, but the authors must show this.}
 
-%check
-
+See our response to the comment D above.
 %-------------
 
 \textcolor{blue}{30-I don't think that equations 8, 9, or 10 are correct for any case other than the 3 taxon case (though I do note that the authors are using n choose 3 here).}
 
-%check
-
+See our response to the comment D above.
 %-------------
 
 \textcolor{blue}{31-Equations 13 and 14. It seems easier to just drop the summation sign here, and just define $a_i$ and $b_i$ to the right hand side of these equations.}
