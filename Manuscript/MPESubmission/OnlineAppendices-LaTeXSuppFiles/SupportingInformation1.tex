@@ -52,9 +52,11 @@
 \textit{#1.}---}
 \renewcommand{\tableofcontents}{}
 
+\renewcommand\thefigure{A.\arabic{figure}}
+
 \begin{document}
 
-\section{Supporting Information S1: Tree Inference}
+\section{Appendix A: Tree Inference}
 
 \subsection{Morphological character states}
 To obtain a realistic value for the probability of having \textit{k} characters states for each simulated morphological character, we randomly selected 100 morphological matrices, each with more than 100 characters each, from TreeBASE (\url{http://treebase.org/}). We only selected matrices published between 1985 and 2013 and covering 19 taxonomic classes (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta). This resulted in a total of 22563 characters that had between two and 10 character states. We then extracted the proportion of characters with each number of states (two to 10) to give us an empirical estimate of the average number of character states for each character, as shown in Figure \ref{Fig_AppendixCharacters}. Most characters have two or three states, therefore we only simulate characters with two or three states, and sample these in proportion to their occurrence in our empirical data (probability of 0.85 for two states characters and 0.15 for three state characters). The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R}.
@@ -110,7 +112,7 @@ For clarity we have provided the exact settings used in our tree building below.
   \end{itemize}
 \end{itemize}
 
-\bibliographystyle{plos2009}
+\bibliographystyle{sysbio}
 \bibliography{Supp_Ref}
 
 %END
