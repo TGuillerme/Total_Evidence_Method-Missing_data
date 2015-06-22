@@ -1,10 +1,13 @@
 \documentclass[12pt,letterpaper]{article}
 
 %Packages
+\usepackage{xcolor}
+\usepackage{changepage}
 \usepackage{pdflscape}
 \usepackage{fixltx2e}
 \usepackage{textcomp}
 \usepackage{fullpage}
+\usepackage{natbib}
 \usepackage{float}
 \usepackage{latexsym}
 \usepackage{url}
@@ -24,33 +27,15 @@
 \usepackage[osf]{mathpazo}
 \usepackage{dcolumn}
 \usepackage{lineno}
+\usepackage{longtable}
 \pagenumbering{arabic}
+
 
 %Pagination style and stuff
 \linespread{2}
 \raggedright
 \setlength{\parindent}{0.5in}
-\setcounter{secnumdepth}{0} 
-\renewcommand{\section}[1]{%
-\bigskip
-\begin{center}
-\begin{Large}
-\normalfont\scshape #1
-\medskip
-\end{Large}
-\end{center}}
-\renewcommand{\subsection}[1]{%
-\bigskip
-\begin{center}
-\begin{large}
-\normalfont\itshape #1
-\end{large}
-\end{center}}
-\renewcommand{\subsubsection}[1]{%
-\vspace{2ex}
-\noindent
-\textit{#1.}---}
-\renewcommand{\tableofcontents}{}
+%\setcounter{secnumdepth}{0} 
 
 \renewcommand\thefigure{A.\arabic{figure}}
 
@@ -77,7 +62,7 @@ For clarity we have provided the exact settings used in our tree building below.
 
 \begin{itemize}
   \item Molecular data: GTR + $\Gamma_4$ (-m GTRGAMMA)
-  \item Morphological data: Mk + $\Gamma_4$ (-K MK)
+  \item Morphological data: M\textit{kv} + $\Gamma_4$ (-K MK)
   \item Support: Rapid Boostrap algorithm (LSR), 1000 replicates
 \end{itemize}
 
@@ -97,7 +82,7 @@ For clarity we have provided the exact settings used in our tree building below.
   \item Models
   \begin{itemize}
     \item Molecular data: HKY + $\Gamma_4$
-    \item Morphological data: Mk + $\Gamma_4$
+    \item Morphological data: M\textit{kv} + $\Gamma_4$
   \end{itemize}
   \item MCMC
   \begin{itemize}

@@ -1,10 +1,13 @@
 \documentclass[12pt,letterpaper]{article}
 
 %Packages
+\usepackage{xcolor}
+\usepackage{changepage}
 \usepackage{pdflscape}
 \usepackage{fixltx2e}
 \usepackage{textcomp}
 \usepackage{fullpage}
+\usepackage{natbib}
 \usepackage{float}
 \usepackage{latexsym}
 \usepackage{url}
@@ -24,34 +27,15 @@
 \usepackage[osf]{mathpazo}
 \usepackage{dcolumn}
 \usepackage{lineno}
+\usepackage{longtable}
 \pagenumbering{arabic}
+
 
 %Pagination style and stuff
 \linespread{2}
 \raggedright
 \setlength{\parindent}{0.5in}
-\setcounter{secnumdepth}{0} 
-\renewcommand{\section}[1]{%
-\bigskip
-\begin{center}
-\begin{Large}
-\normalfont\scshape #1
-\medskip
-\end{Large}
-\end{center}}
-\renewcommand{\subsection}[1]{%
-\bigskip
-\begin{center}
-\begin{large}
-\normalfont\itshape #1
-\end{large}
-\end{center}}
-\renewcommand{\subsubsection}[1]{%
-\vspace{2ex}
-\noindent
-\textit{#1.}---}
-\renewcommand{\tableofcontents}{}
-
+%\setcounter{secnumdepth}{0} 
 \begin{document}
 
 \section{Appendix B: Tree Comparisons}
@@ -101,17 +85,17 @@
 %\end{equation}
 
 \subsection{Normalised Tree Similarity}
-For any tree with \textit{n} taxa compared using a tree difference metric $m$, Normalized Tree Similarity, $NTS_m$ \cite{Bogdanowicz2012}, represents the similarity score for the two trees given the expected difference between two random Yule trees \cite{Bogdanowicz2012} with $n$ taxa. If $\bar{d}_{m,n}$\textit{(rand)} is the average difference between two random Yule trees with $n$ taxa and $d_{m,n}$\textit{(x,y)} the difference between the two trees \textit{x} and \textit{y} each containing $n$ taxa, then:
+For any tree with \textit{n} taxa compared using a tree difference metric $m$, Normalized Tree Similarity, $NTS_m$ \citep{Bogdanowicz2012}, represents the similarity score for the two trees given the expected difference between two random Yule trees \citep{Bogdanowicz2012} with $n$ taxa. If $\bar{d}_{m,n}$\textit{(rand)} is the average difference between two random Yule trees with $n$ taxa and $d_{m,n}$\textit{(x,y)} the difference between the two trees \textit{x} and \textit{y} each containing $n$ taxa, then:
 \begin{equation}
 NTS_{m,n}(x,y)=\frac{\bar{d}_{m,n}(rand) - d_{m,n}(x,y)} {\bar{d}_{m,n}(rand)}
 \end{equation}
 \textit{NTS} ranges from one to -$\infty$.
 For any $m,n$, when $NTS$ = 1, the trees are identical, when \textit{NTS} = 0 the trees are no more different than expected by chance, and when $NTS$ $<$ 0, the trees are more different than expected when comparing two random trees. 
 
-We used the NTS method to scale all the Robinson Foulds and Triplets metrics calculated in our analyses, using the TreeCmp JavaScript \cite{Bogdanowicz2012}.
+We used the NTS method to scale all the Robinson Foulds and Triplets metrics calculated in our analyses, using the TreeCmp JavaScript \citep{Bogdanowicz2012}.
 
 \subsection{Bhattacharyya Coefficient}
-The Bhattacharyya Coefficient calculates the probability of overlap of two distributions \cite{Bhattacharyya}. When it is equal to zero, the probability of overlap of the distributions is also zero, and when it is equal to one, the two distributions are entirely overlapping. It forms an elegant and easy to compute continuous measurement of the probability of similarity between two distributions. The coefficient is calculated as the sum of the square root of the relative counts shared in \textit{n} bins among two distributions.
+The Bhattacharyya Coefficient calculates the probability of overlap of two distributions \citep{Bhattacharyya}. When it is equal to zero, the probability of overlap of the distributions is also zero, and when it is equal to one, the two distributions are entirely overlapping. It forms an elegant and easy to compute continuous measurement of the probability of similarity between two distributions. The coefficient is calculated as the sum of the square root of the relative counts shared in \textit{n} bins among two distributions.
 \begin{equation}
 \text{Bhattacharyya Coefficient}=\sum_{i=1}^{n} \sqrt{{\sum{a_i}}\times{\sum{b_i}}}
 \end{equation}
@@ -123,7 +107,7 @@ and
 \begin{equation}
 {b_i}=\frac{\text{Number of counts in bin \textit{i} for the distribution \textit{b}}}{\text{Total number of counts for the distribution \textit{b}}}
 \end{equation}
-The precision of the Bhattacharyya Coefficient is directly related to the number of bins, $n$. If $n$ is low, the overlap will be overestimated and if $n$ is too high, the overlap will be underestimated. In this analysis, we determined the number of bins using Silverman's rule of thumb which states that $n$ should be 0.9 times the minimum of the standard deviation and the interquartile range of the distribution, divided by 1.34 times the sample size of the distribution to the negative one-fifth power (\texttt{bw.nrd0()} function in R \cite{silverman1986density}).
+The precision of the Bhattacharyya Coefficient is directly related to the number of bins, $n$. If $n$ is low, the overlap will be overestimated and if $n$ is too high, the overlap will be underestimated. In this analysis, we determined the number of bins using Silverman's rule of thumb which states that $n$ should be 0.9 times the minimum of the standard deviation and the interquartile range of the distribution, divided by 1.34 times the sample size of the distribution to the negative one-fifth power (\texttt{bw.nrd0()} function in R \citep{silverman1986density}).
 
 \bibliographystyle{sysbio}
 \bibliography{Supp_Ref}
