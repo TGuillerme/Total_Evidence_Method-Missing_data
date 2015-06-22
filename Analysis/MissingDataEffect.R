@@ -1,5 +1,5 @@
 #Script for testing the effect of missing data on tree topology.
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd('Analysis/')
 
 #Loading the functions
 sourceDir <- function(path, trace = TRUE, ...) {
@@ -14,8 +14,8 @@ library(ape)
 
 #Loading the Random tree comparisons
 Random51<-read.table("../Data/Tree_Comparisons/RandomTrees/51t_Random.Cmp",header=TRUE)
-Random26<-read.table("../Data/Tree_Comparisons/RandomTrees/26t_Random.Cmp",header=TRUE)
-Random25<-read.table("../Data/Tree_Comparisons/RandomTrees/25t_Random.Cmp",header=TRUE)
+#Random26<-read.table("../Data/Tree_Comparisons/RandomTrees/26t_Random.Cmp",header=TRUE)
+#Random25<-read.table("../Data/Tree_Comparisons/RandomTrees/25t_Random.Cmp",header=TRUE)
 
 #Loading the treesets
 
