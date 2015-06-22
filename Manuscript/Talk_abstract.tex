@@ -1,0 +1,37 @@
+\documentclass[a4paper,11pt]{article}
+
+
+\usepackage{natbib}
+\usepackage{enumerate}
+\usepackage{lastpage} 
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\pagenumbering{arabic}
+\linespread{1.5}
+\begin{document}
+\fontsize{12pt}{1.5}
+\begin{flushright}
+Version dated: \today
+\end{flushright}
+\begin{center}
+
+%Font style Times New Roman. Font size 12. Title in bold. Maximum word limit 300 which includes name and affiliation details.
+
+%Title
+\noindent{\Large{\bf{Missing data and topology in Total Evidence method}}}\\
+\bigskip
+%Author
+\noindent{Thomas Guillerme - guillert@tcd.ie}\\
+\noindent{Zoology Department, Trinity College Dublin, Ireland}\\
+
+\end{center}
+
+To understand macroevolutionary patterns and processes, we need to include extant and extinct species in our models. This requires phylogenetic trees with living and fossil taxa at the tips. One way to infer such phylogenies is the Total Evidence approach which uses molecular data from living taxa and morphological data from living and fossil taxa.
+
+Although the Total Evidence approach is very promising, it requires a great deal of data that can be hard to collect. Therefore this method would likely suffer from missing data issues that may affect its ability to infer correct phylogenies.
+
+We use simulations to assess the effects of missing data on tree topologies inferred from Total Evidence matrices. We investigate three factors that affect the completeness and the size of the morphological part of the matrix: the proportion of living taxa with no morphological data, the amount of missing data in the fossil record, and the overall number of morphological characters in the matrix. We infer phylogenies from complete matrices and from matrices with various amounts of missing data, and then compare missing data topologies to the ``best" tree topology inferred using the complete matrix.
+
+We find that the number of living taxa with morphological characters and the number of morphological characters in the matrix, are more important than the amount of missing data in the fossil record for recovering the ``best" tree topology. We suggest that sampling effort should be focused on morphological data collection for living species to increase the accuracy of topological inference in a Total Evidence framework. Additionally, we find that Bayesian methods consistently outperform other tree inference methods. We recommend using Bayesian consensus trees to fix the tree topology prior to further analyses.
+
+\end{document}
