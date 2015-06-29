@@ -113,6 +113,8 @@ It is especially true when fossils are missing data, and that is going to be an 
 
 \item{\textcolor{blue}{\textbf{Figure 4:} Figure 4 has a color scheme issue, the colors in the caption do not match up to the figure.}}
 
+%We apologies for this silly mistake.
+
 \item{\textcolor{blue}{\textbf{Figure 4-5:} Am I wrong or shouldn't the y-axis for Normalised Triplets metric go below 0 - it looks those metrics for many missing data combinations have values below zero indicating trees are more different from the 'best' tree than expected by chance (Appendix B 1.1., see Appendix C Tables 1-3) and that is important to show.}}
 
 \item{\textcolor{blue}{\textbf{Table caption:} Table caption should include a line about 'pooling across missing data schemes' to clarify what is presented.}}
@@ -239,29 +241,102 @@ We modified the sentence as follows: "To avoid avoid matrices containing taxa wi
 We fixed these issues throughout the manuscript.
 
 \item{\textcolor{blue}{\textbf{line 251:} omit 'implemented'}}
+
+We removed this word.
+
 \item{\textcolor{blue}{\textbf{line 273:} 'Bayesian Inference'}}
+
+We changed the title as suggested.
+
 \item{\textcolor{blue}{\textbf{line 286:} Why was the true tree used as a starting tree? Earlier the authors argued that the true tree is almost never known, so using it here detracts from the generalizability of these results. If the only justification is 'to speed up the Bayesian estimation process' as stated later, then it seems like this may bias one of the main results, which is that Bayesian analyses outperformed max. likelihood, in which no starting tree was used. I understand the computational limitations, but the authors should present some analysis with complete and missing data in which no starting tree is given compared to analyses in which a starting tree is given to evaluate whether using a starting tree significantly affects the resulting trees, perhaps in an Appendix. Or at least include some perturbation to the starting tree to avoid overly influencing the resulting topology. It would seem to me that this is illustrated in figure 5, where-in with the Robinson-Foulds metric, the distance to the best tree in Bayesian analysis seems to have a lower bound at ~0.7, even under the worst cases of missing data. This may be the worst the analysis can do given that it started out with the true tree. }}
+
+%To do (MAJOR)
+
 \item{\textcolor{blue}{\textbf{line 318:} replace 'the twice number' with 'twice the number'}}
+
+We fixed this typo.
+% TG: should I not add something like "and thank the reviewer for pointing it out."?
+
 \item{\textcolor{blue}{\textbf{line 327:} 'This methods' omit 's'}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 343:} 'this metric is sensitive' add 'is'}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 424:} 'Figure ??' should be Figure 6, but then do not repeat Figure 6 in the parentheses. }}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 436:} 'effect'}}
+
+We fixed this typo as well as in the following sentence (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 489:} Streamline to something like: '…when the fossil is present near the tips but affects the clade conservation less when fossils are near the root'. }}
+
+We modified the following sentence as suggested: "In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present near the tips but affects the clade conservation less when fossils are near the root." (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 494:} 'taxon'}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 515:} '…the size of the matrix' missing 'of'}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 518 to 520:} I am not sure that (Wagner 2000) states that incongruence between molecular and morphological data is 'more important in small morphological matrices'. }}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{line 520:} Either change 'size' to plural or change 'were' to 'was', the former seems to flow better. }}
+
+We modified the following sentence: "The sizes of our data matrices were constrained by the performance of our protocol" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 528:} missing close parenthesis after Ni et al.}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 532:} Wright and Hillis 2014 found that increasing the size of the dataset improves topological accuracy, and they do not argue that simply increasing the number of characters increases the amount of homoplasy. Rather they found that the fastest evolving characters exhibited homoplasy, while the slowest evolving lacked phylogenetic signal. The citation seems misrepresented. Further, there was higher phylogenetic accuracy of simulated datasets with more characters than fewer characters, for slow or fast evolving characters (Wiens 2005).}}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{line 540:} replace 'a lot' with 'larger proportions of missing data', a lot seems too colloquial for this kind of article. }}
+
+We modified the sentence as suggested: "they have a larger proportion of missing data" (line @@@).
+
 \item{\textcolor{blue}{\textbf{lines 542-547:} These seem like the most important practical results and should be more strongly emphasized. These are very important results for practitioners and the authors should try to make it more clear to the reader that this is a key take-home message.}}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{line 552:} replace 'cladistic' with 'parsimony'. While one has come to be associated with the other in the literature, they are not synonymous. }}
+
+We replaced 'cladistic' by 'parsimony' as suggested (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 557-558:} '…than the "best" maximum likelihood tree'}}
+
+We modified the sentence as suggested : "than the ``best'' Maximum Likelihood tree" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 549-565:} again, I am left wondering how much the differences in performance of max. likelihood and Bayesian inference techniques are driven by the use of the 'true' tree as a starting tree in the Bayesian MCMC search, while the likelihood analysis had no such guide tree to begin with. The authors at least need to make this point clear, if not re-run some subset of analyses without introducing a starting tree to test the effects of using the 'true' tree as a starting tree or not. I understand the computational limitations, but the practical limitation that empiricists will never have the 'true' tree to start with may (or may not) have a large impact on our interpretation and the generality of these findings. }}
+
+%To do (MAJOR)
+
 \item{\textcolor{blue}{\textbf{line 593:} 'MorphoBank' - the 'b' should be capitalized in keeping with the authors' usage (O'Leary and Kaufman 2011)}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 599:} remove extra close parenthesis inside parenthetical statement}}
+
+We fixed this typo.
+
 \item{\textcolor{blue}{\textbf{line 595-606:} this paragraph seems unsatisfactory advice for practitioners. First, advising that the tree topology be fixed using the Bayesian consensus tree before conducting analyses such as dating strongly conditions the results on only a single tree and as the authors point out in the parenthetical statement, the dating information could improve accuracy. Indeed one of the many advantages of tip-dating is the joint inference of tree topology and divergence times. The following statements that the posterior distribution should not be discarded does not leave the reader with a clear path that they should follow - if only the fixed tree topology is used to estimate divergence times, how can the substitution rate-scaled posterior distribution of highly probable trees be used for most comparative analyses which require time-scaled branch lengths? This paragraph requires further justification and this study does have important bearing on a subject that gets little attention. }}
+
+%To do (rewrite)
+
 \item{\textcolor{blue}{\textbf{line 612-613:} too obvious and not especially helpful. We should aim to have as little missing data as possible…more helpful, and something especially discovered in this study, is concentrating on having overlapping morphological characters between the living and fossil taxa to be able to place the living taxa with strong support via large datasets (combined data) and being able to position the fossils based on their shared derived characters with living taxa. This is an important point to make clearer. }}
+
+
+
 \item{\textcolor{blue}{\textbf{line 613-615:} rephrase - sentence is choppy with all the commas. }}
 \item{\textcolor{blue}{\textbf{line 615-618:} It seems more important to me that the authors emphasize what implications it may have for previous and future studies that Bayesian analyses outperform max. likelihood, other than to re-hash that the authors feel the Bayesian consensus should be used to fix topologies for other downstream analyses. For example, can the authors cite some combined analyses that used only likelihood analyses and came up with controversial results? Or what about other studies that have done combined analyses with different optimality criteria and found different topologies? What about implications for studies that have used molecular scaffold techniques to fix the topology of living taxa based on analyses of only DNA analyses and then fit the fossils into this fixed tree? Also 'further' is misspelled.  }}
 \item{\textcolor{blue}{\textbf{line 628:} use of computer cluster may be better placed in the methods, depending on the norm for MPE.}}

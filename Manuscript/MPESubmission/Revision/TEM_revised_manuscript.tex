@@ -230,7 +230,7 @@ Therefore, here we focus on comparing the trees inferred from the matrices with 
 
 \subsubsection{Maximum Likelihood}
 The ``best" tree and the ``missing-data" trees were inferred using RAxML v. 8.0.20 \citep{Stamatakis21012014}. For the molecular data, we used the GTR + $\Gamma_4$ model (\citealp{tavare1986}; default GTRGAMMA in RAxML v. 8.0.20; \citealp{Stamatakis21012014}).
-For the morphological data, we used the implemented M\textit{kv} model \citep{lewisa2001} assuming an equal state frequency and a unique overall substitution rate ($\mu$) following a gamma distribution of the rate variation with four distinct categories (M\textit{kv} + $\Gamma_4$; -K MK option in RAxML v. 8.0.20; \citealp{Stamatakis21012014}).
+For the morphological data, we used the M\textit{kv} model \citep{lewisa2001} assuming an equal state frequency and a unique overall substitution rate ($\mu$) following a gamma distribution of the rate variation with four distinct categories (M\textit{kv} + $\Gamma_4$; -K MK option in RAxML v. 8.0.20; \citealp{Stamatakis21012014}).
 We used RAxML because it automatically corrects for acquisition bias \citep{lewisa2001}. It is also heavily used in the literature for Maximum Likelihood tree inference \citep[e.g.][]{rouresite-specific2011,Bogdanowicz2012,springermacroevolutionary2012,O'Leary08022013,kellymolecular2014} and is one of the fastest methods available \citep{Stamatakis01102008}. 
 
 To measure the support for each branch in our simulated phylogenies we first ran a fast bootstrap analysis (Lazy Sub-tree Rearrangement) with 500 replicates on the ``complete" matrix.
@@ -240,7 +240,7 @@ This step was implemented to make sure that the differences we observed in topol
 On these selected simulations, we used the fast bootstrap algorithm and performed 1000 bootstraps for each tree inference to assess topological support \citep{pattengale2010many}.
 Using these parameters took \texttildelow 8 CPU years to build 50 sets of 125 bootstrapped Maximum Likelihood trees (2.30GHz clock speed nodes). We performed this procedure to increase the resolution of our resulting trees. 
 
-\subsubsection{Bayesian}
+\subsubsection{Bayesian Inference}
 The ``best" tree and the ``missing-data" trees were inferred using MrBayes v. 3.2.1 \citep{Ronquist2012mrbayes}.
 We partitioned the data to treat the molecular part as a non-codon DNA partition and the morphological part as a multi-state morphological partition.
 The molecular evolutionary history was inferred using the HKY model with a transition/transversion ratio of two \citep{douadycomparison2003} and a gamma distribution for the rate variation with four distinct categories (HKY + $\Gamma_4$).
@@ -271,12 +271,12 @@ We normalised both metrics using methods described in \citet{Bogdanowicz2012} to
 These metrics are described in detail below.
 
 \subsubsection{Robinson-Foulds distance}
-The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and the twice number of shared clades across two trees.
+The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and twice the number of shared clades across two trees.
 The metric reflects the distance between the distributions of tips among clades in the two trees \citep{RF1981} (see Appendix B for calculation details).
 This metric is bounded between zero, when the two trees are identical, and $2(n-2)$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
 This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity.
 We normalised this metric following Bogdanowicz's Normalised Tree Similarity (NTS) method \citep{Bogdanowicz2012}.
-This methods scales any tree comparison metric using the mean distance between 1000 random trees (see Appendix B for the calculation details).
+This method scales any tree comparison metric using the mean distance between 1000 random trees (see Appendix B for the calculation details).
 This method is a generalisation of the topological accuracy method \citep{Price2010} allowing to compare topological differences between any tree with any tree comparison metric.
 In practice when the Normalised Robinson-Foulds metric between two trees is equal to one, the trees are identical; if the metric is equal to zero, the trees are no more different than expected by chance; finally if the metric is less than zero, the trees are more different than expected by chance.
 Note that once rescaled, the Normalised Robinson-Foulds metric is a measure of similarity, rather than of distance like the original Robinson-Foulds metric. 
@@ -285,7 +285,7 @@ Note that once rescaled, the Normalised Robinson-Foulds metric is a measure of s
 The Triplets distance \citep{dobson1975triplets} measures the number of sub-trees made up of three taxa that differ between two trees \citep{critchlowthe1996} (see Appendix B for calculation details).
 This metric measures the position of each taxon and clade in relation to its closest neighbours.
 It is bounded between zero when the two trees are identical and $\binom{n}{3}$ (for two trees with $n$ taxa) when there is no shared taxa/clade position in the two trees.
-Therefore this metric sensitive to the conservation of wildcard taxa.
+Therefore this metric is sensitive to the conservation of wildcard taxa.
 We normalised this metric in the same way as for the Robinson-Foulds distance resulting in the Normalised Triplets metric.
 
 \subsubsection{Paired tree comparisons}
@@ -356,7 +356,7 @@ However, The Normalised Triplets metric is similar between the Maximum Likelihoo
 
 \subsection{Combined effect of missing data parameters}
 As expected, our ability to recover the ``best" tree topology is worst when each parameter contains the maximum amount of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%), and best when there is no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%; Figure 5; Tables C2, C3 and C4 in Appendix C).
-Figure ~\ref{Fig_Results-paircomp_within} shows the similarity of distributions of tree metrics in a triangular matrix with the values of each pairwise Bhattacharyya Coefficient coloured according to their values (orange when the distributions overlap completely, Bhattacharyya Coefficient = 1, and blue when they do not, Bhattacharyya Coefficient = 0; Figure 6). 
+Figure 6 shows the similarity of distributions of tree metrics in a triangular matrix with the values of each pairwise Bhattacharyya Coefficient coloured according to their values (orange when the distributions overlap completely, Bhattacharyya Coefficient = 1, and blue when they do not, Bhattacharyya Coefficient = 0). 
 
 %\begin{figure}[]
 %\caption{{\bf The effects of missing data on topological recovery using Bayesian consensus trees.}
@@ -367,8 +367,8 @@ Figure ~\ref{Fig_Results-paircomp_within} shows the similarity of distributions 
 
 Using both Normalised Robinson-Foulds and Normalised Triplets metrics from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (Figure 6).
 However, the Normalised Robinson-Foulds metric (median Bhattacharrya coefficient = 0.79; Figure 6A) displays more dissimilarities than the Normalised Triplets metric (median Bhattacharrya coefficient = 0.81; Figure 6B).
-Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional affect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
-Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional affect of $M_{L}$ and $M_{F}$ (Figure 6A).
+Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional effect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
+Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ (Figure 6A).
 
 For all combinations of missing data parameters and tree comparison metrics, the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distributions perform very similarly (median Bhattacharrya Coefficient = 0.85 and 0.98, using Normalised Robinson-Foulds metric or Normalised Triplets metric respectively; Table ~\ref{Tab_Results-Difference_methods}).
 However, these two methods perform worse than the Bayesian consensus trees using Normalised Robinson-Foulds metric (median Bhattacharrya Coefficient = 0 and 0.01, for the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distribution respectively; Table ~\ref{Tab_Results-Difference_methods}; Figure 4 and Figure C2 in Appendix C).
@@ -396,8 +396,8 @@ The effect of the missing data in the fossil record ($M_{F}$) is less than the e
 This is related to the fact that the Bayesian consensus tree is built using a majority consensus rule.
 When the fossil taxa have less data (e.g. $M_{F}$ = 75\%) they will tend to branch with any taxon in the clade that shares most characters with the fossils.
 Therefore a majority consensus position is unlikely to exist (i.e. every branching position is represented in $<$ 50\% of the trees in the Bayesian posterior distribution) and the fossil taxa will form a polytomy at the base of the clade.
-In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present at a lower taxonomic level (i.e. separated with more nodes from the root) but affects the clade conservation less at higher taxonomic level (i.e. separated with less nodes from the root).
-Conversely, because a fossil in a high taxonomic level clade has many chances to branch on different nodes within the clade, it will be more likely to act as a wildcard taxa and decrease the Normalised Triplets metric.
+In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present near the tips but affects the clade conservation less when fossils are near the root.
+Conversely, because a fossil in a high taxonomic level clade has many chances to branch on different nodes within the clade, it will be more likely to act as a wildcard taxon and decrease the Normalised Triplets metric.
 Therefore, the $M_{F}$ parameter is likely to affect the Normalised Robinson-Foulds metric less than the Normalised Triplets metric for the Bayesian consensus trees.
 Conversely, the same scenario in a Maximum Likelihood framework will lead to a dichotomous branching of the fossils but with low bootstrap support ($<$ 50).
 In other words, the Bayesian consensus tree allows a fossil taxon with few data to be placed with a higher confidence at a lower taxonomic level than the Maximum Likelihood tree, where the fossil will be placed with lower confidence at a higher taxonomic level.
@@ -410,25 +410,25 @@ Conversely, removing 10\% of morphological characters ($M_{C}$) genuinely remove
 However, the effect of removing characters on the ability to recover the ``best" tree topology is of the same order of magnitude as for the other two parameters (Figure 4).
 We suspect this again reflects the importance of overlapping characters, as opposed to the number of characters \textit{per se}.
 
-Additionally, the number of morphological characters determines the size the matrix.
+Additionally, the number of morphological characters determines the size the of matrix.
 This can affect our ability to recover the ``best" tree topology through: (1) the incongruence of phylogenetic signal among morphological and molecular data; and/or (2) homoplasy.
 The incongruence of phylogenetic signal between morphological and molecular data has previously been demonstrated to be more important in small morphological matrices \citep{wagner2000}.
-The size of our data matrices were constrained by the performance of our protocol: to reduce the computational time of our analysis to a reasonable level (150 CPU years), we ran our simulations on modestly-sized matrices of 1000 molecular characters and 100 morphological characters.
+The sizes of our data matrices were constrained by the performance of our protocol: to reduce the computational time of our analysis to a reasonable level (150 CPU years), we ran our simulations on modestly-sized matrices of 1000 molecular characters and 100 morphological characters.
 Therefore, part of the decrease of the Normalised Robinson-Foulds metric and the Normalised Triplets metric in our simulations could be due to conflicting phylogenetic signal among morphological and molecular data in our matrices (Figure 4 and Figure 5).
 However, although these matrices are an order of magnitude smaller than some published matrices \citep[e.g.][]{springermacroevolutionary2012,nithe2013}, they are still within the size range of more modestly-sized empirical matrices \citep[e.g.][]{kellymolecular2014, sallam2011craniodental}.
 Therefore, our simulations reflect realistic parameters. Homoplasy, on the other hand, is expected to increase with an increase in the number of morphological characters \citep{wrightbayesian2014}. 
 However, the use of probabilistic methods (i.e. Maximum Likelihood or Bayesian) and the M\textit{kv} model \citep{lewisa2001} has been previously demonstrated to partially resolve this issue \citep{wrightbayesian2014}.
 
 \subsection{Combined effect of missing data parameters}
-As expected, when combining the missing data parameters, our ability to recover the ``best" tree topology is affected in the same way as for the parameters individually: the Normalised Robinson-Foulds metric and the Normalised Triplets metric are higher when all the missing data parameters have few missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) and lower when they have a lot of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%; Figure 5).
+As expected, when combining the missing data parameters, our ability to recover the ``best" tree topology is affected in the same way as for the parameters individually: the Normalised Robinson-Foulds metric and the Normalised Triplets metric are higher when all the missing data parameters have few missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) and lower when they have a larger proportion of missing data (i.e. $M_{L}$ = 75\%, $M_{F}$ = 75\% and $M_{C}$ = 75\%; Figure 5).
 However, it is important to notice that the effect of each parameter is not additive.
 The number of missing living taxa with morphological data ($M_{L}$) and the overall number of missing morphological characters ($M_{C}$), have a bigger effect than the amount of missing data for the fossil taxa ($M_{F}$), and when both $M_{L}$ and/or $M_{C}$ reach 50\% of missing data, the matrix does not contain enough phylogenetic information for the fossil taxa to be placed with confidence in the tree (Figure 6).
 
 \subsection{Effects of tree inference methods}
 Variation in our ability to recover the ``best" tree topology depends heavily on the tree inference method (Figure 4 and Figure 5).
-For morphological data, previous studies have shown some superiority of probabilistic tree inference methods with simple evolutionary models such as the M\textit{kv} model \citep{lewisa2001} over cladistic methods (\citealp{wrightbayesian2014}; but see \citealp{spencerefficacy2013}).
+For morphological data, previous studies have shown some superiority of probabilistic tree inference methods with simple evolutionary models such as the M\textit{kv} model \citep{lewisa2001} over parsimony methods (\citealp{wrightbayesian2014}; but see \citealp{spencerefficacy2013}).
 However, this is the first study, to our knowledge, to compare the performance of the M\textit{kv} model \citep{lewisa2001} for recovering the ``best" tree topology using Maximum Likelihood and Bayesian methods in a Total Evidence framework.
-Our results show that the topology of the Bayesian consensus tree is always closer to the ``best" tree topology than the one of the Maximum Likelihood tree (Figure 5).
+Our results show that the topology of the Bayesian consensus tree is always closer to the ``best" tree topology than the ``best'' Maximum Likelihood tree (Figure 5).
 As described above, this is because the Bayesian consensus tree allows a fossil taxon with few data to be placed with a higher confidence at a lower taxonomic level than the Maximum Likelihood tree.
 This may also be because the ``best" Bayesian consensus trees are not completely resolved, thus will always be more similar to the ``missing data" trees than a completely resolved tree like the ``best" Maximum Likelihood tree.
 However, we minimized the probability of unresolved ``best" trees in our Bayesian analyses by only using datasets with strong phylogenetic signal (see Methods).
@@ -448,7 +448,7 @@ Finally, although increasing the number of coded characters is relatively straig
 One solution to this problem may be to engage with collaborative data collection projects through web portals such as \textit{MorphoBank} \citep{morphobank}, so that no one individual collects all the data.
 
 Another practical implication of our results regards the tree inference methods.
-Because the Bayesian consensus trees consistently recovered topologies closer to the ``best" tree topology than the Maximum Likelihood trees, we advise using Bayesian consensus trees to fix the topology where necessary for further steps in tree inference, for example in tip-dating \citep{ronquista2012,BEASTmaster}; although it is possible that including dating information during tree inference could improve the accuracy of the Bayesian posterior tree distribution).
+Because the Bayesian consensus trees consistently recovered topologies closer to the ``best" tree topology than the Maximum Likelihood trees, we advise using Bayesian consensus trees to fix the topology where necessary for further steps in tree inference, for example in tip-dating \citep[][; although it is possible that including dating information during tree inference could improve the accuracy of the Bayesian posterior tree distribution]{ronquista2012,BEASTmaster}.
 Note that, although the Bayesian posterior tree distribution performed poorly in recovering the ``best" tree topology, this is due to difficulties comparing distributions of trees (see above).
 Thus, we do not suggest discarding the Bayesian posterior tree distribution once the topology has been fixed, particularly because these trees will be invaluable for phylogenetic comparative analyses \citep[e.g.][]{jetzthe2012}.
 
