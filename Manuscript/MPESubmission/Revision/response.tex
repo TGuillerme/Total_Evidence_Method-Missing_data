@@ -56,6 +56,15 @@
 
 \begin{document}
 
+
+%Add introduction (dear Dr blablalbal, here are our revisions)
+
+%Resubmit the new version of the manuscript normaly but also add a pdf containing the track changes (highlithing in yellow the bit that have changed): "We are aware on the length of the manuscript. To facilitate the reviewers task, we attached to our revised manuscript, a pdf of the same manuscript but with the changes highlighted in yellow."
+
+%TG: Add a section "Additional 'fancy' changes" (not fancy obviously)
+% For clarity, we replaced the font of all the functions in R language in courier font (R, diversitree, etc...). \texttt{} - ACTUALLY DO THE CHANGE IF RELEVAN
+
+
 \section{Reviewer 1:}
 
 \begin{enumerate}
@@ -112,18 +121,6 @@ It is especially true when fossils are missing data, and that is going to be an 
 But I feel it is necessary to summarize the following questions: what did those studies find, what are the questions those studies left open, and how does this study address them?}}
 \end{enumerate}
 
-\section{Reviewer 2:}
-
-\begin{enumerate}
-\item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}
-
-\item{\textcolor{blue}{\textbf{Better explanation of the missing data:} I found the explanation of the missing data strategy very difficult to follow. First, they oddly use the verb "to infer" for matrices; are they inferring matrices? Second, it's not clear anywhere that the authors actually removed the molecular data from the fossil taxa, though I assume they did. I hope the authors can re-write in simpler language ("explain like I'm 5") for easier comprehension.}}
-
-\item{\textcolor{blue}{\textbf{$M_C$ is not missing data per se:} If Mc is just removing columns, then they are shrinking the total matrix. This is not missing data per se. They are instead comparing matrices of different sizes, and the quantity is "data present." Any matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. A matrix with 10,000 characters is tiny if 10,000,000 could be scored. This is semantic.}}
-
-\item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
-\end{enumerate}
-
 \section{Specific comments:}
 \begin{enumerate}
 
@@ -149,11 +146,11 @@ We modified the citation as suggested by reviewer 1 (line @@@).
 
 \item{\textcolor{blue}{\textbf{line 53:} omit 'are used as nodes rather than tips in these phylogenies and their'. Fossils aren't really used as nodes in node calibration, the second part of the sentence is more accurate.}}
 
-We modified the sentence to "Because fossil taxa do not usually have available DNA, only fossils' occurrence dates are used to time calibrate phylogenies" (line @@@).
+We modified the following sentence as suggested: "Because fossil taxa do not usually have available DNA, only fossils' occurrence dates are used to time calibrate phylogenies" (line @@@).
 
 \item{\textcolor{blue}{\textbf{line 66:} omit 'have been successfully applied to empirical data' and just say 'becoming increasingly popular…list of references'. }}
 
-We modified the sentence as follow: "Total Evidence methods is becoming an increasingly popular way of adding fossil taxa to phylogenies (e.g. ...)" (line @@@).
+We modified the following sentence as suggested: "Total Evidence methods is becoming an increasingly popular way of adding fossil taxa to phylogenies (e.g. ...)" (line @@@).
 
 \item{\textcolor{blue}{\textbf{line 76 and throughout the manuscript:} watch out for inconsistent parentheses.}}
 
@@ -162,23 +159,85 @@ We fixed this issue.
 \item{\textcolor{blue}{\textbf{line 76 and throughout:} correct use of the word 'data' from singular to plural throughout}}
 
 %TG: Is that data/datum? molecular data or molecular datum?
+
 \item{\textcolor{blue}{\textbf{line 77:} change 'a lot' to 'large proportions of' or something more accurate and less colloquial}}
+
+We modified the following sentence as suggested: "Total Evidence matrices are likely to contain a large proportions of missing data" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 82:} change to '…missing data are not phylogenetically biased, Wiens…'}}
+
+We modified the following sentence as suggested: "as long as enough data overlaps in each case, and missing data are not phylogenetically biased" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 99:} unclear - what is meant by 'with a fixed topology approach'? The studies references investigated divergence times using total evidence datasets and in some cases used constraints but not completely fixed topologies}}
-\item{\textcolor{blue}{\textbf{lines 80-103:} the authors need to clearly justify the importance of this study compared the many studies that have investigated the effects of missing data on topology inference. The justification currently given is not particularly strong and the specific unique questions asked in this study that are currently unanswered should be made clear. The current argument does not always seem justified by the literature review. For example, line 81 the authors argue that papers by Wiens and Pattinson examined morphological or molecular matrices separately, but in Pattinson, for example, combined datasets for living species were used to simulate extinct species by deleting the molecular and parts of the morphological datasets from living species. The authors could argue that a limitation of the Pattinson study, which they address here, was the limited scheme for generating missing data from the datasets. In this study, the authors perturbed the datasets more thoroughly in a clearly structured experimental design to investigate the effects of eliminating living versus fossil data or all data overall. That is one aspect of this study that I perceived as new and unique. Another aspect of this study design that could be new but is not explored here is the effect of the missing data on the morphological substitution rate parameter estimates.\textbf{Can you recover the true values from the perturbed datasets?} This study also used a unique way of evaluating the tree inference under missing data scenarios. These and other aspects of the study uniqueness must be clearer.}}
+
+We modified the previous statement to: "but also because previous studies have already empirically assessed the effect of the Total Evidence method on branch length variation but using topological constraints" (line @@@).
+
+\item{\textcolor{blue}{\textbf{lines 80-103:} the authors need to clearly justify the importance of this study compared the many studies that have investigated the effects of missing data on topology inference. The justification currently given is not particularly strong and the specific unique questions asked in this study that are currently unanswered should be made clear. The current argument does not always seem justified by the literature review. For example, line 81 the authors argue that papers by Wiens and Pattinson examined morphological or molecular matrices separately, but in Pattinson, for example, combined datasets for living species were used to simulate extinct species by deleting the molecular and parts of the morphological datasets from living species. The authors could argue that a limitation of the Pattinson study, which they address here, was the limited scheme for generating missing data from the datasets. In this study, the authors perturbed the datasets more thoroughly in a clearly structured experimental design to investigate the effects of eliminating living versus fossil data or all data overall. That is one aspect of this study that I perceived as new and unique. Another aspect of this study design that could be new but is not explored here is the effect of the missing data on the morphological substitution rate parameter estimates. \textbf{Can you recover the true values from the perturbed datasets?} This study also used a unique way of evaluating the tree inference under missing data scenarios. These and other aspects of the study uniqueness must be clearer.}}
+
+%Emphasize on the questions and the uniqueness
+%The authors could argue that a limitation of the Pattinson study, which they address here, was the limited scheme for generating missing data from the datasets.
+%In this study, the authors perturbed the datasets more thoroughly in a clearly structured experimental design to investigate the effects of eliminating living versus fossil data or all data overall.
+%That is one aspect of this study that I perceived as new and unique.
+%This study also used a unique way of evaluating the tree inference under missing data scenarios.
+
+%Another aspect of this study design that could be new but is not explored here is the effect of the missing data on the morphological substitution rate parameter estimates. Can you recover the true values from the perturbed datasets?
+%We did not explored any effect of the missing data on parameters estimation in this study because we thought that it was already a complex/long one and focusing solely on topology made it easier to read.
+%We think, however, that the reviewer underlines a really interesting question especially since we have the data available.
+%It seems that parameters vary blablablabla.
+%And say something like we did the analysis but still consider it should not go in the manuscript.
+
 \item{\textcolor{blue}{\textbf{line 124:} replace 'sections' with 'partition'}}
+
+We modified the following sentence as suggested: "the morphological partition of Total Evidence matrices" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 125:} omit 'note that we explain each step in detail below this general outline', replace with something like 'Our general protocol included the following steps (Figure 1):'…}}
+
+We removed the part suggested by the reviewer as follow: "we used the following protocol (Figure 1):" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 167 and throughout manuscript:} replace usage of 'inferred' when referring to simulating data. Replace with 'generated', 'simulated', or 'created', for example. 'Infer' should only be used when a model is fit to data to infer some output such as a tree, transition rates, etc. }}
+
+%To do!
+
 \item{\textcolor{blue}{\textbf{line 173:} streamline to "The substitution rates were selected from a gamma distribution with…" or something similar. }}
+
+We modified the following sentence as suggested: "The substitution rates were selected from a gamma distribution with an ($\alpha$) shape of 0.5." (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 173 to 176:} need some justification for why the substitution rate with alpha shape of 0.5  will avoid homoplasy. Yang 1996 is cited but clarify the justification of what is 'too much' homoplasy. }}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{Line 176 to 180:} could be streamlined. It is not clear what is meant by 'no special assumption about how the characters evolved', what constitutes a special assumption? Could potentially be reduced to something like 'this model and these parameter settings strike a balance between realism for empirical datasets (citations) and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations'. Just for example.}}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{line 182:} give the ape function used}}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{line 185 to 188:} streamline, e.g. '…sampling with a probability of 0.85 for two states characters and 0.15 for three state characters (based on an empirical review of published matrices, see Appendix A).'}}
+
+We modified the following sentence as suggested: "sampling with a probability of 0.85 for two states characters and 0.15 for three state characters (based on an empirical review of published matrices, see Appendix A and Fig. A1 within)." (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 193 to 196:} again, justify why gamma with shape of 0.5 is appropriate for minimizing homoplasy. This distribution places highest probability on substation rates less than 0.5, when one of the cited references potentially suggests that the lowest topological error was found at rates of ~0.5-1.5, and that very low substitution rates incurred error similar to very high rates ((Wright and Hillis 2014) 2014 Figure 3). Other cited references do not clearly state that this distribution and shape setting is optimal, so the authors really must justify. }}
+
+%To do
+
 \item{\textcolor{blue}{\textbf{line 201:} change 'get' for 'obtain' or something less colloquial.}}
+
+We modified the following sentence as suggested: "We modified the complete matrix to obtain matrices with missing data" (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 231-235:} streamline, e.g., 'The minimal dataset included in this study was 5\% of the morphological matrix for any taxon'.}}
+
+We modified the sentence as follows: "To avoid avoid matrices containing taxa without any data (morphological or molecular), we repeated the random deletion until the matrices contained at least 5\% of data for any taxon." (line @@@).
+
 \item{\textcolor{blue}{\textbf{line 237-246:} I understand the rational presented by the authors for comparing missing data trees to the best tree inferred from max. likelihood/Bayesian techniques rather than compare missing data trees to the true tree used to simulate the data. I still feel it would be an important contribution to this paper, however, to compare the missing data trees to the true tree to evaluate the effects of missing data on the tree inference. Also it may lend insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it. }}
+
+%To do (MAJOR)
+
 \item{\textcolor{blue}{\textbf{line 249:} condense citations to one parenthetical statement, 'GTR model (Tavare, 1986, default setting in RAx…)'. Also watch for citations in parentheses inside of other parenthetical statements on line 250 and throughout the manuscript. }}
+
+We fixed these issues throughout the manuscript.
+
 \item{\textcolor{blue}{\textbf{line 251:} omit 'implemented'}}
 \item{\textcolor{blue}{\textbf{line 273:} 'Bayesian Inference'}}
 \item{\textcolor{blue}{\textbf{line 286:} Why was the true tree used as a starting tree? Earlier the authors argued that the true tree is almost never known, so using it here detracts from the generalizability of these results. If the only justification is 'to speed up the Bayesian estimation process' as stated later, then it seems like this may bias one of the main results, which is that Bayesian analyses outperformed max. likelihood, in which no starting tree was used. I understand the computational limitations, but the authors should present some analysis with complete and missing data in which no starting tree is given compared to analyses in which a starting tree is given to evaluate whether using a starting tree significantly affects the resulting trees, perhaps in an Appendix. Or at least include some perturbation to the starting tree to avoid overly influencing the resulting topology. It would seem to me that this is illustrated in figure 5, where-in with the Robinson-Foulds metric, the distance to the best tree in Bayesian analysis seems to have a lower bound at ~0.7, even under the worst cases of missing data. This may be the worst the analysis can do given that it started out with the true tree. }}
@@ -225,6 +284,18 @@ This may not be feasible in the text due to space limitations, maybe tables like
 \item{\textcolor{blue}{\textbf{Appendix C:} Tables 1-3 repeats 'of the'. Should label the first two rows as 'Best maximum likelihood tree' and 'Best Bayesian inference tree'}}
 \item{\textcolor{blue}{\textbf{Appendix D:} I find the online code repository thorough, but the repository is loaded with many files, especially for graphing. If it is possible to condense these files it may be easier for a reader to duplicate the study.}}
 
+\end{enumerate}
+
+\section{Reviewer 2:}
+
+\begin{enumerate}
+\item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}
+
+\item{\textcolor{blue}{\textbf{Better explanation of the missing data:} I found the explanation of the missing data strategy very difficult to follow. First, they oddly use the verb "to infer" for matrices; are they inferring matrices? Second, it's not clear anywhere that the authors actually removed the molecular data from the fossil taxa, though I assume they did. I hope the authors can re-write in simpler language ("explain like I'm 5") for easier comprehension.}}
+
+\item{\textcolor{blue}{\textbf{$M_C$ is not missing data per se:} If Mc is just removing columns, then they are shrinking the total matrix. This is not missing data per se. They are instead comparing matrices of different sizes, and the quantity is "data present." Any matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. A matrix with 10,000 characters is tiny if 10,000,000 could be scored. This is semantic.}}
+
+\item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
 \end{enumerate}
 
 \end{document}
