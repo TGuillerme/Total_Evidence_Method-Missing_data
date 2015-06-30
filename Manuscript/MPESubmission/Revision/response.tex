@@ -335,16 +335,39 @@ We fixed this typo.
 
 \item{\textcolor{blue}{\textbf{line 612-613:} too obvious and not especially helpful. We should aim to have as little missing data as possible…more helpful, and something especially discovered in this study, is concentrating on having overlapping morphological characters between the living and fossil taxa to be able to place the living taxa with strong support via large datasets (combined data) and being able to position the fossils based on their shared derived characters with living taxa. This is an important point to make clearer. }}
 
-
+%To do (rewrite)
 
 \item{\textcolor{blue}{\textbf{line 613-615:} rephrase - sentence is choppy with all the commas. }}
+
+We modified the sentence as follow: "Because it can be difficult to do for fossil taxa, we recommend coding as many morphological characters as possible for living taxa." (line @@@),
+
 \item{\textcolor{blue}{\textbf{line 615-618:} It seems more important to me that the authors emphasize what implications it may have for previous and future studies that Bayesian analyses outperform max. likelihood, other than to re-hash that the authors feel the Bayesian consensus should be used to fix topologies for other downstream analyses. For example, can the authors cite some combined analyses that used only likelihood analyses and came up with controversial results? Or what about other studies that have done combined analyses with different optimality criteria and found different topologies? What about implications for studies that have used molecular scaffold techniques to fix the topology of living taxa based on analyses of only DNA analyses and then fit the fossils into this fixed tree? Also 'further' is misspelled.  }}
+
+%To do (rewrite) - typo ok
+
 \item{\textcolor{blue}{\textbf{line 628:} use of computer cluster may be better placed in the methods, depending on the norm for MPE.}}
 
+The Lonsdale cluster requires this specific line in the acknowledgements of any study using it's infrastructure.
+
 \item{\textcolor{blue}{\textbf{Figure 3:} Do not repeat the aside to similarity with t-test again from Fig 2 and text.}}
+
+We removed the sentence about the t-test similarity from both figures captions. %TG: not sure if that's what the reviewer wanted.
+
 \item{\textcolor{blue}{\textbf{Figure 4:} color codes in legend do not match up to the colors in the PDF I received. I don't know if this is an error in conversion, but the colors are black, red, green and blue in my PDF. The legend states the following: 'Maximum Likelihood trees (black), Bayesian consensus trees (blue), Maximum Likelihood bootstrap trees (orange) and Bayesian posterior tree distributions (blue)' which doesn't seem correct since blue is repeated. This makes interpreting the figure difficult for me at this time, but I assume given the text in the Results that the Bayesian methods are black and red in the figure I received, indicating they were closer to the best tree than max likelihood trees. Red and green should not be used together.}}
+
+We apologies for this silly mistake and thanks the reviewer for pointing it out. We changed the color scheme to "Maximum Likelihood trees (black), Bayesian consensus trees (red), Maximum Likelihood bootstrap trees (blue) and Bayesian posterior tree distributions (orange)".
+%To do: change the graphs colours
+
 \item{\textcolor{blue}{\textbf{Figure 5:} This figure best summarizes the results, and a version of this should be the Graphical Abstract, with legends for the color cods and spelling out the missing data parameters, and the Y axis could just be 'clade similarity index' or 'rouge taxon index' so that the reader doesn't need to know what the names of the metrics are to grasp the graphic. But concerning the Normalized Triplets metric, according to the text and appendix, if this index is 0, the similarity of the missing data tree to the best tree is no more than random, and < 0 it is more different than random. For the Bayesian analyses, many results had values < 0 but the axis is set to 0. Why not illustrate the distribution of values that is < 0? From this result, it appears the Bayesian analysis does quite poorly with missing data in terms of rouge taxa, and worse than max. likelihood. This figure also suggests to me that the methods perform pretty badly with missing data, in contrast to previous findings that missing data are not overly deleterious. For example, when all data are complete except Mf=50\%, the normalized RF metric is <0.8. Missing data for up to 50\% of characters has been suggested to still have high accuracy in uncovering the true tree (Wiens 2003; Wiens 2005), although for small datasets such as the one used in this study, the results show a similar decline in accuracy. This is a point that should be expanded upon in the discussion - how these results compare to other missing data studies and what do they tell us about the performance of the inference methods with missing data?}}
+
+We thank the reviewer for this excellent suggestion and modified our graphical abstract.
+%To do (writing)
+%Missing data for up to 50\% of characters has been suggested to still have high accuracy in uncovering the true tree (Wiens 2003; Wiens 2005)
+%how these results compare to other missing data studies and what do they tell us about the performance of the inference methods with missing data?
+
 \item{\textcolor{blue}{\textbf{Figure 6:} I think this may be the most important figure because it is demonstrating the probability of overlap between the distributions of the best trees and the missing data trees. It took me a long time to figure it out, however, and to figure out why the top of the triangle is all orange. I would have expected something more like in Appendix C Figure C2 or Fig. C3. At first I understood this to indicate high probability of overlap of the missing data trees which had the most missing data with the best tree. But after re-reading the legend and methods several times, I am interpreting it as follows: the top of the triangle indicates a similarly poor fit of the distributions of missing data trees to the best tree under all parameter combinations once there is a high proportion of missing data. The point is raised in the Results that once missing data in the living portion is > 50\% then they all perform poorly, but it was not easy to grasp. Somehow this figure needs to be spelled out better in the caption and results so the reader can grasp it more quickly and easily without having to go back to the methods section to completely figure out what is being represented.}}
+
+%To do (writing)
 
 \item{\textcolor{blue}{\textbf{Table 1:} The wording of the caption is off - the second paragraph is awkward. 
 Are these values the probabilities of overlap between the distributions of the 'best' tree versus trees from each inference method pooled across all combinations of missing data? That is what is described in methods line 397 but it doesn't say so in the caption. Two things:\\
@@ -357,7 +380,12 @@ Marginal    1   0.9 0.78    0.5  \\
 This may not be feasible in the text due to space limitations, maybe tables like these could be added to an appendix.}}
 
 \item{\textcolor{blue}{\textbf{Appendix C:} Tables 1-3 repeats 'of the'. Should label the first two rows as 'Best maximum likelihood tree' and 'Best Bayesian inference tree'}}
+
+We removed the repetition in the caption. %Not sure I understand the second part of the comment.
+
 \item{\textcolor{blue}{\textbf{Appendix D:} I find the online code repository thorough, but the repository is loaded with many files, especially for graphing. If it is possible to condense these files it may be easier for a reader to duplicate the study.}}
+
+%To do
 
 \end{enumerate}
 
