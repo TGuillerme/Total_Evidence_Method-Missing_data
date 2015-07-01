@@ -2,7 +2,7 @@
 [Thomas Guillerme](http://tguillerme.github.io) and [Natalie Cooper](https://http://nhcooper123.github.io/).
 
 This repository contains all the code and data used in the manuscript.
-###### Manuscript in review in PLoS One.
+###### Manuscript in review in Molecular Phylogenetics and Evolution.
 
 ## Manuscript
 The latest version of the manuscript is available in the Manuscript folder.
