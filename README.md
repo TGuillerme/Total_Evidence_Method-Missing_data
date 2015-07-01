@@ -23,7 +23,7 @@ The missing data trees are available in the `ML_trees.zip` and `ChainX_Bayesian.
 #####Tree comparisons
 The tree comparisons results are available in the `Tree_Comparisons.zip` file.
 
-Note that because of the size of the data files (33.55 GB in total) and the limitations of the size of the files uploadable on figshare, the zip files are split in roughly 200 MB files.
+Note that because of the size of the data files (33.55 GB in total) and the limitations of the size of the files uploadable on figshare, the zip files are split in roughly 200 MB files. Some files might have been corrupted while uploading. We are currently trying to find a better solution to store all the data but in the mean time, please [email me](mailto:guillert@tcd.ie) if you find a corrupted file.
 
 ## Analysis
 This folder contains details on the code used to run the analyses as detailed in the paper.
