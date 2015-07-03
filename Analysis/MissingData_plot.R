@@ -162,10 +162,10 @@ par(op)
 #Plot global results (single)
 #####################
 #windows parameters
-ylim=c(0,1)
+ylim=c(c(0,1),c(-0.5,1))
 
 #data parameters
-data.sets<-c("ML_bootstraps","Bayesian_treesets")
+data.sets<-c("ML_besttrees","Bayesian_contrees")
 metrics<-c("R.F_Cluster","Triples")
 
 #Plot
