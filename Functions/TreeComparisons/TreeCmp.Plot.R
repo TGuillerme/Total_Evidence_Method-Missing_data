@@ -628,7 +628,7 @@ signi.TreeCmp.plot<-function(data.list, parameter, metric, probs, diff.type, pos
 ##########################
 #Plot the global data
 ##########################
-#v.0.2
+#v.0.3
 #Update: added fix colour gradient
 #Update: added double plot
 ##########################
@@ -643,10 +643,10 @@ signi.TreeCmp.plot<-function(data.list, parameter, metric, probs, diff.type, pos
 #<...> any optional arguments to be passed to TreeCmp.Plot()
 ##########################
 #----
-#guillert(at)tcd.ie - 25/11/2014
+#Update: decoupled the y lim option
+#guillert(at)tcd.ie - 03/07/2017
 ##########################
-
-global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('blue','red'), shift='auto', format='A5',...) {
+global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('blue','red'), shift='auto', format='A5', ylim=c(0,1) ,...) {
 
     #Graphic layout
     if(format == 'A5') {
@@ -661,12 +661,25 @@ global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('bl
     colfunc<-colorRampPalette(col.grad)
     colgrad<-colfunc(5)
 
+    #Setting the ylim
+    if (length(ylim) == 2) {
+        ylim1<-ylim
+        ylim2<-ylim
+    } else {
+        ylim1<-ylim[1:2]
+        ylim2<-ylim[3:4]
+    }
+
     #FIRST PLOT
 
     #Plot the TreeCmp results
     par(mar=c(0,4,2,2), bty="l")
-    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[1], col=col, shift=shift, ylab="Robinson-Foulds distance", ...)
-    
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[1], col=col, shift=shift, ylab="Normalised Robinson-Foulds metric", ylim=ylim1, ...)
+    #Add the 0 line if ylim1 < 0
+    if(min(ylim1) < 0 ) {
+        abline(h=0, lty=3)
+    }
+
     #Add the legend bars
     par(mar=c(2,4,0,2))
     plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', yaxt='n', bty='n', xaxt='n') #
@@ -694,9 +707,13 @@ global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('bl
 
     #Plot the TreeCmp results
     par(mar=c(0,4,2,2), bty="l")
-    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[2], col=col, shift=shift, ylab="Triplets distance", ...)
-
-        #Add the legend bars
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[2], col=col, shift=shift, ylab="Normalised Triplets distance metric", ylim=ylim2, ...)
+    #Add the 0 line if ylim1 < 0
+    if(min(ylim2) < 0 ) {
+        abline(h=0, lty=3)
+    }
+    
+    #Add the legend bars
     par(mar=c(2,4,0,2))
     plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', xaxt='n', yaxt='n', bty='n')
     text(-2, 2.5, "ML")
