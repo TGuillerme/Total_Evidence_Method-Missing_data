@@ -20,50 +20,77 @@ Random51<-Random51[,-7]
 #########################
 #Loading the treesets
 #########################
-#-----------------------
-#ML chains
-#-----------------------
-#Best trees
-setwd("../Data/Tree_Comparisons/True_trees/ML/besttree")
+#Random starting tree to best tree
+setwd("../Data/Starting_tree/consensus/Rand_to_best/")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-ML_besttrees<-NTS(tmp, Random51)
-setwd('../../../../../Analysis/')
+Rand_to_best<-NTS(tmp, Random51)
+setwd('../../../../Analysis/')
 
-#Bootstraps
-#setwd("../Data/Tree_Comparisons/ML/bootstraps")
-#tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-#ML_bootstraps<-NTS(tmp, Random51[-7])
-#setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
-
-#-----------------------
-#Bayesian chains
-#-----------------------
-#Consensus
-setwd("../Data/Tree_Comparisons/True_trees/Bayesian/consensus")
+#Random starting tree to true tree
+setwd("../Data/Starting_tree/consensus/Rand_to_true/")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-Bayesian_contrees<-NTS(tmp, Random51)
-setwd('../../../../../Analysis/')
+Rand_to_true<-NTS(tmp, Random51)
+setwd('../../../../Analysis/')
 
-#Treesets
-#setwd("../Data/Tree_Comparisons/WithRFL/Bayesian/treesets")
-#tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-#Bayesian_treesets<-NTS(tmp, Random51)
-#setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+#Random starting tree to best tree
+setwd("../Data/Starting_tree/consensus/True_to_best/")
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
+True_to_best<-NTS(tmp, Random51)
+setwd('../../../../Analysis/')
+
+#Random starting tree to true tree
+setwd("../Data/Starting_tree/consensus/True_to_true/")
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
+True_to_true<-NTS(tmp, Random51)
+setwd('../../../../Analysis/')
+
+#########################
+#Load the CPU timer
+#########################
+timer<-read.csv("../Data/Starting_tree/timing.csv")
+paste("Using the true tree makes it ", round(sum(timer$random.tree, na.rm=TRUE)/sum(timer$true.tree, na.rm=TRUE), digit=3), " times faster.", sep="")
 
 
 #########################
-#Saving the data
+#Plotting the differences
 #########################
-#save(ML_besttrees, file="../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
-#save(ML_bootstraps, file="../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
-#save(Bayesian_contrees, file="../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
-#save(Bayesian_treesets, file="../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
 
-#Quick load
-load("../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
-#load("../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
-load("../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
-#load("../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
+#Plotting the results (RF)
+TreeCmp.Plot(True_to_best, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[1], lines=TRUE, add=FALSE, shift=0, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+TreeCmp.Plot(Rand_to_best, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+TreeCmp.Plot(True_to_true, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+TreeCmp.Plot(Rand_to_true, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[4], lines=TRUE, add=TRUE, shift=0.3, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+legend(3.8,0.4, legend=c("True tree (start) vs best tree","Random tree (start) vs best tree", "True tree (start) vs true tree", "Random tree (start) vs true tree"), col=palette()[1:4], pch=19, cex=0.7)
+#Plotting the results (Tr)
+TreeCmp.Plot(True_to_best, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[1], lines=TRUE, add=FALSE, shift=0, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+abline(h=0, lty=3)
+TreeCmp.Plot(Rand_to_best, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+TreeCmp.Plot(True_to_true, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+TreeCmp.Plot(Rand_to_true, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[4], lines=TRUE, add=TRUE, shift=0.3, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+legend(3.8,1, legend=c("True tree (start) vs best tree","Random tree (start) vs best tree", "True tree (start) vs true tree", "Random tree (start) vs true tree"), col=palette()[1:4], pch=19, cex=0.7)
+
+#########################
+#Measuring the differences (using Bhattacharrya)
+#########################
+
+bhatt.coeff(True_to_best$L00F00C00$R.F_Cluster, Rand_to_best$L00F00C00$R.F_Cluster)
+bhatt.coeff(True_to_best$L10F10C10$R.F_Cluster, Rand_to_best$L10F10C10$R.F_Cluster)
+bhatt.coeff(True_to_best$L25F25C25$R.F_Cluster, Rand_to_best$L25F25C25$R.F_Cluster)
+bhatt.coeff(True_to_best$L50F50C50$R.F_Cluster, Rand_to_best$L50F50C50$R.F_Cluster)
+bhatt.coeff(True_to_best$L75F75C75$R.F_Cluster, Rand_to_best$L75F75C75$R.F_Cluster)
+
+#make a table of the results
+result_table<-timer
+order(result_table, tree)
+result_table$RF<-NA
+result_table$Tr<-NA
+
+
+
+hdr.den(True_to_best$L25F25C25$R.F_Cluster)
+
+
+
 
 #Setting up the parameters
 par_ML<-c(1,26,51,76,101)
