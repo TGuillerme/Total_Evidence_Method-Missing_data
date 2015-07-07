@@ -1,17 +1,18 @@
 ##########################
 #Wrapper for the TreeCmp function for comparing the trees to a chain of reference trees (classicaly best/true)
 ##########################
-#SYNTAX: TEM_TreeCmp_chain <chain> <method> <type> <ref>
+#SYNTAX: TEM_TreeCmp_chain <chain> <method> <type> <draws> <ref>
 #With
 #<chain> chain name
 #<method> either Bayesian or ML
 #<type> either single or treesets
+#<draws> the number of draws (ignored if type is single)
 #<ref> either (${ref} or Best)
 ##########################
-#version: 0.1
-TEM_TreeCmp_chain_version="TEM_TreeCmp_chain.sh v0.1"
+#version: 0.2
+#Update: added draws option
 #----
-#guillert(at)tcd.ie - 06/07/2015
+#guillert(at)tcd.ie - 07/07/2015
 ##########################
 #Requirements:
 #-R 3.x
@@ -25,7 +26,8 @@ TEM_TreeCmp_chain_version="TEM_TreeCmp_chain.sh v0.1"
 chain=$1
 method=$2
 type=$3
-ref=$4
+draws=$4
+ref=$5
 
 if echo $method | grep "ML" > /dev/null
 #ML method
@@ -43,7 +45,7 @@ then
         do 
             tree=$(echo ${input} | sed 's/ML_trees\/'"${chain}"'_ML\/RAxML_bootstrap\/RAxML_bootstrap.'"${chain}"'_//g')
             echo $tree
-            sh TEM_TreeCmp.sh ${ref}_trees/${chain}_${ref}Tree/${chain}-${ref}_tree.tre ${input} 1000 ${chain}_${tree}-${method}-${type}_${ref} newick TRUE
+            sh TEM_TreeCmp.sh ${ref}_trees/${chain}_${ref}Tree/${chain}-${ref}_tree.tre ${input} ${draws} ${chain}_${tree}-${method}-${type}_${ref} newick TRUE
         done
     fi
 
@@ -59,7 +61,7 @@ else
         do 
             tree=$(echo ${input} | sed 's/Bayesian_trees\/'"${chain}"'_Bayesian\/treesets\/'"${chain}"'_//g' | sed 's/.treeset//g')
             echo $tree
-            sh TEM_TreeCmp.sh ${ref}_trees/${chain}_${ref}Tree/${chain}-${ref}_tree.nex ${input} 10 ${chain}_${tree}-${method}-${type}_${ref} nexus TRUE
+            sh TEM_TreeCmp.sh ${ref}_trees/${chain}_${ref}Tree/${chain}-${ref}_tree.nex ${input} ${draws} ${chain}_${tree}-${method}-${type}_${ref} nexus TRUE
         done        
     fi
 fi
