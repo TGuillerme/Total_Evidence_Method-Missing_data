@@ -10,8 +10,7 @@
 #<trees> must be either nexus or newick
 #<rooted> must be either TRUE or FALSE
 ##########################
-#version: 1.0
-TEM_TreeCmp_version="TEM_TreeCmp.sh v1.0"
+#version: 1.1
 #Update: improved output format
 #Update: correction on the random tree selection from the ref tree: if the ref tree is unique, no sample is performed any more.
 #Update: cleaning improved (remove the files from the concern chain only)
@@ -26,9 +25,9 @@ TEM_TreeCmp_version="TEM_TreeCmp.sh v1.0"
 #Update: number of species is now obsolete
 #Update: method and random draws are now the same option, if random draws is 1, then method is singletrees, if random draws is >1 then method is Treesets
 #Update: input tree now allows to use a chain name
-#
+#Update: can now deal with nexus files containing a translate part
 #----
-#guillert(at)tcd.ie - 31/07/2014
+#guillert(at)tcd.ie - 07/07/2015
 ##########################
 #Requirements:
 #-R 3.x
@@ -176,17 +175,19 @@ else
             sed -n ''"${j}p"'' $INPtree > ${output}_tmp/INP.tre
         else
             #Nexus trees
-            ENDheader=$(grep -n "[[:space:]]TREE[[:space:]]\|[[:space:]]Tree[[:space:]]\|[[:space:]]tree[[:space:]]" $REFtree | cut -f1 -d: | sed -n '1p')
-            let "ENDheader -= 1"
+            ENDheaderREF=$(grep -n "[[:space:]]TREE[[:space:]]\|[[:space:]]Tree[[:space:]]\|[[:space:]]tree[[:space:]]" $REFtree | cut -f1 -d: | sed -n '1p')
+            ENDheaderINP=$(grep -n "[[:space:]]TREE[[:space:]]\|[[:space:]]Tree[[:space:]]\|[[:space:]]tree[[:space:]]" $INPtree | cut -f1 -d: | sed -n '1p')
+            let "ENDheaderREF -= 1"
+            let "ENDheaderINP -= 1"
             inexus=$i
             jnexus=$j
-            let "inexus += $ENDheader"
-            let "jnexus += $ENDheader"
-            sed -n '1,'"$ENDheader"'p' $REFtree > ${output}_tmp/REF.tre
+            let "inexus += $ENDheaderREF"
+            let "jnexus += $ENDheaderINP"
+            sed -n '1,'"$ENDheaderREF"'p' $REFtree > ${output}_tmp/REF.tre
             #echo ";" >> ${output}_tmp/REF.tre
             sed -n ''"${inexus}p"'' $REFtree >> ${output}_tmp/REF.tre
             echo "END;" >> ${output}_tmp/REF.tre
-            sed -n '1,'"$ENDheader"'p' $INPtree > ${output}_tmp/INP.tre
+            sed -n '1,'"$ENDheaderINP"'p' $INPtree > ${output}_tmp/INP.tre
             #echo ";" >> ${output}_tmp/INP.tre
             sed -n ''"${jnexus}p"'' $INPtree >> ${output}_tmp/INP.tre
             echo "END;" >> ${output}_tmp/INP.tre
@@ -244,7 +245,7 @@ else
 
     #Creating the header using the randon draws list
     #Creating the header
-    echo "Ref.tree draw\tInp.tree draw" > ${output}_tmp/header.tmp
+    echo "Ref.tree@Inp.tree" | sed 's/@/'"$(printf '\t')"'/g' > ${output}_tmp/header.tmp
     paste ${output}_tmp/REFtree.sample ${output}_tmp/INPtree.sample >> ${output}_tmp/header.tmp
 fi
 
