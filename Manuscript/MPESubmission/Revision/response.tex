@@ -225,7 +225,7 @@ We removed the part suggested by the reviewer as follow: "we used the following 
 
 \item{\textcolor{blue}{\textbf{line 167 and throughout manuscript:} replace usage of 'inferred' when referring to simulating data. Replace with 'generated', 'simulated', or 'created', for example. 'Infer' should only be used when a model is fit to data to infer some output such as a tree, transition rates, etc. }}
 
-%To do!
+We replace 'inferred' by 'simulated' on lines @@@ and @@@ %LaTeX lines 192 'The molecular matrix was simulated' and 199 'We simulated the morphological matrix using the R'
 
 \item{\textcolor{blue}{\textbf{line 173:} streamline to "The substitution rates were selected from a gamma distribution with…" or something similar. }}
 
@@ -233,15 +233,19 @@ We modified the following sentence as suggested: "The substitution rates were se
 
 \item{\textcolor{blue}{\textbf{line 173 to 176:} need some justification for why the substitution rate with alpha shape of 0.5  will avoid homoplasy. Yang 1996 is cited but clarify the justification of what is 'too much' homoplasy. }}
 
-%To do
+We changed the sentence to:
+"In practice, such a value of $\alpha$ $<$ 1 decreases the number of sites with high substitution rates, thus reducing homoplasic sites and increasing the phylogenetic signal (Hassanin et al., 1998; Estoup et al., 2002).%\citep{Hassanin1998611,EstoupHomoplasy}.
+Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below)." (line @@@).
 
 \item{\textcolor{blue}{\textbf{Line 176 to 180:} could be streamlined. It is not clear what is meant by 'no special assumption about how the characters evolved', what constitutes a special assumption? Could potentially be reduced to something like 'this model and these parameter settings strike a balance between realism for empirical datasets (citations) and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations'. Just for example.}}
 
-%To do
+We modified the sentence as follows: "We selected this model and parameters settings to be a compromise between realism from empirical datasets (e.g. Kelly et al., 2014) %\citep[e.g.][]{kellymolecular2014}
+and models with few parameters (cf. Springer et. al., 2012) %\citep[cf.][]{springermacroevolutionary2012}
+to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)."
 
 \item{\textcolor{blue}{\textbf{line 182:} give the ape function used}}
 
-%To do
+We modified the sentence as follows: "We simulated the morphological matrix using the rTraitDisc function from the R package ape v. 3.0-11 (Paradis et al., 2004) to generate a matrix of 100 character sites for 51 taxa."
 
 \item{\textcolor{blue}{\textbf{line 185 to 188:} streamline, e.g. '…sampling with a probability of 0.85 for two states characters and 0.15 for three state characters (based on an empirical review of published matrices, see Appendix A).'}}
 
@@ -249,7 +253,12 @@ We modified the following sentence as suggested: "sampling with a probability of
 
 \item{\textcolor{blue}{\textbf{line 193 to 196:} again, justify why gamma with shape of 0.5 is appropriate for minimizing homoplasy. This distribution places highest probability on substation rates less than 0.5, when one of the cited references potentially suggests that the lowest topological error was found at rates of ~0.5-1.5, and that very low substitution rates incurred error similar to very high rates ((Wright and Hillis 2014) 2014 Figure 3). Other cited references do not clearly state that this distribution and shape setting is optimal, so the authors really must justify. }}
 
-%To do
+% To do!
+% TG: a fair point... Can I just say: "Coz' April told me it was fine?"
+% TG: one way to justify it should be to say that we tried to avoid homoplasy but we actually wanted to add a little bit of it to be kind of realistic.
+% TG: in Wright & Hillis, low rate characters make the tree as "shitty" as the "shittiest" ML estimation. Now this "shittiness" is in quotes because it's actually a relative "shittiness". Using the Mk model with no missing data, the Topological difference is actually very low (so it's not "shitty") for low rate characters.
+% TG: then a low rate character with 75% missing gets the maximum topological difference with the Mk model (which is still all right).
+% TG: also, in our case, the actual character rate is not that low. We sample from a low distribution but force them to be non-invariable (therefore, our pratical minimum rate is 0.02 because for one character, at least one species must have a different state (1/51)).
 
 \item{\textcolor{blue}{\textbf{line 201:} change 'get' for 'obtain' or something less colloquial.}}
 
@@ -261,7 +270,27 @@ We modified the sentence as follows: "To avoid avoid matrices containing taxa wi
 
 \item{\textcolor{blue}{\textbf{line 237-246:} I understand the rational presented by the authors for comparing missing data trees to the best tree inferred from max. likelihood/Bayesian techniques rather than compare missing data trees to the true tree used to simulate the data. I still feel it would be an important contribution to this paper, however, to compare the missing data trees to the true tree to evaluate the effects of missing data on the tree inference. Also it may lend insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it. }}
 
+We do agree with the point raised with both reviewers on comparing the true tree to the best/missing-data trees.
+As reviewer 1 states: "[this analysis can give] insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it.".
+We've added the results of these comparisons to the supplementary materials (Appendix 3 - @@@).
+However, even though we agree with the comments of both reviewer that knowing the difference between the true and best/missing-data trees is important, we do not think that it "adds an additional layer of complexity that can't be accounted for via simulation" (reviewer 2, comment 1).
+In this simulations, we had to make a choice between (1) simulating larger matrices but with less chains (i.e. less variance) or (2) smaller matrices with more variance.
+We deliberately made the second choice because our main question was "what is the effect of our parameters on recovering the topology".
+In fact, regarding our problematic, we maintain that comparing the best tree to the missing-data trees is the best approach to answer this specific question for two reasons:
+\begin{enumerate}
+\item{The true tree is always unknown:} as we state in the manuscript: "In real world situations, the ``true'' tree is never available" (line 242 in the first manuscript and @@@ in the revision).
+\item{The true tree is just the starting point of the simulations:} in fact, we use the true tree only as a starting point for our simulations. Once generated, the true tree is fed to a cascade of algorithms and softwares (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes) described in section 2.1 and 2.3 in order to get the best tree and the missing-data trees. Comparing the latests to the true tree will answer to the problematic "what is the effect of our missing-data parameters and the cascade of algorithms and softwares on recovering the true topology?".
+\end{enumerate}
+Therefore we added the second justification to the main text (see below this response) and added these analysis (true vs. best/missing-data trees) to the supplementary for potential readers that might be interested by this specific problematic.
+
+We added the following justification in the main text:
+"blalbalbal" (line @@@).
+
+
 %To do (MAJOR)
+% Differences between True tree and best/missing-data trees.
+%"insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it" -> no, our parameters were not adequate. However this can be due to the size of the matrices. It is likely that phylo signal (ability to get close to the true tree) will increase with bigger matrices. Here we had to make a choice between larger matrices and less variance or smaller matrices and higher variances. We chose the second point because we were mainly interested in the effect of our parameters on recovering the topology. Because the true tree is just a starting tree for our simulations, it has not a lot of influence on the generation of the best tree. In other words, the best/true tree difference is more an assessment of the ability of the cascade of algorithms and softwares used (tree.bd{diversitree}, seqGen{phyclust}, rTraitDisc{ape}, RAxML, MrBayes) to perform with small size matrices.
+
 
 \item{\textcolor{blue}{\textbf{line 249:} condense citations to one parenthetical statement, 'GTR model (Tavare, 1986, default setting in RAx…)'. Also watch for citations in parentheses inside of other parenthetical statements on line 250 and throughout the manuscript. }}
 
