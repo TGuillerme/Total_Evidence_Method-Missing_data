@@ -70,6 +70,38 @@ The code used for this section is available at \url{https://github.com/TGuillerm
 \label{Fig_AppendixCharacters}
 \end{figure}
 
+\subsection{Effect of the starting tree in Bayesian inference}
+We used the ``true'' tree as a starting tree for the two MCMC chains in the Bayesian inference for decreasing the computing time.
+To assess if this had an effect on the topology of the ``best'' tree, we ran a sub-sample of trees using a different random tree for the two MCMC chains \citep[default MrBayes option;][]{Ronquist2012mrbayes}.
+We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $M_C$=0\%; second tree: $M_L$=10\%, $M_F$=10\% and $M_C$=10\%, etc.) on the first 20 simulation chains.
+We then compared the trees inferred using the ``true'' tree as a starting tree to the trees using a random tree as a starting tree using the normalised Robinson-Foulds and Triplets metrics.
+Additionally, we compared the trees inferred using a random tree as a starting tree to the ``best'' tree (inferred using the ``true'' tree as a starting tree) and to the ``true'' tree to see whether our results varied if we didn't used the ``true'' tree as a starting tree.
+
+\begin{table}[!ht]
+\caption{Normalised topological metric between trees using the ``true'' or a random tree as a starting tree for the MCMC chains.}
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+  \hline
+ Tree &  Metric & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\ 
+  \hline
+    $M_L$=0\%; $M_F$=0\%; $M_C$=0\%          & $RF$ & 0.00 & 0.00 & 0.10 & 0.20 & 0.32 & 1.00 \\ 
+                                             & $Tr$ & 0.34 & 0.49 & 0.61 & 0.62 & 0.75 & 1.00 \\ 
+    $M_L$=10\%; $M_F$=10\%; $M_C$=10\%       & $RF$ & 0.03 & 0.54 & 0.69 & 0.64 & 0.77 & 0.98 \\ 
+                                             & $Tr$ & 0.08 & 0.57 & 0.65 & 0.64 & 0.73 & 0.82 \\ 
+    $M_L$=25\%; $M_F$=25\%; $M_C$=25\%       & $RF$ & 0.02 & 0.74 & 0.80 & 0.79 & 0.89 & 0.98 \\ 
+                                             & $Tr$ & 0.21 & 0.67 & 0.73 & 0.72 & 0.77 & 0.84 \\ 
+    $M_L$=50\%; $M_F$=50\%; $M_C$=50\%       & $RF$ & 0.00 & 0.00 & \textbf{0.00} & \textbf{0.01} & 0.01 & 0.04 \\ 
+                                             & $Tr$ & 0.08 & 0.38 & 0.59 & 0.57 & 0.73 & 0.84 \\ 
+    $M_L$=75\%; $M_F$=75\%; $M_C$=75\%       & $RF$ & 0.00 & 0.00 & \textbf{0.01} & \textbf{0.02} & 0.04 & 0.11 \\ 
+                                             & $Tr$ & 0.21 & 0.36 & 0.56 & 0.55 & 0.74 & 0.87 \\ 
+   \hline
+\end{tabular}
+\label{Tab_Results-Difference_methods}
+\end{table}
+
+%Incl table + incl figure 
+
+
 
 \newpage
 \subsection{Tree Inference Software settings}
