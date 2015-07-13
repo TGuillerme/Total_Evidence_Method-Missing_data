@@ -366,7 +366,13 @@ We modified the sentence as suggested: "they have a larger proportion of missing
 
 \item{\textcolor{blue}{\textbf{lines 542-547:} These seem like the most important practical results and should be more strongly emphasized. These are very important results for practitioners and the authors should try to make it more clear to the reader that this is a key take-home message.}}
 
-%To do
+We modified the sentence to:
+
+"Surprisingly, the number of missing living taxa with morphological data ($M_{L}$) and the overall number of missing morphological characters ($M_{C}$), have a bigger effect than the amount of missing data for the fossil taxa ($M_{F}$).
+It seems therefore more important to integrate a maximum of living taxa with morphological data as well as a maximum number of characters.
+Additionally, when both $M_{L}$ and $M_{C}$ reach 50\% of missing data, the matrix does not contain enough phylogenetic information for the fossil taxa to be placed with confidence in the tree (Figure 6)."
+
+%Original: The number of missing living taxa with morphological data ($M_{L}$) and the overall number of missing morphological characters ($M_{C}$), have a bigger effect than the amount of missing data for the fossil taxa ($M_{F}$), and when both $M_{L}$ and/or $M_{C}$ reach 50\% of missing data, the matrix does not contain enough phylogenetic information for the fossil taxa to be placed with confidence in the tree (Figure 6).
 
 \item{\textcolor{blue}{\textbf{line 552:} replace 'cladistic' with 'parsimony'. While one has come to be associated with the other in the literature, they are not synonymous. }}
 
@@ -378,6 +384,11 @@ We modified the sentence as suggested : "than the ``best'' Maximum Likelihood tr
 
 \item{\textcolor{blue}{\textbf{line 549-565:} again, I am left wondering how much the differences in performance of max. likelihood and Bayesian inference techniques are driven by the use of the 'true' tree as a starting tree in the Bayesian MCMC search, while the likelihood analysis had no such guide tree to begin with. The authors at least need to make this point clear, if not re-run some subset of analyses without introducing a starting tree to test the effects of using the 'true' tree as a starting tree or not. I understand the computational limitations, but the practical limitation that empiricists will never have the 'true' tree to start with may (or may not) have a large impact on our interpretation and the generality of these findings. }}
 
+We do understand the reviewers concern and added an analysis in the Appendix A (@@@) where we tested the effect of using the ``true'' tree as a starting tree. We found that there is no significant effect between using the ``true'' tree or a random tree (MrBayes default) as a starting tree on topological recovery. We refer to this supplementary analysis in the main text as follows:
+
+"Our results show that the topology of the Bayesian consensus tree is always closer to the ``best'' tree topology than the ``best'' Maximum Likelihood tree (Figure 5).
+Note that the methodological choice of using the ``true'' tree as a starting tree for the Bayesian Inference (see Methods) had no significant effect on topological recovery (see Appendix A - @@@ for details on the analysis of the effect of the starting tree in Bayesian inference)."
+
 %To do (MAJOR)
 
 \item{\textcolor{blue}{\textbf{line 593:} 'MorphoBank' - the 'b' should be capitalized in keeping with the authors' usage (O'Leary and Kaufman 2011)}}
@@ -388,21 +399,50 @@ We fixed this typo.
 
 We fixed this typo.
 
-\item{\textcolor{blue}{\textbf{line 595-606:} this paragraph seems unsatisfactory advice for practitioners. First, advising that the tree topology be fixed using the Bayesian consensus tree before conducting analyses such as dating strongly conditions the results on only a single tree and as the authors point out in the parenthetical statement, the dating information could improve accuracy. Indeed one of the many advantages of tip-dating is the joint inference of tree topology and divergence times. The following statements that the posterior distribution should not be discarded does not leave the reader with a clear path that they should follow - if only the fixed tree topology is used to estimate divergence times, how can the substitution rate-scaled posterior distribution of highly probable trees be used for most comparative analyses which require time-scaled branch lengths? This paragraph requires further justification and this study does have important bearing on a subject that gets little attention. }}
+\item{\textcolor{blue}{\textbf{line 595-606:} this paragraph seems unsatisfactory advice for practitioners.
+First, advising that the tree topology be fixed using the Bayesian consensus tree before conducting analyses such as dating strongly conditions the results on only a single tree and as the authors point out in the parenthetical statement, the dating information could improve accuracy. Indeed one of the many advantages of tip-dating is the joint inference of tree topology and divergence times.
+The following statements that the posterior distribution should not be discarded does not leave the reader with a clear path that they should follow - if only the fixed tree topology is used to estimate divergence times, how can the substitution rate-scaled posterior distribution of highly probable trees be used for most comparative analyses which require time-scaled branch lengths?
+This paragraph requires further justification and this study does have important bearing on a subject that gets little attention. }}
 
+We revised the statements in the whole paragraph as follows:
+"Another practical implication of our results regards the tree inference methods.
+Because the Bayesian consensus trees consistently recovered topologies closer to the ``best'' tree topology than the Maximum Likelihood trees, we advice using the Bayesian consensus trees as a topological constraint for tree inferences using the Total-Evidence method such as tip-dating (e.g. Ronquist et al., 2012a; Wood et al., 2013; Matzke, 2014; although it is possible that including dating information during tree inference could also improve the accuracy of the Bayesian posterior tree distribution).
+Additionally, using the Bayesian consensus tree rather than the Maximum Likelihood can reduce the amount of ``false positive'' topologies.
+As shown in figure 5 and discussed in the section above (Effects of tree inference methods), the Bayesian consensus tree is more likely to not resolve nodes weakly supported due to missing data than the Maximum Likelihood tree that is more likely to wrongly resolve such nodes (i.e. creating a ``false positive'' node).
+Note, however, that we do not suggest discarding the Bayesian posterior tree distribution once one chose to use the Bayesian consensus tree topology even though they performed poorly in recovering the ``best'' tree topology in our simulations (this can probably be imputed to the difficulties comparing distributions of trees; see above).
+This can be particularly important because these trees will be invaluable for phylogenetic comparative analyses. For example a sub-sample of posterior trees distributions can be used to asses macroecological questions while better taking into account topological uncertainty (e.g. Fritz et al. 2009 and Jetz et al. 2012 trees used in Healy et al. 2014)."
 %To do (rewrite)
 
 \item{\textcolor{blue}{\textbf{line 612-613:} too obvious and not especially helpful. We should aim to have as little missing data as possible…more helpful, and something especially discovered in this study, is concentrating on having overlapping morphological characters between the living and fossil taxa to be able to place the living taxa with strong support via large datasets (combined data) and being able to position the fossils based on their shared derived characters with living taxa. This is an important point to make clearer. }}
 
-%To do (rewrite)
 
 \item{\textcolor{blue}{\textbf{line 613-615:} rephrase - sentence is choppy with all the commas. }}
 
 We modified the sentence as follow: "Because it can be difficult to do for fossil taxa, we recommend coding as many morphological characters as possible for living taxa." (line @@@),
 
-\item{\textcolor{blue}{\textbf{line 615-618:} It seems more important to me that the authors emphasize what implications it may have for previous and future studies that Bayesian analyses outperform max. likelihood, other than to re-hash that the authors feel the Bayesian consensus should be used to fix topologies for other downstream analyses. For example, can the authors cite some combined analyses that used only likelihood analyses and came up with controversial results? Or what about other studies that have done combined analyses with different optimality criteria and found different topologies? What about implications for studies that have used molecular scaffold techniques to fix the topology of living taxa based on analyses of only DNA analyses and then fit the fossils into this fixed tree? Also 'further' is misspelled.  }}
+\item{\textcolor{blue}{\textbf{line 615-618:} It seems more important to me that the authors emphasize what implications it may have for previous and future studies that Bayesian analyses outperform max. likelihood, other than to re-hash that the authors feel the Bayesian consensus should be used to fix topologies for other downstream analyses.
+For example, can the authors cite some combined analyses that used only likelihood analyses and came up with controversial results?
+Or what about other studies that have done combined analyses with different optimality criteria and found different topologies?
+What about implications for studies that have used molecular scaffold techniques to fix the topology of living taxa based on analyses of only DNA analyses and then fit the fossils into this fixed tree?
+Also 'further' is misspelled.  }}
+
+%Check:
+%Wood
+%Schrago
+%Pyron
+%Schrago
+%Beck,
+%Slater
+%Ronquist
+%-Wittenberg.et.al 2015 - Org Divers Evol (TEM)
+%-Carrizo&Catalano 2015 - Cladistics (TEM)
+%-Djernæs et al 2015 MPE (TEM)
+%-Arcila et al 2015 - MPE (TEM)
+
 
 %To do (rewrite) - typo ok
+
+%Original: Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the “best” tree topology than the Maximum Likelihood trees. Therefore, we advise using Bayesian consensus tree topologies if topology must be fixed for furhter analyses. The results of our analyses are encouraging and show that it is possible to combine both neontological and palaeontological data in the same phylogeny despite issues of missing data. Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes.
 
 \item{\textcolor{blue}{\textbf{line 628:} use of computer cluster may be better placed in the methods, depending on the norm for MPE.}}
 
