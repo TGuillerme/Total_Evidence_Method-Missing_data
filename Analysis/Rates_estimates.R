@@ -64,12 +64,12 @@ True_tab<-True_tab[-c(3,31),]
 #Calculating the difference between the estimate the true rate
 differences<-matrix(data=NA, ncol=48, nrow=125)
 for(n in 1:48) {
-    differences[,n]<-True_tab[n,1]-Estimates_rates[[n]][,1]
+    differences[,n]<-Estimates_rates[[n]][,1]-True_tab[n,1]
 }
 
 differences_theoretical<-matrix(data=NA, ncol=48, nrow=125)
 for(n in 1:48) {
-    differences_theoretical[,n]<-0.5-Estimates_rates[[n]][,1]
+    differences_theoretical[,n]<-Estimates_rates[[n]][,1]-0.5
 }
 
 #Calculate the hdr for each tree
@@ -80,7 +80,7 @@ for (i in 1:125) {
 
 
 xlab=""
-ylabels="Gamma shape difference (True - Estimate)"
+ylabels="Gamma shape difference (Estimate - True)"
 ylim=c(-1,1)
 probs=c(95,50)
 
