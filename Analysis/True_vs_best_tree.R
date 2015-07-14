@@ -20,17 +20,19 @@ Random51<-Random51[,-7]
 #########################
 #Loading the treesets
 #########################
+load_chains=FALSE
+if(load_chains == TRUE) {
 #-----------------------
 #ML chains
 #-----------------------
 #Best trees
-setwd("../Data/Tree_Comparisons/True_trees/ML/besttree") #ok
+setwd("../Data/Tree_Comparisons/True_trees/ML/besttree")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_besttrees<-NTS(tmp, Random51)
 setwd('../../../../../Analysis/')
 
 #Bootstraps
-setwd("../Data/Tree_Comparisons/True_trees/ML/bootstraps") #bugged?
+setwd("../Data/Tree_Comparisons/True_trees/ML/bootstraps")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_bootstraps<-NTS(tmp, Random51)
 setwd('../../../../../Analysis/')
@@ -39,17 +41,16 @@ setwd('../../../../../Analysis/')
 #Bayesian chains
 #-----------------------
 #Consensus
-setwd("../Data/Tree_Comparisons/True_trees/Bayesian/consensus") #ok
+setwd("../Data/Tree_Comparisons/True_trees/Bayesian/consensus")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_contrees<-NTS(tmp, Random51)
 setwd('../../../../../Analysis/')
 
 #Treesets
-setwd("../Data/Tree_Comparisons/True_trees/Bayesian/treesets") #ok
+setwd("../Data/Tree_Comparisons/True_trees/Bayesian/treesets")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_treesets<-NTS(tmp, Random51)
 setwd('../../../../../Analysis/')
-
 
 #########################
 #Saving the data
@@ -58,10 +59,10 @@ save(ML_besttrees, file="../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
 save(ML_bootstraps, file="../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
 save(Bayesian_contrees, file="../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
 save(Bayesian_treesets, file="../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
-
+}
 #Quick load
 load("../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
-#load("../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
+load("../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
 load("../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
 load("../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
 
@@ -77,6 +78,7 @@ par_MLMFMC<-c(1:125)
 #########################
 #Comparing the true trees vs the best trees
 #########################
+library(hdrcde)
 Best_trees_ML<-ML_besttrees[1] ; class(Best_trees_ML) <- class(ML_besttrees)
 Best_trees_Bayesian<-Bayesian_contrees[1] ; class(Best_trees_Bayesian) <- class(Bayesian_contrees)
 
@@ -96,6 +98,11 @@ data.sets<-c("ML_besttrees","Bayesian_contrees")
 metrics<-c("R.F_Cluster","Triples")
 
 global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=c('black', 'grey'), las=2, probs=c(95, 50), ylim=c(0,1,-0.5,0.5), xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5', col.grad=c("white", "black")) 
+
+data.sets<-c("ML_bootstraps","Bayesian_treesets")
+metrics<-c("R.F_Cluster","Triples")
+
+global.TreeCmp.plot( data.sets , par_MLMFMC, metrics, col=c('black', 'grey'), las=2, probs=c(95, 50), ylim=c(0,1,-0.1,1), xaxis=NULL, las=2, xlab=NULL, shift=0.5, format='A5', col.grad=c("white", "black")) 
 
 #Why are the Bayesian trees getting better? Maybe because of the level of dissimilarity between the best and the true tree.
 #As the best tree is fairly different from the true tree in RF, when the Bayesian consensus tree loses data, it becomes more of a unresolved tree.
