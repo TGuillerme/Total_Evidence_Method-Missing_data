@@ -24,46 +24,46 @@ Random51<-Random51[,-7]
 #ML chains
 #-----------------------
 #Best trees
-setwd("../Data/Tree_Comparisons/True_trees/ML/besttree")
+setwd("../Data/Tree_Comparisons/True_trees/ML/besttree") #ok
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_besttrees<-NTS(tmp, Random51)
 setwd('../../../../../Analysis/')
 
 #Bootstraps
-#setwd("../Data/Tree_Comparisons/ML/bootstraps")
-#tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-#ML_bootstraps<-NTS(tmp, Random51[-7])
-#setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd("../Data/Tree_Comparisons/True_trees/ML/bootstraps") #bugged?
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
+ML_bootstraps<-NTS(tmp, Random51)
+setwd('../../../../../Analysis/')
 
 #-----------------------
 #Bayesian chains
 #-----------------------
 #Consensus
-setwd("../Data/Tree_Comparisons/True_trees/Bayesian/consensus")
+setwd("../Data/Tree_Comparisons/True_trees/Bayesian/consensus") #ok
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_contrees<-NTS(tmp, Random51)
 setwd('../../../../../Analysis/')
 
 #Treesets
-#setwd("../Data/Tree_Comparisons/WithRFL/Bayesian/treesets")
-#tmp<-TreeCmp.Read('Chain', verbose=TRUE)
-#Bayesian_treesets<-NTS(tmp, Random51)
-#setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd("../Data/Tree_Comparisons/True_trees/Bayesian/treesets") #ok
+tmp<-TreeCmp.Read('Chain', verbose=TRUE)
+Bayesian_treesets<-NTS(tmp, Random51)
+setwd('../../../../../Analysis/')
 
 
 #########################
 #Saving the data
 #########################
-#save(ML_besttrees, file="../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
-#save(ML_bootstraps, file="../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
-#save(Bayesian_contrees, file="../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
-#save(Bayesian_treesets, file="../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
+save(ML_besttrees, file="../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
+save(ML_bootstraps, file="../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
+save(Bayesian_contrees, file="../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
+save(Bayesian_treesets, file="../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
 
 #Quick load
 load("../Data/R_data/TreeCmp-TRUE-ML_bestrees.Rda")
 #load("../Data/R_data/TreeCmp-TRUE-ML_bootstraps.Rda")
 load("../Data/R_data/TreeCmp-TRUE-Bayesian_contrees.Rda")
-#load("../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
+load("../Data/R_data/TreeCmp-TRUE-Bayesian_treesets.Rda")
 
 #Setting up the parameters
 par_ML<-c(1,26,51,76,101)
