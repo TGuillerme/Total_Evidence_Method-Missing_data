@@ -707,7 +707,7 @@ global.TreeCmp.plot<-function(data.list, parameter, metrics, col, col.grad=c('bl
 
     #Plot the TreeCmp results
     par(mar=c(0,4,2,2), bty="l")
-    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[2], col=col, shift=shift, ylab="Normalised Triplets distance metric", ylim=ylim2, ...)
+    multi.TreeCmp.plot(data.list=data.list, parameter=parameter, metrics=metrics[2], col=col, shift=shift, ylab="Normalised Triplets metric", ylim=ylim2, ...)
     #Add the 0 line if ylim1 < 0
     if(min(ylim2) < 0 ) {
         abline(h=0, lty=3)
