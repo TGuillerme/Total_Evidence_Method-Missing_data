@@ -426,21 +426,27 @@ Or what about other studies that have done combined analyses with different opti
 What about implications for studies that have used molecular scaffold techniques to fix the topology of living taxa based on analyses of only DNA analyses and then fit the fossils into this fixed tree?
 Also 'further' is misspelled.  }}
 
+Unfortunately, we didn't found many studies formally testing the important questions asked by the reviewer. However, there exist few empirical analysis that contain results supporting our claims.
+Firstly, for the question about the topological differences between Maximum Likelihood and the Bayesian consensus tree, in Arcila et al 2015 (MPE)'s supplementary analysis, the authors compare the topology inferred from a Total Evidence matrix in both Likelihood (RAxML) and Bayesian (MrBayes) and the topology of the Bayesian consensus tree is much better supported than the one of the best ML tree. Specifically, the ML tree has 7/28 nodes have a "fair" bootstrap support ($>$ 75) and 3/28 with a good support ($>$ 90) as the Bayesian consensus tree has 17/25 nodes with a "fair" posterior probability ($>$80) and 14/25 with a good posterior probability ($>$95). We therefore used this reference to strengthen our claim of the superiority of the Bayesian consensus tree over the Maximum Likelihood one.
+Secondly, for the question about molecular scaffolds, from the few studies clearly specifying their topological constraint method, only Beck and Lee 2013 (Proceedings B) seems to compare an analysis with and without taxonomic constraint on divergence time and rates estimation (the constraint seems to have no effect) but the branch length aspect is not covered in our study.
+
+We modified the mentioned section of the conclusion as follows:
+"Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the ``best'' tree topology than the Maximum Likelihood trees.
+This has also been observed in empirical data (e.g. Arcila et al., 2015) were Maximum Likelihood trees inferred from a Total Evidence matrix were less supported than the Bayesian consensus tree.
+This might have an important impact on estimating topologies in the Total Evidence framework since previous studies had to rely either on molecular scaffolds (e.g. Slater, 2013), taxonomic constraints (e.g. Slater, 2013; Beck and Lee, 2014) or even by fixing the topology (e.g. Ronquist et al., 2012a).
+Therefore, we suggest extracting such topological frames from the Bayesian consensus tree if needed."
 %Check:
-%Wood
+% Study: method 
+%Wood 
 %Schrago
 %Pyron
-%Schrago
 %Beck,
 %Slater
 %Ronquist
 %-Wittenberg.et.al 2015 - Org Divers Evol (TEM)
 %-Carrizo&Catalano 2015 - Cladistics (TEM)
 %-Djernæs et al 2015 MPE (TEM)
-%-Arcila et al 2015 - MPE (TEM)
-
-
-%To do (rewrite) - typo ok
+%-Arcila et al 2015 - MPE (TEM) This study suggests that current implementations of tip dating may overestimate ages of divergence in calibrated phylogenies + cool figure 1
 
 %Original: Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the “best” tree topology than the Maximum Likelihood trees. Therefore, we advise using Bayesian consensus tree topologies if topology must be fixed for furhter analyses. The results of our analyses are encouraging and show that it is possible to combine both neontological and palaeontological data in the same phylogeny despite issues of missing data. Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes.
 
