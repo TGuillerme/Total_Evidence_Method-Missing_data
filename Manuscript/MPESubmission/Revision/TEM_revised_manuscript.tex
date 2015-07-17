@@ -323,6 +323,8 @@ This resulted in 7875 pairwise comparisons (a triangular matrix with $3^5$$\time
 We performed this procedure separately for each tree inference and uncertainty method.
 When two combinations of missing data parameters have a similar ability to recover the ``best'' tree topology the Bhattacharyya Coefficient will be close to one.
 Conversely, if the two combinations of missing data parameters differ, the Bhattacharyya Coefficient will be close to zero.
+Because of the difficulties to represent so many pairwise comparisons in a meaningful way, we summarized as a heat map of Bhattacharyya Coefficients (see Figure 6).
+In this type of figures, parameters that have similar or different effects on recovering the ``best'' topology (rather good or bad effects) will be denoted by similar colour patches in the heat map representation of these comparisons (see Figure 6).
 
 %\begin{figure}[h]
 %\caption{{\bf Bhattacharyya Coefficient calculation outline 1.}
@@ -334,10 +336,6 @@ To assess the effect of the different tree inference and uncertainty methods (i.
 Note that this procedure pools results from across all missing data parameter combinations so it results in just six pairwise comparisons.
 When two tree inference or uncertainty methods have a similar ability to recover the ``best'' tree topology the Bhattacharyya Coefficient will be close to one.
 Conversely, if the two tree inference or uncertainty methods differ, the Bhattacharyya Coefficient will be close to zero.
-
-%Add figure explanation
-The topological recovery is measured as (A) the Normalised Robinson-Foulds metric and (B) the Normalised Triplets metric calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange. Blue regions denotes a poor overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a strong effect on the Normalised metric and thus the topological recovery). Conversely, orange regions denotes a high overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a weak effect on the Normalised metric and thus the topological recovery). For example, for the Normalised Robinson-Foulds metric, the tree with all the missing data parameters at 0\% have a low probability of have it's Normalised Robinson-Foulds metric overlapping with any other tree (deep blue line at the base of the graph). Conversely, each parameter combination compared to itself display a complete overlap of Normalised Robinson-Foulds metric (Bhattacharyya Coefficient = 1).
-
 
 %\begin{figure}[h]
 %\caption{{\bf Bhattacharyya Coefficient calculation outline 2.}
@@ -383,16 +381,14 @@ Figure 6 shows the similarity of distributions of tree metrics in a triangular m
 %\label{Fig_Results-paircomp_within}
 %\end{figure}
 
-Using both Normalised Robinson-Foulds and Normalised Triplets metrics from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (Figure 6).
-The Normalised Robinson-Foulds metric (median Bhattacharrya coefficient = 0.79; Figure 6A), however, displays more dissimilarities than the Normalised Triplets metric (median Bhattacharrya coefficient = 0.81; Figure 6B).
+Using both Normalised Robinson-Foulds and Normalised Triplets metrics from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (thin deep blue line at the base of Figure 6).
+The Normalised Robinson-Foulds metric (median Bhattacharrya coefficient = 0.79; blue regions in Figure 6A), however, displays more dissimilarities than the Normalised Triplets metric (median Bhattacharrya coefficient = 0.81; blue regions in Figure 6B).
+The orange upper triangle in Figure 6A shows a high probability of overlap of the Normalised Robinson-Foulds metric for the trees with the $M_{L}$ parameter $\geq$ 50\% (Figure 6A).
+There is no additional effect (i.e. no dissimilarities) of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
 Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional effect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
-Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ (Figure 6A).
+Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A).
 
-
-%Add figure explanation
-The topological recovery is measured as (A) the Normalised Robinson-Foulds metric and (B) the Normalised Triplets metric calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange. Blue regions denotes a poor overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a strong effect on the Normalised metric and thus the topological recovery). Conversely, orange regions denotes a high overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a weak effect on the Normalised metric and thus the topological recovery). For example, for the Normalised Robinson-Foulds metric, the tree with all the missing data parameters at 0\% have a low probability of have it's Normalised Robinson-Foulds metric overlapping with any other tree (deep blue line at the base of the graph). Conversely, each parameter combination compared to itself display a complete overlap of Normalised Robinson-Foulds metric (Bhattacharyya Coefficient = 1).
-
-
+%Adds that it correspond to the "line" of distributions in figure 5 (upper grey distributions)
 
 For all combinations of missing data parameters and tree comparison metrics, the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distributions perform very similarly (median Bhattacharrya Coefficient = 0.85 and 0.98, using Normalised Robinson-Foulds metric or Normalised Triplets metric respectively; Table ~\ref{Tab_Results-Difference_methods}).
 These two methods, however, perform worse than the Bayesian consensus trees using Normalised Robinson-Foulds metric (median Bhattacharrya Coefficient = 0 and 0.01, for the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distribution respectively; Table ~\ref{Tab_Results-Difference_methods}; Figure 4 and Figure C2 in Appendix C).

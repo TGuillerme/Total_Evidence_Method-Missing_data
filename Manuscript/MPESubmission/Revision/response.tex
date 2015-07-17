@@ -489,13 +489,19 @@ We thank the reviewer for pointing out this difficulty and acknowledge that such
 We emphasized the figure caption, the method section explaining how we calculated this figure and the results.
 
 We modified the figure caption as follows:
-"The effects of missing data on topological recovery using Bayesian consensus trees. Both axes show the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). The topological recovery is measured as (A) the Normalised Robinson-Foulds metric and (B) the Normalised Triplets metric calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange. Blue regions denotes a poor overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a strong effect on the Normalised metric and thus the topological recovery). Conversely, orange regions denotes a high overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a weak effect on the Normalised metric and thus the topological recovery)."
+"The effects of missing data on topological recovery using Bayesian consensus trees. Both axes show the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). The topological recovery is measured as (A) the Normalised Robinson-Foulds metric and (B) the Normalised Triplets metric calculated using the Bhattacharyya Coefficient. The Bhattacharyya Coefficient values are indicated using a color gradient ranging from low probability of overlap in blue, to a high probability of overlap in orange. Blue regions denotes a poor overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a strong effect on the Normalised metric and thus the topological recovery). Conversely, orange regions denotes a high overlap in Normalised metric between the different parameters combinations (i.e. the parameters have a weak effect on the Normalised metric and thus the topological recovery)." (lines @@@)
 
 We modified the methods section as follows:
-""
+"Because of the difficulties to represent so many pairwise comparisons in a meaningful way, we summarized as a heat map of Bhattacharyya Coefficients (see Figure 6).
+In this type of figures, parameters that have similar or different effects on recovering the ``best'' topology (rather good or bad effects) will be denoted by similar colour patches in the heat map representation of these comparisons (see Figure 6)." (lines @@@)
 
 We modified the results section as follows:
-""
+"Using both Normalised Robinson-Foulds and Normalised Triplets metrics from the Bayesian consensus trees, the parameter combination with no missing data (i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $M_{C}$ = 0\%) is always the most dissimilar to all the other parameter combinations (thin deep blue line at the base of Figure 6).
+The Normalised Robinson-Foulds metric (median Bhattacharrya coefficient = 0.79; blue regions in Figure 6A), however, displays more dissimilarities than the Normalised Triplets metric (median Bhattacharrya coefficient = 0.81; blue regions in Figure 6B).
+The orange upper triangle in Figure 6A shows a high probability of overlap of the Normalised Robinson-Foulds metric for the trees with the $M_{L}$ parameter $\geq$ 50\% (Figure 6A).
+There is no additional effect (i.e. no dissimilarities) of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
+Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional effect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
+Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A)." lines(@@)
 %To do (writing)
 
 \item{\textcolor{blue}{\textbf{Table 1:} The wording of the caption is off - the second paragraph is awkward. 
