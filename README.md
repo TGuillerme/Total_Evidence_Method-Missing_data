@@ -1,17 +1,11 @@
-# Effect of missing data on topological inference using a total evidence approach
+# Effects of missing data on topological inference using a Total Evidence approach
 [Thomas Guillerme](http://tguillerme.github.io) and [Natalie Cooper](https://http://nhcooper123.github.io/).
 
 This repository contains all the code and data used in the manuscript.
 ###### Manuscript in review in Molecular Phylogenetics and Evolution.
 
 ## Manuscript
-The latest version of the manuscript is available in the Manuscript folder.
-
-To compile the paper:
-
-```
-make -C Manuscript
-```
+The latest version of the manuscript is available [here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/raw/master/Manuscript/TEM_manuscript.pdf).
 
 ## Data
 All the data is available on [figshare](http://figshare.com/articles/Effect_of_missing_data_on_topological_inference_using_a_total_evidence_approach/1306861).
@@ -26,9 +20,28 @@ The tree comparisons results are available in the `Tree_Comparisons.zip` file.
 Note that because of the size of the data files (33.55 GB in total) and the limitations of the size of the files uploadable on figshare, the zip files are split in roughly 200 MB files. Several solutions exist to unzip the whole files (such as [The Unarchiver](http://wakaba.c3.cx/s/apps/unarchiver.html)).
 Some files might have been corrupted while uploading. We are currently trying to find a better solution to store all the data but in the mean time, please [email me](mailto:guillert@tcd.ie) if you find a corrupted file.
 
+#### R data
+You can also use the pre-analysed data in [this folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Data/R_data).
+
+
 ## Analysis
-This folder contains details on the code used to run the analyses as detailed in the paper.
-####Building the "complete" phylogenies and removing the data (`shell`)
+The whole analysis is divided in four parts:
+
+* A. Generating the matrix
+* B. Removing data
+* C. Estimating phylogenies
+* D. Comparing topologies
+
+The three first parts of the analysis are time consuming (~150 CPU years). Examples of the scripts and functions to use are outlined below. The final part is divided in two sub parts, one involving `shell` and `java` scripts (outlined below) and a second one involving `R` scripts and functions (outlined at the end of this README file).
+
+However, a wuick go through demo is available [here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Analysis_Demo.R) as an `R` script. This part covers in a more thorough way the following points
+* 1. Extracting the tree comparisons from the TreeCmp java script.
+* 2. Calculating the normalised metrics and visualising the results (Figure 5 in the paper)
+* 3. Calculating the pairwise Bhattacharyya Coefficients between the "best" trees and the "missing data" trees (as outlined in figure 2 in the paper)
+* 4. Calculating the pairwise Bhattacharyya Coefficients between the methods and the metrics (as outlined in figure 3 in the paper)
+
+### Part A and B
+#### Building the "complete" phylogenies and removing the data (`shell`)
 * (1) We randomly generated a birth-death tree (the "true" tree) and used it to infer a matrix with no missing data (the "complete" matrix).
 
 * (2) We removed data from the morphological part of the "complete" matrix resulting in 125 "missing-data" matrices.
@@ -49,7 +62,8 @@ sh TEM_matsim.sh 25 1000 100 HKY
 ```
 This will generate a "True" tree, 125 phylip matrices with various amounts of missing data and save all the random values (birth-death, morphological rates, etc...).
 
-####Building the phylogenies (`shell` - RAxML & MrBayes)
+### Part C
+#### Building the phylogenies (`shell` - RAxML & MrBayes)
 * (3) We built phylogenetic trees from each matrix using both Maximum Likelihood and Bayesian methods.
 The two previous steps (1 & 2) and this one can be wrapped in the `TEM_treesim.sh` code in the function folder, [tree building section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeBuilding). The syntax used is:
 
@@ -83,13 +97,13 @@ For example, in our simulations:
 ```
 sh TEM_tasker.sh Dummy_chain_name ML modules.list.txt 5
 ```
-
-####Comparing the trees (`shell` & `R`)
+### Part D
+#### Comparing the trees (`shell` & `R`)
 * (4) We compared the "missing-data" trees to the "best" tree.
 
 This operation is run in two steps, the first one, using a `java` script to compare the trees and the second one using a `R` script to analyse the results. The code for both operations in available in the function folder, [tree comparisons section](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons).
 
-#####TreeCmp wrapper
+##### TreeCmp wrapper
 The first step is using the `TreeCmp.jar` script to compare the trees. We created a wrapping `shell` script to automate the task that is available in the [TreeCmp-shell folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/TreeCmp-Shell). The `TEM_TreeCmp_wrapper.sh` script work as follow:
 
 `sh TEM_TreeCmp_wrapper.sh <list> <x> <method> <type>`
@@ -106,7 +120,7 @@ sh TEM_TreeCmp_wrapper.sh Dummy_chain_name 1 ML single
 ```
 This operation will perform single tree comparisons between the `RAxML_besttree` with no missing data and the 125 `RAxML_besttree` trees (including the one with no missing data).
 
-#####R analysis
+##### R analysis
 Finally we ran a series of analyses presented in the final manuscript version using the various `R` scripts available in the [analysis folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Analysis).
 
 The first step is to load the various functions stored in the [tree comparisons folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/) in `R`.
