@@ -1,5 +1,4 @@
 #Script for measuring the node support for the ML "best" trees.
-#cd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Loading the functions
 source('../Functions/BS.read.R')

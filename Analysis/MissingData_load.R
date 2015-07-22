@@ -1,6 +1,4 @@
 #Data loading for Total Evidence Missing Data Analysis
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
-
 
 #######################
 #Loading the functions
@@ -25,14 +23,14 @@ Random25<-Random25[,-7]
 setwd("../Data/Tree_Comparisons/ML/besttree")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_besttrees<-NTS(tmp, Random51)
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd("../../../../Analysis")
 save(ML_besttrees, file="../Data/R_data/TreeCmp-ML_bestrees.Rda")
 
 #Bootstraps
 setwd("../Data/Tree_Comparisons/ML/bootstraps")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 ML_bootstraps<-NTS(tmp, Random51)
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd("../../../../Analysis")
 save(ML_bootstraps, file="../Data/R_data/TreeCmp-ML_bootstraps.Rda")
 
 #Bayesian chains
@@ -41,14 +39,14 @@ save(ML_bootstraps, file="../Data/R_data/TreeCmp-ML_bootstraps.Rda")
 setwd("../Data/Tree_Comparisons/Bayesian/consensus")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_contrees<-NTS(tmp, Random51)
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd("../../../../Analysis")
 save(Bayesian_contrees, file="../Data/R_data/TreeCmp-Bayesian_contrees.Rda")
 
 #Treesets
 setwd("../Data/Tree_Comparisons/Bayesian/treesets")
 tmp<-TreeCmp.Read('Chain', verbose=TRUE)
 Bayesian_treesets<-NTS(tmp, Random51)
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
+setwd("../../../../Analysis")
 save(Bayesian_treesets, file="../Data/R_data/TreeCmp-Bayesian_treesets.Rda")
 
 #Isolating the parameters per chains

@@ -1,5 +1,4 @@
 #Script for testing the Random Pairwise Bayesian Tree Comparisons (RPBTC)
-#setwd('../PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
 
 #Loading the functions
 source('../Functions/TreeComparisons/NTS.R')

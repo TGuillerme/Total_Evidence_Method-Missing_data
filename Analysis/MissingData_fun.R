@@ -1,6 +1,4 @@
 #Data loading for Total Evidence Missing Data Analysis
-setwd('~/PhD/Projects/Total_Evidence_Method-Missing_data/Analysis/')
-
 
 #######################
 #Loading the functions
