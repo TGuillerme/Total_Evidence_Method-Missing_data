@@ -30,7 +30,7 @@ if(quick.load == FALSE) {
 library(hdrcde)
 data.sets<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
 metrics<-c("R.F_Cluster","Triples")
-par<-par_MF
+par<-par_MLMFMC
 boot.RF<-sub.data(get(data.sets[3]), par, metric=metrics[1])
 boot.Tr<-sub.data(get(data.sets[3]), par, metric=metrics[2])
 bayt.RF<-sub.data(get(data.sets[4]), par, metric=metrics[1])

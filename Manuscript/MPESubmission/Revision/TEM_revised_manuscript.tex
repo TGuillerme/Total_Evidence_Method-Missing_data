@@ -548,7 +548,7 @@ We repeated these four steps 50 times.\\
 
 \noindent
 \textbf{Table 1:} Bhattacharyya Coefficients of the pairwise method comparisons.
-Each comparison which corresponds to the normalised metric between the ``best'' tree and the ``missing data" trees using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr). Each line summarizes the distribution of the probability of overlap between pairs of tree inference methods. Note that this is equivalent to performing a two-sided t-test, but we use the Bhattacharyya Coefficient here because we are comparing distributions not means. The values highlighted in bold are the extreme values of high or low probability of overlap between two methods. If two methods have a high probability of overlap, they have a similar ability to recover the ``correct" tree topology.\\
+Each comparisons corresponds to the comparison of the full (125) distributions between the ``best'' tree and the ``missing data'' trees for all the four methods (Maximum Likelihood; Bayesian consensus; Maximum Likelihood Bootstraps and Bayesian posterior trees) and the two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics. Each line summarizes the distribution of the probability of overlap between pairs of tree inference methods. The values highlighted in bold are the extreme values of high or low probability of overlap between two methods. If two methods have a high probability of overlap, they have a similar ability to recover the ``correct" tree topology.\\
 
 \begin{table}[!ht]
 %\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
@@ -558,18 +558,18 @@ Each comparison which corresponds to the normalised metric between the ``best'' 
   \hline
  Comparison &  Metric & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\ 
   \hline
-    Maximum Likelihood \textit{vs.} Bayesian consensus                 & $RF$ & 0.00 & 0.00 & 0.10 & 0.20 & 0.32 & 1.00 \\ 
-                                                                       & $Tr$ & 0.34 & 0.49 & 0.61 & 0.62 & 0.75 & 1.00 \\ 
-    Maximum Likelihood \textit{vs.} Maximum Likelihood bootstraps      & $RF$ & 0.03 & 0.54 & 0.69 & 0.64 & 0.77 & 0.98 \\ 
+    Maximum Likelihood \textit{vs.} Bayesian consensus                 & $RF$ & \textbf{0.00} & \textbf{0.00} & 0.10 & 0.20 & 0.32 & \textbf{1.00} \\ 
+                                                                       & $Tr$ & 0.34 & 0.49 & 0.61 & 0.62 & 0.75 & \textbf{1.00} \\ 
+    Maximum Likelihood \textit{vs.} Maximum Likelihood bootstraps      & $RF$ & \textbf{0.03} & 0.54 & 0.69 & 0.64 & 0.77 & \textbf{0.98} \\ 
                                                                        & $Tr$ & 0.08 & 0.57 & 0.65 & 0.64 & 0.73 & 0.82 \\ 
-    Maximum Likelihood \textit{vs.} Bayesian posterior trees           & $RF$ & 0.02 & 0.74 & 0.80 & 0.79 & 0.89 & 0.98 \\ 
+    Maximum Likelihood \textit{vs.} Bayesian posterior trees           & $RF$ & \textbf{0.02} & 0.74 & 0.80 & 0.79 & 0.89 & \textbf{0.98} \\ 
                                                                        & $Tr$ & 0.21 & 0.67 & 0.73 & 0.72 & 0.77 & 0.84 \\ 
-    Bayesian consensus \textit{vs.} Maximum Likelihood bootstraps      & $RF$ & 0.00 & 0.00 & \textbf{0.00} & \textbf{0.01} & 0.01 & 0.04 \\ 
+    Bayesian consensus \textit{vs.} Maximum Likelihood bootstraps      & $RF$ & \textbf{0.00} & \textbf{0.00} & \textbf{0.00} & \textbf{0.01} & \textbf{0.01} & \textbf{0.04} \\ 
                                                                        & $Tr$ & 0.08 & 0.38 & 0.59 & 0.57 & 0.73 & 0.84 \\ 
-    Bayesian consensus \textit{vs.} Bayesian posterior trees           & $RF$ & 0.00 & 0.00 & \textbf{0.01} & \textbf{0.02} & 0.04 & 0.11 \\ 
+    Bayesian consensus \textit{vs.} Bayesian posterior trees           & $RF$ & \textbf{0.00} & \textbf{0.00} & \textbf{0.01} & \textbf{0.02} & \textbf{0.04} & 0.11 \\ 
                                                                        & $Tr$ & 0.21 & 0.36 & 0.56 & 0.55 & 0.74 & 0.87 \\ 
-    Bayesian posterior tree \textit{vs.} Maximum Likelihood bootstraps & $RF$ & 0.50 & 0.77 & \textbf{0.85} & \textbf{0.85} & 0.96 & 1.00 \\ 
-                                                                       & $Tr$ & 0.91 & 0.96 & \textbf{0.98} & \textbf{0.97} & 0.99 & 1.00 \\ 
+    Bayesian posterior tree \textit{vs.} Maximum Likelihood bootstraps & $RF$ & 0.50 & 0.77 & 0.85 & 0.85 & \textbf{0.96} & \textbf{1.00} \\ 
+                                                                       & $Tr$ & 0.91 & \textbf{0.96} & \textbf{0.98} & \textbf{0.97} & \textbf{0.99} & \textbf{1.00} \\ 
    \hline
 \end{tabular}
 \label{Tab_Results-Difference_methods}

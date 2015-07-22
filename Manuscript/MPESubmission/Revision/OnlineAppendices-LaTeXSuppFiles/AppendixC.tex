@@ -24,6 +24,7 @@
 \usepackage[osf]{mathpazo}
 \usepackage{dcolumn}
 \usepackage{lineno}
+\usepackage{longtable}
 \pagenumbering{arabic}
 
 %Pagination style and stuff
@@ -271,5 +272,45 @@ The following section contains the supplemental results of the effects of our mi
 \end{tabular}
 \end{table}
 \end{landscape}
+
+\begin{table}[ht]
+\caption{Summary of the median Bhattacharyya Coefficients comparisons between the missing data parameters. Each value corresponds to the median Bhattacharyya Coefficient between the Normalised metrics (Robinson-Foulds - RF; Triplets - Tr) between the ``best'' and the ``missing data'' trees (as outlined in Figure 2 in the main text) for the the trees with: Missing Living taxa only ($M_L$); Missing Fossil data only ($M_F$); Missing characters only ($M_C$); and the combination of the three parameters ($M_LM_FM_C$).} 
+\begin{tabular}{llcccc}  
+  \hline
+ Method & Metric & $M_L$ & $M_F$ & $M_C$ & $M_LM_FM_C$ \\ 
+  \hline
+Maximum Likelihood & RF & 0.54 & 0.37 & 0.56 & 0.54 \\ 
+                   & Tr & 0.80 & 0.75 & 0.80 & 0.79 \\ 
+Bayesian consensus & RF & 0.73 & 0.59 & 0.60 & 0.79 \\ 
+   & Tr & 0.86 & 0.67 & 0.81 & 0.81 \\ 
+Maximum Likelihood bootstraps & RF & 0.98 & 0.96 & 0.97 & 0.78 \\ 
+   & Tr & 0.99 & 1.00 & 1.00 & 0.96 \\ 
+Bayesian posterior trees & RF & 0.86 & 0.93 & 0.94 & 0.68 \\ 
+  & Tr & 0.98 & 0.99 & 0.99 & 0.91 \\ 
+ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Summary of the median Bhattacharyya Coefficients comparisons between the missing data parameters and the methods. Each value corresponds to the median Bhattacharyya Coefficient between the Normalised metrics (Robinson-Foulds - RF; Triplets - Tr) between the `methods (as outlined in Figure 3 in the main text) for the the trees with: Missing Living taxa only ($M_L$); Missing Fossil data only ($M_F$); Missing characters only ($M_C$); and the combination of the three parameters ($M_LM_FM_C$).}
+\begin{tabular}{llcccc}  
+  \hline
+ Method & Metric & $M_L$ & $M_F$ & $M_C$ & $M_LM_FM_C$ \\ 
+  \hline
+Maximum likelihood vs. Bayesian consensus & RF & 0.69 & 0.48 & 0.66 & 0.10 \\ 
+   & Tr & 0.84 & 0.75 & 0.80 & 0.61 \\ 
+Maximum likelihood vs. Bootstraps & RF & 0.29 & 0.32 & 0.21 & 0.69 \\ 
+   & Tr & 0.53 & 0.40 & 0.39 & 0.65 \\ 
+Maximum likelihood vs. Bayesian posterior trees & RF & 0.61 & 0.71 & 0.47 & 0.80 \\ 
+  & Tr & 0.70 & 0.62 & 0.59 & 0.73 \\ 
+Bayesian consensus vs. Bootstraps & RF & 0.02 & 0.01 & 0.01 & 0.00 \\ 
+  & Tr & 0.78 & 0.54 & 0.62 & 0.59 \\ 
+Bayesian consensus vs. Bayesian posterior trees & RF & 0.02 & 0.02 & 0.04 & 0.01 \\ 
+   & Tr & 0.75 & 0.66 & 0.64 & 0.56 \\ 
+Boostraps vs. Bayesian posterior trees & RF & 0.85 & 0.72 & 0.73 & 0.85 \\ 
+   & Tr & 0.96 & 0.91 & 0.93 & 0.98 \\ 
+ \hline
+\end{tabular}
+\end{table}
 %END
 \end{document}
