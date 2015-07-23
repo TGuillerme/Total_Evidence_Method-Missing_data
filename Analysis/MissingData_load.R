@@ -8,10 +8,10 @@ source("MissingData_fun.R")
 #Loading the Random tree comparisons
 Random51<-read.table("../Data/Tree_Comparisons/RandomTrees/51t_Random.Cmp",header=TRUE)
 Random51<-Random51[,-7]
-Random26<-read.table("../Data/Tree_Comparisons/RandomTrees/26t_Random.Cmp",header=TRUE)
-Random26<-Random26[,-7]
-Random25<-read.table("../Data/Tree_Comparisons/RandomTrees/25t_Random.Cmp",header=TRUE)
-Random25<-Random25[,-7]
+#Random26<-read.table("../Data/Tree_Comparisons/RandomTrees/26t_Random.Cmp",header=TRUE)
+#Random26<-Random26[,-7]
+#Random25<-read.table("../Data/Tree_Comparisons/RandomTrees/25t_Random.Cmp",header=TRUE)
+#Random25<-Random25[,-7]
 
 #######################
 #Loading the treesets
