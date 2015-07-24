@@ -66,14 +66,14 @@ The code used for this section is available at \url{https://github.com/TGuillerm
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,keepaspectratio]{SupplementaryFigures/Rates_estimates.pdf}
-\caption{Differences between the simulated rate of each morphological character ($\alpha$ parameter) and the Bayesian estimates for the trees with missing data. The x axis shows the percentage of missing data from 0\% (white) to 75\% (black) for the three parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and $M_{C}$ (lower line). Positive values shows overestimation of the parameter and negative values shows underestimation. One unit of difference means that the estimated rate is twice as big/small than the true rate. The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the rates estimates.}
+\caption{Differences between the simulated rate of each morphological character ($\alpha$ parameter) and the Bayesian estimates for the trees with missing data. The x axis shows the percentage of missing data from 0\% (white) to 75\% (black) for the two parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and number of characters from 100 to 25 for the parameter $N_{C}$ (lower line). Positive values shows overestimation of the parameter and negative values shows underestimation. One unit of difference means that the estimated rate is twice as big/small than the true rate. The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the rates estimates.}
 \label{Fig_AppendixCharacters}
 \end{figure}
 
 \subsection{Effect of the starting tree in Bayesian inference}
 We used the ``true'' tree as a starting tree for the two MCMC chains in the Bayesian inference for decreasing the computing time.
 To assess if this had an effect on the topology of the ``best'' tree, we ran a sub-sample of trees using a different random tree for the two MCMC chains \citep[default MrBayes option;][]{Ronquist2012mrbayes}.
-We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $M_C$=0\%; second tree: $M_L$=10\%, $M_F$=10\% and $M_C$=10\%, etc.) on the first 20 simulation chains.
+We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $N_C$=100; second tree: $M_L$=10\%, $M_F$=10\% and $N_C$=90, etc.) on the first 20 simulation chains.
 We then compared the trees inferred using the ``true'' tree as a starting tree to the trees using a random tree as a starting tree using the normalised Robinson-Foulds and Triplets metrics.
 Additionally, we compared the trees inferred using a random tree as a starting tree to the ``best'' tree (inferred using the ``true'' tree as a starting tree) and to the ``true'' tree to see whether our results varied if we didn't used the ``true'' tree as a starting tree.
 
@@ -84,15 +84,15 @@ Additionally, we compared the trees inferred using a random tree as a starting t
   \hline
  Tree &  Metric & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\ 
   \hline
-    $M_L$=0\%; $M_F$=0\%; $M_C$=0\%          & $RF$ & 0.00 & 0.00 & 0.10 & 0.20 & 0.32 & 1.00 \\ 
+    $M_L$=0\%; $M_F$=0\%; $N_C$=0\%          & $RF$ & 0.00 & 0.00 & 0.10 & 0.20 & 0.32 & 1.00 \\ 
                                              & $Tr$ & 0.34 & 0.49 & 0.61 & 0.62 & 0.75 & 1.00 \\ 
-    $M_L$=10\%; $M_F$=10\%; $M_C$=10\%       & $RF$ & 0.03 & 0.54 & 0.69 & 0.64 & 0.77 & 0.98 \\ 
+    $M_L$=10\%; $M_F$=10\%; $N_C$=10\%       & $RF$ & 0.03 & 0.54 & 0.69 & 0.64 & 0.77 & 0.98 \\ 
                                              & $Tr$ & 0.08 & 0.57 & 0.65 & 0.64 & 0.73 & 0.82 \\ 
-    $M_L$=25\%; $M_F$=25\%; $M_C$=25\%       & $RF$ & 0.02 & 0.74 & 0.80 & 0.79 & 0.89 & 0.98 \\ 
+    $M_L$=25\%; $M_F$=25\%; $N_C$=25\%       & $RF$ & 0.02 & 0.74 & 0.80 & 0.79 & 0.89 & 0.98 \\ 
                                              & $Tr$ & 0.21 & 0.67 & 0.73 & 0.72 & 0.77 & 0.84 \\ 
-    $M_L$=50\%; $M_F$=50\%; $M_C$=50\%       & $RF$ & 0.00 & 0.00 & \textbf{0.00} & \textbf{0.01} & 0.01 & 0.04 \\ 
+    $M_L$=50\%; $M_F$=50\%; $N_C$=50\%       & $RF$ & 0.00 & 0.00 & \textbf{0.00} & \textbf{0.01} & 0.01 & 0.04 \\ 
                                              & $Tr$ & 0.08 & 0.38 & 0.59 & 0.57 & 0.73 & 0.84 \\ 
-    $M_L$=75\%; $M_F$=75\%; $M_C$=75\%       & $RF$ & 0.00 & 0.00 & \textbf{0.01} & \textbf{0.02} & 0.04 & 0.11 \\ 
+    $M_L$=75\%; $M_F$=75\%; $N_C$=75\%       & $RF$ & 0.00 & 0.00 & \textbf{0.01} & \textbf{0.02} & 0.04 & 0.11 \\ 
                                              & $Tr$ & 0.21 & 0.36 & 0.56 & 0.55 & 0.74 & 0.87 \\ 
    \hline
 \end{tabular}
