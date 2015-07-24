@@ -544,8 +544,23 @@ We removed the repetition in the caption. %Not sure I understand the second part
 \begin{enumerate}
 \item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}
 
-%TG: what does MS means? Manuscript?
-%We do not agree blabalbalbal
+A similar point/suggestion was also raised by reviewer 1 (see Reviewer 1 General comment number 6 and specific comment number 25).
+We do understand the concerns of this reviewer as well but, again, we do not agree that comparing the "missing-data" trees to the "best" trees adds a layer of complexity to our simulations.
+In fact, we argue that doing so actually adds a layer of complexity to the analysis.
+The problematic we are tackling in this manuscript is to understand "what is the effect of our three parameters on recovering topology ?"
+To answer this question, however, we have to add a layer between the data (i.e. the "complete" or "missing-data" matrices) and the actual topology which is the tree inference.
+We test the effect of this layer by using different tree inference methods.
+
+Because we use a simulation approach to test this problematic, we have to start from a random starting point (the "true" tree) and then do the following steps: (1) generate and remove the data (2) infer the topologies and (3) compare the topologies.
+Note that in this schematic representation, the "true" tree is the step (0) of our analysis and involves a series of algorithms and softwares (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes).
+To compare the "true" tree's topology to the "missing-data" topologies will be equivalent to explore the effect of our three parameters on recovering topology through 3 layers (1- generate the data; 2- infer the topologies; and 3- compare the topologies).
+By comparing the "best" tree's topology to the "missing-data" ones, we explore the effect of our three parameters through only 2 layers (2- infer the topologies; and 3- compare the topologies).
+Note that we explore the effect of these 2 layers by using two different tree inference methods (effectively 4 since we also use the Maximum Likelihood bootstraps trees and the Bayesian posterior trees) and 2 different Normalised topological metrics (Robinson-Foulds and Triplets).
+Using as main results the comparisons between the "true" and the "missing-data" trees would also need the exploration of the effect of the cascade of algorithms and softwares (maybe by modifying the algorithms used to generate the "true" tree and the matrices?).
+
+However, we have added all the comparisons between the "true" tree and the "missing-data" trees in the supplementary.
+It is interesting to notice that the algorithms and softwares as well as probably the size of our matrices are actually not ideal an the recovery of the "true" tree is rather low and scales down the our results (see figure @).
+However, even though these comparisons are worst, it is encouraging to see that the patterns are conserved (i.e. Bayesian consensus trees $>$ Maximum Likelihood trees $>$ both bootstraps trees and Bayesian posterior trees).
 
 \item{\textcolor{blue}{\textbf{Better explanation of the missing data:} I found the explanation of the missing data strategy very difficult to follow. First, they oddly use the verb "to infer" for matrices; are they inferring matrices? Second, it's not clear anywhere that the authors actually removed the molecular data from the fossil taxa, though I assume they did. I hope the authors can re-write in simpler language ("explain like I'm 5") for easier comprehension.}}
 
@@ -566,7 +581,6 @@ Not that the $N_C$ parameter states can be seen in the same way as the $M_L$ and
 "Number of morphological characters ($N_{C}$)" line @@@ %Header in discussion
 
 "Additionally, when both $M_{L}$ reach 50\% missing data and $N_{C}$ reach 50 characters, the matrix does not contain enough phylogenetic information for the fossil taxa to be placed with confidence in the tree (Figure 6)." line @@@
-
 
 \item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
 
