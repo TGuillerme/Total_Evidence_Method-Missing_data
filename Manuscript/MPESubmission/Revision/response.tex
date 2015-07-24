@@ -62,7 +62,8 @@
 %Resubmit the new version of the manuscript normaly but also add a pdf containing the track changes (highlithing in yellow the bit that have changed): "We are aware on the length of the manuscript. To facilitate the reviewers task, we attached to our revised manuscript, a pdf of the same manuscript but with the changes highlighted in yellow."
 
 %TG: Add a section "Additional 'fancy' changes" (not fancy obviously)
-% For clarity, we replaced the font of all the functions in R language in courier font (R, diversitree, etc...). \texttt{} - ACTUALLY DO THE CHANGE IF RELEVAN
+% For clarity, we replaced the font of all the functions in R language in courier font (R, diversitree, etc...). \texttt{} - ACTUALLY DO THE CHANGE IF RELEVANT
+%We are very grateful to both referees for their helpful and constructive comments, which we believe have helped us to significantly improve our paper. We have taken all of their comments on board, and respond to their points below.
 
 
 \section{Reviewer 1:}
@@ -534,7 +535,7 @@ We removed the repetition in the caption. %Not sure I understand the second part
 
 \item{\textcolor{blue}{\textbf{Appendix D:} I find the online code repository thorough, but the repository is loaded with many files, especially for graphing. If it is possible to condense these files it may be easier for a reader to duplicate the study.}}
 
-%To do
+%Working on it.
 
 \end{enumerate}
 
@@ -543,11 +544,20 @@ We removed the repetition in the caption. %Not sure I understand the second part
 \begin{enumerate}
 \item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}
 
+%TG: what does MS means? Manuscript?
+%We do not agree blabalbalbal
+
 \item{\textcolor{blue}{\textbf{Better explanation of the missing data:} I found the explanation of the missing data strategy very difficult to follow. First, they oddly use the verb "to infer" for matrices; are they inferring matrices? Second, it's not clear anywhere that the authors actually removed the molecular data from the fossil taxa, though I assume they did. I hope the authors can re-write in simpler language ("explain like I'm 5") for easier comprehension.}}
+
+%To do
 
 \item{\textcolor{blue}{\textbf{$M_C$ is not missing data per se:} If Mc is just removing columns, then they are shrinking the total matrix. This is not missing data per se. They are instead comparing matrices of different sizes, and the quantity is "data present." Any matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. A matrix with 10,000 characters is tiny if 10,000,000 could be scored. This is semantic.}}
 
+%Add a note but do not change (i.e. to be consistent and keep the parameters the same (5 levels 0/10/25/50/75)) or flip it so that MC becomes NC, the number of characters (100, 90, 75, 50, 25)
+
 \item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
+
+%Artifical fossilisation thing?
 \end{enumerate}
 
 \end{document}
