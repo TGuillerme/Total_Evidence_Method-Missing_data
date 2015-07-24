@@ -58,7 +58,7 @@ par(mar=c(5,3,1,2) + 0.1)
 multi.TreeCmp.plot( data.sets , par_MF, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab=NULL, las=2, xlab="Missing data in the fossil record (MF %)")
 #Missing character Triplets
 par(mar=c(5,2,1,4) + 0.1)
-multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab=NULL, las=2, xlab="Missing characters (MC %)") 
+multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=ylim, xaxis=c("100","90","75","50","25"), ylab=NULL, las=2, xlab="Number of characters (NC)") 
 
 #Back to default
 par(op)

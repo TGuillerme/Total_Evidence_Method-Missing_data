@@ -109,7 +109,7 @@ TreeCmp.pairPlot<-function(posthoc, parametric, binary=FALSE, col=c("yellow", "r
             plot(1,1, xlab='', ylab='', xlim=c(1,125), ylim=c(0,3), type='n', yaxt='n', bty='n', xaxt='n')
             text(-2, 2.5, "ML")
             text(-2, 1.5, "MF")
-            text(-2, 0.5, "MC")
+            text(-2, 0.5, "NC")
             #ML
             col.new<-colgrad[1:5]
             for(i in 1:5) {
@@ -130,7 +130,7 @@ TreeCmp.pairPlot<-function(posthoc, parametric, binary=FALSE, col=c("yellow", "r
             plot(1,1, xlab='', ylab='', xlim=c(0,3), ylim=c(1,125), type='n', yaxt='n', bty='n', xaxt='n')
             text(2.5, -2, "ML")
             text(1.5, -2, "MF")
-            text(0.5, -2, "MC")
+            text(0.5, -2, "NC")
             #ML
             col.new<-colgrad[1:5]
             for(i in 1:5) {

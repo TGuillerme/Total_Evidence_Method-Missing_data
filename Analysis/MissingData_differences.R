@@ -31,36 +31,36 @@ if(quick.load == FALSE) {
 #Setting the variables
 data.sets<-c("ML_besttrees","Bayesian_contrees","ML_bootstraps","Bayesian_treesets")
 metrics<-c("R.F_Cluster","Triples")
-parameter<-par_MC
+parameter<-par_MLMFMC
 
 #----------------
 #Calculating the pairwise comparisons within (effect of the parameters)
 #----------------
 
-pair.comp_within.MLbest.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[1]), diag=TRUE)
+#pair.comp_within.MLbest.RF<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.MLbest.RF, file="../Data/R_data/pair.comp_within.MLbest.RF.Rda")
-#load("../Data/R_data/pair.comp_within.MLbest.RF.Rda")
-pair.comp_within.MLbest.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[2]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.MLbest.RF.Rda")
+#pair.comp_within.MLbest.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[1]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.MLbest.Tr, file="../Data/R_data/pair.comp_within.MLbest.Tr.Rda")
-#load("../Data/R_data/pair.comp_within.MLbest.Tr.Rda")
-pair.comp_within.Baycon.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[1]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.MLbest.Tr.Rda")
+#pair.comp_within.Baycon.RF<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.Baycon.RF, file="../Data/R_data/pair.comp_within.Baycon.RF.Rda")
-#load("../Data/R_data/pair.comp_within.Baycon.RF.Rda")
-pair.comp_within.Baycon.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[2]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.Baycon.RF.Rda")
+#pair.comp_within.Baycon.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[2]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.Baycon.Tr, file="../Data/R_data/pair.comp_within.Baycon.Tr.Rda")
-#load("../Data/R_data/pair.comp_within.Baycon.Tr.Rda")
-pair.comp_within.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[1]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.Baycon.Tr.Rda")
+#pair.comp_within.MLboot.RF<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.MLboot.RF, file="../Data/R_data/pair.comp_within.MLboot.RF.Rda")
-#load("../Data/R_data/pair.comp_within.MLboot.RF.Rda")
-pair.comp_within.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[2]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.MLboot.RF.Rda")
+#pair.comp_within.MLboot.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[3]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.MLboot.Tr, file="../Data/R_data/pair.comp_within.MLboot.Tr.Rda")
-#load("../Data/R_data/pair.comp_within.MLboot.Tr.Rda")
-pair.comp_within.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[4]), parameter, metric=metrics[1]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.MLboot.Tr.Rda")
+#pair.comp_within.Baytre.RF<-pair.bhatt.coeff(sub.data(get(data.sets[4]), parameter, metric=metrics[1]), diag=TRUE)
 #save(pair.comp_within.Baytre.RF, file="../Data/R_data/pair.comp_within.Baytre.RF.Rda")
-#load("../Data/R_data/pair.comp_within.Baytre.RF.Rda")
-pair.comp_within.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[4]), parameter, metric=metrics[2]), diag=TRUE)
+load("../Data/R_data/pair.comp_within.Baytre.RF.Rda")
+#pair.comp_within.Baytre.Tr<-pair.bhatt.coeff(sub.data(get(data.sets[4]), parameter, metric=metrics[2]), diag=TRUE)
 #save(pair.comp_within.Baytre.Tr, file="../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
-#load("../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
+load("../Data/R_data/pair.comp_within.Baytre.Tr.Rda")
 
 #Visualising the results
 pairwise.comp_within<-c("pair.comp_within.MLbest.RF", "pair.comp_within.MLbest.Tr",
@@ -69,7 +69,7 @@ pairwise.comp_within<-c("pair.comp_within.MLbest.RF", "pair.comp_within.MLbest.T
                         "pair.comp_within.Baytre.RF", "pair.comp_within.Baytre.Tr")
 
 #Choose the comparison from the list below
-comp<-1
+comp<-8
 plot.bhatt.coeff(get(pairwise.comp_within[comp]), col=c("blue", "orange"), col.grad=c("white", "black"))
 #Get the summary statistics from this comparison
 summary(as.vector(get(pairwise.comp_within[comp]))[-which(is.na(as.vector(get(pairwise.comp_within[comp]))))])
