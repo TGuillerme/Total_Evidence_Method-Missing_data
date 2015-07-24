@@ -36,7 +36,7 @@ browseURL("http://figshare.com/articles/Effect_of_missing_data_on_topological_in
 source("MissingData_fun.R")
 
 # Data can be automatically loaded by running the following script
-source("MissingData_load.R") 
+#source("MissingData_load.R") 
 # However, note that this function loads all the data available and can take some time.
 # The following indications explain in more details what how the data is loaded and how the metrics can be normalised
 
@@ -51,7 +51,7 @@ source("MissingData_load.R")
 # In the case of the best tree:
 # the parameter ML, corresponding to the number of missing living taxa is set at 0%
 # the parameter MF, corresponding to the number of missing data in the fossil record is set at 0%
-# the parameter MC, corresponding to the number of missing characters is set at 0%
+# the parameter MC, corresponding to the number of missing characters from the complete matrix is set at 0%.
 # For example, the comparison Chain18_L10F25C50 is the results of the comparison between the best tree of the chain 18
 # (Chain18_L00F00C00) and the missing-data tree with the parameters ML=10%, MF=25% and MC=50%.
 # These files can be easily converted in a R object called "treeCmp" object that is a concatenation of all the metrics
