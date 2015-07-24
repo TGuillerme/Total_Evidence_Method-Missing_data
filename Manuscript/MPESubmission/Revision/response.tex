@@ -553,7 +553,20 @@ We removed the repetition in the caption. %Not sure I understand the second part
 
 \item{\textcolor{blue}{\textbf{$M_C$ is not missing data per se:} If Mc is just removing columns, then they are shrinking the total matrix. This is not missing data per se. They are instead comparing matrices of different sizes, and the quantity is "data present." Any matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. A matrix with 10,000 characters is tiny if 10,000,000 could be scored. This is semantic.}}
 
-%Add a note but do not change (i.e. to be consistent and keep the parameters the same (5 levels 0/10/25/50/75)) or flip it so that MC becomes NC, the number of characters (100, 90, 75, 50, 25)
+% TG: Ok i've changed it every where but personally I don't like it. It makes it even more messy and hard to read. However, because I didn't answered the first and last comment of this reviewer, I felt that at least 2/4 is a minimum.
+We entirely agree with this comment and hope it will help to the global comprehension of the manuscript. We replaced the $M_C$ (missing characters) parameter by $N_C$ (number of characters with five states: 100, 90, 75, 50 and 25) in the revised manuscript, the appendices and the figures. We also slightly modified some explanations related to the change of missing characters to number of characters:
+
+"$N_{C}$, the number of morphological characters for both living and fossil taxa: 100, 90, 75, 50 or 25 characters." line @@@
+
+"When applying the $N_C$ parameter with the second parameter state (90 characters), however, the resulting matrix potentially had more than 10\% data missing.
+Not that the $N_C$ parameter states can be seen in the same way as the $M_L$ and $M_F$ ones: the first state (100 characters) corresponds to 0\% less characters than the ``complete'' matrix, the second (90 characters), corresponds to 10\% less than the ``complete'' matrix, etc." line @@@
+
+"To assess the effect of our missing data parameters, we calculated the Bhattacharyya Coefficient between the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets metric) for each pairwise combination of missing data parameters ($M_{L}$, $M_{F}$, $N_{C}$) and parameter states (0\%, 10\%, 25\%, 50\%, 75\% and 100, 90, 75, 50, 25 characters), i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $N_{C}$ = 100; $M_{L}$ = 10\%, $M_{F}$ = 0\%, $N_{C}$ = 100 etc. (see Figure 2 for more details)." line @@@
+
+"Number of morphological characters ($N_{C}$)" line @@@ %Header in discussion
+
+"Additionally, when both $M_{L}$ reach 50\% missing data and $N_{C}$ reach 50 characters, the matrix does not contain enough phylogenetic information for the fossil taxa to be placed with confidence in the tree (Figure 6)." line @@@
+
 
 \item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
 
