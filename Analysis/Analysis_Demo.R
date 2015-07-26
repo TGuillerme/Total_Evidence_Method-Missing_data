@@ -130,3 +130,34 @@ TreeCmp.Plot(TreeCmp=MC_parameter_only, metric=chosen_metric, probs=CI, lines=FA
 # 3. Calculating the pairwise Bhattacharyya Coefficients between the "best" trees and the "missing data" trees (as outlined in
 # figure 2 in the paper)
 #--------------
+
+# The Bhattacharyya Coefficients is the probability of overlap between two distributions, it can be calculated using the
+# bhatt.coeff function
+bhatt.coeff(rnorm(1000),rnorm(1000))
+
+# Here we want to know the differences between the normalised tree comparisons metrics of each set of parameters.
+# We can use the pair.bhatt.coeff function that calculates the pairwise Bhattacharyya Coefficients.
+# First, to facilitate the task, we can transform the TreeCmp object directly into a list of distributions for a given metric and
+# a given set of parameters using the sub.data function.
+MC_parameter_RF_metric<-sub.data(TreeCmp_object, parameter=c(1:5), metric="R.F_Cluster")
+
+# We can then feed this list of distributions to the pair.bhatt.coeff function
+pair.bhatt.coeff(MC_parameter_RF_metric, diag=TRUE)
+
+# This outputs a matrix with the probability of overlap between the distributions.
+# Note that the diagonal is always equals to 1 and that, in this example, there is a null probability of overlap between
+# the normalised Robinson-Foulds metrics between the "best" tree and the two "missing-data" trees with MC=50% and 75%.
+
+# This matrix representation of the probabilities overlaps is understandable when few pairwise comparisons are studied
+# but gets more tricky when the number of pairwise comparisons increases.
+# For example, if we want to calculate all the pairwise comparisons (7875) the matrix representation is not really helpful.
+All_parameter_RF_metric<-sub.data(TreeCmp_object, parameter=c(1:125), metric="R.F_Cluster")
+All_parameters_pairwise<-pair.bhatt.coeff(All_parameter_RF_metric, diag=TRUE)
+head(All_parameters_pairwise)
+
+# We can use the plot.bhatt.coeff function to represent these results as a heat map.
+plot.bhatt.coeff(All_parameters_pairwise, col=c("blue", "orange"), col.grad=c("white", "black"))
+
+#--------------
+# 4. Calculating the pairwise Bhattacharyya Coefficients between the methods and the metrics (as outlined in figure 3 in the paper)
+#--------------
