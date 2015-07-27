@@ -86,22 +86,55 @@ We gladly followed reviewer 1's graphical abstract suggestions and have changed 
 
 \item{\textcolor{blue}{\textbf{Highlights:} wording seems awkward}}
 
+We rephrased the highlights of the paper as follows: %3 to 5 bullet points (maximum 85 characters, including spaces, per bullet point). TG: probably need improvement here.
+
+1. The Total Evidence methods allows to combine living and fossil data.
+2. This study test the effect of missing morphological data on topology.
+3. The number of living taxa with data as the most effect on recovering topology.
+4. Bayesian inference outperforms Maximum Likelihood for correct clade recovery.
+5. We suggest that the sampling effort should be focused on data for living taxa.
+
 \item{\textcolor{blue}{\textbf{Introduction:} Needs stronger emphasis on what specifically is unique about this study compared to what the many other studies on missing data have done and found.
 Clearly outlining the questions in this study that are left open from previous research is important because some of the findings in this study suggest that there may be more error associated with missing data than previous research has suggested.}}
 
+% To do (see reviewer 1 specific comment 13)
+
 \item{\textcolor{blue}{\textbf{Abbreviation:} One suggestion is to consider abbreviating Maximum Likelihood and Bayesian Inference as ML and BI respectively early in the methods and use throughout.}}
 
+We do understand the reviewers concern are agree that ML and BI are two commonly used abbreviations.
+Nonetheless, we would rather prefer not abbreviate these terms: in fact, even though they might add some "smoothness" % TG: that's not the word
+to the sentences where Maximum Likelihood and/or Bayesian Inference are stated, we think they might add confusion or difficulties to the whole paper.
+Spelling out the abbreviation might be locally "heavy" (i.e. in the sentence) but at least are completely clear and does not ask the reader to look back for the actual meaning of such or such abbreviation.
+However, we leave this decision to the editor if she judges it better to abbreviate those terms. % TG: or maybe this statement is useless? Of course we leave it to the editor...
+
 \item{\textcolor{blue}{\textbf{Methodology - True tree:} I suggest it warrants comparing at least the 'best' tree to the 'true' tree.}}
+
+We compared both the ``best'' tree and the ``missing-data'' trees to the ``true'' tree as suggested by both reviewer. We did not, however, include the results to the main text (available in appendix @@@).
+We justify this decision to both reviewers specific concerns (see reviewer 1 specific comment 25 and reviewer 2 comment 1).
 
 \item{\textcolor{blue}{\textbf{Methodology - Starting tree:} The authors should at least include some analysis in which no starting tree is given, the max. likelihood 'best' tree is given, and / or the 'best' tree is given but with some perturbation.
 I fear that one of the main results may be biased due to this one methodological detail - a strong prior on tree topology.
 The justification given was 'to speed up the Bayesian analysis' which does not seem adequate, given these datasets are small.}}
 
+We dealt with this legitimate suggestion and ran an extra analysis on a subset of matrices (20 chains and only the trees with the same number of parameters; i.e. $M_L$=0\%, $M_F$=0\% and $M_C$=0\%; $M_L$=10\%, $M_F$=10\% and $M_C$=10\%, etc...) were we reran the Bayesian inference using a random tree rather than the ``true'' tree as a starting tree (default MrBayes procedure).
+We found no effect of the starting tree (random or ``true'') on the resulting topology.
+We added this analysis to the appendix @@@ and added a short note in the main text.
+See details at reviewer 1 specific comment 46 below.
+
 \item{\textcolor{blue}{\textbf{Results - Bhattacharyya meaning:} Some descriptive statistics are given, but it would help to tell us if these differences are meaningful.
-For example, on line 414 the Bhattacharrya Coefficients are given suggesting RF distances are lower for ML than BI trees at 0.69, 0.48, and 0.66 - but if this coefficient represents the probability of overlap between distributions then shouldn't the coefficients be <0.05 to say that one is lower than the other?
-In the table, mean and median values of <0.01 and >0.85 are highlighted as being the most extreme.
+For example, on line 414 the Bhattacharrya Coefficients are given suggesting RF distances are lower for ML than BI trees at 0.69, 0.48, and 0.66 - but if this coefficient represents the probability of overlap between distributions then shouldn't the coefficients be $<$0.05 to say that one is lower than the other?
+In the table, mean and median values of $<$0.01 and $>$0.85 are highlighted as being the most extreme.
 Later the focus on Bhattacharyya Coefficients is 1 when distributions overlap completely and 0 when they do not - should this be the criterion?
 Just make it clear early on so the readers knows what to think when they see these numbers. }}
+
+We clarified and unified % TG: or standardised?
+the interpretation of the Bhattacharyya Coefficient throughout the manuscript.
+We advocate that two distributions are significantly different when their probability of overlapping (the Bhattacharyya Coefficient) is $>$0.05 and that they are significantly similar when this probability is $>$0.95.
+Even though other values (e.g. 0.85) are not conclusive, we still reported them to show the relative overlap of the distributions (i.e. two distributions with a coefficient of 0.85 are not significantly similar but are closer to each other than two distributions with a coefficient of 0.15; which are themselves not significantly different but still less closer to each other than the previous ones).
+We added the following statement to the main text and to the appendix B:
+"When the Bhattacharyya Coefficient between two distributions is $<$0.05, the distributions are significantly different.
+When this coefficient is $>$0.95 both distributions are significantly similar.
+Values in between these two threshold just show the probability of overlap between the distributions but are not conclusive to assess the similarity or differences between the distributions." line (@@@)
 
 \item{\textcolor{blue}{\textbf{Results - Bayesian consensus vs. Bayesian posterior:} One major finding that was not fully addressed was that the distances between the BI posterior distributions of trees do not overlap the BI best or consensus trees.
 It seems from the tables in Appendix C that the topology distance metrics for Bayesian posterior distribution are similar to those for the Bayesian consensus, albeit usually lower for RF distance than the Tr distance.

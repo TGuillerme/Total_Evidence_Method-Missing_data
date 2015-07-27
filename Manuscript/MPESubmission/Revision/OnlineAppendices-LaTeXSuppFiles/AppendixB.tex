@@ -109,6 +109,10 @@ and
 \end{equation}
 The precision of the Bhattacharyya Coefficient is directly related to the number of bins, $n$. If $n$ is low, the overlap will be overestimated and if $n$ is too high, the overlap will be underestimated. In this analysis, we determined the number of bins using Silverman's rule of thumb which states that $n$ should be 0.9 times the minimum of the standard deviation and the interquartile range of the distribution, divided by 1.34 times the sample size of the distribution to the negative one-fifth power (\texttt{bw.nrd0()} function in R \citep{silverman1986density}).
 
+When the Bhattacharyya Coefficient between two distributions is $<$0.05, the distributions are significantly different.
+When this coefficient is $>$0.95 both distributions are significantly similar.
+Values in between these two threshold just show the probability of overlap between the distributions but are not conclusive to assess the similarity or differences between the distributions.
+
 \bibliographystyle{sysbio}
 \bibliography{Supp_Ref}
 
