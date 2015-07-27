@@ -52,13 +52,16 @@ multi.TreeCmp.plot( data.sets , par_MC, metrics[1], col=pal, las=2, probs=c(95, 
 xaxis.labs<-c("0%", "10%", "25%", "50%", "75%")
 #Missing living Triplets
 par(mar=c(5,5,1,0) + 0.1)
-multi.TreeCmp.plot( data.sets , par_ML, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab="Normalised Triplets metric", las=2, xlab="Missing living taxa (ML %)") 
+multi.TreeCmp.plot( data.sets , par_ML, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=c(-0.5,1), xaxis=xaxis.labs, ylab="Normalised Triplets metric", las=2, xlab="Missing living taxa (ML %)")
+abline(h=0, lty=3)
 #Missing fossil Triplets
 par(mar=c(5,3,1,2) + 0.1)
-multi.TreeCmp.plot( data.sets , par_MF, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=ylim, xaxis=xaxis.labs, ylab=NULL, las=2, xlab="Missing data in the fossil record (MF %)")
+multi.TreeCmp.plot( data.sets , par_MF, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=c(-0.5,1), xaxis=xaxis.labs, ylab=NULL, las=2, xlab="Missing data in the fossil record (MF %)")
+abline(h=0, lty=3)
 #Missing character Triplets
 par(mar=c(5,2,1,4) + 0.1)
-multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=ylim, xaxis=c("100","90","75","50","25"), ylab=NULL, las=2, xlab="Number of characters (NC)") 
+multi.TreeCmp.plot( data.sets , par_MC, metrics[2], col=pal, las=2, probs=c(95, 50), ylim=c(-0.5,1), xaxis=c("100","90","75","50","25"), ylab=NULL, las=2, xlab="Number of characters (NC)") 
+abline(h=0, lty=3)
 
 #Back to default
 par(op)
