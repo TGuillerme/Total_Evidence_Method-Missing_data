@@ -591,7 +591,18 @@ We entirely agree with this comment and hope it will help to the global comprehe
 
 \item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
 
-%Artifical fossilisation thing?
+In this study, we applied a similar approach to what the reviewer 2 suggests (i.e. no missing data for living taxa, and maximal number of characters but various amount of missing data for the fossil taxa).
+This results are present in figure 4, central row.
+However, the amount of changes among the fossil taxa was not set to any specific amount of missing data per fossil (e.g. like the "artificial fossil" approach in Pattinson et al 2014, Syst. Biol.) but we rather treated the missing data in the "whole" fossil record.
+Because our fossil taxa and their characters where randomly simulated, we didn't had any \textit{a priori} assumption on how to remove the data.
+We therefore decided to randomly remove a certain amount of data among all the fossil.
+For example, when removing 75\% of the data for the fossil taxa ($M_F$=75\%) different scenarios could happen, ranging from a "homogeneous" incompleteness data distribution (each specific fossil taxa had 75\% of missing data) to a "heterogeneous" incompleteness data distribution  (80\% of the specific fossil taxa had 5\% available data and 21\% of the specific fossil taxa had 100\% available data).
+In empirical matrices, the incompleteness data distribution probably lies in between both models.
+
+Also, a second argument for using this "simplistic" way to deal with the missing data in the fossil record follows our main recommendation from this study: the best way to improve the quality of Total Evidence trees is to have a maximum number of living species with available morphological data.
+In fact lines 584 to 589 in the first version of the manuscript (line @@@ in the revised version), we argue that even if the effect of the $M_F$ parameter is important, there is unfortunately not much we can do about it since the completeness of this part of the matrix solely depends on exceptional palaeontological discoveries and excavation effort.
+We feel that these parameters, however crucial for our understanding of macroevolution, are unfortunately not predicable and recommendations such as "we need more fossil data" are empty and less practical than "we need more living species data".
+
 \end{enumerate}
 
 \end{document}
