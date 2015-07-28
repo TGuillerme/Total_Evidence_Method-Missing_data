@@ -141,10 +141,18 @@ It seems from the tables in Appendix C that the topology distance metrics for Ba
 In Figure 4, it seems like the distributions of metrics based on CIs for Bayesian consensus and posterior overlap up until >25\% missing data.
 How then in comparisons of the distributions are they always so low (Table 1 max prob. of overlapping distributions = 0.11)?}}
 
-% TG: a fair question...
-% the tables in Appendix C that the topology distance metrics for Bayesian posterior distribution = Bayesian consensus. But RF<Tr
-% Figure 4,Bayesian consensus and posterior overlap up until >25\% missing data.
-% How then in comparisons of the distributions are they always so low (Table 1 max prob. of overlapping distributions = 0.11)?
+The difference between the Bayesian consensus and the Bayesian posterior trees can be due to two factors:
+\begin{enumerate}
+\item first, the way we assess topological recovery is slightly different in each case: for the Bayesian consensus trees, we simply compared the "missin-data" consensus tree to the "best" consensus tree; for the Bayesian posterior trees however, we randomly compared 1000 "missing-data" Bayesian posterior trees to 1000 "best" Bayesian posterior trees.
+Therefore, even if the comparison methodology is the same, the fact that the second methods draws random trees, we expect the topological recovery score to be "blurred" in comparison to other comparisons that do not involve random comparisons.
+\item secondly, the Bayesian posterior trees are always resolved and thus, in the same way as the Maximum Likelihood tree, more likely to contain "false-positive" nodes. On the other hand, because the consensus tree is a strict majority consensus rule, only nodes with a a good support will be represented in the tree and all other nodes will be collapsed. This reduces the amount of "false-positive" nodes (since an unresolved tree is always better than a wrongly resolved one) and increases clade conservation but also increases the placement of wild-card taxa (since it is likely that some Triplets will just not exist in a poorly resolved consensus tree).
+\end{enumerate}
+Both points were discussed in the former manuscript lines 566 and 573 (or lines @@@ and @@@ in the revised version). %TG: maybe expand this bit then?
+
+% TG: I'm confused for the second part of the question:
+% TG: In figure 4 and in Table 1, if you look at the Bayesian consensus (grey) trees and the Bayesian posterior trees (orange) for RF, they do not really overlap. Ever. The 0.11 probability must come from the parameters combinations that, when is really shitty must show a little bit of overlap. But for each parameter one by one: nope. No overlap.
+% TG: On the other side, in figure 4 and Table 1, for Bayesian consensus and Bayesian posterior for Tr, the do overlap much more. And that's what's in the Table 1 (min 0.21; median 0.56; and max 0.87).
+% TG: Did the reviewer just miss read the labels of the Table 1 or am I miles away from what he means?
 
 
 \item{\textcolor{blue}{\textbf{Results - Bayesian Triplets:} Another important result that is not mentioned is that using the wildcard taxon metric (Tr), Bayesian consensus trees do quite poorly with missing data.
@@ -153,19 +161,30 @@ It is especially true when fossils are missing data, and that is going to be an 
 
 We modified the figures 4 and 5 to show Normalised Triplets metric values below 0 and added a dashed line at 0 to underline the difference in scale between both metrics.
 % TG: a a paragraph in the results about the wild-card fossils
+As mentioned in the previous comment (reviewer 1 comment 9), this is due to the fact that the Bayesian consensus tree will be less and less resolved when missing data increases. This has two opposite effects. The first one being to retain clades in a be 
+
 
 \item{\textcolor{blue}{\textbf{Conclusion:} The authors should clarify how their results compare to those of previous studies more directly to emphasize the nuances that make this study unique. }}
 
+We modified the conclusion as follows (see reviewer 1 specific comments 52)
+
 \item{\textcolor{blue}{\textbf{Figure 4:} Figure 4 has a color scheme issue, the colors in the caption do not match up to the figure.}}
 
-%We apologies for this silly mistake.
+We apologies for this silly mistake and fixed the colors in the figure. We also changed the color scheme to match with the general color scheme of the paper (black, grey, orange and blue).
 
 \item{\textcolor{blue}{\textbf{Figure 4-5:} Am I wrong or shouldn't the y-axis for Normalised Triplets metric go below 0 - it looks those metrics for many missing data combinations have values below zero indicating trees are more different from the 'best' tree than expected by chance (Appendix B 1.1., see Appendix C Tables 1-3) and that is important to show.}}
+
+We fixed this graphical mistake as state above in reviewer 1 comment 13.
 
 \item{\textcolor{blue}{\textbf{Table caption:} Table caption should include a line about 'pooling across missing data schemes' to clarify what is presented.}}
 
 \item{\textcolor{blue}{\textbf{Previous research:} The missing-data problem has a long history in the literature and there are references to some of those older and recent papers.
 But I feel it is necessary to summarize the following questions: what did those studies find, what are the questions those studies left open, and how does this study address them?}}
+
+% specifically
+% what did those studies find: missing data is ok but must overlap
+% what are the questions those studies left open: is it the same when different type of data are used (molecular + morphological)
+% how does this study address them: we test whether m
 \end{enumerate}
 
 \section{Specific comments:}
