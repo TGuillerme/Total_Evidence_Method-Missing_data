@@ -113,6 +113,19 @@ When the Bhattacharyya Coefficient between two distributions is $<$0.05, the dis
 When this coefficient is $>$0.95 both distributions are significantly similar.
 Values in between these two threshold just show the probability of overlap between the distributions but are not conclusive to assess the similarity or differences between the distributions.
 
+\subsection{Differences between the ``true'' and the ``best'' trees.}
+We compared every ``true'' trees (i.e. the trees \textbf{used to create} the ``complete'' matrices) to the ``best'' trees (i.e. the trees \textbf{inferred from} the ``complete'' matrices) in figure ~\ref{Fig_Supp_True_Best}.
+Note that the difference between the ``true'' and the ``best'' trees represents the effect of the parameters choice and the algorithms used to create the ``complete'' matrix as well the as the capacity of RAxML and MrBayes to infer phylogenies from this particular matrices (i.e. small sized and generated using specific algorithms).
+This does not affect, however, the results of our analysis since we deliberately compared the the ``missing-data'' trees to the ``best'' tree rather than to the ``true'' tree. 
+
+\begin{figure} 
+\centering
+    \includegraphics[width=1\textwidth]{SupplementaryFigures/True_vs_Best_trees.pdf}
+    \caption{Pairwise comparisons between the 50 ``true'' trees and the 50 ``best'' trees from the Maximum Likelihood and Bayesian inference methods. The horizontal blue and red lines represents respectively the 95\% and the 50\% confidence intervals.} 
+\label{Fig_Supp_True_Best} 
+\end{figure}
+
+
 \bibliographystyle{sysbio}
 \bibliography{Supp_Ref}
 

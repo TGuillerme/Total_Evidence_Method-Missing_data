@@ -250,38 +250,38 @@ Hereafter we call this the ``complete'' matrix, i.e. the matrix with no missing 
 % To avoid avoid matrices containing taxa without any data (morphological or molecular), we repeated the random deletion until the matrices contained at least 5\% of data for any taxon.
 
 % TG: this part is entirely re-written.
-To explore the effect of missing data on topological recovery, we removed various amounts of the ``complete'' matrix to obtain matrices with missing morphological data.
+\hl{To explore the effect of missing data on topological recovery, we removed various amounts of the ``complete'' matrix to obtain matrices with missing morphological data.
 Hereafter, we call these matrices with missing morphological data the ``missing-data'' matrices.
-We removed morphological following three main data incompleteness parameters:
+We removed morphological following three main data incompleteness parameters:}
 \begin{enumerate}
-\item{The proportion of missing living taxa ($M_{L}$).}
-This first missing-data parameter corresponds to the proportion of living taxa with no morphological data.
+\item{\hl{The proportion of missing living taxa ($M_{L}$).}}
+\hl{This first missing-data parameter corresponds to the proportion of living taxa with no morphological data.
 It represents the number of living taxa that are present in the matrix but have only molecular data available.
-This reflects the fact that, because of the increasing facility of collecting molecular data, morphological data for living species is rarely collected \citep{GuillermeCooperMissing}. % TG: see what I did here? ;)
-Therefore, many living species will have only molecular data available.
-In practice, we removed all the morphological data from randomly chosen living with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.
-\item{The proportion of missing data in the fossil record ($M_{F}$).}
-This missing data parameter represents the completeness of the fossil record.
-In fact, due to preservation biases, missing data for fossil taxa are common \citep{sansomfossilization2013}. 
-In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
-\item{The number of morphological characters for both living and fossil taxa ($N_{C}$).}
-This parameter is not a missing data parameter \textit{per se} but rather an indication of the size of the matrix.
+This reflects the fact that, because of the increasing facility of collecting molecular data, morphological data for living species is rarely collected} \citep{GuillermeCooperMissing}. % TG: see what I did here? ;)
+\hl{Therefore, many living species will have only molecular data available.
+In practice, we removed all the morphological data from randomly chosen living with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.}
+\item{\hl{The proportion of missing data in the fossil record ($M_{F}$).}}
+\hl{This missing data parameter represents the completeness of the fossil record.
+In fact, due to preservation biases, missing data for fossil taxa are common }\citep{sansomfossilization2013}. 
+\hl{In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.}
+\item{\hl{The number of morphological characters for both living and fossil taxa ($N_{C}$).}}
+\hl{This parameter is not a missing data parameter \textit{per se} but rather an indication of the size of the matrix.
 Any morphological matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. % TG: this is word for word what the reviewer wrote. I didn't like doing that first but after seeing the Ineterface Focus review and how they copy pasted the discussion suggestion, I think it's really nice for the reviewer to see a bit of it's work directly in the paper (at least it was for me!).
 Therefore, this parameter correspond to the overall number of characters available for both living and fossil taxa.
 In practice, we randomly removed whole characters from the morphological matrix shrinking it to: 100, 90, 75, 50 or 25 characters.
-Note that these levels are equivalent to the two other parameters (i.e. 0\%, 10\%, 25\%, 50\% or 75\% of ``missing'' morphological characters).
+Note that these levels are equivalent to the two other parameters (i.e. 0\%, 10\%, 25\%, 50\% or 75\% of ``missing'' morphological characters).}
 \end{enumerate}
 
 % TG: this part is nearly exactly the same as before.
-In practice, each parameter represents a different way of removing data from the morphological part of the matrix: $M_L$ removes entire rows from the living taxa's data; $M_F$ removes cells from the fossil taxa's data; and $N_C$ removes columns across both living and fossil taxa's data.
+In practice, each parameter represents a different way of removing data from the \hl{morphological part of} the matrix: $M_L$ removes \hl{entire} rows from the living taxa's data; $M_F$ removes cells from the fossil taxa's data; and $N_C$ removes columns across both living and fossil taxa's data.
 Note that $M_L$ and $M_F$ differ not only because of the region of the matrix affected: for $M_L$ all the morphological data of a percentage of living taxa are removed, whereas for $M_F$ a percentage of the data are removed at random from across the whole of the morphological matrix for fossil taxa.
 
 % TG: and this one is slightly modified only.
-We created matrices using all parameter combinations resulting in 125 ($5^3$) ``missing-data''matrices.
+\hl{We created matrices using all parameter combinations resulting in 125 ($5^3$) ``missing-data''matrices.
 Note that one of these combinations ($M_{L}$=0\%; $M_{F}$=0\% and $N_{C}$=100) has no missing data so is equivalent to the ``complete'' matrix, thus we have one effectively complete matrix in our 125 ``missing-data'' matrices.
 In practice, we first removed the data following the two missing data parameters $M_L$ and $M_F$ and then removed data following the $N_C$ parameters.
 To avoid avoid matrices containing taxa without any data (morphological or molecular), we repeated the random deletion until the matrices contained at least 5\% of data for any taxon.
-Note that the living taxa always had at least 90\% of data (the 1000 molecular characters).
+Note that the living taxa always had at least 90\% of data (the 1000 molecular characters).}
 
 
 %---------------------------------------------

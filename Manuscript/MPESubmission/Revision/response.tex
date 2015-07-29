@@ -226,7 +226,6 @@ We fixed this issue.
 
 \item{\textcolor{blue}{\textbf{line 76 and throughout:} correct use of the word 'data' from singular to plural throughout}}
 
-%We corrected the plural/singular of data throughout the text. 
 % TG: actually I'm not going to change it:
 We thank the reviewer for pointing out this inconsistency, however, 'data' is now commonly used for the singular case (Pinker, S. \textit{The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century}. Penguin, 2014. p 271; and Guardian and Observer style guide (2015): \url{http://goo.gl/cmKjNe}).
 
@@ -259,18 +258,6 @@ These and other aspects of the study uniqueness must be clearer.}}
 "Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework (i.e. using combined molecular and morphological data; e.g. Wiens et al., 2005; Pattinson et al., 2014). For example, Wiens et al. (2005) only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data. Furthermore, Pattinson et al. (2014) assess the effect of removing both molecular and morphological data (“artificial extinction”) on the topology. These studies, however, are limited by their empirical-only approach (Wiens et al., 2005) and the scheme of generating missing data (Pattinson et al., 2014)."
 
 "In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall. We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa."
-%Pattinson: artificial fossil - removing molecular data from living species to see how topology changes. Pattinson use combined analysis but only to understand the patterns of fossilisation (via artificial fossil).
-%Wiens only focuses on a special case
-%Limitation of Pattinson was the limited scheme for generating missing data from the datasets (specific to primates and observed patterns).
-%In our case, we (a) don't focus on any group or any pattern, our approach is purely theoretical.
-%The difference from Wiens or Pattinson is that we thoroughly investigate the effects of eliminating living versus fossil data or all data overall.
-%(b) We also propose a thorough comparison between the ML and Bayesian inference and a measure two clear effects that missing data could have on topology: displacing wild-card taxa and not conserving clades structure.
-
-%Emphasize on the questions and the uniqueness
-%The authors could argue that a limitation of the Pattinson study, which they address here, was the limited scheme for generating missing data from the datasets.
-%In this study, the authors perturbed the datasets more thoroughly in a clearly structured experimental design to investigate the effects of eliminating living versus fossil data or all data overall.
-%That is one aspect of this study that I perceived as new and unique.
-%This study also used a unique way of evaluating the tree inference under missing data scenarios.
 
 (2) - the second point underlined by the reviewer in this specific comment strikes use as really interesting. However, we considered this study to be already long and complex. We therefore think that adding an extra question to this study (i.e. what is the effect of missing data on the morphological substitution rate parameter estimates?) might loose the reader.
 Nonetheless, we added the result of such analysis in the \textbf{Appendix-A Morphological rates estimations results} section.
@@ -304,9 +291,7 @@ Also, we chose this low value to be consistent with our protocol for simulating 
 \item{\textcolor{blue}{\textbf{Line 176 to 180:} could be streamlined. It is not clear what is meant by 'no special assumption about how the characters evolved', what constitutes a special assumption? Could potentially be reduced to something like 'this model and these parameter settings strike a balance between realism for empirical datasets (citations) and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations'. Just for example.}}
 
 We modified the sentence as follows:
-"We selected this model and parameters settings to be a compromise between realism from empirical datasets (e.g. Kelly et al., 2014) %\citep[e.g.][]{kellymolecular2014}
-and models with few parameters (cf. Springer et. al., 2012) %\citep[cf.][]{springermacroevolutionary2012}
-to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)."
+"We selected this model and parameters settings to be a compromise between realism from empirical datasets (e.g. Kelly et al., 2014) and models with few parameters (cf. Springer et. al., 2012) to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)."
 
 \item{\textcolor{blue}{\textbf{line 182:} give the ape function used}}
 
@@ -337,7 +322,7 @@ We rephrased the section underlined by the reviewer as follows:
 
 \item{\textcolor{blue}{\textbf{line 201:} change 'get' for 'obtain' or something less colloquial.}}
 
-We modified the following sentence as suggested: "We modified the complete matrix to obtain matrices with missing data" (line @@@).
+We modified this whole section following reviewer 2 comment 2.
 
 \item{\textcolor{blue}{\textbf{line 231-235:} streamline, e.g., 'The minimal dataset included in this study was 5\% of the morphological matrix for any taxon'.}}
 
@@ -347,7 +332,7 @@ We modified the sentence as follows: "To avoid avoid matrices containing taxa wi
 
 We do agree with the point raised with both reviewers on comparing the true tree to the best/missing-data trees.
 As reviewer 1 states: "[this analysis can give] insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it.".
-We've added the results of these comparisons to the supplementary materials (Appendix 3 - @@@).
+We've added the results of these comparisons to the supplementary materials (Appendix C - figures C5 and C6).
 However, even though we agree with the comments of both reviewer that knowing the difference between the true and best/missing-data trees is important, we do not think that it "adds an additional layer of complexity that can't be accounted for via simulation" (reviewer 2, comment 1).
 In this simulations, we had to make a choice between (1) simulating larger matrices but with less chains (i.e. less variance) or (2) smaller matrices with more variance.
 We deliberately made the second choice because our main question was "what is the effect of our parameters on recovering the topology".
@@ -614,6 +599,7 @@ We removed the repetition in the caption. %Not sure I understand the second part
 \end{enumerate}
 
 \section{Reviewer 2:}
+Note that we split the second comment from reviewer 2 in three different comments (comments 2,3 and 4 below) to improve the readability of our response to the reviewers.
 
 \begin{enumerate}
 \item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}

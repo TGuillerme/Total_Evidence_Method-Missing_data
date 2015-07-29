@@ -1,5 +1,4 @@
 #Script for testing the effect of missing data on tree topology.
-setwd('Analysis/')
 
 #Loading the functions
 sourceDir <- function(path, trace = TRUE, ...) {
