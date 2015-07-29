@@ -161,7 +161,11 @@ It is especially true when fossils are missing data, and that is going to be an 
 
 We modified the figures 4 and 5 to show Normalised Triplets metric values below 0 and added a dashed line at 0 to underline the difference in scale between both metrics.
 % TG: a a paragraph in the results about the wild-card fossils
-As mentioned in the previous comment (reviewer 1 comment 9), this is due to the fact that the Bayesian consensus tree will be less and less resolved when missing data increases. This has two opposite effects. The first one being to retain clades in a be 
+As mentioned in the previous comment (reviewer 1 comment 9), this is due to the fact that the Bayesian consensus tree will be less and less resolved when missing data increases.
+This has two related effects.
+The first one being to retain "good" clade conservation (i.e. avoiding "false-positive" nodes by collapsing unsupported ones).
+And the second one is that when these clades are collapsed, it reduces the amount of available triplets and thus increases the "wild-card taxa" score (Normalised Triplets metric).
+In fact, when a clade ((a;b);c); is collapsed to (a;b;c), the whole clade is conserved (a, b and c are still in a common clade) however they also all become wild-card taxa: the position of a regarding b and c is now incorrect.
 
 
 \item{\textcolor{blue}{\textbf{Conclusion:} The authors should clarify how their results compare to those of previous studies more directly to emphasize the nuances that make this study unique. }}
@@ -181,10 +185,8 @@ We fixed this graphical mistake as state above in reviewer 1 comment 13.
 \item{\textcolor{blue}{\textbf{Previous research:} The missing-data problem has a long history in the literature and there are references to some of those older and recent papers.
 But I feel it is necessary to summarize the following questions: what did those studies find, what are the questions those studies left open, and how does this study address them?}}
 
-% specifically
-% what did those studies find: missing data is ok but must overlap
-% what are the questions those studies left open: is it the same when different type of data are used (molecular + morphological)
-% how does this study address them: we test whether m
+% specifically state line by line where we dealt with which and which question.
+
 \end{enumerate}
 
 \section{Specific comments:}
@@ -226,7 +228,7 @@ We fixed this issue.
 
 %We corrected the plural/singular of data throughout the text. 
 % TG: actually I'm not going to change it:
-We thank the reviewer for pointing out this inconsistency, however, 'data' is now commonly used for the singular case (Pinker, S. The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century. Penguin, 2014. p 271 and Guardian and Observer style guide (2015): \url{http://goo.gl/cmKjNe}).
+We thank the reviewer for pointing out this inconsistency, however, 'data' is now commonly used for the singular case (Pinker, S. \textit{The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century}. Penguin, 2014. p 271; and Guardian and Observer style guide (2015): \url{http://goo.gl/cmKjNe}).
 
 \item{\textcolor{blue}{\textbf{line 77:} change 'a lot' to 'large proportions of' or something more accurate and less colloquial}}
 
@@ -254,14 +256,9 @@ These and other aspects of the study uniqueness must be clearer.}}
 
 (1) - We thank the reviewer for this judicious comment and emphasized on both the novelty aspect of our study and on the questions we are actually testing as follow:
 
-"Until now, only few attempts have been made to study the impact of this issue on phylogenetic inference using Total Evidence methods (e.g. Wiens et al., 2005; Pattinson et al., 2014).%\citep[e.g.][]{Wiens01102005,pattinsonphylogeny2014}
-For example, Wiens et al. (2005) %\cite{Wiens01102005}
- only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.
-Furthermore, Pattinson et al. (2014) %\cite{pattinsonphylogeny2014}
- assess the effect of removing both molecular and morphological data (``artificial extinction'') on the topology.
-These studies, however, are limited by their empirical approach (Wiens et al., 2005) and the scheme of generating missing data (Pattinson et al., 2014).
-In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall.
-We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa."
+"Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework (i.e. using combined molecular and morphological data; e.g. Wiens et al., 2005; Pattinson et al., 2014). For example, Wiens et al. (2005) only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data. Furthermore, Pattinson et al. (2014) assess the effect of removing both molecular and morphological data (“artificial extinction”) on the topology. These studies, however, are limited by their empirical-only approach (Wiens et al., 2005) and the scheme of generating missing data (Pattinson et al., 2014)."
+
+"In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall. We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa."
 %Pattinson: artificial fossil - removing molecular data from living species to see how topology changes. Pattinson use combined analysis but only to understand the patterns of fossilisation (via artificial fossil).
 %Wiens only focuses on a special case
 %Limitation of Pattinson was the limited scheme for generating missing data from the datasets (specific to primates and observed patterns).
@@ -277,7 +274,10 @@ We test the effect of missing data by measuring two crucial aspects of topology 
 
 (2) - the second point underlined by the reviewer in this specific comment strikes use as really interesting. However, we considered this study to be already long and complex. We therefore think that adding an extra question to this study (i.e. what is the effect of missing data on the morphological substitution rate parameter estimates?) might loose the reader.
 Nonetheless, we added the result of such analysis in the \textbf{Appendix-A Morphological rates estimations results} section.
-% TG: what do you think? I don't want to attract the reviewer's attention too much (i.e. that's another shit load of analysis to do to do it properly) and certainly not the reader (it's not relevant to the whole paper) but sticking that to the supplementary kind of does what the reviewers want to know.
+We linked to this analysis in the methods part as follows:
+"The detailed MrBayes parameters are available in Appendix A along with details on the $\alpha$ parameter estimation."
+
+% TG: what do you think? I don't want to attract the reviewer's attention too much (i.e. that's another shit load of analysis to do to do it properly) and certainly not the reader's attention either (it's not relevant to the whole paper) but sticking that to the supplementary kind of does what the reviewers wants to know.
 
 \item{\textcolor{blue}{\textbf{line 124:} replace 'sections' with 'partition'}}
 
@@ -303,7 +303,8 @@ Also, we chose this low value to be consistent with our protocol for simulating 
 
 \item{\textcolor{blue}{\textbf{Line 176 to 180:} could be streamlined. It is not clear what is meant by 'no special assumption about how the characters evolved', what constitutes a special assumption? Could potentially be reduced to something like 'this model and these parameter settings strike a balance between realism for empirical datasets (citations) and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations'. Just for example.}}
 
-We modified the sentence as follows: "We selected this model and parameters settings to be a compromise between realism from empirical datasets (e.g. Kelly et al., 2014) %\citep[e.g.][]{kellymolecular2014}
+We modified the sentence as follows:
+"We selected this model and parameters settings to be a compromise between realism from empirical datasets (e.g. Kelly et al., 2014) %\citep[e.g.][]{kellymolecular2014}
 and models with few parameters (cf. Springer et. al., 2012) %\citep[cf.][]{springermacroevolutionary2012}
 to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)."
 
@@ -317,12 +318,22 @@ We modified the following sentence as suggested: "sampling with a probability of
 
 \item{\textcolor{blue}{\textbf{line 193 to 196:} again, justify why gamma with shape of 0.5 is appropriate for minimizing homoplasy. This distribution places highest probability on substation rates less than 0.5, when one of the cited references potentially suggests that the lowest topological error was found at rates of ~0.5-1.5, and that very low substitution rates incurred error similar to very high rates ((Wright and Hillis 2014) 2014 Figure 3). Other cited references do not clearly state that this distribution and shape setting is optimal, so the authors really must justify. }}
 
-% To do!
-% TG: a fair point... Can I just say: "Coz' April told me it was fine?"
-% TG: one way to justify it should be to say that we tried to avoid homoplasy but we actually wanted to add a little bit of it to be kind of realistic.
-% TG: in Wright & Hillis, low rate characters make the tree as "shitty" as the "shittiest" ML estimation. Now this "shittiness" is in quotes because it's actually a relative "shittiness". Using the Mk model with no missing data, the Topological difference is actually very low (so it's not "shitty") for low rate characters.
-% TG: then a low rate character with 75% missing gets the maximum topological difference with the Mk model (which is still all right).
-% TG: also, in our case, the actual character rate is not that low. We sample from a low distribution but force them to be non-invariable (therefore, our pratical minimum rate is 0.02 because for one character, at least one species must have a different state (1/51)).
+We initially chose this parameter from personal communication with April Wright and to be consistent with the molecular rate parameter.
+We like to point out that, in figure 3 from Wright and Hillis 2014, even if the Topological error is high when rates are near 0, it is mainly the case for parsimony and both parsimony and Mk with missing data, the fitted model for the Mk model with no missing data (light purple line) is still at lowest when the rates are near 0.
+Topological error, however, becomes minimal for all scenari (Parsimony and Mk, with or without missing data) at a rate of 0.5 (see modified figure 3 from Wright and Hillis (2014) in this response; we added the tick marks and the 0.5 rate limit by using the ruler in Adobe Illustrator).
+
+\begin{figure}[]
+\centering
+    \includegraphics[keepaspectratio=true]{response_fig1.pdf}
+\caption{Figure 3 from Wright and Hillis 2014 with added x axis ticks. The red line represents the 0.5 rate.}
+\end{figure}
+
+We do agree, however, that if rates get lower than 0.5, variance in topological error increases (especially for the Mk model with missing data).
+Therefore, we implemented the \textit{a posteriori} matrix selection step to our analysis (i.e. keeping only the ``complete'' matrices that led to trees with a median bootstrap $>$ 50; explained lines 259-268 in the submitted manuscript and lines @@@ and @@@ in the revised one).
+
+We rephrased the section underlined by the reviewer as follows:
+
+"We used low evolutionary rate parameters to be consistent with the molecular rates parameters and to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal (Wright and Hillis, 2014). Note that Wright and Hillis (2014) have shown that low morphological rates (< 0.5) increases variance in topological error but we discarded simulations with such topological error by selecting only matrices with a “fair” phylogenetic signal (see Estimating phylogenies section below; Zander, 2004)."
 
 \item{\textcolor{blue}{\textbf{line 201:} change 'get' for 'obtain' or something less colloquial.}}
 

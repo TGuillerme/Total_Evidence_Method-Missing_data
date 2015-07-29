@@ -53,23 +53,6 @@ To obtain a realistic value for the probability of having \textit{k} characters 
 \label{Fig_AppendixCharacters}
 \end{figure}
 
-\subsection{Morphological rates estimations results}
-To test the sensitivity of the Bayesian prior on the morphological rates distribution shape ($\alpha$ = 0.5), we compared the shape of the distribution of our generated morphological characters ($\alpha_{TRUE}$) to the shape of the distribution of morphological characters rate estimated by the Bayesian inference ($\alpha_{EST}$).
-The $\alpha_{TRUE}$ parameter was estimated by fitting a gamma distribution to the 100 individual morphological rates (randomly sampled from a gamma distribution with $\alpha$ = 0.5) using the \texttt{fitdistr} function from the \texttt{MASS R} package \citep{MASS}.
-We measured the difference as:
-\begin{equation}
-\Delta\alpha=\alpha_{EST} - \alpha_{TRUE}
-\end{equation}
-We then calculated the mode and the 95\% and 50\% confidence intervals over the 50 chains using the \texttt{hdr} function from the \texttt{hdrcde R} package \citep{hdrcde}.
-The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Rates_estimates.R}.
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,keepaspectratio]{SupplementaryFigures/Rates_estimates.pdf}
-\caption{Differences between the simulated rate of each morphological character ($\alpha$ parameter) and the Bayesian estimates for the trees with missing data. The x axis shows the percentage of missing data from 0\% (white) to 75\% (black) for the two parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and number of characters from 100 to 25 for the parameter $N_{C}$ (lower line). Positive values shows overestimation of the parameter and negative values shows underestimation. One unit of difference means that the estimated rate is twice as big/small than the true rate. The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the rates estimates.}
-\label{Fig_AppendixRates}
-\end{figure}
-
 \subsection{Effect of the starting tree in Bayesian inference}
 We used the ``true'' tree as a starting tree for the two MCMC chains in the Bayesian inference for decreasing the computing time.
 To assess if this had an effect on the topology of the ``best'' tree, we ran a sub-sample of trees using a different random tree for the two MCMC chains \citep[default MrBayes option;][]{Ronquist2012mrbayes}.
@@ -100,6 +83,24 @@ Additionally, we compared the trees inferred using a random tree as a starting t
 \end{table}
 
 %Incl table + incl figure THIS IS NOT THE CORRECT TABLE!
+
+
+\subsection{Morphological rates estimations results}
+To test the sensitivity of the Bayesian prior on the morphological rates distribution shape ($\alpha$ = 0.5), we compared the shape of the distribution of our generated morphological characters ($\alpha_{TRUE}$) to the shape of the distribution of morphological characters rate estimated by the Bayesian inference ($\alpha_{EST}$).
+The $\alpha_{TRUE}$ parameter was estimated by fitting a gamma distribution to the 100 individual morphological rates (randomly sampled from a gamma distribution with $\alpha$ = 0.5) using the \texttt{fitdistr} function from the \texttt{MASS R} package \citep{MASS}.
+We measured the difference as:
+\begin{equation}
+\Delta\alpha=\alpha_{EST} - \alpha_{TRUE}
+\end{equation}
+We then calculated the mode and the 95\% and 50\% confidence intervals over the 50 chains using the \texttt{hdr} function from the \texttt{hdrcde R} package \citep{hdrcde}.
+The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Rates_estimates.R}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,keepaspectratio]{SupplementaryFigures/Rates_estimates.pdf}
+\caption{Differences between the simulated rate of each morphological character ($\alpha$ parameter) and the Bayesian estimates for the trees with missing data. The x axis shows the percentage of missing data from 0\% (white) to 75\% (black) for the two parameters: $M_{L}$ (upper line), $M_{F}$ (middle line) and number of characters from 100 to 25 for the parameter $N_{C}$ (lower line). Positive values shows overestimation of the parameter and negative values shows underestimation. One unit of difference means that the estimated rate is twice as big/small than the true rate. The graph shows the modal value (points), and the 50\% (thick solid lines) and 95\% (thin dashed lines) confidence intervals of the distributions of the rates estimates.}
+\label{Fig_AppendixRates}
+\end{figure}
 
 
 

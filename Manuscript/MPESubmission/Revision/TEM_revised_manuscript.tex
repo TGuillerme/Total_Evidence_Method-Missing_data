@@ -1,8 +1,21 @@
 
 \documentclass[12pt,letterpaper]{article}
 
+
+%---------------------------------------------
+%
+%       THIS IS THE HIGHLIGHTED VERSION.
+%       For the final version, carefully remove:
+%       '\protect'
+%       '\hl{' (don't forget the '}'
+%
+%---------------------------------------------
+
+
+
 %Packages
 \usepackage{xcolor}
+\usepackage{color,soul}
 \usepackage{changepage}
 \usepackage{pdflscape}
 \usepackage{fixltx2e}
@@ -100,40 +113,41 @@ We therefore recommend using Bayesian consensus trees to fix the tree topology p
 
 \newpage
 \section{Introduction}
-Although most species that have ever lived are now extinct \citep{novacek1992ext,raup1993extinction}, the many large-scale macroevolutionary studies focus solely on living species (e.g. \citealp{meredithimpacts2011,jetzthe2012}).
+Although most species that have ever lived are now extinct \citep{novacek1992ext,raup1993extinction}, the \hl{many large-scale macroevolutionary studies focus solely on living species} (e.g. \citealp{meredithimpacts2011,jetzthe2012}).
 Ignoring fossil taxa may lead to misinterpretation of macroevolutionary patterns and processes such as the timing of diversification events \citep[e.g.][]{pyrondivergence2011}, relationships among lineages \citep[e.g.][]{manosphylogeny2007} or niche occupancy \citep[e.g.][]{pearmanniche2008}.
 This has led to increasing consensus among evolutionary biologists that fossil taxa should be included in macroevolutionary studies \citep{jacksonwhat2006,quentaldiversity2010,dietlconservation2011,slaterunifying2013,fritzdiversity2013}.
 To do this, however, we need to be able to place living and fossil taxa into the same phylogenies; a task that remains difficult despite recent methodological developments \citep[e.g.][]{pyrondivergence2011,ronquista2012,BEASTmaster}.
 
 Up to now, three main approaches have been used to place both living and fossil taxa into phylogenies.
-These approaches differ mainly in how they treat the fossil taxa and it's data. One can use the fossil as tips or as nodes in the phylogeny and use it's age only, it's morphology only or it's age and morphology jointly.
+\hl{These approaches differ mainly in how they treat the fossil taxa and it's data.
+One can use the fossil as tips or as nodes in the phylogeny and use it's age only, it's morphology only or it's age and morphology jointly.}
 Classical cladistic methods use matrices containing morphological data from both living and fossil taxa and treat each taxon as a tip in the phylogeny. Relationships among the taxa are then inferred using optimality criteria such as maximum parsimony \citep{Hennig1966,felsenstein2004}.
 This approach is commonly used by paleontologists but it ignores the additional molecular data available from living species and does not allow use of probabilistic methods for dealing with phylogenetic uncertainty.
 Neontologists, on the other hand, more commonly use probabilistic approaches (e.g. Maximum Likelihood or Bayesian methods) based on matrices containing only molecular data from living species.
-Because fossil taxa do not usually have available DNA, only fossils' occurrence dates are used to time calibrate phylogenies \citep{zuckerkandl1965}.
+\hl{Because fossil taxa do not usually have available DNA, only fossils' occurrence dates are used to time calibrate phylogenies} \citep{zuckerkandl1965}.
 There have been great improvements in the theory and application of these two approaches \citep[e.g.][]{bapsta2013,stadlerdating2013,heaththe2013} as well as much debate about the ``best'' approach to use \citep[e.g.][]{spencerefficacy2013,wrightbayesian2014}.
 Neither approach, however, uses all the available data.
 
 A final approach, known as the Total Evidence method, uses matrices containing molecular data from living taxa and morphological data from both living and fossil taxa \citep{eernissetaxonomic1993}.
 This approach treats every taxon as a tip in the phylogeny, uses the occurrence age of the fossils to time calibrate the phylogeny \citep[known as tip-dating;][]{ronquista2012}, and allows the use of probabilistic methods for estimating phylogenetic uncertainty \citep{ronquista2012}.
-Total Evidence methods is becoming an increasingly popular way of adding fossil taxa to phylogenies \citep[e.g.][]{pyrondivergence2011,ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014}.
+\hl{Total Evidence methods is becoming an increasingly popular way of adding fossil taxa to phylogenies} \citep[e.g.][]{pyrondivergence2011,ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014,Arcila2015131}.
 Although the Total Evidence approach seems very promising, there is one big drawback in using this approach: it requires both molecular and morphological data, both of which can be difficult (or impossible) to collect for every living and fossil taxon in the tree.
 Morphological data for living taxa are rarely collected when molecular data are available (e.g. \citealp{O'Leary08022013} \textit{vs.} \citealp{meredithimpacts2011}), and for fossil taxa, data can only be collected from features preserved in the fossil record.
 For example, in vertebrates, the hardest parts of the skeleton are more often preserved than soft parts \citep{sansomfossilization2013}; and molecular data is (nearly) always unavailable.
-Therefore Total Evidence matrices are likely to contain a large proportions of missing data that may affect the method's ability to infer correct topologies, branch lengths and support values \citep{salamin2003}. 
+Therefore \hl{Total Evidence matrices are likely to contain a large proportions of missing data} that may affect the method's ability to infer correct topologies, branch lengths and support values \citep{salamin2003}. 
 
-Although missing data does not appear be a major problem in molecular and morphological matrices separately (as long as enough data overlaps in each case, and missing data are not phylogenetically biased \citep{wiensmissing2003,Wiens01102005,wiensmissing2006,wiensmissing2008,lemmonthe2009,Sanderson22072011,rouresite-specific2011,pattinsonphylogeny2014}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil taxa.
+Although missing data does not appear be a major problem in molecular and morphological matrices separately (\hl{as long as enough data overlaps in each case, and missing data are not phylogeneticaly biased} \citep{wiensmissing2003,Wiens01102005,wiensmissing2006,wiensmissing2008,lemmonthe2009,Sanderson22072011,rouresite-specific2011,pattinsonphylogeny2014}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil taxa.
 This may be particularly problematic as fossil taxa (generally) do not have molecular data, resulting in a large section of missing data in Total Evidence matrices.
-Until now, only few attempts have been made to study study the impact of this issue on phylogenetic inference using Total Evidence methods \citep[e.g.][]{Wiens01102005,pattinsonphylogeny2014}.
-For example, \cite{Wiens01102005} only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.
-Furthermore, \cite{pattinsonphylogeny2014} assess the effect of removing both molecular and morphological data (``artificial extinction'') on the topology.
-These studies, however, are limited by their empirical approach \citep{Wiens01102005} and the scheme of generating missing data \citep{pattinsonphylogeny2014}.
+\hl{Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework \protect\citep[\hl{i.e. using combined molecular and morphological data}; e.g.][]{Wiens01102005,pattinsonphylogeny2014}.}
+\hl{For example, \protect\cite{Wiens01102005} }\hl{only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.}
+\hl{Furthermore, \protect\cite{pattinsonphylogeny2014} }\hl{assess the effect of removing both molecular and morphological data (``artificial extinction'') on the topology.}
+\hl{These studies, however, are limited by their empirical-only approach \protect\citep{Wiens01102005} }\hl{and the scheme of generating missing data \protect\citep{pattinsonphylogeny2014}.}
 
-In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall.
-We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa.
+\hl{In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall.
+We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa.}
 We focus on the effect of missing data on our ability to recover a ``best'' tree topology because it is a crucial aspect of a phylogeny in many macroevolutionary studies, for example when trying to elucidate the evolutionary relationships among species \citep[e.g.][]{meredithimpacts2011,jetzthe2012}, or for studying evolutionary transitions \citep[e.g.][]{friedmanexplosive2010}.
 Although branch length estimation is also important \citep[namely for timing extinction and/or speciation events; e.g.][]{ronquista2012}, we do not consider branch lengths in this study.
-This is partially due to difficulties with simulating branch lengths and topology simultaneously, but also because previous studies have already empirically assessed the effect of the Total Evidence method on branch length variation but using topological constraints \citep{ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014}.
+This is partially due to difficulties with simulating branch lengths and topology simultaneously, \hl{but also because previous studies have already empirically assessed the effect of the Total Evidence method on branch length variation but using topological constraints} \citep{ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014}.
 Thus understanding the sensitivity of topology to missing data is important for assessing the accuracy of tree estimation in the Total Evidence framework. To our knowledge, this question has never been formally assessed.
 
 Here we use a simulation approach to assess the effect of missing data on tree topologies inferred from Total Evidence matrices.
@@ -151,7 +165,7 @@ Additionally, we find that the ability of Total Evidence methods to recover the 
 %---------------------------------------------
  
 \section{Materials and Methods}
-To explore how missing data in the morphological partition of Total Evidence matrices influences tree topology, we used the following protocol (Figure 1):
+To explore how missing data in \hl{the morphological partition of Total Evidence matrices} influences tree topology, \hl{we used the following protocol (Figure 1):}
 \begin{enumerate}
 \item{Generating the matrix:} \label{step:generate_matrix} \\
 We randomly generated a birth-death tree (hereafter called the ``true'' tree) and used it to simulate a matrix containing both molecular and morphological data for living and fossil taxa (hereafter called the ``complete'' matrix).
@@ -189,20 +203,23 @@ The fossil taxa were considered as unique tips at the end of extinct lineages.
 We then added an outgroup to the tree, using the mean branch length of the tree to separate the outgroup from the rest of the taxa, and with the branch length leading to the outgroup set as the sum of the mean branch length and the longest root-to-tip length of the tree.
 
 Next, we generated a molecular and a morphological matrix from the ``true'' tree.
-The molecular matrix was simulated from the ``true'' tree using the R package phyclust v. 0.1-14 \citep{chen2011}.
+The molecular matrix was \hl{simulated} from the ``true'' tree using the R package phyclust v. 0.1-14 \citep{chen2011}.
 The matrix contained 1000 character sites for 51 taxa and was generated using the seqgen algorithm \citep{ranbaut1997seqgen} and using the HKY model \citep{HKY85} with random base frequencies (sampled from a uniform probability distribution bounded between 0 and 1 with the total frequency for the four bases equal to 1) and transition/transversion rate of two \citep{douadycomparison2003}.
-The substitution rates were selected from a gamma distribution with an ($\alpha$) shape of 0.5 \citep{yangamong-site1996}.
-In practice, such a value of $\alpha$ $<$ 1 decreases the number of sites with high substitution rates, thus reducing homoplasic sites and increasing the phylogenetic signal \citep{Hassanin1998611,EstoupHomoplasy}.
-Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below).
+\hl{The substitution rates were selected from a gamma distribution with an ($\alpha$) shape of 0.5} \citep{yangamong-site1996}.
+\hl{In practice, such a value of $\alpha$ $<$ 1 decreases the number of sites with high substitution rates, thus reducing homoplasic sites and increasing the phylogenetic signal} \citep{Hassanin1998611,EstoupHomoplasy}.
+\hl{Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below).}
 %We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal. %Justify
 %We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, total computational time for the whole analysis was around 150 CPU years).
-We selected this model and parameters settings to be a compromise between realism from empirical datasets \citep[e.g.][]{kellymolecular2014} and models with few parameters \citep[cf.][]{springermacroevolutionary2012} to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years).
+\hl{We selected this model and parameters settings to be a compromise between realism from empirical datasets} \citep[e.g.][]{kellymolecular2014} \hl{and models with few parameters} \citep[cf.][]{springermacroevolutionary2012} \hl{to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years).}
 All the molecular information for fossil taxa was replaced by missing data ("?").
 
-We simulated the morphological matrix using the rTraitDisc function from the R package ape v. 3.0-11 \citep{paradisape:2004} to generate a matrix of 100 character sites for 51 taxa.
-We assigned the number of character states (either two or three) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters (based on an empirical review of published matrices, see Appendix A and Fig. A1 within).
-We then ran an independent discrete character simulation for each character using the ``true'' tree with the character's randomly selected number of states (two or three) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to another \citep{Pagel22011994}. This method allows us to have only two parameters for each character: the number of states and the evolutionary rate.
-For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5. We used low evolutionary rate parameters to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal \citep{wagner2000,davalosintegrating2014,wrightbayesian2014}.
+\hl{We simulated the morphological matrix using the rTraitDisc function from the R package ape v. 3.0-11} \citep{paradisape:2004}\hl{ to generate a matrix of 100 character sites for 51 taxa.}
+\hl{We assigned the number of character states (either two or three) for each morphological character by sampling with a probability of 0.85 for two states characters and 0.15 for three state characters (based on an empirical review of published matrices, see Appendix A and Fig. A1 within).}
+We then ran an independent discrete character simulation for each character using the ``true'' tree with the character's randomly selected number of states (two or three) and assuming an equal rate of change (i.e. evolutionary rate) from one character state to another \citep{Pagel22011994}.
+This method allows us to have only two parameters for each character: the number of states and the evolutionary rate.
+For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5.
+\hl{We used low evolutionary rate parameters to be consistent with the molecular rates parameters and to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal} \citep{wrightbayesian2014}.
+\hl{Note that} \cite{wrightbayesian2014} \hl{have shown that low morphological rates ($<0.5$) increases variance in topological error but we discarded simulations with such topological error by selecting only matrices with a ``fair'' phylogenetic signal} \citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}.
 
 Finally, we combined the morphological and molecular matrices obtained from the ``true'' tree.
 Hereafter we call this the ``complete'' matrix, i.e. the matrix with no missing data except for the molecular data of the fossil taxa.
@@ -304,7 +321,7 @@ We also used two priors on the molecular part of the matrix: an exponential prio
 We used these priors to speed up the Bayesian estimation process.
 These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation however, here we are focusing on the effect of missing data on tree topology and not branch lengths.
 Even using these priors, it took $~$ 140 CPU years to build 50 sets of 125 Bayesian trees (2.30GHz clock speed nodes).
-The detailed MrBayes parameters are available in Appendix A.
+\hl{The detailed MrBayes parameters are available in Appendix A along with details on the $\alpha$ parameter estimation.}
 
 We used the average standard deviation of split frequencies (ASDS) as a proxy to estimate the convergence of the chains and used a stop rule when the ASDS went below 0.01 \citep{Ronquist2012mrbayes}.
 We also checked the effective sample size (ESS) on a random sub-sample of runs in each simulation to ensure that ESS $>>$ 200 \citep{drummond2006ess}.
