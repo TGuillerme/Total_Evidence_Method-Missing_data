@@ -293,7 +293,10 @@ From the resulting matrices we generated two types of trees: the ``best'' tree i
 The ``true'' tree was used to generate the ``complete'' matrix and reflects the ``true'' evolutionary history in our simulations.
 The ``best'' tree, on the other hand, is the best tree we can build using state-of-the-art phylogenetic methods.
 In real world situations, the ``true'' tree is never available to us because we cannot know the true evolutionary history of a clade \citep[except in very rare circumstances, e.g.][]{rozen2005}.
+\hl{In practice, the difference between the ``true'' and the ``best'' tree represents the effect of our parameters and R packages choices (i.e. diversitree, phyclust and ape) as well as the phylogenetic methods used (see appendix B).}
+\hl{The aim of this study, however, is to look at the effect the missing data parameters described above on topological recovery.}
 Therefore, here we focus on comparing the trees inferred from the matrices with missing data to the ``best'' tree, rather than the ``true'' tree, as the ``best'' tree is generally what we have to work with.
+
 
 \subsubsection{Maximum Likelihood}
 The ``best'' tree and the ``missing-data'' trees were inferred using RAxML v. 8.0.20 \citep{Stamatakis21012014}. For the molecular data, we used the GTR + $\Gamma_4$ model (\citealp{tavare1986}; default GTRGAMMA in RAxML v. 8.0.20; \citealp{Stamatakis21012014}).
