@@ -363,10 +363,11 @@ We changed the title as suggested.
 
 \item{\textcolor{blue}{\textbf{line 286:} Why was the true tree used as a starting tree? Earlier the authors argued that the true tree is almost never known, so using it here detracts from the generalizability of these results. If the only justification is 'to speed up the Bayesian estimation process' as stated later, then it seems like this may bias one of the main results, which is that Bayesian analyses outperformed max. likelihood, in which no starting tree was used. I understand the computational limitations, but the authors should present some analysis with complete and missing data in which no starting tree is given compared to analyses in which a starting tree is given to evaluate whether using a starting tree significantly affects the resulting trees, perhaps in an Appendix. Or at least include some perturbation to the starting tree to avoid overly influencing the resulting topology. It would seem to me that this is illustrated in figure 5, where-in with the Robinson-Foulds metric, the distance to the best tree in Bayesian analysis seems to have a lower bound at ~0.7, even under the worst cases of missing data. This may be the worst the analysis can do given that it started out with the true tree. }}
 
-We added an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree. We see no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree. We made these data available in the supplementary materials Appendix A @@@ and we also added a precision in the manuscript:
+We added an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree. We see no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree. We made these data available in the supplementary materials Appendix A (figure A.2 and tables A.1 and A.2) and we also added a precision in the manuscript:
 
-blabalbalbal. line @@@ 
-%To do (MAJOR)
+"We used a fixed starting tree rather than a random starting tree (default MrBayes; Ronquist et al., 2012b) to speed up our Bayesian inferences.
+Note that a starting is not a Bayesian prior on topology \textit{per se} and did not significantly affected topology (see Appendix A, section ``Effect of the starting tree on Bayesian inference'')." line @@@ 
+
 
 \item{\textcolor{blue}{\textbf{line 318:} replace 'the twice number' with 'twice the number'}}
 

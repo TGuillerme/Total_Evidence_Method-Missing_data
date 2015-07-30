@@ -320,6 +320,8 @@ We chose these models to be consistent with the parameters used to generate the 
 
 Each Bayesian tree was estimated using two runs of four chains each for a maximum of 5$\times$$10^7$ generations.
 For each estimation, we used the ``true'' tree's topology as a starting tree (with a starting value for each branch length of one).
+\hl{We used a fixed starting tree rather than a random starting tree} \citep[\hl{default MrBayes;}][]{Ronquist2012mrbayes} \hl{to speed up our Bayesian inferences.
+Note that a starting is not a Bayesian prior on topology \textit{per se} and did not significantly affected topology (see Appendix A, section ``Effect of the starting tree on Bayesian inference'').}
 We also used two priors on the molecular part of the matrix: an exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5, and a transition/transversion ratio prior of two sampled from a strong beta distribution ($\beta$(80,40)); and one prior on the morphological part of the matrix (exponential prior on the shape of the gamma distribution of $\alpha$ = 0.5).
 We used these priors to speed up the Bayesian estimation process.
 These priors biased the way the Bayesian process calculated branch lengths by giving non-random starting points and boundaries for parameter estimation however, here we are focusing on the effect of missing data on tree topology and not branch lengths.
@@ -341,7 +343,7 @@ We normalised both metrics using methods described in \citet{Bogdanowicz2012} to
 These metrics are described in detail below.
 
 \subsubsection{Robinson-Foulds distance}
-The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and twice the number of shared clades across two trees.
+The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and \ul{twice the number} of shared clades across two trees.
 The metric reflects the distance between the distributions of tips among clades in the two trees \citep{RF1981} (see Appendix B for calculation details).
 This metric is bounded between zero, when the two trees are identical, and $2(n-2)$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
 This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity.
@@ -475,7 +477,7 @@ The effect of the missing data in the fossil record ($M_{F}$) is less than the e
 This is related to the fact that the Bayesian consensus tree is built using a majority consensus rule.
 When the fossil taxa have less data (e.g. $M_{F}$ = 75\%) they will tend to branch with any taxon in the clade that shares most characters with the fossils.
 Therefore a majority consensus position is unlikely to exist (i.e. every branching position is represented in $<$ 50\% of the trees in the Bayesian posterior distribution) and the fossil taxa will form a polytomy at the base of the clade.
-In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present near the tips but affects the clade conservation less when fossils are near the root.
+\ul{In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present near the tips but affects the clade conservation less when fossils are near the root.}
 Conversely, because a fossil in a high taxonomic level clade has many chances to branch on different nodes within the clade, it will be more likely to act as a wildcard taxon and decrease the Normalised Triplets metric.
 Therefore, the $M_{F}$ parameter is likely to affect the Normalised Robinson-Foulds metric less than the Normalised Triplets metric for the Bayesian consensus trees.
 Conversely, the same scenario in a Maximum Likelihood framework will lead to a dichotomous branching of the fossils but with low bootstrap support ($<$ 50).
