@@ -38,6 +38,7 @@
 %\setcounter{secnumdepth}{0} 
 
 \renewcommand\thefigure{A.\arabic{figure}}
+\renewcommand\thetable{A.\arabic{table}}
 
 \begin{document}
 
@@ -56,39 +57,55 @@ To obtain a realistic value for the probability of having \textit{k} characters 
 \subsection{Effect of the starting tree in Bayesian inference}
 We used the ``true'' tree as a starting tree for the two MCMC chains in the Bayesian inference for decreasing the computing time.
 To assess if this had an effect on the topology of the ``best'' tree, we ran a sub-sample of trees using a different random tree for the two MCMC chains \citep[default MrBayes option;][]{Ronquist2012mrbayes}.
-We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $N_C$=100; second tree: $M_L$=10\%, $M_F$=10\% and $N_C$=90, etc.) on the first 20 simulation chains.
-We then compared the trees inferred using the ``true'' tree as a starting tree to the trees using a random tree as a starting tree using the normalised Robinson-Foulds and Triplets metrics.
-Additionally, we compared the trees inferred using a random tree as a starting tree to the ``best'' tree (inferred using the ``true'' tree as a starting tree) and to the ``true'' tree to see whether our results varied if we didn't used the ``true'' tree as a starting tree.
+We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $N_C$=100 (i.e. 0\% ``missing''); second tree: $M_L$=10\%, $M_F$=10\% and $N_C$=90, etc.) on the first 20 simulation chains.
+We then compared the trees inferred using a random starting tree to the ``best'' tree using the normalised Robinson-Foulds and Triplets metrics in an identical way as described in the main text (figure ~\ref{Fig_startingTree}).
+We then compared the normalised Robinson-Foulds and Triplets metrics of the ``missing-data'' trees using the ``true'' tree as a starting tree or a random tree as a starting tree using simple linear regression and nested linear regression (\texttt{lm(metric $\sim$ starting tree)}) and \texttt{lmList(metric $\sim$ starting tree | missing data}) in \texttt{R}).
+The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Starting_tree.R}.
+We found no significant effect of using the ``true'' or a random tree as a starting tree on the ability to recover the ``best'' tree (tables ~\ref{Tab_lm_res} and ~\ref{Tab_lmList_res}).
 
-\begin{table}[!ht]
-\caption{Normalised topological metric between trees using the ``true'' or a random tree as a starting tree for the MCMC chains.}
+\begin{table}[ht]
+\caption{Effect of the using the ``true'' tree as a starting tree on topological recovery for the two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics using simple linear regression.}
+\label{Tab_lm_res}
 \centering
-\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\begin{tabular}{rlcccc}
   \hline
- Tree &  Metric & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\ 
+ & & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \hline
-    $M_L$=0\%; $M_F$=0\%; $N_C$=0\%          & $RF$ & 0.00 & 0.00 & 0.10 & 0.20 & 0.32 & 1.00 \\ 
-                                             & $Tr$ & 0.34 & 0.49 & 0.61 & 0.62 & 0.75 & 1.00 \\ 
-    $M_L$=10\%; $M_F$=10\%; $N_C$=10\%       & $RF$ & 0.03 & 0.54 & 0.69 & 0.64 & 0.77 & 0.98 \\ 
-                                             & $Tr$ & 0.08 & 0.57 & 0.65 & 0.64 & 0.73 & 0.82 \\ 
-    $M_L$=25\%; $M_F$=25\%; $N_C$=25\%       & $RF$ & 0.02 & 0.74 & 0.80 & 0.79 & 0.89 & 0.98 \\ 
-                                             & $Tr$ & 0.21 & 0.67 & 0.73 & 0.72 & 0.77 & 0.84 \\ 
-    $M_L$=50\%; $M_F$=50\%; $N_C$=50\%       & $RF$ & 0.00 & 0.00 & \textbf{0.00} & \textbf{0.01} & 0.01 & 0.04 \\ 
-                                             & $Tr$ & 0.08 & 0.38 & 0.59 & 0.57 & 0.73 & 0.84 \\ 
-    $M_L$=75\%; $M_F$=75\%; $N_C$=75\%       & $RF$ & 0.00 & 0.00 & \textbf{0.01} & \textbf{0.02} & 0.04 & 0.11 \\ 
-                                             & $Tr$ & 0.21 & 0.36 & 0.56 & 0.55 & 0.74 & 0.87 \\ 
+RF & (Intercept) & 0.8100 & 0.0122 & 66.16 & \textbf{0.0000} \\ 
+   & starting:true & 0.0019 & 0.0173 & 0.11 & 0.9125 \\
+Tr & (Intercept) & 0.4424 & 0.0418 & 10.59 & \textbf{0.0000} \\ 
+   & starting:true & 0.0159 & 0.0591 & 0.27 & 0.7887 \\ 
    \hline
 \end{tabular}
-\label{Tab_Results-Difference_methods}
 \end{table}
 
-%Incl table + incl figure THIS IS NOT THE CORRECT TABLE!
+\begin{table}[ht]
+\caption{Effect of the using the ``true'' tree as a starting tree on topological recovery for the two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics for each missing data parameter using nested linear regression.}
+\label{Tab_lmList_res}
+\centering
+\begin{tabular}{rccccc}
+  \hline
+ & & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+RF & 0\%  & 0.02 & 0.02 & 1.02 & 0.31 \\ 
+   & 10\% & -0.01 & 0.02 & -0.50 & 0.62 \\ 
+   & 25\% & 0.00 & 0.02 & 0.00 & 1.00 \\ 
+   & 50\% & 0.00 & 0.02 & 0.03 & 0.98 \\ 
+   & 75\% & -0.00 & 0.02 & -0.03 & 0.98 \\
+Tr & 0\%  & 0.09 & 0.08 & 1.06 & 0.29 \\ 
+   & 10\% & -0.00 & 0.08 & -0.05 & 0.96 \\ 
+   & 25\% & 0.00 & 0.08 & 0.01 & 0.99 \\ 
+   & 50\% & -0.00 & 0.08 & -0.04 & 0.97 \\ 
+   & 75\% & -0.00 & 0.08 & -0.00 & 1.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
 
 \begin{figure}
 \centering
-\includegraphics[keepaspectratio=true]{SupplementaryFigures/TEM_Fig-AppendixCharacters.pdf}
-\caption{The proportion of morphological characters with between two and 10 character states extracted from 100 randomly selected empirical matrices downloaded from TreeBASE.}
-\label{Fig_AppendixCharacters}
+\includegraphics[keepaspectratio=true, width=\textwidth]{SupplementaryFigures/Starting_tree.pdf}
+\caption{Effect of using the ``true'' tree (black) or a random tree (red) as the starting tree for the Bayesian inference. The x axis, represent the levels of missing data ()}
+\label{Fig_startingTree}
 \end{figure}
 
 

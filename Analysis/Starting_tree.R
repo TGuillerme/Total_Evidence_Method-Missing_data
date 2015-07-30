@@ -50,18 +50,18 @@ setwd('../../../../Analysis/')
 #Plotting the results (RF)
 quartz(width = 8.3, height = 5.8) #A5 landscape
 op<-par(mfrow=c(1,2), bty="l", oma=c(0,0,0,0))
-TreeCmp.Plot(True_to_best, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[1], lines=TRUE, add=FALSE, shift=0, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+TreeCmp.Plot(True_to_best, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[1], lines=TRUE, add=FALSE, shift=0, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=c("0%","10%","25%","50%","75%"))
 TreeCmp.Plot(Rand_to_best, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
-TreeCmp.Plot(True_to_true, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
-TreeCmp.Plot(Rand_to_true, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[4], lines=TRUE, add=TRUE, shift=0.3, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
-legend(3.8,0.4, legend=c("True tree (start) vs best tree","Random tree (start) vs best tree", "True tree (start) vs true tree", "Random tree (start) vs true tree"), col=palette()[1:4], pch=19, cex=0.7)
+#TreeCmp.Plot(True_to_true, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+#TreeCmp.Plot(Rand_to_true, "R.F_Cluster", probs=c(95, 50), plot=TRUE, col=palette()[4], lines=TRUE, add=TRUE, shift=0.3, ylim=c(0,1), save.details=FALSE, xaxis='auto', ylab='Normalised Robinson-Foulds metric', xlab=NULL)
+#legend(3.8,0.4, legend=c("True tree (start) vs best tree","Random tree (start) vs best tree", "True tree (start) vs true tree", "Random tree (start) vs true tree"), col=palette()[1:4], pch=19, cex=0.7)
 #Plotting the results (Tr)
-TreeCmp.Plot(True_to_best, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[1], lines=TRUE, add=FALSE, shift=0, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+TreeCmp.Plot(True_to_best, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[1], lines=TRUE, add=FALSE, shift=0, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=c("0%","10%","25%","50%","75%"))
 abline(h=0, lty=3)
 TreeCmp.Plot(Rand_to_best, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[2], lines=TRUE, add=TRUE, shift=0.1, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
-TreeCmp.Plot(True_to_true, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
-TreeCmp.Plot(Rand_to_true, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[4], lines=TRUE, add=TRUE, shift=0.3, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
-legend(3.8,1, legend=c("True tree (start) vs best tree","Random tree (start) vs best tree", "True tree (start) vs true tree", "Random tree (start) vs true tree"), col=palette()[1:4], pch=19, cex=0.7)
+#TreeCmp.Plot(True_to_true, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[3], lines=TRUE, add=TRUE, shift=0.2, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+#TreeCmp.Plot(Rand_to_true, "Triples", probs=c(95, 50), plot=TRUE, col=palette()[4], lines=TRUE, add=TRUE, shift=0.3, ylim=c(-0.5,1), save.details=FALSE, xaxis='auto', ylab='Normalised Triplets metric', xlab=NULL)
+#legend(3.8,1, legend=c("True tree (start) vs best tree","Random tree (start) vs best tree", "True tree (start) vs true tree", "Random tree (start) vs true tree"), col=palette()[1:4], pch=19, cex=0.7)
 par(op)
 
 #########################
@@ -96,47 +96,31 @@ best_RF_test<-data.frame("RF"=c(True_RF, Rand_RF), "starting"=as.factor(c(rep("t
 best_Tr_test<-data.frame("Tr"=c(True_Tr, Rand_Tr), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
 #Comparisons to best true
 
-True_RF<-c(True_to_true[[1]][[4]])
-True_Tr<-c(True_to_true[[1]][[6]])
-Rand_RF<-c(Rand_to_true[[1]][[4]], mean(Rand_to_true[[2]][[4]])) #One value is missing
-Rand_Tr<-c(Rand_to_true[[1]][[6]], mean(Rand_to_true[[2]][[6]])) #One value is missing
-for (tree in 2:length(True_to_true)) {
-    True_RF<-c(True_RF, True_to_true[[tree]][[4]])
-    True_Tr<-c(True_Tr, True_to_true[[tree]][[6]])
-    Rand_RF<-c(Rand_RF, Rand_to_true[[tree]][[4]])
-    Rand_Tr<-c(Rand_Tr, Rand_to_true[[tree]][[6]])
-}
-true_RF_test<-data.frame("RF"=c(True_RF, Rand_RF), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
-true_Tr_test<-data.frame("Tr"=c(True_Tr, Rand_Tr), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
-
-
-
-
+# True_RF<-c(True_to_true[[1]][[4]])
+# True_Tr<-c(True_to_true[[1]][[6]])
+# Rand_RF<-c(Rand_to_true[[1]][[4]], mean(Rand_to_true[[2]][[4]])) #One value is missing
+# Rand_Tr<-c(Rand_to_true[[1]][[6]], mean(Rand_to_true[[2]][[6]])) #One value is missing
+# for (tree in 2:length(True_to_true)) {
+#     True_RF<-c(True_RF, True_to_true[[tree]][[4]])
+#     True_Tr<-c(True_Tr, True_to_true[[tree]][[6]])
+#     Rand_RF<-c(Rand_RF, Rand_to_true[[tree]][[4]])
+#     Rand_Tr<-c(Rand_Tr, Rand_to_true[[tree]][[6]])
+# }
+# true_RF_test<-data.frame("RF"=c(True_RF, Rand_RF), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
+# true_Tr_test<-data.frame("Tr"=c(True_Tr, Rand_Tr), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
 
 
 #Running the tests
 library(xtable)
 library(lme4)
 #General effect
-best_RF<-(summary(lm(RF~starting, data=best_RF_test)))
-best_Tr<-(summary(lm(Tr~starting, data=best_Tr_test)))
-true_RF<-(summary(lm(RF~starting, data=true_RF_test)))
-true_Tr<-(summary(lm(Tr~starting, data=true_Tr_test)))
-
-tmp1<-rbind(best_RF[[4]], best_Tr[[4]],true_RF[[4]], true_Tr[[4]])
-comp<-c(rep("best",4),rep("true",4))
-metric<-rep(c(rep("RF",2),rep("Tr",2)),2)
-tmp2<-matrix(data=c(comp, metric, rownames(tmp)), nrow=8, byrow=FALSE)
-tmp3<-cbind(tmp2, tmp1)
-rownames(tmp3)<-NULL ; colnames(tmp3)[1:3]<-c("Comparison", "metric", "term")
-xtable(as.data.frame(tmp3), digit=3) # Digit problem
+xtable(summary(lm(RF~starting, data=best_RF_test)))
+xtable(summary(lm(Tr~starting, data=best_Tr_test)))
 
 
 #Nested effect
 xtable(summary(lmList(RF~starting | miss.data, data=best_RF_test))[[4]][,,2])
 xtable(summary(lmList(Tr~starting | miss.data, data=best_Tr_test))[[4]][,,2])
-xtable(summary(lmList(RF~starting | miss.data, data=true_RF_test))[[4]][,,2])
-xtable(summary(lmList(Tr~starting | miss.data, data=true_Tr_test))[[4]][,,2])
 
 
 
