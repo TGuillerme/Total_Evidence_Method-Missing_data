@@ -363,7 +363,7 @@ We changed the title as suggested.
 
 \item{\textcolor{blue}{\textbf{line 286:} Why was the true tree used as a starting tree? Earlier the authors argued that the true tree is almost never known, so using it here detracts from the generalizability of these results. If the only justification is 'to speed up the Bayesian estimation process' as stated later, then it seems like this may bias one of the main results, which is that Bayesian analyses outperformed max. likelihood, in which no starting tree was used. I understand the computational limitations, but the authors should present some analysis with complete and missing data in which no starting tree is given compared to analyses in which a starting tree is given to evaluate whether using a starting tree significantly affects the resulting trees, perhaps in an Appendix. Or at least include some perturbation to the starting tree to avoid overly influencing the resulting topology. It would seem to me that this is illustrated in figure 5, where-in with the Robinson-Foulds metric, the distance to the best tree in Bayesian analysis seems to have a lower bound at ~0.7, even under the worst cases of missing data. This may be the worst the analysis can do given that it started out with the true tree. }}
 
-We added an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree. We see no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree. We made these data available in the supplementary materials Appendix A (figure A.2 and tables A.1 and A.2) and we also added a precision in the manuscript:
+We added an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree. We see no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree. We made these data available in the supplementary materials Appendix A (figure A2 and tables A1 and A2) and we also added a precision in the manuscript:
 
 "We used a fixed starting tree rather than a random starting tree (default MrBayes; Ronquist et al., 2012b) to speed up our Bayesian inferences.
 Note that a starting is not a Bayesian prior on topology \textit{per se} and did not significantly affected topology (see Appendix A, section ``Effect of the starting tree on Bayesian inference'')." line @@@ 
@@ -444,7 +444,7 @@ We modified the sentence as suggested : "than the ``best'' Maximum Likelihood tr
 
 \item{\textcolor{blue}{\textbf{line 549-565:} again, I am left wondering how much the differences in performance of max. likelihood and Bayesian inference techniques are driven by the use of the 'true' tree as a starting tree in the Bayesian MCMC search, while the likelihood analysis had no such guide tree to begin with. The authors at least need to make this point clear, if not re-run some subset of analyses without introducing a starting tree to test the effects of using the 'true' tree as a starting tree or not. I understand the computational limitations, but the practical limitation that empiricists will never have the 'true' tree to start with may (or may not) have a large impact on our interpretation and the generality of these findings. }}
 
-As developed above (reviewer 1, specific comment 29), we do understand the reviewers concern and added an analysis in the Appendix A (figure A.2 and tables A.1 and A.2) where we tested the effect of using the ``true'' tree as a starting tree. We found that there is no significant effect between using the ``true'' tree or a random tree (MrBayes default) as a starting tree on topological recovery.
+As developed above (reviewer 1, specific comment 29), we do understand the reviewers concern and added an analysis in the Appendix A (figure A2 and tables A1 and A2) where we tested the effect of using the ``true'' tree as a starting tree. We found that there is no significant effect between using the ``true'' tree or a random tree (MrBayes default) as a starting tree on topological recovery.
 
 We refer to this supplementary analysis in the main text as follows:
 
@@ -574,7 +574,6 @@ The orange upper triangle in Figure 6A shows a high probability of overlap of th
 There is no additional effect (i.e. no dissimilarities) of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
 Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional effect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
 Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A)." lines(@@)
-%To do (writing)
 
 \item{\textcolor{blue}{\textbf{Table 1:} The wording of the caption is off - the second paragraph is awkward. 
 Are these values the probabilities of overlap between the distributions of the 'best' tree versus trees from each inference method pooled across all combinations of missing data? That is what is described in methods line 397 but it doesn't say so in the caption.
@@ -599,6 +598,8 @@ In the second case, the fact that the missing data parameters display better sco
 When combined, the maximum amount of missing data can be higher, especially when each parameter is set a 75\% missing data.
 
 2) %TG: not entirely sure what the reviewer means by marginal probabilities. I made to extra summarizing tables in the supplementaries that may be actually easier to read than most of the others so we might want to add them to the main text.
+We added two extra tables in the Appendix C (Table C8 and C9) that summarized the median Bhattacharyya Coefficients within each methods and each parameters individually and combined (Table C8; as illustrated in Figure 2) as well as the median Bhattacharyya Coefficients within each methods and each parameters individually and combined (Table C9; as illustrated in Figure 3).
+% TG: If that's actually what the reviewer 1 wanted, I think we can propose to add it to the main text rather than the appendices. They can always decide to move it back to the appendices if it doesn't bring much.
 
 \item{\textcolor{blue}{\textbf{Appendix C:} Tables 1-3 repeats 'of the'. Should label the first two rows as 'Best maximum likelihood tree' and 'Best Bayesian inference tree'}}
 
@@ -606,7 +607,7 @@ We removed the repetition in the caption. %Not sure I understand the second part
 
 \item{\textcolor{blue}{\textbf{Appendix D:} I find the online code repository thorough, but the repository is loaded with many files, especially for graphing. If it is possible to condense these files it may be easier for a reader to duplicate the study.}}
 
-%Working on it.
+% TG: Working on it. See https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Analysis_Demo.R . I've finished 75% of it but because it's coding, I'll finish it one day when I have no more energy (or hangover).
 
 \end{enumerate}
 
@@ -630,7 +631,7 @@ By comparing the "best" tree's topology to the "missing-data" ones, we explore t
 Note that we explore the effect of these 2 layers by using two different tree inference methods (effectively 4 since we also use the Maximum Likelihood bootstraps trees and the Bayesian posterior trees) and 2 different Normalised topological metrics (Robinson-Foulds and Triplets).
 Using as main results the comparisons between the "true" and the "missing-data" trees would also need the exploration of the effect of the cascade of algorithms and softwares (maybe by modifying the algorithms used to generate the "true" tree and the matrices?).
 
-However, we have added all the comparisons between the "true" tree and the "missing-data" trees in the supplementary.
+However, we have added all the comparisons between the "true" tree and the "missing-data" trees in the Appendix C (Figures C6 and C7).
 It is interesting to notice that the algorithms and softwares as well as probably the size of our matrices are actually not ideal an the recovery of the "true" tree is rather low and scales down the our results (see figure @).
 However, even though these comparisons are worst, it is encouraging to see that the patterns are conserved (i.e. Bayesian consensus trees $>$ Maximum Likelihood trees $>$ both bootstraps trees and Bayesian posterior trees).
 
