@@ -230,18 +230,52 @@ The first one being to retain "good" clade conservation (i.e. avoiding "false-po
 And the second one is that when these clades are collapsed, it reduces the amount of available triplets and thus increases the "wild-card taxa" score (Normalised Triplets metric).
 In fact, when a clade ((a;b);c); is collapsed to (a;b;c), the whole clade is conserved (a, b and c are still in a common clade) however they also all become wild-card taxa: the position of a regarding b and c is now incorrect.
 
-We added a precision on this point in the...
-% TG: add a paragraph in the results about the wild-card fossils
+We added a precision on this point in the about the effects of the tree inference method:
 
-% TG: STOPPED HERE.
+"The Bayesian consensus trees, however, performs badly for the Normalised Triplets metric: some parameters combinations, especially when the $M_F$ parameter reaches 75\% missing data, leads to negative values (figure 5).
+Normalised Triplets metric values below 0 means that the placement of some taxa is worth than expected by just randomly placing this taxa in the tree.
+This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
+In fact, even if clades are conserved (figure 5), the resolutions within them can be poor to non-existent when data is poor.
+In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters." lines (@@@)
 
 
 
 
 \item{\textcolor{blue}{\textbf{Conclusion:} The authors should clarify how their results compare to those of previous studies more directly to emphasize the nuances that make this study unique. }}
 
-We modified the conclusion as follows (see reviewer 1 specific comments 52)
 
+
+We also modified the conclusion to answer the specific comment 52 from reviewer 1 (see below).
+
+%what did those studies find
+
+%what are the questions those studies left open
+
+%and how does this study address them?
+
+
+
+% Previous (13)
+"Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework (i.e. using combined molecular and morphological data; e.g. Wiens et al., 2005; Pattinson et al., 2014). For example, Wiens et al. (2005) only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data. Furthermore, Pattinson et al. (2014) assess the effect of removing both molecular and morphological data (“artificial extinction”) on the topology. These studies, however, are limited by their empirical-only approach (Wiens et al., 2005) and the scheme of generating missing data (Pattinson et al., 2014)."
+
+"In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall. We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa."
+
+% What was left open (56)
+
+
+% Conclusion (52)
+Unfortunately, we didn't found many studies formally testing the important questions asked by the reviewer. However, there exist few empirical analysis that contain results supporting our claims.
+Firstly, for the question about the topological differences between Maximum Likelihood and the Bayesian consensus tree, in Arcila et al 2015 (MPE)'s supplementary analysis, the authors compare the topology inferred from a Total Evidence matrix in both Likelihood (RAxML) and Bayesian (MrBayes) and the topology of the Bayesian consensus tree is much better supported than the one of the best ML tree. Specifically, the ML tree has 7/28 nodes have a "fair" bootstrap support ($>$ 75) and 3/28 with a good support ($>$ 90) as the Bayesian consensus tree has 17/25 nodes with a "fair" posterior probability ($>$80) and 14/25 with a good posterior probability ($>$95). We therefore used this reference to strengthen our claim of the superiority of the Bayesian consensus tree over the Maximum Likelihood one.
+Secondly, for the question about molecular scaffolds, from the few studies clearly specifying their topological constraint method, only Beck and Lee 2013 (Proceedings B) seems to compare an analysis with and without taxonomic constraint on divergence time and rates estimation (the constraint seems to have no effect) but the branch length aspect is not covered in our study.
+
+We modified the mentioned section of the conclusion as follows:
+"Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the ``best'' tree topology than the Maximum Likelihood trees.
+This has also been observed in empirical data (e.g. Arcila et al., 2015) were Maximum Likelihood trees inferred from a Total Evidence matrix were less supported than the Bayesian consensus tree.
+This might have an important impact on estimating topologies in the Total Evidence framework since previous studies had to rely either on molecular scaffolds (e.g. Slater, 2013), taxonomic constraints (e.g. Slater, 2013; Beck and Lee, 2014) or even by fixing the topology (e.g. Ronquist et al., 2012a).
+Therefore, we suggest extracting such topological frames from the Bayesian consensus tree if needed.
+To conclude, the results of our analyses are encouraging and show that it is possible to accurately combine both neontological and palaeontological data in the same phylogeny as long as both types of data sufficiently overlap.
+Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes."
+%Original: Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the “best” tree topology than the Maximum Likelihood trees. Therefore, we advise using Bayesian consensus tree topologies if topology must be fixed for furhter analyses. The results of our analyses are encouraging and show that it is possible to combine both neontological and palaeontological data in the same phylogeny despite issues of missing data. Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes.
 
 
 \item{\textcolor{blue}{\textbf{Figure 4:} Figure 4 has a color scheme issue, the colors in the caption do not match up to the figure.}}
@@ -252,12 +286,13 @@ We apologies for this silly mistake and fixed the colors in the figure. We also 
 
 \item{\textcolor{blue}{\textbf{Figure 4-5:} Am I wrong or shouldn't the y-axis for Normalised Triplets metric go below 0 - it looks those metrics for many missing data combinations have values below zero indicating trees are more different from the 'best' tree than expected by chance (Appendix B 1.1., see Appendix C Tables 1-3) and that is important to show.}}
 
-We fixed this graphical mistake as state above in reviewer 1 specific comment 13.
+We changed the axis of the graphs showing Normalised Triplets metric to show values below 0 throughout the manuscript and the appendices.
 
 
 
 \item{\textcolor{blue}{\textbf{Table caption:} Table caption should include a line about 'pooling across missing data schemes' to clarify what is presented.}}
 
+%TG: WUT? Didn't understood that one at all.
 
 
 \item{\textcolor{blue}{\textbf{Previous research:} The missing-data problem has a long history in the literature and there are references to some of those older and recent papers.
@@ -588,6 +623,11 @@ This is a point that should be expanded upon in the discussion - how these resul
 
 We thank the reviewer for this excellent suggestion and modified our graphical abstract. We also fixed the Normalised Triplets metrics axis to range from -0.5 to 1. We added a horizontal doted line at Triplets = 0 to make sure the reader take notes is this change of scale.
 
+
+
+
+
+
 %how these results compare to other missing data studies
 %Missing data for up to 50\% of characters has been suggested to still have high accuracy in uncovering the true tree (Wiens 2003; Wiens 2005)
 %In Wiens when missing data ~50\%, accuracy is ~70/60
@@ -605,6 +645,20 @@ We thank the reviewer for this excellent suggestion and modified our graphical a
 % % Or, other example with the same tree but for palaebioography: if ((a;b);c); and ((d;e);f); have different geographical origin; then a swap a and d will have important implications.
 % On the other hand the Triplets metric might be more important from macroevolutionary methods such as dating.
 % For example on the same tree (((a;b);c)((d;e);f); if a is a younger taxa than c, the swap of a and c will have a bigger effect on the age of the clade.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \item{\textcolor{blue}{\textbf{Figure 6:} I think this may be the most important figure because it is demonstrating the probability of overlap between the distributions of the best trees and the missing data trees.
 It took me a long time to figure it out, however, and to figure out why the top of the triangle is all orange.

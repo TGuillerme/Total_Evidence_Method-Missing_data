@@ -519,9 +519,11 @@ As described above, this is because the Bayesian consensus tree allows a fossil 
 This may also be because the ``best'' Bayesian consensus trees are not completely resolved, thus will always be more similar to the ``missing data" trees than a completely resolved tree like the ``best'' Maximum Likelihood tree.
 Nonetheless, we minimized the probability of unresolved ``best'' trees in our Bayesian analyses by only using datasets with strong phylogenetic signal (see Methods).
 
-The Bayesian consensus trees, however, performs badly for the Normalised Triplets metric: some parameters combinations, especially when the $M_F$ parameter reaches 75\% missing data, leads to negative values (figure 5).
+\hl{The Bayesian consensus trees, however, performs badly for the Normalised Triplets metric: some parameters combinations, especially when the $M_F$ parameter reaches 75\% missing data, leads to negative values (figure 5).
 Normalised Triplets metric values below 0 means that the placement of some taxa is worth than expected by just randomly placing this taxa in the tree.
-This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees [CONTINUE LATER ON].
+This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
+In fact, even if clades are conserved (figure 5), the resolutions within them can be poor to non-existent when data is poor.
+In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters.}
 
 
 It is also worth noting that across all our analyses, the topologies of the Maximum Likelihood bootstrap trees and the Bayesian posterior trees distribution were always further from the ``best'' tree topology than Maximum Likelihood and Bayesian consensus trees.
