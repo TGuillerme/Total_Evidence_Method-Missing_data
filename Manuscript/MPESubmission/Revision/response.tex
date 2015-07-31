@@ -57,13 +57,19 @@
 \begin{document}
 
 
-%Add introduction (dear Dr blablalbal, here are our revisions)
+Dear Dr D\'{a}valos,
 
-%Resubmit the new version of the manuscript normaly but also add a pdf containing the track changes (highlithing in yellow the bit that have changed): "We are aware on the length of the manuscript. To facilitate the reviewers task, we attached to our revised manuscript, a pdf of the same manuscript but with the changes highlighted in yellow."
+MPE-15-254: Interim Decision
 
-%TG: Add a section "Additional 'fancy' changes" (not fancy obviously)
-% For clarity, we replaced the font of all the functions in R language in courier font (R, diversitree, etc...). \texttt{} - ACTUALLY DO THE CHANGE IF RELEVANT
-%We are very grateful to both referees for their helpful and constructive comments, which we believe have helped us to significantly improve our paper. We have taken all of their comments on board, and respond to their points below.
+We are very grateful to both referees for their helpful and constructive comments, which we believe have helped us to significantly improve our paper. We have taken all of their comments on board, and respond to their points below. For improving clarity in this document, we sorted the reviewers comments as follows:
+\begin{enumerate}
+\item \textbf{Reviewer 1:} containing reviewer's 1 major comments
+\item \textbf{Reviewer 1 Specific comments:} containing reviewer's 1 specific comments
+\item \textbf{Reviewer 2:} containing reviewer's 2 comments
+\end{enumerate}
+Also, we uploaded two versions of the revised manuscript. Both have the exact same content but one has all the changes and additions to the main text highlighted in yellow.
+
+% TG: actually, is it possible to send them the response as a pdf or will I have to copy paste all that in a mail? If the second, it's not that a big problem (just annoying) but I think we should try sending the pdf, it's way clearer like that.
 
 
 \section{Reviewer 1:}
@@ -76,6 +82,17 @@ In other studies of missing data, data were removed from living taxa to determin
 This study will have bearing on an old assertion that including fossils specifically may help alleviate long-branch attraction, not only additional taxa with varying amounts of missing data, as suggested by others (e.g., Wiens 2005).
 Similarly, in the discussion, the authors need to point out how their results fit in with the results of previous research more clearly. }}
 
+% The novelty of this study should be spelled out more clearly by more a more thorough review of the literature, not just by referring to a few relevant works, but by pointing out what is so new about this study.
+
+% The authors assert that this is the first study to examine the effects of missing morphological data from a total evidence dataset, but that is what Pattinson et al. 2014 did (as well as Wiens 2005).
+
+% This study will have bearing on an old assertion that including fossils specifically may help alleviate long-branch attraction, not only additional taxa with varying amounts of missing data, as suggested by others (e.g., Wiens 2005).
+
+% Similarly, in the discussion, the authors need to point out how their results fit in with the results of previous research more clearly.
+
+
+
+
 \item{\textcolor{blue}{\textbf{Graphical abstract:} Current graphical abstract does not capture the content of the article for readers in a single glance.
 The authors should not use red and green together.
 Figure 5 illustrates topology distance with different inference methods and varying proportions of missing data in rows vs columns and would make a better graphical abstract.
@@ -84,42 +101,76 @@ More details are given in the comments on that figure below.}}
 
 We gladly followed reviewer 1's graphical abstract suggestions and have changed it to be similar to the figure 5. % TG: It's freaking not catchy at all but at this point I give up. I've tried many ways but the flippin' paper IS NOT attractive. It might be useful, well written, interesting, citable, etc... But it won't be sexy.
 
+
+
 \item{\textcolor{blue}{\textbf{Highlights:} wording seems awkward}}
 
 We rephrased the highlights of the paper as follows: %3 to 5 bullet points (maximum 85 characters, including spaces, per bullet point). TG: probably need improvement here.
 
-1. The Total Evidence methods allows to combine living and fossil data.
-2. This study test the effect of missing morphological data on topology.
-3. The number of living taxa with data as the most effect on recovering topology.
-4. Bayesian inference outperforms Maximum Likelihood for correct clade recovery.
-5. We suggest that the sampling effort should be focused on data for living taxa.
+\begin{enumerate}[(1)]
+\item The Total Evidence methods allows to combine living and fossil data.
+\item This study test the effect of missing morphological data on topology.
+\item The number of living taxa with data as the most effect on recovering topology.
+\item Bayesian inference outperforms Maximum Likelihood for correct clade recovery.
+\item We suggest that the sampling effort should be focused on data for living taxa.
+\end{enumerate}
+
+
 
 \item{\textcolor{blue}{\textbf{Introduction:} Needs stronger emphasis on what specifically is unique about this study compared to what the many other studies on missing data have done and found.
 Clearly outlining the questions in this study that are left open from previous research is important because some of the findings in this study suggest that there may be more error associated with missing data than previous research has suggested.}}
 
-% To do (see reviewer 1 specific comment 13)
+% Needs stronger emphasis on what specifically is unique about this study compared to what the many other studies on missing data have done and found.
+% To do (see reviewer 1 specific comment 13) - links to major comment one on novelty
+
+% Clearly outlining the questions in this study that are left open from previous research is important because some of the findings in this study suggest that there may be more error associated with missing data than previous research has suggested.
+
+
 
 \item{\textcolor{blue}{\textbf{Abbreviation:} One suggestion is to consider abbreviating Maximum Likelihood and Bayesian Inference as ML and BI respectively early in the methods and use throughout.}}
 
 We do understand the reviewers concern are agree that ML and BI are two commonly used abbreviations.
-Nonetheless, we would rather prefer not abbreviate these terms: in fact, even though they might add some "smoothness" % TG: that's not the word
-to the sentences where Maximum Likelihood and/or Bayesian Inference are stated, we think they might add confusion or difficulties to the whole paper.
-Spelling out the abbreviation might be locally "heavy" (i.e. in the sentence) but at least are completely clear and does not ask the reader to look back for the actual meaning of such or such abbreviation.
+Nonetheless, we would rather prefer not abbreviate these terms: in fact, even though they might add some concision to the sentences where Maximum Likelihood and/or Bayesian Inference are stated, we think they might add confusion or difficulties to the whole paper.
+Spelling out the abbreviation might be locally less concise (i.e. in the sentence) but at least are completely clear and does not ask the reader to look back for the actual meaning of such or such abbreviation (Berlin 2013; Radiology; \url{http://pubs.rsna.org/doi/abs/10.1148/radiol.12121776}).
 However, we leave this decision to the editor if she judges it better to abbreviate those terms. % TG: or maybe this statement is useless? Of course we leave it to the editor...
+
+
 
 \item{\textcolor{blue}{\textbf{Methodology - True tree:} I suggest it warrants comparing at least the 'best' tree to the 'true' tree.}}
 
-We compared both the ``best'' tree and the ``missing-data'' trees to the ``true'' tree as suggested by both reviewer. We did not, however, include the results to the main text (available in appendix @@@).
-We justify this decision to both reviewers specific concerns (see reviewer 1 specific comment 25 and reviewer 2 comment 1).
+We compared both the ``best'' tree and the ``missing-data'' trees to the ``true'' tree as suggested by both reviewer.
+We did not, however, include the results to the main text (available in appendix B; figure B1 and appendix C; figures C6 and C7).
+We do agree with the point raised with both reviewers on comparing the true tree to the best/missing-data trees.
+As reviewer 1 states: "[this analysis can give] insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it.".
+However, even though we agree with the comments of both reviewer that knowing the difference between the true and best/missing-data trees is important, we do not think that it "adds an additional layer of complexity that can't be accounted for via simulation" (reviewer 2, comment 1).
+In this simulations, we had to make a choice between (1) simulating larger matrices but with less chains (i.e. less variance) or (2) smaller matrices with more variance.
+We deliberately made the second choice because our main question was "what is the effect of our parameters on recovering the topology".
+In fact, regarding our problematic, we maintain that comparing the best tree to the missing-data trees is the best approach to answer this specific question for two reasons:
+\begin{enumerate}
+\item{The true tree is always unknown:} as we state in the manuscript: "In real world situations, the ``true'' tree is never available" (line 242 in the first manuscript and @@@ in the revision).
+\item{The true tree is just the starting point of the simulations:} in fact, we use the true tree only as a starting point for our simulations. Once generated, the true tree is fed to a cascade of algorithms and softwares (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes) described in section 2.1 and 2.3 in order to get the best tree and the missing-data trees. Comparing the latests to the true tree will answer to the problematic "what is the effect of our missing-data parameters and the cascade of algorithms and softwares on recovering the true topology?".
+\end{enumerate}
+Therefore we added the second justification to the main text (see below this response) and added these analysis (true vs. best/missing-data trees) to the supplementary for potential readers that might be interested by this specific problematic.
+
+We added the following sentence to the main text to clarify and link to the supplementary analysis:
+"In practice, the difference between the ``true'' and the ``best'' tree represents the effect of our parameters and R packages choices (i.e. diversitree, phyclust and ape) as well as the phylogenetic methods used (see appendix B).
+The aim of this study, however, is to look at the effect the missing data parameters described above on topological recovery." (line @@@).
+
+
 
 \item{\textcolor{blue}{\textbf{Methodology - Starting tree:} The authors should at least include some analysis in which no starting tree is given, the max. likelihood 'best' tree is given, and / or the 'best' tree is given but with some perturbation.
 I fear that one of the main results may be biased due to this one methodological detail - a strong prior on tree topology.
 The justification given was 'to speed up the Bayesian analysis' which does not seem adequate, given these datasets are small.}}
 
-We dealt with this legitimate suggestion and ran an extra analysis on a subset of matrices (20 chains and only the trees with the same number of parameters; i.e. $M_L$=0\%, $M_F$=0\% and $M_C$=0\%; $M_L$=10\%, $M_F$=10\% and $M_C$=10\%, etc...) were we reran the Bayesian inference using a random tree rather than the ``true'' tree as a starting tree (default MrBayes procedure).
-We found no effect of the starting tree (random or ``true'') on the resulting topology.
-We added this analysis to the appendix @@@ and added a short note in the main text.
-See details at reviewer 1 specific comment 46 below.
+We dealt with this legitimate suggestion an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. 
+We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree.
+We found no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree.
+We made these data available in the supplementary materials Appendix A (figure A2 and tables A1 and A2) and we also added a precision in the manuscript:
+
+"We used a fixed starting tree rather than a random starting tree (default MrBayes; Ronquist et al., 2012b) to speed up our Bayesian inferences.
+Note that a starting is not a Bayesian prior on topology \textit{per se} and did not significantly affected topology (see Appendix A, section ``Effect of the starting tree on Bayesian inference'')." line @@@ 
+
+
 
 \item{\textcolor{blue}{\textbf{Results - Bhattacharyya meaning:} Some descriptive statistics are given, but it would help to tell us if these differences are meaningful.
 For example, on line 414 the Bhattacharrya Coefficients are given suggesting RF distances are lower for ML than BI trees at 0.69, 0.48, and 0.66 - but if this coefficient represents the probability of overlap between distributions then shouldn't the coefficients be $<$0.05 to say that one is lower than the other?
@@ -127,14 +178,16 @@ In the table, mean and median values of $<$0.01 and $>$0.85 are highlighted as b
 Later the focus on Bhattacharyya Coefficients is 1 when distributions overlap completely and 0 when they do not - should this be the criterion?
 Just make it clear early on so the readers knows what to think when they see these numbers. }}
 
-We clarified and unified % TG: or standardised?
-the interpretation of the Bhattacharyya Coefficient throughout the manuscript.
+We clarified the interpretation of the Bhattacharyya Coefficient throughout the manuscript.
 We advocate that two distributions are significantly different when their probability of overlapping (the Bhattacharyya Coefficient) is $>$0.05 and that they are significantly similar when this probability is $>$0.95.
 Even though other values (e.g. 0.85) are not conclusive, we still reported them to show the relative overlap of the distributions (i.e. two distributions with a coefficient of 0.85 are not significantly similar but are closer to each other than two distributions with a coefficient of 0.15; which are themselves not significantly different but still less closer to each other than the previous ones).
 We added the following statement to the main text and to the appendix B:
+
 "When the Bhattacharyya Coefficient between two distributions is $<$0.05, the distributions are significantly different.
 When this coefficient is $>$0.95 both distributions are significantly similar.
 Values in between these two threshold just show the probability of overlap between the distributions but are not conclusive to assess the similarity or differences between the distributions." line (@@@)
+
+
 
 \item{\textcolor{blue}{\textbf{Results - Bayesian consensus vs. Bayesian posterior:} One major finding that was not fully addressed was that the distances between the BI posterior distributions of trees do not overlap the BI best or consensus trees.
 It seems from the tables in Appendix C that the topology distance metrics for Bayesian posterior distribution are similar to those for the Bayesian consensus, albeit usually lower for RF distance than the Tr distance.
@@ -143,11 +196,20 @@ How then in comparisons of the distributions are they always so low (Table 1 max
 
 The difference between the Bayesian consensus and the Bayesian posterior trees can be due to two factors:
 \begin{enumerate}
-\item first, the way we assess topological recovery is slightly different in each case: for the Bayesian consensus trees, we simply compared the "missin-data" consensus tree to the "best" consensus tree; for the Bayesian posterior trees however, we randomly compared 1000 "missing-data" Bayesian posterior trees to 1000 "best" Bayesian posterior trees.
+\item first, the way we assess topological recovery is slightly different in each case: for the Bayesian consensus trees, we simply compared the "missing-data" consensus tree to the "best" consensus tree; for the Bayesian posterior trees however, we randomly compared 1000 "missing-data" Bayesian posterior trees to 1000 "best" Bayesian posterior trees.
 Therefore, even if the comparison methodology is the same, the fact that the second methods draws random trees, we expect the topological recovery score to be "blurred" in comparison to other comparisons that do not involve random comparisons.
 \item secondly, the Bayesian posterior trees are always resolved and thus, in the same way as the Maximum Likelihood tree, more likely to contain "false-positive" nodes. On the other hand, because the consensus tree is a strict majority consensus rule, only nodes with a a good support will be represented in the tree and all other nodes will be collapsed. This reduces the amount of "false-positive" nodes (since an unresolved tree is always better than a wrongly resolved one) and increases clade conservation but also increases the placement of wild-card taxa (since it is likely that some Triplets will just not exist in a poorly resolved consensus tree).
 \end{enumerate}
-Both points were discussed in the former manuscript lines 566 and 573 (or lines @@@ and @@@ in the revised version). %TG: maybe expand this bit then?
+Both points were discussed in the former manuscript lines 566 and 573 (or lines @@@ and @@@ in the revised version).
+We expanded the paragraph to:
+
+"Additionally, the Bayesian posterior trees performed way worth than the Bayesian consensus tree (figure 4, table 1 and appendix C figure C5 and tables C5, C6 and C7).
+This can be due to the fact that the Bayesian posterior trees are always resolved and thus more likely to contain wrongly resolved nodes (i.e. decreasing the Normalised Robinson-Foulds metric).
+Conversely, the Bayesian consensus tree might not resolve nodes that are badly supported and thus more likely to contain only correctly resolved nodes (i.e. increasing the Normalised Robinson-Foulds metric)." lines (@@@)
+
+Concerning the last question of this comment: "How then in comparisons of the distributions are they always so low (Table 1 max prob. of overlapping distributions = 0.11)?" when looking at all parameters separately (figure 4), there is no clear overlap between the Bayesian consensus trees and the Bayesian posterior trees (median Bhattacharyya Coefficient of 0.01; table 1).
+The maximum observed Bhattacharyya Coefficient (0.11; table 1) is probably due to the combination of parameters: when all the parameters have many missing data, the probability of overlap between trees was slightly higher (0.11) but still really low.
+For the Normalised Triplets distance however, the overlap is higher (median Bhattacharyya Coefficient of 0.59; table 1) as illustrated in figure 4 (i.e. much more overlap between the distributions).
 
 % TG: I'm confused for the second part of the question:
 % TG: In figure 4 and in Table 1, if you look at the Bayesian consensus (grey) trees and the Bayesian posterior trees (orange) for RF, they do not really overlap. Ever. The 0.11 probability must come from the parameters combinations that, when is really shitty must show a little bit of overlap. But for each parameter one by one: nope. No overlap.
@@ -155,32 +217,48 @@ Both points were discussed in the former manuscript lines 566 and 573 (or lines 
 % TG: Did the reviewer just miss read the labels of the Table 1 or am I miles away from what he means?
 
 
+
+
 \item{\textcolor{blue}{\textbf{Results - Bayesian Triplets:} Another important result that is not mentioned is that using the wildcard taxon metric (Tr), Bayesian consensus trees do quite poorly with missing data.
 Values in Figures 4 and 5 clearly drop below zero, although negative values are not illustrated on the axis, and this indicates that the tree topologies are no better than, or even worse than, random trees.
 It is especially true when fossils are missing data, and that is going to be an important finding with practical application but must be addressed. }}
 
 We modified the figures 4 and 5 to show Normalised Triplets metric values below 0 and added a dashed line at 0 to underline the difference in scale between both metrics.
-% TG: a a paragraph in the results about the wild-card fossils
-As mentioned in the previous comment (reviewer 1 specific comment 9), this is due to the fact that the Bayesian consensus tree will be less and less resolved when missing data increases.
+As mentioned above (reviewer 1 comment 9), this is due to the fact that the Bayesian consensus tree will be less and less resolved when missing data increases.
 This has two related effects.
 The first one being to retain "good" clade conservation (i.e. avoiding "false-positive" nodes by collapsing unsupported ones).
 And the second one is that when these clades are collapsed, it reduces the amount of available triplets and thus increases the "wild-card taxa" score (Normalised Triplets metric).
 In fact, when a clade ((a;b);c); is collapsed to (a;b;c), the whole clade is conserved (a, b and c are still in a common clade) however they also all become wild-card taxa: the position of a regarding b and c is now incorrect.
+
+We added a precision on this point in the...
+% TG: add a paragraph in the results about the wild-card fossils
+
+% TG: STOPPED HERE.
+
+
 
 
 \item{\textcolor{blue}{\textbf{Conclusion:} The authors should clarify how their results compare to those of previous studies more directly to emphasize the nuances that make this study unique. }}
 
 We modified the conclusion as follows (see reviewer 1 specific comments 52)
 
+
+
 \item{\textcolor{blue}{\textbf{Figure 4:} Figure 4 has a color scheme issue, the colors in the caption do not match up to the figure.}}
 
 We apologies for this silly mistake and fixed the colors in the figure. We also changed the color scheme to match with the general color scheme of the paper (black, grey, orange and blue).
+
+
 
 \item{\textcolor{blue}{\textbf{Figure 4-5:} Am I wrong or shouldn't the y-axis for Normalised Triplets metric go below 0 - it looks those metrics for many missing data combinations have values below zero indicating trees are more different from the 'best' tree than expected by chance (Appendix B 1.1., see Appendix C Tables 1-3) and that is important to show.}}
 
 We fixed this graphical mistake as state above in reviewer 1 specific comment 13.
 
+
+
 \item{\textcolor{blue}{\textbf{Table caption:} Table caption should include a line about 'pooling across missing data schemes' to clarify what is presented.}}
+
+
 
 \item{\textcolor{blue}{\textbf{Previous research:} The missing-data problem has a long history in the literature and there are references to some of those older and recent papers.
 But I feel it is necessary to summarize the following questions: what did those studies find, what are the questions those studies left open, and how does this study address them?}}
@@ -189,7 +267,7 @@ But I feel it is necessary to summarize the following questions: what did those 
 
 \end{enumerate}
 
-\section{Specific comments:}
+\section{Reviewer 1 Specific comments:}
 \begin{enumerate}
 
 \item{\textcolor{blue}{\textbf{line 31:} has it really been shown that the majority of macroevolutionary studies focuses on extant species only? The cited references are examples of large scale extant-only phylogenies. To make such a pointed statement, the authors would need to find support from some kind of literature review or meta-analysis comparing the number of paleontological to neontological macroevolutionary studies. Otherwise, rephrase. }}
@@ -330,24 +408,7 @@ We modified the sentence as follows: "To avoid avoid matrices containing taxa wi
 
 \item{\textcolor{blue}{\textbf{line 237-246:} I understand the rational presented by the authors for comparing missing data trees to the best tree inferred from max. likelihood/Bayesian techniques rather than compare missing data trees to the true tree used to simulate the data. I still feel it would be an important contribution to this paper, however, to compare the missing data trees to the true tree to evaluate the effects of missing data on the tree inference. Also it may lend insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it. }}
 
-We do agree with the point raised with both reviewers on comparing the true tree to the best/missing-data trees.
-As reviewer 1 states: "[this analysis can give] insights to whether the parameter settings used in the simulations and in the analyses were adequate for generating datasets and inferring the true tree, or something close to it.".
-We've added the results of these comparisons to the supplementary materials (Appendix C - figures C5 and C6).
-However, even though we agree with the comments of both reviewer that knowing the difference between the true and best/missing-data trees is important, we do not think that it "adds an additional layer of complexity that can't be accounted for via simulation" (reviewer 2, comment 1).
-In this simulations, we had to make a choice between (1) simulating larger matrices but with less chains (i.e. less variance) or (2) smaller matrices with more variance.
-We deliberately made the second choice because our main question was "what is the effect of our parameters on recovering the topology".
-In fact, regarding our problematic, we maintain that comparing the best tree to the missing-data trees is the best approach to answer this specific question for two reasons:
-\begin{enumerate}
-\item{The true tree is always unknown:} as we state in the manuscript: "In real world situations, the ``true'' tree is never available" (line 242 in the first manuscript and @@@ in the revision).
-\item{The true tree is just the starting point of the simulations:} in fact, we use the true tree only as a starting point for our simulations. Once generated, the true tree is fed to a cascade of algorithms and softwares (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes) described in section 2.1 and 2.3 in order to get the best tree and the missing-data trees. Comparing the latests to the true tree will answer to the problematic "what is the effect of our missing-data parameters and the cascade of algorithms and softwares on recovering the true topology?".
-\end{enumerate}
-Therefore we added the second justification to the main text (see below this response) and added these analysis (true vs. best/missing-data trees) to the supplementary for potential readers that might be interested by this specific problematic.
-
-We added the following sentence to the main text to clarify and link to the supplementary analysis:
-"In practice, the difference between the ``true'' and the ``best'' tree represents the effect of our parameters and R packages choices (i.e. diversitree, phyclust and ape) as well as the phylogenetic methods used (see appendix B).
-The aim of this study, however, is to look at the effect the missing data parameters described above on topological recovery." (line @@@).
-
-% TG: not sure how this justifications sounds...
+We dealt with this comment above (Reviewer 1, major comment 6) and below (Reviewer 2 comment 1).
 
 \item{\textcolor{blue}{\textbf{line 249:} condense citations to one parenthetical statement, 'GTR model (Tavare, 1986, default setting in RAx…)'. Also watch for citations in parentheses inside of other parenthetical statements on line 250 and throughout the manuscript. }}
 
@@ -363,11 +424,7 @@ We changed the title as suggested.
 
 \item{\textcolor{blue}{\textbf{line 286:} Why was the true tree used as a starting tree? Earlier the authors argued that the true tree is almost never known, so using it here detracts from the generalizability of these results. If the only justification is 'to speed up the Bayesian estimation process' as stated later, then it seems like this may bias one of the main results, which is that Bayesian analyses outperformed max. likelihood, in which no starting tree was used. I understand the computational limitations, but the authors should present some analysis with complete and missing data in which no starting tree is given compared to analyses in which a starting tree is given to evaluate whether using a starting tree significantly affects the resulting trees, perhaps in an Appendix. Or at least include some perturbation to the starting tree to avoid overly influencing the resulting topology. It would seem to me that this is illustrated in figure 5, where-in with the Robinson-Foulds metric, the distance to the best tree in Bayesian analysis seems to have a lower bound at ~0.7, even under the worst cases of missing data. This may be the worst the analysis can do given that it started out with the true tree. }}
 
-We added an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree. We see no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree. We made these data available in the supplementary materials Appendix A (figure A2 and tables A1 and A2) and we also added a precision in the manuscript:
-
-"We used a fixed starting tree rather than a random starting tree (default MrBayes; Ronquist et al., 2012b) to speed up our Bayesian inferences.
-Note that a starting is not a Bayesian prior on topology \textit{per se} and did not significantly affected topology (see Appendix A, section ``Effect of the starting tree on Bayesian inference'')." line @@@ 
-
+We dealt with this comment above (see Reviewer 1 major comment 7).
 
 \item{\textcolor{blue}{\textbf{line 318:} replace 'the twice number' with 'twice the number'}}
 
@@ -658,9 +715,7 @@ We entirely agree with this comment and hope it will help to the global comprehe
 
 "To assess the effect of our missing data parameters, we calculated the Bhattacharyya Coefficient between the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets metric) for each pairwise combination of missing data parameters ($M_{L}$, $M_{F}$, $N_{C}$) and parameter states (0\%, 10\%, 25\%, 50\%, 75\% and 100, 90, 75, 50, 25 characters), i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $N_{C}$ = 100; $M_{L}$ = 10\%, $M_{F}$ = 0\%, $N_{C}$ = 100 etc. (see Figure 2 for more details)." line @@@
 
-"Number of morphological characters ($N_{C}$)" line @@@ %Header in discussion
-
-"Additionally, when both $M_{L}$ reach 50\% missing data and $N_{C}$ reach 50 characters, the matrix does not contain enough phylogenetic information for the fossil taxa to be placed with confidence in the tree (Figure 6)." line @@@
+"i.e. $N_{C}$ = 90" line (@@@)
 
 \item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
 
@@ -674,7 +729,7 @@ In empirical matrices, the incompleteness data distribution probably lies in bet
 
 Also, a second argument for using this "simplistic" way to deal with the missing data in the fossil record follows our main recommendation from this study: the best way to improve the quality of Total Evidence trees is to have a maximum number of living species with available morphological data.
 In fact lines 584 to 589 in the first version of the manuscript (line @@@ in the revised version), we argue that even if the effect of the $M_F$ parameter is important, there is unfortunately not much we can do about it since the completeness of this part of the matrix solely depends on exceptional palaeontological discoveries and excavation effort.
-We feel that these parameters, however crucial for our understanding of macroevolution, are unfortunately not predicable and recommendations such as "we need more fossil data" are empty and less practical than "we need more living species data".
+We feel that these parameters, however crucial for our understanding of macroevolution, are unfortunately not predicable and a recommendation such as "we need more fossil data" is less practical than our main recommendation: "we need more living species data".
 
 \end{enumerate}
 

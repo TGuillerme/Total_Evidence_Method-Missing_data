@@ -343,7 +343,7 @@ We normalised both metrics using methods described in \citet{Bogdanowicz2012} to
 These metrics are described in detail below.
 
 \subsubsection{Robinson-Foulds distance}
-The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and \ul{twice the number} of shared clades across two trees.
+The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and \hl{twice the number} of shared clades across two trees.
 The metric reflects the distance between the distributions of tips among clades in the two trees \citep{RF1981} (see Appendix B for calculation details).
 This metric is bounded between zero, when the two trees are identical, and $2(n-2)$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
 This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity.
@@ -376,9 +376,9 @@ We also assessed the effect of our missing data parameters jointly with the effe
 We measured similarities among the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets metric) using the Bhattacharyya Coefficient \citep{Bhattacharyya}.
 The Bhattacharyya Coefficient is the probability of overlap between two distributions \citep{Bhattacharyya} (see Appendix B for calculation details).
 Note that this is comparable to performing a two-sided t-test, but we use the Bhattacharyya Coefficient here because we are comparing whole distributions not just their means.
-When the Bhattacharyya Coefficient between two distributions is $<$0.05, the distributions are significantly different.
+\hl{When the Bhattacharyya Coefficient between two distributions is $<$0.05, the distributions are significantly different.
 When this coefficient is $>$0.95 both distributions are significantly similar.
-Values in between these two threshold just show the probability of overlap between the distributions but are not conclusive to assess the similarity or differences between the distributions.
+Values in between these two threshold just show the probability of overlap between the distributions but are not conclusive to assess the similarity or differences between the distributions.}
 \hl{To assess the effect of our missing data parameters, we calculated the Bhattacharyya Coefficient between the distributions of the different metrics scores (Normalised Robinson-Foulds and Normalised Triplets metric) for each pairwise combination of missing data parameters ($M_{L}$, $M_{F}$, $N_{C}$) and parameter states (0\%, 10\%, 25\%, 50\%, 75\% and 100, 90, 75, 50, 25 characters), i.e. $M_{L}$ = 0\%, $M_{F}$ = 0\%, $N_{C}$ = 100; $M_{L}$ = 10\%, $M_{F}$ = 0\%, $N_{C}$ = 100 etc. (see Figure 2 for more details).}
 This resulted in 7875 pairwise comparisons (a triangular matrix with $3^5$$\times$$3^5$ cells).
 We performed this procedure separately for each tree inference and uncertainty method.
@@ -477,7 +477,7 @@ The effect of the missing data in the fossil record ($M_{F}$) is less than the e
 This is related to the fact that the Bayesian consensus tree is built using a majority consensus rule.
 When the fossil taxa have less data (e.g. $M_{F}$ = 75\%) they will tend to branch with any taxon in the clade that shares most characters with the fossils.
 Therefore a majority consensus position is unlikely to exist (i.e. every branching position is represented in $<$ 50\% of the trees in the Bayesian posterior distribution) and the fossil taxa will form a polytomy at the base of the clade.
-\ul{In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present near the tips but affects the clade conservation less when fossils are near the root.}
+\hl{In this case, the Normalised Robinson-Foulds metric will decrease when the fossil is present near the tips but affects the clade conservation less when fossils are near the root.}
 Conversely, because a fossil in a high taxonomic level clade has many chances to branch on different nodes within the clade, it will be more likely to act as a wildcard taxon and decrease the Normalised Triplets metric.
 Therefore, the $M_{F}$ parameter is likely to affect the Normalised Robinson-Foulds metric less than the Normalised Triplets metric for the Bayesian consensus trees.
 Conversely, the same scenario in a Maximum Likelihood framework will lead to a dichotomous branching of the fossils but with low bootstrap support ($<$ 50).
@@ -487,14 +487,14 @@ We argue that using the Bayesian consensus tree topology is preferable because i
 \subsubsection{Number of morphological characters ($N_{C}$)}
 Reducing the overall number of morphological characters reduces the probability of their overlap among the taxa in the matrix, and therefore decreases our ability to recover the ``best'' tree topology.
 We expected the decrease in this parameter to have an effect twice as large as that for the $M_{L}$ and $M_{F}$ parameters, because removing 10\% of the data for the fossil or living taxa only removes 5\% of data from the whole matrix (because this parameter affects only half of the taxa present in the matrix).
-Conversely, removing 10\% of morphological characters ($N_{C}$) genuinely removes 10\% of data in the matrix.
+Conversely, removing 10\% of morphological characters (\hl{i.e. $N_{C}$ = 90}) genuinely removes 10\% of data in the matrix.
 Nonetheless, the effect of removing characters on the ability to recover the ``best'' tree topology is of the same order of magnitude as for the other two parameters (Figure 4).
 We suspect this again reflects the importance of overlapping characters, as opposed to the number of characters \textit{per se}.
 
 Additionally, the number of morphological characters determines the size the of matrix.
 This can affect our ability to recover the ``best'' tree topology through: (1) the incongruence of phylogenetic signal among morphological and molecular data; and/or (2) homoplasy.
 The incongruence of phylogenetic signal between morphological and molecular data has previously been demonstrated to be more important in small morphological matrices \hl{(}\citealt{bremer1992phylogeny,patterson1993congruence}\hl{; see }\citealt{masters2002lack}\hl{ for a empirical example)}.
-\ul{The sizes of our data matrices were constrained by the performance of our protocol}: to reduce the computational time of our analysis to a reasonable level (150 CPU years), we ran our simulations on modestly-sized matrices of 1000 molecular characters and 100 morphological characters.
+\hl{The sizes of our data matrices were constrained by the performance of our protocol}: to reduce the computational time of our analysis to a reasonable level (150 CPU years), we ran our simulations on modestly-sized matrices of 1000 molecular characters and 100 morphological characters.
 Therefore, part of the decrease of the Normalised Robinson-Foulds metric and the Normalised Triplets metric in our simulations could be due to conflicting phylogenetic signal among morphological and molecular data in our matrices (Figure 4 and Figure 5).
 Although these matrices are an order of magnitude smaller than some published matrices \citep[e.g.][]{springermacroevolutionary2012,nithe2013}, they are still within the size range of more modestly-sized empirical matrices \citep[e.g.][]{kellymolecular2014, sallam2011craniodental}.
 Therefore, our simulations reflect realistic parameters.
@@ -519,10 +519,18 @@ As described above, this is because the Bayesian consensus tree allows a fossil 
 This may also be because the ``best'' Bayesian consensus trees are not completely resolved, thus will always be more similar to the ``missing data" trees than a completely resolved tree like the ``best'' Maximum Likelihood tree.
 Nonetheless, we minimized the probability of unresolved ``best'' trees in our Bayesian analyses by only using datasets with strong phylogenetic signal (see Methods).
 
+The Bayesian consensus trees, however, performs badly for the Normalised Triplets metric: some parameters combinations, especially when the $M_F$ parameter reaches 75\% missing data, leads to negative values (figure 5).
+Normalised Triplets metric values below 0 means that the placement of some taxa is worth than expected by just randomly placing this taxa in the tree.
+This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees [CONTINUE LATER ON].
+
+
 It is also worth noting that across all our analyses, the topologies of the Maximum Likelihood bootstrap trees and the Bayesian posterior trees distribution were always further from the ``best'' tree topology than Maximum Likelihood and Bayesian consensus trees.
-This was true even when no morphological data was missing ($M_{L}$ = 0\%; $M_{F}$ = 0\%, $N_{C}$ = 0\%; Figure 4).
+This was true even when no morphological data was missing ($M_{L}$ = 0\%; $M_{F}$ = 0\%, $N_{C}$ = 100; Figure 4).
 This reflects the fact that it is difficult to compare two distributions of trees, and each comparison between a set of ``missing data" trees and a set of the ``best'' trees involved 1000 random pairwise comparisons rather than just one.
-This will obviously add noise to the results for these methods.
+\hl{Additionally, the Bayesian posterior trees performed way worth than the Bayesian consensus tree (figure 4, table 1 and appendix C figure C5 and tables C5, C6 and C7).
+This can be due to the fact that the Bayesian posterior trees are always resolved and thus more likely to contain wrongly resolved nodes (i.e. decreasing the Normalised Robinson-Foulds metric).
+Conversely, the Bayesian consensus tree might not resolve nodes that are badly supported and thus more likely to contain only correctly resolved nodes (i.e. increasing the Normalised Robinson-Foulds metric).}
+
 
 \subsection{Practical implications}
 Our missing data parameters illustrate different sources of missing data in empirical matrices as follows: ($M_{L}$) the paucity of coded morphological characters for living taxa; ($M_{F}$) the missing data for fossils (or parts of fossils) that have not been preserved in the fossil record; and ($N_{C}$) characters that have not been coded across living and fossil species, perhaps due to difficulties in coding or poor preservation of the feature in collections.
