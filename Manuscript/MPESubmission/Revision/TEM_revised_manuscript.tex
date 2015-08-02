@@ -141,7 +141,9 @@ This may be particularly problematic as fossil taxa (generally) do not have mole
 \hl{Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework \protect\citep[\hl{i.e. using combined molecular and morphological data}; e.g.][]{Wiens01102005,pattinsonphylogeny2014}.}
 \hl{For example, \protect\cite{Wiens01102005} }\hl{only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.}
 \hl{Furthermore, \protect\cite{pattinsonphylogeny2014} }\hl{assess the effect of removing both molecular and morphological data (``artificial extinction'') on the topology.}
+\hl{As for morphological and molecular data separately, these studies shows that missing data is not a major problem and should not be an obstacle to combine both living and fossil species in the same phylogenies.}
 \hl{These studies, however, are limited by their empirical-only approach \protect\citep{Wiens01102005} }\hl{and the scheme of generating missing data \protect\citep{pattinsonphylogeny2014}.}
+\hl{Also both studies focus on the palaeontological aspect of the question (i.e. the fossil data).}
 
 \hl{In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall.
 We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa.}
@@ -154,7 +156,9 @@ Here we use a simulation approach to assess the effect of missing data on tree t
 Since the molecular part of a Total Evidence matrix acts like a ``classical" molecular matrix containing only the living taxa \citep{ronquista2012}, the effect of missing data on such matrices is well known \citep{wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011}.
 Therefore, we focus only on missing data in the morphological part of the matrix.
 We investigate three major parameters that directly affect the completeness and size of the morphological part of the matrix, and reflect empirical biases in data availability: (i) the proportion of living taxa with no morphological data; (ii) the proportion of missing data in the fossil taxa; and (iii) the proportion of missing morphological characters for both living and fossil taxa in the matrix (i.e. the size of the matrix).
-We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the topology of trees inferred using Maximum Likelihood and Bayesian methods. We find that minimizing the number of living taxa with no morphological data and the number of missing morphological characters improves the ability of Total Evidence methods to recover the ``best'' tree topology more so than minimizing the amount of missing data in the fossil record.
+\hl{We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the topology of trees inferred using Maximum Likelihood and Bayesian methods by using two different topological metrics, based on the Robinson-Foulds }\citep{RF1981}\hl{ and Triplets }\citep{critchlowthe1996}\hl{ distances.
+Thus, in the present study, we propose a new approach on the missing-data question focus on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and two distinct topological metrics.}
+We find that minimizing the number of living taxa with no morphological data and the number of missing morphological characters improves the ability of Total Evidence methods to recover the ``best'' tree topology more so than minimizing the amount of missing data in the fossil record.
 Additionally, we find that the ability of Total Evidence methods to recover the ``best'' tree topology is increased when using Bayesian methods.
 
 
