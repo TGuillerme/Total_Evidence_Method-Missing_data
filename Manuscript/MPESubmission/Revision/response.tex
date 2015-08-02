@@ -278,21 +278,27 @@ We also modified the conclusion to answer the specific comment 52 from reviewer 
 
 
 % Previous (13)
-"Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework (i.e. using combined molecular and morphological data; e.g. Wiens et al., 2005; Pattinson et al., 2014). For example, Wiens et al. (2005) only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data. Furthermore, Pattinson et al. (2014) assess the effect of removing both molecular and morphological data (“artificial extinction”) on the topology. These studies, however, are limited by their empirical-only approach (Wiens et al., 2005) and the scheme of generating missing data (Pattinson et al., 2014)."
 
-"In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall. We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa."
+"Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework (i.e. using combined molecular and morphological data; e.g. Wiens et al., 2005; Pattinson et al., 2014).
+For example, Wiens et al. (2005) only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.
+Furthermore, Pattinson et al. (2014) assess the effect of removing both molecular and morphological data (“artificial extinction”) on the topology.
+These studies, however, are limited by their empirical-only approach (Wiens et al., 2005) and the scheme of generating missing data (Pattinson et al., 2014)."
+
+"In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall.
+We test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian Inference methods: (i) the conservation of clades and (ii) the displacement of wild-card taxa."
 
 
 % What was left open (56)
 
 
 % Conclusion (52)
-Unfortunately, we didn't found many studies formally testing the important questions asked by the reviewer. However, there exist few empirical analysis that contain results supporting our claims.
-Firstly, for the question about the topological differences between Maximum Likelihood and the Bayesian consensus tree, in Arcila et al 2015 (MPE)'s supplementary analysis, the authors compare the topology inferred from a Total Evidence matrix in both Likelihood (RAxML) and Bayesian (MrBayes) and the topology of the Bayesian consensus tree is much better supported than the one of the best ML tree. Specifically, the ML tree has 7/28 nodes have a "fair" bootstrap support ($>$ 75) and 3/28 with a good support ($>$ 90) as the Bayesian consensus tree has 17/25 nodes with a "fair" posterior probability ($>$80) and 14/25 with a good posterior probability ($>$95). We therefore used this reference to strengthen our claim of the superiority of the Bayesian consensus tree over the Maximum Likelihood one.
-Secondly, for the question about molecular scaffolds, from the few studies clearly specifying their topological constraint method, only Beck and Lee 2013 (Proceedings B) seems to compare an analysis with and without taxonomic constraint on divergence time and rates estimation (the constraint seems to have no effect) but the branch length aspect is not covered in our study.
 
-We modified the mentioned section of the conclusion as follows:
-"Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the ``best'' tree topology than the Maximum Likelihood trees.
+
+
+Therefore we advise that one should focus on having morphological characters coded for a large amount of living taxa present in the matrix (i.e. 50\%) for accurately combining both living and fossil species in phylogenies.
+Doing so grants a good overlap of morphological characters between living and fossil taxa, allowing the fossil taxa to be positioned relatively to the living taxa based on their actual shared derived characters rather than on simply available data."
+
+Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the ``best'' tree topology than the Maximum Likelihood trees.
 This has also been observed in empirical data (e.g. Arcila et al., 2015) were Maximum Likelihood trees inferred from a Total Evidence matrix were less supported than the Bayesian consensus tree.
 This might have an important impact on estimating topologies in the Total Evidence framework since previous studies had to rely either on molecular scaffolds (e.g. Slater, 2013), taxonomic constraints (e.g. Slater, 2013; Beck and Lee, 2014) or even by fixing the topology (e.g. Ronquist et al., 2012a).
 Therefore, we suggest extracting such topological frames from the Bayesian consensus tree if needed.
@@ -300,6 +306,7 @@ To conclude, the results of our analyses are encouraging and show that it is pos
 Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes."
 %Original: Additionally, the topology of the Bayesian consensus trees, regardless the amount of missing data, were always closer to the “best” tree topology than the Maximum Likelihood trees. Therefore, we advise using Bayesian consensus tree topologies if topology must be fixed for furhter analyses. The results of our analyses are encouraging and show that it is possible to combine both neontological and palaeontological data in the same phylogeny despite issues of missing data. Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes.
 
+See also reviewer 1 specific comment 52 for details on the choice of citing Arcial et al 2015.
 
 % -----------------
 % Comment 12
@@ -748,12 +755,7 @@ This can be particularly important because these trees will be invaluable for ph
 % -----------------
 \item{\textcolor{blue}{\textbf{line 612-613:} too obvious and not especially helpful. We should aim to have as little missing data as possible…more helpful, and something especially discovered in this study, is concentrating on having overlapping morphological characters between the living and fossil taxa to be able to place the living taxa with strong support via large datasets (combined data) and being able to position the fossils based on their shared derived characters with living taxa. This is an important point to make clearer. }}
 
-We are thankful for this comment as, indeed, our suggestion was a bit to obvious and not really helpful. We modified the end of this paragraph as follows:
-
-"Therefore we advise that one should focus on having morphological characters coded for a large amount of living taxa present in the matrix (i.e. 50\%) for accurately combining both living and fossil species in phylogenies.
-Doing so grants a good overlap of morphological characters between living and fossil taxa, allowing the fossil taxa to be positioned relatively to the living taxa based on their actual shared derived characters rather than on simply available data."
-
-%Original: Therefore we advise filling as many gaps in Total Evidence matrices as possible. Because this is difficult, if not impossible, for fossil data, we recommend coding as many morphological characters, for as many living taxa, as possible.
+We are thankful for this comment as, indeed, our suggestion was a bit to obvious and not really helpful. See reviewer 1 comment 11 for the changes to the conclusion.
 
 % -----------------
 % Specific Comment 51
