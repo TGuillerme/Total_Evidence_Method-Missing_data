@@ -235,8 +235,10 @@ We added a precision on this point in the about the effects of the tree inferenc
 "The Bayesian consensus trees, however, performs badly for the Normalised Triplets metric: some parameters combinations, especially when the $M_F$ parameter reaches 75\% missing data, leads to negative values (figure 5).
 Normalised Triplets metric values below 0 means that the placement of some taxa is worth than expected by just randomly placing this taxa in the tree.
 This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
-In fact, even if clades are conserved (figure 5), the resolutions within them can be poor to non-existent when data is poor.
-In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters." lines (@@@)
+In fact, even if clades are conserved (figure 5), the resolutions within them can be poor to non-existent when a lot of data is missing (i.e. 75\%).
+In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters.
+These results are in agreement with previous studies that have showed that missing data can be deleterious for recovering ``correct'' topologies, especially for small matrices of 100 characters (Wiens 2003).
+It is important to note, however, that this effect can be reduced by just increasing the number of characters (Wiens 2003)." lines (@@@)
 
 
 
@@ -623,42 +625,7 @@ This is a point that should be expanded upon in the discussion - how these resul
 
 We thank the reviewer for this excellent suggestion and modified our graphical abstract. We also fixed the Normalised Triplets metrics axis to range from -0.5 to 1. We added a horizontal doted line at Triplets = 0 to make sure the reader take notes is this change of scale.
 
-
-
-
-
-
-%how these results compare to other missing data studies
-%Missing data for up to 50\% of characters has been suggested to still have high accuracy in uncovering the true tree (Wiens 2003; Wiens 2005)
-%In Wiens when missing data ~50\%, accuracy is ~70/60
-
-%what do they tell us about the performance of the inference methods with missing data?
-%Bayesian seems more conservative than Maximum Likelihood.
-%Better to be more conservative?
-
-% STILL TO DO
-
-% TG: maybe put that somewhere?
-% In this study we chose to differentiate both metrics (RF and Triplets) because they account for two important aspects of topology in macroevolution.
-% The RF metric is a proxy for clade conservation which is important for macroevolutionary or macroecological methods such as phylogenetic comparative methods (rather than the specific position of each taxa, the conservation and support of clades is essential).
-% For example, for a tree (((a;b);c)((d;e);f);, swapping the taxa a and c (the clade is conserved) as less impact on comparative methods than swapping a and d (the clades are less conserved). %TG: is this kind of right? For PGLS for example...
-% % Or, other example with the same tree but for palaebioography: if ((a;b);c); and ((d;e);f); have different geographical origin; then a swap a and d will have important implications.
-% On the other hand the Triplets metric might be more important from macroevolutionary methods such as dating.
-% For example on the same tree (((a;b);c)((d;e);f); if a is a younger taxa than c, the swap of a and c will have a bigger effect on the age of the clade.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+We also linked these results to previous studies (Wiens 2003) and discussed the negative values of the Normalised Triplets metric in the reviewer 1 comment 10 (see above).
 
 \item{\textcolor{blue}{\textbf{Figure 6:} I think this may be the most important figure because it is demonstrating the probability of overlap between the distributions of the best trees and the missing data trees.
 It took me a long time to figure it out, however, and to figure out why the top of the triangle is all orange.
@@ -684,7 +651,8 @@ The Normalised Robinson-Foulds metric (median Bhattacharrya coefficient = 0.79; 
 The orange upper triangle in Figure 6A shows a high probability of overlap of the Normalised Robinson-Foulds metric for the trees with the $M_{L}$ parameter $\geq$ 50\% (Figure 6A).
 There is no additional effect (i.e. no dissimilarities) of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
 Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional effect of $M_{F}$ and $M_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
-Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A)." lines(@@)
+Likewise, once $M_{C}$ $\geq$ 50\%, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A).
+This can be interpreted as, in figure 5 for the Normalised Robinson-Foulds metric, the overlap between the distributions once $M_L$=50\%." lines(@@)
 
 \item{\textcolor{blue}{\textbf{Table 1:} The wording of the caption is off - the second paragraph is awkward. 
 Are these values the probabilities of overlap between the distributions of the 'best' tree versus trees from each inference method pooled across all combinations of missing data? That is what is described in methods line 397 but it doesn't say so in the caption.

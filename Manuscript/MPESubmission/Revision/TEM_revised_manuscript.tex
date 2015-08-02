@@ -447,12 +447,18 @@ The Normalised Robinson-Foulds metric (median Bhattacharrya coefficient = 0.79; 
 The orange upper triangle in Figure 6A shows a high probability of overlap of the Normalised Robinson-Foulds metric for the trees with the $M_{L}$ parameter $\geq$ 50\% (Figure 6A).
 There is no additional effect (i.e. no dissimilarities) of $M_{F}$ and $N_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
 Additionally, when using the Normalised Robinson-Foulds metric, once $M_{L}$ $\geq$ 50\%, there is no additional effect of $M_{F}$ and $N_{C}$, regardless of the amount of missing data in these parameters (Figure 6A).
-Likewise, once $N_{C}$ $<$ 50, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A).}
-
-%Adds that it correspond to the "line" of distributions in figure 5 (upper grey distributions)
+Likewise, once $N_{C}$ $<$ 50, there is no additional effect of $M_{L}$ and $M_{F}$ as denoted by the high probability of Normalised Robinson-Foulds metric overlap (horizontal orange stripes between the blue regions Figure 6A).
+This can be interpreted as, in figure 5 for the Normalised Robinson-Foulds metric, the overlap between the distributions once $M_L$=50\%.}
 
 For all combinations of missing data parameters and tree comparison metrics, the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distributions perform very similarly (median Bhattacharrya Coefficient = 0.85 and 0.98, using Normalised Robinson-Foulds metric or Normalised Triplets metric respectively; Table ~\ref{Tab_Results-Difference_methods}).
 These two methods, however, perform worse than the Bayesian consensus trees using Normalised Robinson-Foulds metric (median Bhattacharrya Coefficient = 0 and 0.01, for the Maximum Likelihood bootstrap trees and the Bayesian posterior tree distribution respectively; Table ~\ref{Tab_Results-Difference_methods}; Figure 4 and Figure C2 in Appendix C).
+
+%---------------------------------------------
+%
+%       Discussion
+%
+%---------------------------------------------
+
 
 \section{Discussion}
 
@@ -522,8 +528,10 @@ Nonetheless, we minimized the probability of unresolved ``best'' trees in our Ba
 \hl{The Bayesian consensus trees, however, performs badly for the Normalised Triplets metric: some parameters combinations, especially when the $M_F$ parameter reaches 75\% missing data, leads to negative values (figure 5).
 Normalised Triplets metric values below 0 means that the placement of some taxa is worth than expected by just randomly placing this taxa in the tree.
 This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
-In fact, even if clades are conserved (figure 5), the resolutions within them can be poor to non-existent when data is poor.
-In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters.}
+In fact, even if clades are conserved (figure 5), the resolutions within them can be poor to non-existent when a lot of data is missing (i.e. 75\%).
+In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters.
+These results are in agreement with previous studies that have showed that missing data can be deleterious for recovering ``correct'' topologies, especially for small matrices of 100 characters }\citep{wiensmissing2003}.
+\hl{It is important to note, however, that this effect can be reduced by just increasing the number of characters }\citep{wiensmissing2003}.
 
 
 It is also worth noting that across all our analyses, the topologies of the Maximum Likelihood bootstrap trees and the Bayesian posterior trees distribution were always further from the ``best'' tree topology than Maximum Likelihood and Bayesian consensus trees.
