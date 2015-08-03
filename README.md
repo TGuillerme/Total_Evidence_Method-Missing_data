@@ -34,7 +34,7 @@ The whole analysis is divided in four parts:
 
 The three first parts of the analysis are time consuming (~150 CPU years). Examples of the scripts and functions to use are outlined below. The final part is divided in two sub parts, one involving `shell` and `java` scripts (outlined below) and a second one involving `R` scripts and functions (outlined at the end of this README file).
 
-However, a wuick go through demo is available [here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Analysis_Demo.R) as an `R` script. This part covers in a more thorough way the following points
+However, a quick go through demo is available [here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Analysis_Demo.R) as an `R` script. This part covers in a more thorough way the following points
 * 1. Extracting the tree comparisons from the TreeCmp java script.
 * 2. Calculating the normalised metrics and visualising the results (Figure 5 in the paper)
 * 3. Calculating the pairwise Bhattacharyya Coefficients between the "best" trees and the "missing data" trees (as outlined in figure 2 in the paper)
@@ -121,6 +121,9 @@ sh TEM_TreeCmp_wrapper.sh Dummy_chain_name 1 ML single
 This operation will perform single tree comparisons between the `RAxML_besttree` with no missing data and the 125 `RAxML_besttree` trees (including the one with no missing data).
 
 ##### R analysis
+
+###### A quick go through demonstration is available [here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Analysis_Demo.R).
+
 Finally we ran a series of analyses presented in the final manuscript version using the various `R` scripts available in the [analysis folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Analysis).
 
 The first step is to load the various functions stored in the [tree comparisons folder](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/tree/master/Functions/TreeComparisons/) in `R`.
