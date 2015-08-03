@@ -161,3 +161,34 @@ plot.bhatt.coeff(All_parameters_pairwise, col=c("blue", "orange"), col.grad=c("w
 #--------------
 # 4. Calculating the pairwise Bhattacharyya Coefficients between the methods and the metrics (as outlined in figure 3 in the paper)
 #--------------
+
+# For this part we need to load the tree comparison files between the "best" tree and the "missing-data" trees when using
+# Maximum Likelihood tree inference. This procedure is identical as the one outlined in part 1 and 2. 
+
+# Extracting and concatenating the .Cmp files
+setwd("../Data/Tree_Comparisons/ML/besttree")
+concatenated_ML_results<-TreeCmp.Read('Chain', verbose=TRUE)
+setwd("../../../../Analysis")
+# Normalising the comparisons
+normalised_ML_results<-NTS(concatenated_ML_results, Random_comparisons)
+
+# Extracting the Maximum Likelihood Normalised Robinson-Foulds metric for all parameters
+All_parameters_RF_ML<-sub.data(normalised_ML_results, parameter=c(1:125), metric="R.F_Cluster")
+
+# Renaming the Bayesian consensus trees comparisons
+All_parameters_RF_Bayesian<-All_parameter_RF_metric
+
+# Calculating the pairwise comparisons between the Maximum Likelihood and the Bayesian consensus trees (as outlined in figure 3)
+methods_overlap<-pair.bhatt.coeff(All_parameters_RF_ML, All_parameters_RF_Bayesian)
+
+# This gives a vector of 125 comparisons between each Normalised Robinson-Foulds metric between the "best" and a "missing-data" tree
+# in both Maximum Likelihood and Bayesian consensus method. In practice, each element of the vector is a probability of overlap
+# between the metrics of each method (i.e. the Normalised Robinson-Foulds metrics for L00F00C00 in the Maximum Likelihood and in
+# Bayesian consensus trees).
+
+# We can therefore see how the methods compare
+hist(methods_overlap)
+summary(methods_overlap)
+
+# The median overlap in 0.09 so the methods are neither significantly different (Bhattacharyya Coefficient < 0.05) neither
+# significantly similar (Bhattacharyya Coefficient > 0.95).
