@@ -138,11 +138,11 @@ Therefore \hl{Total Evidence matrices are likely to contain a large proportions 
 
 Although missing data does not appear be a major problem in molecular and morphological matrices separately \citep[\hl{as long as enough data overlaps in each case, and missing data are not phylogeneticaly biased;}][]{wiensmissing2003,Wiens01102005,wiensmissing2006,wiensmissing2008,lemmonthe2009,Sanderson22072011,rouresite-specific2011,pattinsonphylogeny2014}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil taxa.
 This may be particularly problematic as fossil taxa (generally) do not have molecular data, resulting in a large section of missing data in Total Evidence matrices.
-\hl{Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework \protect\citep[\hl{i.e. using combined molecular and morphological data}; e.g.][]{Wiens01102005,pattinsonphylogeny2014}.}
+\hl{Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework \protect\citep[\hl{i.e. using combined molecular and morphological data}; e.g.][]{Wiens01102005,manosphylogeny2007,pattinsonphylogeny2014}.}
 \hl{For example, \protect\cite{Wiens01102005} }\hl{only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.}
 \hl{Furthermore, \protect\cite{pattinsonphylogeny2014} }\hl{assess the effect of removing both molecular and morphological data (``artificial extinction'') on the topology.}
 \hl{As for morphological and molecular data separately, these studies shows that missing data is not a major problem and should not be an obstacle to combine both living and fossil species in the same phylogenies.}
-\hl{These studies, however, are limited by their empirical-only approach \protect\citep{Wiens01102005} }\hl{and the scheme of generating missing data \protect\citep{pattinsonphylogeny2014}.}
+\hl{These studies, however, are limited by their empirical-only approach \protect\citep{Wiens01102005} }\hl{and the scheme of generating missing data \protect\citep{manosphylogeny2007,pattinsonphylogeny2014}.}
 \hl{Also both studies focus on the palaeontological aspect of the question (i.e. the fossil data).}
 
 \hl{In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by thoroughly eliminating living or fossil data or all data overall.
@@ -482,6 +482,7 @@ This missing data parameter, however, has a huge influence on the placement of f
 When the overall proportion of data for the fossil taxa ($M_{F}$) decreases, this also reduces the probability of morphological characters for fossil taxa overlapping with the ones for living taxa.
 This can lead to difficulties for the placement of certain taxa in the tree.
 It is important, however, to note that even though the number of displaced wildcard taxa increases (i.e. decrease of Normalised Triplets metric) with increasing missing data in this parameter, clade conservation (i.e. Normalised Robinson-Foulds metric) is still relatively good (mode = 0.72) when the proportion of missing data is high ($M_{F}$ = 75\%).
+\hl{These results are in agreement with \cite{manosphylogeny2007} where as few as 16 characters where sufficient for correctly assigning ``artificial fossils'' to their ``correct'' clade.}
 
 The effect of the missing data in the fossil record ($M_{F}$) is less than the effect of the $M_{L}$ parameter on clade conservation (Normalised Robinson-Foulds metric) but greater on the displacement of wildcard taxa (Normalised Triplets metric; Figure 4 and Figure 5).
 This is related to the fact that the Bayesian consensus tree is built using a majority consensus rule.
