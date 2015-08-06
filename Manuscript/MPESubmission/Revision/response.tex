@@ -953,7 +953,7 @@ We will also clean up this repo once the paper has been accepted. At present it 
 \end{enumerate}
 
 \section{Reviewer 2:}
-Note that we split the second comment from reviewer 2 in three different comments (comments 2,3 and 4 below) to improve the readability of our response to the reviewers
+Note that we split the second comment from reviewer 2 in three different comments (comments 2,3 and 4 below) to improve the readability of our response to the reviewers.
 
 % -----------------
 % Comment 1
@@ -962,22 +962,27 @@ Note that we split the second comment from reviewer 2 in three different comment
 \item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}
 
 A similar point/suggestion was also raised by reviewer 1 (see Reviewer 1 General comment number 6 and specific comment number 25).
-We do understand the concerns of this reviewer as well but, again, we do not agree that comparing the "missing-data" trees to the "best" trees adds a layer of complexity to our simulations.
+We understand the concerns of the reviewer but, again, we do not agree that comparing the "missing-data" trees to the "best" trees adds a layer of complexity to our simulations.
 In fact, we argue that comparing the "missing-data" trees to the "true" tree actually adds a layer of complexity to the analysis.
-The problematic we are tackling in this manuscript is to understand "what is the effect of our three parameters on recovering topology ?"
-To answer this question, however, we have to add a layer between the data (i.e. the "complete" or "missing-data" matrices) and the actual topology which is the tree inference.
+The problem we are tackling in this manuscript is to understand "what is the effect of our three parameters on recovering topology ?"
+To answer this question, we have to add a layer between the data (i.e. the "complete" or "missing-data" matrices) and the actual topology which is the tree inference.
 We test the effect of this layer by using different tree inference methods.
 
-Because we use a simulation approach to test this problematic, we have to start from a random starting point (the "true" tree) and then do the following steps: (1) generate and remove the data (2) infer the topologies and (3) compare the topologies.
-Note that in this schematic representation, the "true" tree is the step (0) of our analysis and involves a series of algorithms and softwares (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes).
-To compare the "true" tree's topology to the "missing-data" topologies will be equivalent to explore the effect of our three parameters on recovering topology through 3 layers (1- generate the data; 2- infer the topologies; and 3- compare the topologies).
+% NC: Note: problematic does not mean what you think it does... Something can be problematic (it's an adjective not a noun).
+
+Because we use a simulation approach to test this problem, we have to start from a random starting point (the "true" tree) and then do the following steps: (1) generate and remove the data (2) infer the topologies and (3) compare the topologies.
+Note that in this schematic representation, the "true" tree is the step (0) of our analysis and involves a series of algorithms and software (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes).
+To compare the "true" tree's topology to the "missing-data" topologies will be equivalent of exploring the effect of our three parameters on recovering topology through 3 layers (1- generate the data; 2- infer the topologies; and 3- compare the topologies).
 By comparing the "best" tree's topology to the "missing-data" ones, we explore the effect of our three parameters through only 2 layers (2- infer the topologies; and 3- compare the topologies).
 Note that we explore the effect of these 2 layers by using two different tree inference methods (effectively 4 since we also use the Maximum Likelihood bootstraps trees and the Bayesian posterior trees) and 2 different Normalised topological metrics (Robinson-Foulds and Triplets).
 Using as main results the comparisons between the "true" and the "missing-data" trees would also need the exploration of the effect of the cascade of algorithms and softwares (maybe by modifying the algorithms used to generate the "true" tree and the matrices?).
 
-However, we have added all the comparisons between the "true" tree and the "missing-data" trees in the Appendix C (Figures C6 and C7).
-It is interesting to notice that the algorithms and softwares as well as probably the size of our matrices are actually not ideal an the recovery of the "true" tree is rather low and scales down the our results (see figure @).
-However, even though these comparisons are worst, it is encouraging to see that the patterns are conserved (i.e. Bayesian consensus trees $>$ Maximum Likelihood trees $>$ both bootstraps trees and Bayesian posterior trees).
+% NC: This argument makes no sense. The point the reviewer is making is that we go:
+% True tree > Best tree > comparisons when we could just go True tree > comparisons. So our approach *is* more complex than their suggestion. Instead the justification here is the same as used for reviewer one - that in real life scenarios we never know the true tree and we want it to be as close to real life as possible. BUT that we have tested their idea and find it makes no difference but all the results are in the appendix.
+
+However, we have added analyses with comparisons between the "true" tree and the "missing-data" trees in the Appendix C (Figures C6 and C7).
+It is interesting to note that the algorithms and software as well as probably the size of our matrices are actually not ideal for the recovery of the "true" tree is rather low and scales down the our results (see figure @).% NC: HUH????
+However, even though these comparisons are worse than comparing the best tree to the missing data trees, it is encouraging to see that the patterns in the results are conserved (i.e. Bayesian consensus trees $>$ Maximum Likelihood trees $>$ both bootstraps trees and Bayesian posterior trees).
 
 % -----------------
 % Comment 2
@@ -986,17 +991,23 @@ However, even though these comparisons are worst, it is encouraging to see that 
 
 The lines 180 and 181 states "All the molecular information for fossil taxa was replaced by missing data ("?")" in the former manuscript. We changed the verb "infer" (see specific comment number 16 from reviewer 1).
 
-We assumed that this reviewer is mentioning the section "2.2 Removing data" as the "explanation of the missing data strategy". We modified the whole section emphasising on clarity and simplicity.
+We assume the reviewer is referring to section "2.2 Removing data". We therefore modified the whole section to improve its clarity and simplicity as follows:
 
-"To explore the effect of missing data on topological recovery, we removed various amounts of the “complete” matrix to obtain matrices with missing morphological data.Hereafter, we call these matrices with missing morphological data the “missing-data” matrices. We removed morphological following three main data incompleteness parameters:
-1. The proportion of missing living taxa ($M_L$). This first missing-data parameter corresponds to the proportion of living taxa with no morphological data. It represents the number of living taxa that are present in the matrix but have only molecular data available. This reflects the fact that, because of the increasing facility of collecting molecular data, morphological data for living species is rarely collected (Guillerme and Cooper, 2015). Therefore, many living species will have only molecular data available. In practice, we removed all the morphological data from randomly chosen living with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.
-2. The proportion of missing data in the fossil record ($M_F$). This missing data parameter represents the completeness of the fossil record. In fact, due to preservation biases, missing data for fossil taxa are common (Sansom and Wills, 2013). In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
-3. The number of morphological characters for both living and fossil taxa ($N_C$). This parameter is not a missing data parameter per se but rather an indication of the size of the matrix. Any morphological matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. Therefore, this parameter correspond to the overall number of characters available for both living and fossil taxa. In practice, we randomly removed whole characters from the morphological matrix shrinking it to: 100, 90,75, 50 or 25 characters.
+"To explore the effect of missing morphological data on topological recovery, we removed various amounts of the “complete” matrix to obtain matrices with missing morphological data. Hereafter, we call these matrices with missing morphological data the “missing-data” matrices.
+% NC: add clarification here about molecular data
+Note that the amount of molecular data remained constant throughout our simulations - XX in living taxa and no molecular data for fossil taxa (see above).
+% NC: Is this correct?
+ We removed morphological data using three data incompleteness parameters:
+1. The proportion of missing living taxa ($M_L$). This first missing-data parameter corresponds to the proportion of living taxa with no morphological data. It represents the number of living taxa that are present in the matrix but have only molecular data available. This reflects the fact that, because of the increasing ease of collecting molecular data, morphological data for living species is rarely collected (Guillerme and Cooper, 2015). Therefore, many living species will have only molecular data available. In practice, we removed all the morphological data from randomly chosen living taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.
+2. The proportion of missing data in the fossil record ($M_F$). This missing data parameter represents the completeness of the fossil record. Due to preservation biases, missing data for fossil taxa are common (Sansom and Wills, 2013). In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
+3. The number of morphological characters for both living and fossil taxa ($N_C$). This parameter is not a missing data parameter \textit{per se} but rather an indication of the size of the matrix. Any morphological matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. Therefore, this parameter corresponds to the overall number of characters available for both living and fossil taxa. In practice, we randomly removed whole characters from the morphological matrix reducing it to: 100, 90,75, 50 or 25 characters.
 Note that these levels are equivalent to the two other parameters (i.e. 0\%, 10\%, 25\%, 50\% or 75\% of “missing” morphological characters).
 
-In practice, each parameter represents a different way of removing data from the morphological part of the matrix: $M_L$ removes entire rows from the living taxa’s data; $M_F$ removes cells from the fossil taxa’s data; and $N_C$ removes columns across both living and fossil taxa’s data. Note that $M_L$  and $M_F$ differ not only because of the region of the matrix affected: for $M_L$ all the morphological data of a percentage of living taxa are removed, whereas for $M_F$ a percentage of the data are removed at random from across the whole of the morphological matrix for fossil taxa.
+In practice, each parameter represents a different way of removing data from the morphological part of the matrix: $M_L$ removes entire rows from the living data; $M_F$ removes cells from the fossil data; and $N_C$ removes columns across both living and fossil data. Note that $M_L$  and $M_F$ differ not only because of the region of the matrix affected: for $M_L$ all the morphological data of a percentage of living taxa are removed, whereas for $M_F$ a percentage of the data are removed at random from across the whole of the morphological matrix for fossil taxa.
 
 We created matrices using all parameter combinations resulting in 125 ($5^3$) “missing-data” matrices. Note that one of these combinations ($M_L$=0\%; $M_F$=0\% and $N_C$=100) has no missing data so is equivalent to the “complete” matrix, thus we have one effectively complete matrix in our 125 “missing-data” matrices. In practice, we first removed the data following the two missing data parameters $M_L$ and $M_F$ and then removed data following the $N_C$ parameters. To avoid avoid matrices containing taxa without any data (morphological or molecular), we repeated the random deletion until the matrices contained at least 5\% of data for any taxon. Note that the living taxa always had at least 90\% of data (the 1000 molecular characters)." lines 222-267@@@
+
+% NC: NC_C here again not M_C...
 
 % -----------------
 % Comment 3
@@ -1004,25 +1015,32 @@ We created matrices using all parameter combinations resulting in 125 ($5^3$) �
 \item{\textcolor{blue}{\textbf{$M_C$ is not missing data per se:} If Mc is just removing columns, then they are shrinking the total matrix. This is not missing data per se. They are instead comparing matrices of different sizes, and the quantity is "data present." Any matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. A matrix with 10,000 characters is tiny if 10,000,000 could be scored. This is semantic.}}
 
 % TG: Ok i've changed it every where but personally I don't like it. It makes it even more messy and hard to read. However, because I didn't answered the first and last comment of this reviewer, I felt that at least 2/4 is a minimum.
-We entirely agree with this comment and hope it will help to the global comprehension of the manuscript. We replaced the $M_C$ (missing characters) parameter by $N_C$ (number of characters with five states: 100, 90, 75, 50 and 25) in the revised manuscript (see reviewer 2 comment 2 above), the appendices and the figures. We also slightly modified some explanations related to the change of missing characters to number of characters throughout the manuscript.
+We agree with this comment and hope it will help to the global comprehension of the manuscript. We replaced the $M_C$ (missing characters) parameter by $N_C$ (number of characters with five states: 100, 90, 75, 50 and 25) in the revised manuscript (see reviewer 2 comment 2 above), the appendices and the figures. We also slightly modified some explanations related to the change of missing characters to number of characters throughout the manuscript.
 
+% NC: Ah OK. You haven't corrected this everywhere in these comments I don't think...
 
 % -----------------
 % Comment 4
 % -----------------
 \item{\textcolor{blue}{\textbf{Specific variation of data per fossil:} More importantly, it doesn't seem like missing data varied among fossil taxa, unless I'm misreading. What we really want to know is what happens when some fossil taxa are fragmentary, as this is the most common empirical situation. Thus, there are morphological characters scored for some living taxa, some fossil taxa, and missing from others. It's unclear if this was simulated. It would be good if the authors could detail the case where, say, all living taxa had morphological data (0 Ml), the matrix was large (0 Mc), and Mf varied *among* fossil taxa, such that some fossils had 100\% coverage, and varied down to, say, 5\%. That's the crucial case here.}}
 
-In this study, we applied a similar approach to what the reviewer 2 suggests (i.e. no missing data for living taxa, and maximal number of characters but various amount of missing data for the fossil taxa).
-This results are present in figure 4, central row.
-However, the amount of changes among the fossil taxa was not set to any specific amount of missing data per fossil (e.g. like the "artificial fossil" approach in Pattinson et al 2014, Syst. Biol.) but we rather treated the missing data in the "whole" fossil record.
+In this study, we applied a similar approach to what the reviewer 2 suggests (i.e. no missing data for living taxa, and maximal number of characters but various amount of missing data for the fossil taxa). 
+These results are present in figure 4, central row.
+However, we think we may have not explained ourselves entirely clearly. The amount of changes among the fossil taxa was not set to any specific amount of missing data per fossil (e.g. like the "artificial fossil" approach in Pattinson et al 2014, Syst. Biol.) but we rather treated the missing data in the "whole" fossil record.
 Because our fossil taxa and their characters where randomly simulated, we didn't had any \textit{a priori} assumption on how to remove the data.
-We therefore decided to randomly remove a certain amount of data among all the fossil.
+We therefore decided to randomly remove a certain amount of data among all the fossils.
 For example, when removing 75\% of the data for the fossil taxa ($M_F$=75\%) different scenarios could happen, ranging from a "homogeneous" incompleteness data distribution (each specific fossil taxa had 75\% of missing data) to a "heterogeneous" incompleteness data distribution  (80\% of the specific fossil taxa had 5\% available data and 21\% of the specific fossil taxa had 100\% available data).
 In empirical matrices, the incompleteness data distribution probably lies in between both models.
 
-Also, a second argument for using this "simplistic" way to deal with the missing data in the fossil record follows our main recommendation from this study: the best way to improve the quality of Total Evidence trees is to have a maximum number of living species with available morphological data.
+% NC: OK - I'd add a line somewhere in the manuscript to make this clear. something like:
+
+%"Note that 55\% missing data for fossil taxa does not mean that each fossil is missing 50\% of it's morphological data. Instead this 50\% refers to the whole matrix. Some fossils may reatin 100% of their data and others may lose all their data at this parameter value"
+
+Also, a second argument for using this slightly simplistic way to deal with the missing data in the fossil record follows our main recommendation from this study: the best way to improve the quality of Total Evidence trees is to have a maximum number of living species with available morphological data.
 In fact lines 584 to 589 in the first version of the manuscript (line 669-674@@@ in the revised version), we argue that even if the effect of the $M_F$ parameter is important, there is unfortunately not much we can do about it since the completeness of this part of the matrix solely depends on exceptional palaeontological discoveries and excavation effort.
 We feel that these parameters, however crucial for our understanding of macroevolution, are unfortunately not predicable and a recommendation such as "we need more fossil data" is less practical than our main recommendation: "we need more living species data".
+
+% NC: Not sure the second paragraph is needed. The reviewer is saying that they want to know what happens if living taxa have all their data but fossils have variable amounts. And I think this is what you've done for some parameter combinations. Just need to apologise for not being clear and clarify in the text how data were missing from fossils. Doesn't need so much waffle and defensiveness - they are asking you to do what you've already done! :)
 
 \end{enumerate}
 
