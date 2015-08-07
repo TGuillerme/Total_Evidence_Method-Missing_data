@@ -255,13 +255,13 @@ We say that two distributions are significantly different when their probability
 Even though other values (e.g. 0.85) are not conclusive, we still reported them to show the relative overlap of the distributions (i.e. two distributions with a coefficient of 0.85 are not significantly similar but are closer to each other than two distributions with a coefficient of 0.15; which are themselves not significantly different but still less close to each other than the previous ones).
 We added the following statement to the main text and to the appendix B:
 
+"The Bhattacharyya Coefficient is the probability of overlap between two distributions bounded between 0 (no overlap) and 1 (full overlap; Bhattacharyya, 1943, see Appendix B for calculation details)." lines @@@
+
 "When the Bhattacharyya Coefficient between two distributions is $<$0.05, the distributions are significantly different.
 When this coefficient is $>$0.95, the distributions are significantly similar.
 Values in between these two thresholds show the probability of overlap between the distributions but do not allow us to define the significance of the similarity or differences between distributions." line 419-424 @@@.
 
-% NC: Make sure this is consistent throughout, add this to where you mention the BC being between 0 and 1 too?
-
-% TO DO IN THE MANUSCRIPT @@@
+% NC: Make sure this is consistent throughout, add this to where you mention the BC being between 0 and 1 too? TG: Done.
 
 % -----------------
 % Comment 9
@@ -294,8 +294,7 @@ For the Normalised Triplets distance however, the overlap is higher (median Bhat
 % TG: Did the reviewer just miss read the labels of the Table 1 or am I miles away from what he means?
 
 % NC: It's more likely an issue with reading figure 4. Check your figure legends. I think they might be incorrect. Then the reviewer might be seeing overlap of the wrong two distributions... But if they do overlap all the way to 25% then it is weird that the highest BC is 0.11 isn't it?
-% TO CHECK @@@
-% TG: yes definitely. Just doubled check, it might be because the colors where miss labelled and the reviewer miss read the graph (my fault).
+% TG: yes definitely. Just doubled and tripled checked, it might be because the colors where miss labelled and the reviewer miss read the graph (my fault). In the tables 1, C5, C6 and C7, RF overlap are always low (max < 0.11) and Tr overlap are always high (max ~80+). And that's what's visible in figure 4. Grey and orange lines do not overlap in RF and do overlap in Tr.
 
 % -----------------
 % Comment 10
@@ -331,10 +330,18 @@ It is important to note, however, that this effect can be reduced by increasing 
 We rewrote the conclusion to deal with this comment and the specific comments 13, 52 (see comment 52 for details on the choice of citing Arcila et al 2015.) and 56.
 % NC: Is it Arcial or Arcila? TG: Dahiana Arcila
 
-"Previous studies have explored the effect of missing morphological data when combining living and fossil species in phylogenies but where limited by their empirical approach or their aspects of missing data (Wiens et al 2005; Pattinson et al 2014). % NC: I still don't get these limitations. How are they are issue? What aspects?
+% "Previous studies have explored the effect of missing morphological data when combining living and fossil species in phylogenies but where limited by their empirical approach or their aspects of missing data (Wiens et al 2005; Pattinson et al 2014). % NC: I still don't get these limitations. How are they are issue? What aspects?
+% TG: Limitations are:
+% Empirical data (Wiens et al., 2005; Manos et al.,2007, Pattinson et al., 2014)
+% No fossils (Wiens et al., 2005)
+% Scheme of generating missing data (Manos et al.,2007, Pattinson et al., 2014)
+% Focus on palaeontological aspect of missing data (Manos et al.,2007, Pattinson et al., 2014)
+% Using clade conservation metrics only (Wiens et al., 2005; Pattinson et al., 2014)
 
-% TO DO: develop the limitations @@@
-
+% TG: I rephrased as follows.
+Previous studies have explored the effect of missing morphological data in Total Evidence matrices (Wiens et al., 2005; Manos et al.,2007, Pattinson et al., 2014).
+The conclusions of theses studies, however, were limited by their empirical approach as well as several aspects of their experimental design (e.g. not including fossil taxa, Wiens et al., 2005; or focusing on the palaeontological aspect, Manos et al.,2007, Pattinson et al., 2014).
+%
 This study proposes a more in depth approach where missing data is generated on simulated data and along three clear missing-data parameters ($M_{L}$, $M_{F}$ or $N_{C}$).
 This allowed us to confirm previous results that missing data can be especially problematic in small matrices (Wiens 2003) but also revealed the crucial importance of coding morphological data for living species.
 Missing data in Total Evidence matrices is not a problem for recovering the ``best'' tree topology as long as enough living and fossil taxa in the matrix have data for overlapping morphological characters.
@@ -346,7 +353,7 @@ Additionally, the topology of the Bayesian consensus trees, regardless of the am
 This has also been observed in empirical data (e.g. Arcila et al., 2015) where Maximum Likelihood trees inferred from a Total Evidence matrix were less supported than the Bayesian consensus tree.
 This might have an important impact on estimating topologies in the Total Evidence framework, because previous studies had to rely either on molecular scaffolds (e.g. Slater, 2013), taxonomic constraints (e.g. Slater, 2013; Beck and Lee, 2014) or even by fixing the topology (e.g. Ronquist et al., 2012a).
 Therefore, we suggest extracting such topological backbones from the Bayesian consensus tree if needed.
-% TG: maybe add in a non tip-dating analysis?
+% TG: maybe add in a non tip-dating analysis way (i.e. Nick Matzke comment)?
 
 To conclude, the results of our analyses are encouraging and show that it is possible to accurately combine both neontological and palaeontological data in the same phylogeny as long as both types of data sufficiently overlap.
 Hopefully, using these approaches will greatly improve our understanding of macroevolutionary patterns and processes." lines 602-634. @@@
