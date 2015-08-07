@@ -160,7 +160,7 @@ We test the effect of missing data by measuring two crucial aspects of topology 
 % TG: I actually rewrote this bit as well:
 We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the resulting tree topology.
 We inferred the topology from the matrices using both Maximum Likelihood and Bayesian inference methods and measured the differences in topology using two different topological distance metrics as proxies for clade conservation (based on the Robinson-Foulds distance; Robinson and Foulds, 1981) and for wild-card taxa placement (based on the Triplets distance; Critchlow et al., 1996).
-Thus, in the present study, we propose a new approach to the missing-data question, focusing on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and measuring difference on two aspects of topology (c.f. Wiens et al., 2005; Pattinson et al., 2014 measuring respectively only the clades support or the number of shared clades).
+Thus, in the present study, we propose a new approach to the missing-data question, focusing on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and measuring difference on two aspects of topology (cf. Wiens et al., 2005; Pattinson et al., 2014 measuring respectively only the clades support or the number of shared clades).
 
 % -----------------
 % Comment 5
@@ -467,7 +467,7 @@ We fixed this issue.
 % TG: actually I'm not going to change it:
 We thank the reviewer for pointing out this inconsistency, however, 'data' is now commonly used for the singular case (Pinker, S. \textit{The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century}. Penguin, 2014. p 271; and Guardian and Observer style guide (2015): \url{http://goo.gl/cmKjNe}).
 
-% NC: Hmmm I reckon this is probably inconsistent throughout then as I usually correct it to plural. I'd just change this tbh. Or at least check you've been consistent.
+% NC: Hmmm I reckon this is probably inconsistent throughout then as I usually correct it to plural. I'd just change this tbh. Or at least check you've been consistent. TG: ok maybe be I have a plural/singular problem (I definitely have). I actually never know when to use it a singular or plural: "One data point", that's ok, but "morphological data for one taxa"? Would that be singular or plural?
 
 % -----------------
 % Specific Comment 10
@@ -516,6 +516,9 @@ See also Appendix A "Morphological rates estimations results".
 % TG: what do you think? I don't want to attract the reviewer's attention too much (i.e. that's another shit load of analysis to do to do it properly) and certainly not the reader's attention either (it's not relevant to the whole paper) but sticking that to the supplementary kind of does what the reviewers wants to know.
 
 % NC: I'm a bit confused - did you do what they wanted or not? If not then the whole "this will make the paper longer" argument holds. If you did do what they wanted then it might need a little more explanation somewhere. You can't just throw random stuff into the appendices for no reason.
+% TO DISCUSS @@@
+% TG: Ok, maybe we should remove it. I've done the analysis because it's interesting and easy to do but maybe we can just add the results to this response, not to the revised manuscript?
+
 
 % -----------------
 % Specific Comment 14
@@ -538,7 +541,7 @@ We removed the part suggested by the reviewer.
 \item{\textcolor{blue}{\textbf{line 167 and throughout manuscript:} replace usage of 'inferred' when referring to simulating data. Replace with 'generated', 'simulated', or 'created', for example. 'Infer' should only be used when a model is fit to data to infer some output such as a tree, transition rates, etc. }}
 
 We replace 'inferred' by 'simulated' when referring to simulating data throughout the manuscript.
-% NC: Check this - I'm sure I caught one up above in the comments here.
+% NC: Check this - I'm sure I caught one up above in the comments here. TG: I think the idea is that we didn't "infer" any matrices, we simulated/generated/created them. The trees are still inferred though.
 
 % -----------------
 % Specific Comment 17
@@ -557,6 +560,8 @@ We changed the sentence to:
 Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below)." (line 189-192@@@).
 
 % NC: I think what is needed here is a definition of what is "too much". Is it 50%? 20%? etc. Too much is arbitrary.
+% TO DISCUSS @@@
+% TG: That's why I removed the "too much". I'm actually not sure how Homoplasy is measured (as in units of homoplasy). Wagner did a lot of work on it but he usually refers to homoplasy through proxies like characters retention, etc...
 
 % -----------------
 % Specific Comment 19
@@ -564,9 +569,11 @@ Also, we chose this low value to be consistent with our protocol for simulating 
 \item{\textcolor{blue}{\textbf{Line 176 to 180:} could be streamlined. It is not clear what is meant by 'no special assumption about how the characters evolved', what constitutes a special assumption? Could potentially be reduced to something like 'this model and these parameter settings strike a balance between realism for empirical datasets (citations) and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations'. Just for example.}}
 
 We modified the sentence as follows:
-"We selected this model and these parameters to strike a balance between realism for empirical datasets (e.g. Kelly et al., 2014) and models with few parameters (cf. Springer et. al., 2012) to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)." lines 192-198 @@@
+% "We selected this model and these parameters to strike a balance between realism for empirical datasets (e.g. Kelly et al., 2014) and models with few parameters (cf. Springer et. al., 2012) to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)." lines 192-198 @@@
 
-% NC: Why not just use the phrasing given by the reviewer for the first part?
+"This model and these parameter settings strike a balance between realism for empirical datasets  (e.g. Douady, Kelly et al., 2014) and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years)". lines @@@
+
+% NC: Why not just use the phrasing given by the reviewer for the first part? TG: Done.
 
 % -----------------
 % Specific Comment 20
@@ -602,9 +609,12 @@ Therefore, we implemented the \textit{a posteriori} matrix selection step to our
 
 We rephrased the section underlined by the reviewer as follows:
 
-"We used low evolutionary rate parameters to be consistent with the molecular rate parameters and to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal (Wright and Hillis, 2014). Note that Wright and Hillis (2014) have shown that low morphological rates (< 0.5) increase variance in topological error but we discarded simulations with such topological error by selecting only matrices with a “fair” phylogenetic signal (see Estimating phylogenies section below; Zander, 2004)." lines 211-217 @@@
+"We used low evolutionary rate parameters to be consistent with the molecular rate parameters and to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal (Wright and Hillis, 2014).
+In fact, topological error has been shown to be minimal at a morphological rate of 0.5 when using the M\textit{kv} model (Lewis, 2001; Wright and Hillis, 2014).
+Note, however, that Wright and Hillis (2014) have shown that low morphological rates (< 0.5) increase variance in topological error but we discarded simulations with such topological error by selecting only matrices with a “fair” phylogenetic signal (see Estimating phylogenies section below; Zander, 2004)." lines 211-217 @@@
 
 % NC: Might need a bit more explanation. For example mentioning that "Topological error, however, becomes minimal for all scenarios (Parsimony and Mk, with or without missing data) at a rate of 0.5 (see figure 3 from Wright and Hillis (2014)" as you've mentioned above.
+% TG: added a sentence.
 
 % -----------------
 % Specific Comment 23
@@ -754,7 +764,7 @@ We modified the sentence as suggested: "they have a larger proportion of missing
 \item{\textcolor{blue}{\textbf{lines 542-547:} These seem like the most important practical results and should be more strongly emphasized. These are very important results for practitioners and the authors should try to make it more clear to the reader that this is a key take-home message.}}
 
 We modified the paragraph to:
-
+%Stopped here
 "Surprisingly, the number of missing living taxa with morphological data ($M_{L}$) and the overall number of missing morphological characters ($N_{C}$), have a bigger effect than the amount of missing data for the fossil taxa ($M_{F}$).
 For any additional missing living taxa with morphological data ($M_L$) beyond 50\%, there is no difference between trees with any combination of the other parameters ($M_F$ and $N_C$; Figure 6).
 In other words, when the number of missing living taxa reaches 50\%, the amount of missing data in the fossil record ($M_F$) or the number of characters ($N_C$) does not matter and an increase/decrease in both does not affect topology.

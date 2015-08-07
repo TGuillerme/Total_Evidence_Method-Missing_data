@@ -119,12 +119,12 @@ This has led to increasing consensus among evolutionary biologists that fossil t
 To do this, however, we need to be able to place living and fossil taxa into the same phylogenies; a task that remains difficult despite recent methodological developments \citep[e.g.][]{pyrondivergence2011,ronquista2012,BEASTmaster}.
 
 Up to now, three main approaches have been used to place both living and fossil taxa into phylogenies.
-\hl{These approaches differ mainly in how they treat the fossil taxa and it's data.
-One can use the fossil as tips or as nodes in the phylogeny and use it's age only, it's morphology only or it's age and morphology jointly.}
+\hl{These approaches differ mainly in how they treat fossil taxa and their data.
+One can use fossils as tips or as nodes in the phylogeny, and can use only the age of the fossils, only the morphology of the fossils, or age and morphology jointly.}
 Classical cladistic methods use matrices containing morphological data from both living and fossil taxa and treat each taxon as a tip in the phylogeny. Relationships among the taxa are then inferred using optimality criteria such as maximum parsimony \citep{Hennig1966,felsenstein2004}.
 This approach is commonly used by paleontologists but it ignores the additional molecular data available from living species and does not allow use of probabilistic methods for dealing with phylogenetic uncertainty.
 Neontologists, on the other hand, more commonly use probabilistic approaches (e.g. Maximum Likelihood or Bayesian methods) based on matrices containing only molecular data from living species.
-\hl{Because fossil taxa do not usually have available DNA, only fossils' occurrence dates are used to time calibrate phylogenies} \citep{zuckerkandl1965}.
+\hl{Because fossil taxa do not usually have available DNA, only fossil occurrence dates are used to time calibrate phylogenies }\citep{zuckerkandl1965}.
 There have been great improvements in the theory and application of these two approaches \citep[e.g.][]{bapsta2013,stadlerdating2013,heaththe2013} as well as much debate about the ``best'' approach to use \citep[e.g.][]{spencerefficacy2013,wrightbayesian2014}.
 Neither approach, however, uses all the available data.
 
@@ -165,7 +165,7 @@ We investigate three major parameters that directly affect the completeness and 
 %in
 \hl{We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the resulting tree topology.
 We inferred the topology from the matrices using both Maximum Likelihood and Bayesian inference methods and measured the differences in topology using two different topological distance metrics as proxies for clade conservation } \citep[\hl{based on the Robinson-Foulds distance;}][]{RF1981}\hl{ and for wild-card taxa placement }\citep[\hl{based on the Triplets distance;}][]{critchlowthe1996}.
-\hl{Thus, in the present study, we propose a new approach to the missing-data question, focusing on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and measuring difference on two aspects of topology }\citep[c.f.][\hl{measuring respectively only the clades support or the number of shared clades}]{Wiens01102005,pattinsonphylogeny2014}.
+\hl{Thus, in the present study, we propose a new approach to the missing-data question, focusing on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and measuring difference on two aspects of topology }\citep[cf.][\hl{measuring respectively only the clades support or the number of shared clades}]{Wiens01102005,pattinsonphylogeny2014}.
 %Former revised version
 % \hl{We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the topology of trees inferred using Maximum Likelihood and Bayesian methods by using two different topological metrics, based on the Robinson-Foulds }\citep{RF1981}\hl{ and Triplets }\citep{critchlowthe1996}\hl{ distances.
 % Thus, in the present study, we propose a new approach on the missing-data question focus on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and two distinct topological metrics.}
@@ -224,7 +224,7 @@ The matrix contained 1000 character sites for 51 taxa and was generated using th
 \hl{Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below).}
 %We chose a low value of $\alpha$ to reduce the number of sites with high substitution rates, thus avoiding too much homoplasy and a decrease in phylogenetic signal. %Justify
 %We selected the parameters above to generate data with no special assumption about how the characters evolved, and to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, total computational time for the whole analysis was around 150 CPU years).
-\hl{We selected this model and parameters settings to be a compromise between realism from empirical datasets} \citep[e.g.][]{kellymolecular2014} \hl{and models with few parameters} \citep[cf.][]{springermacroevolutionary2012} \hl{to reduce the computational time required if these parameters were estimated rather than defined in the tree building part of the analysis (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years).}
+\hl{This model and these parameter settings strike a balance between realism for empirical datasets }\citep[e.g.][]{douadycomparison2003,kellymolecular2014}\hl{ and parameter richness with more complex models (e.g., GTR, multiple partitions with independent models), making them more suitable for our computational limitations (even with the parameters defined, the total computational time for the whole analysis was around 150 CPU years).}
 All the molecular information for fossil taxa was replaced by missing data ("?").
 
 \hl{We simulated the morphological matrix using the rTraitDisc function from the R package ape v. 3.0-11} \citep{paradisape:2004}\hl{ to generate a matrix of 100 character sites for 51 taxa.}
@@ -233,7 +233,8 @@ We then ran an independent discrete character simulation for each character usin
 This method allows us to have only two parameters for each character: the number of states and the evolutionary rate.
 For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5.
 \hl{We used low evolutionary rate parameters to be consistent with the molecular rates parameters and to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal} \citep{wrightbayesian2014}.
-\hl{Note that} \cite{wrightbayesian2014} \hl{have shown that low morphological rates ($<0.5$) increases variance in topological error but we discarded simulations with such topological error by selecting only matrices with a ``fair'' phylogenetic signal} \citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}.
+\hl{In fact, topological error has been shown to be minimal at a morphological rate of 0.5 when using the M\textit{kv} model }\citep{lewisa2001,wrightbayesian2014}.
+\hl{Note, however, that } \cite{wrightbayesian2014}\hl{ have shown that low morphological rates (< 0.5) increase variance in topological error but we discarded simulations with such topological error by selecting only matrices with a “fair” phylogenetic signal }\citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}.
 
 Finally, we combined the morphological and molecular matrices obtained from the ``true'' tree.
 Hereafter we call this the ``complete'' matrix, i.e. the matrix with no missing data except for the molecular data of the fossil taxa.
