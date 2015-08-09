@@ -230,7 +230,10 @@ We found no difference in topologies between both the Bayesian inferences starti
 Therefore, we do not believe our results are merely the result of using a specific starting tree topology. %strong priors on the tree topology. TG: That's the big difference that the PLoS ONE reviewer also didn't got. A starting tree is not a Bayesian prior (in P(A|B) = P(B|A)*P(A)/P(B; P(A) is the prior). It's just a user fixed starting point for the MCMC walk rather than a random one.
 % NC: The reviewer also says that saving time is not a good justification. It'd be worth explaining here how long it actually takes even though these datasets are small.
 %
+% %%%%%%%%%%%%%%%%%%%
 % TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
+%
 % TG: about that: it using a random tree or the true tree doesn't change the timing significantly. The whole idea was suggested by Rob or Gavin (don't remember exactly) at lunch time when I was visiting Gavin in Sheffield. To speed up the search in the tree space they suggested I already start from a sensible tree in the tree space, that was meant to speed up the analysis.
 %
 These results are available in the supplementary materials Appendix A (figure A2 and tables A1 and A2) and we also added a note to the manuscript:
@@ -383,7 +386,9 @@ We changed the axes of the graphs showing Normalised Triplets metric to show val
 %TG: WUT? Didn't understood that one at all.
 % NC: The reviewer means that you're presenting results from across all your different parameters, and all your different amounts of missing data in the table. You need to clarify this, especially as in figures you separate these out. Pooling just means combining. I noticed this on my re-read just now too.
 
-% TO DO @@@
+% %%%%%%%%%%%%%%%%%%%
+% TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
 
 % -----------------
 % Comment 15
@@ -469,6 +474,10 @@ We thank the reviewer for pointing out this inconsistency, however, 'data' is no
 
 % NC: Hmmm I reckon this is probably inconsistent throughout then as I usually correct it to plural. I'd just change this tbh. Or at least check you've been consistent. TG: ok maybe be I have a plural/singular problem (I definitely have). I actually never know when to use it a singular or plural: "One data point", that's ok, but "morphological data for one taxa"? Would that be singular or plural?
 
+% %%%%%%%%%%%%%%%%%%%
+% TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
+
 % -----------------
 % Specific Comment 10
 % -----------------
@@ -516,7 +525,11 @@ See also Appendix A "Morphological rates estimations results".
 % TG: what do you think? I don't want to attract the reviewer's attention too much (i.e. that's another shit load of analysis to do to do it properly) and certainly not the reader's attention either (it's not relevant to the whole paper) but sticking that to the supplementary kind of does what the reviewers wants to know.
 
 % NC: I'm a bit confused - did you do what they wanted or not? If not then the whole "this will make the paper longer" argument holds. If you did do what they wanted then it might need a little more explanation somewhere. You can't just throw random stuff into the appendices for no reason.
+%
+% %%%%%%%%%%%%%%%%%%%
 % TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
+%
 % TG: Ok, maybe we should remove it. I've done the analysis because it's interesting and easy to do but maybe we can just add the results to this response, not to the revised manuscript?
 
 
@@ -560,7 +573,9 @@ We changed the sentence to:
 Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below)." (line 189-192@@@).
 
 % NC: I think what is needed here is a definition of what is "too much". Is it 50%? 20%? etc. Too much is arbitrary.
+% %%%%%%%%%%%%%%%%%%%
 % TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
 % TG: That's why I removed the "too much". I'm actually not sure how Homoplasy is measured (as in units of homoplasy). Wagner did a lot of work on it but he usually refers to homoplasy through proxies like characters retention, etc...
 
 % -----------------
@@ -920,8 +935,6 @@ We modified the figure caption as follows:
 
 % NC: Sometimes in this you have N_C, sometimes M_C. FIX IT!!! TG: Following reviewer 2's comment, it's now N_C rather than M_C. 
 
-% TO DO: thorough check through. @@@
-
 We modified the methods section as follows:
 "Because of the difficulties in representing so many pairwise comparisons in a meaningful way, we summarized these results as a heat map of Bhattacharyya Coefficients (see Figure 6).
 In this type of figure, parameters that have similar effects on recovering the ``best'' topology (either good or bad effects) will be denoted by similar colour patches in the heat map representation of these comparisons (see Figure 6)." lines 434-439@@@
@@ -969,6 +982,10 @@ When combined, the maximum amount of missing data can be higher, especially when
 % In Appendix C, B posterior vs B consensus for some parameter value is 0.5 (for example), but the max value when you compare this in Table 1 is 0.11. How is this possible???????
 % NC: So your response here is completely irrelevant.
 
+% %%%%%%%%%%%%%%%%%%%
+% TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
+
 2) %TG: not entirely sure what the reviewer means by marginal probabilities. I made to extra summarizing tables in the supplementaries that may be actually easier to read than most of the others so we might want to add them to the main text.
 We added two extra tables in the Appendix C (Table C8 and C9) that summarized the median Bhattacharyya Coefficients within each methods and each parameters individually and combined (Table C8; as illustrated in Figure 2) as well as the median Bhattacharyya Coefficients within each methods and each parameters individually and combined (Table C9; as illustrated in Figure 3).
 % TG: If that's actually what the reviewer 1 wanted, I think we can propose to add it to the main text rather than the appendices. They can always decide to move it back to the appendices if it doesn't bring much.
@@ -985,6 +1002,10 @@ We added two extra tables in the Appendix C (Table C8 and C9) that summarized th
 We removed the repetition in the caption. If we understand the second point correctly, we have not added "best" to these as the Maximum Likelihood tree is by definition the tree with the highest likelihood, and the Bayesian consensus is the consensus tree of the Bayesian inference trees. So adding the word best here is not entirely accurate.
 
 %Not sure I understand the second part of the comment. % NC: I think they are a bit confused and think you need to explain it is the best ML and best bayesian tree. But that's what ML and consensus means. Maybe they want clarification that it is only one tree in each of those and multiple trees in the others? I've added a bit above.
+
+% %%%%%%%%%%%%%%%%%%%
+% TO DISCUSS @@@
+% %%%%%%%%%%%%%%%%%%%
 
 % -----------------
 % Specific Comment 60
