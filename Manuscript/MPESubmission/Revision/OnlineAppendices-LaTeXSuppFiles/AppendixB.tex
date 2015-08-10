@@ -119,10 +119,13 @@ Values in between these two threshold just show the probability of overlap betwe
 
 \subsection{Differences between the ``true'' and the ``best'' trees.}
 % NC: Need a line or two to explain the motivation of this analysis. Why did you do it? (not just because reviewers asked you to!)
-We compared our ``true'' trees (i.e. the trees \textbf{used to create} the ``complete'' matrices) to the ``best'' trees (i.e. the trees \textbf{inferred from} % NC: I thought we weren't using the word inferred
+% TG:  How's that?
+In our simulation protocol, we used the ``true'' tree to generate the molecular characters and the morphological characters for the living and fossil taxa (i.e. the ``complete'' matrix).
+The following analysis measures the performance of our parameter and algorithms choices to generate the ``complete'' matrix.
+%
+To asses the performance of our simulation protocol, we compared our ``true'' trees (i.e. the trees \textbf{used to create} the ``complete'' matrices) to the ``best'' trees (i.e. the trees \textbf{inferred from} % NC: I thought we weren't using the word inferred TG: no, it's just the matrices that are not inferred anymore.
  the ``complete'' matrices) in figure ~\ref{Fig_Supp_True_Best}.
-Note that the difference between the ``true'' and the ``best'' trees represents the effect of the parameters choice and the algorithms used to create the ``complete'' matrix as well the as the capacity of RAxML and MrBayes to infer % NC: again
-phylogenies from this particular matrices (i.e. small sized and generated using specific algorithms).
+Note that the difference between the ``true'' and the ``best'' trees represents the effect of the parameters choice and the algorithms used to create the ``complete'' matrix as well the as the capacity of RAxML and MrBayes to infer phylogenies from this particular matrices (i.e. small sized and generated using specific algorithms).
 This does not affect, however, the results of our analysis since we deliberately compared the the ``missing-data'' trees to the ``best'' tree rather than to the ``true'' tree. 
 
 \begin{figure} 

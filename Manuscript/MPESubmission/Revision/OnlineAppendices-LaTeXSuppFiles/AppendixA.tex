@@ -59,48 +59,28 @@ We used the ``true'' tree as a starting tree for the two MCMC chains in the Baye
 To assess if this had an effect on the topology of the ``best'' tree, we ran a sub-sample of trees using a different random starting tree for the two MCMC chains \citep[default MrBayes option;][]{Ronquist2012mrbayes}.
 We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $N_C$=100 (i.e. 0\% ``missing''); second tree: $M_L$=10\%, $M_F$=10\% and $N_C$=90, etc.) on the first 20 simulation chains.
 We then compared the trees inferred using a random starting tree to the ``best'' tree using the normalised Robinson-Foulds and Triplets metrics in an identical way as described in the main text (figure ~\ref{Fig_startingTree}).
-We also compared the normalised Robinson-Foulds and Triplets metrics of the ``missing-data'' trees using the ``true'' tree as a starting tree or a random tree as a starting tree using simple linear regression and nested linear regression (\texttt{lm(metric $\sim$ starting tree)}) and \texttt{lmList(metric $\sim$ starting tree | missing data}) in \texttt{R}).
+We used a two-way ANOVA to test any significant effect of the starting tree (``true'' or random) on the normalised Robinson-Foulds and Triplets metrics.
 % NC: Why the regressions? What are they telling you? Why simple and nested?
+% TG: Ok, made it totally plain easier. Anova.
 The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Starting_tree.R}.
-We found no significant effect of using the ``true'' instead of a random tree as a starting tree on our ability to recover the ``best'' tree (tables ~\ref{Tab_lm_res} and ~\ref{Tab_lmList_res}).
+We found no significant effect of using the ``true'' instead of a random tree as a starting tree on our ability to recover the ``best'' tree (table ~\ref{Tab_lm_res}).
 
 \begin{table}[ht]
-\caption{Effect of the using the ``true'' tree as a starting tree on topological recovery for the two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics using simple linear regression.} % NC: I'm not sure what these two tables are telling you. Clarify. The caption says nothing about the random starting trees.
+\caption{Test of the effect of using either a random tree or the ``true'' tree as a starting tree on two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics using a two-way ANOVA.}
 \label{Tab_lm_res}
 \centering
-\begin{tabular}{rlcccc}
+\begin{tabular}{rlcccccc}
   \hline
- & & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+ metric & terms & Df & Sum Sq & Mean Sq & F value & Pr($>$F) \\ 
   \hline
-RF & (Intercept) & 0.8100 & 0.0122 & 66.16 & \textbf{0.0000} \\ 
-   & starting:true & 0.0019 & 0.0173 & 0.11 & 0.9125 \\
-Tr & (Intercept) & 0.4424 & 0.0418 & 10.59 & \textbf{0.0000} \\ 
-   & starting:true & 0.0159 & 0.0591 & 0.27 & 0.7887 \\ 
+RF & starting    & 1 & 0.00 & 0.00 & 0.01 & 0.9125 \\ 
+   & Residuals   & 198 & 2.97 & 0.01 &  &  \\ 
+Tr & starting    & 1 & 0.01 & 0.01 & 0.07 & 0.7887 \\ 
+   & Residuals   & 198 & 34.57 & 0.17 &  &  \\ 
    \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[ht]
-\caption{Effect of the using the ``true'' tree as a starting tree on topological recovery for the two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics for each missing data parameter using nested linear regression.}
-\label{Tab_lmList_res}
-\centering
-\begin{tabular}{rccccc}
-  \hline
- & & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
-  \hline
-RF & 0\%  & 0.02 & 0.02 & 1.02 & 0.31 \\ 
-   & 10\% & -0.01 & 0.02 & -0.50 & 0.62 \\ 
-   & 25\% & 0.00 & 0.02 & 0.00 & 1.00 \\ 
-   & 50\% & 0.00 & 0.02 & 0.03 & 0.98 \\ 
-   & 75\% & -0.00 & 0.02 & -0.03 & 0.98 \\
-Tr & 0\%  & 0.09 & 0.08 & 1.06 & 0.29 \\ 
-   & 10\% & -0.00 & 0.08 & -0.05 & 0.96 \\ 
-   & 25\% & 0.00 & 0.08 & 0.01 & 0.99 \\ 
-   & 50\% & -0.00 & 0.08 & -0.04 & 0.97 \\ 
-   & 75\% & -0.00 & 0.08 & -0.00 & 1.00 \\ 
-   \hline
-\end{tabular}
-\end{table}
 
 \begin{figure}
 \centering

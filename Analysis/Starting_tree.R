@@ -96,26 +96,13 @@ best_RF_test<-data.frame("RF"=c(True_RF, Rand_RF), "starting"=as.factor(c(rep("t
 best_Tr_test<-data.frame("Tr"=c(True_Tr, Rand_Tr), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
 #Comparisons to best true
 
-# True_RF<-c(True_to_true[[1]][[4]])
-# True_Tr<-c(True_to_true[[1]][[6]])
-# Rand_RF<-c(Rand_to_true[[1]][[4]], mean(Rand_to_true[[2]][[4]])) #One value is missing
-# Rand_Tr<-c(Rand_to_true[[1]][[6]], mean(Rand_to_true[[2]][[6]])) #One value is missing
-# for (tree in 2:length(True_to_true)) {
-#     True_RF<-c(True_RF, True_to_true[[tree]][[4]])
-#     True_Tr<-c(True_Tr, True_to_true[[tree]][[6]])
-#     Rand_RF<-c(Rand_RF, Rand_to_true[[tree]][[4]])
-#     Rand_Tr<-c(Rand_Tr, Rand_to_true[[tree]][[6]])
-# }
-# true_RF_test<-data.frame("RF"=c(True_RF, Rand_RF), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
-# true_Tr_test<-data.frame("Tr"=c(True_Tr, Rand_Tr), "starting"=as.factor(c(rep("true", 100), rep("rand", 100))), "miss.data"=rep(trees,2))
-
 
 #Running the tests
 library(xtable)
 library(lme4)
 #General effect
-xtable(summary(lm(RF~starting, data=best_RF_test)))
-xtable(summary(lm(Tr~starting, data=best_Tr_test)))
+xtable(anova(lm(RF~starting, data=best_RF_test)))
+xtable(anova(lm(Tr~starting, data=best_Tr_test)))
 
 
 #Nested effect
