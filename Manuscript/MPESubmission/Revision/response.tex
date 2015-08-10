@@ -223,8 +223,14 @@ See also appendix B section "Differences between the ``true'' and the ``best'' t
 I fear that one of the main results may be biased due to this one methodological detail - a strong prior on tree topology.
 The justification given was 'to speed up the Bayesian analysis' which does not seem adequate, given these datasets are small.}}
 
+%%%%
+We take on board the coment and agree that this would be a bad bias if it was the case. However we ran extra analysis and there is no bias.
+%%%%
+
 We performed an extra analysis on a subset of five trees with the three missing data parameters at 0\%, 10\%, 25\%, 50\% and 75\% for 20 chains. 
-We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or using a random tree (default in MrBayes) as a starting tree.
+We compared the topology of these trees in Bayesian inference when using the true tree as a starting tree or not using a starting tree (i.e. using the default in MrBayes which is using a random tree).
+
+
 % NC: Yes but the reviewer is asking for something different - they ask you to have no starting tree. If this is impossible in MrBayes then say so, and say you used a random tree instead. TG: Maybe there's a phylogeny confusion here. In both ML or Bayesian, you need to start from a tree, then calculate the likelihood of all the parameters, then change the tree, calculate again, etc...
 We found no difference in topologies between both the Bayesian inferences starting with the true tree or a random tree.
 Therefore, we do not believe our results are merely the result of using a specific starting tree topology. %strong priors on the tree topology. TG: That's the big difference that the PLoS ONE reviewer also didn't got. A starting tree is not a Bayesian prior (in P(A|B) = P(B|A)*P(A)/P(B; P(A) is the prior). It's just a user fixed starting point for the MCMC walk rather than a random one.
@@ -386,6 +392,9 @@ We changed the axes of the graphs showing Normalised Triplets metric to show val
 %TG: WUT? Didn't understood that one at all.
 % NC: The reviewer means that you're presenting results from across all your different parameters, and all your different amounts of missing data in the table. You need to clarify this, especially as in figures you separate these out. Pooling just means combining. I noticed this on my re-read just now too.
 
+% TG: Add that to the caption
+% Pooled the data across the different missing data parameters
+
 % %%%%%%%%%%%%%%%%%%%
 % TO DISCUSS @@@
 % %%%%%%%%%%%%%%%%%%%
@@ -472,6 +481,8 @@ We fixed this issue.
 % TG: actually I'm not going to change it:
 We thank the reviewer for pointing out this inconsistency, however, 'data' is now commonly used for the singular case (Pinker, S. \textit{The Sense of Style: The Thinking Person's Guide to Writing in the 21st Century}. Penguin, 2014. p 271; and Guardian and Observer style guide (2015): \url{http://goo.gl/cmKjNe}).
 
+% TG: "data" ARE <- change
+
 % NC: Hmmm I reckon this is probably inconsistent throughout then as I usually correct it to plural. I'd just change this tbh. Or at least check you've been consistent. TG: ok maybe be I have a plural/singular problem (I definitely have). I actually never know when to use it a singular or plural: "One data point", that's ok, but "morphological data for one taxa"? Would that be singular or plural?
 
 % %%%%%%%%%%%%%%%%%%%
@@ -522,6 +533,11 @@ We link to this analysis in the methods as follows:
 
 "The detailed MrBayes parameters are available in Appendix A along with details on the $\alpha$ parameter estimation." lines 336-338 @@@
 See also Appendix A "Morphological rates estimations results".
+
+We did it
+but we put in appendix
+because it's too long.
+
 % TG: what do you think? I don't want to attract the reviewer's attention too much (i.e. that's another shit load of analysis to do to do it properly) and certainly not the reader's attention either (it's not relevant to the whole paper) but sticking that to the supplementary kind of does what the reviewers wants to know.
 
 % NC: I'm a bit confused - did you do what they wanted or not? If not then the whole "this will make the paper longer" argument holds. If you did do what they wanted then it might need a little more explanation somewhere. You can't just throw random stuff into the appendices for no reason.
@@ -568,6 +584,7 @@ We modified the sentence as suggested.
 % -----------------
 \item{\textcolor{blue}{\textbf{line 173 to 176:} need some justification for why the substitution rate with alpha shape of 0.5  will avoid homoplasy. Yang 1996 is cited but clarify the justification of what is 'too much' homoplasy. }}
 
+Homoplasy is a difficult concept, not really a value so we went for...
 We changed the sentence to:
 "In practice, a value of $\alpha$ $<$ 1 decreases the number of sites with high substitution rates, thus reducing homoplasic sites and increasing the phylogenetic signal (Hassanin et al., 1998; Estoup et al., 2002).%\citep{Hassanin1998611,EstoupHomoplasy}.
 Also, we chose this low value to be consistent with our protocol for simulating morphological characters (see below)." (line 189-192@@@).
@@ -957,6 +974,10 @@ In figure 5 for the Normalised Robinson-Foulds metric, this can be interpreted a
 Are these values the probabilities of overlap between the distributions of the 'best' tree versus trees from each inference method pooled across all combinations of missing data? That is what is described in methods line 397 but it doesn't say so in the caption.
 Two things:\\
 1)  Comparing to the tables in Appendix C, the distribution of probabilities of overlap between max. likelihood and Bayesian trees are higher in most missing data schemes in tables in the Appendices than the overall values given in Table 1. How could the max. likelihood and Bayesian trees be so different?\\
+% TG: we really apologize but we think there's an error. We don't know where their coming from but it's probably our fault because of mislabelling. Hopefully this is fixed.
+
+% Check again table. Difference between tables and figures.
+
 2)  Pooling across all missing data schemes seems to wash out the effect of tree-inference method. I am not sure what a better way to present these would be, but perhaps some kind of matrix where the cells are the joint probabilities of overlap of each method with each missing data category, and then the marginal probabilities would be the probabilities of overlap for each method, averaged over missing data categories, as well as the marginal probabilities of overlap for each missing data category, averaged across methods.  e.g, RF distance:\\
 Missing data:   0   25  50  75  Marginal \\
 BI  1   0.9 0.8 0.75    0.863 \\
@@ -967,6 +988,8 @@ This may not be feasible in the text due to space limitations, maybe tables like
 % TG: I don't understand this comment at all. What does "The wording of the caption is off" means? And which pararagraph is he talking about? 
 % NC: The "wording is off" means the wording is incorrect. Probably means the second sentence not paragraph. I've editted the caption as mentioned further up in the comments.
 
+
+% Move that where it's relevant !!!!!!!!
 We fixed the highlighting in bold to the classical values of 0.05 or 0.95.
 We changed the caption to:
 "Bhattacharyya Coefficients of the pairwise method comparisons.
@@ -994,12 +1017,19 @@ We added two extra tables in the Appendix C (Table C8 and C9) that summarized th
 % NC: Marginal probabilities are basically the probability of one thing given you're controlling for another thing. So they are looking to see the effect of tree inference method independent of parameter differences. Otherwise they suggest you are hiding important differences via this summarizing over all parameter combinations. 
 % NC: I think you can argue that yes, table 1 hides some important effects, but that it was difficult to summarize these results and more in depth tables can be seen in the appendix.
 
+
+% And fix this one with adding the tables.
+% Marginal probabilities checking. Do it?
+
 % -----------------
 % Specific Comment 59
 % -----------------
 \item{\textcolor{blue}{\textbf{Appendix C:} Tables 1-3 repeats 'of the'. Should label the first two rows as 'Best maximum likelihood tree' and 'Best Bayesian inference tree'}}
 
-We removed the repetition in the caption. If we understand the second point correctly, we have not added "best" to these as the Maximum Likelihood tree is by definition the tree with the highest likelihood, and the Bayesian consensus is the consensus tree of the Bayesian inference trees. So adding the word best here is not entirely accurate.
+We removed the repetition in the caption.
+% If we understand the second point correctly, we have not added "best" to these as the Maximum Likelihood tree is by definition the tree with the highest likelihood, and the Bayesian consensus is the consensus tree of the Bayesian inference trees. So adding the word best here is not entirely accurate.
+
+Change caption in the "best" ML tree and "best" Bay con tree to blablabla.
 
 %Not sure I understand the second part of the comment. % NC: I think they are a bit confused and think you need to explain it is the best ML and best bayesian tree. But that's what ML and consensus means. Maybe they want clarification that it is only one tree in each of those and multiple trees in the others? I've added a bit above.
 
