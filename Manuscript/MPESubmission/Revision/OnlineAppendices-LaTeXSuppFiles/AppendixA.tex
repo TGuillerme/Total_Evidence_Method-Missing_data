@@ -45,7 +45,7 @@
 \section{Appendix A: Tree Inference}
 
 \subsection{Morphological character states}
-To obtain a realistic value for the probability of having \textit{k} characters states for each simulated morphological character, we randomly selected 100 morphological matrices, each with more than 100 characters each, from TreeBASE (\url{http://treebase.org/}). We only selected matrices published between 1985 and 2013 and covering 19 taxonomic classes (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta). This resulted in a total of 22563 characters that had between two and 10 character states. We then extracted the proportion of characters with each number of states (two to 10) to give us an empirical estimate of the average number of character states for each character, as shown in Figure \ref{Fig_AppendixCharacters}. Most characters have two or three states, therefore we only simulate characters with two or three states, and sample these in proportion to their occurrence in our empirical data (probability of 0.85 for two states characters and 0.15 for three state characters). The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R}.
+To obtain a realistic value for the probability of having \textit{k} characters states for each simulated morphological character, we randomly selected 100 morphological matrices, each with more than 100 characters each, from TreeBASE (\url{http://treebase.org/}). We only selected matrices published between 1985 and 2013 and covering 19 taxonomic classes (Chordata, Arthropoda, Annelida, Angiosperm, Gymnosperm and Pteridophyta). This resulted in a total of 22563 characters that had between two and 10 character states. We then extracted the proportion of characters with each number of states (two to 10) to give us an empirical estimate of the average number of character states for each character, as shown in Fig. \ref{Fig_AppendixCharacters}. Most characters have two or three states, therefore we only simulate characters with two or three states, and sample these in proportion to their occurrence in our empirical data (probability of 0.85 for two states characters and 0.15 for three state characters). The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R}.
 
 \begin{figure}
 \centering
@@ -58,12 +58,12 @@ To obtain a realistic value for the probability of having \textit{k} characters 
 We used the ``true'' tree as a starting tree for the two MCMC chains in the Bayesian inference to decrease the computing time needed.
 To assess if this had an effect on the topology of the ``best'' tree, we ran a sub-sample of trees using a different random starting tree for the two MCMC chains \citep[default MrBayes option;][]{Ronquist2012mrbayes}.
 We tested this effect on five trees with the five levels of missing data (i.e. first tree: $M_L$=0\%, $M_F$=0\% and $N_C$=100 (i.e. 0\% ``missing''); second tree: $M_L$=10\%, $M_F$=10\% and $N_C$=90, etc.) on the first 20 simulation chains.
-We then compared the trees inferred using a random starting tree to the ``best'' tree using the normalised Robinson-Foulds and Triplets metrics in an identical way as described in the main text (figure ~\ref{Fig_startingTree}).
+We then compared the trees inferred using a random starting tree to the ``best'' tree using the normalised Robinson-Foulds and Triplets metrics in an identical way as described in the main text (Fig. ~\ref{Fig_startingTree}).
 We used a two-way ANOVA to test any significant effect of the starting tree (``true'' or random) on the normalised Robinson-Foulds and Triplets metrics.
 % NC: Why the regressions? What are they telling you? Why simple and nested?
 % TG: Ok, made it totally plain easier. Anova.
 The code used for this section is available at \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Starting_tree.R}.
-We found no significant effect of using the ``true'' instead of a random tree as a starting tree on our ability to recover the ``best'' tree (table ~\ref{Tab_lm_res}).
+We found no significant effect of using the ``true'' instead of a random tree as a starting tree on our ability to recover the ``best'' tree (Table ~\ref{Tab_lm_res}).
 
 \begin{table}[ht]
 \caption{Test of the effect of using either a random tree or the ``true'' tree as a starting tree on two Normalised Robins-Foulds (RF) and Triplets (Tr) metrics using a two-way ANOVA.}
