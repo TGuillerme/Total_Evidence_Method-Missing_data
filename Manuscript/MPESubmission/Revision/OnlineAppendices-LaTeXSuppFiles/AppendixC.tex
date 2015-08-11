@@ -124,7 +124,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of metrics values for all parameters combinations
 \begin{landscape}
 \begin{table}[ht]
-\caption{Summary of the comparisons between the "best" tree and the "missing data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr).}
+\caption{Summary of the comparisons between the "best" tree and the "missing-data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr).}
 \label{Tab_Supp_summary_metric_allparam}
 \centering
 \begin{tabular}{lccccccc}
@@ -148,7 +148,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of metrics values for the ML parameter
 \begin{landscape}
 \begin{table}[ht]
-\caption{Summary of the comparisons between the "best" tree and the "missing data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{L}$ missing data parameter only.}
+\caption{Summary of the comparisons between the "best" tree and the "missing-data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{L}$ missing data parameter only.}
 \label{Tab_Supp_summary_metric_ML}
 \centering
 \begin{tabular}{lccccccc}
@@ -172,7 +172,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of metrics values for the MF parameter
 \begin{landscape}
 \begin{table}[ht]
-\caption{Summary of the comparisons between the "best" tree and the "missing data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{F}$ missing data parameter only.}
+\caption{Summary of the comparisons between the "best" tree and the "missing-data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{F}$ missing data parameter only.}
 \label{Tab_Supp_summary_metric_MF}
 \centering
 \begin{tabular}{lccccccc}
@@ -195,7 +195,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of metrics values for the MC parameter
 \begin{landscape}
 \begin{table}[ht]
-\caption{Summary of the comparisons between the "best" tree and the "missing data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $N_{C}$ missing data parameter only.}
+\caption{Summary of the comparisons between the "best" tree and the "missing-data" trees for each different tree inference method using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $N_{C}$ missing data parameter only.}
 \label{Tab_Supp_summary_metric_MC}
 \centering
 \begin{tabular}{lccccccc}
@@ -219,7 +219,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of the BC between pairs of methods for the ML parameter
 \begin{landscape}
 \begin{table}[ht]
-\caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised metric between the "best" tree and the "missing data" using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{L}$ missing data parameter only.}
+\caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised metric between the "best" tree and the "missing-data" using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{L}$ missing data parameter only.}
 \label{Tab_Supp_summary_BC_ML}
 \centering
 \begin{tabular}{lccccccc}
@@ -246,7 +246,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of the BC between pairs of methods for the MF parameter
 \begin{landscape}
 \begin{table}[ht]
-\caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised metric between the "best" tree and the "missing data" using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{F}$ missing data parameter only.}
+\caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised metric between the "best" tree and the "missing-data" using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $M_{F}$ missing data parameter only.}
 \label{Tab_Supp_summary_BC_MF}
 \centering
 \begin{tabular}{lccccccc}
@@ -273,7 +273,7 @@ The following section contains the supplemental results of the effects of our mi
 %Summary of the BC between pairs of methods for the MC parameter
 \begin{landscape}
 \begin{table}[ht]
-\caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised metric between the "best" tree and the "missing data" using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $N_{C}$ missing data parameter only.}
+\caption{Bhattacharyya Coefficients of the pairwise method comparisons, each of which corresponds to the normalised metric between the "best" tree and the "missing-data" using either the Normalised Robinson-Foulds metric (RF) or the Normalised Triplets metric (Tr) for the $N_{C}$ missing data parameter only.}
 \label{Tab_Supp_summary_BC_MC}
 \centering
 \begin{tabular}{lccccccc}
@@ -297,44 +297,145 @@ The following section contains the supplemental results of the effects of our mi
 \end{table}
 \end{landscape}
 
+
+% Marginal distributions tables
 \begin{table}[ht]
-\caption{Summary of the median Bhattacharyya Coefficients comparisons between the missing data parameters. Each value corresponds to the median Bhattacharyya Coefficient between the Normalised metrics (Robinson-Foulds - RF; Triplets - Tr) between the ``best'' and the ``missing data'' trees (as outlined in Figure 2 in the main text) for the the trees with: Missing Living taxa only ($M_L$); Missing Fossil data only ($M_F$); Number of characters only ($N_C$); and the combination of the three parameters (combined).} 
-\begin{tabular}{llcccc}  
+\caption{Marginal distribution of the modal Normalised Robinson-Foulds metric for the comparison between the ``best'' tree and the ``missing-data'' trees for each different tree inference method for the $M_{L}$ missing data parameter only.}
+\centering
+\begin{tabular}{rrrrrrr}
   \hline
- Method & Metric & $M_L$ & $M_F$ & $N_C$ & combined \\ 
+ & 0\% & 10\% & 25\% & 50\% & 75\% & Marginal \\ 
   \hline
-Maximum Likelihood & RF & 0.54 & 0.37 & 0.56 & 0.54 \\ 
-                   & Tr & 0.80 & 0.75 & 0.80 & 0.79 \\ 
-Bayesian consensus & RF & 0.73 & 0.59 & 0.60 & 0.79 \\ 
-                   & Tr & 0.86 & 0.67 & 0.81 & 0.81 \\ 
-Maximum Likelihood bootstraps & RF & \textbf{0.98} & \textbf{0.96} & \textbf{0.97} & 0.78 \\ 
-                   & Tr & \textbf{0.99} & \textbf{1.00} & \textbf{1.00} & \textbf{0.96} \\ 
-Bayesian posterior trees & RF & 0.86 & 0.93 & 0.94 & 0.68 \\ 
-                   & Tr & \textbf{0.98} & \textbf{0.99} & \textbf{0.99} & 0.91 \\ 
- \hline
+Maximum Likelihood & 1.00 & 0.94 & 0.71 & 0.59 & 0.45 & 0.74 \\ 
+  Bayesian consensus & 1.00 & 0.95 & 0.87 & 0.74 & 0.71 & 0.85 \\ 
+  Maximum Likelihood Bootstrap & 0.47 & 0.45 & 0.43 & 0.36 & 0.34 & 0.41 \\ 
+  Bayesian posterior distribution & 0.67 & 0.61 & 0.53 & 0.41 & 0.32 & 0.51 \\ 
+  Marginal & 0.79 & 0.74 & 0.64 & 0.53 & 0.46 &  \\ 
+   \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[ht]
-\caption{Summary of the median Bhattacharyya Coefficients comparisons between the missing data parameters and the methods. Each value corresponds to the median Bhattacharyya Coefficient between the Normalised metrics (Robinson-Foulds - RF; Triplets - Tr) between the `methods (as outlined in Figure 3 in the main text) for the the trees with: Missing Living taxa only ($M_L$); Missing Fossil data only ($M_F$); Number of characters only ($N_C$); and the combination of the three parameters (combined).}
-\begin{tabular}{llcccc}  
+\caption{Marginal distribution of the modal Normalised Triplets metric for the comparison between the ``best'' tree and the ``missing-data'' trees for each different tree inference method for the $M_{L}$ missing data parameter only.}
+\centering
+\begin{tabular}{rrrrrrr}
   \hline
- Method & Metric & $M_L$ & $M_F$ & $N_C$ & combined \\ 
+ & 0\% & 10\% & 25\% & 50\% & 75\% & Marginal \\ 
   \hline
-Maximum likelihood vs. Bayesian consensus & RF & 0.69 & 0.48 & 0.66 & 0.10 \\ 
-   & Tr & 0.84 & 0.75 & 0.80 & 0.61 \\ 
-Maximum likelihood vs. Bootstraps & RF & 0.29 & 0.32 & 0.21 & 0.69 \\ 
-   & Tr & 0.53 & 0.40 & 0.39 & 0.65 \\ 
-Maximum likelihood vs. Bayesian posterior trees & RF & 0.61 & 0.71 & 0.47 & 0.80 \\ 
-  & Tr & 0.70 & 0.62 & 0.59 & 0.73 \\ 
-Bayesian consensus vs. Bootstraps & RF & \textbf{0.02} & \textbf{0.01} & \textbf{0.01} & \textbf{0.00} \\ 
-  & Tr & 0.78 & 0.54 & 0.62 & 0.59 \\ 
-Bayesian consensus vs. Bayesian posterior trees & RF & \textbf{0.02} & \textbf{0.02} & \textbf{0.04} & \textbf{0.01} \\ 
-   & Tr & 0.75 & 0.66 & 0.64 & 0.56 \\ 
-Boostraps vs. Bayesian posterior trees & RF & 0.85 & 0.72 & 0.73 & 0.85 \\ 
-   & Tr & \textbf{0.96} & 0.91 & 0.93 & \textbf{0.98} \\ 
- \hline
+Maximum Likelihood & 1.00 & 1.00 & 0.82 & 0.64 & 0.33 & 0.76 \\ 
+  Bayesian consensus & 1.00 & 0.19 & 0.19 & -0.05 & -0.39 & 0.19 \\ 
+  Maximum Likelihood Bootstrap & 1.00 & 0.51 & 0.44 & 0.41 & 0.37 & 0.55 \\ 
+  Bayesian posterior distribution & 1.00 & 0.84 & 0.56 & 0.37 & 0.36 & 0.63 \\ 
+  Marginal & 1.00 & 0.64 & 0.50 & 0.34 & 0.17 &  \\ 
+   \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[ht]
+\caption{Marginal distribution of the modal Normalised Robinson-Foulds metric for the comparison between the ``best'' tree and the ``missing-data'' trees for each different tree inference method for the $M_{F}$ missing data parameter only.}
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & 0\% & 10\% & 25\% & 50\% & 75\% & Marginal \\ 
+  \hline
+Maximum Likelihood & 1.00 & 0.90 & 0.75 & 0.47 & 0.24 & 0.67 \\ 
+  Bayesian consensus & 1.00 & 0.97 & 0.93 & 0.77 & 0.72 & 0.88 \\ 
+  Maximum Likelihood Bootstrap & 0.47 & 0.47 & 0.41 & 0.30 & 0.14 & 0.36 \\ 
+  Bayesian posterior distribution & 0.67 & 0.61 & 0.57 & 0.45 & 0.24 & 0.51 \\ 
+  Marginal & 0.79 & 0.74 & 0.67 & 0.50 & 0.33 &  \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Marginal distribution of the modal Normalised Triples metric for the comparison between the ``best'' tree and the ``missing-data'' trees for each different tree inference method for the $M_{F}$ missing data parameter only.}
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & 0\% & 10\% & 25\% & 50\% & 75\% & Marginal \\ 
+  \hline
+Maximum Likelihood & 1.00 & 1.00 & 0.88 & 0.74 & 0.62 & 0.85 \\ 
+  Bayesian consensus & 1.00 & 1.00 & 0.10 & -0.09 & -0.44 & 0.31 \\ 
+  Maximum Likelihood Bootstrap & 1.00 & 0.68 & 0.63 & 0.48 & 0.38 & 0.63 \\ 
+  Bayesian posterior distribution & 1.00 & 0.98 & 0.98 & 0.72 & 0.36 & 0.81 \\ 
+  Marginal & 1.00 & 0.92 & 0.65 & 0.46 & 0.23 &  \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Marginal distribution of the modal Normalised Robinson-Foulds metric for the comparison between the ``best'' tree and the ``missing-data'' trees for each different tree inference method for the $N_{C}$ missing data parameter only.}
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & 100 & 90 & 75 & 50 & 25 & Marginal \\ 
+  \hline
+Maximum Likelihood & 1.00 & 0.94 & 0.73 & 0.57 & 0.36 & 0.72 \\ 
+  Bayesian consensus & 1.00 & 0.90 & 0.88 & 0.83 & 0.75 & 0.87 \\ 
+  Maximum Likelihood Bootstrap & 0.47 & 0.45 & 0.41 & 0.34 & 0.24 & 0.38 \\ 
+  Bayesian posterior distribution & 0.67 & 0.63 & 0.57 & 0.45 & 0.32 & 0.53 \\ 
+  Marginal & 0.79 & 0.73 & 0.65 & 0.55 & 0.42 &  \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[ht]
+\caption{Marginal distribution of the modal Normalised Triples metric for the comparison between the ``best'' tree and the ``missing-data'' trees for each different tree inference method for the $N_{C}$ missing data parameter only.}
+\centering
+\begin{tabular}{rrrrrrr}
+  \hline
+ & 100 & 90 & 75 & 50 & 25 & Marginal \\ 
+  \hline
+Maximum Likelihood & 1.00 & 1.00 & 0.93 & 0.69 & 0.51 & 0.83 \\ 
+  Bayesian consensus & 1.00 & 0.70 & 1.00 & -0.19 & -0.41 & 0.42 \\ 
+  Maximum Likelihood Bootstrap & 1.00 & 0.55 & 0.48 & 0.59 & 0.30 & 0.58 \\ 
+  Bayesian posterior distribution & 1.00 & 0.98 & 0.82 & 0.64 & 0.34 & 0.76 \\ 
+  Marginal & 1.00 & 0.81 & 0.81 & 0.43 & 0.18 &  \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+% \begin{table}[ht]
+% \caption{Summary of the median Bhattacharyya Coefficients comparisons between the missing data parameters. Each value corresponds to the median Bhattacharyya Coefficient between the Normalised metrics (Robinson-Foulds - RF; Triplets - Tr) between the ``best'' and the ``missing data'' trees (as outlined in Figure 2 in the main text) for the the trees with: Missing Living taxa only ($M_L$); Missing Fossil data only ($M_F$); Number of characters only ($N_C$); and the combination of the three parameters (combined).} 
+% \begin{tabular}{llcccc}  
+%   \hline
+%  Method & Metric & $M_L$ & $M_F$ & $N_C$ & combined \\ 
+%   \hline
+% Maximum Likelihood & RF & 0.54 & 0.37 & 0.56 & 0.54 \\ 
+%                    & Tr & 0.80 & 0.75 & 0.80 & 0.79 \\ 
+% Bayesian consensus & RF & 0.73 & 0.59 & 0.60 & 0.79 \\ 
+%                    & Tr & 0.86 & 0.67 & 0.81 & 0.81 \\ 
+% Maximum Likelihood bootstraps & RF & \textbf{0.98} & \textbf{0.96} & \textbf{0.97} & 0.78 \\ 
+%                    & Tr & \textbf{0.99} & \textbf{1.00} & \textbf{1.00} & \textbf{0.96} \\ 
+% Bayesian posterior trees & RF & 0.86 & 0.93 & 0.94 & 0.68 \\ 
+%                    & Tr & \textbf{0.98} & \textbf{0.99} & \textbf{0.99} & 0.91 \\ 
+%  \hline
+% \end{tabular}
+% \end{table}
+
+% \begin{table}[ht]
+% \caption{Summary of the median Bhattacharyya Coefficients comparisons between the missing data parameters and the methods. Each value corresponds to the median Bhattacharyya Coefficient between the Normalised metrics (Robinson-Foulds - RF; Triplets - Tr) between the `methods (as outlined in Figure 3 in the main text) for the the trees with: Missing Living taxa only ($M_L$); Missing Fossil data only ($M_F$); Number of characters only ($N_C$); and the combination of the three parameters (combined).}
+% \begin{tabular}{llcccc}  
+%   \hline
+%  Method & Metric & $M_L$ & $M_F$ & $N_C$ & combined \\ 
+%   \hline
+% Maximum likelihood vs. Bayesian consensus & RF & 0.69 & 0.48 & 0.66 & 0.10 \\ 
+%    & Tr & 0.84 & 0.75 & 0.80 & 0.61 \\ 
+% Maximum likelihood vs. Bootstraps & RF & 0.29 & 0.32 & 0.21 & 0.69 \\ 
+%    & Tr & 0.53 & 0.40 & 0.39 & 0.65 \\ 
+% Maximum likelihood vs. Bayesian posterior trees & RF & 0.61 & 0.71 & 0.47 & 0.80 \\ 
+%   & Tr & 0.70 & 0.62 & 0.59 & 0.73 \\ 
+% Bayesian consensus vs. Bootstraps & RF & \textbf{0.02} & \textbf{0.01} & \textbf{0.01} & \textbf{0.00} \\ 
+%   & Tr & 0.78 & 0.54 & 0.62 & 0.59 \\ 
+% Bayesian consensus vs. Bayesian posterior trees & RF & \textbf{0.02} & \textbf{0.02} & \textbf{0.04} & \textbf{0.01} \\ 
+%    & Tr & 0.75 & 0.66 & 0.64 & 0.56 \\ 
+% Boostraps vs. Bayesian posterior trees & RF & 0.85 & 0.72 & 0.73 & 0.85 \\ 
+%    & Tr & \textbf{0.96} & 0.91 & 0.93 & \textbf{0.98} \\ 
+%  \hline
+% \end{tabular}
+% \end{table}
 %END
 \end{document}
