@@ -69,32 +69,15 @@ raw_Tr<-mar_dist_Tr[c(1:4), c(1:5)]
 #----------------
 #sum of row
 for (method in 1:length(data.sets)) {
-    mar_dist_RF[method,6]<-sum(mar_dist_RF[method,c(1:5)])
-    mar_dist_Tr[method,6]<-sum(mar_dist_Tr[method,c(1:5)])
+    mar_dist_RF[method,6]<-sum(mar_dist_RF[method,c(1:5)])/length(par)
+    mar_dist_Tr[method,6]<-sum(mar_dist_Tr[method,c(1:5)])/length(par)
 }
 #sum of column
 for (param in 1:length(par)) {
-    mar_dist_RF[5,param]<-sum(mar_dist_RF[c(1:4),param])
-    mar_dist_Tr[5,param]<-sum(mar_dist_Tr[c(1:4),param])
+    mar_dist_RF[5,param]<-sum(mar_dist_RF[c(1:4),param])/length(data.sets)
+    mar_dist_Tr[5,param]<-sum(mar_dist_Tr[c(1:4),param])/length(data.sets)
 }
 
 library(xtable)
 xtable(mar_dist_RF)
 xtable(mar_dist_Tr)
-
-#Calculate the probabilities
-#mar_dist_RF[5,6]<-total_RF<-sum(mar_dist_RF[5,], na.rm=T)
-#mar_dist_Tr[5,6]<-total_Tr<-sum(mar_dist_Tr[5,], na.rm=T)
-
-#round(mar_dist_RF/total_RF, digit=2)
-#round(mar_dist_Tr/total_Tr, digit=2)
-
-#----------------
-# Same but with the non-marginal values being the mode values
-#----------------
-
-#RF_tmp<-round(mar_dist_RF/total_RF, digit=2)
-#RF_tmp[c(1:4), c(1:5)]<-raw_RF
-
-#Tr_tmp<-round(mar_dist_Tr/total_Tr, digit=2)
-#Tr_tmp[c(1:4), c(1:5)]<-raw_Tr
