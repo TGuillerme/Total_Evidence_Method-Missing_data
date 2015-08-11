@@ -216,7 +216,7 @@ Because the main aim of this study, is to look at the effect the missing data pa
 The results of the comparisons of the ``true'' and the ``missing data'' tree are available in appendix B.
 Note that these results makes little difference to our overall results." line 276-280 @@@.
 
-See also appendix B section "Differences between the ``true'' and the ``best'' trees."
+See also appendix B section "Differences between the ``true'' and the ``best'' trees." and reviewer 2's comment 1 below.
 
 
 % -----------------
@@ -918,10 +918,10 @@ Are these values the probabilities of overlap between the distributions of the '
 Two things:\\
 1)  Comparing to the tables in Appendix C, the distribution of probabilities of overlap between max. likelihood and Bayesian trees are higher in most missing data schemes in tables in the Appendices than the overall values given in Table 1. How could the max. likelihood and Bayesian trees be so different?\\
 2)  Pooling across all missing data schemes seems to wash out the effect of tree-inference method. I am not sure what a better way to present these would be, but perhaps some kind of matrix where the cells are the joint probabilities of overlap of each method with each missing data category, and then the marginal probabilities would be the probabilities of overlap for each method, averaged over missing data categories, as well as the marginal probabilities of overlap for each missing data category, averaged across methods.  e.g, RF distance:\\
-Missing data:   0   25  50  75  Marginal \\
-BI  1   0.9 0.8 0.75    0.863 \\
-ML  1   0.9 0.75    0.25    0.725 \\
-Marginal    1   0.9 0.78    0.5  \\
+Missing data:   0   25  50      75      Marginal \\
+BI              1   0.9 0.8     0.75    0.863 \\
+ML              1   0.9 0.75    0.25    0.725 \\
+Marginal        1   0.9 0.78    0.5     \\
 This may not be feasible in the text due to space limitations, maybe tables like these could be added to an appendix.}}
 
 
@@ -955,21 +955,9 @@ When combined, the maximum amount of missing data can be much higher, especially
 \end{table}
 
 
-% %%%%%%%%%%%%%%%%%%%
-% TO DISCUSS @@@
-% %%%%%%%%%%%%%%%%%%%
-
-2) %TG: not entirely sure what the reviewer means by marginal probabilities. I made to extra summarizing tables in the supplementaries that may be actually easier to read than most of the others so we might want to add them to the main text.
-We added two extra tables in the Appendix C (Table C8 and C9) that summarized the median Bhattacharyya Coefficients within each methods and each parameters individually and combined (Table C8; as illustrated in Figure 2) as well as the median Bhattacharyya Coefficients within each methods and each parameters individually and combined (Table C9; as illustrated in Figure 3).
-% TG: If that's actually what the reviewer 1 wanted, I think we can propose to add it to the main text rather than the appendices. They can always decide to move it back to the appendices if it doesn't bring much.
-
-% NC: https://en.wikipedia.org/wiki/Marginal_distribution
-% NC: Marginal probabilities are basically the probability of one thing given you're controlling for another thing. So they are looking to see the effect of tree inference method independent of parameter differences. Otherwise they suggest you are hiding important differences via this summarizing over all parameter combinations. 
-% NC: I think you can argue that yes, table 1 hides some important effects, but that it was difficult to summarize these results and more in depth tables can be seen in the appendix.
-
-
-% And fix this one with adding the tables.
-% Marginal probabilities checking. Do it?
+2) We followed the reviewer's suggestion and added 6 extra tables in the Appendix C (Table C8 to C13) containing the marginal probability of each missing data parameter individually and each tree inference method.
+We considered running the same type of analysis for the combination of the parameter, however, this involved a table of 5*126 cells which was highly impractical to read.
+% TG: Not sure if the last bit is necessary...
 
 % -----------------
 % Specific Comment 59
@@ -989,7 +977,7 @@ So adding the word ``\textit{best}'' here is not entirely accurate.
 We updated the README page of the GitHub repository linking to the various R code to make it clearer what files are needed.
 We also now provide a version of the analysis in R run thoughout the manuscript as a step by step tutorial for a subset of data.
 See \url{https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Analysis_Demo.R} and Appendix D.
-% NC: Maybe add something like this if this is your intention. It's probably worth it. No need to keep lots of un-necessary files. TG: Agree!
+% NC: Maybe add something like this if this is your intention. It's probably worth it. No need to keep lots of un-necessary files. TG: Done and agree
 We will also clean up this repository once the paper has been accepted.
 At present it is functioning both as our working repository for code as well as the repository for this paper.
 
@@ -1004,28 +992,31 @@ Note that we split the second comment from reviewer 2 in three different comment
 \begin{enumerate}
 \item{\textcolor{blue}{\textbf{Compare the trees to the "true" tree:} I don't see how the "best" tree approach is helpful in this case. It adds an additional layer of complexity that can't be accounted for via simulation. The point of simulations is to compare empirical realities to the generating process, to see how much results diverge. I think the most helpful and straightforward thing to do is eliminate the "best" tree part of the MS, and compare the inferred trees directly to the real topology to quantify variance.}}
 
-A similar point/suggestion was also raised by reviewer 1 (see Reviewer 1 General comment number 6 and specific comment number 25).
-We understand the concerns of the reviewer but, again, we do not agree that comparing the "missing-data" trees to the "best" trees adds a layer of complexity to our simulations.
-In fact, we argue that comparing the "missing-data" trees to the "true" tree actually adds a layer of complexity to the analysis.
-The problem we are tackling in this manuscript is to understand "what is the effect of our three parameters on recovering topology ?"
-To answer this question, we have to add a layer between the data (i.e. the "complete" or "missing-data" matrices) and the actual topology which is the tree inference.
-We test the effect of this layer by using different tree inference methods.
+A similar point/suggestion was also raised by reviewer 1 and we ran the suggested extra analysis (see Reviewer 1 General comment number 6 and specific comment number 25).
+We understand the concerns of the reviewer but, we do not agree that comparing the "missing-data" trees to the "best" trees adds a layer of complexity to our simulations.
+In practice, the ``true'' tree can be perceived as a ``random'' seed to generate the ``complete'' matrix.
+The ``true'' tree is simply a birth-death tree with $\lambda$ $>$ $\mu$ and a set number of living and fossil taxa (see details in the manuscript section "2.1 Generating the matrix").
+All these parameters, were only used to create a realistic ``complete'' matrix in order to make our results relevant to biologists.
+The aim of this study was to assess how good will a topology inferred from a matrix with missing data (which is likely in biology) compared to the ones inferred form the ``complete'' matrix (the ``best'' tree).
 
-% NC: Note: problematic does not mean what you think it does... Something can be problematic (it's an adjective not a noun).
+% TG: maybe add a sentence in the manuscript?
 
-Because we use a simulation approach to test this problem, we have to start from a random starting point (the "true" tree) and then do the following steps: (1) generate and remove the data (2) infer the topologies and (3) compare the topologies.
-Note that in this schematic representation, the "true" tree is the step (0) of our analysis and involves a series of algorithms and software (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes).
-To compare the "true" tree's topology to the "missing-data" topologies will be equivalent of exploring the effect of our three parameters on recovering topology through 3 layers (1- generate the data; 2- infer the topologies; and 3- compare the topologies).
-By comparing the "best" tree's topology to the "missing-data" ones, we explore the effect of our three parameters through only 2 layers (2- infer the topologies; and 3- compare the topologies).
-Note that we explore the effect of these 2 layers by using two different tree inference methods (effectively 4 since we also use the Maximum Likelihood bootstraps trees and the Bayesian posterior trees) and 2 different Normalised topological metrics (Robinson-Foulds and Triplets).
-Using as main results the comparisons between the "true" and the "missing-data" trees would also need the exploration of the effect of the cascade of algorithms and softwares (maybe by modifying the algorithms used to generate the "true" tree and the matrices?).
-
-% NC: This argument makes no sense. The point the reviewer is making is that we go:
+% NC: This argument [TG: the one commented out below] makes no sense. The point the reviewer is making is that we go:
 % True tree > Best tree > comparisons when we could just go True tree > comparisons. So our approach *is* more complex than their suggestion. Instead the justification here is the same as used for reviewer one - that in real life scenarios we never know the true tree and we want it to be as close to real life as possible. BUT that we have tested their idea and find it makes no difference but all the results are in the appendix.
+% TG: you're right, after reflection, I think we should have never mentioned the ``true'' tree and just say in the methods that we used a random Birth-Death tree with such and such parameters to generate the matrix. It's kind of too late to backup by now but the argument was just kind of saying: "we don't care if we can recover the "true" tree because we don't give a flip on how the algorithms perform at making a matrix". It's all random anyway...
+% TG : I've commented out the non-sense justification below and wrote something shorter above (and referring to reviewer's 1 comment).
 
-However, we have added analyses with comparisons between the "true" tree and the "missing-data" trees in the Appendix C (Figures C6 and C7).
-It is interesting to note that the algorithms and software as well as probably the size of our matrices are actually not ideal for the recovery of the "true" tree is rather low and scales down the our results (see figure @).% NC: HUH????
-However, even though these comparisons are worse than comparing the best tree to the missing data trees, it is encouraging to see that the patterns in the results are conserved (i.e. Bayesian consensus trees $>$ Maximum Likelihood trees $>$ both bootstraps trees and Bayesian posterior trees).
+% Because we use a simulation approach to test this problem, we have to start from a random starting point (the "true" tree) and then do the following steps: (1) generate and remove the data (2) infer the topologies and (3) compare the topologies.
+% Note that in this schematic representation, the "true" tree is the step (0) of our analysis and involves a series of algorithms and software (i.e. seqGen\{phyclust\}, rTraitDisc\{ape\}, RAxML, MrBayes).
+% To compare the "true" tree's topology to the "missing-data" topologies will be equivalent of exploring the effect of our three parameters on recovering topology through 3 layers (1- generate the data; 2- infer the topologies; and 3- compare the topologies).
+% By comparing the "best" tree's topology to the "missing-data" ones, we explore the effect of our three parameters through only 2 layers (2- infer the topologies; and 3- compare the topologies).
+% Note that we explore the effect of these 2 layers by using two different tree inference methods (effectively 4 since we also use the Maximum Likelihood bootstraps trees and the Bayesian posterior trees) and 2 different Normalised topological metrics (Robinson-Foulds and Triplets).
+% Using as main results the comparisons between the "true" and the "missing-data" trees would also need the exploration of the effect of the cascade of algorithms and softwares (maybe by modifying the algorithms used to generate the "true" tree and the matrices?).
+
+% However, we have added analyses with comparisons between the "true" tree and the "missing-data" trees in the Appendix C (Figures C6 and C7).
+% It is interesting to note that the algorithms and software as well as probably the size of our matrices are actually not ideal for the recovery of the "true" tree is rather low and scales down the our results (see figure @).% NC: HUH????
+% However, even though these comparisons are worse than comparing the best tree to the missing data trees, it is encouraging to see that the patterns in the results are conserved (i.e. Bayesian consensus trees $>$ Maximum Likelihood trees $>$ both bootstraps trees and Bayesian posterior trees).
+
 
 % -----------------
 % Comment 2
@@ -1057,17 +1048,14 @@ In practice, each parameter represents a different way of removing data from the
 
 We created matrices using all parameter combinations resulting in 125 ($5^3$) “missing-data” matrices. Note that one of these combinations ($M_L$=0\%; $M_F$=0\% and $N_C$=100) has no missing data so is equivalent to the “complete” matrix, thus we have one effectively complete matrix in our 125 “missing-data” matrices. In practice, we first removed the data following the two missing data parameters $M_L$ and $M_F$ and then removed data following the $N_C$ parameters. To avoid avoid matrices containing taxa without any data (morphological or molecular), we repeated the random deletion until the matrices contained at least 5\% of data for any taxon. Note that the living taxa always had at least 90\% of data (the 1000 molecular characters)." lines 222-267@@@
 
-% NC: NC_C here again not M_C...
 
 % -----------------
 % Comment 3
 % -----------------
 \item{\textcolor{blue}{\textbf{$M_C$ is not missing data per se:} If Mc is just removing columns, then they are shrinking the total matrix. This is not missing data per se. They are instead comparing matrices of different sizes, and the quantity is "data present." Any matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large. A matrix with 10,000 characters is tiny if 10,000,000 could be scored. This is semantic.}}
 
-% TG: Ok i've changed it every where but personally I don't like it. It makes it even more messy and hard to read. However, because I didn't answered the first and last comment of this reviewer, I felt that at least 2/4 is a minimum.
 We agree with this comment and hope it will help to the global comprehension of the manuscript. We replaced the $M_C$ (missing characters) parameter by $N_C$ (number of characters with five states: 100, 90, 75, 50 and 25) in the revised manuscript (see reviewer 2 comment 2 above), the appendices and the figures. We also slightly modified some explanations related to the change of missing characters to number of characters throughout the manuscript.
 
-% NC: Ah OK. You haven't corrected this everywhere in these comments I don't think... TG: Should be good now.
 
 % -----------------
 % Comment 4
