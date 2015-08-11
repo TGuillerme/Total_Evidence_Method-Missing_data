@@ -133,21 +133,21 @@ This approach treats every taxon as a tip in the phylogeny, uses the occurrence 
 \hl{Total Evidence methods is becoming an increasingly popular way of adding fossil taxa to phylogenies} \citep[e.g.][]{pyrondivergence2011,ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014,Arcila2015131}.
 Although the Total Evidence approach seems very promising, there is one big drawback in using this approach: it requires both molecular and morphological data, both of which can be difficult (or impossible) to collect for every living and fossil taxon in the tree.
 Morphological data for living taxa are rarely collected when molecular data are available (e.g. \citealp{O'Leary08022013} \textit{vs.} \citealp{meredithimpacts2011}), and for fossil taxa, data can only be collected from features preserved in the fossil record.
-For example, in vertebrates, the hardest parts of the skeleton are more often preserved than soft parts \citep{sansomfossilization2013}; and molecular data is (nearly) always unavailable.
+For example, in vertebrates, the hardest parts of the skeleton are more often preserved than soft parts \citep{sansomfossilization2013}; and molecular data \hl{are} (nearly) always unavailable.
 Therefore \hl{Total Evidence matrices are likely to contain a large proportions of missing data} that may affect the method's ability to infer correct topologies, branch lengths and support values \citep{salamin2003}. 
 
 Although missing data does not appear be a major problem in molecular and morphological matrices separately \citep[\hl{as long as enough data overlaps in each case, and missing data are not phylogeneticaly biased;}][]{wiensmissing2003,Wiens01102005,wiensmissing2006,wiensmissing2008,lemmonthe2009,Sanderson22072011,rouresite-specific2011,pattinsonphylogeny2014}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil taxa.
 This may be particularly problematic as fossil taxa (generally) do not have molecular data, resulting in a large section of missing data in Total Evidence matrices.
 \hl{Until now, few attempts have been made to study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework }\citep[\hl{i.e. using both molecular and morphological data; e.g.}][]{Wiens01102005,manosphylogeny2007,pattinsonphylogeny2014}.
 \hl{These studies have assessed the effect of missing data on topology either:(1) by comparing a dataset with missing data to sub-sets without missing data }\citep{Wiens01102005}\hl{; or (2) by removing both molecular and some morphological data from living taxa (``artificial fossil'') }\citep{manosphylogeny2007,pattinsonphylogeny2014}.
-\hl{Both types of approaches have shown that missing data is not a major problem and should not be an obstacle to combine both living and fossil species in the same phylogenies.
+\hl{Both types of approaches have shown that missing data \hl{are} not a major problem and should not be an obstacle to combine both living and fossil species in the same phylogenies.
 However, these studies were limited by their empirical-only approach and the use of only living taxa }\citep{Wiens01102005}\hl{ or the scheme of generating missing data }\citep[\hl{i.e. using the patterns from the fossil record;}][]{manosphylogeny2007,pattinsonphylogeny2014}.
 \hl{Besides, the studies using fossil data, mainly on the palaeontological aspect of the question }\citep[\hl{i.e. the effect of missing data in fossils in Total Evidence matrices;}][]{manosphylogeny2007,pattinsonphylogeny2014}.
 %Former revised version
 % \hl{Until now, only few attempts have been made to study study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework \protect\citep[\hl{i.e. using combined molecular and morphological data}; e.g.][]{Wiens01102005,manosphylogeny2007,pattinsonphylogeny2014}.}
 % \hl{For example, \protect\cite{Wiens01102005} }\hl{only assess the effect of missing data by comparing the node support between the complete dataset that contains missing data and sub-datasets with no missing data.}
 % \hl{Furthermore, \protect\cite{pattinsonphylogeny2014} }\hl{assess the effect of removing both molecular and morphological data (``artificial extinction'') on the topology.}
-% \hl{As for morphological and molecular data separately, these studies shows that missing data is not a major problem and should not be an obstacle to combine both living and fossil species in the same phylogenies.}
+% \hl{As for morphological and molecular data separately, these studies shows that missing data are not a major problem and should not be an obstacle to combine both living and fossil species in the same phylogenies.}
 % \hl{These studies, however, are limited by their empirical-only approach \protect\citep{Wiens01102005} }\hl{and the scheme of generating missing data \protect\citep{manosphylogeny2007,pattinsonphylogeny2014}.}
 % \hl{Also both studies focus on the palaeontological aspect of the question (i.e. the fossil data).}
 
@@ -156,7 +156,7 @@ We test the effect of missing data by measuring two crucial aspects of topology 
 We focus on the effect of missing data on our ability to recover a ``best'' tree topology because it is a crucial aspect of a phylogeny in many macroevolutionary studies, for example when trying to elucidate the evolutionary relationships among species \citep[e.g.][]{meredithimpacts2011,jetzthe2012}, or for studying evolutionary transitions \citep[e.g.][]{friedmanexplosive2010}.
 Although branch length estimation is also important \citep[namely for timing extinction and/or speciation events; e.g.][]{ronquista2012}, we do not consider branch lengths in this study.
 This is partially due to difficulties with simulating branch lengths and topology simultaneously, \hl{but also because previous studies have already empirically assessed the effect of the Total Evidence method on branch length variation but using topological constraints} \citep{ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014}.
-Thus understanding the sensitivity of topology to missing data is important for assessing the accuracy of tree estimation in the Total Evidence framework. To our knowledge, this question has never been formally assessed.
+Thus understanding the sensitivity of topology to missing \hl{data} are important for assessing the accuracy of tree estimation in the Total Evidence framework. To our knowledge, this question has never been formally assessed.
 
 Here we use a simulation approach to assess the effect of missing data on tree topologies inferred from Total Evidence matrices.
 Since the molecular part of a Total Evidence matrix acts like a ``classical" molecular matrix containing only the living taxa \citep{ronquista2012}, the effect of missing data on such matrices is well known \citep{wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011}.
@@ -487,7 +487,7 @@ Our results show that the ability to recover the ``best'' tree topology in a Tot
 These factors, however, affected topological recovery in different ways and to different extents.
 Decreasing the amount of living taxa with morphological data ($M_{L}$) and the overall number of morphological characters in the matrix ($N_{C}$) had worst effects on topological recovery (Fig. 6).
 Additionally, using Bayesian consensus trees recovered the ``best'' tree topology more consistently than using Maximum Likelihood trees or Bayesian posterior tree distributions (Fig. 5, Fig. 6, Table ~\ref{Tab_Results-Difference_methods}).
-As seen in previous studies, our results show that the amount of missing data is not a problem \textit{per se} for Total Evidence methods, as long as enough living and fossil taxa in the matrix have data for overlapping morphological characters \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}.
+As seen in previous studies, our results show that the amount of missing data are not a problem \textit{per se} for Total Evidence methods, as long as enough living and fossil taxa in the matrix have data for overlapping morphological characters \citep[e.g.][]{kearneyfragmentary2002,wiensmissing2003,rouresite-specific2011,pattinsonphylogeny2014}.
 
 \subsection{Individual effects of missing data parameters}
 \subsubsection{Missing data for living taxa ($M_{L}$)}
@@ -498,7 +498,7 @@ This missing data parameter, however, has a huge influence on the placement of f
 \subsubsection{Missing data for fossil taxa ($M_{F}$)}
 When the overall proportion of data for the fossil taxa ($M_{F}$) decreases, this also reduces the probability of morphological characters for fossil taxa overlapping with the ones for living taxa.
 This can lead to difficulties for the placement of certain taxa in the tree.
-It is important, however, to note that even though the number of displaced wildcard taxa increases (i.e. decrease of Normalised Triplets metric) with increasing missing data in this parameter, clade conservation (i.e. Normalised Robinson-Foulds metric) is still relatively good (mode = 0.72) when the proportion of missing data is high ($M_{F}$ = 75\%).
+It is important, however, to note that even though the number of displaced wildcard taxa increases (i.e. decrease of Normalised Triplets metric) with increasing missing data in this parameter, clade conservation (i.e. Normalised Robinson-Foulds metric) is still relatively good (mode = 0.72) when the proportion of missing data are high ($M_{F}$ = 75\%).
 \hl{These results are in agreement with }\cite{manosphylogeny2007}\hl{ where as few as 16 characters where sufficient for correctly assigning ``artificial fossils'' to their ``correct'' clade.}
 
 The effect of the missing data in the fossil record ($M_{F}$) is less than the effect of the $M_{L}$ parameter on clade conservation (Normalised Robinson-Foulds metric) but greater on the displacement of wildcard taxa (Normalised Triplets metric; Fig. 4 and Fig. 5).
@@ -550,7 +550,7 @@ Nonetheless, we minimized the probability of unresolved ``best'' trees in our Ba
 \hl{The Bayesian consensus trees, however, perform badly for the Normalised Triplets metric: some parameter combinations, especially when the $M_F$ parameter reaches 75\% missing data, lead to negative values (Fig. 5).
 A Normalised Triplets metric value below 0 means that the placement of some taxa is worse than expected by just randomly placing this taxon in the tree.
 This can be interpreted by the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
-Even if clades are conserved (Fig. 5), the resolution within them can be poor to non-existent when a lot of data is missing (i.e. 75\%).
+Even if clades are conserved (Fig. 5), the resolution within them can be poor to non-existent when a lot of data are missing (i.e. 75\%).
 In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters.
 These results are in agreement with previous studies that have showed that missing data can cause problems for recovering ``correct'' topologies, especially for small matrices of 100 characters }\citep{wiensmissing2003}.
 \hl{It is important to note, however, that this effect can be reduced by increasing the number of characters }\citep{wiensmissing2003}.
@@ -570,7 +570,7 @@ Filling these gaps in empirical Total Evidence matrices should lead to a substan
 We can increase the number of living taxa with coded morphological characters by increasing research efforts in this area, and encouraging use of our vast natural history collections.
 Increasing data for fossil species is harder, since it depends on fossil preservation biases and new fossil discoveries.
 Gaps in the matrix, however, can be filled with efforts in palaeontological field work that can potentially lead to future discoveries of exceptionally preserved fossils \citep[e.g.][]{nithe2013}.
-Fortunately, although this data is the most difficult to collect, it also has the least influence on whether our simulations recover the ``best'' tree topology (Fig. 6).
+Fortunately, although this data are the most difficult to collect, it also has the least influence on whether our simulations recover the ``best'' tree topology (Fig. 6).
 Finally, although increasing the number of coded characters is relatively straightforward, the amount of time it takes to build a morphological matrix increases directly with the number of characters involved.
 One solution to this problem may be to engage with collaborative data collection projects through web portals such as \textit{MorphoBank} \citep{morphobank}, so that no one individual collects all the data.
 
@@ -594,7 +594,7 @@ These trees will be invaluable for phylogenetic comparative analyses. For exampl
 % \hl{Previous studies have explored the effect of missing morphological data when combining living and fossil species in phylogenies but where limited by their empirical approach or their aspects of missing data }\citep{Wiens01102005,pattinsonphylogeny2014}.
 \hl{Previous studies have explored the effect of missing morphological data in Total Evidence matrices }\citep{Wiens01102005,manosphylogeny2007,pattinsonphylogeny2014}.
 \hl{The conclusions of theses studies, however, were limited by their empirical approach as well as several aspects of their experimental design (e.g. not including fossil taxa, }\citealt{Wiens01102005}\hl{; or focusing on the palaeontological aspect, }\citealt{manosphylogeny2007,pattinsonphylogeny2014}.
-\hl{This study proposes a more in depth approach where missing data is generated on simulated data and along three clear missing-data parameters ($M_{L}$, $M_{F}$ or $N_{C}$).
+\hl{This study proposes a more in depth approach where missing data are generated on simulated data and along three clear missing-data parameters ($M_{L}$, $M_{F}$ or $N_{C}$).
 This allowed us to confirm previous results that missing data can be especially problematic in small matrices }\citep{wiensmissing2003}\hl{ but also revealed the crucial importance of coding morphological data for living species.
 Missing data in Total Evidence matrices is not a problem for recovering the ``best'' tree topology as long as enough living and fossil taxa in the matrix have data for overlapping morphological characters.
 When missing data increases in any of our missing data parameters ($M_{L}$, $M_{F}$ or $N_{C}$), it reduces support for the placement of fossil taxa and increases the displacement of wildcard taxa.
