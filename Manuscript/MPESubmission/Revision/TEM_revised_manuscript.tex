@@ -145,8 +145,8 @@ The way these studies were conducted, however, means that their conclusions are 
 For example, using an empirical (rather than simulation based) approach limits their conclusions to studies with similar distributions of data across species in the phylogeny.
 Additionally, }\cite{Wiens01102005}\hl{ did not include fossil taxa in their analyses, so their results cannot be used to make conclusions about how missing data may influence the placement of fossils.}
 \cite{manosphylogeny2007,pattinsonphylogeny2014}\hl{ include fossil taxa, but used the patchiness of the fossil record to determine how to remove data from their matrices. 
-Data for living species is unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data is likely }\citep{GuillermeCooperMissing}.
-\hl{Finally, }\cite{manosphylogeny2007,pattinsonphylogeny2014}\hl{ mainly focused on how missing data in fossil taxa affects the placement of fossils, ignoring the effects of missing data in living species.}
+Data for living species is unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data are likely }\citep{GuillermeCooperMissing}.
+\hl{Finally, }\cite{manosphylogeny2007}\hl{ and }\cite{pattinsonphylogeny2014}\hl{ mainly focused on how missing data in fossil taxa affects the placement of fossils, ignoring the effects of missing data in living species.}
 
 \hl{In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by removing living taxa with morphological data, fossil data, all data for certain characters and the combination of these three aspects.
 This is an advance on previous studies because we use large-scale simulations and analyse the effect of three distinct aspect of missing data thus focusing on both neontological and paleontological parts of the matrix.
@@ -155,7 +155,7 @@ In addition, we test the effect of missing data by measuring two crucial aspects
 We focus on the effect of missing data on our ability to recover a ``best'' tree topology because it is a crucial aspect of a phylogeny in many macroevolutionary studies, for example when trying to elucidate the evolutionary relationships among species \citep[e.g.][]{meredithimpacts2011,jetzthe2012}, or for studying evolutionary transitions \citep[e.g.][]{friedmanexplosive2010}.
 Although branch length estimation is also important \citep[namely for timing extinction and/or speciation events; e.g.][]{ronquista2012}, we do not consider branch lengths in this study.
 This is partially due to difficulties with simulating branch lengths and topology simultaneously, \hl{but also because previous studies have already empirically assessed the effect of the Total Evidence method on branch length variation but using topological constraints }\citep{ronquista2012,schragocombining2013,slaterphylogenetic2013,beckancient2014}.
-Thus understanding the sensitivity of topology to missing \hl{data} are important for assessing the accuracy of tree estimation in the Total Evidence framework. To our knowledge, this question has never been formally assessed.
+Thus understanding the sensitivity of topology to missing data are important for assessing the accuracy of tree estimation in the Total Evidence framework. To our knowledge, this question has never been formally assessed.
 
 Here we use a simulation approach to assess the effect of missing data on tree topologies inferred from Total Evidence matrices.
 Since the molecular part of a Total Evidence matrix acts like a ``classical" molecular matrix containing only the living taxa \citep{ronquista2012}, the effect of missing data on such matrices is well known \citep{wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011}.
@@ -231,7 +231,7 @@ This method allows us to have only two parameters for each character: the number
 For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5.
 \hl{We used low evolutionary rate parameters to be consistent with the molecular rate parameters, to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal }\citep{wrightbayesian2014}.
 \hl{Topological error has been shown to be minimal at a morphological rate of 0.5 when using the M\textit{kv} model }\citep{lewisa2001,wrightbayesian2014}.
-hl{Note, however, that } \cite{wrightbayesian2014}\hl{ have shown that low morphological rates ($<$ 0.5) increase variance in topological error, but we discarded simulations with such topological error by selecting only matrices with a ``fair'' phylogenetic signal }(\citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}\hl{ so this should not influence our results.}
+hl{Note, however, that } \cite{wrightbayesian2014}\hl{ have shown that low morphological rates ($<$ 0.5) increase variance in topological error, but we discarded simulations with such topological error by selecting only matrices with a ``fair'' phylogenetic signal }\citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}\hl{ so this should not influence our results.}
 
 Finally, we combined the morphological and molecular matrices obtained from the ``true'' tree.
 Hereafter we call this the ``complete'' matrix, i.e. the matrix with no missing data except for the molecular data of the fossil taxa.
@@ -250,7 +250,7 @@ We removed morphological data using three data incompleteness parameters:}
 \hl{Therefore, many living species will have only molecular data available.
 In practice, we removed all the morphological data from randomly chosen living taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.}
 \item{\hl{The proportion of missing data in the fossil record ($M_F$).}}
-\hl{TThis missing data parameter represents the completeness of the fossil record.
+\hl{This missing data parameter represents the completeness of the fossil record.
 Due to preservation biases, missing data for fossil taxa are common }\citep{sansomfossilization2013}.
 \hl{In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
 Note that 50\% missing data for fossil taxa does not mean that each fossil is missing 50\% of its morphological data.
@@ -265,9 +265,9 @@ Note that these levels are equivalent to the two other parameters (i.e. 0\%, 10\
 \end{enumerate}
 
 \hl{Each parameter represents a different way of removing data from the morphological part of the matrix: $M_L$ removes entire rows from the living data; $M_F$ removes cells from the fossil data; and $N_C$ removes columns across both living and fossil data.
-Note that $M_L$ and $M_F$ differ not only because of the region of the matrix affected: for $M_L$ all the morphological data of a percentage of living taxa are removed, whereas for $M_F$ a percentage of the data are removed at random from across the whole of the morphological matrix for fossil taxa.
+Note that $M_L$ and $M_F$ differ not only because of the region of the matrix affected: for $M_L$ all the morphological data of a percentage of living taxa are removed, whereas for $M_F$ a percentage of the data are removed at random from across the whole of the morphological matrix for fossil taxa.}
 
-We created matrices using all parameter combinations resulting in 125 ($5^3$) ``missing-data'' matrices.
+\hl{We created matrices using all parameter combinations resulting in 125 ($5^3$) ``missing-data'' matrices.
 Note that one of these combinations ($M_L$=0\%; $M_F$=0\% and $N_C$=100) has no missing data so is equivalent to the ``complete'' matrix, thus we have one effectively complete matrix in our 125 ``missing-data'' matrices.
 In practice, we first removed the data following the two missing data parameters $M_L$ and $M_F$ and then removed data following the $N_C$ parameters.
 To avoid avoid matrices containing taxa without any data (morphological or molecular), we repeated the random deletion until the matrices contained at least 5\% of data for any taxon.
@@ -340,7 +340,7 @@ These metrics are described in detail below.
 The Robinson-Foulds distance \citep{RF1981}, or ``path difference", measures the difference between the number of clades and \hl{twice the number} of shared clades across two trees.
 The metric reflects the distance between the distributions of tips among clades in the two trees \citep{RF1981} (see Appendix B for calculation details).
 This metric is bounded between zero, when the two trees are identical, and $2(n-2)$ (for two trees with $n$ taxa) when there is no shared clade in the two trees.
-This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa (\textit{(((a,b),c),((d,e),f))}), the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity.
+This metric is sensitive to minor changes in clade conservation: if the trees are composed of two clades of three taxa \textit{(((a,b),c),((d,e),f))}, the swapping of any two taxa will lead to a maximal score of the Robinson-Foulds distance indicating poor tree similarity.
 We normalised this metric following Bogdanowicz's Normalised Tree Similarity (NTS) method \citep{Bogdanowicz2012}.
 This method scales any tree comparison metric using the mean distance between 1000 random trees (see Appendix B for the calculation details).
 This method is a generalisation of the topological accuracy method \citep{Price2010} allowing to compare topological differences between any tree with any tree comparison metric.
