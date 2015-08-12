@@ -138,4 +138,9 @@ After that, various analyses can be run as follow:
   * [Summarizing the tree comparisons metrics](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MissingData_modetable.R)
 
 #####Supplementary analysis
-An additional analysis has been run in the online Appendix 1 to determine the frequency of character states per simulated morphological characters. The whole analysis can be run on UNIX based machines (LINUX/MAC) through the [following code](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R).
+Additional analysis has been run in the Appendices:
+* [Morphological characters states](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/MorphologicalCharacterStates.R), in Appendix A: extracting the proportion of 2 states and 3 states characters from empirical data (for `UNIX` based machines only; LINUX/MAC).
+* [Starting tree effect](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Starting_tree.R), in Appendix A: measuring the effect of using the "true" tree or not as a starting tree for the MCMC.
+* [Morphological rates estimations](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Rates_estimates.R), in Appendix A: effect of missing data on the posterior alpha parameter estimation (for `UNIX` based machines only; LINUX/MAC).
+* [Differences between the "true" and "best" trees](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/True_vs_best_tree.R), in Appendix B: measuring the ability of recovering the "true" tree (i.e. the pseudo-random seed for each simulation chain).
+* [Marginal probabilities](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Marginal_probabilities.R) in Appendix C: calculating the marginal distribution of each missing data parameter individually and each method.
