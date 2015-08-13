@@ -136,7 +136,7 @@ Morphological data for living taxa are rarely collected when molecular data are 
 For example, in vertebrates, the hardest parts of the skeleton are more often preserved than soft parts \citep{sansomfossilization2013}; and molecular data \hl{are} (nearly) always unavailable.
 Therefore \hl{Total Evidence matrices are likely to contain a large proportions of missing data} that may affect the method's ability to infer correct topologies, branch lengths and support values \citep{salamin2003}. 
 
-Although missing data does not appear be a major problem in molecular and morphological matrices separately \citep[\hl{as long as enough data overlaps in each case, and missing data are not phylogeneticaly biased;}][]{wiensmissing2003,Wiens01102005,wiensmissing2006,wiensmissing2008,lemmonthe2009,Sanderson22072011,rouresite-specific2011,pattinsonphylogeny2014}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil taxa.
+Although missing data do not appear be a major problem in molecular and morphological matrices separately \citep[\hl{as long as enough data overlaps in each case, and missing data are not phylogeneticaly biased;}][]{wiensmissing2003,Wiens01102005,wiensmissing2006,wiensmissing2008,lemmonthe2009,Sanderson22072011,rouresite-specific2011,pattinsonphylogeny2014}, it may become more of an issue in Total Evidence matrices containing both molecular and morphological data for living and fossil taxa.
 This may be particularly problematic as fossil taxa (generally) do not have molecular data, resulting in a large section of missing data in Total Evidence matrices.
 \hl{Until now, few attempts have been made to study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework }\citep[\hl{i.e. using both molecular and morphological data;}][]{Wiens01102005,manosphylogeny2007,pattinsonphylogeny2014}.
 \hl{These previous studies assessed the effect of missing data on topology by either (1) comparing a dataset with missing data to subsets without missing data }\citep{Wiens01102005}\hl{; or (2) removing both molecular and some morphological data from living taxa to create artificial fossils }\citep{manosphylogeny2007,pattinsonphylogeny2014}.
@@ -145,7 +145,7 @@ The way these studies were conducted, however, means that their conclusions are 
 For example, using an empirical (rather than simulation based) approach limits their conclusions to studies with similar distributions of data across species in the phylogeny.
 Additionally, }\cite{Wiens01102005}\hl{ did not include fossil taxa in their analyses, so their results cannot be used to make conclusions about how missing data may influence the placement of fossils.}
 \cite{manosphylogeny2007,pattinsonphylogeny2014}\hl{ include fossil taxa, but used the patchiness of the fossil record to determine how to remove data from their matrices. 
-Data for living species is unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data is a likely pattern}\citep{GuillermeCooperMissing}.
+Data for living species are unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data is a likely pattern}\citep{GuillermeCooperMissing}.
 \hl{Finally, }\cite{manosphylogeny2007}\hl{ and }\cite{pattinsonphylogeny2014}\hl{ mainly focused on how missing data in fossil taxa affect the placement of fossils, ignoring the effects of missing data in living species.}
 
 \hl{In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by removing living taxa with morphological data, fossil data, all data for certain characters and the combination of these three aspects.
@@ -190,7 +190,7 @@ We randomly generated a birth-death tree (hereafter called the ``true'' tree) an
 \item{Removing data:} \label{step:remove_data} \\
 We removed data from the morphological part of the ``complete'' matrix to simulate the effects of missing data by modifying three parameters (i) the proportion of living taxa with no morphological data ($M_{L}$), (ii) the proportion of missing data in the fossil taxa ($M_{F}$) and (iii) the number of morphological characters ($N_{C}$). We call the resulting 125 matrices ``missing-data'' matrices.
 \item{Estimating phylogenies:} \label{step:build_phylo} \\
-We inferred phylogenetic trees from the ``complete'' matrix and from the 125 ``missing-data'' matrices resulting in one tree generated from a matrix containing no missing data (hereafter called the ``best'' tree) and 125 trees inferred from the matrices with missing morphological data (hereafter called the ``missing-data'' trees). Phylogenies were inferred via both Maximum Likelihood and Bayesian approaches.
+We inferred phylogenetic trees from the ``complete'' matrix and from the 125 ``missing-data'' matrices resulting in one tree generated from a matrix with no missing data (hereafter called the ``best'' tree) and 125 trees inferred from the matrices with missing morphological data (hereafter called the ``missing-data'' trees). Phylogenies were inferred via both Maximum Likelihood and Bayesian approaches.
 \item{Comparing topologies:} \label{step:compare_topo} \\
 We compared the ``best'' tree to the ``missing-data'' trees to assess the influence of each parameter ($M_{L}$, $M_{F}$, $N_{C}$) and their interactions on the topologies of our phylogenies
 \end{enumerate}
@@ -526,7 +526,7 @@ Nonetheless, we minimized the probability of unresolved ``best'' trees in our Ba
 \hl{The Bayesian consensus trees, however, perform poorly for the Normalised Triplets metric: some parameter combinations, especially when the $M_F$ parameter reaches 75\% missing data, lead to negative values (Fig. 5).
 A Normalised Triplets metric value below 0 means that the placement of some taxa is worse than expected by just randomly placing this taxon in the tree.
 This can be interpreted as the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
-Even if clades are conserved (Fig. 5), the resolution within them can be poor to non-existent when a lot of data are missing (i.e. 75\%).
+Even if clades are conserved (Fig. 5), the resolution within them can be poor to non-existent when a large proportion of data are missing (i.e. 75\%).
 In such cases, the fossil taxa are equally likely to be placed in any of the clades that they share the most characters with.
 These results are in agreement with previous studies that have showed that missing data can cause problems for recovering ``correct'' topologies, especially for small matrices of 100 characters }\citep{wiensmissing2003}.
 \hl{It is important to note, however, that this effect can be reduced by increasing the number of characters }\citep{wiensmissing2003}.
