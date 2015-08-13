@@ -122,18 +122,18 @@ Clearly outlining the questions in this study that are left open from previous r
 We have increased our emphasis on novelty throughout the introduction by more clearly stating the difference between the present study and the literature and more clearly outlining the question of this study, as follows:
 
 \textit{Until now, few attempts have been made to study the impact of this missing data issue on phylogenetic inference in a Total Evidence framework (i.e. using both molecular and morphological data; e.g. Wiens et al., 2005; Manos et al., 2007; Pattinson et al., 2014).
-These studies assessed the effect of missing data on topology by either (1) comparing a dataset with missing data to subsets without missing data (Wiens et al. 2005); or (2) removing both molecular and some morphological data from living taxa to create artificial fossils (Manos et al., 2007; Pattinson et al., 2014).
+These previous studies assessed the effect of missing data on topology by either (1) comparing a dataset with missing data to subsets without missing data (Wiens et al. 2005); or (2) removing both molecular and some morphological data from living taxa to create artificial fossils (Manos et al., 2007; Pattinson et al., 2014).
 Both approaches have shown that missing data are not a major problem and should not be an obstacle to combining both living and fossil species in the same phylogenies.
 The way these studies were conducted, however, means that their conclusions are not generally applicable across all scenarios involving missing data in Total Evidence phylogenies.
 For example, using an empirical (rather than simulation based) approach limits their conclusions to studies with similar distributions of data across species in the phylogeny.
 Additionally, Wiens et al. (2005) did not include fossil taxa in their analyses, so their results cannot be used to make conclusions about how missing data may influence the placement of fossils. 
 Manos et al. (2007) and Pattinson et al. (2014) include fossil taxa, but used the patchiness of the fossil record to determine how to remove data from their matrices. 
-Data for living species is unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data are likely (Guillerme and Cooper 2015).
-Finally, Manos et al. (2007) and Pattinson et al. (2014), mainly focused on how missing data in fossil taxa affects the placement of fossils, ignoring the effects of missing data in living species.}
+Data for living species are unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data is a likely pattern (Guillerme and Cooper 2015).
+Finally, Manos et al. (2007) and Pattinson et al. (2014), mainly focused on how missing data in fossil taxa affect the placement of fossils, ignoring the effects of missing data in living species.}
 
 \textit{In this study, we propose a theoretical assessment of the effect of missing data in the Total Evidence method by removing living taxa with morphological data, fossil data, all data for certain characters and the combination of these three aspects.
-This is an advance on previous studies because we use large-scale simulations and analyze the effect of three distinct aspect of missing data thus focusing on both neontological and paleontological parts of the matrix.
-In addition, we test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian phylogenies: (i) the conservation of clades (based on the Robinson-Foulds distance; Robinson and Foulds, 1981) and (ii) the displacement of wild-card taxa (based on the Triplets distance; Critchlow et al., 1996) rather than just a single measure of clade conservation or clade support (cf. Wiens et al., 2005; Pattinson et al., 2014).} lines 85-118@@@
+This is an advance on previous studies because we use large-scale simulations and analyze the effects of three distinct aspects of missing data thus focusing on both neontological and paleontological parts of the matrix.
+In addition, we test the effect of missing data by measuring two crucial aspects of topology in both Maximum Likelihood and Bayesian phylogenies: (i) the conservation of clades (based on the Robinson-Foulds distance; Robinson and Foulds, 1981) and (ii) the displacement of wild-card taxa (based on the Triplets distance; Critchlow et al., 1996) rather than just a single measure of clade conservation or clade support (cf. Wiens et al., 2005; Pattinson et al., 2014).} lines 85-118
 
 % -----------------
 % Comment 5
@@ -182,7 +182,7 @@ We added the following sentence to the main text to clarify and link to the supp
 In practice, the difference between the ``best'' trees and the ``missing data'' trees represents the effect of our missing data parameters and of the phylogenetic methods used to infer the ``missing data'' trees.
 The difference between the ``true'' and the ``missing data'' trees, however, represents the effect of our parameters used to generate the ``true'' tree and the algorithms used to generate the ``complete'' matrix as well as the effect of our missing data parameters and the phylogenetic methods used.
 Because the main aim of this study is to look at the effect our missing data parameters on topological recovery, we chose to represent only the comparisons between the ``best'' trees and ``missing data'' trees.
-The results of the comparisons of the ``true'' and the ``missing data'' tree are available in Appendix B.
+The results of the comparisons of the ``true'' tree and the ``missing data'' trees are available in Appendix B.
 Note that this makes little difference to our overall results.} line 297-308 @@@.
 
 See also Appendix B section "Differences between the ``true'' and the ``best'' trees." and reviewer 2's comment 1 below.
@@ -248,7 +248,7 @@ We expanded the paragraph to:
 
 \textit{Additionally, the Bayesian posterior trees performed more poorly than the Bayesian consensus tree (Fig. 4, Table 1 and Appendix C Fig. C5 and Tables C5, C6 and C7).
 This may be because the Bayesian posterior trees are always resolved and thus more likely to contain incorrectly resolved nodes (i.e. decreasing the Normalised Robinson-Foulds metric).
-Conversely, the Bayesian consensus tree might not resolve nodes that are poorly supported and thus is more likely to contain only correctly resolved nodes (i.e. increasing the Normalised Robinson-Foulds metric).} lines 681-687. @@@
+Conversely, the Bayesian consensus trees might not resolve nodes that are poorly supported and thus are more likely to contain only correctly resolved nodes (i.e. increasing the Normalised Robinson-Foulds metric).} lines 681-687. @@@
 
 Concerning the last question of this comment: "How then in comparisons of the distributions are they always so low (Table 1 max prob. of overlapping distributions = 0.11)?", we apologise for the confusion here and assume it is due to our mislabeling of the Fig. 4 (see reviewer 1's comment 12).
 In fact, when looking at all parameters separately (Fig. 4), there is no clear overlap between the Bayesian consensus trees and the Bayesian posterior trees (median Bhattacharyya Coefficient of 0.01; Table 1).
@@ -272,11 +272,11 @@ In fact, when a clade ((a;b);c); is collapsed to (a;b;c), the whole clade is con
 
 We added a note on this in the section about the effects of the tree inference method:
 
-\textit{The Bayesian consensus trees, however, perform badly for the Normalised Triplets metric: some parameter combinations, especially when the $M_F$ parameter reaches 75\% missing data, lead to negative values (Fig. 5).
+\textit{The Bayesian consensus trees, however, perform poorly for the Normalised Triplets metric: some parameter combinations, especially when the $M_F$ parameter reaches 75\% missing data, lead to negative values (Fig. 5).
 A Normalised Triplets metric value below 0 means that the placement of some taxa is worse than expected by just randomly placing this taxon in the tree.
 This can be interpreted as the absence of comparable triplets between some of the ``missing data" trees and ``best'' trees.
-Even if clades are conserved (Fig. 5), the resolution within them can be poor to non-existent when a lot of data are missing (i.e. 75\%).
-In such cases, the fossil taxa are likely to be placed in any of the clades that share the most characters.
+Even if clades are conserved (Fig. 5), the resolution within them can be poor to non-existent when a large proportion of data are missing (i.e. 75\%).
+In such cases, the fossil taxa are equally likely to be placed in any of the clades that they share the most characters with.
 These results are in agreement with previous studies that have showed that missing data can cause problems for recovering ``correct'' topologies, especially for small matrices of 100 characters (Wiens 2003).
 It is important to note, however, that this effect can be reduced by increasing the number of characters (Wiens 2003).} lines 661-673. @@@
 
@@ -297,7 +297,7 @@ When missing data increases in any of our missing data parameters ($M_{L}$, $M_{
 Therefore we advise increased focus on coding morphological characters for a large number of the living taxa present in the matrix (i.e. at least 50\%) if the goal is to accurately combine both living and fossil species in phylogenies.
 Doing so will increase overlap of morphological characters among living and fossil taxa, allowing the fossil taxa to be positioned relative to the living taxa based on their shared derived characters rather than simply on available data.}
 
-\textit{Additionally, the topology of the Bayesian consensus trees, regardless of the amount of missing data, were always closer to the ``best'' tree topology than the Maximum Likelihood trees.
+\textit{Additionally, the topologies of the Bayesian consensus trees, regardless of the amount of missing data, were always closer to the ``best'' tree topology than the Maximum Likelihood trees.
 This has also been observed in empirical data (e.g. Arcila et al., 2015) where Maximum Likelihood trees inferred from a Total Evidence matrix were less supported than the Bayesian consensus tree.
 This might have an important impact on estimating topologies in the Total Evidence framework, because previous studies had to rely either on molecular scaffolds (e.g. Slater, 2013), taxonomic constraints (e.g. Slater, 2013; Beck and Lee, 2014) or even on fixing the topology (e.g. Ronquist et al., 2012a).
 Therefore, we suggest extracting such topological backbones from the Bayesian consensus tree if needed.} lines 731-62@@@
@@ -325,7 +325,7 @@ We changed the axes of the graphs showing Normalised Triplets metric to show val
 
 We clarified the caption of the Table 1 as follows:
 
-\textit{Each line summarizes the probabilities of overlap between the distributions of the ``best'' tree versus trees from each inference method (Maximum Likelihood; Bayesian consensus; Maximum Likelihood Bootstraps and Bayesian posterior trees) pooled across all combinations of missing data parameter values, using the Normalised Robins-Foulds (RF) and Triplets (Tr) metrics. 
+\textit{Each line summarizes the probabilities of overlap between the distributions of the ``best'' tree versus trees from each inference method (Maximum Likelihood; Bayesian consensus; Maximum Likelihood Bootstraps and Bayesian posterior trees) pooled across all combinations of missing data parameter values, using the Normalised Robinson-Foulds (RF) and Triplets (Tr) metrics. 
 Values highlighted in bold are the extreme values of high or low probability of overlap between two methods. If two methods have a high probability of overlap, they have a similar ability to recover the ``correct'' tree topology. Values $>$ 0.95 denote significantly similar distributions and values $<$ 0.05 denote significantly different distributions.}
 
 % -----------------
@@ -349,7 +349,7 @@ We also included that our results for the $M_F$ parameter for the Normalised Rob
 % -----------------
 \item{\textcolor{blue}{\textbf{line 31:} has it really been shown that the majority of macroevolutionary studies focuses on extant species only? The cited references are examples of large scale extant-only phylogenies. To make such a pointed statement, the authors would need to find support from some kind of literature review or meta-analysis comparing the number of paleontological to neontological macroevolutionary studies. Otherwise, rephrase. }}
 
-We revised this statement as follows: \textit{many large-scale macroevolutionary studies focus solely on living species} (line 30-31 @@@).
+We revised this statement as follows: \textit{many large-scale macroevolutionary studies focus solely on living species} (line 30-31).
 
 % -----------------
 % Specific Comment 2
@@ -391,7 +391,7 @@ We modified the sentence as suggested.
 % -----------------
 \item{\textcolor{blue}{\textbf{line 66:} omit 'have been successfully applied to empirical data' and just say 'becoming increasingly popular…list of references'. }}
 
-We modified the sentence as suggested.
+We modified the sentence as suggested lines (64-66).
 
 % -----------------
 % Specific Comment 8
@@ -419,7 +419,7 @@ We modified the sentence as suggested.
 % -----------------
 \item{\textcolor{blue}{\textbf{line 82:} change to '…missing data are not phylogenetically biased, Wiens…'}}
 
-We modified the sentence as suggested.
+We modified the sentence as suggested (lines 79-80).
 
 % -----------------
 % Specific Comment 12
@@ -722,7 +722,7 @@ As discussed above (reviewer 1, specific comment 29), we understand the reviewer
 We refer to this supplementary analysis in the main text as follows:
 
 \textit{Our results show that the topology of the Bayesian consensus tree is always closer to the ``best'' tree topology than the ``best'' Maximum Likelihood tree (Fig. 5).
-Note that the methodological choice of using the ``true'' tree as a starting tree for the Bayesian Inference rather than a random starting tree (see Methods), had no significant effect on topological recovery (see Appendix A, section ``Effect of the starting tree on Bayesian inference'' for details on the analysis of the effect of the starting tree in Bayesian inference).} lines 649-655@@@
+Note that the methodological choice of using the ``true'' tree as a starting tree for the Bayesian Inference rather than a random starting tree (see Methods), had no significant effect on topological recovery (see Appendix A, section ``Effect of the starting tree on Bayesian inference'' for details).} lines 649-655@@@
 
 % -----------------
 % Specific Comment 47
@@ -749,10 +749,10 @@ This paragraph requires further justification and this study does have important
 We revised the paragraph as follows:
 \textit{Another practical implication of our results regards the tree inference methods.
 Because the Bayesian consensus trees consistently recovered topologies closer to the ``best'' tree topology than the Maximum Likelihood trees, we advise that where a topological constraint is needed, Bayesian consensus trees should be used. This may apply to tree inferences using the Total Evidence method such as tip-dating (e.g. Ronquist et al., 2012a; Wood et al., 2013; Matzke, 2014). It is, however, possible that including dating information during tree inference could also improve the accuracy of the Bayesian posterior tree distribution, so a fixed topology should be used with caution.
-Using the Bayesian consensus tree rather than the Maximum Likelihood can also reduce the number of false positive topologies (sensu Swofford et al., 2001).
+Using the Bayesian consensus tree rather than the Maximum Likelihood can also reduce the number of false positive topologies (\textit{sensu} Swofford et al., 2001).
 As shown in Fig. 5 and discussed in the section above (Effects of tree inference methods), the Bayesian consensus tree is more likely to not resolve poorly supported nodes due to missing data than the Maximum Likelihood tree that is more likely to incorrectly resolve such nodes (i.e. creating a false positive node).
-Note, however, that we do not suggest discarding the Bayesian posterior tree distributions even though they performed poorly in recovering the ``best'' tree topology in our simulations (this can probably be imputed to the difficulties comparing distributions of trees; see above).
-These trees will be invaluable for phylogenetic comparative analyses. For example a sub-sample of posterior trees distributions can be used to assess macroecological questions while better taking into account topological uncertainty (e.g. Fritz et al. 2009 and Jetz et al. 2012 trees used in Healy et al. 2014).} lines 711-731@@@
+Note, however, that we do not suggest discarding the Bayesian posterior tree distributions even though they performed poorly in recovering the ``best'' tree topology in our simulations (this can probably be traced to the difficulties comparing distributions of trees; see above).
+These trees will be invaluable for phylogenetic comparative analyses. For example a sub-sample of posterior tree distributions can be used to assess macroecological questions while better taking into account topological uncertainty (e.g. Fritz et al. 2009 and Jetz et al. 2012 trees used in Healy et al. 2014).} lines 711-731@@@
 
 % -----------------
 % Specific Comment 50
@@ -952,17 +952,21 @@ Hereafter, we call these matrices with missing morphological data the ``missing-
 Note that the amount of molecular data remained constant throughout our simulations: 1000 molecular characters for living taxa and no molecular data for fossil taxa (see above).
 We removed morphological data using three data incompleteness parameters:
 \begin{enumerate}
-\item{The proportion of missing living taxa ($M_L$).} This first missing-data parameter corresponds to the proportion of living taxa with no morphological data. It represents the number of living taxa that are present in the matrix but have only molecular data available. This reflects the fact that, because of the increasing ease of collecting molecular data, morphological data for living species is rarely collected (Guillerme and Cooper, 2015). Therefore, many living species will have only molecular data available. In practice, we removed all the morphological data from randomly chosen living taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.
+\item{The proportion of missing living taxa ($M_L$).} This first missing-data parameter corresponds to the proportion of living taxa with no morphological data.
+It represents the number of living taxa that are present in the matrix but have only molecular data available.
+This reflects the fact that, because of the increasing ease of collecting molecular data, morphological data for living species are rarely collected (Guillerme and Cooper, 2015).
+Therefore, many living species will have only molecular data available.
+In practice, we removed all the morphological data from randomly chosen living taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.
 \item{The proportion of missing data in the fossil record ($M_F$).} This missing data parameter represents the completeness of the fossil record. Due to preservation biases, missing data for fossil taxa are common (Sansom and Wills, 2013).
-In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
+In practice, we randomly removed a proportion of data from across the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
 Note that 50\% missing data for fossil taxa does not mean that each fossil is missing 50\% of its morphological data.
 Instead this 50\% refers to missing fossil data across the whole matrix.
-Some fossils may retain 100\% of their data and others may lose all their data at this parameter value (down to a minimum threshold of 5\% available data; see below)
+Some fossils may retain 100\% of their data and others may lose most of their data at this parameter value (down to a minimum threshold of 5\% available data; see below)
 \item{The number of morphological characters for both living and fossil taxa ($N_C$).}
 This parameter is not a missing data parameter \textit{per se} but rather an indication of the size of the matrix.
 Any morphological matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large.
 Therefore, this parameter corresponds to the overall number of characters available for both living and fossil taxa.
-In practice, we randomly removed whole characters from the morphological matrix reducing it to: 100, 90,75, 50 or 25 characters.
+In practice, we randomly removed entire characters from the morphological matrix reducing it to: 100, 90,75, 50 or 25 characters.
 Note that these levels are equivalent to the two other parameters (i.e. 0\%, 10\%, 25\%, 50\% or 75\% of ``missing'' morphological characters).
 \end{enumerate}}
 

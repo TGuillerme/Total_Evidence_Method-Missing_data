@@ -160,21 +160,13 @@ Thus understanding the sensitivity of topology to missing data is important for 
 Here we use a simulation approach to assess the effect of missing data on tree topologies inferred from Total Evidence matrices.
 Since the molecular part of a Total Evidence matrix acts like a ``classical" molecular matrix containing only the living taxa \citep{ronquista2012}, the effect of missing data on such matrices is well known \citep{wiensmissing2006,wiensmissing2008,lemmonthe2009,rouresite-specific2011}.
 Therefore, we focus only on missing data in the morphological part of the matrix.
-We investigate three major parameters that directly affect the completeness and size of the morphological part of the matrix, and reflect empirical biases in data availability: (i) the proportion of living taxa with no morphological data; (ii) the proportion of missing data in the fossil taxa; and (iii) the proportion of missing morphological characters for both living and fossil taxa in the matrix (i.e. the size of the matrix).
-%in
-\hl{We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the resulting tree topology.
-We infer the topology from the matrices using both Maximum Likelihood and Bayesian inference methods and measure the differences in topology using two different topological distance metrics as proxies for clade conservation } \citep[\hl{based on the Robinson-Foulds distance;}][]{RF1981}\hl{ and for wild-card taxa placement }\citep[\hl{based on the Triplets distance;}][]{critchlowthe1996}.
-%\hl{Thus, in the present study, we propose a new approach to the missing-data question, focusing on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and measuring two aspects of topological recovery }\citep[cf.][\hl{measuring respectively only the clades support or the number of shared clades}]{Wiens01102005,pattinsonphylogeny2014}.
+We investigate three major parameters that directly affect the completeness and size of the morphological part of the matrix, and reflect empirical biases in data availability: (i) the proportion of living taxa with no morphological data; (ii) the proportion of missing data in the fossil taxa; and (iii) the amount of morphological characters for both living and fossil taxa in the matrix (i.e. the size of the matrix).
+We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the resulting tree topology.
+We infer the topology from the matrices using both Maximum Likelihood and Bayesian inference methods and measure the differences in topology using two different topological distance metrics as proxies for clade conservation and for wild-card taxa placement.
+We find that minimizing the number of living taxa with no morphological data and the number of missing morphological characters improves the ability of Total Evidence methods to recover the ``best'' tree topology more so than minimizing the amount of missing data in the fossil record.
+Additionally, we find that the ability of Total Evidence methods to recover the ``best'' tree topology is increased when using Bayesian methods.
 
-% NC: Reading this in full it seems like the last bit repeats what you've already said. I know the reviewer asked for novelty to be spelled out but I think you do that well above here so maybe leave this bit out to avoid repetition.
 
-% NC: You've also cut out the "here we find" sentences. Did the reviewers ask for this? If not why not put them back and mention novelty in there instead subtly.
-
-%Former revised version
-% \hl{We remove data from a Total Evidence matrix by changing the values of these three parameters and then assess how this affects the topology of trees inferred using Maximum Likelihood and Bayesian methods by using two different topological metrics, based on the Robinson-Foulds }\citep{RF1981}\hl{ and Triplets }\citep{critchlowthe1996}\hl{ distances.
-% Thus, in the present study, we propose a new approach on the missing-data question focus on both palaeontological and neontological data (rather than just palaeontological data), using only simulated data and two distinct topological metrics.}
-% We find that minimizing the number of living taxa with no morphological data and the number of missing morphological characters improves the ability of Total Evidence methods to recover the ``best'' tree topology more so than minimizing the amount of missing data in the fossil record.
-% Additionally, we find that the ability of Total Evidence methods to recover the ``best'' tree topology is increased when using Bayesian methods.
 
 %---------------------------------------------
 %
