@@ -77,6 +77,7 @@ ENTRY
     type
     volume
     year
+    doi
   }
   {}
   { label extra.label sort.label short.list }
@@ -979,6 +980,9 @@ FUNCTION {article}
   format.note output
   fin.entry
 }
+
+
+
 FUNCTION {book}
 { output.bibitem
   author empty$
