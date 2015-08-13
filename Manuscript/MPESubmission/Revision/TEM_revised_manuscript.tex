@@ -236,7 +236,7 @@ This method allows us to have only two parameters for each character: the number
 For each character, the evolutionary rate was sampled from a gamma distribution with $\alpha$ = 0.5.
 \hl{We used low evolutionary rate parameters to be consistent with the molecular rate parameters, to avoid homoplasy in the morphological part of the matrix and create a clear phylogenetic signal }\citep{wrightbayesian2014}.
 \hl{Topological error has been shown to be minimal at a morphological rate of 0.5 when using the M\textit{kv} model }\citep{lewisa2001,wrightbayesian2014}.
-hl{Note, however, that } \cite{wrightbayesian2014}\hl{ have shown that low morphological rates ($<$ 0.5) increase variance in topological error, but we discarded simulations with such topological error by selecting only matrices with a ``fair'' phylogenetic signal }\citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}\hl{ so this should not influence our results.}
+\hl{Note, however, that } \cite{wrightbayesian2014}\hl{ have shown that low morphological rates ($<$ 0.5) increase variance in topological error, but we discarded simulations with such topological error by selecting only matrices with a ``fair'' phylogenetic signal }\citep[\hl{see Estimating phylogenies section below;}][]{zanderminimal2004}\hl{ so this should not influence our results.}
 
 Finally, we combined the morphological and molecular matrices obtained from the ``true'' tree.
 Hereafter we call this the ``complete'' matrix, i.e. the matrix with no missing data except for the molecular data of the fossil taxa.
@@ -251,21 +251,21 @@ Note that the amount of molecular data remained constant throughout our simulati
 We removed morphological data using three data incompleteness parameters:}
 \begin{enumerate}
 \item{\hl{The proportion of missing living taxa ($M_L$).}}
-\hl{This first missing-data parameter corresponds to the proportion of living taxa with no morphological data. It represents the number of living taxa that are present in the matrix but have only molecular data available. This reflects the fact that, because of the increasing ease of collecting molecular data, morphological data for living species is rarely collected }\citep{GuillermeCooperMissing}.
+\hl{This first missing-data parameter corresponds to the proportion of living taxa with no morphological data. It represents the number of living taxa that are present in the matrix but have only molecular data available. This reflects the fact that, because of the increasing ease of collecting molecular data, morphological data for living species are rarely collected }\citep{GuillermeCooperMissing}.
 \hl{Therefore, many living species will have only molecular data available.
 In practice, we removed all the morphological data from randomly chosen living taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of living taxa with no morphological data.}
 \item{\hl{The proportion of missing data in the fossil record ($M_F$).}}
 \hl{This missing data parameter represents the completeness of the fossil record.
 Due to preservation biases, missing data for fossil taxa are common }\citep{sansomfossilization2013}.
-\hl{In practice, we randomly removed a proportion of data among the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
+\hl{In practice, we randomly removed a proportion of data from across the fossil taxa with five different proportions: 0\%, 10\%, 25\%, 50\% or 75\% of overall missing data for the fossil taxa.
 Note that 50\% missing data for fossil taxa does not mean that each fossil is missing 50\% of its morphological data.
 Instead this 50\% refers to missing fossil data across the whole matrix.
-Some fossils may retain 100\% of their data and others may lose all their data at this parameter value (down to a minimum threshold of 5\% available data; see below).}
+Some fossils may retain 100\% of their data and others may lose most of their data at this parameter value (down to a minimum threshold of 5\% available data; see below).}
 \item{\hl{The number of morphological characters for both living and fossil taxa ($N_C$).}}
 \hl{This parameter is not a missing data parameter \textit{per se} but rather an indication of the size of the matrix.
 Any morphological matrix of any size has indeterminate missing data, given that the total number of characters is undefined, but presumably large.
 Therefore, this parameter corresponds to the overall number of characters available for both living and fossil taxa.
-In practice, we randomly removed whole characters from the morphological matrix reducing it to: 100, 90,75, 50 or 25 characters.
+In practice, we randomly removed entire characters from the morphological matrix reducing it to: 100, 90, 75, 50 or 25 characters.
 Note that these levels are equivalent to the two other parameters (i.e. 0\%, 10\%, 25\%, 50\% or 75\% of ``missing'' morphological characters).}
 \end{enumerate}
 
@@ -291,9 +291,8 @@ In real world situations, the ``true'' tree is never available to us because we 
 In practice, the difference between the ``best'' trees and the ``missing data'' trees represents the effect of our missing data parameters and of the phylogenetic methods used to infer the ``missing data'' trees.
 The difference between the ``true'' and the ``missing data'' trees, however, represents the effect of our parameters used to generate the ``true'' tree and the algorithms used to generate the ``complete'' matrix as well as the effect of our missing data parameters and the phylogenetic methods used.
 Because the main aim of this study is to look at the effect our missing data parameters on topological recovery, we chose to represent only the comparisons between the ``best'' trees and ``missing data'' trees.
-The results of the comparisons of the ``true'' and the ``missing data'' tree are available in Appendix B.
+The results of the comparisons of the ``true'' tree and the ``missing data'' trees are available in Appendix B.
 Note that this makes little difference to our overall results.}
-Therefore, here we focus on comparing the trees inferred from the matrices with missing data to the ``best'' tree, rather than the ``true'' tree, as the ``best'' tree is generally what we have to work with.
 
 \subsubsection{Maximum Likelihood}
 The ``best'' tree and the ``missing-data'' trees were inferred using RAxML v. 8.0.20 \citep{Stamatakis21012014}. For the molecular data, we used the GTR + $\Gamma_4$ model (\citealp{tavare1986}; default GTRGAMMA in RAxML v. 8.0.20; \citealp{Stamatakis21012014}).
@@ -337,7 +336,7 @@ Finally we built a strict majority rule Bayesian consensus tree from the combine
 
 \subsection{Comparing topologies}
 We compared the topology of the ``missing-data'' trees to the ``best'' tree to measure the effect of the three parameters $M_{L}$, $M_{F}$ and $N_{C}$ on tree topology.
-We used the Robinson-Foulds distance \citep{RF1981} to assess the amount of conserved clade positions and the Triplets distance \citep{dobson1975triplets} to assess the amount of wildcard taxa \citep[i.e. taxa that frequently change position in different trees][]{kearneyfragmentary2002}. We used these two metrics because they illustrate two different aspects of tree topology (see Discussion) but also because their performance in measuring differences in topology is well described \citep{Kuhner04112014} and well implemented \citep{Bogdanowicz2012}.
+We used the Robinson-Foulds distance \citep{RF1981} to assess the number of conserved clade positions and the Triplets distance \citep{dobson1975triplets} to assess the number of wildcard taxa \citep[i.e. taxa that frequently change position in different trees][]{kearneyfragmentary2002}. We used these two metrics because they illustrate two different aspects of tree topology (see Discussion) but also because their performance in measuring differences in topology is well described \citep{Kuhner04112014} and well implemented \citep{Bogdanowicz2012}.
 We normalised both metrics using methods described in \citet{Bogdanowicz2012} to generalize our results for any \textit{n} number of taxa.
 These metrics are described in detail below.
 
