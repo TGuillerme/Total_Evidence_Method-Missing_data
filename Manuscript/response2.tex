@@ -1,0 +1,97 @@
+\documentclass[12pt,letterpaper]{article}
+
+%Packages
+\usepackage{pdflscape}
+\usepackage{fixltx2e}
+\usepackage{textcomp}
+\usepackage{fullpage}
+\usepackage{float}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{array}
+\usepackage[version=3]{mhchem}
+\usepackage{ifthen}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{enumerate}
+\usepackage[osf]{mathpazo}
+\usepackage{dcolumn}
+\usepackage{lineno}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\pagenumbering{arabic}
+
+%Pagination style and stuff
+%\linespread{2} 
+
+\raggedright
+\setlength{\parindent}{0.5in}
+\setcounter{secnumdepth}{0} 
+\renewcommand{\section}[1]{%
+\bigskip
+\begin{center}
+\begin{Large}
+\normalfont\scshape #1
+\medskip
+\end{Large}
+\end{center}}
+\renewcommand{\subsection}[1]{%
+\bigskip
+\begin{center}
+\begin{large}
+\normalfont\itshape #1
+\end{large}
+\end{center}}
+\renewcommand{\subsubsection}[1]{%
+\vspace{2ex}
+\noindent
+\textit{#1.}---}
+\renewcommand{\tableofcontents}{}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\textbf{RE: MPE-15-254}\\
+\bigskip
+Dear Dr D\'{a}valos,\\
+\bigskip
+We thank both reviewers for their additional comments.
+We dealt with the two minor comments of reviewer 1.
+
+
+\section{Reviewer 1:}
+
+\begin{enumerate}
+% -----------------
+% Comment 1
+% -----------------
+\item{\textcolor{blue}{Some typos persist, e.g., line 76: "...likely to contain a large proportions of missing data"; line 79: "(as long as enough data overlaps)", line 80: "...phylogeneticaly"}}
+
+We fixed these typos and checked thoroughly for other potential typos throughout the manuscript.
+% -----------------
+% Comment 2
+% -----------------
+\item{\textcolor{blue}{Somewhat choppy style on line 101. In general it would be a bit more stream-lined and flow better if the style of citing references were more like this: "Some previous research on the effects of missing data did not include fossils (e.g., Wiens 2003). Others used the patchy distribution of missing data in fossils from empirical datasets to create artificial fossils from extant species (Manos, Pattinson)" rather than "Wiens (2003) did not include fossils. Manos (2007) and Pattinson (2015) used the patchy distribution of missingness in fossils to create artificial fossils from extant species". Make each sentence a statement summarizing the results of a study and cite the study at the end, rather than make the statement about the specific study and what they found. This is how the authors usually write, but in this section of literature review, it gets choppy.}}
+
+We rewrote this paragraph as follows:
+
+\textit{Additionally, one of the three previous studies did not include fossil taxa in their analyses, so their results cannot be used to make conclusions about how missing data may influence the placement of fossils (Wiens, 2003). The other two studies did include fossil taxa, but used the patchiness of the fossil record to determine how to remove data from their matrices (Manos et al., 2007; Pattinson et al., 2014). Data for living species are unlikely to be missing in this patchy way, instead full molecular data with the complete absence of morphological data is a likely pattern (Guillerme and Cooper, 2015).
+Finally, these previous studies mainly focused on how missing data in fossil taxa affect the placement of fossils, ignoring the effects of missing data in living species (Manos et al., 2007; Pattinson et al., 2014).}. lines 99-108.
+
+\end{enumerate}
+
+Please let us know if you require any further information,\\
+\bigskip
+
+Thomas Guillerme (guillert@tcd.ie)\\
+Natalie Cooper
+
+\end{document}
