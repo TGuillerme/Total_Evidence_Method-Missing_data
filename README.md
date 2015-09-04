@@ -2,10 +2,7 @@
 [Thomas Guillerme](http://tguillerme.github.io) and [Natalie Cooper](https://http://nhcooper123.github.io/).
 
 This repository contains all the code and data used in this study.
-###### Manuscript in review in Molecular Phylogenetics and Evolution.
-
-## Manuscript
-The latest version of the manuscript is available [here](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/raw/master/Manuscript/TEM_manuscript.pdf).
+###### Paper [in press](http://www.sciencedirect.com/science/article/pii/S1055790315002547) in Molecular Phylogenetics and Evolution.
 
 ## Data
 All the data is available on [figshare](http://figshare.com/articles/Effect_of_missing_data_on_topological_inference_using_a_total_evidence_approach/1306861).
