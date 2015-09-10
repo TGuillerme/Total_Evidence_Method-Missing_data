@@ -141,3 +141,10 @@ Additional analysis has been run in the Appendices:
 * [Morphological rates estimations](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Rates_estimates.R), in Appendix A: effect of missing data on the posterior alpha parameter estimation (for `UNIX` based machines only; LINUX/MAC).
 * [Differences between the "true" and "best" trees](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/True_vs_best_tree.R), in Appendix B: measuring the ability of recovering the "true" tree (i.e. the pseudo-random seed for each simulation chain).
 * [Marginal probabilities](https://github.com/TGuillerme/Total_Evidence_Method-Missing_data/blob/master/Analysis/Marginal_probabilities.R) in Appendix C: calculating the marginal distribution of each missing data parameter individually and each method.
+
+## Citation
+If you are using this code, please cite:
+
+* Guillerme, T. & Cooper, N. (**2015**). Effects of missing data on topological inference using a Total Evidence approach. Molecular Phylogenetics and Evolution. doi:10.1016/j.ympev.2015.08.023
+
+[Citation formats](http://www.sciencedirect.com/science/article/pii/S1055790315002547)
