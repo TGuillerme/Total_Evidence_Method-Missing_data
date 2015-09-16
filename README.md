@@ -2,7 +2,7 @@
 [Thomas Guillerme](http://tguillerme.github.io) and [Natalie Cooper](https://http://nhcooper123.github.io/).
 
 This repository contains all the code and data used in this study.
-###### Paper [in press](http://www.sciencedirect.com/science/article/pii/S1055790315002547) in Molecular Phylogenetics and Evolution.<a href="http://www.sciencedirect.com/science/article/pii/S1055790315002547"><img src="http://tguillerme.github.io/images/OA.png" height="20" widht="20"/></a> <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=LA9l9EkAAAAJ&citation_for_view=LA9l9EkAAAAJ:zYLM7Y9cAGgC"><img src="http://tguillerme.github.io/images/logo-GS.png" height="20" widht="20"/></a>
+###### Paper [published](http://www.sciencedirect.com/science/article/pii/S1055790315002547) in Molecular Phylogenetics and Evolution.<a href="http://www.sciencedirect.com/science/article/pii/S1055790315002547"><img src="http://tguillerme.github.io/images/OA.png" height="20" widht="20"/></a> <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=LA9l9EkAAAAJ&citation_for_view=LA9l9EkAAAAJ:zYLM7Y9cAGgC"><img src="http://tguillerme.github.io/images/logo-GS.png" height="20" widht="20"/></a>
 
 ## Data <a href="http://figshare.com/articles/Effect_of_missing_data_on_topological_inference_using_a_total_evidence_approach/1306861"><img src="http://tguillerme.github.io/images/logo-FS.png" height="26" widht="26"/></a> 
 All the data is available on [figshare](http://figshare.com/articles/Effect_of_missing_data_on_topological_inference_using_a_total_evidence_approach/1306861).
