@@ -145,6 +145,6 @@ Additional analysis has been run in the Appendices:
 ## Citation
 If you are using this code, please cite:
 
-* Guillerme, T. & Cooper, N. (**2015**). Effects of missing data on topological inference using a Total Evidence approach. Molecular Phylogenetics and Evolution. doi:10.1016/j.ympev.2015.08.023
+* Guillerme, T. & Cooper, N. (**2016**). Effects of missing data on topological inference using a Total Evidence approach. Molecular Phylogenetics and Evolution 94A:146-158. doi:10.1016/j.ympev.2015.08.023
 
 [Citation formats](http://www.sciencedirect.com/science/article/pii/S1055790315002547)
